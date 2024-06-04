@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+.main-content.shifted {
+  margin-left: 260px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.home {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  height: 200vh;
+}
+.Main {
+  background-color: rgb(241, 242, 244);
+  height: 107vh;
+  width: 100%;
+  text-align: start;
+}
+
+.top-but2 {
+  margin: 20px 0;
+  width: 100%;
+  height: 7vh;
+  padding: 10px;
+  background-color: aliceblue;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.AddNewMain {
+  margin: 50px 0;
+  width: 100%;
+  height: 100vh;
+  padding: 10px;
+  background-color: aliceblue;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.top-but2 p {
+  color: blue;
+}
+
+.top-but2 #input {
+  margin: 2px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.btn-uper {
+  margin-left: 30px;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+}
+
+#pills-tab {
+  text-align: start;
+  margin-top: 20px;
+}
+/* custom.css */
+.nav-pills .nav-link {
+  color: grey; /* Default text color for buttons */
+  background-color: white; /* Default background color for buttons */
+}
+.nav-pills .nav-link:hover {
+  color: gray;
+}
+.nav-pills .nav-link.active {
+  background-color: blueviolet !important; /* Active button background color */
+  color: white !important; /* Active button text color */
+}
+
+.nav-item button {
+  background-color: white;
+  color: grey;
+  padding: 12px;
+  margin: 10px;
+  background-color: blueviolet;
+  color: grey;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .main-content.shifted {
+    margin-left: 200px;
+  }
+  .top-but2 {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-content.shifted {
+    margin-left: 60px;
+  }
+  .top-but2 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .form {
+    height: auto;
+    padding: 10px;
+  }
+}
+@media (max-width: 360px) {
+  .main-content.shifted {
+    margin-left: 60px;
+  }
+  .top-but2 {
+    flex-direction: column;
+    align-items: start;
+  }
+  .form {
+    height: auto;
+    padding: 10px;
+  }
+}
+.btn {
+  background-color: rgba(235, 233, 233, 0.685);
+  margin-left: -20px;
+}

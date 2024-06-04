@@ -1,0 +1,108 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: grey;
+  padding: 10px 10px;
+  height: 10vh;
+  margin-top: -10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Border shadow */
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: grey;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Nav bar */
+.dark-logo {
+  justify-content: flex-start;
+  text-align: start;
+  /* width: 30%;
+  height: 30%;  */
+  width: 100px;
+  height: auto;
+}
+.us-img {
+  text-align: start;
+  width: 30px;
+  height: auto;
+}
+.user {
+  width: 30px;
+  height: auto;
+  border-radius: 50%;
+}
+.left-side span {
+  padding: 10px;
+}
+/* Navbar.css */
+.navbar-brand {
+  cursor: pointer;
+}
+.navbar-nav {
+  display: inline-flex;
+}
+.dropdown {
+  display: inline-flex;
+  text-align: start;
+  justify-content: start;
+}
+.dropdown .btn {
+  border: none;
+  background-color: white;
+  color: gray;
+  text-align: start;
+}
+
+.navbar-content {
+  display: flex;
+  gap: 20px;
+}
+
+.left-side {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.left-side .search-input {
+  width: 150px;
+}
+
+.icon {
+  color: grey;
+  cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .navbar-content,
+  .left-side input,
+  .left-side .dropdown {
+    display: none;
+  }
+
+  .left-side {
+    gap: 10px;
+  }
+
+  .toggle-button {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .dark-logo {
+    width: 80px;
+  }
+}

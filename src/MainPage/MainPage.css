@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+.main-content.shifted {
+  margin-left: 260px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.home {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  height: 500vh;
+}
+.Main {
+  background-color: rgb(241, 242, 244);
+  height: 107vh;
+  width: 100%;
+  text-align: start;
+}
+
+.top-but {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: -750px;
+}
+.top-but .btn {
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px;
+}
+#pills-tab {
+  text-align: start;
+  margin-top: 20px;
+}
+/* custom.css */
+.nav-pills .nav-link {
+  color: grey; /* Default text color for buttons */
+  background-color: white; /* Default background color for buttons */
+}
+.nav-pills .nav-link:hover {
+  color: gray;
+}
+.nav-pills .nav-link.active {
+  background-color: blueviolet !important; /* Active button background color */
+  color: white !important; /* Active button text color */
+}
+
+.nav-item button {
+  background-color: white;
+  color: grey;
+  padding: 12px;
+  margin: 10px;
+  background-color: blueviolet;
+  color: grey;
+}
+
+.form {
+  margin-top: 30px;
+  height: 90vh;
+  width: 100%;
+  justify-content: start;
+  background-color: white;
+  padding: 20px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .main-content.shifted {
+    margin-left: 200px;
+  }
+  .top-but {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-content.shifted {
+    margin-left: 60px;
+  }
+  .top-but {
+    flex-direction: column;
+    align-items: center;
+  }
+  .form {
+    height: auto;
+    padding: 10px;
+  }
+}
+@media (max-width: 360px) {
+  .main-content.shifted {
+    margin-left: 60px;
+  }
+  .top-but {
+    flex-direction: column;
+    align-items: start;
+  }
+  .form {
+    height: auto;
+    padding: 10px;
+  }
+}
