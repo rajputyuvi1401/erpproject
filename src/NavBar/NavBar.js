@@ -16,15 +16,15 @@ const NavBar = ({ toggleSideNav }) => {
       <nav className="navbar">
         <button className="toggle-button" onClick={toggleSideNav}>
           ☰
+          <span>
+            {" "}
+            <Link>
+              <img className="dark-logo" src={logo} alt="logo" />
+            </Link>
+          </span>
         </button>
-        <span>
-          {" "}
-          <Link>
-            <img className="dark-logo" src={logo} alt="logo" />
-          </Link>
-        </span>
         <div className="d-flex">
-          <div className="dropdown" style={{ marginLeft: "-100px" }}>
+          <div className="dropdown" style={{ margin: "10px" }}>
             <button
               className="btn btn-secondary dropdown-toggle"
               type="button"

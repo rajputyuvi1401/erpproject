@@ -34,14 +34,3 @@ body.no-scroll {
   width: 100%;
   text-align: start;
 }
-.customerState {
-  background-color: blueviolet;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-}
-.customerStateicon {
-  border: none;
-  background-color: white;
-}

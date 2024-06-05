@@ -41,6 +41,11 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <FaHome /> Home
             </Link>
           </li>
+          <li>
+            <Link to="/mainpage">
+              <FaHome /> Vendors Page
+            </Link>
+          </li>
           <li className="dropdown-container">
             <div
               className="dropdown-toggle"

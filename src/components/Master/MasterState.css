@@ -34,3 +34,14 @@ body.no-scroll {
   width: 100%;
   text-align: start;
 }
+.mastercustomer {
+  background-color: blueviolet;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+.mastercustomericon {
+  border: none;
+  background-color: white;
+}

@@ -26,7 +26,7 @@ body.no-scroll {
 .home {
   width: 100%;
   background-color: rgb(241, 242, 244);
-  height: 80vh;
+  height: 190vh;
 }
 .Main {
   background-color: rgb(241, 242, 244);
@@ -35,16 +35,42 @@ body.no-scroll {
   text-align: start;
 }
 
-.top-but {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: -750px;
+.top-but3 {
+  margin: 20px 0;
+  width: 100%;
+  height: 7vh;
+  padding: 10px;
+  background-color: aliceblue;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.top-but .btn {
-  border: 1px solid black;
-  margin: 5px;
+
+.itemmastergernal {
+  margin: 50px 0;
+  width: 100%;
+  height: 150vh;
+  padding: 10px;
+  background-color: aliceblue;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.top-but3 p {
+  color: blue;
+}
+
+.top-but3 #input {
+  margin: 2px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.btn-uper {
+  margin-left: 30px;
+  background-color: rgba(235, 233, 233, 0.685);
   padding: 5px;
+  border: none;
+  border-radius: 10px;
 }
+
 #pills-tab {
   text-align: start;
   margin-top: 20px;
@@ -70,63 +96,79 @@ body.no-scroll {
   background-color: blueviolet;
   color: grey;
 }
+.new-card-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.form {
-  margin-top: 30px;
-  height: 90vh;
-  width: 100%;
-  justify-content: start;
+.new-card {
   background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  margin: 5px;
+  width: 80%;
+  max-width: 600px; /* Max width of the card */
+}
+
+.card-title {
+  color: white;
+}
+
+.card-body {
+  color: black;
+}
+.card-btn {
+  background-color: blueviolet;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+  width: 100%;
+}
+.card-btn1 {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+  width: 60%;
+}
+.card-btn2 {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px;
   border-radius: 10px;
 }
-.date-2 {
-  margin-top: 30px;
-  height: 90vh;
+.btn-primary,
+.btn-danger {
+  cursor: pointer;
+}
+
+/* Responsive styles for the table */
+.table {
   width: 100%;
-  justify-content: start;
-  background-color: white;
-  padding: 20px;
-  margin: 5px;
-  border-radius: 10px;
 }
-.logo-image {
-  margin-top: 30px;
-  height: 110vh;
-  width: 100%;
-  justify-content: start;
-  background-color: white;
-  padding: 20px;
-  margin: 5px;
-  border-radius: 10px;
-}
-.logo-image label {
-  height: 150px;
-}
-.logo-image input {
-  height: 150px;
-  width: 30%;
-}
-.einvoice {
-  margin-top: 30px;
-  height: 70vh;
-  width: 100%;
-  justify-content: start;
-  background-color: white;
-  padding: 20px;
-  margin: 5px;
-  border-radius: 10px;
-}
-.einvoice label {
-  padding: 3px;
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .table {
+    overflow-x: auto;
+  }
 }
 /* Media Queries */
 @media (max-width: 768px) {
   .main-content.shifted {
     margin-left: 200px;
   }
-  .top-but {
+  .top-but3 {
     margin-left: 0;
     text-align: center;
   }
@@ -136,7 +178,7 @@ body.no-scroll {
   .main-content.shifted {
     margin-left: 60px;
   }
-  .top-but {
+  .top-but3 {
     flex-direction: column;
     align-items: center;
   }
@@ -149,7 +191,7 @@ body.no-scroll {
   .main-content.shifted {
     margin-left: 60px;
   }
-  .top-but {
+  .top-but3 {
     flex-direction: column;
     align-items: start;
   }
@@ -157,4 +199,8 @@ body.no-scroll {
     height: auto;
     padding: 10px;
   }
+}
+.btn {
+  background-color: rgba(235, 233, 233, 0.685);
+  margin-left: -20px;
 }

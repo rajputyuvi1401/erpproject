@@ -5,13 +5,22 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import CachedIcon from "@mui/icons-material/Cached";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AddNewItem = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
+  };
+
+  const handleDropdownChange = (event) => {
+    const selectedValue = event.target.value;
+    if (selectedValue === "FG") {
+      navigate("/item-master-gernal");
+    }
   };
 
   useEffect(() => {
@@ -154,10 +163,38 @@ const AddNewItem = () => {
                                         <select
                                           id="inputState"
                                           class="form-select"
+                                          onChange={handleDropdownChange}
                                         >
-                                          <option selected>Select ..</option>
-                                          <option>FA</option>
-                                          <option>FA</option>
+                                          <option
+                                            selected
+                                            style={{ color: "black" }}
+                                          >
+                                            Select ..
+                                          </option>
+
+                                          <option>
+                                            {" "}
+                                            <Link
+                                              to="/item-master-gernal"
+                                              className="link btn12 me-2"
+                                            >
+                                              FG
+                                            </Link>
+                                          </option>
+
+                                          <option>RM</option>
+                                          <option>Tool</option>
+                                          <option>Instrument</option>
+                                          <option>Machine</option>
+                                          <option>Consumable</option>
+                                          <option>Safety Equ</option>
+                                          <option>Service</option>
+                                          <option>Assest</option>
+                                          <option>F4</option>
+                                          <option>Scrap</option>
+                                          <option>SF</option>
+                                          <option>BO</option>
+                                          <option>DI</option>
                                         </select>
                                       </div>
                                       <div class="col-sm-2">

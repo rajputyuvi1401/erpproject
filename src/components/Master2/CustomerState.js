@@ -63,66 +63,6 @@ const CustomerState = () => {
                     <div className="row">
                       <div className="col-md-12">
                         <div className="container mt-5">
-                          {/* <h1 className='align-items-center justify-content-between'>Master For State Code</h1>  */}
-                          {/* <form
-                            onSubmit={handleSubmit}
-                            className="d-flex flex-wrap justify-content-between align-items-center"
-                          >
-                            <div className="mb-3">
-                              <label htmlFor="custID" className="form-label">
-                                Customer ID
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                id="custID"
-                                name="custID"
-                                value={formData.custID}
-                                onChange={handleChange}
-                              />
-                            </div>
-                            <div className="mb-3">
-                              <label htmlFor="custType" className="form-label">
-                                Customer Type
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                id="custType"
-                                name="custType"
-                                value={formData.custType}
-                                onChange={handleChange}
-                              />
-                            </div>
-                            <div className="mb-3">
-                              <label
-                                htmlFor="prefrenceString"
-                                className="form-label"
-                              >
-                                Preference String
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                id="prefrenceString"
-                                name="prefrenceString"
-                                value={formData.prefrenceString}
-                                onChange={handleChange}
-                              />
-                            </div>
-                            <div
-                              className="mb-3 d-flex align-items-end"
-                              style={{ marginTop: "30px" }}
-                            >
-                              <button
-                                type="submit"
-                                className="btn btn-primary me-2"
-                              >
-                                Submit
-                              </button>
-                            </div>
-                          </form> */}
-
                           <div className="row">
                             <div className="col-md-12">
                               <div className="input-group mb-3">
@@ -137,7 +77,7 @@ const CustomerState = () => {
 
                                 <button
                                   type="button"
-                                  className="btn btn-secondary"
+                                  className="customerState"
                                   onClick={handleSearch}
                                 >
                                   Search
@@ -171,13 +111,13 @@ const CustomerState = () => {
                                 <td>abc</td>
                                 <td>abc</td>
                                 <td>
-                                  <button className="btn me-2">
+                                  <button className="customerStateicon me-2">
                                     <i className="fas fa-plus"></i>
                                   </button>
-                                  <button className="btn me-2">
+                                  <button className="customerStateicon me-2">
                                     <i className="fas fa-edit"></i>
                                   </button>
-                                  <button className="btn ">
+                                  <button className="customerStateicon ">
                                     <i className="fas fa-trash"></i>
                                   </button>
                                 </td>
@@ -191,13 +131,13 @@ const CustomerState = () => {
                                 <td>abc</td>
                                 <td>NY</td>
                                 <td>
-                                  <button className="btn me-2">
+                                  <button className="customerStateicon me-2">
                                     <i className="fas fa-plus"></i>
                                   </button>
-                                  <button className="btn me-2">
+                                  <button className="customerStateicon me-2">
                                     <i className="fas fa-edit"></i>
                                   </button>
-                                  <button className="btn">
+                                  <button className="customerStateicon">
                                     <i className="fas fa-trash"></i>
                                   </button>
                                 </td>

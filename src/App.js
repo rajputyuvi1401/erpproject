@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
+import Dashboard from "./Dashboard/Dashboard";
 import Home from "./Home/Home";
 import MainPage from "./MainPage/MainPage";
 
@@ -13,13 +14,15 @@ import CustomerState from "./components/Master2/CustomerState";
 // Item Master
 import ItemMaster from "./components/ItemMaster/ItemMaster";
 import AddNewItem from "./components/AddNewItem/AddNewItem";
+import ItemMasterGernal from "./components/ItemMasterGernal/ItemMasterGernal";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/" element={<MainPage />} />
+        <Route path="/mainpage" element={<MainPage />} />
+        <Route path="/" element={<Dashboard />} />
 
         {/* All Master */}
 
@@ -31,6 +34,7 @@ function App() {
 
         <Route path="/item-master" element={<ItemMaster />} />
         <Route path="/add-new-item" element={<AddNewItem />} />
+        <Route path="/item-master-gernal" element={<ItemMasterGernal />} />
       </Routes>
     </div>
   );

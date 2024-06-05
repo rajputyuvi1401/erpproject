@@ -4,12 +4,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 const ItemMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
+  };
+
+  const handleAddNewItemClick = () => {
+    navigate("/add-new-item");
   };
 
   useEffect(() => {
@@ -39,9 +45,12 @@ const ItemMaster = () => {
                       <p>Item List</p>
                     </div>
                     <div className="col-md-6 text-end">
-                      <Link to="/add-new-item" className="link btn12 me-2">
+                      <button
+                        className="btn12 me-2"
+                        onClick={handleAddNewItemClick}
+                      >
                         Add New Item
-                      </Link>
+                      </button>
                       <button className="btn12 ">Item Query</button>
                     </div>
                   </div>

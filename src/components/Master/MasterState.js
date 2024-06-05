@@ -128,7 +128,7 @@ const MasterState = () => {
                             >
                               <button
                                 type="submit"
-                                className="btn btn-primary me-2"
+                                className="mastercustomer me-2"
                               >
                                 Submit
                               </button>
@@ -148,7 +148,7 @@ const MasterState = () => {
 
                                 <button
                                   type="button"
-                                  className="btn btn-secondary"
+                                  className="mastercustomer"
                                   onClick={handleSearch}
                                 >
                                   Search
@@ -175,13 +175,13 @@ const MasterState = () => {
                                 <td>California</td>
                                 <td>CA</td>
                                 <td>
-                                  <button className="btn me-2">
+                                  <button className="mastercustomericon me-2">
                                     <i className="fas fa-plus"></i>
                                   </button>
-                                  <button className="btn me-2">
+                                  <button className="mastercustomericon me-2">
                                     <i className="fas fa-edit"></i>
                                   </button>
-                                  <button className="btn ">
+                                  <button className="mastercustomericon ">
                                     <i className="fas fa-trash"></i>
                                   </button>
                                 </td>
@@ -192,13 +192,13 @@ const MasterState = () => {
                                 <td>New York</td>
                                 <td>NY</td>
                                 <td>
-                                  <button className="btn me-2">
+                                  <button className="mastercustomericon me-2">
                                     <i className="fas fa-plus"></i>
                                   </button>
-                                  <button className="btn me-2">
+                                  <button className="mastercustomericon me-2">
                                     <i className="fas fa-edit"></i>
                                   </button>
-                                  <button className="btn">
+                                  <button className="mastercustomericon">
                                     <i className="fas fa-trash"></i>
                                   </button>
                                 </td>

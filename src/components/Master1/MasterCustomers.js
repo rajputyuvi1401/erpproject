@@ -39,10 +39,10 @@ const MasterCustomers = () => {
     // Handle form submission logic here
     console.log("Form data submitted:", formData);
   };
-  const handleSearch = () => {
-    // Add search logic here
-    console.log("Searching for:", formData);
-  };
+  // const handleSearch = () => {
+  //   // Add search logic here
+  //   console.log("Searching for:", formData);
+  // };
 
   return (
     <div className="home">
@@ -115,7 +115,11 @@ const MasterCustomers = () => {
                             >
                               <button
                                 type="submit"
-                                className="btn btn-primary me-2"
+                                className="mastercustomer me-2"
+                                style={{
+                                  padding: "8px",
+                                  width: "100%",
+                                }}
                               >
                                 Submit
                               </button>
@@ -136,8 +140,7 @@ const MasterCustomers = () => {
 
                                 <button
                                   type="button"
-                                  className="btn btn-secondary"
-                                  onClick={handleSearch}
+                                  className="mastercustomer"
                                 >
                                   Search
                                 </button>
@@ -163,13 +166,13 @@ const MasterCustomers = () => {
 
                                 <td>CA</td>
                                 <td>
-                                  <button className="btn me-2">
+                                  <button className="mastercustomericon me-2">
                                     <i className="fas fa-plus"></i>
                                   </button>
-                                  <button className="btn me-2">
+                                  <button className="mastercustomericon me-2">
                                     <i className="fas fa-edit"></i>
                                   </button>
-                                  <button className="btn ">
+                                  <button className="mastercustomericon ">
                                     <i className="fas fa-trash"></i>
                                   </button>
                                 </td>
@@ -180,13 +183,13 @@ const MasterCustomers = () => {
 
                                 <td>NY</td>
                                 <td>
-                                  <button className="btn me-2">
+                                  <button className="mastercustomericon me-2">
                                     <i className="fas fa-plus"></i>
                                   </button>
-                                  <button className="btn me-2">
+                                  <button className="mastercustomericon me-2">
                                     <i className="fas fa-edit"></i>
                                   </button>
-                                  <button className="btn">
+                                  <button className="mastercustomericon">
                                     <i className="fas fa-trash"></i>
                                   </button>
                                 </td>
