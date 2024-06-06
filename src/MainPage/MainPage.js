@@ -21,11 +21,11 @@ const MainPage = () => {
   }, [sideNavOpen]);
 
   return (
-    <div className="home">
+    <div className="Vendor">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
-            <div className="Main-NavBar">
+            <div className="VendorPage">
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav
                 sideNavOpen={sideNavOpen}
@@ -411,377 +411,381 @@ const MainPage = () => {
                                 <div className="row">
                                   <div className="col-md-6">
                                     <div className="row">
-                                      <div className="col-md-3">
-                                        <div className="mb-3">
+                                      <div className="col-md-12">
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputEmail3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             VAT TIN:
                                           </label>
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputEmail3"
+                                              placeholder="Sharp Engineers"
+                                            />
+                                          </div>
                                         </div>
-                                        <div className="mb-3">
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputEmail3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             CST TIN:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-5">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputEmail3"
+                                              placeholder="S E"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-5">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputEmail3"
+                                            className="col-sm-4 col-form-label"
                                           >
-                                            C Excise Range:
+                                            C. Excise Range:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <textarea
+                                              className="form-control"
+                                              id="exampleFormControlTextarea1"
+                                              rows="3"
+                                            ></textarea>
+                                          </div>
+                                        </div>
+
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputEmail3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             Commissionerate:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputEmail3"
+                                              placeholder="sharp-engineers.com"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
-                                            C Excise Reg No:
+                                            C. Excise Reg No:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="email"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
-                                            P.L.A. No:
+                                            P.L.A No.
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="email"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
-                                            Service Tax No:
+                                            Service Tax No::
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             Import/Export Code:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             ARN No:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             Export House No:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
-                                            Udyog Adhar No:
+                                            Udyog Aadhar No:
                                           </label>
-                                        </div>
-                                      </div>
-                                      <div className="col-md-9">
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="0"
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="0"
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <textarea
-                                            className="form-control"
-                                            id="exampleFormControlTextarea1"
-                                            rows="3"
-                                          ></textarea>
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="0"
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="0"
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="0"
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="0"
-                                          />
-                                        </div>
-
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder=""
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder=""
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder=""
-                                          />
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                                   <div className="col-md-6">
                                     <div className="row">
-                                      <div className="col-md-3">
-                                        <div className="mb-3">
+                                      <div className="col-md-12">
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputEmail3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             VAT TIN Date:
                                           </label>
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputEmail3"
+                                              placeholder="Sharp Engineers"
+                                            />
+                                          </div>
                                         </div>
-                                        <div className="mb-3">
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputEmail3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             CST TIN Date:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-5">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputEmail3"
+                                              placeholder="S E"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-5">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputEmail3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             Subject to:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputEmail3"
+                                              placeholder="S E"
+                                            />
+                                          </div>
+                                        </div>
+
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputEmail3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             Division:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputEmail3"
+                                              placeholder="sharp-engineers.com"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             GST No:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="email"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
-                                            ECC No:
+                                            ECC No.
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="email"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             PAN No:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             CIN No:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             Import/Export Date:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
-                                            ARN Date:
+                                            ARN No:
                                           </label>
-                                        </div>{" "}
-                                        <div className="mb-3">
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             LUT No:
                                           </label>
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
                                         </div>
-                                        <div className="mb-3">
+                                        <div className="row mb-3">
                                           <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
+                                            for="inputPassword3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             LUT Date:
                                           </label>
-                                        </div>
-                                      </div>
-                                      <div className="col-md-9">
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="0"
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="0"
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder=""
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="0"
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="27AAMFS!!$Q!ZH"
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="0"
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="AAMFS1149Q"
-                                          />
-                                        </div>
-
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="..."
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder="0"
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder=""
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder=""
-                                          />
-                                        </div>
-                                        <div className="mb-3">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder=""
-                                          />
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="inputPassword3"
+                                              placeholder="0"
+                                            />
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
@@ -802,80 +806,73 @@ const MainPage = () => {
                               <div className="container">
                                 <div className="row">
                                   <div className="col-md-12">
-                                    <div className="row">
-                                      <div className="col-md-3">
-                                        <div className="mb-5">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
-                                          >
-                                            ERP LoginPage:
-                                          </label>
-                                        </div>
-                                        <div className="mb-5">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
-                                          >
-                                            ERP Home Page Header:
-                                          </label>
-                                        </div>{" "}
-                                        <div className="mb-5">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
-                                          >
-                                            Company Logo Print on Document:{" "}
-                                            <br />
-                                            (eg. GstInvoice/ Purchase Order
-                                            ..ect.)
-                                          </label>
-                                        </div>{" "}
-                                        <div className="mb-5">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
-                                          >
-                                            TUV Logo Print on Document: <br />
-                                            (eg. GstInvoice/ Purchase Order
-                                            ..ect.)
-                                          </label>
-                                        </div>{" "}
+                                    <div className="row mb-5">
+                                      <label
+                                        for="inputEmail3"
+                                        className="col-sm-4 col-form-label"
+                                      >
+                                        ERP LoginPage:
+                                      </label>
+                                      <div className="col-sm-8">
+                                        <input
+                                          type="text"
+                                          className="form-control"
+                                          id="inputEmail3"
+                                          placeholder=""
+                                        />
                                       </div>
-                                      <div className="col-md-9">
-                                        <div className="mb-5">
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder=""
-                                          />
-                                        </div>
-                                        <div className="mb-5">
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder=""
-                                          />
-                                        </div>
+                                    </div>
+                                    <div className="row mb-5">
+                                      <label
+                                        for="inputEmail3"
+                                        className="col-sm-4 col-form-label"
+                                      >
+                                        ERP Home Page Header:
+                                      </label>
+                                      <div className="col-sm-8">
+                                        <input
+                                          type="text"
+                                          className="form-control"
+                                          id="inputEmail3"
+                                          placeholder=""
+                                        />
+                                      </div>
+                                    </div>
+                                    <div className="row mb-5">
+                                      <label
+                                        for="inputEmail3"
+                                        className="col-sm-4 col-form-label"
+                                      >
+                                        Company Logo Print on document:
+                                        <br />
+                                        (eg. GastInvoice/Purchase Order ect)
+                                      </label>
+                                      <div className="col-sm-8">
+                                        <input
+                                          type="text"
+                                          className="form-control"
+                                          id="inputEmail3"
+                                          placeholder=""
+                                        />
+                                      </div>
+                                    </div>
 
-                                        <div className="mb-5">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder=""
-                                          />
-                                        </div>
-                                        <div className="mb-5">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            placeholder=""
-                                          />
-                                        </div>
+                                    <div className="row mb-3">
+                                      <label
+                                        for="inputEmail3"
+                                        className="col-sm-4 col-form-label"
+                                      >
+                                        TUV Logo Print on Document:
+                                        <br />
+                                        (eg. GastInvoice/Purchase Order ect)
+                                      </label>
+                                      <div className="col-sm-8">
+                                        <input
+                                          type="text"
+                                          className="form-control"
+                                          id="inputEmail3"
+                                          placeholder=""
+                                        />
                                       </div>
                                     </div>
                                   </div>
@@ -897,139 +894,132 @@ const MainPage = () => {
                       <div className="einvoice">
                         <div className="container">
                           <div className="row">
-                            <div className="col-md-12">
-                              <div className="row">
-                                <div className="col-md-3">
-                                  <div className="mb-3">
-                                    <label
-                                      for="exampleFormControlInput1"
-                                      className="form-label"
-                                    >
-                                      SE GST NO:
-                                    </label>
-                                  </div>
-                                  <div className="mb-3">
-                                    <label
-                                      for="exampleFormControlInput1"
-                                      className="form-label"
-                                    >
-                                      GSP APP ID:
-                                    </label>
-                                  </div>{" "}
-                                  <div className="mb-3">
-                                    <label
-                                      for="exampleFormControlInput1"
-                                      className="form-label"
-                                    >
-                                      GSP APP Secret
-                                    </label>
-                                  </div>{" "}
-                                  <div className="mb-5">
-                                    <label
-                                      for="exampleFormControlInput1"
-                                      className="form-label"
-                                    >
-                                      Access Token
-                                    </label>
-                                  </div>{" "}
-                                  <div className="mb-3">
-                                    <label
-                                      for="exampleFormControlInput1"
-                                      className="form-label"
-                                    >
-                                      Access Token Date:
-                                    </label>
-                                  </div>{" "}
-                                  <div className="mb-3">
-                                    <label
-                                      for="exampleFormControlInput1"
-                                      className="form-label"
-                                    >
-                                      SE API UserName:
-                                    </label>
-                                  </div>{" "}
-                                  <div className="mb-3">
-                                    <label
-                                      for="exampleFormControlInput1"
-                                      className="form-label"
-                                    >
-                                      SE API PassWord:
-                                    </label>
-                                  </div>{" "}
-                                  <div className="mb-3">
-                                    <label
-                                      for="exampleFormControlInput1"
-                                      className="form-label"
-                                    >
-                                      API Url:
-                                    </label>
-                                  </div>{" "}
+                            <div className="col-md-8">
+                              <div className="row mb-3">
+                                <label
+                                  for="inputEmail3"
+                                  className="col-sm-4 col-form-label"
+                                >
+                                  SE GST NO:
+                                </label>
+                                <div className="col-sm-8">
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="inputEmail3"
+                                    placeholder=""
+                                  />
                                 </div>
-                                <div className="col-md-6">
-                                  <div className="mb-3">
-                                    <input
-                                      type="text"
-                                      className="form-control"
-                                      id="exampleFormControlInput1"
-                                      placeholder=""
-                                    />
-                                  </div>
-                                  <div className="mb-3">
-                                    <input
-                                      type="text"
-                                      className="form-control"
-                                      id="exampleFormControlInput1"
-                                      placeholder=""
-                                    />
-                                  </div>
-
-                                  <div className="mb-3">
-                                    <input
-                                      type="email"
-                                      className="form-control"
-                                      id="exampleFormControlInput1"
-                                      placeholder=""
-                                    />
-                                  </div>
-                                  <div className="mb-3">
-                                    <textarea
-                                      class="form-control"
-                                      id="exampleFormControlTextarea1"
-                                      rows="3"
-                                    ></textarea>
-                                  </div>
-                                  <div className="mb-3">
-                                    <input
-                                      type="email"
-                                      className="form-control"
-                                      id="exampleFormControlInput1"
-                                      placeholder=""
-                                    />
-                                  </div>
-                                  <div className="mb-3">
-                                    <input
-                                      type="email"
-                                      className="form-control"
-                                      id="exampleFormControlInput1"
-                                      placeholder=""
-                                    />
-                                  </div>
-                                  <div className="mb-3">
-                                    <input
-                                      type="email"
-                                      className="form-control"
-                                      id="exampleFormControlInput1"
-                                      placeholder=""
-                                    />
-                                  </div>
-                                  <div className="mb-3">
-                                    <input
-                                      type="email"
-                                      className="form-control"
-                                      id="exampleFormControlInput1"
-                                      placeholder=""
-                                    />
-                                  </div>
+                              </div>
+                              <div className="row mb-3">
+                                <label
+                                  for="inputEmail3"
+                                  className="col-sm-4 col-form-label"
+                                >
+                                  GSP APP ID:
+                                </label>
+                                <div className="col-sm-8">
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="inputEmail3"
+                                    placeholder=""
+                                  />
+                                </div>
+                              </div>
+                              <div className="row mb-3">
+                                <label
+                                  for="inputEmail3"
+                                  className="col-sm-4 col-form-label"
+                                >
+                                  GSP APP Secret:
+                                </label>
+                                <div className="col-sm-8">
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="inputEmail3"
+                                    placeholder=""
+                                  />
+                                </div>
+                              </div>
+                              <div className="row mb-5">
+                                <label
+                                  for="inputEmail3"
+                                  className="col-sm-4 col-form-label"
+                                >
+                                  Access Token:
+                                </label>
+                                <div className="col-sm-8">
+                                  <textarea
+                                    class="form-control"
+                                    id="exampleFormControlTextarea1"
+                                    rows="3"
+                                  ></textarea>
+                                </div>
+                              </div>
+                              <div className="row mb-3">
+                                <label
+                                  for="inputEmail3"
+                                  className="col-sm-4 col-form-label"
+                                >
+                                  Access Token Date::
+                                </label>
+                                <div className="col-sm-8">
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="inputEmail3"
+                                    placeholder=""
+                                  />
+                                </div>
+                              </div>
+                              <div className="row mb-3">
+                                <label
+                                  for="inputEmail3"
+                                  className="col-sm-4 col-form-label"
+                                >
+                                  SE API UserName:
+                                </label>
+                                <div className="col-sm-8">
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="inputEmail3"
+                                    placeholder=""
+                                  />
+                                </div>
+                              </div>
+                              <div className="row mb-3">
+                                <label
+                                  for="inputEmail3"
+                                  className="col-sm-4 col-form-label"
+                                >
+                                  SE API PassWord:
+                                </label>
+                                <div className="col-sm-8">
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="inputEmail3"
+                                    placeholder=""
+                                  />
+                                </div>
+                              </div>
+                              <div className="row mb-3">
+                                <label
+                                  for="inputEmail3"
+                                  className="col-sm-4 col-form-label"
+                                >
+                                  API Url:
+                                </label>
+                                <div className="col-sm-8">
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="inputEmail3"
+                                    placeholder=""
+                                  />
                                 </div>
                               </div>
                             </div>

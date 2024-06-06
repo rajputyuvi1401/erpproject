@@ -48,7 +48,7 @@ const MasterState = () => {
   };
 
   return (
-    <div className="home">
+    <div className="masterState">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -128,7 +128,7 @@ const MasterState = () => {
                             >
                               <button
                                 type="submit"
-                                className="mastercustomer me-2"
+                                className="masterState1 me-2"
                               >
                                 Submit
                               </button>
@@ -148,7 +148,7 @@ const MasterState = () => {
 
                                 <button
                                   type="button"
-                                  className="mastercustomer"
+                                  className="masterState1"
                                   onClick={handleSearch}
                                 >
                                   Search
@@ -175,13 +175,13 @@ const MasterState = () => {
                                 <td>California</td>
                                 <td>CA</td>
                                 <td>
-                                  <button className="mastercustomericon me-2">
+                                  <button className="masterState1icon me-2">
                                     <i className="fas fa-plus"></i>
                                   </button>
-                                  <button className="mastercustomericon me-2">
+                                  <button className="masterState1icon me-2">
                                     <i className="fas fa-edit"></i>
                                   </button>
-                                  <button className="mastercustomericon ">
+                                  <button className="masterState1icon ">
                                     <i className="fas fa-trash"></i>
                                   </button>
                                 </td>
@@ -192,13 +192,13 @@ const MasterState = () => {
                                 <td>New York</td>
                                 <td>NY</td>
                                 <td>
-                                  <button className="mastercustomericon me-2">
+                                  <button className="masterState1icon me-2">
                                     <i className="fas fa-plus"></i>
                                   </button>
-                                  <button className="mastercustomericon me-2">
+                                  <button className="masterState1icon me-2">
                                     <i className="fas fa-edit"></i>
                                   </button>
-                                  <button className="mastercustomericon">
+                                  <button className="masterState1icon">
                                     <i className="fas fa-trash"></i>
                                   </button>
                                 </td>

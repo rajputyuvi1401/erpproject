@@ -14,65 +14,65 @@ const NavBar = ({ toggleSideNav }) => {
   return (
     <div>
       <nav className="navbar">
-        <button className="toggle-button" onClick={toggleSideNav}>
-          ☰
-          <span>
-            {" "}
-            <Link>
-              <img className="dark-logo" src={logo} alt="logo" />
-            </Link>
-          </span>
-        </button>
-        <div className="d-flex">
-          <div className="dropdown" style={{ margin: "10px" }}>
+        <div className="navbar-brand">
+          <button className="navbar-toggle" onClick={toggleSideNav}>
+            ☰
+          </button>
+          <Link to="/">
+            <img className="navbar-logo" src={logo} alt="logo" />
+          </Link>
+        </div>
+        <div className="navbar-menu">
+          <div className="navbar-dropdown">
             <button
-              className="btn btn-secondary dropdown-toggle"
+              className="navbar-button dropdown-toggle"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               Create New
             </button>
-            <ul className="dropdown-menu">
+            <ul className="navbar-dropdown-menu">
               <li>
-                <Link className="dropdown-item" href="#">
+                <Link className="navbar-dropdown-item" to="#">
                   Action
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" href="#">
+                <Link className="navbar-dropdown-item" to="#">
                   Another action
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" href="#">
+                <Link className="navbar-dropdown-item" to="#">
                   Something else here
                 </Link>
               </li>
             </ul>
           </div>
-          <div className="dropdown">
+
+          <div className="navbar-dropdown">
             <button
-              className="btn btn-secondary dropdown-toggle"
+              className="navbar-button dropdown-toggle"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               Mega Menu
             </button>
-            <ul className="dropdown-menu">
+            <ul className="navbar-dropdown-menu">
               <li>
-                <Link className="dropdown-item" href="#">
+                <Link className="navbar-dropdown-item" to="#">
                   Action
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" href="#">
+                <Link className="navbar-dropdown-item" to="#">
                   Another action
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" href="#">
+                <Link className="navbar-dropdown-item" to="#">
                   Something else here
                 </Link>
               </li>
@@ -80,69 +80,47 @@ const NavBar = ({ toggleSideNav }) => {
           </div>
         </div>
 
-        <div className="left-side">
-          <div className="d-flex" style={{ color: "grey", padding: "1px" }}>
-            <span>
-              <input
-                className="form-control me-2 "
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-            </span>
-            <span>
-              {" "}
-              <CropFreeIcon />
-            </span>
-
-            <span>
-              <GridViewIcon />
-            </span>
-            <span>
-              <img className="us-img" src={us} alt="us" />
-            </span>
-            <span>
-              <NotificationAddIcon />
-            </span>
-            <span>
-              <BedtimeIcon />
-            </span>
-
-            <span>
-              <img className="user" src={user} alt="user" />
-            </span>
-            <div className="dropdown">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Geneva{" "}
-              </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" href="#">
-                    Action
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" href="#">
-                    Another action
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" href="#">
-                    Something else here
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <span>
-              <SettingsIcon />
-            </span>
+        <div className="navbar-actions">
+          <input
+            className="navbar-search"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <CropFreeIcon className="navbar-icon" />
+          <GridViewIcon className="navbar-icon" />
+          <img className="navbar-us" src={us} alt="us" />
+          <NotificationAddIcon className="navbar-icon" />
+          <BedtimeIcon className="navbar-icon" />
+          <img className="navbar-user" src={user} alt="user" />
+          <div className="navbar-dropdown">
+            <button
+              className="navbar-button"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Geneva
+            </button>
+            <ul className="navbar-dropdown-menu">
+              <li>
+                <Link className="navbar-dropdown-item" to="#">
+                  Action
+                </Link>
+              </li>
+              <li>
+                <Link className="navbar-dropdown-item" to="#">
+                  Another action
+                </Link>
+              </li>
+              <li>
+                <Link className="navbar-dropdown-item" to="#">
+                  Something else here
+                </Link>
+              </li>
+            </ul>
           </div>
+          <SettingsIcon className="navbar-icon" />
         </div>
       </nav>
     </div>

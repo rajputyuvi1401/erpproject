@@ -22,15 +22,38 @@ main {
 body.no-scroll {
   overflow: hidden;
 }
-
-.home {
-  width: 100%;
+.dashboard {
+  display: flex;
+  flex-direction: column;
   background-color: rgb(241, 242, 244);
-  height: 500vh;
+  height: 100vh;
 }
-.Main {
-  background-color: rgb(241, 242, 244);
-  height: 107vh;
-  width: 100%;
-  text-align: start;
+
+.mainContainer {
+  display: flex;
+  transition: margin-left 0.3s ease;
+}
+
+.shifted {
+  margin-left: 250px; /* Adjust based on the width of your side nav */
+}
+
+.mainContent {
+  flex-grow: 1;
+  padding: 20px;
+  overflow: hidden; /* Hide scrollbars */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bottom box shadow */
+}
+
+.mainContent::-webkit-scrollbar {
+  display: none; /* Hide scrollbars in WebKit browsers */
+}
+
+.mainContent {
+  -ms-overflow-style: none; /* Hide scrollbars in IE and Edge */
+  scrollbar-width: none; /* Hide scrollbars in Firefox */
+}
+
+.sideNavOpen {
+  overflow: hidden;
 }

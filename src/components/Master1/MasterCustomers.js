@@ -45,7 +45,7 @@ const MasterCustomers = () => {
   // };
 
   return (
-    <div className="home">
+    <div className="mastercus">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">

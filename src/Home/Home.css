@@ -3,10 +3,10 @@
   margin: 0px;
   padding: 0px;
 }
-.home {
-  background-color: rgba(174, 198, 214, 0.832);
+.home-login {
+  background-color: rgb(241, 242, 244);
   width: 100%;
-  height: 110vh;
+  height: 100vh;
 }
 .home-form {
   justify-content: center;
@@ -74,4 +74,9 @@
 .outer-link {
   color: white;
   text-decoration: none;
+}
+@media screen and (max-width: 768px) {
+  .home-login {
+    height: auto; /* Change height to auto on smaller screens */
+  }
 }

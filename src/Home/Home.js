@@ -8,7 +8,7 @@ import logo from "../assets/logo-dark.png";
 
 function Home() {
   return (
-    <div className="home">
+    <div className="home-login">
       <div className="container">
         <div className="row" style={{ justifyContent: "center" }}>
           <div className="col-md-4">
@@ -69,19 +69,6 @@ function Home() {
 
       <div className="outer">
         <p>Powered by clumpcoder</p>
-
-        {/* <p>
-          Don't have an account?{" "}
-          <span>
-            <Link to={{}} className="outer-link">
-              Sign Up
-            </Link>
-          </span>
-        </p>
-        <p>
-          2015 - 2024 &copy; UBold theme by{" "}
-          <span style={{ color: "wheat" }}>Coderthemes</span>
-        </p> */}
       </div>
     </div>
   );

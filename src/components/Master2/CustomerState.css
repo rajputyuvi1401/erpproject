@@ -23,10 +23,10 @@ body.no-scroll {
   overflow: hidden;
 }
 
-.home {
+.customer {
   width: 100%;
   background-color: rgb(241, 242, 244);
-  height: 500vh;
+  height: 100vh;
 }
 .Main {
   background-color: rgb(241, 242, 244);

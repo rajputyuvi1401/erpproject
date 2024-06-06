@@ -3,6 +3,10 @@
   margin: 0px;
   padding: 0px;
 }
+body {
+  font-family: Arial, sans-serif;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -12,43 +16,47 @@
 main {
   flex: 1;
   padding: 20px;
-  margin-top: 60px;
   transition: margin-left 0.3s;
+  overflow-y: scroll; /* Allow vertical scrolling */
+  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
 }
+
+main::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Webkit browsers (Chrome, Safari) */
+}
+
 .main-content.shifted {
   margin-left: 260px;
 }
 
-body.no-scroll {
+.side-nav-open .main-content {
   overflow: hidden;
 }
 
-.home {
+.vendor {
   width: 100%;
   background-color: rgb(241, 242, 244);
-  height: 80vh;
-}
-.Main {
-  background-color: rgb(241, 242, 244);
-  height: 107vh;
-  width: 100%;
-  text-align: start;
 }
 
-.top-but {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: -750px;
+.VendorPage {
+  background-color: rgb(241, 242, 244);
+  min-height: 100vh;
+  width: 100%;
+  text-align: start;
+  padding-top: 50px;
 }
+
 .top-but .btn {
   border: 1px solid black;
   margin: 5px;
-  padding: 5px;
+  padding: 5px 10px; /* Corrected padding syntax */
 }
 #pills-tab {
   text-align: start;
   margin-top: 20px;
 }
+
 /* custom.css */
 .nav-pills .nav-link {
   color: grey; /* Default text color for buttons */
@@ -73,7 +81,7 @@ body.no-scroll {
 
 .form {
   margin-top: 30px;
-  height: 90vh;
+  height: auto;
   width: 100%;
   justify-content: start;
   background-color: white;
@@ -83,7 +91,7 @@ body.no-scroll {
 }
 .date-2 {
   margin-top: 30px;
-  height: 90vh;
+  height: auto;
   width: 100%;
   justify-content: start;
   background-color: white;
@@ -110,7 +118,7 @@ body.no-scroll {
 }
 .einvoice {
   margin-top: 30px;
-  height: 70vh;
+  height: auto;
   width: 100%;
   justify-content: start;
   background-color: white;
@@ -121,6 +129,7 @@ body.no-scroll {
 .einvoice label {
   padding: 3px;
 }
+
 /* Media Queries */
 @media (max-width: 768px) {
   .main-content.shifted {
@@ -156,5 +165,10 @@ body.no-scroll {
   .form {
     height: auto;
     padding: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main-content.shifted {
+    margin-left: 0;
   }
 }

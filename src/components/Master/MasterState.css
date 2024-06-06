@@ -23,10 +23,10 @@ body.no-scroll {
   overflow: hidden;
 }
 
-.home {
+.masterState {
   width: 100%;
   background-color: rgb(241, 242, 244);
-  height: 500vh;
+  height: 100vh;
 }
 .Main {
   background-color: rgb(241, 242, 244);
@@ -34,14 +34,14 @@ body.no-scroll {
   width: 100%;
   text-align: start;
 }
-.mastercustomer {
+.masterState1 {
   background-color: blueviolet;
   color: white;
   border: none;
   padding: 10px;
   border-radius: 5px;
 }
-.mastercustomericon {
+.masterState1icon {
   border: none;
   background-color: white;
 }

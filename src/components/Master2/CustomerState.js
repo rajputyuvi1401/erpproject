@@ -46,7 +46,7 @@ const CustomerState = () => {
   };
 
   return (
-    <div className="home">
+    <div className="customer">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
