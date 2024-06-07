@@ -68,9 +68,9 @@ const MasterState = () => {
                           {/* <h1 className='align-items-center justify-content-between'>Master For State Code</h1>  */}
                           <form
                             onSubmit={handleSubmit}
-                            className="d-flex flex-wrap justify-content-between align-items-center"
+                            className="d-flex flex-wrap justify-content-between align-items-center form-container"
                           >
-                            <div className="mb-3">
+                            <div className="mb-3 col-md-6 col-lg-3">
                               <label htmlFor="stateID" className="form-label">
                                 State ID
                               </label>
@@ -139,6 +139,7 @@ const MasterState = () => {
                               <div className="input-group mb-3">
                                 <input
                                   type="text"
+                                  id="search-input"
                                   className="form-control"
                                   placeholder="Search..."
                                   name="stateCode"
@@ -157,7 +158,7 @@ const MasterState = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="container mt-5">
+                        <div className="container mt-5 table-container">
                           <table className="table table-bordered">
                             <thead>
                               <tr>

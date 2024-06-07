@@ -32,7 +32,7 @@ const AddNewItem = () => {
   }, [sideNavOpen]);
 
   return (
-    <div className="home">
+    <div className="AddNewItemPage">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -45,25 +45,26 @@ const AddNewItem = () => {
 
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="top-but2">
-                  <div className="row">
-                    <div className="col-md-4 text-start">
+                  <div className="row align-items-center">
+                    <div className="col-md-2 text-start">
                       <p>Item List</p>
                     </div>
-
-                    <div className="col-md-8 text-end">
-                      <div className="d-flex text-end">
-                        <label>Search Item For Copy</label>
-                        <input type="text" id="input" />
-
+                    <div className="col-md-10 text-end">
+                      <div className="d-flex align-items-center justify-content-end">
+                        <label htmlFor="input" className="me-2">
+                          Search Item For Copy
+                        </label>
+                        <input type="text" id="input" className="me-2" />
                         <button className="btn-uper me-2">Copy Item</button>
                         <button className="btn-uper me-2">
                           Section Group Master
                         </button>
-                        <button className="btn-uper ">Item List</button>
+                        <button className="btn-uper">Item List</button>
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <div className="AddNewMain">
                   <div className="container">
                     <div className="row">

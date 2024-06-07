@@ -45,3 +45,41 @@ body.no-scroll {
   border: none;
   background-color: white;
 }
+
+.form-container {
+  margin-top: 30px;
+}
+
+.table-container {
+  margin-top: 50px;
+}
+
+/* Media queries for better responsiveness */
+@media (max-width: 768px) {
+  .main-content.shifted {
+    margin-left: 0;
+  }
+  .masterState {
+    height: auto;
+  }
+
+  .form-container {
+    flex-direction: column;
+  }
+
+  .form-container .mb-3 {
+    width: 100%;
+  }
+  #search-input {
+    width: 100%;
+  }
+  .table-container .table {
+    font-size: 0.9rem;
+  }
+
+  .masterState1,
+  .masterState1icon {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

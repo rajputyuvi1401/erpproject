@@ -27,7 +27,7 @@ const ItemMaster = () => {
   }, [sideNavOpen]);
 
   return (
-    <div className="home">
+    <div className="Itemmasterpage">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -40,21 +40,22 @@ const ItemMaster = () => {
 
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="top-but1">
-                  <div className="row">
-                    <div className="col-md-6 text-start">
+                  <div className="row align-items-center">
+                    <div className="col-md-6 col-12 text-start text-md-start text-center mb-2 mb-md-0">
                       <p>Item List</p>
                     </div>
-                    <div className="col-md-6 text-end">
+                    <div className="col-md-6 col-12 text-end text-md-end text-center">
                       <button
                         className="btn12 me-2"
                         onClick={handleAddNewItemClick}
                       >
                         Add New Item
                       </button>
-                      <button className="btn12 ">Item Query</button>
+                      <button className="btn12">Item Query</button>
                     </div>
                   </div>
                 </div>
+
                 <div className="search-row">
                   <div className="row align-items-center">
                     <div className="col-md-1">

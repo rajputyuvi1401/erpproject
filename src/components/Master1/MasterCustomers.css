@@ -45,3 +45,40 @@ body.no-scroll {
   border: none;
   background-color: white;
 }
+
+.form-container {
+  margin-top: 30px;
+}
+
+.table-container {
+  margin-top: 50px;
+}
+
+/* Media queries for better responsiveness */
+@media (max-width: 768px) {
+  .main-content.shifted {
+    margin-left: 0;
+  }
+  .mastercus {
+    height: auto;
+  }
+  .form-container {
+    flex-direction: column;
+  }
+
+  .form-container .mb-3 {
+    width: 100%;
+  }
+
+  .table-container .table {
+    font-size: 0.9rem;
+  }
+  #mastercustomersearch {
+    width: 100%;
+  }
+  .mastercustomer,
+  .mastercustomericon {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

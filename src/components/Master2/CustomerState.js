@@ -68,6 +68,7 @@ const CustomerState = () => {
                               <div className="input-group mb-3">
                                 <input
                                   type="text"
+                                  id="customersearch"
                                   className="form-control"
                                   placeholder="Search..."
                                   name="stateCode"
@@ -86,7 +87,7 @@ const CustomerState = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="container mt-5">
+                        <div className="container mt-5 table-container">
                           <table className="table table-bordered">
                             <thead>
                               <tr>
@@ -96,7 +97,7 @@ const CustomerState = () => {
                                 <th>Preference</th>
                                 <th>State ID</th>
                                 <th>State No.</th>
-                                <th>Cod</th>
+                                <th>Code</th>
 
                                 <th>Actions</th>
                               </tr>
