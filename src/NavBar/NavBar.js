@@ -95,7 +95,7 @@ const NavBar = ({ toggleSideNav }) => {
           <img className="navbar-user" src={user} alt="user" />
           <div className="navbar-dropdown">
             <button
-              className="navbar-button"
+              className="navbar-button dropdown-toggle"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"

@@ -150,53 +150,58 @@ const MasterCustomers = () => {
                           </div>
                         </div>
                         <div className="container mt-5 table-container">
-                          <table className="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Customer ID</th>
-                                <th>Customer Type</th>
-                                <th>String</th>
+                          <div className="table-responsive">
+                            {/* Table */}
+                            <table className="table table-bordered">
+                              {/* Table Headers */}
+                              <thead>
+                                <tr>
+                                  <th>Customer ID</th>
+                                  <th>Customer Type</th>
+                                  <th>String</th>
 
-                                <th>Actions</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>101</td>
+                                  <th>Actions</th>
+                                </tr>
+                              </thead>
+                              {/* Table Body */}
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>101</td>
+                                  <td>California</td>
 
-                                <td>CA</td>
-                                <td>
-                                  <button className="mastercustomericon me-2">
-                                    <i className="fas fa-plus"></i>
-                                  </button>
-                                  <button className="mastercustomericon me-2">
-                                    <i className="fas fa-edit"></i>
-                                  </button>
-                                  <button className="mastercustomericon ">
-                                    <i className="fas fa-trash"></i>
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>2</td>
-                                <td>102</td>
+                                  <td>
+                                    <button className="masterState1icon me-2">
+                                      <i className="fas fa-plus"></i>
+                                    </button>
+                                    <button className="masterState1icon me-2">
+                                      <i className="fas fa-edit"></i>
+                                    </button>
+                                    <button className="masterState1icon ">
+                                      <i className="fas fa-trash"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td>102</td>
+                                  <td>New York</td>
 
-                                <td>NY</td>
-                                <td>
-                                  <button className="mastercustomericon me-2">
-                                    <i className="fas fa-plus"></i>
-                                  </button>
-                                  <button className="mastercustomericon me-2">
-                                    <i className="fas fa-edit"></i>
-                                  </button>
-                                  <button className="mastercustomericon">
-                                    <i className="fas fa-trash"></i>
-                                  </button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                                  <td>
+                                    <button className="masterState1icon me-2">
+                                      <i className="fas fa-plus"></i>
+                                    </button>
+                                    <button className="masterState1icon me-2">
+                                      <i className="fas fa-edit"></i>
+                                    </button>
+                                    <button className="masterState1icon">
+                                      <i className="fas fa-trash"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
                     </div>

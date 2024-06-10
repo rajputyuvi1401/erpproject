@@ -58,7 +58,7 @@ body.no-scroll {
   .input-group.mb-3 {
     flex-direction: column;
   }
-  .customersearch {
+  #customersearch {
     width: 100%;
   }
   .customerState,

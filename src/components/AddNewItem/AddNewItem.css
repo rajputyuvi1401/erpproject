@@ -131,3 +131,28 @@ body.no-scroll {
   background-color: rgba(235, 233, 233, 0.685);
   margin-left: -20px;
 }
+
+@media (max-width: 576px) {
+  .d-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px; /* Add some margin between elements on smaller screens */
+  }
+
+  .me-2 {
+    margin-bottom: 5px; /* Add some margin below each element */
+  }
+
+  #input {
+    width: 100%; /* Make the input field full width */
+    margin-bottom: 5px; /* Add some margin below the input field */
+  }
+}
+.AddNewItemPage .btn {
+  background-color: rgba(235, 233, 233, 0.685);
+  border: none;
+}
+.AddNewItemPage .btn:hover {
+  background-color: rgba(235, 233, 233, 0.685);
+  border: none;
+}

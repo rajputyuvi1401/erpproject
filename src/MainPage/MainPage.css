@@ -16,14 +16,8 @@ body {
 main {
   flex: 1;
   padding: 20px;
+  margin-top: 60px;
   transition: margin-left 0.3s;
-  overflow-y: scroll; /* Allow vertical scrolling */
-  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
-}
-
-main::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Webkit browsers (Chrome, Safari) */
 }
 
 .main-content.shifted {
@@ -37,6 +31,7 @@ main::-webkit-scrollbar {
 .vendor {
   width: 100%;
   background-color: rgb(241, 242, 244);
+  height: 100vh;
 }
 
 .VendorPage {
@@ -101,7 +96,7 @@ main::-webkit-scrollbar {
 }
 .logo-image {
   margin-top: 30px;
-  height: 110vh;
+  height: auto;
   width: 100%;
   justify-content: start;
   background-color: white;
@@ -139,6 +134,9 @@ main::-webkit-scrollbar {
     margin-left: 0;
     text-align: center;
   }
+  .vendor {
+    height: auto;
+  }
 }
 
 @media (max-width: 576px) {
@@ -153,6 +151,9 @@ main::-webkit-scrollbar {
     height: auto;
     padding: 10px;
   }
+  .vendor {
+    height: auto;
+  }
 }
 @media (max-width: 360px) {
   .main-content.shifted {
@@ -166,9 +167,8 @@ main::-webkit-scrollbar {
     height: auto;
     padding: 10px;
   }
-}
-@media screen and (max-width: 768px) {
-  .main-content.shifted {
-    margin-left: 0;
+
+  .vendor {
+    height: auto;
   }
 }

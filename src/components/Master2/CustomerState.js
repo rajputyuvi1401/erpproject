@@ -5,6 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import "./CustomerState.css";
+
 const CustomerState = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -21,9 +22,7 @@ const CustomerState = () => {
   }, [sideNavOpen]);
 
   const [formData, setFormData] = useState({
-    custID: "",
-    custType: "",
-    prefrenceString: "",
+    stateCode: "", // Changed custID to stateCode to match input field
   });
 
   const handleChange = (e) => {
@@ -33,12 +32,6 @@ const CustomerState = () => {
       [name]: value,
     });
   };
-
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     // Handle form submission logic here
-  //     console.log("Form data submitted:", formData);
-  //   };
 
   const handleSearch = () => {
     // Add search logic here
@@ -56,7 +49,6 @@ const CustomerState = () => {
                 sideNavOpen={sideNavOpen}
                 toggleSideNav={toggleSideNav}
               />
-
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Middle">
                   <div className="container">
@@ -64,7 +56,9 @@ const CustomerState = () => {
                       <div className="col-md-12">
                         <div className="container mt-5">
                           <div className="row">
-                            <div className="col-md-12">
+                            <div className="col-md-6">
+                              {" "}
+                              {/* Adjusted column width */}
                               <div className="input-group mb-3">
                                 <input
                                   type="text"
@@ -75,7 +69,6 @@ const CustomerState = () => {
                                   value={formData.stateCode}
                                   onChange={handleChange}
                                 />
-
                                 <button
                                   type="button"
                                   className="customerState"
@@ -88,63 +81,66 @@ const CustomerState = () => {
                           </div>
                         </div>
                         <div className="container mt-5 table-container">
-                          <table className="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Customer Name</th>
-                                <th>Customer ID</th>
-                                <th>Type</th>
-                                <th>Preference</th>
-                                <th>State ID</th>
-                                <th>State No.</th>
-                                <th>Code</th>
-
-                                <th>Actions</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>101</td>
-                                <td>CA</td>
-                                <td>2</td>
-                                <td>abc</td>
-                                <td>abc</td>
-                                <td>abc</td>
-                                <td>
-                                  <button className="customerStateicon me-2">
-                                    <i className="fas fa-plus"></i>
-                                  </button>
-                                  <button className="customerStateicon me-2">
-                                    <i className="fas fa-edit"></i>
-                                  </button>
-                                  <button className="customerStateicon ">
-                                    <i className="fas fa-trash"></i>
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>2</td>
-                                <td>102</td>
-                                <td>1</td>
-                                <td>101</td>
-                                <td>CA</td>
-                                <td>abc</td>
-                                <td>NY</td>
-                                <td>
-                                  <button className="customerStateicon me-2">
-                                    <i className="fas fa-plus"></i>
-                                  </button>
-                                  <button className="customerStateicon me-2">
-                                    <i className="fas fa-edit"></i>
-                                  </button>
-                                  <button className="customerStateicon">
-                                    <i className="fas fa-trash"></i>
-                                  </button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                          <div className="table-responsive">
+                            {" "}
+                            {/* Added responsiveness */}
+                            <table className="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>Customer Name</th>
+                                  <th>Customer ID</th>
+                                  <th>Type</th>
+                                  <th>Preference</th>
+                                  <th>State ID</th>
+                                  <th>State No.</th>
+                                  <th>Code</th>
+                                  <th>Actions</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>101</td>
+                                  <td>CA</td>
+                                  <td>2</td>
+                                  <td>abc</td>
+                                  <td>abc</td>
+                                  <td>abc</td>
+                                  <td>
+                                    <button className="customerStateicon me-2">
+                                      <i className="fas fa-plus"></i>
+                                    </button>
+                                    <button className="customerStateicon me-2">
+                                      <i className="fas fa-edit"></i>
+                                    </button>
+                                    <button className="customerStateicon ">
+                                      <i className="fas fa-trash"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td>102</td>
+                                  <td>1</td>
+                                  <td>101</td>
+                                  <td>CA</td>
+                                  <td>abc</td>
+                                  <td>NY</td>
+                                  <td>
+                                    <button className="customerStateicon me-2">
+                                      <i className="fas fa-plus"></i>
+                                    </button>
+                                    <button className="customerStateicon me-2">
+                                      <i className="fas fa-edit"></i>
+                                    </button>
+                                    <button className="customerStateicon">
+                                      <i className="fas fa-trash"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
                     </div>

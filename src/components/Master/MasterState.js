@@ -159,53 +159,55 @@ const MasterState = () => {
                           </div>
                         </div>
                         <div className="container mt-5 table-container">
-                          <table className="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>State ID</th>
-                                <th>State No.</th>
-                                <th>State Name</th>
-                                <th>State Code</th>
-                                <th>Actions</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>101</td>
-                                <td>California</td>
-                                <td>CA</td>
-                                <td>
-                                  <button className="masterState1icon me-2">
-                                    <i className="fas fa-plus"></i>
-                                  </button>
-                                  <button className="masterState1icon me-2">
-                                    <i className="fas fa-edit"></i>
-                                  </button>
-                                  <button className="masterState1icon ">
-                                    <i className="fas fa-trash"></i>
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>2</td>
-                                <td>102</td>
-                                <td>New York</td>
-                                <td>NY</td>
-                                <td>
-                                  <button className="masterState1icon me-2">
-                                    <i className="fas fa-plus"></i>
-                                  </button>
-                                  <button className="masterState1icon me-2">
-                                    <i className="fas fa-edit"></i>
-                                  </button>
-                                  <button className="masterState1icon">
-                                    <i className="fas fa-trash"></i>
-                                  </button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                          <div className="table-responsive">
+                            <table className="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>State ID</th>
+                                  <th>State No.</th>
+                                  <th>State Name</th>
+                                  <th>State Code</th>
+                                  <th>Actions</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>101</td>
+                                  <td>California</td>
+                                  <td>CA</td>
+                                  <td>
+                                    <button className="masterState1icon me-2">
+                                      <i className="fas fa-plus"></i>
+                                    </button>
+                                    <button className="masterState1icon me-2">
+                                      <i className="fas fa-edit"></i>
+                                    </button>
+                                    <button className="masterState1icon ">
+                                      <i className="fas fa-trash"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td>102</td>
+                                  <td>New York</td>
+                                  <td>NY</td>
+                                  <td>
+                                    <button className="masterState1icon me-2">
+                                      <i className="fas fa-plus"></i>
+                                    </button>
+                                    <button className="masterState1icon me-2">
+                                      <i className="fas fa-edit"></i>
+                                    </button>
+                                    <button className="masterState1icon">
+                                      <i className="fas fa-trash"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
                     </div>
