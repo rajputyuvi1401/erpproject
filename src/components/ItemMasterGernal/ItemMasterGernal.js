@@ -21,7 +21,7 @@ const ItemMasterGernal = () => {
   const [showNewCardGrade, setShowNewCardGrade] = useState(false);
   const [showNewCardGradeMaster, setShowNewCardGradeMaster] = useState(false);
 
-  const [data, setData] = useState([]);
+  const [data] = useState([]);
   const [itemGroups, setItemGroups] = useState([]);
   const [newGroup, setNewGroup] = useState({
     mainGroup: "",

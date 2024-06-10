@@ -568,7 +568,7 @@ body.no-scroll {
 /* technical */
 .technical {
   text-align: start;
-  margin-top: -40px;
+  margin-top: 40px;
 }
 .tech-btn {
   border: none;
