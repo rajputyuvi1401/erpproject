@@ -130,7 +130,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="#/gst-rate-master">
                 GST Rate Master
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/work-center-master">
+              <Dropdown.Item as={Link} to="/work-center-master">
                 Work Center Master
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/cycle-time-master">

@@ -1,0 +1,285 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+.main-content.shifted {
+  margin-left: 260px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+.main-content {
+  transition: margin-left 0.3s;
+}
+
+.main-content.shifted {
+  margin-left: 250px; /* Adjust based on your sidebar width */
+}
+.work-center {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  height: 100vh;
+}
+.workmain {
+  box-shadow: 0 4px 2px -2px grey;
+
+  background-color: white;
+
+  padding: 10px 20px;
+
+  height: auto;
+}
+.workmain h5 {
+  color: blue;
+}
+.workmain .btn-work {
+  border: none;
+  background-color: rgb(173, 173, 181);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn-work:hover {
+  background-color: #0056b3;
+}
+
+.workmain .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.workmain .card-body {
+  max-height: 400px; /* Set a max height for scrollable content */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.workmain .card {
+  margin-top: -100px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 800px;
+  max-width: 90%;
+  z-index: 1001;
+}
+
+.workmain .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dee2e6;
+  padding: 10px 20px;
+}
+
+.workmain .card-header h5 {
+  margin: 0;
+}
+
+.workmain .btn-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.mst-btn {
+  border: none;
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+}
+.addy {
+  border: none;
+  padding: 8px;
+}
+.workmain .form-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+@media (max-width: 767.98px) {
+  .workmain {
+    padding: 10px;
+  }
+
+  .workmain .text-md-end {
+    text-align: left;
+  }
+
+  .workmain .col-md-6.text-start,
+  .workmain .col-md-6.text-md-end {
+    width: 100%;
+  }
+}
+.centerMain {
+  margin-top: 20px;
+  height: auto;
+}
+.centerselect {
+  box-shadow: 0 4px 2px -2px grey;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.centerselect .btn-workkk {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: rgba(0, 0, 255, 0.692);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.centerselect .btn i {
+  margin-right: 5px;
+}
+
+@media (max-width: 767.98px) {
+  .centerMain {
+    padding: 10px;
+  }
+
+  .centerselect {
+    padding: 10px;
+  }
+}
+
+.workTable {
+  margin-top: 20px;
+  height: auto;
+  width: 100%;
+}
+
+.workTable .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.workTable .table {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.workTable .table-primary th {
+  background-color: #007bff;
+  color: white;
+}
+
+.workTable .table th,
+.workTable .table td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.workTable .table .btn-tableww {
+  padding: 0.25rem 0.5rem;
+  align-items: center;
+  border: none;
+  background-color: rgb(173, 173, 181);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.workTable .record-count {
+  margin-top: 10px;
+  text-align: right;
+}
+
+@media (max-width: 767.98px) {
+  .workTable {
+    padding: 10px;
+  }
+
+  .workTable .table-responsive {
+    overflow-x: auto;
+  }
+}
+/* machine card */
+.overlay-machine {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-machine {
+  margin-top: -100px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 800px;
+  max-width: 90%;
+  z-index: 1001;
+}
+
+.card-header-machine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.card-header-machine h5 {
+  margin: 0;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+  padding: 8px;
+  text-align: center;
+}
+.btnnmn {
+  border: none;
+  background-color: blue;
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+}
+.btn-mcah {
+  border: none;
+  padding: 10px;
+}
+.card-body-machine {
+  max-height: 430px; /* Set a max height for scrollable content */
+  overflow-y: auto; /* Enable vertical scrolling */
+}

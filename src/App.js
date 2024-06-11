@@ -16,6 +16,9 @@ import ItemMaster from "./components/ItemMaster/ItemMaster";
 import AddNewItem from "./components/AddNewItem/AddNewItem";
 import ItemMasterGernal from "./components/ItemMasterGernal/ItemMasterGernal";
 
+// Work Center Master
+import WorkCenterMaster from "./components/WorkCenterMaster/WorkCenterMaster";
+
 function App() {
   return (
     <div className="App">
@@ -35,6 +38,9 @@ function App() {
         <Route path="/item-master" element={<ItemMaster />} />
         <Route path="/add-new-item" element={<AddNewItem />} />
         <Route path="/item-master-gernal" element={<ItemMasterGernal />} />
+
+        {/* Work Center Master */}
+        <Route path="/Work-center-master" element={<WorkCenterMaster />} />
       </Routes>
     </div>
   );

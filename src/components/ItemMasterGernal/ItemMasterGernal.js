@@ -20,7 +20,7 @@ const ItemMasterGernal = () => {
   const [showNewCardItemSector, setShowNewCardItemSector] = useState(false);
   const [showNewCardGrade, setShowNewCardGrade] = useState(false);
   const [showNewCardGradeMaster, setShowNewCardGradeMaster] = useState(false);
-
+  const [showNewCardQtypack, setShowNewCardQtypack] = useState(false);
   const [data] = useState([]);
   const [itemGroups, setItemGroups] = useState([]);
   const [newGroup, setNewGroup] = useState({
@@ -77,6 +77,7 @@ const ItemMasterGernal = () => {
   const handleNewButtonGradeMaster = () => {
     setShowNewCardGradeMaster(!showNewCardGradeMaster);
   };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewGroup({ ...newGroup, [name]: value });
@@ -96,6 +97,10 @@ const ItemMasterGernal = () => {
 
   const handleDropdownChange = (event) => {
     setSelectedItem(event.target.value);
+  };
+
+  const handleNewButtonQtypack = () => {
+    setShowNewCardQtypack(!showNewCardQtypack);
   };
   return (
     <div className="Itemmastergernalpage">
@@ -164,7 +169,7 @@ const ItemMasterGernal = () => {
                               aria-controls="pills-profile"
                               aria-selected="false"
                             >
-                              Date-2
+                              Data-2
                             </button>
                           </li>
                           <li className="nav-item" role="presentation">
@@ -251,7 +256,7 @@ const ItemMasterGernal = () => {
                                             <option value="Consumable">
                                               Consumable
                                             </option>
-                                            <option value="Safety Equ">
+                                            <option value="SafetyEqu">
                                               Safety Equ
                                             </option>
                                             <option value="Service">
@@ -2573,9 +2578,30 @@ const ItemMasterGernal = () => {
                                         aria-label="Default select example"
                                       >
                                         <option selected>select ..</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
                                       </select>
                                     </div>
                                   </div>
@@ -2770,9 +2796,26 @@ const ItemMasterGernal = () => {
                                         <option selected>
                                           Open this select menu
                                         </option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
                                       </select>
                                     </div>
                                   </div>
@@ -2898,7 +2941,12 @@ const ItemMasterGernal = () => {
                                       </select>
                                     </div>
                                     <div className="col-sm-2">
-                                      <button className="btn">New</button>
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
                                     </div>
                                     <div className="col-sm-1">
                                       <button
@@ -2922,9 +2970,10 @@ const ItemMasterGernal = () => {
                                         aria-label="Default select example"
                                       >
                                         <option selected>select ..</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
                                       </select>
                                     </div>
                                   </div>
@@ -3219,13 +3268,17 @@ const ItemMasterGernal = () => {
                                     </label>
                                     <div className="col-sm-7">
                                       <select
+                                        selected
                                         className="form-select"
                                         aria-label="Default select example"
                                       >
                                         <option selected>Commen Spare</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
                                       </select>
                                     </div>
                                   </div>
@@ -3349,9 +3402,11475 @@ const ItemMasterGernal = () => {
                           </div>
                         </div>
                       )}
-                      {selectedItem === "RM" && <p>hy</p>}
-                    </div>
+                      {selectedItem === "RM" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
 
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedItem === "Tool" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedItem === "Instrument" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedItem === "Machine" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedItem === "Consumable" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedItem === "SafetyEqu" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedItem === "Service" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedItem === "Assest" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedItem === "F4" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedItem === "Scrap" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedItem === "SF" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedItem === "BO" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedItem === "DI" && (
+                        <div className="data-2">
+                          <div className="container">
+                            <div className="row">
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max GRN Qty Limit:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">AY CGR 1|</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 1</option>
+
+                                        <option value="1">AY CGR 2</option>
+                                        <option value="2">Centerless</option>
+                                        <option value="3">Grinding 2</option>
+
+                                        <option value="1">
+                                          AY-D7 | Drilling 7
+                                        </option>
+                                        <option value="1">
+                                          AY-D8 | Drilling 8
+                                        </option>
+                                        <option value="1">
+                                          AY-M3 | Drilling 3
+                                        </option>
+
+                                        <option value="1">
+                                          AY-SO1 | Second
+                                        </option>
+                                        <option value="1">
+                                          Operation AY 1
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Shelf Life:
+                                    </label>
+                                    <div className="col-sm-6">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-1">
+                                      {" "}
+                                      <span style={{ padding: "2px" }}>
+                                        Days
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Wip Wt:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Min Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Inventry / Non Inventry Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      CPC Code:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Auxiliary Factor:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Mechanical Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Tool Layout No:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Is Service:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Sales Conversion Factor:
+                                    </label>
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">PCS</option>
+                                        <option value="2">KGS</option>
+                                        <option value="3">BOX</option>
+                                        <option value="3">LTR</option>
+                                        <option value="1">NOS</option>
+                                        <option value="2">SQFT</option>
+                                        <option value="3">MTR</option>
+                                        <option value="3">FOOT</option>
+                                        <option value="1">SQMTR</option>
+                                        <option value="2">PAIR</option>
+                                        <option value="3">BAG</option>
+                                        <option value="3">PACKET</option>
+                                        <option value="1">RIM</option>
+                                        <option value="2">SET</option>
+                                        <option value="3">MT</option>
+                                        <option value="3">PER DAY</option>
+                                        <option value="1">DOZEN</option>
+                                        <option value="2">JOB</option>
+                                        <option value="3">SQINCH</option>
+                                        <option value="3">LTR</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <div className="col-sm-5 form-check">
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                      />
+                                      <label
+                                        className="col-form-label"
+                                        for="flexCheckDefault"
+                                      >
+                                        GRN Conversion Factor:
+                                      </label>
+                                    </div>
+
+                                    <div className="col-sm-4">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>
+                                          Open this select menu
+                                        </option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Packing Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Production Lead Time(in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buyer:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-4 col-form-label"
+                                    >
+                                      Qty Packing:
+                                    </label>
+                                    <div className="col-sm-2">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                    <div className="col-sm-3">
+                                      <select
+                                        id="inputState"
+                                        className="form-select"
+                                      >
+                                        <option
+                                          selected
+                                          style={{ color: "black" }}
+                                        >
+                                          Select ..
+                                        </option>
+                                        <option>FG</option>
+                                        <option>RM</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-sm-2">
+                                      <button
+                                        className="btn"
+                                        onClick={handleNewButtonQtypack}
+                                      >
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-sm-1">
+                                      <button
+                                        className="btn"
+                                        style={{ fontSize: "10px" }}
+                                      >
+                                        <CachedIcon />
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Item Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">All</option>
+                                        <option value="2">Jobwork</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="3">Production</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Machine Weight:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Buffer Qty %:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      MOQ:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Max Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      BOM Type:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Product Category:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Over Head Rate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Valuation Method:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Dimensional Std Reference:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Raw Material Grade:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      RM Tolerance:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      FG Std Cavity:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Design Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Transport Cost:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase Lead Time (in Days):
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Head:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row text-start">
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Project Name:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Department:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        selected
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>Commen Spare</option>
+                                        <option value="1">AYUSH</option>
+                                        <option value="2">Production</option>
+                                        <option value="3">Purchase</option>
+                                        <option value="1">QUALITY</option>
+                                        <option value="2">SHAKAMBARI</option>
+                                        <option value="3">Store</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Eoonomical Batch Size:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Re-Order Level:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Pre Shift Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Item:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-5">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Scrap Qty:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Purchase GL:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <select
+                                        className="form-select"
+                                        aria-label="Default select example"
+                                      >
+                                        <option selected>select ..</option>
+                                        <option value="1">No</option>
+                                        <option value="2">Yes</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div className="row mb-3">
+                                    <label
+                                      for="inputEmail3"
+                                      className="col-sm-5 col-form-label"
+                                    >
+                                      Business Associate:
+                                    </label>
+                                    <div className="col-sm-7">
+                                      <input
+                                        type="input"
+                                        className="
+                                        form-control"
+                                        style={{ width: "115%" }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    {showNewCardQtypack && (
+                      <div className="Qtypack">
+                        <div className="new-card-overlay">
+                          <div className="new-card">
+                            <div className="card">
+                              <div className="card-body">
+                                <h5 className="card-title text-start">
+                                  Item Packing Unit Master
+                                </h5>
+                                <div
+                                  className="row mb-3"
+                                  style={{ marginTop: "40px" }}
+                                >
+                                  <div className="col-sm-8 mb-3 text-start">
+                                    <label
+                                      htmlFor="prefix"
+                                      className="form-label"
+                                    >
+                                      Enter Unit Name:
+                                    </label>
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      id="prefix"
+                                      placeholder="Enter prefix"
+                                    />
+                                  </div>
+
+                                  <div className="col-sm-4 d-flex align-items-end">
+                                    <button
+                                      className="card-btn w-100"
+                                      style={{ marginTop: "-50px" }}
+                                    >
+                                      Save
+                                    </button>
+                                  </div>
+                                </div>
+                                <table className="table">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col"></th>
+                                      <th scope="col"></th>
+                                      <th scope="col"></th>
+                                      <th scope="col"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {/* Check if there are rows to display */}
+                                    {/* For example, using a variable `data` */}
+                                    {data.length > 0 ? (
+                                      data.map((item, index) => (
+                                        <tr key={index}>
+                                          <td>{index + 1}</td>
+                                          <td>{item.unit}</td>
+                                          <td>
+                                            <button className="card-btn1 btn-primary">
+                                              Edit
+                                            </button>
+                                          </td>
+                                          <td>
+                                            <button className="card-btn2 btn-danger">
+                                              Delete
+                                            </button>
+                                          </td>
+                                        </tr>
+                                      ))
+                                    ) : (
+                                      <tr>
+                                        <td colSpan="4" className="text-center">
+                                          No data found!
+                                        </td>
+                                      </tr>
+                                    )}
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                            <button
+                              className="btn-cl justify-content-end"
+                              style={{
+                                margin: "5px",
+                                color: "gray",
+                                border: "none",
+                                padding: "10px",
+                              }}
+                              onClick={handleNewButtonQtypack}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                     <div
                       className="tab-pane fade"
                       id="pills-contact"

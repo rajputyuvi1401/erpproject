@@ -81,7 +81,7 @@ const MainPage = () => {
                             aria-controls="pills-profile"
                             aria-selected="false"
                           >
-                            Date-2
+                            Data-2
                           </button>
                         </li>
                         <li className="nav-item" role="presentation">

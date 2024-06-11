@@ -56,7 +56,7 @@ const CustomerState = () => {
                       <div className="col-md-12">
                         <div className="container mt-5">
                           <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-md-12">
                               {" "}
                               {/* Adjusted column width */}
                               <div className="input-group mb-3">
