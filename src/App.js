@@ -19,6 +19,9 @@ import ItemMasterGernal from "./components/ItemMasterGernal/ItemMasterGernal";
 // Work Center Master
 import WorkCenterMaster from "./components/WorkCenterMaster/WorkCenterMaster";
 
+// business-partner
+import BusinessPartner from "./components/BusinessPartner/BusinessPartner";
+
 function App() {
   return (
     <div className="App">
@@ -41,6 +44,10 @@ function App() {
 
         {/* Work Center Master */}
         <Route path="/Work-center-master" element={<WorkCenterMaster />} />
+
+        {/* business-partner */}
+
+        <Route path="business-partner" element={<BusinessPartner />} />
       </Routes>
     </div>
   );

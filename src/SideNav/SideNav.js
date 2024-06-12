@@ -124,7 +124,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="#/supplier-master">
                 Supplier / Customer Master
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/business-partner">
+              <Dropdown.Item as={Link} to="/business-partner">
                 Business Partner
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/gst-rate-master">
@@ -156,9 +156,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/price-list">
                 Price List
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/work-center-master">
-                Work Center Master
               </Dropdown.Item>
             </Dropdown.Menu>
           </li>

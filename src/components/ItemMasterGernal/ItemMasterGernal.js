@@ -15018,7 +15018,6 @@ const ItemMasterGernal = () => {
                               </table>
                             </div>
                           </div>
-
                           <div className="row" style={{ marginTop: "80px" }}>
                             <div className="col-md-8">
                               <table className="table table-bordered">
@@ -15075,7 +15074,7 @@ const ItemMasterGernal = () => {
                             <div className="col-md-5">
                               <div className="row mb-3">
                                 <label
-                                  for="inputEmail3"
+                                  htmlFor="npdSelect"
                                   className="col-sm-5 col-form-label"
                                 >
                                   NPD:
@@ -15083,6 +15082,7 @@ const ItemMasterGernal = () => {
                                 <div className="col-sm-7">
                                   <select
                                     className="form-select"
+                                    id="npdSelect"
                                     aria-label="Default select example"
                                   >
                                     <option selected>select..</option>
@@ -15094,40 +15094,38 @@ const ItemMasterGernal = () => {
                               </div>
                               <div className="row mb-3">
                                 <label
-                                  for="inputEmail3"
+                                  htmlFor="customerName"
                                   className="col-sm-5 col-form-label"
                                 >
                                   Customer Name:
                                 </label>
                                 <div className="col-sm-7">
                                   <input
-                                    type="input"
-                                    classNameName="
-                                        form-control"
-                                    style={{ width: "115%" }}
+                                    type="text"
+                                    className="form-control"
+                                    id="customerName"
                                     placeholder="Enter Name"
                                   />
                                 </div>
                               </div>
                               <div className="row mb-3">
                                 <label
-                                  for="inputEmail3"
+                                  htmlFor="npdQty"
                                   className="col-sm-5 col-form-label"
                                 >
                                   NPD Qty:
                                 </label>
                                 <div className="col-sm-7">
                                   <input
-                                    type="input"
-                                    className="
-                                        form-control"
-                                    style={{ width: "115%" }}
+                                    type="text"
+                                    className="form-control"
+                                    id="npdQty"
                                   />
                                 </div>
                               </div>
                               <div className="row mb-3">
                                 <label
-                                  for="inputEmail3"
+                                  htmlFor="npdDueDate"
                                   className="col-sm-5 col-form-label"
                                 >
                                   NPD Due Date:

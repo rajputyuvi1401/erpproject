@@ -26,7 +26,7 @@ body.no-scroll {
 .Itemmastergernalpage {
   width: 100%;
   background-color: rgb(241, 242, 244);
-  height: 230vh;
+  height: 430vh;
 }
 .Main {
   background-color: rgb(241, 242, 244);
@@ -52,7 +52,7 @@ body.no-scroll {
 .itemmastergernal {
   margin: 50px 0;
   width: 100%;
-  height: 180vh;
+  height: auto;
   padding: 10px;
   background-color: aliceblue;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -236,7 +236,9 @@ body.no-scroll {
   .new-card {
     width: 90%; /* Adjusted width for smaller screens */
   }
-
+  .itemmastergernal {
+    height: auto;
+  }
   .card-btn,
   .card-btn1,
   .card-btn2 {
@@ -523,6 +525,9 @@ body.no-scroll {
   .Itemmastergernalpage {
     height: auto;
   }
+  .itemmastergernal {
+    height: auto;
+  }
 }
 
 @media (max-width: 576px) {
@@ -553,22 +558,71 @@ body.no-scroll {
     height: auto;
     padding: 10px;
   }
+  .itemmastergernal {
+    height: auto;
+  }
 }
 .btn {
   background-color: rgba(235, 233, 233, 0.685);
   margin-left: -20px;
 }
 
+/* gernal */
+.gerneral {
+  background-color: white;
+  height: auto;
+  padding: 20px 20px;
+}
+.gerneral1 {
+  background-color: white;
+  height: auto;
+  padding: 20px 20px;
+}
+.data-2 {
+  background-color: white;
+  height: auto;
+  padding: 20px 20px;
+}
 /* Npd */
 .Npd {
   text-align: start;
-  margin-top: -350px;
+  margin-top: -500px;
+  height: auto;
+  background-color: white;
+  padding: 20px 20px;
+}
+
+@media (max-width: 1200px) {
+  .Npd {
+    margin-top: -300px;
+  }
+}
+
+@media (max-width: 992px) {
+  .Npd {
+    margin-top: -800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Npd {
+    margin-top: -600px;
+  }
+}
+
+@media (max-width: 576px) {
+  .Npd {
+    margin-top: -650px;
+  }
 }
 
 /* technical */
 .technical {
   text-align: start;
-  margin-top: 40px;
+  margin-top: -1100px;
+  height: auto;
+  background-color: white;
+  padding: 20px 20px;
 }
 .tech-btn {
   border: none;

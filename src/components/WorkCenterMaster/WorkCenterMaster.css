@@ -48,14 +48,14 @@ body.no-scroll {
 }
 .workmain .btn-work {
   border: none;
-  background-color: rgb(173, 173, 181);
+  background-color: rgb(206, 206, 210);
   color: white;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
 }
 .btn-work:hover {
-  background-color: #0056b3;
+  background-color: #0057b38d;
 }
 
 .workmain .overlay {
@@ -280,6 +280,69 @@ body.no-scroll {
   padding: 10px;
 }
 .card-body-machine {
+  max-height: 430px; /* Set a max height for scrollable content */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Work Center  */
+
+.overlay-work {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-work {
+  margin-top: -100px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 800px;
+  max-width: 90%;
+  z-index: 1001;
+}
+
+.card-header-work {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.card-header-work h5 {
+  margin: 0;
+}
+
+.card-work .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.card-work .table-bordered th,
+.card-work .table-bordered td {
+  border: 1px solid #dee2e6;
+  padding: 8px;
+  text-align: center;
+}
+.card-work .btnnmn {
+  border: none;
+  background-color: blue;
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+}
+.card-work .btn-mcah {
+  border: none;
+  padding: 10px;
+}
+.card-work .card-body-work {
   max-height: 430px; /* Set a max height for scrollable content */
   overflow-y: auto; /* Enable vertical scrolling */
 }

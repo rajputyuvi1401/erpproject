@@ -16,6 +16,7 @@ const WorkCenterMaster = () => {
   //   card
   const [isCardVisible, setCardVisible] = useState(false);
   const [isCardVisibleMachine, setCardVisibleMachine] = useState(false);
+  const [showNewCardWork, setShowNewCardWork] = useState(false);
 
   const handleAddNewClick = () => {
     setCardVisible(true);
@@ -33,8 +34,12 @@ const WorkCenterMaster = () => {
     setCardVisibleMachine(false);
   };
 
+  const handleNewButtonWork = () => {
+    setShowNewCardWork(!showNewCardWork);
+  };
+
   // table
-  const [records, setRecords] = useState([
+  const [records] = useState([
     {
       id: 1,
       plant: "SHARP",
@@ -115,7 +120,10 @@ const WorkCenterMaster = () => {
                         >
                           Add New
                         </button>
-                        <button className="btn-work  me-2">
+                        <button
+                          className="btn-work  me-2"
+                          onClick={handleNewButtonWork}
+                        >
                           Work Center Type
                         </button>
                         <button className="btn-work">Export Report</button>
@@ -583,6 +591,100 @@ const WorkCenterMaster = () => {
                               </div>
                             </div>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {showNewCardWork && (
+                    <div className="overlay-work">
+                      <div className="card-work">
+                        <div className="card-header-work">
+                          <h5 style={{ color: "black" }}>Machine Group Type</h5>
+                          <button
+                            className="btn-close"
+                            onClick={handleNewButtonWork}
+                          >
+                            ×
+                          </button>
+                        </div>
+                        <div className="card-body-work">
+                          <h5
+                            style={{
+                              color: "blue",
+                              textAlign: "start",
+                            }}
+                          >
+                            Work Center Type
+                          </h5>
+                          <hr />
+                          <div className="row mb-3">
+                            <p style={{ textAlign: "start" }}>
+                              Work Center Type
+                            </p>
+                            <label
+                              htmlFor="inputType"
+                              className="col-sm-2 col-form-label text-start"
+                            >
+                              Enter Type Group:
+                            </label>
+                            <div className="col-sm-3">
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="inputType"
+                                placeholder="Work Center Type"
+                              />
+                            </div>
+                            <label
+                              htmlFor="inputType"
+                              className="col-sm-2 col-form-label text-start"
+                            >
+                              Prod WT:
+                            </label>
+                            <div className="col-sm-3">
+                              <select
+                                class="form-select"
+                                aria-label="Default select example"
+                              >
+                                <option selected>Master</option>
+                                <option value="1">Master_Cut_WT</option>
+                                <option value="2">Master_Cut</option>
+                                <option value="3">Master_Cut_WT</option>
+                              </select>
+                            </div>
+                            <div className="col-sm-2">
+                              <button className="btnnmn">Save</button>
+                            </div>
+                          </div>
+
+                          <table className="table table-bordered table-responsive">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Item WT</th>
+                                <th scope="col">User Group</th>
+
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>1</td>
+                                <td>cnc</td>
+
+                                <td>0</td>
+                                <td>0</td>
+                                <td>
+                                  <button className="btn-mcah">Edit</button>
+                                </td>
+                                <td>
+                                  <button className="btn-mcah">Delete</button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
                       </div>
                     </div>
