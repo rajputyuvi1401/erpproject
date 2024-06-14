@@ -26,7 +26,7 @@ body.no-scroll {
 .Itemmastergernalpage {
   width: 100%;
   background-color: rgb(241, 242, 244);
-  height: 430vh;
+  height: 280vh;
 }
 .Main {
   background-color: rgb(241, 242, 244);
@@ -52,7 +52,7 @@ body.no-scroll {
 .itemmastergernal {
   margin: 50px 0;
   width: 100%;
-  height: auto;
+  height: 1000vh;
   padding: 10px;
   background-color: aliceblue;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -511,6 +511,9 @@ body.no-scroll {
   .card-btn2 {
     width: 100%; /* Full width buttons on smaller screens */
   }
+  .axcv {
+    height: auto;
+  }
 }
 
 /* Media Queries */
@@ -526,6 +529,9 @@ body.no-scroll {
     height: auto;
   }
   .itemmastergernal {
+    height: auto;
+  }
+  .axcv {
     height: auto;
   }
 }
@@ -559,6 +565,9 @@ body.no-scroll {
     padding: 10px;
   }
   .itemmastergernal {
+    height: auto;
+  }
+  .axcv {
     height: auto;
   }
 }
@@ -641,4 +650,14 @@ body.no-scroll {
   text-align: center;
   margin-top: 10px;
   background-color: #ddd;
+}
+.axcv {
+  background-color: white;
+  height: 230vh;
+  padding: 20px 20px;
+  margin-bottom: 10px;
+}
+.bjkd {
+  border: none;
+  padding: 10px;
 }

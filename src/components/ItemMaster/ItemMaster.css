@@ -1,13 +1,8 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
-
-body.side-nav-open {
-  overflow: hidden;
-}
-
 .App {
   display: flex;
   flex-direction: column;
@@ -20,11 +15,19 @@ main {
   margin-top: 60px;
   transition: margin-left 0.3s;
 }
-
 .main-content.shifted {
   margin-left: 260px;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
+.masterState {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  height: 100vh;
+}
 .ItemMasterPage {
   width: 100%;
   background-color: rgb(241, 242, 244);
@@ -37,8 +40,20 @@ main {
   width: 100%;
   text-align: start;
 }
-
+.itemaa {
+  background-color: rgb(241, 242, 244);
+  height: 110vh;
+  width: 100%;
+  text-align: start;
+}
+.itemaamain {
+  background-color: white;
+  height: 80vh;
+  padding: 20px 20px;
+  margin-top: 50px;
+}
 .top-but1 {
+  margin-top: 50px;
   margin: 20px 0;
   width: 100%;
   padding: 10px;
@@ -64,7 +79,7 @@ main {
   background-color: aliceblue;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 15px 10px;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .form-select {
@@ -81,7 +96,6 @@ main {
   border-radius: 10px;
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .main-content.shifted {
     margin-left: 220px;
@@ -110,6 +124,12 @@ main {
   .search-row .col-md-4,
   .search-row .col-md-6 {
     width: 100%;
+  }
+  .itemaa {
+    height: auto;
+  }
+  .itemaamain {
+    height: auto;
   }
 }
 
@@ -141,5 +161,11 @@ main {
   .search-row .col-md-4,
   .search-row .col-md-6 {
     width: 100%;
+  }
+  .itemaa {
+    height: auto;
+  }
+  .itemaamain {
+    height: auto;
   }
 }

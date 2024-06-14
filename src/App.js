@@ -22,6 +22,11 @@ import WorkCenterMaster from "./components/WorkCenterMaster/WorkCenterMaster";
 // business-partner
 import BusinessPartner from "./components/BusinessPartner/BusinessPartner";
 
+// Item Master Dropdown
+import CustomerItemWise from "./components/CustomerItemWise/CustomerItemWise";
+import CustomerSupplierLink from "./components/CustomerSupplierLink/CustomerSupplierLink";
+import ItemCrossReference from "./components/ItemCrossReference.js/ItemCrossReference";
+
 function App() {
   return (
     <div className="App">
@@ -47,7 +52,15 @@ function App() {
 
         {/* business-partner */}
 
-        <Route path="business-partner" element={<BusinessPartner />} />
+        <Route path="/business-partner" element={<BusinessPartner />} />
+
+        {/* Item Master Dropdown */}
+        <Route path="/Customer-Item-Wise" element={<CustomerItemWise />} />
+        <Route
+          path="/Customer-Supplier-Item-Link"
+          element={<CustomerSupplierLink />}
+        />
+        <Route path="/Item-Cross-Reference" element={<ItemCrossReference />} />
       </Routes>
     </div>
   );

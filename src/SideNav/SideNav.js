@@ -121,6 +121,23 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/item-master">
                 Item Master
               </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Item Master
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/Customer-Supplier-Item-Link">
+                    Customer / Supplier Item Link
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/Item-Cross-Reference">
+                    Item Cross Reference
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/Customer-Item-Wise">
+                    Customer Item Wise
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
               <Dropdown.Item as={Link} to="#/supplier-master">
                 Supplier / Customer Master
               </Dropdown.Item>
@@ -140,7 +157,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                 Commodity Master
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/bom-routing">
-                BOM Routing
+                BOM Routing Master
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/operator-supervisor-master">
                 Operator and Supervisor Master

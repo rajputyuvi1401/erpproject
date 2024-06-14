@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+
+.main-content.shifted {
+  margin-left: 260px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.Supplier {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  height: 120vh;
+}
+
+.Main {
+  background-color: rgb(241, 242, 244);
+  height: 107vh;
+  width: 100%;
+  text-align: start;
+}
+
+.siplier-btn {
+  border: none;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 8px;
+  margin-top: -15px;
+  background-color: rgba(128, 128, 128, 0.629);
+}
+
+.Supplier1 {
+  margin-top: 40px;
+  background-color: aliceblue;
+  height: 10vh;
+  padding: 20px;
+  border-bottom: 2px solid #ddd; /* Add bottom border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.supplier-wise {
+  margin-top: 40px;
+  background-color: aliceblue;
+  padding: 20px;
+}
+
+.sear-btn {
+  border: none;
+  background-color: rgba(128, 128, 128, 0.807);
+  padding: 7px;
+  border-radius: 10px;
+}
+
+.wise1-btn {
+  border: none;
+  padding: 7px;
+  border-radius: 10px;
+}
+
+.wise-table .table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.wise-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+
+.wise-table th,
+.wise-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.wise-table th {
+  background-color: rgba(0, 0, 255, 0.527);
+}
+
+.wise-table td {
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .wise-table thead {
+    display: none;
+  }
+
+  .wise-table,
+  .wise-table tbody,
+  .wise-table tr,
+  .wise-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .wise-table tr {
+    margin-bottom: 15px;
+  }
+
+  .wise-table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .wise-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+.Supplierwise {
+  background-color: white;
+  height: auto;
+  padding: 20px 0;
+}

@@ -124,3 +124,30 @@ body.no-scroll {
     margin: 1px;
   }
 }
+@media (max-width: 360px) {
+  .bussiness-main .form-control,
+  .bussiness-main .form-select {
+    margin-bottom: 15px;
+  }
+
+  .btn-ty,
+  .bsi-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .bus-bottom .form-check {
+    margin-bottom: 10px;
+  }
+  .Bussiness {
+    width: 100%;
+    background-color: rgb(241, 242, 244);
+    height: auto;
+  }
+  .bus-bottom .form-check-label {
+    font-size: 14px;
+  }
+  .btn-fg {
+    margin: 1px;
+  }
+}

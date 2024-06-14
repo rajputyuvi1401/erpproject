@@ -41,6 +41,9 @@ main {
   text-align: start;
   padding-top: 50px;
 }
+.top-but {
+  margin-top: -20px;
+}
 
 .top-but .btn {
   border: 1px solid black;
@@ -154,6 +157,9 @@ main {
   .vendor {
     height: auto;
   }
+  .gernala {
+    height: auto;
+  }
 }
 @media (max-width: 360px) {
   .main-content.shifted {
@@ -167,8 +173,34 @@ main {
     height: auto;
     padding: 10px;
   }
-
+  .gernala {
+    height: auto;
+  }
   .vendor {
     height: auto;
   }
+}
+.gernala {
+  background-color: aliceblue;
+  height: 190vh;
+  margin-top: 20px;
+  padding: 20px 20px;
+}
+.gernal-update {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+.gernal-update:hover {
+  background-color: blue;
+  color: white;
+}
+.date-update {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+.date-update:hover {
+  background-color: blue;
+  color: white;
 }
