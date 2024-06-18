@@ -15173,7 +15173,7 @@ const ItemMasterGernal = () => {
                     </div>
                   </div>
                 </div>
-                <div className="row">
+                <div className="row" style={{ color: "blue" }}>
                   <div className="col-md-1 text-start">
                     <label class="form-check-label" for="flexCheckDefault">
                       Active:

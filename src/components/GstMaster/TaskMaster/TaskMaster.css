@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+
+.main-content.shifted {
+  margin-left: 260px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.taskmaster {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.taskmaster1 {
+  background-color: white;
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.taskheader {
+  background-color: aliceblue;
+  padding: 20px;
+  margin-top: 40px;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 4px 2px -3px gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.taskbtn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(235, 233, 233, 0.685);
+  color: black;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.taskmain {
+  background-color: aliceblue;
+  flex-grow: 1;
+  padding: 20px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.maintaskbtn {
+  background-color: rgba(235, 233, 233, 0.685);
+  color: black;
+  margin: 5px;
+  padding: 7px;
+  border-radius: 10px;
+  border: none;
+}
+.taskmiddle {
+  background-color: aliceblue;
+  padding: 20px;
+  margin-top: 40px;
+}
+.taskmiddle .blue-th {
+  background-color: rgba(0, 0, 255, 0.558);
+  color: white;
+}
+
+.taskmiddle .table {
+  width: 100%;
+}
+
+.taskmiddle th,
+.taskmiddle td {
+  text-align: center;
+}
+
+.taskmiddle input[type="text"] {
+  width: 100%;
+}
+
+.taskmiddle .table-responsive {
+  overflow-x: auto;
+}
+
+.taskmiddle .tbbtn {
+  width: 100%;
+  border: none;
+  background-color: rgba(0, 0, 255, 0.558);
+  padding: 5px;
+  border-radius: 10px;
+}
+/* Add your existing CSS styles here */
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .taskheader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .taskbtn {
+    margin-top: 10px;
+  }
+  .taskmiddle input[type="text"] {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+}

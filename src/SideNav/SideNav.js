@@ -25,7 +25,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
   };
 
   return (
-    <div>
+    <div className="blueside-Nav">
       <div className={`side-nav ${sideNavOpen ? "open" : ""}`}>
         <button className="close-button" onClick={toggleSideNav}>
           &times;
@@ -144,7 +144,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/business-partner">
                 Business Partner
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/gst-rate-master">
+              <Dropdown.Item as={Link} to="/gst-rate-master">
                 GST Rate Master
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="/work-center-master">

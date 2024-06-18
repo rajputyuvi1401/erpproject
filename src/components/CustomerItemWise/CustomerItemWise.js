@@ -209,7 +209,7 @@ const CustomerItemWise = () => {
                                       <th>Item Desc</th>
                                       <th>VA1</th>
                                       <th>VA2</th>
-                                      <th>Delete</th>
+                                      <th>Action</th>
                                     </tr>
                                   </thead>
                                   <tbody>
@@ -225,7 +225,7 @@ const CustomerItemWise = () => {
                                       <td data-label="VA2">Value 2</td>
                                       <td data-label="Delete">
                                         <button style={{ border: "none" }}>
-                                          Delete
+                                          <i className="fas fa-trash"></i>
                                         </button>
                                       </td>
                                     </tr>
@@ -251,7 +251,7 @@ const CustomerItemWise = () => {
                   <div className="ratebottom">
                     <div className="row">
                       <div className="col-md-12 text-start">
-                        <div className="row mb-3">
+                        <div className="row mb-3" style={{ color: "blue" }}>
                           <label
                             htmlFor="inputEmail3"
                             className="col-sm-2 col-form-label"

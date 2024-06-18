@@ -56,7 +56,7 @@ body.no-scroll {
 .ref-btn {
   border: none;
   padding: 10px;
-  background-color: rgba(128, 128, 128, 0.515);
+  background-color: rgba(235, 233, 233, 0.685);
   border-radius: 10px;
   margin-top: -5px;
 }
@@ -71,7 +71,7 @@ body.no-scroll {
 .pac-btn,
 .resss-btn {
   border: none;
-  background-color: rgba(128, 128, 128, 0.625);
+  background-color: rgba(235, 233, 233, 0.685);
   padding: 7px;
   border-radius: 8px;
 }
@@ -107,7 +107,7 @@ body.no-scroll {
   .resss-btn {
     width: 100%;
     padding: 10px;
-
     margin-bottom: 10px;
+    background-color: rgba(235, 233, 233, 0.685);
   }
 }

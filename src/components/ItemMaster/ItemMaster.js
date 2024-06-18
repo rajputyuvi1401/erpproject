@@ -42,7 +42,7 @@ const ItemMaster = () => {
                 <div className="itemaamain">
                   <div className="top-but1">
                     <div className="row align-items-center">
-                      <div className="col-md-6 col-12 text-start text-md-start text-center mb-2 mb-md-0">
+                      <div className="col-md-6 col-12 text-start text-md-start text-center">
                         <p>Item List</p>
                       </div>
                       <div className="col-md-6 col-12 text-end text-md-end text-center">
@@ -121,7 +121,10 @@ const ItemMaster = () => {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-md-6 text-start">
+                  <div
+                    className="col-md-6 text-start"
+                    style={{ color: "blue" }}
+                  >
                     <div class="row mb-3">
                       <label for="inputEmail3" class="col-sm-3 col-form-label">
                         Total Record : 00

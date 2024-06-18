@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+
+.main-content.shifted {
+  margin-left: 260px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.Cutwise {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.Cutwise1 {
+  background-color: white;
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.Cutwisemain {
+  background-color: aliceblue;
+  flex-grow: 1;
+  padding: 20px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.Cutwise1 th {
+  background-color: rgba(0, 0, 255, 0.544);
+}
+@media (max-width: 768px) {
+  .Cutwisemain .table-responsive {
+    overflow-x: auto;
+  }
+  .Cutwisemain .table th,
+  .Cutwisemain .table td {
+    white-space: nowrap;
+  }
+}

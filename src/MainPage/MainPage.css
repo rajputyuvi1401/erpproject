@@ -190,17 +190,21 @@ main {
   border: none;
   padding: 10px;
   border-radius: 10px;
+  background-color: blueviolet;
+  color: white;
 }
 .gernal-update:hover {
-  background-color: blue;
+  background-color: rgba(0, 0, 255, 0.701);
   color: white;
 }
 .date-update {
   border: none;
   padding: 10px;
   border-radius: 10px;
+  background-color: blueviolet;
+  color: white;
 }
 .date-update:hover {
-  background-color: blue;
+  background-color: rgba(0, 0, 255, 0.701);
   color: white;
 }

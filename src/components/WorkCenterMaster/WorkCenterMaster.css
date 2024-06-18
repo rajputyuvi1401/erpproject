@@ -48,7 +48,7 @@ body.no-scroll {
 }
 .workmain .btn-work {
   border: none;
-  background-color: rgb(206, 206, 210);
+  background-color: blueviolet;
   color: white;
   padding: 10px;
   border-radius: 10px;
@@ -202,7 +202,7 @@ body.no-scroll {
   padding: 0.25rem 0.5rem;
   align-items: center;
   border: none;
-  background-color: rgb(173, 173, 181);
+  background-color: rgba(0, 0, 255, 0.504);
   color: white;
   padding: 10px;
   border-radius: 10px;

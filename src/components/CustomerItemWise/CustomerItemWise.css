@@ -61,7 +61,7 @@ body.no-scroll {
 
 .wie-btn {
   border: none;
-  background-color: rgba(128, 128, 128, 0.579);
+  background-color: rgba(235, 233, 233, 0.685);
   padding: 7px;
   border-radius: 10px;
 }
@@ -70,6 +70,7 @@ body.no-scroll {
   border: none;
   padding: 7px;
   border-radius: 10px;
+  background-color: rgba(235, 233, 233, 0.685);
 }
 
 .rate-table .table-container {
@@ -97,7 +98,9 @@ body.no-scroll {
 .rate-table td {
   white-space: nowrap;
 }
-
+.vai-btn {
+  background-color: rgba(235, 233, 233, 0.685);
+}
 @media (max-width: 600px) {
   .rate-table thead {
     display: none;

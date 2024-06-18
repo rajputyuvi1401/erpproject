@@ -44,7 +44,7 @@ body.no-scroll {
   margin: 5px;
   border-radius: 8px;
   margin-top: -15px;
-  background-color: rgba(128, 128, 128, 0.629);
+  background-color: rgba(235, 233, 233, 0.685);
 }
 
 .Supplier1 {
@@ -64,7 +64,7 @@ body.no-scroll {
 
 .sear-btn {
   border: none;
-  background-color: rgba(128, 128, 128, 0.807);
+  background-color: rgba(235, 233, 233, 0.685);
   padding: 7px;
   border-radius: 10px;
 }
@@ -139,4 +139,11 @@ body.no-scroll {
   background-color: white;
   height: auto;
   padding: 20px 0;
+}
+.customerStateicon1 {
+  border: none;
+}
+.wise-bottom {
+  color: blue;
+  padding: 10px;
 }

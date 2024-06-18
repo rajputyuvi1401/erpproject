@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+
+.main-content.shifted {
+  margin-left: 260px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.GstMaster {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  min-height: 100vh;
+}
+
+.GstMaster1 {
+  background-color: white;
+  padding: 20px 20px;
+  margin-top: 20px;
+}
+
+.GstMasterupper {
+  background-color: aliceblue;
+  padding: 20px 20px;
+  margin-top: 20px;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 4px 2px -3px gray;
+}
+
+.gstbtn {
+  border: none;
+  margin: 5px;
+  padding: 7px;
+  border-radius: 10px;
+  background-color: rgba(235, 233, 233, 0.685);
+  color: black;
+  text-decoration: none;
+}
+
+.GstMasterMain {
+  background-color: aliceblue;
+  padding: 20px 20px;
+  margin-top: 80px;
+}
+
+.GstMasterMain .table {
+  width: 100%;
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.GstMasterMain th,
+.GstMasterMain td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.GstMasterMain input,
+.GstMasterMain textarea,
+.GstMasterMain select {
+  width: 100%;
+}
+
+.GstMasterMain .btn-gst {
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  padding: 7px;
+  background-color: rgba(235, 233, 233, 0.685);
+  cursor: pointer;
+}
+
+/* table */
+.GstMastertable .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.GstMastertable .table th {
+  background-color: rgba(0, 0, 255, 0.466);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.GstMastertable .table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.GstMastertable th,
+td {
+  white-space: nowrap;
+}
+
+.GstMastertable .sgstbtn {
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgba(235, 233, 233, 0.685);
+  cursor: pointer;
+}
+
+.GstMastertable .btn {
+  width: 100%;
+}
+
+.GstMastertable .input-group {
+  display: flex;
+  align-items: center;
+}
+
+.GstMastertable .input-group .form-control {
+  margin-right: 10px;
+}
+
+.GstMastertable .input-group .form-control:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 768px) {
+  .gstbtn {
+    padding: 5px;
+    font-size: 14px;
+  }
+
+  .btn-gst {
+    padding: 5px;
+    font-size: 14px;
+  }
+
+  .sgstbtn {
+    padding: 5px;
+    font-size: 14px;
+  }
+}

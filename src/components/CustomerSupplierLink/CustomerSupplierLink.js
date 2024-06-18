@@ -240,7 +240,7 @@ const CustomerSupplierLink = () => {
                                       <th>Item Desc</th>
                                       <th>VA1</th>
                                       <th>VA2</th>
-                                      <th>Delete</th>
+                                      <th>Action</th>
                                     </tr>
                                   </thead>
                                   <tbody>
@@ -255,8 +255,8 @@ const CustomerSupplierLink = () => {
                                       <td data-label="VA1">Value 1</td>
                                       <td data-label="VA2">Value 2</td>
                                       <td data-label="Delete">
-                                        <button style={{ border: "none" }}>
-                                          Delete
+                                        <button className="customerStateicon1">
+                                          <i className="fas fa-trash"></i>
                                         </button>
                                       </td>
                                     </tr>

@@ -227,12 +227,15 @@ const ItemCrossReference = () => {
                   <div className="ref-bottom">
                     <div className="row">
                       <div className="col-md-12 text-start">
-                        <div class="row mb-3">
+                        <div
+                          className="row mb-3"
+                          style={{ color: "blue", padding: "10px" }}
+                        >
                           <label
                             for="inputEmail3"
-                            class="col-sm-3 col-form-label"
+                            className="col-sm-3 col-form-label"
                           >
-                            Total :0
+                            Total :00
                           </label>
                         </div>
                       </div>

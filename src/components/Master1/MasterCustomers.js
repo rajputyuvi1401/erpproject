@@ -110,7 +110,7 @@ const MasterCustomers = () => {
                               />
                             </div>
                             <div
-                              className="mb-3 d-flex align-items-end col-md-6 col-lg-3"
+                              className="mb-3 d-flex align-items-end col-md-6 col-lg-1"
                               style={{ marginTop: "30px" }}
                             >
                               <button

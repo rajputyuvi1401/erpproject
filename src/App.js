@@ -27,6 +27,12 @@ import CustomerItemWise from "./components/CustomerItemWise/CustomerItemWise";
 import CustomerSupplierLink from "./components/CustomerSupplierLink/CustomerSupplierLink";
 import ItemCrossReference from "./components/ItemCrossReference.js/ItemCrossReference";
 
+// Gst Master
+import GstMaster from "./components/GstMaster/GstMaster";
+import CustomerItemGst from "./components/GstMaster/CustomerItem/CustomerItem";
+import TaskMaster from "./components/GstMaster/TaskMaster/TaskMaster";
+import Cutwise from "./components/GstMaster/Cutwise/Cutwise";
+
 function App() {
   return (
     <div className="App">
@@ -61,6 +67,20 @@ function App() {
           element={<CustomerSupplierLink />}
         />
         <Route path="/Item-Cross-Reference" element={<ItemCrossReference />} />
+
+        {/* Gst Master */}
+        <Route path="/gst-rate-master" element={<GstMaster />} />
+
+        {/* Gst Master Customer Item */}
+
+        <Route path="/Customer-Item-Wise-Gst" element={<CustomerItemGst />} />
+
+        {/* Task Master */}
+        <Route path="/task-master" element={<TaskMaster />} />
+
+        {/* Cutwise */}
+
+        <Route path="/Cut-wise" element={<Cutwise />} />
       </Routes>
     </div>
   );
