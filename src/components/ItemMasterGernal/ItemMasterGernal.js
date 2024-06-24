@@ -14948,7 +14948,7 @@ const ItemMasterGernal = () => {
                                       </td>
                                       <td>
                                         <button className="btn-tech">
-                                          Add <FaPlus />
+                                          <FaPlus />
                                         </button>
                                       </td>
                                     </tr>
@@ -15033,6 +15033,7 @@ const ItemMasterGernal = () => {
                                           type="text"
                                           className="form-control"
                                           placeholder="Capacity"
+                                          style={{ padding: "5px" }}
                                         />
                                       </td>
                                     </tr>
@@ -15067,12 +15068,12 @@ const ItemMasterGernal = () => {
                                       </td>
                                       <td>
                                         <button className="btn-para">
-                                          <FaPlus /> Add
+                                          <FaPlus />
                                         </button>
                                       </td>
                                       <td>
                                         <button className="btn-para">
-                                          <FaTrash /> Delete
+                                          <FaTrash />
                                         </button>
                                       </td>
                                     </tr>

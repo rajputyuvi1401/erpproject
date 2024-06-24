@@ -138,9 +138,10 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              <Dropdown.Item as={Link} to="#/supplier-master">
+              <Dropdown.Item as={Link} to="/vender-list">
                 Supplier / Customer Master
               </Dropdown.Item>
+
               <Dropdown.Item as={Link} to="/business-partner">
                 Business Partner
               </Dropdown.Item>
@@ -156,7 +157,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="#/commodity-master">
                 Commodity Master
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/bom-routing">
+              <Dropdown.Item as={Link} to="/bom-routing">
                 BOM Routing Master
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/operator-supervisor-master">

@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+
+.BillMaterial {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  min-height: 100vh;
+}
+
+.BillMaterial1 {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.BillMaterialMain {
+  background-color: aliceblue;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Billmaterialbtn,
+.materialbtn,
+.BOMBOttombtn {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .BillMaterialMain .text-end {
+    text-align: center !important;
+  }
+  .btn-group {
+    flex-direction: column;
+  }
+  .Billmaterialbtn,
+  .materialbtn,
+  .BOMBOttombtn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .ProductionDeptCard {
+    width: 95%;
+    top: 20px;
+  }
+}
+.ProductionDeptCard,
+.Operation,
+.Standard,
+.Bomitem {
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  max-height: 90vh;
+  overflow: auto;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.ProductionDeptCard .card,
+.Operation .card,
+.Standard .card,
+.Bomitem .card {
+  margin-top: 20px;
+}
+
+.ProductionDeptCard .card-header,
+.ProductionDeptCard .Closebom,
+.Operation .card-header,
+.Operation .Closebom,
+.Standard .card-header,
+.Standard .Closebom,
+.Bomitem .card-header,
+.Bomitem .Closebom {
+  padding: 10px;
+  border: none;
+}
+
+.ProductionDeptCard .card-body,
+.Operation .card-body,
+.Standard .card-body,
+.Bomitem .card-body {
+  padding: 20px;
+}
+
+.ProductionDeptCard .bomButton,
+.Operation .bomButton,
+.Standard .bomButton,
+.Bomitem .bomButton {
+  margin-top: 30px;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+}
+
+.Standard .Standardbtn,
+.StandardButton,
+.Bomitem .Bomitembtn,
+.BomitemButton {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+}
+
+.Standard .table-responsive,
+.Bomitem .table-responsive,
+.Operation .table-responsive {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.Bomitem th,
+.Bomitem td {
+  background-color: rgb(250, 251, 252);
+}

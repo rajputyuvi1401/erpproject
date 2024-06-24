@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+.main-content.shifted {
+  margin-left: 260px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.VenderList {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  height: 100vh;
+}
+.Main {
+  background-color: rgb(241, 242, 244);
+  height: 107vh;
+  width: 100%;
+  text-align: start;
+}
+.VenderList1 {
+  background-color: white;
+  height: 70vh;
+  padding: 20px 20px;
+  margin-top: 40px;
+}
+.VenderList2 {
+  background-color: aliceblue;
+  height: 10vh;
+  padding: 20px;
+  box-shadow: 0 4px 2px -2px grey;
+}
+.venbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 7px;
+  border-radius: 10px;
+  margin: 5px;
+  margin-top: -10px;
+  text-decoration: none;
+  color: black;
+}
+.VenderListMain {
+  background-color: aliceblue;
+  height: 10vh;
+  padding: 20px;
+  margin-top: 80px;
+  box-shadow: 0 4px 2px -2px grey;
+}
+.Vendermainbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.Vender3table {
+  margin-top: 80px;
+}
+.Vender3table .blue-th {
+  background-color: rgba(0, 0, 255, 0.563);
+  color: white;
+}
+/* Add this CSS to your existing styles */
+
+/* Table styling */
+.Vender3table table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Table header cell */
+.Vender3table th {
+  border: 1px solid gray; /* Change color and thickness as needed */
+  padding: 8px;
+  text-align: left;
+}
+
+/* Table data cell */
+.Vender3table td {
+  border: 1px solid gray; /* Change color and thickness as needed */
+  padding: 8px;
+}
+
+/* Table row */
+.Vender3table tr {
+  border: 1px solid gray; /* Change color and thickness as needed */
+}
+
+/* Optional: Add styles for responsiveness */
+.Vender3table .table-responsive {
+  overflow-x: auto;
+}
+/* Add this CSS to your existing styles */
+
+/* Adjust background color for smaller screens */
+@media (max-width: 768px) {
+  .VenderList {
+    background-color: lightblue; /* Change to your desired background color */
+  }
+}
+
+/* Responsive table */
+.Vender3table .table-responsive {
+  overflow-x: auto;
+}
+
+/* You can keep your existing CSS for other elements */

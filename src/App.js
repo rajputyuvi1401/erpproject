@@ -33,6 +33,17 @@ import CustomerItemGst from "./components/GstMaster/CustomerItem/CustomerItem";
 import TaskMaster from "./components/GstMaster/TaskMaster/TaskMaster";
 import Cutwise from "./components/GstMaster/Cutwise/Cutwise";
 
+// Supplier Customer Master
+import SupplierCustomerMaster from "./components/SupplierCustomerMaster/SupplierCustomerMaster";
+import VenderListSupplier from "./components/SupplierCustomerMaster/VenderList/VenderList";
+
+// Bom Routing
+import BomRouting from "./components/BOMRouting/BomRouting";
+
+// Bill Material
+
+import BillMaterial from "./components/BOMRouting/BillMaterial/BillMaterial";
+
 function App() {
   return (
     <div className="App">
@@ -81,6 +92,20 @@ function App() {
         {/* Cutwise */}
 
         <Route path="/Cut-wise" element={<Cutwise />} />
+
+        {/* Supplier Customer Master */}
+        <Route
+          path="/Supplier-Customer-Master"
+          element={<SupplierCustomerMaster />}
+        />
+
+        {/* Vender List */}
+        <Route path="/vender-list" element={<VenderListSupplier />} />
+
+        {/* BomRouting */}
+
+        <Route path="/bom-routing" element={<BomRouting />} />
+        <Route path="/bill-material" element={<BillMaterial />} />
       </Routes>
     </div>
   );

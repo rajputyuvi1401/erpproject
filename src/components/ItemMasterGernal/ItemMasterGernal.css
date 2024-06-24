@@ -37,6 +37,7 @@ body.no-scroll {
 .Itemmastergernalpage .btn {
   background-color: rgba(235, 233, 233, 0.685);
   border: none;
+  margin: 5px;
 }
 .Itemmastergernalpage .btn:hover {
   background-color: rgba(235, 233, 233, 0.685);

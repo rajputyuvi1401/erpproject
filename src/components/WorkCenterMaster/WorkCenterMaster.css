@@ -34,22 +34,25 @@ body.no-scroll {
   background-color: rgb(241, 242, 244);
   height: 100vh;
 }
+.workcentermaster {
+  background-color: white;
+  height: auto;
+  padding: 20px 20px;
+}
 .workmain {
   box-shadow: 0 4px 2px -2px grey;
-
-  background-color: white;
-
+  background-color: aliceblue;
   padding: 10px 20px;
-
-  height: auto;
+  height: 10vh;
+  margin-bottom: 20px;
 }
 .workmain h5 {
   color: blue;
 }
 .workmain .btn-work {
   border: none;
-  background-color: blueviolet;
-  color: white;
+  background-color: rgba(235, 233, 233, 0.685);
+  color: black;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
@@ -135,14 +138,17 @@ body.no-scroll {
     width: 100%;
   }
 }
+
 .centerMain {
-  margin-top: 20px;
+  margin-top: 20px 20px;
   height: auto;
+  background-color: aliceblue;
+  box-shadow: 0 4px 2px -2px grey;
 }
 .centerselect {
   box-shadow: 0 4px 2px -2px grey;
   padding: 20px;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
 }
 
 .centerselect .btn-workkk {
@@ -173,6 +179,8 @@ body.no-scroll {
   margin-top: 20px;
   height: auto;
   width: 100%;
+  background-color: aliceblue;
+  padding: 20px 20px;
 }
 
 .workTable .table-responsive {
@@ -202,8 +210,7 @@ body.no-scroll {
   padding: 0.25rem 0.5rem;
   align-items: center;
   border: none;
-  background-color: rgba(0, 0, 255, 0.504);
-  color: white;
+
   padding: 10px;
   border-radius: 10px;
 }

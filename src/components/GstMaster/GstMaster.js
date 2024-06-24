@@ -185,7 +185,10 @@ const GstMaster = () => {
                                           </select>
                                         </td>
                                         <td>
-                                          <select className="form-control">
+                                          <select
+                                            className="form-control"
+                                            style={{ width: "75px" }}
+                                          >
                                             <option value="type1">
                                               Type 1
                                             </option>

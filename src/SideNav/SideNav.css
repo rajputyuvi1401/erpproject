@@ -79,7 +79,7 @@
 
 .blueside-Nav .dropdown-menu .dropdown-item {
   padding: 10px 20px;
-
+  background-color: blueviolet;
   color: rgb(215, 210, 210);
   width: 100%;
 }
@@ -87,7 +87,7 @@
 .blueside-Nav .dropdown-menu .dropdown-item:hover {
   background-color: rgb(68, 77, 165);
   color: white;
-  width: 100%;
+  width: 130%;
 }
 
 @media screen and (max-width: 768px) {
@@ -122,7 +122,6 @@
   .blueside-Nav .side-nav.open {
     left: 0;
   }
-
   .blueside-Nav .logo-light {
     width: 50%;
   }
