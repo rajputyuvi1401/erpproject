@@ -6,14 +6,14 @@ import "./Home.css";
 import logo from "../assets/logo-dark.png";
 
 function Home() {
-  const [username, setUsername] = useState("");
+  const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Initialize useHistory hook
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const data = { username, password };
+    const data = { email, password };
 
     try {
       const response = await fetch(
@@ -28,9 +28,13 @@ function Home() {
       );
 
       if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Login error:", errorData);
         throw new Error("Login failed");
       }
 
+      const responseData = await response.json();
+      console.log("Login successful:", responseData);
       navigate("/");
     } catch (error) {
       console.error("Login error:", error);
@@ -51,16 +55,16 @@ function Home() {
                 </p>
                 <div className="form1">
                   <div className="mb-3">
-                    <label htmlFor="usernameInput" className="form-label">
-                      UserName
+                    <label htmlFor="emailInput" className="form-label">
+                      email
                     </label>
                     <input
                       placeholder="user name"
-                      type="text"
+                      type="email"
                       className="form-control"
-                      id="usernameInput"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
+                      id="emailInput"
+                      value={email}
+                      onChange={(e) => setemail(e.target.value)}
                     />
                   </div>
                   <div className="mb-3">

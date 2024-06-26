@@ -4,7 +4,8 @@ import "./App.css";
 
 import Dashboard from "./Dashboard/Dashboard";
 import Home from "./Home/Home";
-import MainPage from "./MainPage/MainPage";
+// import MainPage from "./MainPage/MainPage";
+import VendorPage from "./VendorPage/VendorPage";
 
 // Masters
 import MasterState from "./components/Master/MasterState";
@@ -44,12 +45,17 @@ import BomRouting from "./components/BOMRouting/BomRouting";
 
 import BillMaterial from "./components/BOMRouting/BillMaterial/BillMaterial";
 
+// Operator Supervisor
+import OperatorSupervisor from "./components/Operator-Supervisor/OperatorSupervisor";
+import Supervisor from "./components/Operator-Supervisor/Supervisor/Supervisor";
+import DepartmentHead from "./components/Operator-Supervisor/DepartmentHead/DepartmentHead";
+
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/mainpage" element={<MainPage />} />
+        <Route path="/mainpage" element={<VendorPage />} />
         <Route path="/" element={<Dashboard />} />
 
         {/* All Master */}
@@ -106,6 +112,14 @@ function App() {
 
         <Route path="/bom-routing" element={<BomRouting />} />
         <Route path="/bill-material" element={<BillMaterial />} />
+
+        {/* Operator-Supervisor */}
+        <Route
+          path="/operator-supervisor-master"
+          element={<OperatorSupervisor />}
+        />
+        <Route path="/Supervisor" element={<Supervisor />} />
+        <Route path="/Department-Head" element={<DepartmentHead />} />
       </Routes>
     </div>
   );

@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+
+.main-content.shifted {
+  margin-left: 260px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.OperatorSupervisor {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  height: 130vh;
+}
+
+.OperatorSupervisor1 {
+  background-color: white;
+  padding: 20px;
+  height: auto;
+}
+
+.Operator {
+  background-color: aliceblue;
+  padding: 20px;
+  height: 10vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Operatorbtn {
+  background-color: rgba(235, 233, 233, 0.685);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: -5px;
+  margin-right: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.OperatorMain {
+  background-color: aliceblue;
+  height: auto;
+  padding: 20px;
+  margin-top: 50px;
+}
+.operatebtn {
+  background-color: rgba(235, 233, 233, 0.685);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: -5px;
+  margin-right: 10px;
+}
+.Operatortable {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.Operatortable .table-responsive {
+  max-height: 400px; /* Adjust height as needed */
+  overflow-y: auto;
+}
+
+.Operatortable .table th,
+.Operatortable .table td {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .Operator {
+    text-align: center;
+  }
+
+  .Operatorbtn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .main-content.shifted {
+    margin-left: 0;
+  }
+
+  .OperatorMain .row > .col-md-2 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .OperatorMain .row {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .Operatorbtn {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+.Operatortablebtn {
+  background-color: rgba(235, 233, 233, 0.685);
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}

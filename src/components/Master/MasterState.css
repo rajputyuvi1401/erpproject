@@ -77,9 +77,14 @@ body.no-scroll {
     font-size: 0.9rem;
   }
 
-  .masterState1,
-  .masterState1icon {
+  .masterState1 {
     width: 100%;
+  }
+  .masterState1icon {
+    width: 20%;
     margin-top: 10px;
   }
+}
+.masterState1icon {
+  background-color: white; /* Ensure background color is explicitly set */
 }

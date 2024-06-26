@@ -1,0 +1,181 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+
+.main-content.shifted {
+  margin-left: 260px;
+}
+
+.Supervisor {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  min-height: 100vh;
+}
+
+.Supervisor1 {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+.Supbtn {
+  background-color: rgba(235, 233, 233, 0.685);
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  margin: 5px;
+}
+.adddepbtn {
+  background-color: rgba(235, 233, 233, 0.685);
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  margin: 5px;
+}
+.Supervisorupper {
+  background-color: aliceblue;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.SupervisorMain {
+  background-color: aliceblue;
+  padding: 20px;
+  margin-top: 50px;
+  border-radius: 8px;
+}
+
+.Supervisorbottom {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+/* Add this at the end of your existing CSS */
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050; /* Ensure it is above other content */
+}
+
+.modal-container .card {
+  background-color: white;
+  width: 90%;
+  max-width: 900px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-container .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.modal-container .card-title {
+  margin: 0;
+}
+
+.modal-container .card-body {
+  padding: 20px 0;
+}
+
+.modal-container .btn-close {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+.modal-container .btn-close:focus {
+  outline: none;
+}
+
+.modal-container .table-responsive {
+  margin-top: 20px;
+}
+
+/* category */
+
+.Category-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050; /* Ensure it is above other content */
+}
+
+.Category-container .card {
+  background-color: white;
+  width: 90%;
+  max-width: 900px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.Category-container .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Category-container .card-title {
+  margin: 0;
+}
+
+.Category-container .card-body {
+  padding: 20px 0;
+}
+
+.Category-container .btn-close {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+.Category-container .btn-close:focus {
+  outline: none;
+}
+
+.Category-container .table-responsive {
+  margin-top: 20px;
+}

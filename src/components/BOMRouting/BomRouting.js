@@ -115,9 +115,7 @@ const BomRouting = () => {
                           <button className="BOMMainbtn">
                             Export Excel (BOM)
                           </button>
-                          <button className="BOMMainbtn">
-                            Excel(Routing) Data 4
-                          </button>
+                          <button className="BOMMainbtn">Excel(Routing)</button>
                         </div>
                       </div>
                     </div>

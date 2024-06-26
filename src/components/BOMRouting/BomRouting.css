@@ -28,48 +28,53 @@ body.no-scroll {
   background-color: rgb(241, 242, 244);
   height: 100vh;
 }
+
 .BomRouting1 {
   background-color: white;
-  height: auto;
-  padding: 20px 20px;
+  padding: 20px;
   margin-top: 20px;
-}
-.BomRoutingheading {
-  background-color: aliceblue;
-  padding: 20px 20px;
-  margin-top: 20px;
-  height: 10vh;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.BomRoutingheading {
+  background-color: aliceblue;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .BOMRoutingbtn,
-Link {
+a.BOMRoutingbtn {
   border: none;
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
   margin: 5px;
   background-color: rgba(235, 233, 233, 0.685);
   text-decoration: none;
   color: black;
 }
+
 .BomRoutingMain {
   background-color: aliceblue;
-  padding: 20px 20px;
+  padding: 20px;
   margin-top: 20px;
-  height: 10vh;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .BOMMainbtn {
   border: none;
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
   margin: 5px;
   background-color: rgba(235, 233, 233, 0.685);
 }
+
 .BomRoutingTable {
   background-color: aliceblue;
-  padding: 20px 20px;
+  padding: 20px;
   margin-top: 20px;
 }
+
 .table-responsive {
   overflow-x: auto;
 }
@@ -88,6 +93,7 @@ Link {
 .table th {
   background-color: rgba(0, 0, 255, 0.323);
 }
+
 .table td {
   padding: 0.75rem;
   vertical-align: top;
@@ -106,4 +112,29 @@ Link {
 .table-sm th,
 .table-sm td {
   padding: 0.3rem;
+}
+
+.BomRouteBottom h6 {
+  color: blue;
+}
+
+@media (max-width: 768px) {
+  .BomRoutingheading,
+  .BomRoutingMain,
+  .BomRoutingTable {
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  .BOMRoutingbtn,
+  .BOMMainbtn {
+    padding: 5px;
+    margin: 3px;
+    font-size: 14px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 14px;
+  }
 }

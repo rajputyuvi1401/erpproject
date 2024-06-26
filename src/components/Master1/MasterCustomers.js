@@ -5,12 +5,17 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
+import axios from "axios";
+
 const MasterCustomers = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
-
-  const toggleSideNav = () => {
-    setSideNavOpen(!sideNavOpen);
-  };
+  const [formData, setFormData] = useState({
+    customer_id: "",
+    customer_type: "",
+    preference_string: "",
+  });
+  const [customers, setCustomers] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     if (sideNavOpen) {
@@ -20,11 +25,9 @@ const MasterCustomers = () => {
     }
   }, [sideNavOpen]);
 
-  const [formData, setFormData] = useState({
-    custID: "",
-    custType: "",
-    prefrenceString: "",
-  });
+  const toggleSideNav = () => {
+    setSideNavOpen(!sideNavOpen);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,15 +37,77 @@ const MasterCustomers = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form data submitted:", formData);
+    try {
+      const response = await axios.post(
+        "http://13.201.136.34:8000/master/customers/",
+        formData
+      );
+      console.log("Data posted:", response.data);
+      fetchData(); // Refresh the data after adding a new customer
+    } catch (error) {
+      console.error("Error posting data:", error);
+    }
   };
-  // const handleSearch = () => {
-  //   // Add search logic here
-  //   console.log("Searching for:", formData);
-  // };
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "http://13.201.136.34:8000/master/customers/"
+      );
+      setCustomers(response.data);
+      console.log("Data fetched:", response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleDelete = async (customerId) => {
+    try {
+      const response = await axios.delete(
+        `http://13.201.136.34:8000/master/customers/${customerId}/`
+      );
+      console.log("Customer deleted:", response.data);
+      fetchData(); // Refresh the data after deletion
+    } catch (error) {
+      console.error("Error deleting customer:", error);
+    }
+  };
+
+  const handleEdit = async (customerId) => {
+    try {
+      const response = await axios.get(
+        `http://13.201.136.34:8000/master/customers/${customerId}/`
+      );
+      console.log("Editing customer:", response.data);
+      const { customer_id, customer_type, preference_string } = response.data;
+      setFormData({
+        customer_id,
+        customer_type,
+        preference_string,
+      });
+    } catch (error) {
+      console.error("Error fetching customer for edit:", error);
+    }
+  };
+  const handleSearch = () => {
+    const { customer_id } = formData;
+    if (customer_id.trim() === "") {
+      setSearchResults(customers);
+    } else {
+      const filtered = customers.filter((customer) =>
+        String(customer.customer_id)
+          .toLowerCase()
+          .includes(customer_id.toLowerCase())
+      );
+      setSearchResults(filtered);
+    }
+  };
 
   return (
     <div className="mastercus">
@@ -62,40 +127,45 @@ const MasterCustomers = () => {
                     <div className="row">
                       <div className="col-md-12">
                         <div className="container mt-5">
-                          {/* <h1 className='align-items-center justify-content-between'>Master For State Code</h1>  */}
                           <form
                             onSubmit={handleSubmit}
                             className="d-flex flex-wrap justify-content-between align-items-center form-container"
                           >
                             <div className="mb-3 col-md-6 col-lg-3">
-                              <label htmlFor="custID" className="form-label">
+                              <label
+                                htmlFor="customer_id"
+                                className="form-label"
+                              >
                                 Customer ID
                               </label>
                               <input
                                 type="text"
                                 className="form-control"
-                                id="custID"
-                                name="custID"
-                                value={formData.custID}
-                                onChange={handleChange}
-                              />
-                            </div>
-                            <div className="mb-3 col-md-6 col-lg-3">
-                              <label htmlFor="custType" className="form-label">
-                                Customer Type
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                id="custType"
-                                name="custType"
-                                value={formData.custType}
+                                id="customer_id"
+                                name="customer_id"
+                                value={formData.customer_id}
                                 onChange={handleChange}
                               />
                             </div>
                             <div className="mb-3 col-md-6 col-lg-3">
                               <label
-                                htmlFor="prefrenceString"
+                                htmlFor="customer_type"
+                                className="form-label"
+                              >
+                                Customer Type
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="customer_type"
+                                name="customer_type"
+                                value={formData.customer_type}
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="mb-3 col-md-6 col-lg-3">
+                              <label
+                                htmlFor="preference_string"
                                 className="form-label"
                               >
                                 Preference String
@@ -103,9 +173,9 @@ const MasterCustomers = () => {
                               <input
                                 type="text"
                                 className="form-control"
-                                id="prefrenceString"
-                                name="prefrenceString"
-                                value={formData.prefrenceString}
+                                id="preference_string"
+                                name="preference_string"
+                                value={formData.preference_string}
                                 onChange={handleChange}
                               />
                             </div>
@@ -134,14 +204,15 @@ const MasterCustomers = () => {
                                   id="mastercustomersearch"
                                   className="form-control"
                                   placeholder="Search..."
-                                  name="stateCode"
-                                  value={formData.stateCode}
+                                  name="customer_id"
+                                  value={formData.customer_id}
                                   onChange={handleChange}
                                 />
 
                                 <button
                                   type="button"
                                   className="mastercustomer"
+                                  onClick={handleSearch}
                                 >
                                   Search
                                 </button>
@@ -151,54 +222,47 @@ const MasterCustomers = () => {
                         </div>
                         <div className="container mt-5 table-container">
                           <div className="table-responsive">
-                            {/* Table */}
                             <table className="table table-bordered">
-                              {/* Table Headers */}
                               <thead>
                                 <tr>
                                   <th>Customer ID</th>
                                   <th>Customer Type</th>
-                                  <th>String</th>
-
+                                  <th>Preference String</th>
                                   <th>Actions</th>
                                 </tr>
                               </thead>
-                              {/* Table Body */}
                               <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>101</td>
-                                  <td>California</td>
-
-                                  <td>
-                                    <button className="masterState1icon me-2">
-                                      <i className="fas fa-plus"></i>
-                                    </button>
-                                    <button className="masterState1icon me-2">
-                                      <i className="fas fa-edit"></i>
-                                    </button>
-                                    <button className="masterState1icon ">
-                                      <i className="fas fa-trash"></i>
-                                    </button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>2</td>
-                                  <td>102</td>
-                                  <td>New York</td>
-
-                                  <td>
-                                    <button className="masterState1icon me-2">
-                                      <i className="fas fa-plus"></i>
-                                    </button>
-                                    <button className="masterState1icon me-2">
-                                      <i className="fas fa-edit"></i>
-                                    </button>
-                                    <button className="masterState1icon">
-                                      <i className="fas fa-trash"></i>
-                                    </button>
-                                  </td>
-                                </tr>
+                                {(searchResults.length > 0
+                                  ? searchResults
+                                  : customers
+                                ).map((customer) => (
+                                  <tr key={customer.customer_id}>
+                                    <td>{customer.customer_id}</td>
+                                    <td>{customer.customer_type}</td>
+                                    <td>{customer.preference_string}</td>
+                                    <td>
+                                      <button className="masterState1icon me-2">
+                                        <i className="fas fa-plus"></i>
+                                      </button>
+                                      <button
+                                        className="masterState1icon me-2"
+                                        onClick={() =>
+                                          handleEdit(customer.customer_id)
+                                        }
+                                      >
+                                        <i className="fas fa-edit"></i>
+                                      </button>
+                                      <button
+                                        className="masterState1icon"
+                                        onClick={() =>
+                                          handleDelete(customer.customer_id)
+                                        }
+                                      >
+                                        <i className="fas fa-trash"></i>
+                                      </button>
+                                    </td>
+                                  </tr>
+                                ))}
                               </tbody>
                             </table>
                           </div>

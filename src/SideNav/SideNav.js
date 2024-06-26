@@ -160,7 +160,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/bom-routing">
                 BOM Routing Master
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/operator-supervisor-master">
+              <Dropdown.Item as={Link} to="/operator-supervisor-master">
                 Operator and Supervisor Master
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/contractor-master">
