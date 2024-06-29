@@ -34,6 +34,11 @@ body.no-scroll {
   background-color: rgb(241, 242, 244);
   height: 100vh;
 }
+.work-center h5 {
+  color: blue;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .workcentermaster {
   background-color: white;
   height: auto;
@@ -124,26 +129,10 @@ body.no-scroll {
   padding: 10px;
 }
 
-@media (max-width: 767.98px) {
-  .workmain {
-    padding: 10px;
-  }
-
-  .workmain .text-md-end {
-    text-align: left;
-  }
-
-  .workmain .col-md-6.text-start,
-  .workmain .col-md-6.text-md-end {
-    width: 100%;
-  }
-}
-
 .centerMain {
   margin-top: 20px 20px;
   height: auto;
   background-color: aliceblue;
-  box-shadow: 0 4px 2px -2px grey;
 }
 .centerselect {
   box-shadow: 0 4px 2px -2px grey;
@@ -352,4 +341,47 @@ body.no-scroll {
 .card-work .card-body-work {
   max-height: 430px; /* Set a max height for scrollable content */
   overflow-y: auto; /* Enable vertical scrolling */
+} /* For screens smaller than 768px (tablets and phones) */
+@media (max-width: 767.98px) {
+  .workmain {
+    height: auto;
+  }
+  .workmain .col-md-6.text-start,
+  .workmain .col-md-6.text-md-end {
+    width: 100%;
+    text-align: left !important;
+    margin-top: 10px;
+  }
+
+  .workmain .btn-work {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  /* Adjust other specific elements as needed */
+  .overlay,
+  .overlay-machine,
+  .overlay-work {
+    align-items: flex-start;
+    margin-top: 130px; /* Adjust alignment as per design */
+  }
+
+  .card,
+  .card-machine,
+  .card-work {
+    margin-top: -50px; /* Adjust card margins */
+    width: 90%;
+    max-width: 100%; /* Ensure cards take full width */
+  }
+
+  .card-body,
+  .card-body-machine,
+  .card-body-work {
+    max-height: 300px; /* Reduce max height for smaller screens */
+  }
+
+  .card-work .card-body-work {
+    max-height: 350px; /* Adjust height for card body in card-work */
+  }
 }

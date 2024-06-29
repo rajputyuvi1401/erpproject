@@ -37,7 +37,7 @@ const MasterState = () => {
 
   const fetchStates = () => {
     axios
-      .get("http://13.201.136.34:8000/master/states/")
+      .get("https://13.201.136.34:8000/master/states/")
       .then((response) => {
         console.log("States fetched:", response.data);
         setStates(response.data);
@@ -59,7 +59,7 @@ const MasterState = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://13.201.136.34:8000/master/states/", formData)
+      .post("https://13.201.136.34:8000/master/states/", formData)
       .then((response) => {
         console.log("Post successful:", response.data);
         setFormData({
@@ -78,7 +78,7 @@ const MasterState = () => {
 
   const handleEdit = (stateId) => {
     axios
-      .get(`http://13.201.136.34:8000/master/states/${stateId}/`)
+      .get(`https://13.201.136.34:8000/master/states/${stateId}/`)
       .then((response) => {
         console.log("Editing state:", response.data);
         const { state_id, state_no, state_name, state_code } = response.data;
@@ -96,7 +96,7 @@ const MasterState = () => {
 
   const handleDelete = (stateId) => {
     axios
-      .delete(`http://13.201.136.34:8000/master/states/${stateId}/`)
+      .delete(`https://13.201.136.34:8000/master/states/${stateId}/`)
       .then((response) => {
         console.log("Delete successful:", response.data);
         fetchStates();

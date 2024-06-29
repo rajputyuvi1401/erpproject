@@ -5,6 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../../NavBar/NavBar";
 import SideNav from "../../../SideNav/SideNav";
 import "./DepartmentHead.css";
+
 const DepartmentHead = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -51,53 +52,55 @@ const DepartmentHead = () => {
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
-                          <table className="table table-responsive table-striped">
-                            <thead>
-                              <tr>
-                                <th scope="col">Sr</th>
-                                <th scope="col">Department Name</th>
-                                <th scope="col">Dept Head 1</th>
-                                <th scope="col">Dept Head 2</th>
-                                <th scope="col">Dept Head 3</th>
-                                <th scope="col">MRN Approval Limit</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {[1, 2, 3, 4, 5, 6].map((num, index) => (
-                                <tr key={index}>
-                                  <td>{num}</td>
-                                  <td>Store</td>
-                                  <td>
-                                    <select className="form-select">
-                                      <option>Select</option>
-                                      <option>Head 1</option>
-                                      <option>Head 2</option>
-                                    </select>
-                                  </td>
-                                  <td>
-                                    <select className="form-select">
-                                      <option>Select</option>
-                                      <option>Head 1</option>
-                                      <option>Head 2</option>
-                                    </select>
-                                  </td>
-                                  <td>
-                                    <select className="form-select">
-                                      <option>Select</option>
-                                      <option>Head 1</option>
-                                      <option>Head 2</option>
-                                    </select>
-                                  </td>
-                                  <td>
-                                    <input
-                                      type="text"
-                                      className="form-control"
-                                    />
-                                  </td>
+                          <div className="table-responsive">
+                            <table className="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Sr</th>
+                                  <th scope="col">Department Name</th>
+                                  <th scope="col">Dept Head 1</th>
+                                  <th scope="col">Dept Head 2</th>
+                                  <th scope="col">Dept Head 3</th>
+                                  <th scope="col">MRN Approval Limit</th>
                                 </tr>
-                              ))}
-                            </tbody>
-                          </table>
+                              </thead>
+                              <tbody>
+                                {[1, 2, 3, 4, 5, 6].map((num, index) => (
+                                  <tr key={index}>
+                                    <td>{num}</td>
+                                    <td>Store</td>
+                                    <td>
+                                      <select className="form-select">
+                                        <option>Select</option>
+                                        <option>Head 1</option>
+                                        <option>Head 2</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select className="form-select">
+                                        <option>Select</option>
+                                        <option>Head 1</option>
+                                        <option>Head 2</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select className="form-select">
+                                        <option>Select</option>
+                                        <option>Head 1</option>
+                                        <option>Head 2</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
                       <div className="row">

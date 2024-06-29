@@ -50,6 +50,19 @@ import OperatorSupervisor from "./components/Operator-Supervisor/OperatorSupervi
 import Supervisor from "./components/Operator-Supervisor/Supervisor/Supervisor";
 import DepartmentHead from "./components/Operator-Supervisor/DepartmentHead/DepartmentHead";
 
+// Contractor Master
+import ContractorMaster from "./components/ContractorMaster/ContractorMaster";
+import AddContractorMAster from "./components/ContractorMaster/AddContractor/AddContractor";
+
+// Shift Master
+import ShiftMaster from "./components/ShiftMaster/ShiftMaster";
+
+// Unit Conversion
+import UnitConversion from "./components/UnitConversion/UnitConversion";
+
+// Price List Master
+import PriceListMaster from "./components/PriceListMaster/PriceListMaster";
+
 function App() {
   return (
     <div className="App">
@@ -120,6 +133,19 @@ function App() {
         />
         <Route path="/Supervisor" element={<Supervisor />} />
         <Route path="/Department-Head" element={<DepartmentHead />} />
+
+        {/* Contractor Master */}
+        <Route path="/contractor-master" element={<ContractorMaster />} />
+        <Route path="/Addcontractor-master" element={<AddContractorMAster />} />
+
+        {/* Shift Master */}
+        <Route path="/shift-master" element={<ShiftMaster />} />
+
+        {/* Unit Conversion */}
+        <Route path="/unit-conversion" element={<UnitConversion />} />
+
+        {/* Price List Master */}
+        <Route path="/price-list-master" element={<PriceListMaster />} />
       </Routes>
     </div>
   );

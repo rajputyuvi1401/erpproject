@@ -46,13 +46,14 @@ body.no-scroll {
   padding: 20px;
   box-shadow: 0 4px 2px -2px grey;
 }
+
 .venbtn {
+  display: inline-block;
   border: none;
   background-color: rgba(235, 233, 233, 0.685);
-  padding: 7px;
+  padding: 7px 15px; /* Adjust padding for smaller screens */
   border-radius: 10px;
   margin: 5px;
-  margin-top: -10px;
   text-decoration: none;
   color: black;
 }
@@ -66,9 +67,11 @@ body.no-scroll {
 .Vendermainbtn {
   border: none;
   background-color: rgba(235, 233, 233, 0.685);
-  padding: 5px;
+  padding: 7px 15px; /* Adjust padding for smaller screens */
   border-radius: 10px;
   margin: 5px;
+  text-decoration: none;
+  color: black;
 }
 
 .Vender3table {
@@ -123,3 +126,40 @@ body.no-scroll {
 }
 
 /* You can keep your existing CSS for other elements */
+@media (max-width: 767.98px) {
+  .VenderList2 {
+    height: auto; /* Adjust height for smaller screens */
+  }
+
+  .VenderList2 h5 {
+    font-size: 1.2rem; /* Adjust font size */
+  }
+
+  .venbtn {
+    padding: 6px 12px; /* Adjust padding */
+    font-size: 0.9rem; /* Adjust font size */
+    margin-top: 5px; /* Adjust margin */
+  }
+}
+
+@media (max-width: 767.98px) {
+  .VenderListMain {
+    height: auto; /* Adjust height for smaller screens */
+  }
+  .VenderList1 {
+    height: auto;
+  }
+  .Vendermainbtn {
+    padding: 6px 12px; /* Adjust padding */
+    font-size: 0.9rem; /* Adjust font size */
+    margin-top: 5px; /* Adjust margin */
+  }
+}
+
+@media (max-width: 575.98px) {
+  .Vendermainbtn {
+    padding: 5px 10px; /* Further adjust padding for smaller screens */
+    font-size: 0.8rem; /* Further adjust font size */
+    margin: 3px; /* Further adjust margin */
+  }
+}

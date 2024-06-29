@@ -17,7 +17,7 @@ function Home() {
 
     try {
       const response = await fetch(
-        "http://13.201.136.34:8000/Erp_admin/api/auth/login/",
+        "https://13.201.136.34:8000/Erp_admin/api/auth/login/",
         {
           method: "POST",
           headers: {

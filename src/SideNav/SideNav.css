@@ -37,7 +37,7 @@
 .blueside-Nav .close-button {
   position: absolute;
   top: 10px;
-  right: 15px;
+  right: 35px;
   background: none;
   border: none;
   color: white;
@@ -45,11 +45,12 @@
   cursor: pointer;
 }
 .blueside-Nav .logo-light {
-  width: 80%;
+  width: 60%;
+  text-align: start;
   height: auto;
   margin-top: -60px;
   display: block;
-  margin-left: auto;
+  margin-left: -10px;
   margin-right: auto;
 }
 
@@ -65,8 +66,8 @@
 .blueside-Nav .dropdown-menu {
   display: none;
   background: rgb(146, 54, 231);
-  position: relative;
-  top: 0;
+  position: absolute;
+  top: 100%;
   left: 0;
   width: 100%;
   padding: 0;
@@ -87,10 +88,11 @@
 .blueside-Nav .dropdown-menu .dropdown-item:hover {
   background-color: rgb(68, 77, 165);
   color: white;
-  width: 130%;
+  width: 100%;
 }
 
-@media screen and (max-width: 768px) {
+/* Media queries for responsive design */
+@media screen and (max-width: 992px) {
   .blueside-Nav .side-nav {
     width: 200px;
     left: -200px;
@@ -101,7 +103,7 @@
   }
 
   .blueside-Nav .logo-light {
-    width: 60%;
+    width: 40%;
   }
 
   .blueside-Nav .side-nav ul li {
@@ -113,21 +115,45 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .blueside-Nav .side-nav {
-    width: 100%;
-    left: -100%;
+    width: 180px;
+    left: -180px;
   }
 
   .blueside-Nav .side-nav.open {
     left: 0;
   }
+
   .blueside-Nav .logo-light {
-    width: 50%;
+    width: 40%;
   }
 
   .blueside-Nav .side-nav ul li {
     padding: 8px 10px;
+  }
+
+  .blueside-Nav .dropdown-menu .dropdown-item {
+    padding: 10px 12px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .blueside-Nav .side-nav {
+    width: 95%;
+    left: -100%; /* Slide off-screen initially */
+  }
+
+  .blueside-Nav .side-nav.open {
+    left: 0; /* Slide in when open */
+  }
+
+  .blueside-Nav .logo-light {
+    width: 40%;
+  }
+
+  .blueside-Nav .side-nav ul li {
+    padding: 8px 8px;
   }
 
   .blueside-Nav .dropdown-menu .dropdown-item {

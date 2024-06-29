@@ -226,6 +226,9 @@ body.no-scroll {
   .table td {
     white-space: nowrap;
   }
+  .SupplierCus {
+    height: auto;
+  }
 }
 
 /* card new button */

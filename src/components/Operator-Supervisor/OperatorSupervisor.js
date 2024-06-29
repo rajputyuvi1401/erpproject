@@ -149,17 +149,20 @@ const OperatorSupervisor = () => {
                 <div className="OperatorSupervisor1">
                   <div className="Operator">
                     <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-5 text-start">
-                          <h5 style={{ color: "blue" }}>
+                      <div className="row align-items-center">
+                        <div className="col-md-5 col-12 text-start">
+                          <h5 className="text-primary">
                             Operator / Supervisor / Staff
                           </h5>
                         </div>
-                        <div className="col-md-7 text-end">
-                          <Link to={"/Supervisor"} className="Operatorbtn">
+                        <div className="col-md-7 col-12 text-md-end text-start mt-3 mt-md-0">
+                          <Link to={"/Supervisor"} className="Operatorbtn me-2">
                             Add New Operator/Supervisor
                           </Link>
-                          <Link to={"/Department-Head"} className="Operatorbtn">
+                          <Link
+                            to={"/Department-Head"}
+                            className="Operatorbtn me-2"
+                          >
                             Department Head
                           </Link>
                           <Link className="Operatorbtn">Export Report</Link>
@@ -170,14 +173,14 @@ const OperatorSupervisor = () => {
                   <div className="OperatorMain">
                     <div className="container-fluid">
                       <div className="row gy-3 text-start">
-                        <div className="col-md-1">
+                        <div className="col-md-1 col-6">
                           <label htmlFor="sharp" className="form-label"></label>
                           <select id="sharp" className="form-select mb-4">
                             <option value="">Sharp</option>
                             {/* Add options here */}
                           </select>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 col-6">
                           <div className="form-check mb-2">
                             <input
                               className="form-check-input"
@@ -191,7 +194,6 @@ const OperatorSupervisor = () => {
                               Name
                             </label>
                           </div>
-
                           <input
                             type="text"
                             id="description"
@@ -199,43 +201,43 @@ const OperatorSupervisor = () => {
                             placeholder="Operator Name"
                           />
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 col-6">
                           <label htmlFor="description" className="form-label">
                             Description
                           </label>
                           <select id="contractor" className="form-select">
-                            <option value="">ALl</option>
+                            <option value="">All</option>
                             {/* Add options here */}
                           </select>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 col-6">
                           <label htmlFor="contractor" className="form-label">
                             Contractor
                           </label>
                           <select id="contractor" className="form-select">
-                            <option value="">ALl</option>
+                            <option value="">All</option>
                             {/* Add options here */}
                           </select>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 col-6">
                           <label htmlFor="type" className="form-label">
                             Type
                           </label>
                           <select id="type" className="form-select">
-                            <option value="">ALl</option>
+                            <option value="">All</option>
                             {/* Add options here */}
                           </select>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 col-6">
                           <label htmlFor="status" className="form-label">
                             Status
                           </label>
                           <select id="status" className="form-select">
-                            <option value="">ALl</option>
+                            <option value="">All</option>
                             {/* Add options here */}
                           </select>
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-1 col-12">
                           <button className="operatebtn mt-4 w-100">
                             Search
                           </button>
@@ -243,6 +245,7 @@ const OperatorSupervisor = () => {
                       </div>
                     </div>
                   </div>
+
                   <div className="Operatortable">
                     <div className="container-fluid">
                       <div className="row gy-3 text-start">

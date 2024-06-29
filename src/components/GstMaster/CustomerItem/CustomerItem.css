@@ -77,7 +77,13 @@ body.no-scroll {
   flex-direction: column;
   justify-content: space-between;
 }
+.input-group {
+  width: 100%; /* Ensure input group takes full width */
+}
 
+.input-group .form-control {
+  width: 100%; /* Ensure input field takes full width within input group */
+}
 .cusmainbtn,
 .cusmainniche {
   border: none;

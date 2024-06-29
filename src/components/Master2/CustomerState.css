@@ -61,9 +61,12 @@ body.no-scroll {
   #customersearch {
     width: 100%;
   }
-  .customerState,
-  .customerStateicon {
+  .customerState {
     width: 100%;
+    margin-top: 10px;
+  }
+  .customerStateicon {
+    width: 20%;
     margin-top: 10px;
   }
 }

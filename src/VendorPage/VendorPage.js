@@ -83,7 +83,7 @@ const VendorPage = () => {
     try {
       // Replace with your actual endpoint
       const response = await axios.post(
-        "http://13.201.136.34:8000/vendor/register/",
+        "https://13.201.136.34:8000/vendor/register/",
         formData
       );
       console.log("General Data submitted successfully:", response.data);
@@ -108,7 +108,7 @@ const VendorPage = () => {
     try {
       // Replace with your actual endpoint
       const response = await axios.post(
-        "http://13.201.136.34:8000/vendor/register/",
+        "https://13.201.136.34:8000/vendor/register/",
         formData
       );
       console.log("Data-2 submitted successfully:", response.data);

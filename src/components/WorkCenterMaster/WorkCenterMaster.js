@@ -302,130 +302,53 @@ const WorkCenterMaster = () => {
                                         </div>
                                       </div>
 
-                                      <table className="table table-bordered table-responsive">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">Sr</th>
-                                            <th scope="col">Type</th>
-                                            <th scope="col">Type Group</th>
-                                            <th scope="col">Shift</th>
-                                            <th scope="col">Avail Hours</th>
-                                            <th scope="col">Edit</th>
-                                            <th scope="col">Delete</th>
-                                            <th scope="col">TypeID</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>cnc</td>
-                                            <td>
-                                              <select className="form-select">
-                                                <option value="1">
-                                                  Machining
-                                                </option>
-                                                <option value="2">
-                                                  Machining
-                                                </option>
-                                              </select>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>
-                                              <button className="btn-mcah">
-                                                Edit
-                                              </button>
-                                            </td>
-                                            <td>
-                                              <button className="btn-mcah">
-                                                Delete
-                                              </button>
-                                            </td>
-                                            <td>13</td>
-                                          </tr>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>cnc</td>
-                                            <td>
-                                              <select className="form-select">
-                                                <option value="1">
-                                                  Machining
-                                                </option>
-                                                <option value="2">
-                                                  Machining
-                                                </option>
-                                              </select>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>
-                                              <button className="btn-mcah">
-                                                Edit
-                                              </button>
-                                            </td>
-                                            <td>
-                                              <button className="btn-mcah">
-                                                Delete
-                                              </button>
-                                            </td>
-                                            <td>13</td>
-                                          </tr>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>cnc</td>
-                                            <td>
-                                              <select className="form-select">
-                                                <option value="1">
-                                                  Machining
-                                                </option>
-                                                <option value="2">
-                                                  Machining
-                                                </option>
-                                              </select>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>
-                                              <button className="btn-mcah">
-                                                Edit
-                                              </button>
-                                            </td>
-                                            <td>
-                                              <button className="btn-mcah">
-                                                Delete
-                                              </button>
-                                            </td>
-                                            <td>13</td>
-                                          </tr>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>cnc</td>
-                                            <td>
-                                              <select className="form-select">
-                                                <option value="1">
-                                                  Machining
-                                                </option>
-                                                <option value="2">
-                                                  Machining
-                                                </option>
-                                              </select>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>
-                                              <button className="btn-mcah">
-                                                Edit
-                                              </button>
-                                            </td>
-                                            <td>
-                                              <button className="btn-mcah">
-                                                Delete
-                                              </button>
-                                            </td>
-                                            <td>13</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
+                                      <div className="table-responsive">
+                                        <table className="table table-bordered">
+                                          <thead>
+                                            <tr>
+                                              <th scope="col">Sr</th>
+                                              <th scope="col">Type</th>
+                                              <th scope="col">Type Group</th>
+                                              <th scope="col">Shift</th>
+                                              <th scope="col">Avail Hours</th>
+                                              <th scope="col">Edit</th>
+                                              <th scope="col">Delete</th>
+                                              <th scope="col">TypeID</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {/* Sample rows (adjust as per your data) */}
+                                            <tr>
+                                              <td>1</td>
+                                              <td>cnc</td>
+                                              <td>
+                                                <select className="form-select">
+                                                  <option value="1">
+                                                    Machining
+                                                  </option>
+                                                  <option value="2">
+                                                    Machining
+                                                  </option>
+                                                </select>
+                                              </td>
+                                              <td>0</td>
+                                              <td>0</td>
+                                              <td>
+                                                <button className="btn-mcah">
+                                                  <i className="fas fa-edit"></i>
+                                                </button>
+                                              </td>
+                                              <td>
+                                                <button className="btn-mcah">
+                                                  <i className="fas fa-trash"></i>
+                                                </button>
+                                              </td>
+                                              <td>13</td>
+                                            </tr>
+                                            {/* Repeat similar rows for your data */}
+                                          </tbody>
+                                        </table>
+                                      </div>
 
                                       <div className="row">
                                         <div className="col-md-12 text-start">
@@ -438,7 +361,7 @@ const WorkCenterMaster = () => {
                                               borderRadius: "10px",
                                             }}
                                           >
-                                            save
+                                            Save
                                           </button>
                                         </div>
                                       </div>
@@ -684,10 +607,16 @@ const WorkCenterMaster = () => {
                                   <td>0</td>
                                   <td>0</td>
                                   <td>
-                                    <button className="btn-mcah">Edit</button>
+                                    <button className="btn-mcah">
+                                      {" "}
+                                      <i className="fas fa-edit"></i>
+                                    </button>
                                   </td>
                                   <td>
-                                    <button className="btn-mcah">Delete</button>
+                                    <button className="btn-mcah">
+                                      {" "}
+                                      <i className="fas fa-trash"></i>
+                                    </button>
                                   </td>
                                 </tr>
                               </tbody>

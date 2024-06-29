@@ -41,7 +41,7 @@ const MasterCustomers = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://13.201.136.34:8000/master/customers/",
+        "https://13.201.136.34:8000/master/customers/",
         formData
       );
       console.log("Data posted:", response.data);
@@ -54,7 +54,7 @@ const MasterCustomers = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://13.201.136.34:8000/master/customers/"
+        "https://13.201.136.34:8000/master/customers/"
       );
       setCustomers(response.data);
       console.log("Data fetched:", response.data);
@@ -70,7 +70,7 @@ const MasterCustomers = () => {
   const handleDelete = async (customerId) => {
     try {
       const response = await axios.delete(
-        `http://13.201.136.34:8000/master/customers/${customerId}/`
+        `https://13.201.136.34:8000/master/customers/${customerId}/`
       );
       console.log("Customer deleted:", response.data);
       fetchData(); // Refresh the data after deletion
@@ -82,7 +82,7 @@ const MasterCustomers = () => {
   const handleEdit = async (customerId) => {
     try {
       const response = await axios.get(
-        `http://13.201.136.34:8000/master/customers/${customerId}/`
+        `https://13.201.136.34:8000/master/customers/${customerId}/`
       );
       console.log("Editing customer:", response.data);
       const { customer_id, customer_type, preference_string } = response.data;

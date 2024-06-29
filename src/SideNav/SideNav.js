@@ -154,7 +154,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="#/cycle-time-master">
                 Cycle Time Master
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/commodity-master">
+              <Dropdown.Item as={Link} to="/commodity-master">
                 Commodity Master
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="/bom-routing">
@@ -163,16 +163,16 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/operator-supervisor-master">
                 Operator and Supervisor Master
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/contractor-master">
+              <Dropdown.Item as={Link} to="/contractor-master">
                 Contractor Master
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/shift-master">
+              <Dropdown.Item as={Link} to="/shift-master">
                 Shift Master
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/unit-conversion">
+              <Dropdown.Item as={Link} to="/unit-conversion">
                 Unit Conversion
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/price-list">
+              <Dropdown.Item as={Link} to="/price-list-master">
                 Price List
               </Dropdown.Item>
             </Dropdown.Menu>

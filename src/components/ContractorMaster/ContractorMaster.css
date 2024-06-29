@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
 }
-
 .App {
   display: flex;
   flex-direction: column;
@@ -16,7 +15,6 @@ main {
   margin-top: 60px;
   transition: margin-left 0.3s;
 }
-
 .main-content.shifted {
   margin-left: 260px;
 }
@@ -25,133 +23,113 @@ body.no-scroll {
   overflow: hidden;
 }
 
-.OperatorSupervisor {
+.ContractorMaster {
   width: 100%;
   background-color: rgb(241, 242, 244);
-  height: 130vh;
+  min-height: 100vh;
 }
 
-.OperatorSupervisor1 {
+.ContractorMaster1 {
   background-color: white;
   padding: 20px;
   height: auto;
 }
 
-.Operator {
+.Contractor {
   background-color: aliceblue;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.Operatorbtn {
+.Contractorbtn {
   background-color: rgba(235, 233, 233, 0.685);
   border: none;
   padding: 10px;
   border-radius: 5px;
+  margin-top: -5px;
+  margin-right: 10px;
   color: black;
   text-decoration: none;
+  margin-bottom: 10px;
 }
 
-.OperatorMain {
+.ContractorMain {
   background-color: aliceblue;
-  height: auto;
   padding: 20px;
   margin-top: 50px;
 }
-
-.operatebtn {
+.ContractorMainbtn {
   background-color: rgba(235, 233, 233, 0.685);
   border: none;
   padding: 10px;
   border-radius: 5px;
-  width: 100%;
+  margin-top: -5px;
+  margin-right: 10px;
 }
-
-.Operatortable {
+.Contractortable {
   background-color: white;
   padding: 20px;
   margin-top: 20px;
   overflow-x: auto;
 }
 
-.Operatortable .table-responsive {
-  max-height: 400px;
+.Contractortable .table-responsive {
+  max-height: 400px; /* Adjust height as needed */
   overflow-y: auto;
 }
 
-.Operatortable .table th,
-.Operatortable .table td {
+.Contractortable .table th,
+.Contractortable .table td {
   white-space: nowrap;
 }
-
-.Operatortablebtn {
-  background-color: rgba(235, 233, 233, 0.685);
+.contractorbtnicon {
   border: none;
-  padding: 10px;
-  border-radius: 5px;
 }
-.Operatorbottom {
-  background-color: aliceblue;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-@media (max-width: 767px) {
-  .Operator .text-end {
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .Contractor .text-end {
     text-align: start !important;
     margin-top: 10px;
   }
 
-  .Operatorbtn {
+  .Contractorbtn {
     width: 100%;
     text-align: center;
-    margin: 5px;
+  }
+  .ContractorMainbtn {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .ContractorMain .row {
+    flex-direction: column;
+  }
+
+  .ContractorMain .col-md-3,
+  .ContractorMain .col-md-6,
+  .ContractorMain .col-md-1,
+  .ContractorMain .col-md-2 {
+    width: 100%;
     margin-bottom: 10px;
   }
 
-  .OperatorMain .row > div {
-    margin-bottom: 10px;
-  }
-
-  .Operatortable .table {
-    font-size: 0.85rem;
-  }
-
-  .Operatorbottom p {
-    font-size: 0.85rem;
+  .ContractorMain .col-md-6 input {
+    width: 100%;
   }
 }
 
 @media (max-width: 360px) {
-  .Operator h5 {
+  .Contractor h5 {
     font-size: 1.2rem;
   }
 
-  .Operatorbtn {
-    padding: 8px 10px;
-    font-size: 0.9rem;
-    margin: 5px;
-  }
-
-  .OperatorMain .form-label {
-    font-size: 0.85rem;
-  }
-
-  .OperatorMain .form-select,
-  .OperatorMain .form-control {
-    font-size: 0.85rem;
-  }
-
-  .operatebtn {
+  .Contractorbtn {
     padding: 8px 10px;
     font-size: 0.9rem;
   }
 
-  .Operatortable .table {
-    font-size: 0.8rem;
-  }
-
-  .Operatorbottom p {
-    font-size: 0.8rem;
+  .Contractor .btn {
+    width: 100%;
+    margin-bottom: 5px;
   }
 }
