@@ -1,0 +1,457 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+
+.main-content.shifted {
+  margin-left: 260px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.PriceListMaster {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  min-height: 100vh;
+}
+
+.PriceListMaster1 {
+  background-color: white;
+  padding: 20px;
+  height: auto;
+}
+
+.PriceList {
+  background-color: aliceblue;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.PriceMasterbtn,
+a.PriceMasterbtn {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.PriceListMain {
+  background-color: aliceblue;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.PriceListMainbtn {
+  background-color: rgba(235, 233, 233, 0.685);
+  border: none;
+  padding: 8px;
+  margin-top: 25px;
+  border-radius: 5px;
+}
+
+.PriceListtable {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.PriceListtable .table-responsive {
+  max-height: 400px; /* Adjust height as needed */
+  overflow-y: auto;
+}
+
+.PriceListtable .table th {
+  white-space: nowrap;
+}
+.PriceListtable .table td {
+  height: 180px;
+}
+
+.PriceListbtnicon {
+  border: none;
+}
+
+@media (max-width: 576px) {
+  .PriceMasterbtn {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .PriceListMainbtn {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .PriceListtable {
+    padding: 10px;
+  }
+
+  .PriceListtable .table th,
+  .PriceListtable .table td {
+    font-size: 12px;
+  }
+
+  .PriceListMain {
+    padding: 10px;
+  }
+
+  .PriceList {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .PriceListMaster1 {
+    padding: 10px;
+  }
+
+  .AddPriceListCard {
+    width: 90%;
+  }
+
+  .form-label {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .col-sm-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .PriceListMaster1 {
+    padding: 5px;
+  }
+
+  .PriceMasterbtn,
+  .PriceListcardbtn,
+  .PriceListMainbtn {
+    padding: 6px;
+    margin: 3px;
+  }
+
+  .form-label {
+    padding: 5px;
+  }
+}
+.AddPriceListCard {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.AddPriceListCard .card-header {
+  background-color: aliceblue;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AddPriceListCard .card-body {
+  max-height: 400px; /* Set a max height for scrollable content */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.AddPriceListCard .card {
+  margin-top: -100px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 800px;
+  max-width: 90%;
+  z-index: 1001;
+}
+
+.AddPriceListCard .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dee2e6;
+  padding: 10px 20px;
+}
+
+.AddPriceListCard .card-header h5 {
+  margin: 0;
+}
+
+.AddPriceListCard .Closepricebtn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.PriceListcardbtn {
+  background-color: rgba(235, 233, 233, 0.685);
+  border: none;
+  padding: 8px;
+
+  border-radius: 5px;
+}
+
+.AddPriceListCard .form-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Item rate */
+.ItemRate-card {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.ItemRate-card .card-header {
+  background-color: aliceblue;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-item button {
+  color: white;
+  background-color: blueviolet;
+  width: 100%;
+}
+.ItemRate-card .card-body {
+  max-height: 400px; /* Set a max height for scrollable content */
+  overflow-y: auto;
+  max-width: 600px;
+}
+
+.ItemRate-card .card {
+  margin-top: -100px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 800px;
+  max-width: 90%;
+  z-index: 1001;
+}
+
+.ItemRate-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dee2e6;
+  padding: 10px 20px;
+}
+
+.ItemRate-card .card-header h5 {
+  margin: 0;
+}
+
+.ItemRate-card .CloseItemRatebtn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.PriceListcardbtn {
+  background-color: rgba(235, 233, 233, 0.685);
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .ItemRate-card {
+    width: 90%;
+  }
+
+  .form-label {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .col-sm-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .ItemRate-card {
+    width: 90%;
+  }
+
+  .PriceListcardbtn {
+    padding: 6px;
+  }
+
+  .form-label {
+    padding: 5px;
+  }
+}
+.itemratetable .table td,
+.itemratetable .table th {
+  width: 50px; /* Set fixed width for all cells */
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
+}
+
+.itemratetable .table-responsive {
+  overflow-x: auto;
+  width: 50%;
+}
+.itemratetablebtn {
+  background-color: rgba(235, 233, 233, 0.685);
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+}
+/* Overlay styles */
+.Pricereport-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card styles */
+.Pricereport-card {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  border-radius: 10px;
+  width: 90%; /* Adjust width for responsiveness */
+  max-width: 1000px; /* Maximum width for larger screens */
+  z-index: 1001;
+}
+
+/* Card header styles */
+.Pricereport-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dee2e6;
+  padding: 10px 20px;
+}
+
+/* Close button styles */
+.ClosePricereportbtn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Tab navigation styles */
+.nav-tabs {
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.nav-tabs .nav-item {
+  margin-bottom: -1px; /* Adjust for tab borders */
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-radius: 5px 5px 0 0;
+  color: #495057;
+  background-color: #fff;
+  transition: background-color 0.3s;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff #007bff #fff;
+}
+
+/* Tab content styles */
+.tab-content {
+  padding: 20px;
+  border: 1px solid #dee2e6;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  overflow-x: auto; /* Horizontal scrolling */
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.show {
+  display: block;
+}
+
+/* Form and table responsiveness */
+@media (max-width: 768px) {
+  .Pricereport-card {
+    width: 90%; /* Adjust width for smaller screens */
+  }
+  .tab-content {
+    padding: 10px;
+  }
+  .nav-tabs .nav-link {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  .tab-pane .row {
+    flex-wrap: wrap;
+  }
+  .tab-pane .col-md-4,
+  .tab-pane .col-sm-8 {
+    width: 100%; /* Full width on smaller screens */
+  }
+}

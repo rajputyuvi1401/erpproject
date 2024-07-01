@@ -38,14 +38,17 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
           </li>
           <li>
             <Link to="/home">
-              <FaHome /> Home
+              <FaHome />
+              Admin Login
             </Link>
           </li>
           <li>
             <Link to="/mainpage">
-              <FaHome /> Vendors Page
+              <FaHome />
+              Vendors
             </Link>
           </li>
+
           <li className="dropdown-container">
             <div
               className="dropdown-toggle"
@@ -53,7 +56,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             >
               <FaInfoCircle />
               <span style={{ marginRight: "100px" }}>ERP Setting</span>
-              {/* {dropdownsOpen.about ? <FaChevronUp /> : <FaChevronDown />} */}
             </div>
             <Dropdown.Menu show={dropdownsOpen.about}>
               <Dropdown.Item as={Link} to="#/user-configuration">
@@ -114,17 +116,24 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               onClick={() => toggleDropdown("services")}
             >
               <FaServicestack />
-              <span style={{ marginRight: "100px" }}>All Masters</span>
+              <span style={{ marginRight: "100px" }}>Masters</span>
               {/* {dropdownsOpen.services ? <FaChevronUp /> : <FaChevronDown />} */}
             </div>
             <Dropdown.Menu show={dropdownsOpen.services}>
+              <Dropdown.Item as={Link} to="/vender-list">
+                Supplier Customer Master
+              </Dropdown.Item>
+
+              <Dropdown.Item as={Link} to="/business-partner">
+                Business Partner Address
+              </Dropdown.Item>
               <Dropdown.Item as={Link} to="/item-master">
                 Item Master
               </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown>
                 <Dropdown.Toggle as="div" className="dropdown-item">
-                  Item Master
+                  Cross Reference
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item as={Link} to="/Customer-Supplier-Item-Link">
@@ -138,21 +147,9 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              <Dropdown.Item as={Link} to="/vender-list">
-                Supplier / Customer Master
-              </Dropdown.Item>
 
-              <Dropdown.Item as={Link} to="/business-partner">
-                Business Partner
-              </Dropdown.Item>
               <Dropdown.Item as={Link} to="/gst-rate-master">
                 GST Rate Master
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/work-center-master">
-                Work Center Master
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/cycle-time-master">
-                Cycle Time Master
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="/commodity-master">
                 Commodity Master
@@ -160,6 +157,14 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/bom-routing">
                 BOM Routing Master
               </Dropdown.Item>
+
+              <Dropdown.Item as={Link} to="/work-center-master">
+                Work Center Master
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/cycle-time-master">
+                Cycle Time Master
+              </Dropdown.Item>
+
               <Dropdown.Item as={Link} to="/operator-supervisor-master">
                 Operator and Supervisor Master
               </Dropdown.Item>
@@ -169,11 +174,40 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/shift-master">
                 Shift Master
               </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/work-center-master">
+                Work Center Schedule
+              </Dropdown.Item>
               <Dropdown.Item as={Link} to="/unit-conversion">
                 Unit Conversion
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/price-list-master">
+              <Dropdown.Item as={Link} to="#">
                 Price List
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Price List
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/price-list-master">
+                    Price List Master
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/price-entry-master">
+                    Price List Entry
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Item as={Link} to="/cost-center-master">
+                Cost Center Master
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/">
+                Project Management
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/">
+                Document Management
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/">
+                Master Report
               </Dropdown.Item>
             </Dropdown.Menu>
           </li>

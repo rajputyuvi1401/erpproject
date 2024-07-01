@@ -62,6 +62,7 @@ import UnitConversion from "./components/UnitConversion/UnitConversion";
 
 // Price List Master
 import PriceListMaster from "./components/PriceListMaster/PriceListMaster";
+import PriceEntry from "./components/PriceListMaster/PeiceEntry/PriceEntry";
 
 function App() {
   return (
@@ -71,7 +72,7 @@ function App() {
         <Route path="/mainpage" element={<VendorPage />} />
         <Route path="/" element={<Dashboard />} />
 
-        {/* All Master */}
+        {/* Master */}
 
         <Route path="/masterState" element={<MasterState />} />
         <Route path="/masterCustomer" element={<MasterCustomers />} />
@@ -146,6 +147,7 @@ function App() {
 
         {/* Price List Master */}
         <Route path="/price-list-master" element={<PriceListMaster />} />
+        <Route path="/price-entry-master" element={<PriceEntry />} />
       </Routes>
     </div>
   );

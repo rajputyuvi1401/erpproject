@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+.Admin-login {
+  background-color: rgba(205, 126, 231, 0.125);
+  width: 100%;
+  height: 100vh;
+}
+.Admin-form {
+  justify-content: center;
+  background-color: rgb(241, 242, 244);
+  margin-top: 15%;
+  width: 100%;
+  border-radius: 5px;
+  height: 90%;
+}
+.Adminform1 {
+  text-align: start;
+  padding: 10px;
+  margin: 10px;
+  margin-top: 30px;
+}
+.Adminlogo {
+  margin-top: 40px;
+  width: 20%;
+  height: 20%;
+}
+.Admin-form p {
+  margin-top: 20px;
+  color: gray;
+}
+.Admin-form button {
+  background-color: blueviolet;
+  color: white;
+  text-align: center;
+  width: 90%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+}
+.Admin-form button:hover {
+  background-color: blueviolet;
+  color: white;
+}
+.Admin-bottom {
+  text-decoration: none;
+  margin-top: 0px;
+  color: gray;
+}
+
+.social-media-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Space between icons */
+  margin: 20px 0;
+  margin-top: 20px;
+}
+
+.social-media-icon {
+  color: #333;
+  font-size: 1.5rem; /* Adjust size as needed */
+  transition: color 0.3s;
+}
+
+.social-media-icon:hover {
+  color: #0073e6; /* Adjust hover color as needed */
+}
+.Adminouter {
+  margin-top: 20px;
+  color: rgb(88, 88, 88);
+}
+.Adminouter-link {
+  color: white;
+  text-decoration: none;
+}
+@media screen and (max-width: 768px) {
+  .Admin-login {
+    height: auto; /* Change height to auto on smaller screens */
+  }
+}

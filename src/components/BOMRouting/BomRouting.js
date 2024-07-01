@@ -59,7 +59,7 @@ const BomRouting = () => {
                           <Link
                             to={"/bill-material"}
                             className="BOMRoutingbtn"
-                            style={{ padding: "8px" }}
+                            style={{ padding: "12px" }}
                           >
                             New / Modify BOM
                           </Link>

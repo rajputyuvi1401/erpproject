@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import "./Home.css";
+import "./Admin.css";
 import logo from "../assets/logo-dark.png";
-
-function Home() {
-  const [email, setemail] = useState("");
+const Admin = () => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,7 +16,7 @@ function Home() {
 
     try {
       const response = await fetch(
-        "http://13.201.136.34:8000/Erp_admin/api/auth/login/",
+        "http://13.201.136.34:8000/vendor/login/", // Ensure this URL is HTTPS
         {
           method: "POST",
           headers: {
@@ -29,42 +28,44 @@ function Home() {
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error("Admin Login error:", errorData);
-        throw new Error("Admin Login failed");
+        console.error("Vender Login error:", errorData);
+        throw new Error("Vender Login failed");
       }
 
       const responseData = await response.json();
-      console.log("Admin Login successful:", responseData);
-      navigate("/");
+      console.log("Vender Login successful:", responseData);
+      navigate("/"); // Navigate to the dashboard page
     } catch (error) {
-      console.error("Admin Login error:", error);
+      console.error("Vender Login error:", error);
     }
   };
 
   return (
-    <div className="home-login">
+    <div className="Admin-login">
       <div className="container">
         <div className="row" style={{ justifyContent: "center" }}>
           <div className="col-md-4">
-            <div className="home-form">
+            <div className="Admin-form">
               <form onSubmit={handleSubmit}>
-                <img className="logo" src={logo} alt="logo" />
+                <img className="Adminlogo" src={logo} alt="logo" />
+
                 <p>
-                  Enter your email address and <br /> password to access admin
-                  panel.
+                  Enter your email address and <br /> password to access the
+                  admin panel.
                 </p>
-                <div className="form1">
+                <div className="Adminform1">
+                  <h6 style={{ textAlign: "center" }}>Vender Login</h6>
                   <div className="mb-3">
                     <label htmlFor="emailInput" className="form-label">
-                      email
+                      Email
                     </label>
                     <input
-                      placeholder="user name"
+                      placeholder="Email"
                       type="email"
                       className="form-control"
                       id="emailInput"
                       value={email}
-                      onChange={(e) => setemail(e.target.value)}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="mb-3">
@@ -80,34 +81,22 @@ function Home() {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <div className="mb-3 form-check">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="exampleCheck1"
-                    />
-                    <label className="form-check-label" htmlFor="exampleCheck1">
-                      Remember me
-                    </label>
-                  </div>
                 </div>
                 <div className="mb-3">
-                  <button type="submit" className="btn">
+                  <button type="submit" className="Adminbtn">
                     Log In
                   </button>
                 </div>
-                <div></div>
               </form>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="outer">
+      <div className="Adminouter">
         <p>Powered by clumpcoder</p>
       </div>
     </div>
   );
-}
+};
 
-export default Home;
+export default Admin;
