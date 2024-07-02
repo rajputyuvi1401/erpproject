@@ -140,8 +140,8 @@
 
 @media screen and (max-width: 576px) {
   .blueside-Nav .side-nav {
-    width: 95%;
-    left: -100%; /* Slide off-screen initially */
+    width: 80%;
+    left: -97%; /* Slide off-screen initially */
   }
 
   .blueside-Nav .side-nav.open {

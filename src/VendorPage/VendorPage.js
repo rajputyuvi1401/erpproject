@@ -6,6 +6,7 @@ import NavBar from "../NavBar/NavBar";
 import SideNav from "../SideNav/SideNav";
 import axios from "axios";
 import "./VendorPage.css";
+import { Modal, Button } from "react-bootstrap";
 
 const VendorPage = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -67,6 +68,7 @@ const VendorPage = () => {
     LUT_Date: "",
   });
   const [errors, setErrors] = useState({});
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const profileTabRef = useRef(null);
 
   const handleChange = (e) => {
@@ -82,15 +84,12 @@ const VendorPage = () => {
     // Assuming your validation and submission logic here
     try {
       // Replace with your actual endpoint
-      const response = await axios.post(
-        "http://13.201.136.34:8000/vendor/register/",
-        formData
-      );
+      const response = await axios.post("api/vendor/register/", formData);
       console.log("General Data submitted successfully:", response.data);
       // Clear errors state on success
       setErrors({});
-      // Programmatically switch to the next tab
       handleNextButtonClick();
+      setShowSuccessModal(true);
     } catch (error) {
       if (error.response && error.response.data) {
         setErrors(error.response.data);
@@ -107,14 +106,10 @@ const VendorPage = () => {
     // Assuming your validation and submission logic here
     try {
       // Replace with your actual endpoint
-      const response = await axios.post(
-        "http://13.201.136.34:8000/vendor/register/",
-        formData
-      );
+      const response = await axios.post("api/vendor/register/", formData);
       console.log("Data-2 submitted successfully:", response.data);
-      // Clear errors state on success
       setErrors({});
-      // Optionally handle next steps or navigation after submission
+      setShowSuccessModal(true); // Show success modal
     } catch (error) {
       if (error.response && error.response.data) {
         setErrors(error.response.data);
@@ -720,7 +715,7 @@ const VendorPage = () => {
                                     </div>
                                   </div>
                                   <div className="row">
-                                    <div className="col-md-2 text-start">
+                                    <div className="col-md-12 text-end">
                                       <button
                                         type="submit"
                                         className="gernal-update"
@@ -1080,12 +1075,12 @@ const VendorPage = () => {
                                   </div>
                                 </div>
                                 <div className="row">
-                                  <div className="col-md-2 text-start">
+                                  <div className="col-md-12 text-end">
                                     <button
                                       type="submit"
                                       className="date-update"
                                     >
-                                      Update Setup
+                                      Submit
                                     </button>
                                   </div>
                                 </div>
@@ -1338,6 +1333,25 @@ const VendorPage = () => {
                               </div>
                             </div>
                           </div>
+                          <Modal
+                            show={showSuccessModal}
+                            onHide={() => setShowSuccessModal(false)}
+                          >
+                            <Modal.Header closeButton>
+                              <Modal.Title>Success</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                              Data submitted successfully!
+                            </Modal.Body>
+                            <Modal.Footer>
+                              <Button
+                                variant="primary"
+                                onClick={() => setShowSuccessModal(false)}
+                              >
+                                Close
+                              </Button>
+                            </Modal.Footer>
+                          </Modal>
                         </div>
                       </div>
                     </div>
