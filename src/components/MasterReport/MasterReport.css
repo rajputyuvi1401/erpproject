@@ -1,0 +1,258 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  transition: margin-left 0.3s;
+}
+.main-content.shifted {
+  margin-left: 260px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+.main-content {
+  transition: margin-left 0.3s;
+}
+
+.main-content.shifted {
+  margin-left: 250px; /* Adjust based on your sidebar width */
+}
+.Report {
+  width: 100%;
+  background-color: rgb(241, 242, 244);
+  height: 100vh;
+}
+.Report1 h5 {
+  color: blue;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.Reportmaster {
+  background-color: white;
+  height: auto;
+  padding: 20px 20px;
+}
+.Report1 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: aliceblue;
+  padding: 10px 20px;
+  height: 10vh;
+  margin-bottom: 20px;
+}
+.Report1 h5 {
+  color: blue;
+}
+.Report1 .btnReport {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btnReport:hover {
+  background-color: #0057b38d;
+}
+
+.ReportMain {
+  margin-top: 20px 20px;
+  height: auto;
+  background-color: aliceblue;
+}
+
+.Reportselect1 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  /* background-color: #f8f9fa; */
+}
+
+.Reportselect1 .btnReportkk1 {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.Reportselect1 .btn i {
+  margin-right: 5px;
+}
+
+@media (max-width: 767.98px) {
+  .ReportMain {
+    padding: 10px;
+  }
+
+  .Reportselect1 {
+    padding: 10px;
+  }
+}
+
+.ReportTable1 {
+  margin-top: 20px;
+  height: auto;
+  width: 100%;
+  background-color: aliceblue;
+  padding: 20px 20px;
+}
+
+.ReportTable1 .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ReportTable1 .table {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.ReportTable1 .table-primary th {
+  background-color: #7b00ff91;
+  color: white;
+}
+
+.ReportTable1 .table th,
+.ReportTable1 .table td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.ReportTable1 .table .btn-tableww {
+  padding: 0.25rem 0.5rem;
+  align-items: center;
+  border: none;
+
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.ReportTable1 .recordbottom1 {
+  margin-top: 10px;
+  text-align: right;
+}
+
+@media (max-width: 767.98px) {
+  .ReportTable1 {
+    padding: 10px;
+  }
+
+  .ReportTable1 .table-responsive {
+    overflow-x: auto;
+  }
+}
+.ReportMain {
+  padding: 20px;
+}
+
+.Report .nav-tabs .nav-item .nav-link {
+  cursor: pointer;
+  border: none;
+}
+
+.Report .nav-tabs .nav-item .nav-link.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.Report .tab-content {
+  border: none;
+}
+
+.Reportselect2 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  /* background-color: #f8f9fa; */
+}
+
+.Reportselect2 .btnReportkk2 {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.Reportselect2 .btn i {
+  margin-right: 5px;
+}
+
+@media (max-width: 767.98px) {
+  .ReportMain {
+    padding: 10px;
+  }
+
+  .Reportselect2 {
+    padding: 10px;
+  }
+}
+
+.ReportTable2 {
+  margin-top: 20px;
+  height: auto;
+  width: 100%;
+  background-color: aliceblue;
+  padding: 20px 20px;
+}
+
+.ReportTable2 .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ReportTable2 .table {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.ReportTable2 .table-primary th {
+  background-color: #7b00ff91;
+  color: white;
+}
+
+.ReportTable2 .table th,
+.ReportTable2 .table td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.ReportTable2 .table .btn-tableww {
+  padding: 0.25rem 0.5rem;
+  align-items: center;
+  border: none;
+
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.ReportTable2 .recordbottom1 {
+  margin-top: 10px;
+  text-align: right;
+}
+
+@media (max-width: 767.98px) {
+  .ReportTable2 {
+    padding: 10px;
+  }
+
+  .ReportTable2 .table-responsive {
+    overflow-x: auto;
+  }
+}

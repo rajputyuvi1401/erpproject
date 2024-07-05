@@ -61,14 +61,23 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="#/user-configuration">
                 User Configuration
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/user-management">
-                User Management
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/back-date-entry-setting">
-                Back Date Entry Setting
-              </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/erp-configuration">
                 ERP Configuration
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/erp-configuration">
+                Change Password
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/erp-configuration">
+                Login Histroy
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/user-management">
+                Delete Management
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/back-date-entry-setting">
+                Dashboard Backup
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/erp-configuration">
+                Delete Record
               </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown>
@@ -161,7 +170,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/work-center-master">
                 Work Center Master
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/cycle-time-master">
+              <Dropdown.Item as={Link} to="/cycle-time-master">
                 Cycle Time Master
               </Dropdown.Item>
 
@@ -174,7 +183,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/shift-master">
                 Shift Master
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/work-center-master">
+              <Dropdown.Item as={Link} to="/work-center-schedule">
                 Work Center Schedule
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="/unit-conversion">
@@ -200,13 +209,13 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/cost-center-master">
                 Cost Center Master
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/">
+              <Dropdown.Item as={Link} to="/project-management">
                 Project Management
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/">
+              <Dropdown.Item as={Link} to="/document-management">
                 Document Management
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/">
+              <Dropdown.Item as={Link} to="/master-report">
                 Master Report
               </Dropdown.Item>
             </Dropdown.Menu>

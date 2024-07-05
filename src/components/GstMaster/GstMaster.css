@@ -42,7 +42,7 @@ body.no-scroll {
   padding: 20px 20px;
   margin-top: 20px;
   border-bottom: 1px solid #ccc;
-  box-shadow: 0 4px 2px -3px gray;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .gstbtn {

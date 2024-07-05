@@ -1,0 +1,235 @@
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import NavBar from "../../NavBar/NavBar";
+import SideNav from "../../SideNav/SideNav";
+import "./CycleTime.css";
+import { useNavigate } from "react-router-dom";
+
+const CycleTime = () => {
+  const [sideNavOpen, setSideNavOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const toggleSideNav = () => {
+    setSideNavOpen(!sideNavOpen);
+  };
+
+  const [records] = useState([
+    {
+      id: 1,
+      ItemNo: "1001",
+      ItemDesc: "Widget A",
+      OpNo: "001",
+      Partcode: "P001",
+      Machinetype: "Type 1",
+    },
+    {
+      id: 2,
+      ItemNo: "1002",
+      ItemDesc: "Widget B",
+      OpNo: "002",
+      Partcode: "P002",
+      Machinetype: "Type 2",
+    },
+    {
+      id: 3,
+      ItemNo: "1003",
+      ItemDesc: "Widget C",
+      OpNo: "003",
+      Partcode: "P003",
+      Machinetype: "Type 1",
+    },
+    {
+      id: 4,
+      ItemNo: "1004",
+      ItemDesc: "Widget D",
+      OpNo: "004",
+      Partcode: "P004",
+      Machinetype: "Type 3",
+    },
+    {
+      id: 5,
+      ItemNo: "1005",
+      ItemDesc: "Widget E",
+      OpNo: "005",
+      Partcode: "P005",
+      Machinetype: "Type 2",
+    },
+    {
+      id: 6,
+      ItemNo: "1006",
+      ItemDesc: "Widget F",
+      OpNo: "006",
+      Partcode: "P006",
+      Machinetype: "Type 1",
+    },
+    {
+      id: 7,
+      ItemNo: "1007",
+      ItemDesc: "Widget G",
+      OpNo: "007",
+      Partcode: "P007",
+      Machinetype: "Type 3",
+    },
+    {
+      id: 8,
+      ItemNo: "1008",
+      ItemDesc: "Widget H",
+      OpNo: "008",
+      Partcode: "P008",
+      Machinetype: "Type 2",
+    },
+    {
+      id: 9,
+      ItemNo: "1009",
+      ItemDesc: "Widget I",
+      OpNo: "009",
+      Partcode: "P009",
+      Machinetype: "Type 1",
+    },
+    {
+      id: 10,
+      ItemNo: "1010",
+      ItemDesc: "Widget J",
+      OpNo: "010",
+      Partcode: "P010",
+      Machinetype: "Type 3",
+    },
+  ]);
+
+  const handleAddNewCycleTime = () => {
+    navigate("/add-cycle-time");
+  };
+
+  return (
+    <div className="Cycletimecenter">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="Main-NavBar">
+              <NavBar toggleSideNav={toggleSideNav} />
+              <SideNav
+                sideNavOpen={sideNavOpen}
+                toggleSideNav={toggleSideNav}
+              />
+              <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
+                <div className="Cycletimermaster">
+                  <div className="Cycletime">
+                    <div className="container-fluid">
+                      <div className="row d-flex align-items-center">
+                        <div className="col-md-6 text-start">
+                          <h5>Cycle Time Master</h5>
+                        </div>
+                        <div className="col-md-6 text-md-end text-start mt-2 mt-md-0">
+                          <button
+                            className="Cycletimebtn me-2"
+                            onClick={handleAddNewCycleTime}
+                          >
+                            Add New Cycle Time
+                          </button>
+                          <button className="Cycletimebtn me-2">Report</button>
+                          <button className="Cycletimebtn">
+                            Export Report
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="CycletimeMain">
+                    <div className="container-fluid">
+                      <div className="row text-start centerselect">
+                        <div className="col-md-1 col-sm-3 mb-3 mb-sm-0">
+                          <label
+                            htmlFor="selectPlant"
+                            className="col-form-label"
+                          >
+                            Item Search
+                          </label>
+                        </div>
+                        <div className="col-md-3 col-sm-9 mb-3 mb-sm-0">
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="exampleFormControlInput1"
+                            placeholder=""
+                          />
+                        </div>
+                        <div className="col-md-1 col-sm-12 text-sm-start text-md-start">
+                          <button className="Cycletimemainbtn">
+                            <i className="bi bi-search"></i> Search
+                          </button>
+                        </div>
+                        <div className="col-md-3 col-sm-12 text-sm-start text-md-end">
+                          <button className="Cycletimemainbtn">
+                            <i className="bi bi-search"></i> View All
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="CycletimeTable">
+                    <div className="container-fluid">
+                      <div className="table-responsive">
+                        <table className="table">
+                          <thead className="table-primary">
+                            <tr>
+                              <th scope="col">Sr</th>
+                              <th scope="col">Item No.</th>
+                              <th scope="col">Item Desc</th>
+                              <th scope="col">Op No</th>
+                              <th scope="col">PartCode</th>
+                              <th scope="col">Machine Type</th>
+                              <th scope="col">Delete</th>
+                              <th scope="col">Edit</th>
+                              <th scope="col">View</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {records.map((record, index) => (
+                              <tr key={record.id}>
+                                <td>{index + 1}</td>
+                                <td>{record.ItemNo}</td>
+                                <td>{record.ItemDesc}</td>
+                                <td>{record.OpNo}</td>
+                                <td>{record.Partcode}</td>
+                                <td>{record.Machinetype}</td>
+                                <td>
+                                  <button className="Cycletimetableww">
+                                    <i className="fas fa-trash"></i>
+                                  </button>
+                                </td>
+                                <td>
+                                  <button className="Cycletimetableww">
+                                    <i className="fas fa-edit"></i>
+                                  </button>
+                                </td>
+                                <td>
+                                  <button className="Cycletimetableww">
+                                    <i className="fas fa-eye"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="record-count text-start"
+                    style={{ color: "blue", padding: "10px" }}
+                  >
+                    Total Records: {records.length}
+                  </div>
+                </div>
+              </main>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CycleTime;

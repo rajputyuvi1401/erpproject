@@ -45,7 +45,7 @@ body.no-scroll {
   padding: 20px 20px;
 }
 .workmain {
-  box-shadow: 0 4px 2px -2px grey;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: aliceblue;
   padding: 10px 20px;
   height: 10vh;
@@ -135,7 +135,7 @@ body.no-scroll {
   background-color: aliceblue;
 }
 .centerselect {
-  box-shadow: 0 4px 2px -2px grey;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   /* background-color: #f8f9fa; */
 }

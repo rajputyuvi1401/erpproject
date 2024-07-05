@@ -44,7 +44,7 @@ body.no-scroll {
   background-color: aliceblue;
   height: 10vh;
   padding: 20px;
-  box-shadow: 0 4px 2px -2px grey;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .venbtn {
@@ -62,7 +62,7 @@ body.no-scroll {
   height: 10vh;
   padding: 20px;
   margin-top: 80px;
-  box-shadow: 0 4px 2px -2px grey;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .Vendermainbtn {
   border: none;

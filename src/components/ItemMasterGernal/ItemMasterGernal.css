@@ -115,7 +115,7 @@ body.no-scroll {
 .new-card {
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 80%;
   max-width: 600px;
@@ -177,7 +177,7 @@ body.no-scroll {
 .TdcCard .new-card {
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 80%;
   max-width: 600px; /* Max width of the card */
@@ -265,7 +265,7 @@ body.no-scroll {
 .itemgroup-card {
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 80%;
   max-width: 600px;
@@ -372,7 +372,7 @@ body.no-scroll {
 .Store-card {
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 80%;
   max-width: 600px;
@@ -446,7 +446,7 @@ body.no-scroll {
 .RouteCard .new-card {
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 80%;
   max-width: 600px; /* Max width of the card */

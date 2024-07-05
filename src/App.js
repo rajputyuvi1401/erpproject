@@ -64,6 +64,29 @@ import UnitConversion from "./components/UnitConversion/UnitConversion";
 import PriceListMaster from "./components/PriceListMaster/PriceListMaster";
 import PriceEntry from "./components/PriceListMaster/PeiceEntry/PriceEntry";
 
+// Cycle time master
+import CycleTime from "./components/CycleTimeMaster/CycleTime";
+import AddCycleTime from "./components/CycleTimeMaster/AddCycleTime/AddCycleTime";
+
+// Commodity master
+import CommodityMaster from "./components/CommodityMaster/CommodityMaster";
+
+// cost center master
+import CostCenterMaster from "./components/CostCenterMaster/CostCenterMaster";
+
+// Work Center Schedule
+import WorkCenterSchedule from "./components/WorkSchedule/WorkSchedule";
+
+// Project Management
+import ProjectManagement from "./components/ProjectManagement/ProjectManagement";
+import ProjectInventory from "./components/ProjectManagement/ProjectInventory/ProjectInventory";
+
+// Document Management
+import DocumentManagement from "./components/DocumentManagement/DocumentManagement";
+
+// Master Report
+import MasterReport from "./components/MasterReport/MasterReport";
+
 function App() {
   return (
     <div className="App">
@@ -148,6 +171,32 @@ function App() {
         {/* Price List Master */}
         <Route path="/price-list-master" element={<PriceListMaster />} />
         <Route path="/price-entry-master" element={<PriceEntry />} />
+
+        {/* cycle time master */}
+        <Route path="/cycle-time-master" element={<CycleTime />} />
+        <Route path="/add-cycle-time" element={<AddCycleTime />} />
+
+        {/* CommodityMaster */}
+        <Route path="/commodity-master" element={<CommodityMaster />} />
+
+        {/* cost center master */}
+        <Route path="/cost-center-master" element={<CostCenterMaster />} />
+
+        {/* Work center Schedule */}
+        <Route path="/work-center-schedule" element={<WorkCenterSchedule />} />
+
+        {/* Project Management */}
+        <Route path="/project-management" element={<ProjectManagement />} />
+        <Route
+          path="/project-inventory-status"
+          element={<ProjectInventory />}
+        />
+
+        {/* Document Management */}
+        <Route path="/document-management" element={<DocumentManagement />} />
+
+        {/* Master Report */}
+        <Route path="/master-report" element={<MasterReport />} />
       </Routes>
     </div>
   );

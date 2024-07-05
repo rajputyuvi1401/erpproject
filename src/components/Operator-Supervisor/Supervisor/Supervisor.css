@@ -81,7 +81,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1050; /* Ensure it is above other content */
 }
 
@@ -91,7 +91,7 @@ main {
   max-width: 900px;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .modal-container .card-header {
@@ -136,7 +136,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1050; /* Ensure it is above other content */
 }
 
@@ -146,7 +146,7 @@ main {
   max-width: 900px;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .Category-container .card-header {
