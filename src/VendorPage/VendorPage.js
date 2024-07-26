@@ -96,10 +96,7 @@ const VendorPage = () => {
     console.log("Submitting general data:", formData);
 
     try {
-      const response = await axios.post(
-        "http://13.201.136.34:8000/vendor/register/",
-        formData
-      );
+      const response = await axios.post("api/vendor/register/", formData);
       console.log("General Data submitted successfully:", response.data);
 
       setErrors({});
@@ -120,10 +117,7 @@ const VendorPage = () => {
     console.log("Submitting data-2:", formData);
 
     try {
-      const response = await axios.post(
-        "http://13.201.136.34:8000/vendor/register/",
-        formData
-      );
+      const response = await axios.post("api/vendor/register/", formData);
       console.log("Data-2 submitted successfully:", response.data);
       setErrors({});
       handleNextButtonClick1();
@@ -157,15 +151,11 @@ const VendorPage = () => {
     }
 
     try {
-      const response = await axios.post(
-        "http://13.201.136.34:8000/vendor/register/",
-        data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post("api/vendor/register/", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       if (response.status === 200) {
         setErrors({});
         setShowSuccessModal(true);
