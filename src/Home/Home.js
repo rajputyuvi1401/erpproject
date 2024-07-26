@@ -32,7 +32,7 @@ function Home() {
 
       const responseData = await response.json();
       console.log("Admin Login successful:", responseData);
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       console.error("Admin Login error:", error);
     }
