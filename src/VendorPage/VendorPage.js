@@ -66,10 +66,17 @@ const VendorPage = () => {
     ARN_Date: "",
     LUT_NO: "",
     LUT_Date: "",
+
+    // logo image
+    login_logo: null,
+    home_logo: null,
+    company_logo: null,
+    Tuv_logo: null,
   });
   const [errors, setErrors] = useState({});
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const profileTabRef = useRef(null);
+  const contactTabRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -78,15 +85,23 @@ const VendorPage = () => {
       [name]: value,
     });
   };
+
+  const handleInputChange = (e) => {
+    const { id, files } = e.target;
+    setFormData({ ...formData, [id]: files[0] });
+  };
+
   const handleGeneralSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitting general data:", formData);
-    // Assuming your validation and submission logic here
+
     try {
-      // Replace with your actual endpoint
-      const response = await axios.post("api/vendor/register/", formData);
+      const response = await axios.post(
+        "http://13.201.136.34:8000/vendor/register/",
+        formData
+      );
       console.log("General Data submitted successfully:", response.data);
-      // Clear errors state on success
+
       setErrors({});
       handleNextButtonClick();
       setShowSuccessModal(true);
@@ -103,12 +118,15 @@ const VendorPage = () => {
   const handleData2Submit = async (e) => {
     e.preventDefault();
     console.log("Submitting data-2:", formData);
-    // Assuming your validation and submission logic here
+
     try {
-      // Replace with your actual endpoint
-      const response = await axios.post("api/vendor/register/", formData);
+      const response = await axios.post(
+        "http://13.201.136.34:8000/vendor/register/",
+        formData
+      );
       console.log("Data-2 submitted successfully:", response.data);
       setErrors({});
+      handleNextButtonClick1();
       setShowSuccessModal(true); // Show success modal
     } catch (error) {
       if (error.response && error.response.data) {
@@ -119,9 +137,61 @@ const VendorPage = () => {
       }
     }
   };
+
+  const handleLogoSubmit = async (e) => {
+    e.preventDefault();
+
+    // Create FormData and append general form data
+    const data = new FormData();
+    for (const key in formData) {
+      if (formData[key] instanceof File) {
+        data.append(key, formData[key]);
+      } else if (formData[key]) {
+        data.append(key, formData[key]);
+      }
+    }
+
+    // Log FormData keys and values for debugging
+    for (let [key, value] of data.entries()) {
+      console.log(key, value);
+    }
+
+    try {
+      const response = await axios.post(
+        "http://13.201.136.34:8000/vendor/register/",
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      if (response.status === 200) {
+        setErrors({});
+        setShowSuccessModal(true);
+      }
+    } catch (error) {
+      if (error.response && error.response.data) {
+        setErrors(error.response.data);
+        console.error(
+          "Error submitting all data including logos:",
+          error.response.data
+        );
+      } else {
+        console.error("Error submitting all data including logos:", error);
+      }
+    }
+  };
+
   const handleNextButtonClick = () => {
     if (profileTabRef.current) {
       profileTabRef.current.click(); // Trigger click on the profile tab button
+    }
+  };
+
+  const handleNextButtonClick1 = () => {
+    if (contactTabRef.current) {
+      contactTabRef.current.click(); // Trigger click on the profile tab button
     }
   };
 
@@ -196,6 +266,7 @@ const VendorPage = () => {
                           </li>
                           <li className="nav-item" role="presentation">
                             <button
+                              ref={contactTabRef}
                               className="nav-link"
                               id="pills-contact-tab"
                               data-bs-toggle="pill"
@@ -248,11 +319,7 @@ const VendorPage = () => {
                                           <div className="col-sm-8">
                                             <input
                                               type="text"
-                                              className={`form-control ${
-                                                errors.company_name
-                                                  ? "is-invalid"
-                                                  : ""
-                                              }`}
+                                              className="form-control"
                                               id="company_name"
                                               name="company_name"
                                               value={formData.company_name}
@@ -260,7 +327,7 @@ const VendorPage = () => {
                                               placeholder="Sharp Engineers"
                                             />
                                             {errors.company_name && (
-                                              <div className="invalid-feedback">
+                                              <div className="text-danger">
                                                 {errors.company_name[0]}
                                               </div>
                                             )}
@@ -1079,8 +1146,9 @@ const VendorPage = () => {
                                     <button
                                       type="submit"
                                       className="date-update"
+                                      onClick={handleNextButtonClick1}
                                     >
-                                      Submit
+                                      Next
                                     </button>
                                   </div>
                                 </div>
@@ -1095,90 +1163,94 @@ const VendorPage = () => {
                             tabindex="0"
                           >
                             <div className="VendorLogoImages">
-                              <div className="logo-image">
-                                <div className="container">
-                                  <div className="row text-start">
-                                    <div className="col-md-12">
-                                      <div className="row mb-5">
-                                        <label
-                                          for="inputEmail3"
-                                          className="col-sm-4 col-form-label"
-                                        >
-                                          ERP LoginPage:
-                                        </label>
-                                        <div className="col-sm-8">
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            id="inputEmail3"
-                                            placeholder=""
-                                          />
+                              <form onSubmit={handleLogoSubmit}>
+                                <div className="logo-image">
+                                  <div className="container">
+                                    <div className="row text-start">
+                                      <div className="col-md-12">
+                                        <div className="row mb-5">
+                                          <label
+                                            htmlFor="login_logo"
+                                            className="col-sm-4 col-form-label"
+                                          >
+                                            ERP LoginPage:
+                                          </label>
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="file"
+                                              className="form-control"
+                                              id="login_logo"
+                                              onChange={handleInputChange}
+                                            />
+                                          </div>
                                         </div>
-                                      </div>
-                                      <div className="row mb-5">
-                                        <label
-                                          for="inputEmail3"
-                                          className="col-sm-4 col-form-label"
-                                        >
-                                          ERP Home Page Header:
-                                        </label>
-                                        <div className="col-sm-8">
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            id="inputEmail3"
-                                            placeholder=""
-                                          />
+                                        <div className="row mb-5">
+                                          <label
+                                            htmlFor="home_logo"
+                                            className="col-sm-4 col-form-label"
+                                          >
+                                            ERP Home Page Header:
+                                          </label>
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="file"
+                                              className="form-control"
+                                              id="home_logo"
+                                              onChange={handleInputChange}
+                                            />
+                                          </div>
                                         </div>
-                                      </div>
-                                      <div className="row mb-5">
-                                        <label
-                                          for="inputEmail3"
-                                          className="col-sm-4 col-form-label"
-                                        >
-                                          Company Logo Print on document:
-                                          <br />
-                                          (eg. GastInvoice/Purchase Order ect)
-                                        </label>
-                                        <div className="col-sm-8">
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            id="inputEmail3"
-                                            placeholder=""
-                                          />
+                                        <div className="row mb-5">
+                                          <label
+                                            htmlFor="company_logo"
+                                            className="col-sm-4 col-form-label"
+                                          >
+                                            Company Logo Print on document:
+                                            <br />
+                                            (eg. GastInvoice/Purchase Order etc)
+                                          </label>
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="file"
+                                              className="form-control"
+                                              id="company_logo"
+                                              onChange={handleInputChange}
+                                            />
+                                          </div>
                                         </div>
-                                      </div>
-
-                                      <div className="row mb-3">
-                                        <label
-                                          for="inputEmail3"
-                                          className="col-sm-4 col-form-label"
-                                        >
-                                          TUV Logo Print on Document:
-                                          <br />
-                                          (eg. GastInvoice/Purchase Order ect)
-                                        </label>
-                                        <div className="col-sm-8">
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            id="inputEmail3"
-                                            placeholder=""
-                                          />
+                                        <div className="row mb-3">
+                                          <label
+                                            htmlFor="Tuv_logo"
+                                            className="col-sm-4 col-form-label"
+                                          >
+                                            TUV Logo Print on Document:
+                                            <br />
+                                            (eg. GastInvoice/Purchase Order etc)
+                                          </label>
+                                          <div className="col-sm-8">
+                                            <input
+                                              type="file"
+                                              className="form-control"
+                                              id="Tuv_logo"
+                                              onChange={handleInputChange}
+                                            />
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div className="row">
-                                <div className="col-md-2 text-start">
-                                  <button className="date-update">
-                                    Update Setup
-                                  </button>
+                                <div className="row">
+                                  <div className="col-md-2 text-start">
+                                    <button
+                                      type="submit"
+                                      className="date-update"
+                                    >
+                                      Save
+                                    </button>
+                                  </div>
                                 </div>
-                              </div>
+                              </form>
                             </div>
                           </div>
                           <div
@@ -1195,7 +1267,7 @@ const VendorPage = () => {
                                     <div className="col-md-8">
                                       <div className="row mb-3">
                                         <label
-                                          for="inputEmail3"
+                                          for="inputEmail31"
                                           className="col-sm-4 col-form-label"
                                         >
                                           SE GST NO:
@@ -1204,14 +1276,14 @@ const VendorPage = () => {
                                           <input
                                             type="text"
                                             className="form-control"
-                                            id="inputEmail3"
+                                            id="inputEmail32"
                                             placeholder=""
                                           />
                                         </div>
                                       </div>
                                       <div className="row mb-3">
                                         <label
-                                          for="inputEmail3"
+                                          for="inputEmail33"
                                           className="col-sm-4 col-form-label"
                                         >
                                           GSP APP ID:
@@ -1220,14 +1292,14 @@ const VendorPage = () => {
                                           <input
                                             type="text"
                                             className="form-control"
-                                            id="inputEmail3"
+                                            id="inputEmail34"
                                             placeholder=""
                                           />
                                         </div>
                                       </div>
                                       <div className="row mb-3">
                                         <label
-                                          for="inputEmail3"
+                                          for="inputEmail35"
                                           className="col-sm-4 col-form-label"
                                         >
                                           GSP APP Secret:
@@ -1236,14 +1308,14 @@ const VendorPage = () => {
                                           <input
                                             type="text"
                                             className="form-control"
-                                            id="inputEmail3"
+                                            id="inputEmail36"
                                             placeholder=""
                                           />
                                         </div>
                                       </div>
                                       <div className="row mb-5">
                                         <label
-                                          for="inputEmail3"
+                                          for="inputEmail37"
                                           className="col-sm-4 col-form-label"
                                         >
                                           Access Token:
@@ -1258,7 +1330,7 @@ const VendorPage = () => {
                                       </div>
                                       <div className="row mb-3">
                                         <label
-                                          for="inputEmail3"
+                                          for="inputEmail38"
                                           className="col-sm-4 col-form-label"
                                         >
                                           Access Token Date::
@@ -1267,14 +1339,14 @@ const VendorPage = () => {
                                           <input
                                             type="text"
                                             className="form-control"
-                                            id="inputEmail3"
+                                            id="inputEmail39"
                                             placeholder=""
                                           />
                                         </div>
                                       </div>
                                       <div className="row mb-3">
                                         <label
-                                          for="inputEmail3"
+                                          for="inputEmail32"
                                           className="col-sm-4 col-form-label"
                                         >
                                           SE API UserName:
@@ -1283,14 +1355,14 @@ const VendorPage = () => {
                                           <input
                                             type="text"
                                             className="form-control"
-                                            id="inputEmail3"
+                                            id="inputEmail1"
                                             placeholder=""
                                           />
                                         </div>
                                       </div>
                                       <div className="row mb-3">
                                         <label
-                                          for="inputEmail3"
+                                          for="inputEmail2"
                                           className="col-sm-4 col-form-label"
                                         >
                                           SE API PassWord:
@@ -1299,14 +1371,14 @@ const VendorPage = () => {
                                           <input
                                             type="text"
                                             className="form-control"
-                                            id="inputEmail3"
+                                            id="inputEmail8"
                                             placeholder=""
                                           />
                                         </div>
                                       </div>
                                       <div className="row mb-3">
                                         <label
-                                          for="inputEmail3"
+                                          for="inputEmail7"
                                           className="col-sm-4 col-form-label"
                                         >
                                           API Url:

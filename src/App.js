@@ -87,6 +87,9 @@ import DocumentManagement from "./components/DocumentManagement/DocumentManageme
 // Master Report
 import MasterReport from "./components/MasterReport/MasterReport";
 
+// new indent
+import Newindent from "./PurchaseMaster/Newindent/Newindent";
+
 function App() {
   return (
     <div className="App">
@@ -197,6 +200,9 @@ function App() {
 
         {/* Master Report */}
         <Route path="/master-report" element={<MasterReport />} />
+
+        {/* New indent */}
+        <Route path="/new-indent" element={<Newindent />} />
       </Routes>
     </div>
   );

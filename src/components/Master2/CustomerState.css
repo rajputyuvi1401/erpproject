@@ -41,6 +41,15 @@ body.no-scroll {
   padding: 10px;
   border-radius: 5px;
 }
+.customerStateadd {
+  background-color: blueviolet;
+  color: white;
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  margin-top: 18px;
+  width: 50%;
+}
 .customerStateicon {
   border: none;
   background-color: white;

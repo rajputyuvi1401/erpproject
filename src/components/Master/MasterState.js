@@ -7,116 +7,88 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 
-const MasterState = () => {
-  const [sideNavOpen, setSideNavOpen] = useState(false);
+const MasterState = ({ toggleSideNav, sideNavOpen }) => {
   const [formData, setFormData] = useState({
     state_id: "",
     state_no: "",
     state_name: "",
     state_code: "",
-    searchTerm: "", // Add searchTerm field for search functionality
+    searchTerm: "",
   });
   const [states, setStates] = useState([]);
-  const [filteredStates, setFilteredStates] = useState([]); // State for filtered states
-
-  const toggleSideNav = () => {
-    setSideNavOpen(!sideNavOpen);
-  };
-
-  useEffect(() => {
-    if (sideNavOpen) {
-      document.body.classList.add("side-nav-open");
-    } else {
-      document.body.classList.remove("side-nav-open");
-    }
-  }, [sideNavOpen]);
+  const [filteredStates, setFilteredStates] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchStates();
   }, []);
 
-  const fetchStates = () => {
-    axios
-      .get("api/master/states/")
-      .then((response) => {
-        console.log("States fetched:", response.data);
-        setStates(response.data);
-        setFilteredStates(response.data); // Initialize filteredStates with all states
-      })
-      .catch((error) => {
-        console.error("Error fetching states:", error);
-      });
+  const fetchStates = async () => {
+    try {
+      const response = await axios.get("api/master/states/");
+      setStates(response.data);
+      setFilteredStates(response.data);
+    } catch (error) {
+      console.error("Error fetching states:", error);
+    }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
-    });
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("api/master/states/", formData)
-      .then((response) => {
-        console.log("Post successful:", response.data);
-        setFormData({
-          state_id: "",
-          state_no: "",
-          state_name: "",
-          state_code: "",
-          searchTerm: "", // Clear searchTerm after successful post
-        });
-        fetchStates();
-      })
-      .catch((error) => {
-        console.error("Error posting data:", error);
+    try {
+      await axios.post("api/master/states/", formData);
+      fetchStates();
+      setFormData({
+        state_id: "",
+        state_no: "",
+        state_name: "",
+        state_code: "",
+        searchTerm: "",
       });
-  };
-
-  const handleEdit = (stateId) => {
-    axios
-      .get(`api/master/states/${stateId}/`)
-      .then((response) => {
-        console.log("Editing state:", response.data);
-        const { state_id, state_no, state_name, state_code } = response.data;
-        setFormData({
-          state_id,
-          state_no,
-          state_name,
-          state_code,
-        });
-      })
-      .catch((error) => {
-        console.error("Error fetching state for edit:", error);
-      });
-  };
-
-  const handleDelete = (stateId) => {
-    axios
-      .delete(`api/master/states/${stateId}/`)
-      .then((response) => {
-        console.log("Delete successful:", response.data);
-        fetchStates();
-      })
-      .catch((error) => {
-        console.error("Error deleting state:", error);
-      });
+    } catch (error) {
+      setError("Error submitting data");
+      console.error("Error submitting data:", error);
+    }
   };
 
   const handleSearch = () => {
-    const { searchTerm } = formData;
-    if (searchTerm.trim() === "") {
-      // If search term is empty, show all states
-      setFilteredStates(states);
-    } else {
-      // Filter states based on state_code containing searchTerm
-      const filtered = states.filter((state) =>
-        state.state_code.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredStates(filtered);
+    const searchTerm = formData.searchTerm;
+    const filtered = states.filter(
+      (state) =>
+        (state.state_id?.toString() || "").includes(searchTerm) ||
+        (state.state_no?.toString() || "").includes(searchTerm) ||
+        (state.state_name?.toString() || "").includes(searchTerm) ||
+        (state.state_code?.toString() || "").includes(searchTerm)
+    );
+    setFilteredStates(filtered);
+  };
+
+  const handleEdit = (stateId) => {
+    const stateToEdit = states.find((state) => state.state_id === stateId);
+    setFormData({
+      state_id: stateToEdit.state_id,
+      state_no: stateToEdit.state_no,
+      state_name: stateToEdit.state_name,
+      state_code: stateToEdit.state_code,
+      searchTerm: "",
+    });
+  };
+
+  const handleDelete = async (stateId) => {
+    try {
+      await axios.delete(`api/master/states/${stateId}`);
+      fetchStates();
+    } catch (error) {
+      setError("Error deleting data");
+      console.error("Error deleting data:", error);
     }
   };
 
@@ -204,15 +176,12 @@ const MasterState = () => {
                               className="mb-3 d-flex align-items-end"
                               style={{ marginTop: "30px" }}
                             >
-                              <button
-                                type="button"
-                                className="masterState1"
-                                onClick={handleSearch}
-                              >
+                              <button type="submit" className="masterState1">
                                 Submit
                               </button>
                             </div>
                           </form>
+                          {error && <p className="text-danger">{error}</p>}
                           <div className="row" style={{ marginTop: "20px" }}>
                             <div className="col-md-12">
                               <div className="input-group mb-3">
@@ -225,7 +194,6 @@ const MasterState = () => {
                                   value={formData.searchTerm}
                                   onChange={handleChange}
                                 />
-
                                 <button
                                   type="button"
                                   className="masterState1"
@@ -257,7 +225,18 @@ const MasterState = () => {
                                     <td>{state.state_name}</td>
                                     <td>{state.state_code}</td>
                                     <td>
-                                      <button className="masterState1icon me-2">
+                                      <button
+                                        className="masterState1icon me-2"
+                                        onClick={() =>
+                                          setFormData({
+                                            state_id: "",
+                                            state_no: "",
+                                            state_name: "",
+                                            state_code: "",
+                                            searchTerm: "",
+                                          })
+                                        }
+                                      >
                                         <i className="fas fa-plus"></i>
                                       </button>
                                       <button
@@ -295,5 +274,4 @@ const MasterState = () => {
     </div>
   );
 };
-
 export default MasterState;

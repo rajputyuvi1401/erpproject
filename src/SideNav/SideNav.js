@@ -36,12 +36,12 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <img className="logo-light" src={logo} alt="logo" />
             </Link>
           </li>
-          {/* <li>
+          <li>
             <Link to="/home">
               <FaHome />
               Admin Login
             </Link>
-          </li> */}
+          </li>
           <li>
             <Link to="/mainpage">
               <FaHome />
@@ -236,6 +236,18 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             <Link to="/masterState">
               <FaEnvelope />
               MasterState
+            </Link>
+          </li>
+          <li>
+            <Link to="/new-indent">
+              <FaEnvelope />
+              New Indent
+            </Link>
+          </li>
+          <li>
+            <Link to="/purchase-master">
+              <FaEnvelope />
+              Purchase Master
             </Link>
           </li>
         </ul>
