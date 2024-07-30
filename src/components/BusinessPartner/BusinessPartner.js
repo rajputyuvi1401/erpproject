@@ -9,6 +9,7 @@ import "./BusinessPartner.css";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 const BusinessPartner = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -42,6 +43,7 @@ const BusinessPartner = () => {
   const [apiError, setApiError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -93,8 +95,12 @@ const BusinessPartner = () => {
       await axios.post("api/master/Business_Partner/", formData);
       setSuccessMessage("Data saved successfully!");
       console.log("Data saved:", formData);
-      setShowModal(true); // Show modal on successful save
-      handleClear();
+      setShowModal(true);
+      // handleClear();
+      setTimeout(() => {
+        setShowModal(false);
+        navigate("/dashboard"); // Navigate to /dashboard after showing the modal
+      }, 2000);
     } catch (error) {
       setApiError("Failed to save the data.");
       console.error(
@@ -133,7 +139,7 @@ const BusinessPartner = () => {
                   </div>
                   <div className="bussiness-main">
                     <div className="container-fluid">
-                      <form onSubmit={handleSubmit}>
+                      <form onSubmit={handleSubmit} autoComplete="off">
                         <div className="row">
                           <div className="col-md-6">
                             <div className="row mb-3">
@@ -572,15 +578,17 @@ const BusinessPartner = () => {
                         onHide={() => setShowModal(false)}
                       >
                         <Modal.Header closeButton>
-                          <Modal.Title>Success</Modal.Title>
+                          <Modal.Title>Model</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>{successMessage}</Modal.Body>
+                        <Modal.Body>
+                          <p>Data saved successfully!</p>
+                        </Modal.Body>
                         <Modal.Footer>
                           <Button
                             variant="primary"
                             onClick={() => setShowModal(false)}
                           >
-                            Close
+                            OK
                           </Button>
                         </Modal.Footer>
                       </Modal>

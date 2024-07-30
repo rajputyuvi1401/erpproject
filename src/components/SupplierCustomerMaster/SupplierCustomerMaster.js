@@ -1395,6 +1395,16 @@ const SupplierCustomerMaster = () => {
                                         </div>
                                       </div>
                                     </div>
+                                    <div className="row text-end">
+                                      <div className="col-md-12">
+                                        <button className="subGernalbtn1">
+                                          SAVE
+                                        </button>
+                                        <button className="subGernalbtn1">
+                                          CLEAR
+                                        </button>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -2681,6 +2691,16 @@ const SupplierCustomerMaster = () => {
                                       </div>
                                     </div>
                                   </div>
+                                  <div className="row text-end">
+                                    <div className="col-md-12">
+                                      <button className="subGernalbtn1">
+                                        SAVE
+                                      </button>
+                                      <button className="subGernalbtn1">
+                                        CLEAR
+                                      </button>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -2696,7 +2716,7 @@ const SupplierCustomerMaster = () => {
                                   <div className="row">
                                     <div className="col-md-12 text-start">
                                       <h5 style={{ color: "blue" }}>
-                                        Contact Person Information
+                                        Customer Bank Details
                                       </h5>
                                     </div>
                                   </div>
@@ -2711,38 +2731,33 @@ const SupplierCustomerMaster = () => {
                                                   className="blue-th"
                                                   scope="col"
                                                 >
-                                                  Person Name
+                                                  Account Holder Name :
                                                 </th>
                                                 <th
                                                   className="blue-th"
                                                   scope="col"
                                                 >
-                                                  Contact No
+                                                  Bank Name:
                                                 </th>
                                                 <th
                                                   className="blue-th"
                                                   scope="col"
                                                 >
-                                                  Email
+                                                  Branch Name:
                                                 </th>
                                                 <th
                                                   className="blue-th"
                                                   scope="col"
                                                 >
-                                                  Department
+                                                  Bank A/c No:
                                                 </th>
                                                 <th
                                                   className="blue-th"
                                                   scope="col"
                                                 >
-                                                  Designation
+                                                  IFCS Code:
                                                 </th>
-                                                <th
-                                                  className="blue-th"
-                                                  scope="col"
-                                                >
-                                                  Birth Date
-                                                </th>
+
                                                 <th
                                                   className="blue-th"
                                                   scope="col"
@@ -2788,12 +2803,7 @@ const SupplierCustomerMaster = () => {
                                                     placeholder="Enter designation"
                                                   />
                                                 </td>
-                                                <td>
-                                                  <input
-                                                    type="date"
-                                                    className="form-control"
-                                                  />
-                                                </td>
+
                                                 <td>
                                                   <button className="bankbtn">
                                                     <i className="fas fa-plus"></i>{" "}
@@ -2819,38 +2829,33 @@ const SupplierCustomerMaster = () => {
                                                   className="blue-th"
                                                   scope="col"
                                                 >
-                                                  Name
+                                                  Account Holder Name
                                                 </th>
                                                 <th
                                                   className="blue-th"
                                                   scope="col"
                                                 >
-                                                  Contact
+                                                  Bank Name
                                                 </th>
                                                 <th
                                                   className="blue-th"
                                                   scope="col"
                                                 >
-                                                  Email
+                                                  Branch Name
                                                 </th>
                                                 <th
                                                   className="blue-th"
                                                   scope="col"
                                                 >
-                                                  Department
+                                                  Bank Ac No
                                                 </th>
                                                 <th
                                                   className="blue-th"
                                                   scope="col"
                                                 >
-                                                  Designation
+                                                  IFCS Code
                                                 </th>
-                                                <th
-                                                  className="blue-th"
-                                                  scope="col"
-                                                >
-                                                  Birth Date
-                                                </th>
+
                                                 <th
                                                   className="blue-th"
                                                   scope="col"
@@ -2866,7 +2871,7 @@ const SupplierCustomerMaster = () => {
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
+
                                                 <td>
                                                   <button className="bankbtn2">
                                                     <i className="fas fa-trash-alt"></i>
@@ -2879,18 +2884,23 @@ const SupplierCustomerMaster = () => {
                                       </div>
                                     </div>
                                   </div>
+
+                                  <div className="row text-end">
+                                    <div className="col-md-12">
+                                      <button className="subGernalbtn1">
+                                        SAVE
+                                      </button>
+                                      <button className="subGernalbtn1">
+                                        CLEAR
+                                      </button>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="row text-start">
-                    <div className="col-md-12">
-                      <button className="subGernalbtn1">SAVE</button>
-                      <button className="subGernalbtn1">CLEAR</button>
                     </div>
                   </div>
                 </div>

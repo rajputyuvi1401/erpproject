@@ -6,8 +6,28 @@ import NavBar from "../../../NavBar/NavBar";
 import SideNav from "../../../SideNav/SideNav";
 import { Link } from "react-router-dom";
 import "./TaskMaster.css";
+import {
+  getTaxCodes,
+  createTaxCode,
+  updateTaxCode,
+  deleteTaxCode,
+} from "../../Service/Api.jsx"; // Adjust the import path as needed
+
 const TaskMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
+  const [taxCodes, setTaxCodes] = useState([]);
+  const [formData, setFormData] = useState({
+    id: "",
+    Tax_Code: "",
+    Tax_Desc: "",
+    Module: "",
+    GST_Tax_Code: "",
+    CGST: "",
+    SGST: "",
+    IGST: "",
+    Cess: "",
+  });
+  const [editMode, setEditMode] = useState(false);
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
@@ -21,14 +41,74 @@ const TaskMaster = () => {
     }
   }, [sideNavOpen]);
 
-  const [taxCode, setTaxCode] = useState("");
-  const [taxDesc, setTaxDesc] = useState("");
-  const [module, setModule] = useState("");
-  const [gstTaxCode, setGstTaxCode] = useState("");
-  const [cgst, setCgst] = useState("");
-  const [sgst, setSgst] = useState("");
-  const [igst, setIgst] = useState("");
-  const [cess, setCess] = useState("");
+  useEffect(() => {
+    fetchTaxCodes();
+  }, []);
+
+  const fetchTaxCodes = async () => {
+    try {
+      const data = await getTaxCodes();
+      console.log("Fetched tax codes data:", data); // Debugging
+      setTaxCodes(data);
+    } catch (error) {
+      console.error("Error fetching tax codes:", error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSave = async () => {
+    try {
+      console.log("Saving form data:", formData);
+      if (editMode) {
+        console.log("Updating tax code with ID:", formData.id);
+        await updateTaxCode(formData.id, formData);
+      } else {
+        console.log("Creating new tax code");
+        await createTaxCode(formData);
+      }
+      fetchTaxCodes();
+      resetForm();
+    } catch (error) {
+      console.error("Error saving tax code:", error);
+    }
+  };
+
+  const handleEdit = (item) => {
+    setFormData(item);
+    setEditMode(true);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteTaxCode(id);
+      fetchTaxCodes();
+    } catch (error) {
+      console.error("Error deleting tax code:", error);
+    }
+  };
+
+  const handleCancel = () => {
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setFormData({
+      id: "",
+      Tax_Code: "",
+      Tax_Desc: "",
+      Module: "",
+      GST_Tax_Code: "",
+      CGST: "",
+      SGST: "",
+      IGST: "",
+      Cess: "",
+    });
+    setEditMode(false);
+  };
 
   return (
     <div className="taskmaster">
@@ -78,89 +158,99 @@ const TaskMaster = () => {
                               <td>
                                 <input
                                   type="text"
-                                  value={taxCode}
-                                  onChange={(e) => setTaxCode(e.target.value)}
+                                  name="Tax_Code"
+                                  value={formData.Tax_Code}
+                                  onChange={handleInputChange}
                                   className="form-control"
                                 />
                               </td>
-
                               <td>
                                 <textarea
-                                  value={taxDesc}
-                                  onChange={(e) => setTaxDesc(e.target.value)}
+                                  name="Tax_Desc"
+                                  value={formData.Tax_Desc}
+                                  onChange={handleInputChange}
                                   className="form-control"
                                 ></textarea>
                               </td>
-
                               <td>
                                 <select
-                                  value={module}
-                                  onChange={(e) => setModule(e.target.value)}
+                                  name="Module"
+                                  value={formData.Module}
+                                  onChange={handleInputChange}
                                   className="form-control"
                                 >
                                   <option value="">Select Module</option>
-                                  {/* Add your module options here */}
+                                  <option value="purchase">Purchase</option>
+                                  <option value="sales">Sales</option>
                                 </select>
                               </td>
-
                               <td>
                                 <select
-                                  value={gstTaxCode}
-                                  onChange={(e) =>
-                                    setGstTaxCode(e.target.value)
-                                  }
+                                  name="GST_Tax_Code"
+                                  value={formData.GST_Tax_Code}
+                                  onChange={handleInputChange}
                                   className="form-control"
                                 >
                                   <option value="">Select GST Tax Code</option>
-                                  {/* Add your GST tax code options here */}
+                                  <option value="CGST+SGST">CGST+SGST</option>
+                                  <option value="IGST">IGST</option>
                                 </select>
                               </td>
-
                               <td>
                                 <input
                                   type="text"
-                                  value={cgst}
-                                  onChange={(e) => setCgst(e.target.value)}
-                                  className="form-control"
-                                />
-                              </td>
-
-                              <td>
-                                <input
-                                  type="text"
-                                  value={sgst}
-                                  onChange={(e) => setSgst(e.target.value)}
-                                  className="form-control"
-                                />
-                              </td>
-
-                              <td>
-                                <input
-                                  type="text"
-                                  value={igst}
-                                  onChange={(e) => setIgst(e.target.value)}
-                                  className="form-control"
-                                />
-                              </td>
-
-                              <td>
-                                <input
-                                  type="text"
-                                  value={cess}
-                                  onChange={(e) => setCess(e.target.value)}
+                                  name="CGST"
+                                  value={formData.CGST}
+                                  onChange={handleInputChange}
                                   className="form-control"
                                 />
                               </td>
                               <td>
-                                <button className="maintaskbtn">Save</button>
-                                <button className="maintaskbtn">Cancel</button>
+                                <input
+                                  type="text"
+                                  name="SGST"
+                                  value={formData.SGST}
+                                  onChange={handleInputChange}
+                                  className="form-control"
+                                />
+                              </td>
+                              <td>
+                                <input
+                                  type="text"
+                                  name="IGST"
+                                  value={formData.IGST}
+                                  onChange={handleInputChange}
+                                  className="form-control"
+                                />
+                              </td>
+                              <td>
+                                <input
+                                  type="text"
+                                  name="Cess"
+                                  value={formData.Cess}
+                                  onChange={handleInputChange}
+                                  className="form-control"
+                                />
+                              </td>
+                              <td>
+                                <button
+                                  onClick={handleSave}
+                                  className="maintaskbtn"
+                                >
+                                  {editMode ? "Update" : "Save"}
+                                </button>
+                                <button
+                                  onClick={handleCancel}
+                                  className="maintaskbtn"
+                                >
+                                  Cancel
+                                </button>
                               </td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
                     </div>
-
                     <div className="taskmiddle">
                       <div className="container-fluid">
                         <div className="row">
@@ -183,68 +273,35 @@ const TaskMaster = () => {
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <td>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                      />
-                                    </td>
-                                    <td>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                      />
-                                    </td>
-                                    <td>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                      />
-                                    </td>
-                                    <td>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                      />
-                                    </td>
-                                    <td>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                      />
-                                    </td>
-                                    <td>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                      />
-                                    </td>
-                                    <td>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                      />
-                                    </td>
-                                    <td>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                      />
-                                    </td>
-                                    <td>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                      />
-                                    </td>
-                                    <td>
-                                      <i className="fas fa-edit"></i>
-                                    </td>
-                                    <td>
-                                      <i className="fas fa-trash"></i>
-                                    </td>
-                                  </tr>
+                                  {taxCodes.map((item, index) => (
+                                    <tr key={item.id}>
+                                      <td>{index + 1}</td>
+                                      <td>{item.Tax_Code}</td>
+                                      <td>{item.Tax_Desc}</td>
+                                      <td>{item.Module}</td>
+                                      <td>{item.GST_Tax_Code}</td>
+                                      <td>{item.CGST}</td>
+                                      <td>{item.SGST}</td>
+                                      <td>{item.IGST}</td>
+                                      <td>{item.Cess}</td>
+                                      <td>
+                                        <button
+                                          onClick={() => handleEdit(item)}
+                                          className="sgstbtn"
+                                        >
+                                          <i className="fas fa-edit"></i>
+                                        </button>
+                                      </td>
+                                      <td>
+                                        <button
+                                          onClick={() => handleDelete(item.id)}
+                                          className="sgstbtn"
+                                        >
+                                          <i className="fas fa-trash"></i>
+                                        </button>
+                                      </td>
+                                    </tr>
+                                  ))}
                                 </tbody>
                               </table>
                             </div>
@@ -255,7 +312,9 @@ const TaskMaster = () => {
                   </div>
                   <div className="row text-start" style={{ marginTop: "5px" }}>
                     <div className="col-md-12">
-                      <h5 style={{ color: "blue" }}>Total Record:00</h5>
+                      <h5 style={{ color: "blue" }}>
+                        Total Record: {taxCodes.length}
+                      </h5>
                     </div>
                   </div>
                 </div>

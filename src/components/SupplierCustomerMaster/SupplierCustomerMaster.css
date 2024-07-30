@@ -75,7 +75,7 @@ body.no-scroll {
 }
 
 .Buyertable .table th.blue-th {
-  background-color: rgba(0, 0, 255, 0.315);
+  background-color: rgba(137, 43, 226, 0.547);
   color: white;
 }
 
@@ -113,7 +113,7 @@ body.no-scroll {
 }
 
 .Buyertable1 .table th.blue-th {
-  background-color: rgba(137, 137, 142, 0.407);
+  background-color: rgba(137, 43, 226, 0.547);
   color: white;
 }
 
@@ -159,7 +159,7 @@ body.no-scroll {
 }
 
 .Banktable .table th.blue-th {
-  background-color: rgba(0, 0, 255, 0.315);
+  background-color: rgba(137, 43, 226, 0.547);
   color: white;
 }
 
@@ -197,7 +197,8 @@ body.no-scroll {
 }
 
 .Banktable1 .table th.blue-th {
-  background-color: rgba(137, 137, 142, 0.407);
+  background-color: rgba(137, 43, 226, 0.547);
+
   color: white;
 }
 

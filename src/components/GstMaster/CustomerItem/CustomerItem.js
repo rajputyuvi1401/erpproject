@@ -4,10 +4,13 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../../NavBar/NavBar";
 import SideNav from "../../../SideNav/SideNav";
+import { uploadFile } from "../../Service/Api.jsx"; // Adjust path as necessary
 import "./CustomerItem.css";
 
 const CustomerItem = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadResult, setUploadResult] = useState("");
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
@@ -20,6 +23,28 @@ const CustomerItem = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]); // Access the first selected file
+  };
+
+  const handleFileUpload = async () => {
+    if (!selectedFile) {
+      alert("Please select a file before submitting.");
+      return;
+    }
+
+    try {
+      const data = await uploadFile(selectedFile);
+      console.log("File uploaded successfully:", data);
+      setUploadResult(`File uploaded successfully! File ID: ${data.id}`); // Update result
+      alert("File uploaded successfully!");
+    } catch (error) {
+      console.error("Error during file upload:", error);
+      setUploadResult("Error during file upload: " + error.message); // Update result
+      alert("Error during file upload: " + error.message);
+    }
+  };
 
   return (
     <div className="GstCustomer">
@@ -59,11 +84,17 @@ const CustomerItem = () => {
                               type="file"
                               className="form-control"
                               id="inputGroupFile01"
+                              onChange={handleFileChange}
                             />
                           </div>
                         </div>
                         <div className="col-sm-2">
-                          <button className="cusmainbtn">Submit</button>
+                          <button
+                            className="cusmainbtn"
+                            onClick={handleFileUpload}
+                          >
+                            Submit
+                          </button>
                         </div>
                       </div>
                       <div className="row text-start">
@@ -76,8 +107,9 @@ const CustomerItem = () => {
                   <div className="row text-start" style={{ marginTop: "5px" }}>
                     <div className="col-md-12">
                       <h5 style={{ color: "blue" }}>
-                        Customer Gst Rate Upload Result :
+                        Customer Gst Rate Upload Result:
                       </h5>
+                      <p>{uploadResult}</p> {/* Display upload result */}
                     </div>
                   </div>
                 </div>

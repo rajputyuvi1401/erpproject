@@ -28,7 +28,16 @@ main {
 body.no-scroll {
   overflow: hidden;
 }
-
+.btn-gst {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(235, 233, 233, 0.685);
+  color: black;
+  text-decoration: none;
+  margin: 5px;
+  margin-top: 70px;
+}
 .Cutwise {
   width: 100%;
   background-color: rgb(241, 242, 244);
@@ -44,7 +53,26 @@ body.no-scroll {
   display: flex;
   flex-direction: column;
 }
+.cutwiseheader {
+  background-color: aliceblue;
+  padding: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.cuthebtn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(235, 233, 233, 0.685);
+  color: black;
+  text-decoration: none;
+  margin: 5px;
+}
 .Cutwisemain {
   background-color: aliceblue;
   flex-grow: 1;
@@ -57,6 +85,14 @@ body.no-scroll {
 .Cutwise1 th {
   background-color: rgba(0, 0, 255, 0.544);
 }
+.btnwise {
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgba(235, 233, 233, 0.685);
+  cursor: pointer;
+}
 @media (max-width: 768px) {
   .Cutwisemain .table-responsive {
     overflow-x: auto;
@@ -65,4 +101,7 @@ body.no-scroll {
   .Cutwisemain .table td {
     white-space: nowrap;
   }
+}
+.Cutwisetable {
+  margin-top: 80px;
 }

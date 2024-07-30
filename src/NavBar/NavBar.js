@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import CropFreeIcon from "@mui/icons-material/CropFree";
 import BedtimeIcon from "@mui/icons-material/Bedtime";
@@ -11,6 +11,10 @@ import us from "../assets/us.jpg";
 import user from "../assets/user-1.jpg";
 
 const NavBar = ({ toggleSideNav }) => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    navigate("/");
+  };
   return (
     <div>
       <nav className="navbar">
@@ -100,7 +104,7 @@ const NavBar = ({ toggleSideNav }) => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Geneva
+              Admin
             </button>
             <ul className="navbar-dropdown-menu">
               <li>
@@ -114,9 +118,13 @@ const NavBar = ({ toggleSideNav }) => {
                 </Link>
               </li>
               <li>
-                <Link className="navbar-dropdown-item" to="#">
-                  Something else here
-                </Link>
+                <button
+                  className="navbar-dropdown-item"
+                  onClick={handleLogout}
+                  id="navid"
+                >
+                  Logout
+                </button>
               </li>
             </ul>
           </div>

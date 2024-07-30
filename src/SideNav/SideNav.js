@@ -36,12 +36,12 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <img className="logo-light" src={logo} alt="logo" />
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/home">
               <FaHome />
               Admin Login
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/mainpage">
               <FaHome />

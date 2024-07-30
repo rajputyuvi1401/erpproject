@@ -124,3 +124,15 @@
     width: 100%;
   }
 }
+#navid {
+  border: none;
+  padding: 10px 20px;
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  color: #333;
+}
+#navid:hover {
+  background-color: #f1f1f1;
+  width: 100%;
+}

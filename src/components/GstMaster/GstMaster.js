@@ -5,25 +5,18 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import {
+  fetchGstMasterRecords,
+  createGstMasterRecord,
+  updateGstMasterRecord,
+  deleteGstMasterRecord,
+} from "../Service/Api.jsx"; // Adjust path as necessary
 import "./GstMaster.css";
 
 const GstMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
-
-  const toggleSideNav = () => {
-    setSideNavOpen(!sideNavOpen);
-  };
-
-  useEffect(() => {
-    if (sideNavOpen) {
-      document.body.classList.add("side-nav-open");
-    } else {
-      document.body.classList.remove("side-nav-open");
-    }
-  }, [sideNavOpen]);
-
   const [formData, setFormData] = useState({
+    id: "",
     HSN_SAC_Code: "",
     HSN_SAC_Desc: "",
     CGST: "",
@@ -37,10 +30,20 @@ const GstMaster = () => {
     Is_Exempt: "no",
     Type: "type1",
   });
-
   const [records, setRecords] = useState([]);
-  const [isEdit, setIsEdit] = useState(false);
   const [editId, setEditId] = useState(null);
+
+  const toggleSideNav = () => {
+    setSideNavOpen(!sideNavOpen);
+  };
+
+  useEffect(() => {
+    if (sideNavOpen) {
+      document.body.classList.add("side-nav-open");
+    } else {
+      document.body.classList.remove("side-nav-open");
+    }
+  }, [sideNavOpen]);
 
   useEffect(() => {
     fetchRecords();
@@ -48,52 +51,29 @@ const GstMaster = () => {
 
   const fetchRecords = async () => {
     try {
-      const response = await axios.get(
-        "http://13.201.136.34:8000/All_Masters/GST_Master/"
-      );
-      setRecords(response.data);
+      const data = await fetchGstMasterRecords();
+      setRecords(data);
+      console.log(data);
     } catch (error) {
-      console.error("Error fetching records:", error);
+      console.error(error.message);
     }
   };
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const validateForm = () => {
-    let formErrors = {};
-    Object.keys(formData).forEach((key) => {
-      if (!formData[key]) {
-        formErrors[key] = "This field is required.";
-      }
-    });
-
-    return Object.keys(formErrors).length === 0;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSave = async () => {
-    if (!validateForm()) return;
-
     try {
-      if (isEdit) {
-        await axios.put(
-          `http://13.201.136.34:8000/All_Masters/GST_Master/${editId}/`,
-          formData
-        );
-        setIsEdit(false);
+      if (editId) {
+        await updateGstMasterRecord(editId, formData);
         setEditId(null);
       } else {
-        await axios.post(
-          "http://13.201.136.34:8000/All_Masters/GST_Master/",
-          formData
-        );
+        await createGstMasterRecord(formData);
       }
-      fetchRecords();
       setFormData({
+        id: "",
         HSN_SAC_Code: "",
         HSN_SAC_Desc: "",
         CGST: "",
@@ -107,31 +87,26 @@ const GstMaster = () => {
         Is_Exempt: "no",
         Type: "type1",
       });
-      alert("Data saved successfully!");
+      fetchRecords();
     } catch (error) {
-      console.error("Error saving data:", error);
-      alert("An error occurred while saving the data.");
+      console.error(error.message);
     }
   };
 
   const handleEdit = (record) => {
     setFormData(record);
-    setIsEdit(true);
     setEditId(record.id);
   };
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(
-        `http://13.201.136.34:8000/All_Masters/GST_Master/${id}/`
-      );
+      await deleteGstMasterRecord(id);
       fetchRecords();
-      alert("Record deleted successfully!");
     } catch (error) {
-      console.error("Error deleting record:", error);
-      alert("An error occurred while deleting the record.");
+      console.error(error.message);
     }
   };
+
   return (
     <div className="GstMaster">
       <div className="container-fluid">
@@ -180,7 +155,7 @@ const GstMaster = () => {
                                   <th>HSN/SAC Desc.</th>
                                   <th>Domestic</th>
                                   <th>Export</th>
-                                  <th></th>
+                                  <th>Action</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -191,7 +166,7 @@ const GstMaster = () => {
                                       className="form-control"
                                       name="HSN_SAC_Code"
                                       value={formData.HSN_SAC_Code}
-                                      onChange={handleChange}
+                                      onChange={handleInputChange}
                                       placeholder="Tariff code"
                                     />
                                   </td>
@@ -200,7 +175,7 @@ const GstMaster = () => {
                                       className="form-control"
                                       name="HSN_SAC_Desc"
                                       value={formData.HSN_SAC_Desc}
-                                      onChange={handleChange}
+                                      onChange={handleInputChange}
                                     ></textarea>
                                   </td>
                                   <td>
@@ -215,13 +190,12 @@ const GstMaster = () => {
                                     <tbody>
                                       <tr>
                                         <td>
-                                          {" "}
                                           <input
                                             type="text"
                                             className="form-control mb-2"
                                             name="CGST"
                                             value={formData.CGST}
-                                            onChange={handleChange}
+                                            onChange={handleInputChange}
                                             placeholder="CGST (%)"
                                           />
                                         </td>
@@ -231,29 +205,27 @@ const GstMaster = () => {
                                             className="form-control mb-2"
                                             name="SGST"
                                             value={formData.SGST}
-                                            onChange={handleChange}
+                                            onChange={handleInputChange}
                                             placeholder="SGST (%)"
                                           />
                                         </td>
                                         <td>
-                                          {" "}
                                           <input
                                             type="text"
                                             className="form-control mb-2"
                                             name="IGST"
                                             value={formData.IGST}
-                                            onChange={handleChange}
+                                            onChange={handleInputChange}
                                             placeholder="IGST (%)"
                                           />
                                         </td>
                                         <td>
-                                          {" "}
                                           <input
                                             type="text"
                                             className="form-control mb-2"
                                             name="UTGST"
                                             value={formData.UTGST}
-                                            onChange={handleChange}
+                                            onChange={handleInputChange}
                                             placeholder="UTGST (%)"
                                           />
                                         </td>
@@ -266,19 +238,19 @@ const GstMaster = () => {
                                         <th>SGST (%)</th>
                                         <th>CGST (%)</th>
                                         <th>IGST (%)</th>
+                                        <th>CESS (%)</th>
                                       </tr>
                                     </thead>
                                     <tbody>
                                       <tr>
                                         <td>
-                                          {" "}
                                           <input
                                             type="text"
                                             className="form-control mb-2"
                                             name="export_SGST"
                                             value={formData.export_SGST}
-                                            onChange={handleChange}
-                                            placeholder="Export SGST (%)"
+                                            onChange={handleInputChange}
+                                            placeholder="SGST (%)"
                                           />
                                         </td>
                                         <td>
@@ -287,82 +259,65 @@ const GstMaster = () => {
                                             className="form-control mb-2"
                                             name="export_CGST"
                                             value={formData.export_CGST}
-                                            onChange={handleChange}
-                                            placeholder="Export CGST (%)"
+                                            onChange={handleInputChange}
+                                            placeholder="CGST (%)"
                                           />
                                         </td>
                                         <td>
-                                          {" "}
                                           <input
                                             type="text"
                                             className="form-control mb-2"
                                             name="export_IGST"
                                             value={formData.export_IGST}
-                                            onChange={handleChange}
-                                            placeholder="Export IGST (%)"
+                                            onChange={handleInputChange}
+                                            placeholder="IGST (%)"
                                           />
                                         </td>
-                                      </tr>
-                                    </tbody>
-                                  </td>
-                                  <td>
-                                    <thead>
-                                      <tr>
-                                        <th>Cess (%)</th>
-                                        <th>Is Exempt</th>
-                                        <th>Type</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
                                         <td>
-                                          {" "}
                                           <input
                                             type="text"
                                             className="form-control mb-2"
                                             name="Cess"
                                             value={formData.Cess}
-                                            onChange={handleChange}
+                                            onChange={handleInputChange}
                                             placeholder="Cess (%)"
                                           />
                                         </td>
-                                        <td>
-                                          <select
-                                            className="form-control mb-2"
-                                            name="Is_Exempt"
-                                            value={formData.Is_Exempt}
-                                            onChange={handleChange}
-                                          >
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
-                                          </select>
-                                        </td>
-                                        <td>
-                                          <select
-                                            className="form-control"
-                                            style={{ width: "75px" }}
-                                            name="Type"
-                                            value={formData.Type}
-                                            onChange={handleChange}
-                                          >
-                                            <option value="type1">
-                                              Type 1
-                                            </option>
-                                            <option value="type2">
-                                              Type 2
-                                            </option>
-                                          </select>
-                                        </td>
-                                        <td>
-                                          <button
-                                            className="btn-gst"
-                                            onClick={handleSave}
-                                          >
-                                            save
-                                          </button>
-                                        </td>
                                       </tr>
                                     </tbody>
+                                  </td>
+
+                                  <td>
+                                    <select
+                                      className="form-control"
+                                      name="Is_Exempt"
+                                      value={formData.Is_Exempt}
+                                      onChange={handleInputChange}
+                                    >
+                                      <option value="yes">Yes</option>
+                                      <option value="no">No</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <select
+                                      className="form-control"
+                                      style={{ width: "75px" }}
+                                      name="Type"
+                                      value={formData.Type}
+                                      onChange={handleInputChange}
+                                    >
+                                      <option value="type1">Type 1</option>
+                                      <option value="type2">Type 2</option>
+                                    </select>
+                                  </td>
+
+                                  <td>
+                                    <button
+                                      className="btn-gst"
+                                      onClick={handleSave}
+                                    >
+                                      Save
+                                    </button>
                                   </td>
                                 </tr>
                               </tbody>
