@@ -142,15 +142,11 @@ const CustomerItemWise = () => {
                                             placeholder="Please Enter Item Name"
                                           />
                                         </div>
-                                        <div className="col-sm-3">
+                                        <div className="col-sm-3 text-start">
                                           <div className="form-check">
-                                            <input
-                                              className="form-check-input"
-                                              type="radio"
-                                              name="flexRadioDefault"
-                                              id="flexRadioDefault1"
-                                            />
-                                            <p>Single item link</p>
+                                            <p>
+                                              <span>? </span>Single item link
+                                            </p>
                                           </div>
                                         </div>
                                       </div>

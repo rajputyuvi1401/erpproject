@@ -152,13 +152,10 @@ const CustomerSupplierLink = () => {
                                         </div>
                                         <div className="col-sm-4">
                                           <div className="form-check">
-                                            <input
-                                              className="form-check-input"
-                                              type="radio"
-                                              name="flexRadioDefault"
-                                              id="flexRadioDefault1"
-                                            />
-                                            <p>Group wise item link</p>
+                                            <p>
+                                              <span>? </span>Group wise item
+                                              link
+                                            </p>
                                           </div>
                                         </div>
                                       </div>
@@ -187,13 +184,9 @@ const CustomerSupplierLink = () => {
                                         </div>
                                         <div className="col-sm-3">
                                           <div className="form-check">
-                                            <input
-                                              className="form-check-input"
-                                              type="radio"
-                                              name="flexRadioDefault"
-                                              id="flexRadioDefault1"
-                                            />
-                                            <p>Single item link</p>
+                                            <p>
+                                              <span>? </span>Single item link
+                                            </p>
                                           </div>
                                         </div>
                                       </div>
@@ -236,10 +229,10 @@ const CustomerSupplierLink = () => {
                                       <th>SR</th>
                                       <th>Cust Code</th>
                                       <th>Cust Name</th>
+                                      <th>Item No</th>
                                       <th>Item Code</th>
                                       <th>Item Desc</th>
-                                      <th>VA1</th>
-                                      <th>VA2</th>
+                                      <th>Item Rate</th>
                                       <th>Action</th>
                                     </tr>
                                   </thead>

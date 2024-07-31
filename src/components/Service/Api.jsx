@@ -3,11 +3,32 @@
 import axios from "axios";
 
 // Define base URLs
-const BASE_URL = "api/All_Masters/";
+const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
+// const BASE_URL = "api/All_Masters/";
 const TAX_CODE_URL = `${BASE_URL}Tax_Code/`;
 const GST_MASTER_URL = `${BASE_URL}GST_Master/`;
 const CUT_WISE_URL = `${BASE_URL}Cut_Wise/`;
 const UPLOAD_URL = `${BASE_URL}upload/`;
+
+// Home
+const LOGIN_URL = "http://13.201.136.34:8000/api/Erp_admin/api/auth/login/";
+
+export const login = async (data) => {
+  try {
+    const response = await axios.post(LOGIN_URL, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Error logging in:",
+      error.response ? error.response.data : error.message
+    );
+    throw new Error("Error logging in");
+  }
+};
 
 // GST Master
 export const fetchGstMasterRecords = async () => {
@@ -154,5 +175,105 @@ export const uploadFile = async (file) => {
   } catch (error) {
     console.error("Upload error details:", error.response || error.message);
     throw new Error("Error uploading file");
+  }
+};
+
+// Supplier Customer Master
+
+// Bant detail
+export const fetchBankDetails = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}Bank_Details/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching bank details:", error);
+    throw error;
+  }
+};
+
+export const addBankDetail = async (formData) => {
+  try {
+    await axios.post(`${BASE_URL}Bank_Details/`, formData);
+  } catch (error) {
+    console.error("Error adding bank detail:", error);
+    throw error;
+  }
+};
+
+export const deleteBankDetail = async (id) => {
+  try {
+    await axios.delete(`${BASE_URL}Bank_Details/${id}`);
+  } catch (error) {
+    console.error("Error deleting bank detail:", error);
+    throw error;
+  }
+};
+
+// Buyer Contact Details
+
+export const fetchBuyerContactDetails = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}Buyer_Contact/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching buyer contact details:", error);
+    throw error;
+  }
+};
+
+export const addBuyerContactDetail = async (formData) => {
+  try {
+    await axios.post(`${BASE_URL}Buyer_Contact/`, formData);
+  } catch (error) {
+    console.error("Error adding buyer contact detail:", error);
+    throw error;
+  }
+};
+
+export const deleteBuyerContactDetail = async (id) => {
+  try {
+    await axios.delete(`${BASE_URL}Buyer_Contact/${id}`);
+  } catch (error) {
+    console.error("Error deleting buyer contact detail:", error);
+    throw error;
+  }
+};
+
+// Supplier Customer
+export const saveSupplierCustomerData = async (data) => {
+  try {
+    const response = await axios.post(`${BASE_URL}Supplier_Customer/`, data);
+    return response;
+  } catch (error) {
+    // Log detailed error information
+    console.error("API call error:", {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      config: error.config,
+    });
+    throw error;
+  }
+};
+
+// Item Cross Reference
+
+export const postItemCrossReference = async (data) => {
+  try {
+    const response = await fetch(`${BASE_URL}Item_Cross/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    return await response.json();
+  } catch (error) {
+    throw new Error(`Failed to post data: ${error.message}`);
   }
 };
