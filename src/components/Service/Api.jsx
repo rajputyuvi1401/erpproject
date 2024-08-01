@@ -245,7 +245,22 @@ export const saveSupplierCustomerData = async (data) => {
     const response = await axios.post(`${BASE_URL}Supplier_Customer/`, data);
     return response;
   } catch (error) {
-    // Log detailed error information
+    console.error("API call error:", {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      config: error.config,
+    });
+    throw error;
+  }
+};
+
+// Supplier Vendor List
+export const getSupplierCustomerData = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}Supplier_Customer/`);
+    return response.data;
+  } catch (error) {
     console.error("API call error:", {
       message: error.message,
       response: error.response?.data,
@@ -276,4 +291,154 @@ export const postItemCrossReference = async (data) => {
   } catch (error) {
     throw new Error(`Failed to post data: ${error.message}`);
   }
+};
+
+// Cross reference supplier item
+
+export const postSupplierItem = async (data) => {
+  try {
+    const response = await fetch(`${BASE_URL}Supplier_Item/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error during API call:", error);
+    throw error;
+  }
+};
+
+// Cross reference customer -item -wise
+
+export const saveItemRate = async (data) => {
+  try {
+    const response = await axios.post(`${BASE_URL}Item_VA_Rate/`, data);
+
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Error:",
+      error.response ? error.response.data : error.message
+    );
+    if (error.response && error.response.data) {
+      console.log(error.response.data.message || "Failed to save data");
+    } else {
+      console.log("An unexpected error occurred");
+    }
+    throw error; // Rethrow error to handle it in the component if needed
+  }
+};
+
+// Cycle time master add new button
+
+export const saveCycleTimeData = async (data) => {
+  try {
+    const response = await axios.post(`${BASE_URL}Cycle_Time_Master/`, data);
+    console.log("Cycle time master saved successfully");
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Error:",
+      error.response ? error.response.data : error.message
+    );
+
+    console.error(
+      error.response?.data?.message || "Failed to save Work Center"
+    );
+    throw error; // Rethrow error to handle it in the component if needed
+  }
+};
+
+// Work Center add new
+export const saveWorkCenter = async (data) => {
+  try {
+    const response = await axios.post(`${BASE_URL}Work_Center/`, data);
+
+    console.log("Work Center saved successfully");
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Error:",
+      error.response ? error.response.data : error.message
+    );
+
+    console.error(
+      error.response?.data?.message || "Failed to save Work Center"
+    );
+    throw error; // Rethrow error to handle it in the component if needed
+  }
+};
+
+// work center ke andar card card ke card
+
+export const saveMachineGroupData = async (data) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}Machine_Group_Work_Center/`,
+      data
+    );
+    console.log("Machine Group saved successfully");
+    return response.data; // Adjust based on API response structure
+  } catch (error) {
+    console.error(
+      "Error:",
+      error.response ? error.response.data : error.message
+    );
+
+    console.error(
+      error.response?.data?.message || "Failed to save Work Center"
+    );
+    throw new Error("Error saving machine group data");
+  }
+};
+
+//Work center master card
+
+export const saveWorkCenterTypeGroupData = async (data) => {
+  try {
+    const response = await axios.post(`${BASE_URL}WorkCenterTypeGroup/`, data);
+    console.log("data save");
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Error:",
+      error.response ? error.response.data : error.message
+    );
+
+    console.error(
+      error.response?.data?.message || "Failed to save Work Center"
+    );
+    throw error;
+  }
+};
+
+// shift master
+export const saveShiftMaster = async (data) => {
+  const response = await fetch(`${BASE_URL}Shift_Master/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to save data");
+  }
+
+  return response.json();
+};
+
+export const fetchShiftMasters = async () => {
+  const response = await fetch(`${BASE_URL}Shift_Master/`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return response.json();
 };

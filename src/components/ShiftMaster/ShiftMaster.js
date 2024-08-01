@@ -5,6 +5,9 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import "./ShiftMaster.css";
+import { saveShiftMaster, fetchShiftMasters } from "../Service/Api.jsx";
+import { toast, ToastContainer } from "react-toastify"; // Ensure this is installed
+
 const ShiftMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -23,8 +26,39 @@ const ShiftMaster = () => {
   const [showTable, setShowTable] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
-  const handleChange = (event) => {
-    const selectedValue = event.target.value;
+  const [formData, setFormData] = useState({
+    Plant: "",
+    Shift_Name: "",
+    Shift_Prefix: "",
+    Shift_From: "",
+    Shift_Till: "",
+    Break_Name: "",
+    Break_Till: "",
+    Break_Time: "",
+    Total_Hours: "",
+  });
+  const [errors, setErrors] = useState({});
+  const [shiftData, setShiftData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchShiftMasters();
+        setShiftData(data);
+      } catch (error) {
+        console.error("Error fetching shift data:", error);
+        toast.error("Failed to load shift data");
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleChange1 = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevState) => ({ ...prevState, [id]: value }));
+
+    const selectedValue = e.target.value;
+
     setSelectedOption(selectedValue);
     if (selectedValue === "1") {
       setShowTable(true);
@@ -33,8 +67,39 @@ const ShiftMaster = () => {
     }
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Validation
+    const newErrors = {};
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key]) newErrors[key] = "This field is required";
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    // Clear errors
+    setErrors({});
+
+    try {
+      await saveShiftMaster(formData);
+      toast.success("Data saved successfully");
+      console.log("Form data:", formData);
+      // Optionally, you can refetch data here to update the table
+      const data = await fetchShiftMasters();
+      setShiftData(data);
+    } catch (error) {
+      toast.error("Failed to save data");
+      console.error("Error saving data:", error);
+    }
+  };
+
   return (
     <div className="ShiftMaster">
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -65,146 +130,190 @@ const ShiftMaster = () => {
                       <div className="row text-start">
                         <div className="col-md-1">
                           <div className="mb-3">
-                            <label
-                              for="exampleFormControlInput1"
-                              className="form-label"
-                            >
+                            <label htmlFor="Plant" className="form-label">
                               Plant:
                             </label>
                             <select
+                              id="Plant"
                               className="form-select"
                               aria-label="Default select example"
-                              onChange={handleChange}
+                              onChange={handleChange1}
                               value={selectedOption}
                             >
-                              <option selected>Select...</option>
+                              <option value="">Select...</option>
                               <option value="1">SHARP</option>
                               <option value="2">Two</option>
                               <option value="3">Three</option>
                             </select>
+                            {errors.Plant && (
+                              <small className="text-danger">
+                                {errors.Plant}
+                              </small>
+                            )}
                           </div>
                         </div>
                         <div className="col-md-1">
-                          <label
-                            for="exampleFormControlInput1"
-                            className="form-label"
-                          >
+                          <label htmlFor="Shift_Name" className="form-label">
                             Shift Name:
                           </label>
                           <input
-                            type="type"
+                            type="text"
                             className="form-control"
-                            id="exampleFormControlInput1"
+                            id="Shift_Name"
+                            value={formData.Shift_Name}
+                            onChange={handleChange1}
                           />
+                          {errors.Shift_Name && (
+                            <small className="text-danger">
+                              {errors.Shift_Name}
+                            </small>
+                          )}
                         </div>
                         <div className="col-md-1">
                           <div className="mb-3">
                             <label
-                              for="exampleFormControlInput1"
+                              htmlFor="Shift_Prefix"
                               className="form-label"
                             >
                               Shift Prefix:
                             </label>
                             <input
-                              type="type"
+                              type="text"
                               className="form-control"
-                              id="exampleFormControlInput1"
+                              id="Shift_Prefix"
+                              value={formData.Shift_Prefix}
+                              onChange={handleChange1}
                             />
+                            {errors.Shift_Prefix && (
+                              <small className="text-danger">
+                                {errors.Shift_Prefix}
+                              </small>
+                            )}
                           </div>
                         </div>
                         <div className="col-md-1">
                           <div className="mb-3">
-                            <label
-                              for="exampleFormControlInput1"
-                              className="form-label"
-                            >
+                            <label htmlFor="Shift_From" className="form-label">
                               Shift From:
                             </label>
                             <input
-                              type="type"
+                              type="text"
                               className="form-control"
-                              id="exampleFormControlInput1"
+                              id="Shift_From"
+                              value={formData.Shift_From}
+                              onChange={handleChange1}
                             />
+                            {errors.Shift_From && (
+                              <small className="text-danger">
+                                {errors.Shift_From}
+                              </small>
+                            )}
                           </div>
                         </div>
                         <div className="col-md-1">
                           <div className="mb-3">
-                            <label
-                              for="exampleFormControlInput1"
-                              className="form-label"
-                            >
+                            <label htmlFor="Shift_Till" className="form-label">
                               Shift Till:
                             </label>
                             <input
-                              type="type"
+                              type="text"
                               className="form-control"
-                              id="exampleFormControlInput1"
+                              id="Shift_Till"
+                              value={formData.Shift_Till}
+                              onChange={handleChange1}
                             />
+                            {errors.Shift_Till && (
+                              <small className="text-danger">
+                                {errors.Shift_Till}
+                              </small>
+                            )}
                           </div>
                         </div>
                         <div className="col-md-2">
                           <div className="mb-3">
-                            <label
-                              for="exampleFormControlInput1"
-                              className="form-label"
-                            >
+                            <label htmlFor="Break_Name" className="form-label">
                               Break Name:
                             </label>
                             <input
-                              type="type"
+                              type="text"
                               className="form-control"
-                              id="exampleFormControlInput1"
+                              id="Break_Name"
+                              value={formData.Break_Name}
+                              onChange={handleChange1}
                             />
+                            {errors.Break_Name && (
+                              <small className="text-danger">
+                                {errors.Break_Name}
+                              </small>
+                            )}
                           </div>
                         </div>
                         <div className="col-md-1">
                           <div className="mb-3">
-                            <label
-                              for="exampleFormControlInput1"
-                              className="form-label"
-                            >
+                            <label htmlFor="Break_Till" className="form-label">
                               Break Till:
                             </label>
                             <input
-                              type="type"
+                              type="text"
                               className="form-control"
-                              id="exampleFormControlInput1"
+                              id="Break_Till"
+                              value={formData.Break_Till}
+                              onChange={handleChange1}
                             />
+                            {errors.Break_Till && (
+                              <small className="text-danger">
+                                {errors.Break_Till}
+                              </small>
+                            )}
                           </div>
                         </div>
                         <div className="col-md-1">
                           <div className="mb-3">
-                            <label
-                              for="exampleFormControlInput1"
-                              className="form-label"
-                            >
+                            <label htmlFor="Break_Time" className="form-label">
                               Break Time:
                             </label>
                             <input
-                              type="type"
+                              type="text"
                               className="form-control"
-                              id="exampleFormControlInput1"
+                              id="Break_Time"
+                              value={formData.Break_Time}
+                              onChange={handleChange1}
                             />
+                            {errors.Break_Time && (
+                              <small className="text-danger">
+                                {errors.Break_Time}
+                              </small>
+                            )}
                           </div>
                         </div>
                         <div className="col-md-1">
                           <div className="mb-3">
-                            <label
-                              for="exampleFormControlInput1"
-                              className="form-label"
-                            >
+                            <label htmlFor="Total_Hours" className="form-label">
                               Total Hours:
                             </label>
                             <input
-                              type="type"
+                              type="text"
                               className="form-control"
-                              id="exampleFormControlInput1"
+                              id="Total_Hours"
+                              value={formData.Total_Hours}
+                              onChange={handleChange1}
                             />
+                            {errors.Total_Hours && (
+                              <small className="text-danger">
+                                {errors.Total_Hours}
+                              </small>
+                            )}
                           </div>
                         </div>
                         <div className="col-md-2">
                           <div className="mb-3">
-                            <button className="ShiftMainbtn">Save</button>
+                            <button
+                              className="ShiftMainbtn"
+                              type="button"
+                              onClick={handleSubmit}
+                            >
+                              Save
+                            </button>
                             <button className="ShiftMainbtn">Cancel</button>
                           </div>
                         </div>
@@ -254,16 +363,16 @@ const ShiftMaster = () => {
                                 </tr>
                               </thead>
                               <tbody>
-                                {[1, 2, 3, 4, 5].map((item) => (
-                                  <tr key={item}>
-                                    <td>{item}</td>
-                                    <td>Sharp</td>
-                                    <td>First 8HRS</td>
-                                    <td></td>
-                                    <td>07:00-15:30</td>
-                                    <td>12:30-13:00</td>
-                                    <td>00:30</td>
-                                    <td>08:00</td>
+                                {shiftData.map((shift, index) => (
+                                  <tr key={shift.id}>
+                                    <td>{index + 1}</td>
+                                    <td>{shift.Plant}</td>
+                                    <td>{shift.Shift_Name}</td>
+                                    <td>{shift.Shift_Prefix}</td>
+                                    <td>{`${shift.Shift_From} - ${shift.Shift_Till}`}</td>
+                                    <td>{`${shift.Break_Name} (${shift.Break_Till})`}</td>
+                                    <td>{shift.Break_Time}</td>
+                                    <td>{shift.Total_Hours}</td>
                                     <td>
                                       <button className="Shiftbtnicon">
                                         <i className="fas fa-edit"></i>

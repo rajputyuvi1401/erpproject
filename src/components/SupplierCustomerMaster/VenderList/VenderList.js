@@ -6,6 +6,8 @@ import NavBar from "../../../NavBar/NavBar";
 import SideNav from "../../../SideNav/SideNav";
 import "./VenderList.css";
 import { Link } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
+import { getSupplierCustomerData } from "../../Service/Api.jsx";
 const VenderList = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -20,6 +22,37 @@ const VenderList = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchType, setSearchType] = useState("");
+  const [searchName, setSearchName] = useState("");
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const result = await getSupplierCustomerData();
+      console.log("Fetched data:", result); // Log fetched data
+      setData(result);
+      setFilteredData(result);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const handleSearch = () => {
+    const filtered = data.filter(
+      (item) =>
+        (searchType ? item.Type === searchType : true) &&
+        (searchName
+          ? item.Name.toLowerCase().includes(searchName.toLowerCase())
+          : true)
+    );
+    setFilteredData(filtered);
+  };
 
   return (
     <div className="VenderList">
@@ -59,7 +92,7 @@ const VenderList = () => {
                       <div className="row text-start">
                         <div className="row mb-3 text-start">
                           <label
-                            for="inputEmail3"
+                            htmlFor="Type"
                             className="col-sm-1 col-form-label"
                           >
                             Type
@@ -68,31 +101,45 @@ const VenderList = () => {
                             <select
                               className="form-select"
                               aria-label="Default select example"
+                              value={searchType}
+                              onChange={(e) => setSearchType(e.target.value)}
                             >
-                              <option selected>Select..</option>
-                              <option value="1">Customer</option>
-                              <option value="2">Supplier</option>
-                              <option value="3">Job Work</option>
-                              <option value="4">C/S/JW</option>
+                              <option value="">Select..</option>
+                              <option value="Customer">Customer</option>
+                              <option value="Supplier">Supplier</option>
+                              <option value="Job Work">Job Work</option>
+                              <option value="C/S/JW">C/S/JW</option>
                             </select>
                           </div>
                           <label
-                            for="inputEmail3"
+                            htmlFor="SearchName"
                             className="col-sm-2 col-form-label"
                           >
                             Search Name
                           </label>
                           <div className="col-sm-3">
                             <input
-                              type="email"
+                              type="text"
                               className="form-control"
-                              id="inputEmail3"
+                              id="SearchName"
                               placeholder="Please enter name"
+                              value={searchName}
+                              onChange={(e) => setSearchName(e.target.value)}
                             />
                           </div>
                           <div className="col-sm-4">
-                            <button className="Vendermainbtn">Search</button>
-                            <button className="Vendermainbtn">View All</button>
+                            <button
+                              className="Vendermainbtn"
+                              onClick={handleSearch}
+                            >
+                              Search
+                            </button>
+                            <button
+                              className="Vendermainbtn"
+                              onClick={() => fetchData()}
+                            >
+                              View All
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -160,25 +207,31 @@ const VenderList = () => {
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Some Type</td>
-                                  <td>ABC123</td>
-                                  <td>Company ABC</td>
-                                  <td>1234567890</td>
-                                  <td>company@example.com</td>
-                                  <td>V123</td>
-                                  <td>Team A</td>
-                                  <td>Yes</td>
-                                  <td>1234567890123</td>
-                                  <td>GST123</td>
-                                  <td>Yes</td>
-                                  <td>User1</td>
-                                  <td>Yes</td>
-                                  <td>Edit</td>
-                                  <td>View</td>
-                                  <td>View</td>
-                                </tr>
+                                {filteredData.map((item, index) => (
+                                  <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    <td>{item.Type}</td>
+                                    <td>{item.Code_No}</td>
+                                    <td>{item.Name}</td>
+                                    <td>{item.Contact_No}</td>
+                                    <td>{item.Email_Id}</td>
+                                    <td>{item.Vendor_Code}</td>
+                                    <td>{item.Payment_Term}</td>
+                                    <td>{item.Active}</td>
+                                    <td>{item.GST_No}</td>
+                                    <td>{item.GST_Tax_Code}</td>
+                                    <td>{item.Auth}</td>
+                                    <td>{item.User}</td>
+                                    <td>{item.Rev}</td>
+                                    <td>
+                                      <button>
+                                        <FaEdit />
+                                      </button>
+                                    </td>
+                                    <td>View</td>
+                                    <td>View</td>
+                                  </tr>
+                                ))}
                               </tbody>
                             </table>
                           </div>
@@ -191,10 +244,10 @@ const VenderList = () => {
                       <div className="col-md-12 text-start">
                         <div className="row mb-3 text-start">
                           <label
-                            for="inputEmail3"
+                            htmlFor="TotalRecord"
                             className="col-sm-4 col-form-label"
                           >
-                            Total Record : Label
+                            Total Record : {filteredData.length}
                           </label>
                         </div>
                       </div>

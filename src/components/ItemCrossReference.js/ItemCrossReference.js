@@ -86,7 +86,7 @@ const ItemCrossReference = () => {
       Min_Order_Qty: "",
       Packing_Qty: "",
     });
-    // Optionally, clear the errors as well
+
     setErrors({});
   };
 

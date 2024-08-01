@@ -5,6 +5,9 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import "./CustomerItemWise.css";
+import { toast, ToastContainer } from "react-toastify"; // Ensure you have react-toastify installed
+import { saveItemRate } from "../Service/Api";
+import "react-toastify/dist/ReactToastify.css";
 
 const CustomerItemWise = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -21,8 +24,81 @@ const CustomerItemWise = () => {
     }
   }, [sideNavOpen]);
 
+  const [formData, setFormData] = useState({
+    Cust_Supp_Name: "",
+    ItemName: "",
+    VARate1: "",
+    VARate2: "",
+  });
+
+  const [errors, setErrors] = useState({
+    Cust_Supp_Name: "",
+    ItemName: "",
+    VARate1: "",
+    VARate2: "",
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  const validate = () => {
+    let valid = true;
+    let errors = {};
+
+    if (!formData.Cust_Supp_Name) {
+      valid = false;
+      errors.Cust_Supp_Name = "This field is required";
+    }
+    if (!formData.ItemName) {
+      valid = false;
+      errors.ItemName = "This field is required";
+    }
+    if (!formData.VARate1) {
+      valid = false;
+      errors.VARate1 = "This field is required";
+    }
+    if (!formData.VARate2) {
+      valid = false;
+      errors.VARate2 = "This field is required";
+    }
+
+    setErrors(errors);
+    return valid;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validate()) return;
+
+    try {
+      await saveItemRate(formData);
+      console.log("formdata", formData);
+      toast.success("Data saved successfully");
+      console.log("data saved successfully");
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Failed to save data");
+    }
+  };
+
+  const handleClear = () => {
+    setFormData({
+      Cust_Supp_Name: "",
+      ItemName: "",
+      VARate1: "",
+      VARate2: "",
+    });
+    setErrors({});
+    console.log("clear data");
+    toast.success("Data clear successfully");
+  };
+
   return (
     <div className="Itemwise">
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -97,100 +173,136 @@ const CustomerItemWise = () => {
                               <div className="rate-wise">
                                 <div className="container-fluid">
                                   <div className="row">
-                                    <div className="col-md-6">
-                                      <div className="row mb-3 text-start">
-                                        <label
-                                          htmlFor="inputEmail3"
-                                          className="col-sm-3 col-form-label"
-                                        >
-                                          Cust / Supp Name:
-                                        </label>
-                                        <div className="col-sm-7">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="inputEmail3"
-                                            placeholder="Please Enter Item Name"
-                                          />
-                                        </div>
-                                        <div className="col-sm-2">
-                                          <button className="vai-btn">
-                                            Search
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <div className="row mb-3 text-start">
-                                        <div className="form-check col-sm-3">
-                                          <input
-                                            className="form-check-input"
-                                            type="radio"
-                                            name="flexRadioDefault"
-                                            id="flexRadioDefault1"
-                                          />
+                                    <form onClick={handleSubmit}>
+                                      <div className="col-md-6">
+                                        <div className="row mb-3 text-start">
                                           <label
-                                            className="form-check-label"
-                                            htmlFor="flexRadioDefault1"
-                                          >
-                                            Item Name:
-                                          </label>
-                                        </div>
-                                        <div className="col-sm-6">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="inputEmail3"
-                                            placeholder="Please Enter Item Name"
-                                          />
-                                        </div>
-                                        <div className="col-sm-3 text-start">
-                                          <div className="form-check">
-                                            <p>
-                                              <span>? </span>Single item link
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div className="row mb-3 text-start">
-                                        <div className="row mb-3">
-                                          <label
-                                            htmlFor="inputEmail3"
+                                            htmlFor="Cust_Supp_Name"
                                             className="col-sm-3 col-form-label"
                                           >
-                                            VA Rate1:
+                                            Cust / Supp Name:
                                           </label>
+                                          <div className="col-sm-7">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="Cust_Supp_Name"
+                                              placeholder="Please Enter Cust / Supp Name"
+                                              value={formData.Cust_Supp_Name}
+                                              onChange={handleChange}
+                                            />
+                                            {errors.Cust_Supp_Name && (
+                                              <div className="text-danger">
+                                                {errors.Cust_Supp_Name}
+                                              </div>
+                                            )}
+                                          </div>
                                           <div className="col-sm-2">
-                                            <input
-                                              type="email"
-                                              className="form-control"
-                                              id="inputEmail3"
-                                            />
-                                          </div>
-                                          <label
-                                            htmlFor="inputEmail3"
-                                            className="col-sm-2 col-form-label"
-                                          >
-                                            VA Rate2:
-                                          </label>
-                                          <div className="col-sm-3">
-                                            <input
-                                              type="email"
-                                              className="form-control"
-                                              id="inputEmail3"
-                                            />
-                                          </div>
-                                          <div className="col-sm-1">
-                                            <button className="rate1-btn">
-                                              Save
-                                            </button>
-                                          </div>
-                                          <div className="col-sm-1">
-                                            <button className="rate1-btn">
-                                              Clear
+                                            <button
+                                              className="vai-btn"
+                                              onClick={handleSubmit}
+                                            >
+                                              Search
                                             </button>
                                           </div>
                                         </div>
+                                        <div className="row mb-3 text-start">
+                                          <div className="form-check col-sm-3">
+                                            <input
+                                              className="form-check-input"
+                                              type="radio"
+                                              name="flexRadioDefault"
+                                              id="flexRadioDefault1"
+                                            />
+                                            <label
+                                              className="form-check-label"
+                                              htmlFor="flexRadioDefault1"
+                                            >
+                                              Item Name:
+                                            </label>
+                                          </div>
+                                          <div className="col-sm-6">
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                              id="ItemName"
+                                              placeholder="Please Enter Item Name"
+                                              value={formData.ItemName}
+                                              onChange={handleChange}
+                                            />
+                                            {errors.ItemName && (
+                                              <div className="text-danger">
+                                                {errors.ItemName}
+                                              </div>
+                                            )}
+                                          </div>
+                                          <div className="col-sm-3 text-start">
+                                            <div className="form-check">
+                                              <p>
+                                                <span>? </span>Single item link
+                                              </p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="row mb-3 text-start">
+                                          <div className="row mb-3">
+                                            <label
+                                              htmlFor="VARate1"
+                                              className="col-sm-3 col-form-label"
+                                            >
+                                              VA Rate1:
+                                            </label>
+                                            <div className="col-sm-2">
+                                              <input
+                                                type="text"
+                                                className="form-control"
+                                                id="VARate1"
+                                                value={formData.VARate1}
+                                                onChange={handleChange}
+                                              />
+                                              {errors.VARate1 && (
+                                                <div className="text-danger">
+                                                  {errors.VARate1}
+                                                </div>
+                                              )}
+                                            </div>
+                                            <label
+                                              htmlFor="VARate2"
+                                              className="col-sm-2 col-form-label"
+                                            >
+                                              VA Rate2:
+                                            </label>
+                                            <div className="col-sm-3">
+                                              <input
+                                                type="text"
+                                                className="form-control"
+                                                id="VARate2"
+                                                value={formData.VARate2}
+                                                onChange={handleChange}
+                                              />
+                                              {errors.VARate2 && (
+                                                <div className="text-danger">
+                                                  {errors.VARate2}
+                                                </div>
+                                              )}
+                                            </div>
+                                            <div className="col-sm-1">
+                                              <button className="rate1-btn">
+                                                Save
+                                              </button>
+                                            </div>
+                                            <div className="col-sm-1">
+                                              <button
+                                                className="rate1-btn"
+                                                onClick={handleClear}
+                                              >
+                                                Clear
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </div>
                                       </div>
-                                    </div>
+                                    </form>
                                   </div>
                                 </div>
                               </div>

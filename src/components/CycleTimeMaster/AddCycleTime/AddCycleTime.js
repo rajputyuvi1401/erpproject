@@ -6,6 +6,9 @@ import NavBar from "../../../NavBar/NavBar";
 import SideNav from "../../../SideNav/SideNav";
 import "./AddCycleTime.css";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { saveCycleTimeData } from "../../Service/Api.jsx";
 
 const AddCycleTime = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -18,8 +21,72 @@ const AddCycleTime = () => {
     navigate("/cycle-time-master");
   };
 
+  const [formData, setFormData] = useState({
+    Plant: "",
+    PartCode: "",
+    MachineType: "",
+    Machine: "",
+    OPTime: "",
+    Load_Unload_Time: "",
+    MO_Time: "",
+    Total_Time: "",
+    Time_in_Minutes: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key] && key !== "timeInMinutes") {
+        newErrors[key] = "This field is required";
+      }
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      try {
+        await saveCycleTimeData(formData);
+        console.log("formdata", formData);
+        toast.success("Data saved successfully!");
+        console.log("data successfull");
+      } catch (error) {
+        toast.error("Error saving data. Please try again.");
+        console.log("error", error);
+      }
+    }
+  };
+
+  const handleClear = () => {
+    setFormData({
+      Plant: "",
+      PartCode: "",
+      MachineType: "",
+      Machine: "",
+      OPTime: "",
+      Load_Unload_Time: "",
+      MO_Time: "",
+      Total_Time: "",
+      Time_in_Minutes: "",
+    });
+    setErrors({});
+  };
+
   return (
     <div className="AddCycletimecenter">
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -82,157 +149,242 @@ const AddCycleTime = () => {
                   </div>
                   <div className="AddCycleaside">
                     <div className="container-fluid">
-                      <div className="row text-start">
-                        <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
-                          <div className="mb-3">
-                            <label htmlFor="plant" className="form-label">
-                              Plant
-                            </label>
-                            <select
-                              className="form-select"
-                              id="plant"
-                              name="plant"
-                            >
-                              <option value="">Select Plant</option>
-                              <option value="Plant1">Plant 1</option>
-                              <option value="Plant2">Plant 2</option>
-                            </select>
+                      <form onSubmit={handleSubmit}>
+                        <div className="row text-start">
+                          <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
+                            <div className="mb-3">
+                              <label htmlFor="Plant" className="form-label">
+                                Plant
+                              </label>
+                              <select
+                                className="form-select"
+                                id="Plant"
+                                name="Plant"
+                                value={formData.Plant}
+                                onChange={handleChange}
+                              >
+                                <option value="">Select Plant</option>
+                                <option value="Plant1">Plant 1</option>
+                                <option value="Plant2">Plant 2</option>
+                              </select>
+                              {errors.Plant && (
+                                <div className="text-danger">
+                                  {errors.Plant}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
+                            <div className="mb-3">
+                              <label htmlFor="PartCode" className="form-label">
+                                Part Code
+                              </label>
+                              <select
+                                className="form-select"
+                                id="PartCode"
+                                name="PartCode"
+                                value={formData.PartCode}
+                                onChange={handleChange}
+                              >
+                                <option value="">Select Part Code</option>
+                                <option value="P001">P001</option>
+                                <option value="P002">P002</option>
+                              </select>
+                              {errors.PartCode && (
+                                <div className="text-danger">
+                                  {errors.PartCode}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="col-md-2 col-sm-6 mb-3 mb-sm-0">
+                            <div className="mb-3">
+                              <label
+                                htmlFor="MachineType"
+                                className="form-label"
+                              >
+                                Machine Type
+                              </label>
+                              <select
+                                className="form-select"
+                                id="MachineType"
+                                name="MachineType"
+                                value={formData.MachineType}
+                                onChange={handleChange}
+                              >
+                                <option value="">Select Machine Type</option>
+                                <option value="Type1">Type 1</option>
+                                <option value="Type2">Type 2</option>
+                              </select>
+                              {errors.MachineType && (
+                                <div className="text-danger">
+                                  {errors.MachineType}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
+                            <div className="mb-3">
+                              <label htmlFor="Machine" className="form-label">
+                                Machine
+                              </label>
+                              <select
+                                className="form-select"
+                                id="Machine"
+                                name="Machine"
+                                value={formData.Machine}
+                                onChange={handleChange}
+                              >
+                                <option value="">Select Machine</option>
+                                <option value="Machine1">Machine 1</option>
+                                <option value="Machine2">Machine 2</option>
+                              </select>
+                              {errors.Machine && (
+                                <div className="text-danger">
+                                  {errors.Machine}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
+                            <div className="mb-3">
+                              <label htmlFor="OPTime" className="form-label">
+                                Op Time
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="OPTime"
+                                name="OPTime"
+                                value={formData.OPTime}
+                                onChange={handleChange}
+                              />
+                              {errors.OPTime && (
+                                <div className="text-danger">
+                                  {errors.OPTime}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="col-md-2 col-sm-6 mb-3 mb-sm-0">
+                            <div className="mb-3">
+                              <label
+                                htmlFor="Load_Unload_Time"
+                                className="form-label"
+                              >
+                                Load/Unload Time
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="Load_Unload_Time"
+                                name="Load_Unload_Time"
+                                value={formData.Load_Unload_Time}
+                                onChange={handleChange}
+                              />
+                              {errors.Load_Unload_Time && (
+                                <div className="text-danger">
+                                  {errors.Load_Unload_Time}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
+                            <div className="mb-3">
+                              <label htmlFor="MO_Time" className="form-label">
+                                Mo Time
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="MO_Time"
+                                name="MO_Time"
+                                value={formData.MO_Time}
+                                onChange={handleChange}
+                              />
+                              {errors.MO_Time && (
+                                <div className="text-danger">
+                                  {errors.MO_Time}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
+                            <div className="mb-3">
+                              <label
+                                htmlFor="Total_Time"
+                                className="form-label"
+                              >
+                                Total Time
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="Total_Time"
+                                name="Total_Time"
+                                value={formData.Total_Time}
+                                onChange={handleChange}
+                              />
+                              {errors.Total_Time && (
+                                <div className="text-danger">
+                                  {errors.Total_Time}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="col-md-2 col-sm-6 mb-3 mb-sm-0">
+                            <div className="mb-3 form-check">
+                              <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id="Time_in_Minutes"
+                                name="Time_in_Minutes"
+                              />
+                              <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id="Time_in_Minutes"
+                                name="Time_in_Minutes"
+                                // checked={formData.Time_in_Minutes}
+                                // onChange={handleChange}
+                              />
+                              <label
+                                className="form-label"
+                                htmlFor="Time_in_Minutes"
+                              >
+                                Time in Minutes
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="Time_in_Minutes"
+                                name="Time_in_Minutes"
+                                value={formData.Time_in_Minutes}
+                                onChange={handleChange}
+                              />
+                              {errors.Time_in_Minutes && (
+                                <div className="text-danger">
+                                  {errors.Time_in_Minutes}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="row text-end">
+                            <div className="col-md-12 col-sm-6">
+                              <button type="submit" className="addbtn me-2">
+                                Add
+                              </button>
+                              <button
+                                type="button"
+                                className="addbtn"
+                                onClick={handleClear}
+                              >
+                                Clear
+                              </button>
+                            </div>
                           </div>
                         </div>
-                        <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
-                          <div className="mb-3">
-                            <label htmlFor="partCode" className="form-label">
-                              Part Code
-                            </label>
-                            <select
-                              className="form-select"
-                              id="partCode"
-                              name="partCode"
-                            >
-                              <option value="">Select Part Code</option>
-                              <option value="P001">P001</option>
-                              <option value="P002">P002</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div className="col-md-2 col-sm-6 mb-3 mb-sm-0">
-                          <div className="mb-3">
-                            <label htmlFor="machineType" className="form-label">
-                              Machine Type
-                            </label>
-                            <select
-                              className="form-select"
-                              id="machineType"
-                              name="machineType"
-                            >
-                              <option value="">Select Machine Type</option>
-                              <option value="Type1">Type 1</option>
-                              <option value="Type2">Type 2</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
-                          <div className="mb-3">
-                            <label htmlFor="machine" className="form-label">
-                              Machine
-                            </label>
-                            <select
-                              className="form-select"
-                              id="machine"
-                              name="machine"
-                            >
-                              <option value="">Select Machine</option>
-                              <option value="Machine1">Machine 1</option>
-                              <option value="Machine2">Machine 2</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
-                          <div className="mb-3">
-                            <label htmlFor="opTime" className="form-label">
-                              Op Time
-                            </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="opTime"
-                              name="opTime"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
-                          <div className="mb-3">
-                            <label
-                              htmlFor="loadUnloadTime"
-                              className="form-label"
-                            >
-                              Load/Unload Time
-                            </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="loadUnloadTime"
-                              name="loadUnloadTime"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
-                          <div className="mb-3">
-                            <label htmlFor="moTime" className="form-label">
-                              MO Time
-                            </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="moTime"
-                              name="moTime"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
-                          <div className="mb-3">
-                            <label htmlFor="totalTime" className="form-label">
-                              Total Time
-                            </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="totalTime"
-                              name="totalTime"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
-                          <div className="mb-3 form-check">
-                            <input
-                              type="checkbox"
-                              className="form-check-input"
-                              id="timeInMinutes"
-                              name="timeInMinutes"
-                            />
-                            <label
-                              className="form-check-label"
-                              htmlFor="timeInMinutes"
-                            >
-                              Time in Minutes
-                            </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="opTime"
-                              name="opTime"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-md-2 col-sm-6">
-                          <button type="button" className="addbtn me-2">
-                            Add
-                          </button>
-                          <button type="button" className="addbtn">
-                            Clear
-                          </button>
-                        </div>
-                      </div>
+                      </form>
                     </div>
                   </div>
                   <div className="AddCycletable">
