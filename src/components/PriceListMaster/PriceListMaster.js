@@ -5,6 +5,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import "./PriceListMaster.css";
+import { ToastContainer, toast } from "react-toastify";
+import { savePriceList } from "../Service/Api.jsx";
 
 const PriceListMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -38,8 +40,53 @@ const PriceListMaster = () => {
   const toggleAddCardPricereport = () => {
     setShowAddCardPricereport(!showAddCardPricereport);
   };
+
+  const [formData, setFormData] = useState({
+    Select_Customer: "",
+    Select_Address: "",
+    Price_List_Code: "",
+    Price_List_Name: "",
+    Effective_From_Date: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+
+    // Check if any field is empty
+    if (Object.values(formData).some((field) => field === "")) {
+      toast.error("All fields are required!");
+      return;
+    }
+
+    try {
+      await savePriceList(formData);
+      toast.success("Price List saved successfully!");
+      console.log("data saved", formData);
+      setFormData({
+        Select_Customer: "",
+        Select_Address: "",
+        Price_List_Code: "",
+        Price_List_Name: "",
+        Effective_From_Date: "",
+      });
+      toggleAddCard();
+    } catch (error) {
+      toast.error("Failed to save data");
+      console.error("Error saving data:", error);
+    }
+  };
+
   return (
     <div className="PriceListMaster">
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">
@@ -120,11 +167,11 @@ const PriceListMaster = () => {
                           </button>
                         </div>
                         <div className="card-body">
-                          <form>
+                          <form onSubmit={handleSave}>
                             <div className="mb-3">
                               <div className="row text-start">
                                 <label
-                                  htmlFor="customerName"
+                                  htmlFor="Select_Customer"
                                   className="form-label col-sm-4"
                                 >
                                   Select Customer
@@ -133,7 +180,10 @@ const PriceListMaster = () => {
                                   <input
                                     type="text"
                                     className="form-control"
-                                    id="customerName"
+                                    id="Select_Customer"
+                                    name="Select_Customer"
+                                    value={formData.Select_Customer}
+                                    onChange={handleInputChange}
                                   />
                                 </div>
                                 <div className="col-sm-3">
@@ -149,7 +199,7 @@ const PriceListMaster = () => {
                             <div className="mb-3">
                               <div className="row text-start">
                                 <label
-                                  htmlFor="addressCode"
+                                  htmlFor="Select_Address"
                                   className="form-label col-sm-4"
                                 >
                                   Select Address
@@ -158,7 +208,10 @@ const PriceListMaster = () => {
                                   <input
                                     type="text"
                                     className="form-control"
-                                    id="addressCode"
+                                    id="Select_Address"
+                                    name="Select_Address"
+                                    value={formData.Select_Address}
+                                    onChange={handleInputChange}
                                   />
                                 </div>
                                 <div className="col-sm-4">
@@ -174,7 +227,7 @@ const PriceListMaster = () => {
                             <div className="mb-3">
                               <div className="row text-start">
                                 <label
-                                  htmlFor="priceListCode"
+                                  htmlFor="Price_List_Code"
                                   className="form-label col-sm-4"
                                 >
                                   Price List Code
@@ -183,7 +236,10 @@ const PriceListMaster = () => {
                                   <input
                                     type="text"
                                     className="form-control"
-                                    id="priceListCode"
+                                    id="Price_List_Code"
+                                    name="Price_List_Code"
+                                    value={formData.Price_List_Code}
+                                    onChange={handleInputChange}
                                   />
                                 </div>
                               </div>
@@ -191,7 +247,7 @@ const PriceListMaster = () => {
                             <div className="mb-3">
                               <div className="row text-start">
                                 <label
-                                  htmlFor="priceListName"
+                                  htmlFor="Price_List_Name"
                                   className="form-label col-sm-4"
                                 >
                                   Price List Name
@@ -200,7 +256,10 @@ const PriceListMaster = () => {
                                   <input
                                     type="text"
                                     className="form-control"
-                                    id="priceListName"
+                                    id="Price_List_Name"
+                                    name="Price_List_Name"
+                                    value={formData.Price_List_Name}
+                                    onChange={handleInputChange}
                                   />
                                 </div>
                               </div>
@@ -208,7 +267,7 @@ const PriceListMaster = () => {
                             <div className="mb-3">
                               <div className="row text-start">
                                 <label
-                                  htmlFor="effectiveDat"
+                                  htmlFor="Effective_From_Date"
                                   className="form-label col-sm-4"
                                 >
                                   Effective From Date
@@ -217,7 +276,10 @@ const PriceListMaster = () => {
                                   <input
                                     type="date"
                                     className="form-control"
-                                    id="effectiveDate"
+                                    id="Effective_From_Date"
+                                    name="Effective_From_Date"
+                                    value={formData.Effective_From_Date}
+                                    onChange={handleInputChange}
                                   />
                                 </div>
                                 <div className="col-sm-4">

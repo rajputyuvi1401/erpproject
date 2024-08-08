@@ -5,6 +5,16 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../../NavBar/NavBar";
 import SideNav from "../../../SideNav/SideNav";
 import "./PriceEntry.css";
+
+import { ToastContainer, toast } from "react-toastify";
+import { FaEdit, FaTrash } from "react-icons/fa";
+import {
+  fetchPriceListEntries,
+  savePriceListEntry,
+  updatePriceListEntry,
+  deletePriceListEntry,
+} from "../../Service/Api.jsx";
+
 const PriceEntry = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -19,8 +29,94 @@ const PriceEntry = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+  const [priceEntries, setPriceEntries] = useState([]);
+  const [formData, setFormData] = useState({
+    Qty: "",
+    Rate: "",
+    Disk: "",
+    Weff_Date: "",
+    Po_No: "",
+    Po_Date: "",
+    Amd_No: "",
+    Amd_Date: "",
+    Po_Line_No: "",
+    Po_Type: "",
+    Cust_Eff_Date: "",
+    Remark: "",
+  });
+  const [editId, setEditId] = useState(null);
+
+  useEffect(() => {
+    fetchPriceListEntries()
+      .then((data) => setPriceEntries(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSave = async () => {
+    if (Object.values(formData).some((field) => field === "")) {
+      toast.error("All fields are required!");
+      return;
+    }
+
+    try {
+      if (editId) {
+        await updatePriceListEntry(editId, formData);
+        toast.success("Price List Entry updated successfully!");
+      } else {
+        await savePriceListEntry(formData);
+        toast.success("Price List Entry saved successfully!");
+      }
+      setFormData({
+        Qty: "",
+        Rate: "",
+        Disk: "",
+        Weff_Date: "",
+        Po_No: "",
+        Po_Date: "",
+        Amd_No: "",
+        Amd_Date: "",
+        Po_Line_No: "",
+        Po_Type: "",
+        Cust_Eff_Date: "",
+        Remark: "",
+      });
+      setEditId(null);
+      const updatedEntries = await fetchPriceListEntries();
+      setPriceEntries(updatedEntries);
+    } catch (error) {
+      toast.error("Failed to save data");
+    }
+  };
+
+  const handleEdit = (id) => {
+    const entry = priceEntries.find((item) => item.id === id);
+    setFormData(entry);
+    setEditId(id);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await deletePriceListEntry(id);
+      toast.success("Price List Entry deleted successfully!");
+      const updatedEntries = await fetchPriceListEntries();
+      setPriceEntries(updatedEntries);
+    } catch (error) {
+      toast.error("Failed to delete data");
+    }
+  };
+
   return (
     <div className="PriceentryMaster">
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -235,7 +331,7 @@ const PriceEntry = () => {
                             </div>
                           </div>
                           <button className="PriceentryMainbtn">
-                            Upload Photo
+                            Upload Price List
                           </button>
                         </div>
                       </div>
@@ -245,88 +341,183 @@ const PriceEntry = () => {
                     <table className="table table-bordered table-responsive">
                       <thead>
                         <tr>
-                          <th>Sr No</th>
-                          <th>Code</th>
-                          <th>Customer Name</th>
-                          <th>PL Code</th>
-                          <th>Item No</th>
-                          <th>Item Code</th>
-                          <th>Item Desc</th>
-                          <th>Eff. From</th>
-                          <th>Eff. To</th>
-                          <th>Rate</th>
-                          <th>Disc</th>
                           <th>Qty</th>
+
+                          <th>Rate</th>
+                          <th>Disc %</th>
+                          <th>WEff date</th>
                           <th>PO No</th>
                           <th>PO Date</th>
                           <th>AMD No</th>
                           <th>AMD Date</th>
-                          <th>Line No</th>
-                          <th>Type</th>
-                          <th>Block</th>
+                          <th>PoLine No</th>
+                          <th>Po Type</th>
+                          <th>Cust EFf Date</th>
+                          <th>Remark</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td>
-                            <input type="text" className="form-control" />
+                            <input
+                              type="text"
+                              name="Qty"
+                              value={formData.Qty}
+                              onChange={handleInputChange}
+                              className="form-control"
+                            />
                           </td>
                           <td>
-                            <input type="text" className="form-control" />
+                            <input
+                              type="text"
+                              name="Rate"
+                              value={formData.Rate}
+                              onChange={handleInputChange}
+                              className="form-control"
+                            />
                           </td>
                           <td>
-                            <input type="text" className="form-control" />
+                            <input
+                              type="text"
+                              name="Disk"
+                              value={formData.Disk}
+                              onChange={handleInputChange}
+                              className="form-control"
+                            />
                           </td>
                           <td>
-                            <input type="text" className="form-control" />
+                            <input
+                              type="text"
+                              name="Weff_Date"
+                              value={formData.Weff_Date}
+                              onChange={handleInputChange}
+                              className="form-control"
+                            />
                           </td>
                           <td>
-                            <input type="text" className="form-control" />
+                            <input
+                              type="text"
+                              name="Po_No"
+                              value={formData.Po_No}
+                              onChange={handleInputChange}
+                              className="form-control"
+                            />
                           </td>
                           <td>
-                            <input type="text" className="form-control" />
+                            <input
+                              type="date"
+                              name="Po_Date"
+                              value={formData.Po_Date}
+                              onChange={handleInputChange}
+                              className="form-control"
+                            />
                           </td>
                           <td>
-                            <input type="text" className="form-control" />
+                            <input
+                              type="text"
+                              name="Amd_No"
+                              value={formData.Amd_No}
+                              onChange={handleInputChange}
+                              className="form-control"
+                            />
                           </td>
                           <td>
-                            <input type="date" className="form-control" />
+                            <input
+                              type="date"
+                              name="Amd_Date"
+                              value={formData.Amd_Date}
+                              onChange={handleInputChange}
+                              className="form-control"
+                            />
                           </td>
                           <td>
-                            <input type="date" className="form-control" />
+                            <input
+                              type="text"
+                              name="Po_Line_No"
+                              value={formData.Po_Line_No}
+                              onChange={handleInputChange}
+                              className="form-control"
+                            />
                           </td>
                           <td>
-                            <input type="text" className="form-control" />
+                            <input
+                              type="text"
+                              name="Po_Type"
+                              value={formData.Po_Type}
+                              onChange={handleInputChange}
+                              className="form-control"
+                            />
                           </td>
                           <td>
-                            <input type="text" className="form-control" />
+                            <input
+                              type="date"
+                              name="Cust_Eff_Date"
+                              value={formData.Cust_Eff_Date}
+                              onChange={handleInputChange}
+                              className="form-control"
+                            />
                           </td>
                           <td>
-                            <input type="text" className="form-control" />
+                            <input
+                              type="text"
+                              name="Remark"
+                              value={formData.Remark}
+                              onChange={handleInputChange}
+                              className="form-control"
+                            />
                           </td>
                           <td>
-                            <input type="text" className="form-control" />
-                          </td>
-                          <td>
-                            <input type="date" className="form-control" />
-                          </td>
-                          <td>
-                            <input type="text" className="form-control" />
-                          </td>
-                          <td>
-                            <input type="date" className="form-control" />
-                          </td>
-                          <td>
-                            <input type="text" className="form-control" />
-                          </td>
-                          <td>
-                            <input type="text" className="form-control" />
-                          </td>
-                          <td>
-                            <input type="text" className="form-control" />
+                            <button
+                              style={{
+                                border: "none",
+                                padding: "5px",
+                                margin: "5px",
+                              }}
+                              onClick={handleSave}
+                            >
+                              Add
+                            </button>
                           </td>
                         </tr>
-                        {/* Add more rows as needed */}
+                        {priceEntries.map((entry) => (
+                          <tr key={entry.id}>
+                            <td>{entry.Qty}</td>
+                            <td>{entry.Rate}</td>
+                            <td>{entry.Disk}</td>
+                            <td>{entry.Weff_Date}</td>
+                            <td>{entry.Po_No}</td>
+                            <td>{entry.Po_Date}</td>
+                            <td>{entry.Amd_No}</td>
+                            <td>{entry.Amd_Date}</td>
+                            <td>{entry.Po_Line_No}</td>
+                            <td>{entry.Po_Type}</td>
+                            <td>{entry.Cust_Eff_Date}</td>
+                            <td>{entry.Remark}</td>
+                            <td>
+                              <button
+                                style={{
+                                  border: "none",
+                                  padding: "5px",
+                                  margin: "5px",
+                                }}
+                                onClick={() => handleEdit(entry.id)}
+                              >
+                                <FaEdit />
+                              </button>
+                              <button
+                                style={{
+                                  border: "none",
+                                  padding: "5px",
+                                  margin: "5px",
+                                }}
+                                onClick={() => handleDelete(entry.id)}
+                              >
+                                <FaTrash />
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </div>

@@ -87,9 +87,9 @@ body.no-scroll {
 }
 
 .CostcenterTable {
-  margin-top: 20px;
+  margin-top: 5px;
   background-color: aliceblue;
-  padding: 20px;
+  padding: 5px;
 }
 
 .CostcenterTable .table-responsive {
@@ -115,7 +115,7 @@ body.no-scroll {
 }
 
 .CostcenterTable .table td {
-  height: 200px;
+  height: 10px;
   vertical-align: middle;
   text-align: center;
   padding: 0.75rem;
@@ -168,7 +168,7 @@ body.no-scroll {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 80%;
-  max-width: 600px;
+  max-width: 900px;
 }
 
 .costtype-overlay .card-title {

@@ -6,12 +6,22 @@ import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import "./SupplierCustomerMaster.css";
 import CachedIcon from "@mui/icons-material/Cached";
-import { FaEdit, FaTrash } from "react-icons/fa";
 import BankDetail from "./BankDetail";
 import BuyerContactDetail from "./BuyerContactDetail";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { saveSupplierCustomerData } from "../Service/Api.jsx";
+import ToggleCard1 from "./ToggleCard1.jsx";
+import ToggleCardCity from "./ToggleCardCity.jsx";
+import ToggleCardCountry from "./ToggleCardCountry.jsx";
+import ToggleCardCurrency from "./ToggleCardCurrency.jsx";
+import ToggleCardGroup from "./ToggleCardGroup.jsx";
+import ToggleCardPayment1 from "./ToggleCardPayment1";
+import ToggleCardRegion1 from "./ToggleCardRegion1";
+import ToggleCardStateCode1 from "./ToggleCardStateCode1";
+import ToggleCardSector from "./ToggleCardSector.jsx";
+import ToggleCardQMSCode from "./ToggleCardQMSCode.jsx";
+
 const SupplierCustomerMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -80,6 +90,12 @@ const SupplierCustomerMaster = () => {
 
   const toggleCardGroup = () => {
     setIsCardOpenGroup(!isCardOpenGroup);
+  };
+
+  const [isCardOpenQMSCCode, setIsCardOpenQMSCCode] = useState(false);
+
+  const toggleCardQMSCCode = () => {
+    setIsCardOpenQMSCCode(!isCardOpenQMSCCode);
   };
 
   const initialFormData = {
@@ -1498,6 +1514,7 @@ const SupplierCustomerMaster = () => {
                                               <button
                                                 className="btn"
                                                 type="button"
+                                                onClick={toggleCardSector}
                                               >
                                                 New
                                               </button>
@@ -1540,6 +1557,7 @@ const SupplierCustomerMaster = () => {
                                               <button
                                                 className="btn"
                                                 type="button"
+                                                onClick={toggleCardGroup}
                                               >
                                                 New
                                               </button>
@@ -1778,6 +1796,9 @@ const SupplierCustomerMaster = () => {
                                               <button
                                                 className="btn"
                                                 type="button"
+                                                onClick={() =>
+                                                  toggleCardQMSCCode()
+                                                }
                                               >
                                                 New
                                               </button>
@@ -2052,57 +2073,8 @@ const SupplierCustomerMaster = () => {
                                       ×
                                     </button>
                                   </div>
-                                  <div className="card-body">
-                                    <div className="row mb-3">
-                                      <div className="col-12 text-start text-primary">
-                                        Party Type
-                                      </div>
-                                    </div>
-                                    <div className="row">
-                                      <div className="col-12">
-                                        <table className="table table-responsive">
-                                          <thead>
-                                            <tr>
-                                              <th>Sr No</th>
-                                              <th>Category Name</th>
-                                              <th>Edit</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                            <tr>
-                                              <td>1</td>
-                                              <td>Customer</td>
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>2</td>
-                                              <td>Supplier</td>
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>3</td>
-                                              <td>Job Work</td>
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>4</td>
-                                              <td>C/S/JW</td>
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                            </tr>
-                                            {/* Add more rows as needed */}
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                    </div>
-                                  </div>
+
+                                  <ToggleCard1 />
                                 </div>
                               )}
                               {isCardOpenregion && (
@@ -2118,103 +2090,7 @@ const SupplierCustomerMaster = () => {
                                       ×
                                     </button>
                                   </div>
-                                  <div className="card-body">
-                                    <div className="row text-start">
-                                      <div className="col-md-4">
-                                        <div class="mb-3">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            class="form-label"
-                                          >
-                                            Region Code:
-                                          </label>
-                                          <input
-                                            type="text"
-                                            class="form-control"
-                                            id="exampleFormControlInput1"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div className="col-md-4">
-                                        <div class="mb-3">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            class="form-label"
-                                          >
-                                            Region Name:
-                                          </label>
-                                          <input
-                                            type="text"
-                                            class="form-control"
-                                            id="exampleFormControlInput1"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div className="col-md-4">
-                                        <div class="mb-3">
-                                          <button className="regionbtn">
-                                            Save
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="row">
-                                      <div className="col-12">
-                                        <table className="table table-responsive">
-                                          <thead>
-                                            <tr>
-                                              <th>Sr No</th>
-                                              <th>Category Name</th>
-                                              <th>Edit</th>
-                                              <th>Delete</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                            <tr>
-                                              <td>1</td>
-                                              <td>Customer</td>
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                              <td>
-                                                <FaTrash />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>2</td>
-                                              <td>Supplier</td>
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                              <td>
-                                                <FaTrash />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>3</td>
-                                              <td>Job Work</td>
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                              <td>
-                                                <FaTrash />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>4</td>
-                                              <td>C/S/JW</td>
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                              <td>
-                                                <FaTrash />
-                                              </td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                    </div>
-                                  </div>
+                                  <ToggleCardRegion1 />
                                 </div>
                               )}
                               {isCardOpenStateCode && (
@@ -2230,185 +2106,7 @@ const SupplierCustomerMaster = () => {
                                       ×
                                     </button>
                                   </div>
-                                  <div className="card-body">
-                                    <div className="row text-start">
-                                      <div className="col-md-3">
-                                        <div className="mb-3">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
-                                          >
-                                            State Name:
-                                          </label>
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div className="col-md-3">
-                                        <div className="mb-3">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
-                                          >
-                                            State No Numeric:
-                                          </label>
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div className="col-md-3">
-                                        <div className="mb-3">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
-                                          >
-                                            State Code Alpha:
-                                          </label>
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div className="col-md-3">
-                                        <div className="mb-3">
-                                          <button className="Statebtn">
-                                            Save
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="row">
-                                      <div className="col-12">
-                                        <table className="table table-responsive">
-                                          <thead>
-                                            <tr>
-                                              <th>Sr No</th>
-                                              <th>State Name</th>
-                                              <th>State No</th>
-                                              <th>State Short Code</th>
-
-                                              <th>Edit</th>
-                                              <th>Delete</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                            <tr>
-                                              <td>1</td>
-                                              <td>Maharashtra</td>
-                                              <td>27</td>
-                                              <td>MH</td>
-
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                              <td>
-                                                <FaTrash />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>2</td>
-                                              <td>Gujjrat</td>
-                                              <td>27</td>
-                                              <td>MH</td>
-
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                              <td>
-                                                <FaTrash />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>3</td>
-                                              <td>Uttarakhand</td>
-                                              <td>27</td>
-                                              <td>MH</td>
-
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                              <td>
-                                                <FaTrash />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>4</td>
-                                              <td>Karnataka</td>
-                                              <td>27</td>
-                                              <td>MH</td>
-
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                              <td>
-                                                <FaTrash />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>5</td>
-                                              <td>Maharashtra</td>
-                                              <td>27</td>
-                                              <td>MH</td>
-
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                              <td>
-                                                <FaTrash />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>6</td>
-                                              <td>Gujjrat</td>
-                                              <td>27</td>
-                                              <td>MH</td>
-
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                              <td>
-                                                <FaTrash />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>7</td>
-                                              <td>Uttarakhand</td>
-                                              <td>27</td>
-                                              <td>MH</td>
-
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                              <td>
-                                                <FaTrash />
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>8</td>
-                                              <td>Karnataka</td>
-                                              <td>27</td>
-                                              <td>MH</td>
-
-                                              <td>
-                                                <FaEdit />
-                                              </td>
-                                              <td>
-                                                <FaTrash />
-                                              </td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                    </div>
-                                  </div>
+                                  <ToggleCardStateCode1 />
                                 </div>
                               )}
                               {isCardOpenPayment && (
@@ -2424,70 +2122,7 @@ const SupplierCustomerMaster = () => {
                                       ×
                                     </button>
                                   </div>
-                                  <div className="card-body">
-                                    <div className="row text-start">
-                                      <div className="row mb-3">
-                                        <label
-                                          for="colFormLabelSm"
-                                          className="col-sm-1 col-form-label col-form-label-sm"
-                                        >
-                                          Code:
-                                        </label>
-                                        <div className="col-sm-3">
-                                          <input
-                                            type="email"
-                                            className="form-control form-control-sm"
-                                            id="colFormLabelSm"
-                                          />
-                                        </div>
-                                        <label
-                                          for="colFormLabelSm"
-                                          className="col-sm-1 col-form-label col-form-label-sm"
-                                        >
-                                          Desc:
-                                        </label>
-                                        <div className="col-sm-3">
-                                          <textarea
-                                            className="form-control"
-                                            id="exampleFormControlTextarea1"
-                                            rows="3"
-                                          ></textarea>
-                                        </div>
-                                        <label
-                                          for="colFormLabelSm"
-                                          className="col-sm-1 col-form-label col-form-label-sm"
-                                        >
-                                          Days:
-                                        </label>
-                                        <div className="col-sm-2">
-                                          <input
-                                            type="email"
-                                            className="form-control form-control-sm"
-                                            id="colFormLabelSm"
-                                          />
-                                        </div>
-                                        <div className="col-sm-1">
-                                          <button className="Paymentbtn">
-                                            Save
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="row">
-                                      <div className="col-12">
-                                        <table className="table table-responsive">
-                                          <thead>
-                                            <tr>
-                                              <th>No Data Found !!!</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                            <tr></tr>
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                    </div>
-                                  </div>
+                                  <ToggleCardPayment1 />
                                 </div>
                               )}
                               {isCardOpenCountry && (
@@ -2503,149 +2138,7 @@ const SupplierCustomerMaster = () => {
                                       ×
                                     </button>
                                   </div>
-                                  <div className="card-body">
-                                    <div className="row text-start">
-                                      <div className="row mb-3">
-                                        <label
-                                          for="colFormLabelSm"
-                                          className="col-sm-1 col-form-label col-form-label-sm"
-                                        >
-                                          Code:
-                                        </label>
-                                        <div className="col-sm-4">
-                                          <input
-                                            type="email"
-                                            className="form-control form-control-sm"
-                                            id="colFormLabelSm"
-                                          />
-                                        </div>
-                                        <label
-                                          for="colFormLabelSm"
-                                          className="col-sm-1 col-form-label col-form-label-sm"
-                                        >
-                                          Country:
-                                        </label>
-                                        <div className="col-sm-4">
-                                          <textarea
-                                            className="form-control"
-                                            id="exampleFormControlTextarea1"
-                                            rows="3"
-                                          ></textarea>
-                                        </div>
-
-                                        <div className="col-sm-2">
-                                          <button className="Countrybtn">
-                                            Save
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="row">
-                                      <div className="col-12">
-                                        <table className="table table-responsive">
-                                          <thead>
-                                            <tr>
-                                              <th>Sr. No</th>
-                                              <th>Code</th>
-                                              <th>Country</th>
-                                              <th>Edit</th>
-                                              <th>Delete</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                            <tr>
-                                              <td>1</td>
-                                              <td>CH</td>
-                                              <td>China</td>
-                                              <td>
-                                                <FaEdit />{" "}
-                                              </td>
-                                              <td>
-                                                <FaTrash />{" "}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>2</td>
-                                              <td>CH</td>
-                                              <td>China</td>
-                                              <td>
-                                                <FaEdit />{" "}
-                                              </td>
-                                              <td>
-                                                <FaTrash />{" "}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>3</td>
-                                              <td>CH</td>
-                                              <td>China</td>
-                                              <td>
-                                                <FaEdit />{" "}
-                                              </td>
-                                              <td>
-                                                <FaTrash />{" "}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>4</td>
-                                              <td>CH</td>
-                                              <td>China</td>
-                                              <td>
-                                                <FaEdit />{" "}
-                                              </td>
-                                              <td>
-                                                <FaTrash />{" "}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>5</td>
-                                              <td>CH</td>
-                                              <td>China</td>
-                                              <td>
-                                                <FaEdit />{" "}
-                                              </td>
-                                              <td>
-                                                <FaTrash />{" "}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>6</td>
-                                              <td>CH</td>
-                                              <td>China</td>
-                                              <td>
-                                                <FaEdit />{" "}
-                                              </td>
-                                              <td>
-                                                <FaTrash />{" "}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>7</td>
-                                              <td>CH</td>
-                                              <td>China</td>
-                                              <td>
-                                                <FaEdit />{" "}
-                                              </td>
-                                              <td>
-                                                <FaTrash />{" "}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>8</td>
-                                              <td>CH</td>
-                                              <td>China</td>
-                                              <td>
-                                                <FaEdit />{" "}
-                                              </td>
-                                              <td>
-                                                <FaTrash />{" "}
-                                              </td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                    </div>
-                                  </div>
+                                  <ToggleCardCountry />
                                 </div>
                               )}
                               {isCardOpenCurrency && (
@@ -2661,168 +2154,7 @@ const SupplierCustomerMaster = () => {
                                       ×
                                     </button>
                                   </div>
-                                  <div className="card-body">
-                                    <div className="row text-start">
-                                      <div className="col-md-3">
-                                        <div className="mb-3">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
-                                          >
-                                            Code:
-                                          </label>
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div className="col-md-3">
-                                        <div className="mb-3">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
-                                          >
-                                            Symbol:
-                                          </label>
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div className="col-md-3">
-                                        <div className="mb-3">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
-                                          >
-                                            Description:
-                                          </label>
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div className="col-md-3">
-                                        <button className="Currencybtn">
-                                          Save
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div className="row">
-                                    <div className="col-12">
-                                      <table className="table table-responsive">
-                                        <thead>
-                                          <tr>
-                                            <th>Sr. No</th>
-                                            <th>Code</th>
-                                            <th>Symbol</th>
-                                            <th>Description</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td></td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>2</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>3</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>4</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>5</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>6</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>7</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>8</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
+                                  <ToggleCardCurrency />
                                 </div>
                               )}
                               {isCardOpenCity && (
@@ -2838,152 +2170,7 @@ const SupplierCustomerMaster = () => {
                                       ×
                                     </button>
                                   </div>
-                                  <div className="card-body">
-                                    <div className="row text-start">
-                                      <div className="col-md-3">
-                                        <div className="mb-3">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
-                                          >
-                                            city Code:
-                                          </label>
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div className="col-md-3">
-                                        <div className="mb-3">
-                                          <label
-                                            for="exampleFormControlInput1"
-                                            className="form-label"
-                                          >
-                                            city name:
-                                          </label>
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                          />
-                                        </div>
-                                      </div>
-
-                                      <div className="col-md-3">
-                                        <button className="Currencybtn">
-                                          Save
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div className="row">
-                                    <div className="col-12">
-                                      <table className="table table-responsive">
-                                        <thead>
-                                          <tr>
-                                            <th>Sr. No</th>
-                                            <th>city Code</th>
-                                            <th>City name</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>2</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>3</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>4</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>5</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>6</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>7</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>8</td>
-                                            <td>CH</td>
-                                            <td>China</td>
-                                            <td>
-                                              <FaEdit />{" "}
-                                            </td>
-                                            <td>
-                                              <FaTrash />{" "}
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
+                                  <ToggleCardCity />
                                 </div>
                               )}
                               {isCardOpenSector && (
@@ -2999,60 +2186,11 @@ const SupplierCustomerMaster = () => {
                                       ×
                                     </button>
                                   </div>
-                                  <div className="card-body">
-                                    <div className="row text-start">
-                                      <div className="row mb-3">
-                                        <label
-                                          for="inputEmail3"
-                                          className="col-sm-2 col-form-label"
-                                        >
-                                          Sector Profile:
-                                        </label>
-                                        <div className="col-sm-2">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="inputEmail3"
-                                          />
-                                        </div>
-                                        <label
-                                          for="inputEmail3"
-                                          className="col-sm-2 col-form-label"
-                                        >
-                                          Sector Name:
-                                        </label>
-                                        <div className="col-sm-4">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="inputEmail3"
-                                          />
-                                        </div>
-                                        <div className="col-sm-2">
-                                          <button className="Sectorbtn">
-                                            Save
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div className="row">
-                                    <div className="col-12">
-                                      <table className="table table-responsive">
-                                        <thead>
-                                          <tr>
-                                            <th>No Data Found !!!</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody></tbody>
-                                      </table>
-                                    </div>
-                                  </div>
+                                  <ToggleCardSector />
                                 </div>
                               )}
                               {isCardOpenGroup && (
-                                <div className="card-City">
+                                <div className="card-Group">
                                   <div className="card-header d-flex justify-content-between">
                                     <div className="text-start text-primary">
                                       Customer Group Master
@@ -3064,56 +2202,23 @@ const SupplierCustomerMaster = () => {
                                       ×
                                     </button>
                                   </div>
-                                  <div className="card-body">
-                                    <div className="row text-start">
-                                      <div className="row mb-3">
-                                        <label
-                                          for="inputEmail3"
-                                          className="col-sm-2 col-form-label"
-                                        >
-                                          Prefix:
-                                        </label>
-                                        <div className="col-sm-2">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="inputEmail3"
-                                          />
-                                        </div>
-                                        <label
-                                          for="inputEmail3"
-                                          className="col-sm-2 col-form-label"
-                                        >
-                                          Group:
-                                        </label>
-                                        <div className="col-sm-4">
-                                          <input
-                                            type="email"
-                                            className="form-control"
-                                            id="inputEmail3"
-                                          />
-                                        </div>
-                                        <div className="col-sm-2">
-                                          <button className="Groupbtn">
-                                            Save
-                                          </button>
-                                        </div>
-                                      </div>
+                                  <ToggleCardGroup />
+                                </div>
+                              )}
+                              {isCardOpenQMSCCode && (
+                                <div className="card-QMSCCode">
+                                  <div className="card-header d-flex justify-content-between">
+                                    <div className="text-start text-primary">
+                                      QMSC_Code Master
                                     </div>
+                                    <button
+                                      className="btn-close"
+                                      onClick={toggleCardQMSCCode}
+                                    >
+                                      ×
+                                    </button>
                                   </div>
-
-                                  <div className="row">
-                                    <div className="col-12">
-                                      <table className="table table-responsive">
-                                        <thead>
-                                          <tr>
-                                            <th>No Data Found !!!</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody></tbody>
-                                      </table>
-                                    </div>
-                                  </div>
+                                  <ToggleCardQMSCode />
                                 </div>
                               )}
                             </div>

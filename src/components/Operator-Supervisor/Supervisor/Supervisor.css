@@ -179,3 +179,113 @@ main {
 .Category-container .table-responsive {
   margin-top: 20px;
 }
+
+/* designation */
+
+.designation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1050; /* Ensure it is above other content */
+}
+
+.designation-container .card {
+  background-color: white;
+  width: 90%;
+  max-width: 900px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.designation-container .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.designation-container .card-title {
+  margin: 0;
+}
+
+.designation-container .card-body {
+  padding: 20px 0;
+}
+
+.designation-container .btn-close {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+.designation-container .btn-close:focus {
+  outline: none;
+}
+
+.designation-container .table-responsive {
+  margin-top: 20px;
+}
+
+/* Contractor */
+
+.Contractor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1050; /* Ensure it is above other content */
+}
+
+.Contractor-container .card {
+  background-color: white;
+  width: 90%;
+  max-width: 900px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Contractor-container .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Contractor-container .card-title {
+  margin: 0;
+}
+
+.Contractor-container .card-body {
+  padding: 20px 0;
+}
+
+.Contractor-container .btn-close {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+.Contractor-container .btn-close:focus {
+  outline: none;
+}
+
+.Contractor-container .table-responsive {
+  margin-top: 20px;
+}

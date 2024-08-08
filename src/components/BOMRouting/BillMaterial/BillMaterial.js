@@ -5,6 +5,26 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../../NavBar/NavBar";
 import SideNav from "../../../SideNav/SideNav";
 import "./BillMaterial.css";
+import VisibleStandard from "./VisibleStandard.jsx";
+// Purchase Card
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FaEdit, FaTrash } from "react-icons/fa";
+import {
+  saveDepartment,
+  getDepartments,
+  updateDepartment,
+  deleteDepartmentCard,
+} from "../../Service/Api.jsx";
+
+import {
+  saveOperation,
+  getOperations,
+  updateOperation,
+  deleteOperation,
+} from "../../Service/Api.jsx";
+
+import VisibleBomitem from "./VisibleBomitem.jsx";
 
 const BillMaterial = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -45,9 +65,204 @@ const BillMaterial = () => {
   const toggleCardBomitem = () => {
     setCardVisibleBomitem(!cardVisibleBomitem);
   };
+
+  // Purchase Card
+  const [data, setData] = useState([]);
+  const [formData, setFormData] = useState({
+    Department_Name: "",
+    Short_Name: "",
+    Std_Otp: "",
+    Operation_Name: "",
+    Prefix: "",
+    Mhr_Rate: "",
+    BomQc: "",
+    ProductionDept: "",
+    MachineType: "",
+    Production_Cycle_Time: "",
+    Stop_Mc_Booking: "",
+    Per_Day_Prod_Qty: "",
+    Bom_Item_Group: "",
+    Item: "",
+    Qty: "",
+  });
+  const [errors, setErrors] = useState({});
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId, setEditId] = useState(null);
+
+  useEffect(() => {
+    fetchDepartments();
+  }, []);
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.Department_Name) {
+      newErrors.Department_Name = "This field is required.";
+    }
+    if (!formData.Short_Name) {
+      newErrors.Short_Name = "This field is required.";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
+    try {
+      if (isEditing) {
+        await updateDepartment(editId, formData);
+        toast.success("Department updated successfully!");
+      } else {
+        await saveDepartment(formData);
+        toast.success("Department saved successfully!");
+      }
+      fetchDepartments(); // Refresh data
+      setFormData({ Department_Name: "", Short_Name: "" });
+      setIsEditing(false);
+      setEditId(null);
+    } catch (error) {
+      toast.error("Failed to save department.");
+      console.error("Error saving department:", error);
+    }
+  };
+
+  const fetchDepartments = async () => {
+    try {
+      const response = await getDepartments();
+      setData(response);
+    } catch (error) {
+      toast.error("Failed to fetch departments.");
+      console.error("Error fetching departments:", error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteDepartmentCard(id);
+      toast.success("Department deleted successfully!");
+      fetchDepartments(); // Refresh data
+    } catch (error) {
+      toast.error("Failed to delete department.");
+      console.error("Error deleting department:", error);
+    }
+  };
+
+  const handleEdit = (item) => {
+    setFormData({
+      Department_Name: item.Department_Name,
+      Short_Name: item.Short_Name,
+    });
+    setIsEditing(true);
+    setEditId(item.id);
+  };
+
+  // card
+
+  useEffect(() => {
+    fetchOperations();
+  }, []);
+
+  const validateForm1 = () => {
+    const newErrors = {};
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key]) {
+        newErrors[key] = "This field is required.";
+      }
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange1 = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSave1 = async (e) => {
+    e.preventDefault();
+    if (!validateForm1()) {
+      return;
+    }
+    try {
+      if (isEditing) {
+        await updateOperation(editId, formData);
+        toast.success("Operation updated successfully!");
+      } else {
+        await saveOperation(formData);
+        toast.success("Operation saved successfully!");
+      }
+      fetchOperations(); // Refresh data
+      setFormData({
+        Std_Otp: "",
+        Operation_Name: "",
+        Prefix: "",
+        Mhr_Rate: "",
+        BomQc: "",
+        ProductionDept: "",
+        MachineType: "",
+        Production_Cycle_Time: "",
+        Stop_Mc_Booking: "",
+        Per_Day_Prod_Qty: "",
+      });
+      setIsEditing(false);
+      setEditId(null);
+    } catch (error) {
+      toast.error("Failed to save operation.");
+      console.error("Error saving operation:", error);
+    }
+  };
+
+  const fetchOperations = async () => {
+    try {
+      const response = await getOperations();
+      setData(response);
+    } catch (error) {
+      toast.error("Failed to fetch operations.");
+      console.error("Error fetching operations:", error);
+    }
+  };
+
+  const handleDelete1 = async (id) => {
+    try {
+      await deleteOperation(id);
+      toast.success("Operation deleted successfully!");
+      fetchOperations(); // Refresh data
+    } catch (error) {
+      toast.error("Failed to delete operation.");
+      console.error("Error deleting operation:", error);
+    }
+  };
+
+  const handleEdit1 = (item) => {
+    setFormData({
+      Std_Otp: item.Std_Otp,
+      Operation_Name: item.Operation_Name,
+      Prefix: item.Prefix,
+      Mhr_Rate: item.Mhr_Rate,
+      BomQc: item.BomQc,
+      ProductionDept: item.ProductionDept,
+      MachineType: item.MachineType,
+      Production_Cycle_Time: item.Production_Cycle_Time,
+      Stop_Mc_Booking: item.Stop_Mc_Booking,
+      Per_Day_Prod_Qty: item.Per_Day_Prod_Qty,
+    });
+    setIsEditing(true);
+    setEditId(item.id);
+  };
+
+  // card2
+
   return (
     <div className="BillMaterial">
       <div className="container-fluid">
+        <ToastContainer />
         <div className="row">
           <div className="col-md-12">
             <div className="Main-NavBar">
@@ -118,22 +333,67 @@ const BillMaterial = () => {
                               </h5>
                             </div>
                           </div>
-                          <div className="row mb-3 text-start">
-                            <div className="col-md-5">
-                              <label className="form-label">
-                                Department Name:
-                              </label>
-                              <input type="text" className="form-control" />
+                          <form onSubmit={handleSave}>
+                            <div className="row mb-3 text-start">
+                              <div className="col-md-5">
+                                <label
+                                  htmlFor="Department_Name"
+                                  className="form-label"
+                                >
+                                  Department Name:
+                                </label>
+                                <input
+                                  type="text"
+                                  className={`form-control ${
+                                    errors.Department_Name ? "is-invalid" : ""
+                                  }`}
+                                  id="Department_Name"
+                                  name="Department_Name"
+                                  value={formData.Department_Name}
+                                  onChange={handleInputChange}
+                                  placeholder="Enter department name"
+                                />
+                                {errors.Department_Name && (
+                                  <div className="invalid-feedback">
+                                    {errors.Department_Name}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="col-md-5">
+                                <label
+                                  htmlFor="Short_Name"
+                                  className="form-label"
+                                >
+                                  Short Name:
+                                </label>
+                                <input
+                                  type="text"
+                                  className={`form-control ${
+                                    errors.Short_Name ? "is-invalid" : ""
+                                  }`}
+                                  id="Short_Name"
+                                  name="Short_Name"
+                                  value={formData.Short_Name}
+                                  onChange={handleInputChange}
+                                  placeholder="Enter short name"
+                                />
+                                {errors.Short_Name && (
+                                  <div className="invalid-feedback">
+                                    {errors.Short_Name}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="col-md-2">
+                                <button
+                                  type="submit"
+                                  className="bomButton"
+                                  style={{ marginTop: "24px" }}
+                                >
+                                  {isEditing ? "Update" : "Save"}
+                                </button>
+                              </div>
                             </div>
-                            <div className="col-md-5">
-                              <label className="form-label">Short Name:</label>
-                              <input type="text" className="form-control" />
-                            </div>
-                            <div className="col-md-2">
-                              <button className="bomButton">Save</button>
-                            </div>
-                          </div>
-
+                          </form>
                           <div className="row">
                             <div className="col-12">
                               <table className="table table-bordered">
@@ -147,17 +407,37 @@ const BillMaterial = () => {
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>Sharp</td>
-                                    <td>Sharp</td>
-                                    <td>
-                                      <i className="fas fa-edit"></i>
-                                    </td>
-                                    <td>
-                                      <i className="fas fa-trash"></i>
-                                    </td>
-                                  </tr>
+                                  {data.length > 0 ? (
+                                    data.map((item, index) => (
+                                      <tr key={item.id}>
+                                        <td>{index + 1}</td>
+                                        <td>{item.Department_Name}</td>
+                                        <td>{item.Short_Name}</td>
+                                        <td>
+                                          <FaEdit
+                                            className="text-primary mx-2"
+                                            style={{ cursor: "pointer" }}
+                                            onClick={() => handleEdit(item)}
+                                          />
+                                        </td>
+                                        <td>
+                                          <FaTrash
+                                            className="text-danger mx-2"
+                                            style={{ cursor: "pointer" }}
+                                            onClick={() =>
+                                              handleDelete(item.id)
+                                            }
+                                          />
+                                        </td>
+                                      </tr>
+                                    ))
+                                  ) : (
+                                    <tr>
+                                      <td colSpan="5" className="text-center">
+                                        No data found!
+                                      </td>
+                                    </tr>
+                                  )}
                                 </tbody>
                               </table>
                             </div>
@@ -187,22 +467,44 @@ const BillMaterial = () => {
                               </h5>
                             </div>
                           </div>
-                          {/* <div className="row mb-3 text-start">
-                            <div className="col-md-5">
-                              <label className="form-label">
-                                Department Name:
-                              </label>
-                              <input type="text" className="form-control" />
+                          <form onSubmit={handleSave1}>
+                            <div className="row mb-3 text-start">
+                              {Object.keys(formData).map((key) => (
+                                <div className="col-md-5 mb-3" key={key}>
+                                  <label className="form-label">
+                                    {key.replace(/_/g, " ")}
+                                  </label>
+                                  <input
+                                    type="text"
+                                    className={`form-control ${
+                                      errors[key] ? "is-invalid" : ""
+                                    }`}
+                                    name={key}
+                                    value={formData[key]}
+                                    onChange={handleInputChange1}
+                                    placeholder={`Enter ${key.replace(
+                                      /_/g,
+                                      " "
+                                    )}`}
+                                  />
+                                  {errors[key] && (
+                                    <div className="invalid-feedback">
+                                      {errors[key]}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                              <div className="col-md-2">
+                                <button
+                                  type="submit"
+                                  className="bomButton"
+                                  style={{ marginTop: "24px" }}
+                                >
+                                  {isEditing ? "Update" : "Save"}
+                                </button>
+                              </div>
                             </div>
-                            <div className="col-md-5">
-                              <label className="form-label">Short Name:</label>
-                              <input type="text" className="form-control" />
-                            </div>
-                            <div className="col-md-2">
-                              <button className="bomButton">Save</button>
-                            </div>
-                          </div> */}
-
+                          </form>
                           <div className="row">
                             <div className="col-md-12">
                               <div className="table-responsive">
@@ -228,121 +530,51 @@ const BillMaterial = () => {
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>110</td>
-                                      <td>Black Plating</td>
-                                      <td>BP</td>
-                                      <td>0</td>
-                                      <td>No</td>
-                                      <td>Sharp</td>
-                                      <td></td>
-                                      <td>No</td>
-                                      <td>No</td>
-                                      <td>Yes</td>
-                                      <td></td>
-                                      <td>0</td>
-                                      <td>0</td>
-
-                                      <td>
-                                        <i className="fas fa-edit"></i>
-                                      </td>
-                                      <td>
-                                        <i className="fas fa-trash"></i>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>110</td>
-                                      <td>Black Plating</td>
-                                      <td>BP</td>
-                                      <td>0</td>
-                                      <td>No</td>
-                                      <td>Sharp</td>
-                                      <td></td>
-                                      <td>No</td>
-                                      <td>No</td>
-                                      <td>Yes</td>
-                                      <td></td>
-                                      <td>0</td>
-                                      <td>0</td>
-
-                                      <td>
-                                        <i className="fas fa-edit"></i>
-                                      </td>
-                                      <td>
-                                        <i className="fas fa-trash"></i>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>110</td>
-                                      <td>Black Plating</td>
-                                      <td>BP</td>
-                                      <td>0</td>
-                                      <td>No</td>
-                                      <td>Sharp</td>
-                                      <td></td>
-                                      <td>No</td>
-                                      <td>No</td>
-                                      <td>Yes</td>
-                                      <td></td>
-                                      <td>0</td>
-                                      <td>0</td>
-
-                                      <td>
-                                        <i className="fas fa-edit"></i>
-                                      </td>
-                                      <td>
-                                        <i className="fas fa-trash"></i>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>110</td>
-                                      <td>Black Plating</td>
-                                      <td>BP</td>
-                                      <td>0</td>
-                                      <td>No</td>
-                                      <td>Sharp</td>
-                                      <td></td>
-                                      <td>No</td>
-                                      <td>No</td>
-                                      <td>Yes</td>
-                                      <td></td>
-                                      <td>0</td>
-                                      <td>0</td>
-
-                                      <td>
-                                        <i className="fas fa-edit"></i>
-                                      </td>
-                                      <td>
-                                        <i className="fas fa-trash"></i>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>110</td>
-                                      <td>Black Plating</td>
-                                      <td>BP</td>
-                                      <td>0</td>
-                                      <td>No</td>
-                                      <td>Sharp</td>
-                                      <td></td>
-                                      <td>No</td>
-                                      <td>No</td>
-                                      <td>Yes</td>
-                                      <td></td>
-                                      <td>0</td>
-                                      <td>0</td>
-
-                                      <td>
-                                        <i className="fas fa-edit"></i>
-                                      </td>
-                                      <td>
-                                        <i className="fas fa-trash"></i>
-                                      </td>
-                                    </tr>
+                                    {data.length > 0 ? (
+                                      data.map((item, index) => (
+                                        <tr key={item.id}>
+                                          <td>{index + 1}</td>
+                                          <td>{item.Std_Otp}</td>
+                                          <td>{item.Operation_Name}</td>
+                                          <td>{item.Prefix}</td>
+                                          <td>{item.Mhr_Rate}</td>
+                                          <td>{item.BomQc}</td>
+                                          <td>{item.ProductionDept}</td>
+                                          <td>{item.MachineType}</td>
+                                          <td>{item.Production_Cycle_Time}</td>
+                                          <td>{item.Stop_Mc_Booking}</td>
+                                          <td>{item.Print}</td>
+                                          <td>{item.SAC_Code}</td>
+                                          <td>{item.Operation_Rate}</td>
+                                          <td>{item.Per_Day_Per_Qty}</td>
+                                          <td>
+                                            <FaEdit
+                                              className="text-primary mx-2"
+                                              style={{ cursor: "pointer" }}
+                                              onClick={() => handleEdit1(item)}
+                                            />
+                                          </td>
+                                          <td>
+                                            <FaTrash
+                                              className="text-danger mx-2"
+                                              style={{ cursor: "pointer" }}
+                                              onClick={() =>
+                                                handleDelete1(item.id)
+                                              }
+                                            />
+                                          </td>
+                                        </tr>
+                                      ))
+                                    ) : (
+                                      <tr>
+                                        <td
+                                          colSpan="16"
+                                          className="text-center"
+                                        >
+                                          No Records Found
+                                        </td>
+                                      </tr>
+                                    )}
                                   </tbody>
                                 </table>
                               </div>
@@ -350,7 +582,7 @@ const BillMaterial = () => {
                           </div>
                           <div className="row text-start">
                             <div className="col-md-12">
-                              <h6>Total Records:73</h6>
+                              <h6>Total Records: {data.length}</h6>
                             </div>
                           </div>
                         </div>
@@ -369,112 +601,7 @@ const BillMaterial = () => {
                             X
                           </button>
                         </div>
-                        <div className="card-body">
-                          <div className="row mb-3">
-                            <div className="col-md-2 text-start">
-                              <label className="form-label">
-                                Std Routing No:
-                              </label>
-                            </div>
-                            <div className="col-md-4 text-start">
-                              <select className="form-select">
-                                <option>Select Option</option>
-                              </select>
-                            </div>
-                            <div className="col-md-6 text-end">
-                              <button className="Standardbtn">
-                                Copy Routing Sheet
-                              </button>
-                              <button className="Standardbtn">
-                                Export To Excel
-                              </button>
-                            </div>
-                          </div>
-                          <div className="row mb-3">
-                            <div className="col-md-1">
-                              <label className="form-label">Std Routing:</label>
-                              <input type="text" className="form-control" />
-                            </div>
-                            <div className="col-md-1">
-                              <label className="form-label">Op No:</label>
-                              <input type="text" className="form-control" />
-                            </div>
-                            <div className="col-md-1">
-                              <label className="form-label">Op Name:</label>
-                              <select className="form-select">
-                                <option>Select Option</option>
-                              </select>
-                            </div>
-                            <div className="col-md-1">
-                              <label className="form-label">Part Type:</label>
-                              <select className="form-select">
-                                <option>Select Option</option>
-                              </select>
-                            </div>
-                            <div className="col-md-1">
-                              <label className="form-label">WIP WT:</label>
-                              <select className="form-select">
-                                <option>Select Option</option>
-                              </select>
-                            </div>
-                            <div className="col-md-1">
-                              <label className="form-label">Op Type:</label>
-                              <select className="form-select">
-                                <option>Select Option</option>
-                              </select>
-                            </div>
-                            <div className="col-md-1">
-                              <label className="form-label">QC Type:</label>
-                              <select className="form-select">
-                                <option>Select Option</option>
-                              </select>
-                            </div>
-                            <div className="col-md-1">
-                              <label className="form-label">Ass Prod:</label>
-                              <select className="form-select">
-                                <option>Select Option</option>
-                              </select>
-                            </div>
-                            <div className="col-md-1">
-                              <label className="form-label">Part Code:</label>
-                              <select className="form-select">
-                                <option>Select Option</option>
-                              </select>
-                            </div>
-                            <div className="col-md-1 text-end">
-                              <button className="StandardButton">Save</button>
-                            </div>
-                          </div>
-
-                          <div className="row">
-                            <div className="col-md-12">
-                              <div className="table-responsive">
-                                <table className="table table-bordered">
-                                  <thead>
-                                    <tr>
-                                      <th>Std Routing No</th>
-                                      <th>Op No</th>
-                                      <th>Op Name</th>
-                                      <th>Part Type</th>
-                                      <th>WIP WT</th>
-                                      <th>Op Type</th>
-                                      <th>QC</th>
-                                      <th>Ass Prod</th>
-                                      <th>Part Code</th>
-                                      <th>Edit</th>
-                                      <th>Delete</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td colSpan="9"></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        <VisibleStandard />
                       </div>
                     </div>
                   )}
@@ -490,94 +617,7 @@ const BillMaterial = () => {
                             X
                           </button>
                         </div>
-
-                        <div className="card-body">
-                          <div className="row mb-3">
-                            <div
-                              className="col-md-6 text-start"
-                              style={{ color: "blue" }}
-                            >
-                              <label className="form-label">
-                                BOM Item Group Details:
-                              </label>
-                            </div>
-
-                            <div className="col-md-6 text-end">
-                              <button className="Bomitembtn">
-                                BOM item Group Master
-                              </button>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col-12">
-                              <div className="table-responsive">
-                                <table className="table table-bordered">
-                                  <thead>
-                                    <tr>
-                                      <th>BOM Item Group</th>
-                                      <th>Item</th>
-                                      <th>Qty</th>
-                                      <th>Action</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>
-                                        <select className="form-select">
-                                          <option>Select Option</option>
-                                        </select>
-                                        <button className="refreshButton">
-                                          <i className="fas fa-sync"></i>
-                                        </button>
-                                      </td>
-                                      <td>
-                                        <input
-                                          type="text"
-                                          className="form-control"
-                                        />
-                                      </td>
-                                      <td>
-                                        <input
-                                          type="text"
-                                          className="form-control"
-                                        />
-                                      </td>
-                                      <td>
-                                        <button className="BomitemButton">
-                                          Save
-                                        </button>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="row">
-                            <div className="col-md-12">
-                              <div className="table-responsive">
-                                <table className="table table-bordered">
-                                  <thead>
-                                    <tr>
-                                      <th>Sr. No.</th>
-                                      <th>BOM Group</th>
-                                      <th>Item No.</th>
-                                      <th>Item Desc</th>
-                                      <th>QTy</th>
-                                      <th>Delete</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td colSpan="9"></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        <VisibleBomitem />
                       </div>
                     </div>
                   )}

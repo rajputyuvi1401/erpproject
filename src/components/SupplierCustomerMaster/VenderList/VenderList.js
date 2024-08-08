@@ -224,7 +224,7 @@ const VenderList = () => {
                                     <td>{item.User}</td>
                                     <td>{item.Rev}</td>
                                     <td>
-                                      <button>
+                                      <button style={{ border: "none" }}>
                                         <FaEdit />
                                       </button>
                                     </td>

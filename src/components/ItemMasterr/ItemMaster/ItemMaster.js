@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./ItemMaster.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import NavBar from "../../NavBar/NavBar";
-import SideNav from "../../SideNav/SideNav";
+import NavBar from "../../../NavBar/NavBar";
+import SideNav from "../../../SideNav/SideNav";
 import { useNavigate } from "react-router-dom";
 
 const ItemMaster = () => {

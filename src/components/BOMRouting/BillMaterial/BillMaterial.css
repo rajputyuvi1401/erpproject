@@ -107,6 +107,7 @@ main {
 .Standard .card-body,
 .Bomitem .card-body {
   padding: 20px;
+  margin: 5px;
 }
 
 .ProductionDeptCard .bomButton,
@@ -147,4 +148,45 @@ main {
 .Bomitem th,
 .Bomitem td {
   background-color: rgb(250, 251, 252);
+}
+.bomButton {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bomButton:hover {
+  background-color: darkblue;
+}
+.Standardbtn {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Standardbtn:hover {
+  background-color: darkblue;
+}
+
+.StandardButton {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.StandardButton:hover {
+  background-color: darkgreen;
+}
+
+.is-invalid {
+  border-color: red;
 }

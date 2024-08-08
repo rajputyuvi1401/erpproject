@@ -13,9 +13,9 @@ import MasterCustomers from "./components/Master1/MasterCustomers";
 import CustomerState from "./components/Master2/CustomerState";
 
 // Item Master
-import ItemMaster from "./components/ItemMaster/ItemMaster";
-import AddNewItem from "./components/AddNewItem/AddNewItem";
-import ItemMasterGernal from "./components/ItemMasterGernal/ItemMasterGernal";
+import ItemMaster from "./components/ItemMasterr/ItemMaster/ItemMaster";
+import AddNewItem from "./components/ItemMasterr/AddNewItem/AddNewItem";
+import ItemMasterGernal from "./components/ItemMasterr/ItemMasterGernal/ItemMasterGernal";
 
 // Work Center Master
 import WorkCenterMaster from "./components/WorkCenterMaster/WorkCenterMaster";
