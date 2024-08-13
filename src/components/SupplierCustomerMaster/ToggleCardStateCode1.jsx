@@ -13,9 +13,9 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const ToggleCardStateCode1 = () => {
   const [states, setStates] = useState([]);
-  const [stateName, setStateName] = useState("");
-  const [stateNoNumeric, setStateNoNumeric] = useState("");
-  const [stateCodeAlpha, setStateCodeAlpha] = useState("");
+  const [StateName, setStateName] = useState("");
+  const [StateNoNumeric, setStateNoNumeric] = useState("");
+  const [StateCodeAlpha, setStateCodeAlpha] = useState("");
   const [editingState, setEditingState] = useState(null);
   const [editStateName, setEditStateName] = useState("");
   const [editStateNoNumeric, setEditStateNoNumeric] = useState("");
@@ -35,21 +35,18 @@ const ToggleCardStateCode1 = () => {
   }, []);
 
   const handleAddState = async () => {
-    if (!stateName.trim() || !stateNoNumeric.trim() || !stateCodeAlpha.trim()) {
+    if (!StateName.trim() || !StateNoNumeric.trim() || !StateCodeAlpha.trim()) {
       toast.error("All fields are required");
       return;
     }
 
     try {
-      await addState(stateName, stateNoNumeric, stateCodeAlpha);
-      setStates([
-        ...states,
-        {
-          StateName: stateName,
-          StateNoNumeric: stateNoNumeric,
-          StateCodeAlpha: stateCodeAlpha,
-        },
-      ]);
+      const newState = await addState(
+        StateName,
+        StateNoNumeric,
+        StateCodeAlpha
+      );
+      setStates([...states, newState]);
       setStateName("");
       setStateNoNumeric("");
       setStateCodeAlpha("");
@@ -77,7 +74,7 @@ const ToggleCardStateCode1 = () => {
     }
 
     try {
-      await updateState(
+      const updatedState = await updateState(
         editingState,
         editStateName,
         editStateNoNumeric,
@@ -88,9 +85,9 @@ const ToggleCardStateCode1 = () => {
           s.id === editingState
             ? {
                 ...s,
-                StateName: editStateName,
-                StateNoNumeric: editStateNoNumeric,
-                StateCodeAlpha: editStateCodeAlpha,
+                StateName: updatedState.StateName,
+                State_No_Numeric: updatedState.State_No_Numeric,
+                State_Code_Alpha: updatedState.State_Code_Alpha,
               }
             : s
         )
@@ -121,49 +118,49 @@ const ToggleCardStateCode1 = () => {
         <div className="row text-start mb-3">
           <div className="col-md-3">
             <div className="mb-3">
-              <label htmlFor="stateName" className="form-label">
+              <label htmlFor="StateName" className="form-label">
                 State Name:
               </label>
               <input
                 type="text"
                 className="form-control"
-                id="stateName"
-                value={stateName}
+                id="StateName"
+                value={StateName}
                 onChange={(e) => setStateName(e.target.value)}
               />
             </div>
           </div>
           <div className="col-md-3">
             <div className="mb-3">
-              <label htmlFor="stateNoNumeric" className="form-label">
+              <label htmlFor="State_No_Numeric" className="form-label">
                 State No Numeric:
               </label>
               <input
                 type="text"
                 className="form-control"
-                id="stateNoNumeric"
-                value={stateNoNumeric}
+                id="State_No_Numeric"
+                value={StateNoNumeric}
                 onChange={(e) => setStateNoNumeric(e.target.value)}
               />
             </div>
           </div>
           <div className="col-md-3">
             <div className="mb-3">
-              <label htmlFor="stateCodeAlpha" className="form-label">
+              <label htmlFor="State_Code_Alpha" className="form-label">
                 State Code Alpha:
               </label>
               <input
                 type="text"
                 className="form-control"
-                id="stateCodeAlpha"
-                value={stateCodeAlpha}
+                id="State_Code_Alpha"
+                value={StateCodeAlpha}
                 onChange={(e) => setStateCodeAlpha(e.target.value)}
               />
             </div>
           </div>
           <div className="col-md-3">
             <div className="mb-3">
-              <button className="btn" onClick={handleAddState}>
+              <button className="btn btn-primary" onClick={handleAddState}>
                 Save
               </button>
             </div>
@@ -184,7 +181,7 @@ const ToggleCardStateCode1 = () => {
               </thead>
               <tbody>
                 {states.map((s, index) => (
-                  <tr key={index}>
+                  <tr key={s.id}>
                     <td>{index + 1}</td>
                     <td>
                       {editingState === s.id ? (
@@ -209,7 +206,7 @@ const ToggleCardStateCode1 = () => {
                           }
                         />
                       ) : (
-                        s.StateNoNumeric
+                        s.State_No_Numeric
                       )}
                     </td>
                     <td>
@@ -223,26 +220,23 @@ const ToggleCardStateCode1 = () => {
                           }
                         />
                       ) : (
-                        s.StateCodeAlpha
+                        s.State_Code_Alpha
                       )}
                     </td>
                     <td>
                       {editingState === s.id ? (
-                        <button
-                          className="card11 me-2"
-                          onClick={handleSaveEdit}
-                        >
+                        <button className="btn me-2" onClick={handleSaveEdit}>
                           Save
                         </button>
                       ) : (
                         <button
-                          className="card11 me-2"
+                          className="btn btn-warning me-2"
                           onClick={() =>
                             handleEditState(
                               s.id,
                               s.StateName,
-                              s.StateNoNumeric,
-                              s.StateCodeAlpha
+                              s.State_No_Numeric,
+                              s.State_Code_Alpha
                             )
                           }
                         >
@@ -252,7 +246,7 @@ const ToggleCardStateCode1 = () => {
                     </td>
                     <td>
                       <button
-                        className="card11"
+                        className="btn btn-danger"
                         onClick={() => handleDeleteState(s.id)}
                       >
                         <FaTrashAlt />

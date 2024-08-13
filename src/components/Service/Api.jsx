@@ -3,8 +3,8 @@
 import axios from "axios";
 
 // Define base URLs
-// const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
-const BASE_URL = "api/All_Masters/";
+const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
+// const BASE_URL = "api/All_Masters/";
 const TAX_CODE_URL = `${BASE_URL}Tax_Code/`;
 const GST_MASTER_URL = `${BASE_URL}GST_Master/`;
 const CUT_WISE_URL = `${BASE_URL}Cut_Wise/`;
@@ -532,17 +532,25 @@ export const deleteSector = async (id) => {
 
 // ccard statecode1
 export const fetchStates = async () => {
-  const response = await axios.get(`${BASE_URL}State_Code/`);
-  return response.data;
+  try {
+    const response = await axios.get(`${BASE_URL}StateCode/`);
+    return response.data; // Ensure this returns an array of state objects
+  } catch (error) {
+    throw new Error("Failed to fetch states");
+  }
 };
 
 export const addState = async (stateName, stateNoNumeric, stateCodeAlpha) => {
-  const response = await axios.post(`${BASE_URL}State_Code/`, {
-    StateName: stateName,
-    StateNoNumeric: stateNoNumeric,
-    StateCodeAlpha: stateCodeAlpha,
-  });
-  return response.data;
+  try {
+    const response = await axios.post(`${BASE_URL}StateCode/`, {
+      StateName: stateName,
+      State_No_Numeric: stateNoNumeric,
+      State_Code_Alpha: stateCodeAlpha,
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to add state");
+  }
 };
 
 export const updateState = async (
@@ -551,17 +559,25 @@ export const updateState = async (
   stateNoNumeric,
   stateCodeAlpha
 ) => {
-  const response = await axios.put(`${BASE_URL}State_Code/${id}/`, {
-    StateName: stateName,
-    StateNoNumeric: stateNoNumeric,
-    StateCodeAlpha: stateCodeAlpha,
-  });
-  return response.data;
+  try {
+    const response = await axios.put(`${BASE_URL}StateCode/${id}/`, {
+      StateName: stateName,
+      State_No_Numeric: stateNoNumeric,
+      State_Code_Alpha: stateCodeAlpha,
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to update state");
+  }
 };
 
 export const deleteState = async (id) => {
-  const response = await axios.delete(`${BASE_URL}State_Code/${id}/`);
-  return response.data;
+  try {
+    const response = await axios.delete(`${BASE_URL}StateCode/${id}/`);
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to delete state");
+  }
 };
 
 // QUMC Code
@@ -1058,6 +1074,7 @@ export const saveItemMasterData = async (data) => {
       message: error.message,
       status: error.response?.status,
       data: error.response?.data,
+      headers: error.response?.headers,
     });
 
     // Display detailed error message from response if available

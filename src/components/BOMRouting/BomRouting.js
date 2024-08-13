@@ -43,7 +43,7 @@ const BomRouting = () => {
                           </h5>
                         </div>
                         <div className="col-md-1 col-form-label">
-                          <label for="inputEmail3">Total BOM:</label>
+                          <label htmlFor="TotalBom">Total BOM:</label>
                         </div>
 
                         <div className="col-sm-9 text-end">
@@ -90,7 +90,7 @@ const BomRouting = () => {
                           />
                         </div>
                         <label
-                          for="inputEmail3"
+                          htmlFor="itemGroup"
                           className="col-sm-1 col-form-label"
                         >
                           Item Group:
@@ -123,8 +123,8 @@ const BomRouting = () => {
                   <div className="BomRoutingTable">
                     <div className="row">
                       <div className="col-md-12">
-                        <div class="table-responsive">
-                          <table class="table table-bordered">
+                        <div className="table-responsive">
+                          <table className="table table-bordered">
                             <thead>
                               <tr>
                                 <th>Sr</th>

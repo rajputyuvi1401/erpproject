@@ -114,33 +114,33 @@ const Npd = () => {
             <div className="col-md-3">
               <div className="row">
                 <div className="col-md-4 text-start">
-                  <label class="form-check-label" for="flexCheckDefault">
+                  <label className="form-check-label" for="flexCheckDefault">
                     Active:
                   </label>
                 </div>
                 <div className="col-md-4 text-start">
-                  <div class="form-check">
+                  <div className="form-check">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       value=""
                       id="flexCheckDefault"
                     />
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label className="form-check-label" for="flexCheckDefault">
                       Save
                     </label>
                   </div>
                 </div>
 
                 <div className="col-md-4 text-start">
-                  <div class="form-check">
+                  <div className="form-check">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       value=""
                       id="flexCheckDefault"
                     />
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label className="form-check-label" for="flexCheckDefault">
                       Purchase
                     </label>
                   </div>

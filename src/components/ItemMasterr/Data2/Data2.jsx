@@ -87,7 +87,9 @@ const Data2 = () => {
     }
   };
 
-  const handleSave = async (e) => {
+  const handleSavedata = async (e) => {
+    console.log("save");
+
     e.preventDefault();
     if (!validate()) return;
 
@@ -103,7 +105,7 @@ const Data2 = () => {
     }
   };
 
-  const handleClear = () => {
+  const handleCleardata = () => {
     if (!isCleared) {
       setFormData({
         Max_GRN_Qty: "",
@@ -233,7 +235,7 @@ const Data2 = () => {
                 </div>
                 <div className="row mb-3">
                   <label
-                    for="Item_Shelf_Life"
+                    htmlFor="Item_Shelf_Life"
                     className="col-sm-5 col-form-label"
                   >
                     Item Shelf Life:
@@ -272,18 +274,21 @@ const Data2 = () => {
                       id="Item_Wip_Wt"
                       className="form-control"
                       name="Item_Wip_Wt"
-                      value={formData.Item_wip_Wt}
+                      value={formData.Item_Wip_Wt}
                       onChange={handleChange}
                       style={{ width: "115%" }}
                     />
-                    {errors.Item_wip_Wt && (
-                      <div className="text-danger">{errors.Item_wip_Wt}</div>
+                    {errors.Item_Wip_Wt && (
+                      <div className="text-danger">{errors.Item_Wip_Wt}</div>
                     )}
                   </div>
                 </div>
 
                 <div className="row mb-3">
-                  <label for="Min_Level" className="col-sm-5 col-form-label">
+                  <label
+                    htmlFor="Min_Level"
+                    className="col-sm-5 col-form-label"
+                  >
                     Min Level:
                   </label>
                   <div className="col-sm-7">
@@ -573,21 +578,8 @@ const Data2 = () => {
                   >
                     Qty Packing:
                   </label>
-                  <div className="col-sm-2">
-                    <input
-                      type="text"
-                      id="Qty_Packing"
-                      name="Qty_Packing"
-                      value={formData.Qty_Packing}
-                      onChange={handleChange}
-                      className="form-control"
-                      style={{ width: "115%" }}
-                    />
-                    {errors.Qty_Packing && (
-                      <div className="text-danger">{errors.Qty_Packing}</div>
-                    )}
-                  </div>
-                  <div className="col-sm-2">
+
+                  <div className="col-sm-4">
                     <select
                       id="Qty_Packing"
                       name="Qty_Packing"
@@ -1241,10 +1233,14 @@ const Data2 = () => {
           </div>
           <div className="row mb-3 text-end">
             <div className="col-sm-12">
-              <button type="button" className="btn" onClick={handleSave}>
+              <button type="button" className="btn" onClick={handleSavedata}>
                 Save
               </button>
-              <button type="button" className="btn ms-2" onClick={handleClear}>
+              <button
+                type="button"
+                className="btn ms-2"
+                onClick={handleCleardata}
+              >
                 Clear
               </button>
             </div>

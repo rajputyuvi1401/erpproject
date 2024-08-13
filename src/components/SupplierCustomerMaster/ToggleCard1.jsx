@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-const ToggleCard1 = () => {
+const ToggleCard1 = ({ onCategoryChange }) => {
   const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState("");
   const [editingCategory, setEditingCategory] = useState(null);
@@ -28,6 +28,10 @@ const ToggleCard1 = () => {
     getCategories();
   }, []);
 
+  useEffect(() => {
+    onCategoryChange(categories);
+  }, [categories, onCategoryChange]);
+
   const handleAddCategory = async () => {
     if (!newCategory.trim()) {
       toast.error("Category Name is required");
@@ -36,7 +40,8 @@ const ToggleCard1 = () => {
 
     try {
       await addCategory(newCategory);
-      setCategories([...categories, { Category_Name: newCategory }]);
+      const updatedCategories = [...categories, { Category_Name: newCategory }];
+      setCategories(updatedCategories);
       setNewCategory("");
       toast.success("Category added successfully");
     } catch (error) {
@@ -57,11 +62,10 @@ const ToggleCard1 = () => {
 
     try {
       await updateCategory(editingCategory, editName);
-      setCategories(
-        categories.map((cat) =>
-          cat.id === editingCategory ? { ...cat, Category_Name: editName } : cat
-        )
+      const updatedCategories = categories.map((cat) =>
+        cat.id === editingCategory ? { ...cat, Category_Name: editName } : cat
       );
+      setCategories(updatedCategories);
       setEditingCategory(null);
       setEditName("");
       toast.success("Category updated successfully");
@@ -73,7 +77,8 @@ const ToggleCard1 = () => {
   const handleDeleteCategory = async (id) => {
     try {
       await deleteCategory(id);
-      setCategories(categories.filter((cat) => cat.id !== id));
+      const updatedCategories = categories.filter((cat) => cat.id !== id);
+      setCategories(updatedCategories);
       toast.success("Category deleted successfully");
     } catch (error) {
       toast.error("Failed to delete category");
@@ -131,28 +136,41 @@ const ToggleCard1 = () => {
                   </td>
                   <td>
                     {editingCategory === category.id ? (
-                      <button className="card11" onClick={handleSaveEdit}>
-                        Save
-                      </button>
+                      <>
+                        <button
+                          className="btn btn-success btn-sm"
+                          onClick={handleSaveEdit}
+                        >
+                          Save
+                        </button>
+                        <button
+                          className="btn btn-danger btn-sm ms-2"
+                          onClick={() => setEditingCategory(null)}
+                        >
+                          Cancel
+                        </button>
+                      </>
                     ) : (
-                      <button
-                        className="card11"
-                        onClick={() =>
-                          handleEditCategory(
-                            category.id,
-                            category.Category_Name
-                          )
-                        }
-                      >
-                        <FaEdit />
-                      </button>
+                      <>
+                        <button
+                          className="btn btn-primary btn-sm"
+                          onClick={() =>
+                            handleEditCategory(
+                              category.id,
+                              category.Category_Name
+                            )
+                          }
+                        >
+                          <FaEdit />
+                        </button>
+                        <button
+                          className="btn btn-danger btn-sm ms-2"
+                          onClick={() => handleDeleteCategory(category.id)}
+                        >
+                          <FaTrashAlt />
+                        </button>
+                      </>
                     )}
-                    <button
-                      className="card11"
-                      onClick={() => handleDeleteCategory(category.id)}
-                    >
-                      <FaTrashAlt />
-                    </button>
                   </td>
                 </tr>
               ))}
@@ -160,6 +178,7 @@ const ToggleCard1 = () => {
           </table>
         </div>
       </div>
+
       <ToastContainer />
     </div>
   );

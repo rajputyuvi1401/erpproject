@@ -381,7 +381,7 @@ const ItemMasterGernal = () => {
                               id="pills-home"
                               role="tabpanel"
                               aria-labelledby="pills-home-tab"
-                              tabindex="0"
+                              tabIndex="0"
                             >
                               <div className="container">
                                 <div className="gerneral">
@@ -1319,7 +1319,7 @@ const ItemMasterGernal = () => {
                                                   </div>
                                                 )}
                                               </div>
-                                              <div class="col-sm-2">
+                                              <div className="col-sm-2">
                                                 <button
                                                   className="btn"
                                                   onClick={
@@ -2098,22 +2098,22 @@ const ItemMasterGernal = () => {
                                           <div className="row">
                                             <div className="col-md-4 text-start">
                                               <label
-                                                class="form-check-label"
+                                                className="form-check-label"
                                                 for="flexCheckDefault"
                                               >
                                                 Active:
                                               </label>
                                             </div>
                                             <div className="col-md-4 text-start">
-                                              <div class="form-check">
+                                              <div className="form-check">
                                                 <input
-                                                  class="form-check-input"
+                                                  className="form-check-input"
                                                   type="checkbox"
                                                   value=""
                                                   id="flexCheckDefault"
                                                 />
                                                 <label
-                                                  class="form-check-label"
+                                                  className="form-check-label"
                                                   for="flexCheckDefault"
                                                 >
                                                   Save
@@ -2122,15 +2122,15 @@ const ItemMasterGernal = () => {
                                             </div>
 
                                             <div className="col-md-4 text-start">
-                                              <div class="form-check">
+                                              <div className="form-check">
                                                 <input
-                                                  class="form-check-input"
+                                                  className="form-check-input"
                                                   type="checkbox"
                                                   value=""
                                                   id="flexCheckDefault"
                                                 />
                                                 <label
-                                                  class="form-check-label"
+                                                  className="form-check-label"
                                                   for="flexCheckDefault"
                                                 >
                                                   Purchase
@@ -2597,7 +2597,7 @@ const ItemMasterGernal = () => {
                               id="pills-profile"
                               role="tabpanel"
                               aria-labelledby="pills-profile-tab"
-                              tabindex="0"
+                              tabIndex="0"
                             >
                               <Data2 />
                             </div>
@@ -2606,7 +2606,7 @@ const ItemMasterGernal = () => {
                               id="pills-contact"
                               role="tabpanel"
                               aria-labelledby="pills-contact-tab"
-                              tabindex="0"
+                              tabIndex="0"
                             >
                               <Technical />
                             </div>
@@ -2615,7 +2615,7 @@ const ItemMasterGernal = () => {
                               id="pills-about"
                               role="tabpanel"
                               aria-labelledby="pills-about-tab"
-                              tabindex="0"
+                              tabIndex="0"
                             >
                               <Npd />
                             </div>

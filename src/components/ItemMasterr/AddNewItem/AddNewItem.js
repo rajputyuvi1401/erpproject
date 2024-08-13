@@ -138,7 +138,7 @@ const AddNewItem = () => {
                               id="pills-home"
                               role="tabpanel"
                               aria-labelledby="pills-home-tab"
-                              tabindex="0"
+                              tabIndex="0"
                             >
                               <div className="addnewitemmmmm">
                                 <p
@@ -155,17 +155,17 @@ const AddNewItem = () => {
                                   <div className="row text-start">
                                     <div className="col-md-4">
                                       <div className="row">
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                           <label
-                                            for="inputEmail3"
-                                            class="col-sm-4 col-form-label"
+                                            htmlFor="inputEmail3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             Main Group:
                                           </label>
-                                          <div class="col-sm-5">
+                                          <div className="col-sm-5">
                                             <select
                                               id="inputState"
-                                              class="form-select"
+                                              className="form-select"
                                               onChange={handleDropdownChange}
                                             >
                                               <option
@@ -200,10 +200,10 @@ const AddNewItem = () => {
                                               <option>DI</option>
                                             </select>
                                           </div>
-                                          <div class="col-sm-2">
+                                          <div className="col-sm-2">
                                             <button className="btn">New</button>
                                           </div>
-                                          <div class="col-sm-1">
+                                          <div className="col-sm-1">
                                             <button
                                               className="btn"
                                               style={{ fontSize: "10px" }}
@@ -212,14 +212,14 @@ const AddNewItem = () => {
                                             </button>
                                           </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                           <label
-                                            for="inputEmail3"
-                                            class="col-sm-5 col-form-label"
+                                            htmlFor="inputEmail3"
+                                            className="col-sm-5 col-form-label"
                                           >
                                             SE Item/Part No:
                                           </label>
-                                          <div class="col-sm-7">
+                                          <div className="col-sm-7">
                                             <input
                                               type="input"
                                               className="
@@ -228,17 +228,17 @@ const AddNewItem = () => {
                                             />
                                           </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                           <label
-                                            for="inputEmail3"
-                                            class="col-sm-4 col-form-label"
+                                            htmlFor="inputEmail3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             Unit Code:
                                           </label>
-                                          <div class="col-sm-5">
+                                          <div className="col-sm-5">
                                             <select
                                               id="inputState"
-                                              class="form-select"
+                                              className="form-select"
                                             >
                                               <option selected>
                                                 Select ..
@@ -247,10 +247,10 @@ const AddNewItem = () => {
                                               <option>FA</option>
                                             </select>
                                           </div>
-                                          <div class="col-sm-2">
+                                          <div className="col-sm-2">
                                             <button className="btn">New</button>
                                           </div>
-                                          <div class="col-sm-1">
+                                          <div className="col-sm-1">
                                             <button
                                               className="btn"
                                               style={{ fontSize: "10px" }}
@@ -263,17 +263,17 @@ const AddNewItem = () => {
                                     </div>
                                     <div className="col-md-4">
                                       <div className="row">
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                           <label
-                                            for="inputEmail3"
-                                            class="col-sm-4 col-form-label"
+                                            htmlFor="inputEmail3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             Item Group:
                                           </label>
-                                          <div class="col-sm-5">
+                                          <div className="col-sm-5">
                                             <select
                                               id="inputState"
-                                              class="form-select"
+                                              className="form-select"
                                             >
                                               <option selected>
                                                 Select ..
@@ -282,10 +282,10 @@ const AddNewItem = () => {
                                               <option>FA</option>
                                             </select>
                                           </div>
-                                          <div class="col-sm-2">
+                                          <div className="col-sm-2">
                                             <button className="btn">New</button>
                                           </div>
-                                          <div class="col-sm-1">
+                                          <div className="col-sm-1">
                                             <button
                                               className="btn"
                                               style={{ fontSize: "10px" }}
@@ -294,14 +294,14 @@ const AddNewItem = () => {
                                             </button>
                                           </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                           <label
-                                            for="inputEmail3"
-                                            class="col-sm-5 col-form-label"
+                                            htmlFor="inputEmail3"
+                                            className="col-sm-5 col-form-label"
                                           >
                                             Name/Description:
                                           </label>
-                                          <div class="col-sm-7">
+                                          <div className="col-sm-7">
                                             <input
                                               type="input"
                                               className="
@@ -310,17 +310,17 @@ const AddNewItem = () => {
                                             />
                                           </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                           <label
-                                            for="inputEmail3"
-                                            class="col-sm-4 col-form-label"
+                                            htmlFor="inputEmail3"
+                                            className="col-sm-4 col-form-label"
                                           >
                                             Store Location:
                                           </label>
-                                          <div class="col-sm-5">
+                                          <div className="col-sm-5">
                                             <select
                                               id="inputState"
-                                              class="form-select"
+                                              className="form-select"
                                             >
                                               <option selected>
                                                 Select ..
@@ -329,10 +329,10 @@ const AddNewItem = () => {
                                               <option>FA</option>
                                             </select>
                                           </div>
-                                          <div class="col-sm-2">
+                                          <div className="col-sm-2">
                                             <button className="btn">New</button>
                                           </div>
-                                          <div class="col-sm-1">
+                                          <div className="col-sm-1">
                                             <button
                                               className="btn"
                                               style={{ fontSize: "10px" }}
@@ -345,14 +345,14 @@ const AddNewItem = () => {
                                     </div>
                                     <div className="col-md-4">
                                       <div className="row">
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                           <label
-                                            for="inputEmail3"
-                                            class="col-sm-5 col-form-label"
+                                            htmlFor="inputEmail3"
+                                            className="col-sm-5 col-form-label"
                                           >
                                             SE Item/Part No:
                                           </label>
-                                          <div class="col-sm-7">
+                                          <div className="col-sm-7">
                                             <input
                                               type="input"
                                               className="
@@ -377,7 +377,7 @@ const AddNewItem = () => {
                               id="pills-profile"
                               role="tabpanel"
                               aria-labelledby="pills-profile-tab"
-                              tabindex="0"
+                              tabIndex="0"
                             >
                               <p>tab2</p>
                             </div>
@@ -386,7 +386,7 @@ const AddNewItem = () => {
                               id="pills-contact"
                               role="tabpanel"
                               aria-labelledby="pills-contact-tab"
-                              tabindex="0"
+                              tabIndex="0"
                             >
                               <p>tab3</p>
                             </div>
@@ -395,7 +395,7 @@ const AddNewItem = () => {
                               id="pills-about"
                               role="tabpanel"
                               aria-labelledby="pills-about-tab"
-                              tabindex="0"
+                              tabIndex="0"
                             >
                               <p>tab4</p>
                             </div>
@@ -407,33 +407,42 @@ const AddNewItem = () => {
 
                   <div className="row" style={{ color: "blue" }}>
                     <div className="col-md-1 text-start">
-                      <label class="form-check-label" for="flexCheckDefault">
+                      <label
+                        className="form-check-label"
+                        htmlFor="flexCheckDefault"
+                      >
                         Active:
                       </label>
                     </div>
                     <div className="col-md-1 text-start">
-                      <div class="form-check">
+                      <div className="form-check">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label
+                          className="form-check-label"
+                          htmlFor="flexCheckDefault"
+                        >
                           Save
                         </label>
                       </div>
                     </div>
 
                     <div className="col-md-1 text-start">
-                      <div class="form-check">
+                      <div className="form-check">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label
+                          className="form-check-label"
+                          htmlFor="flexCheckDefault"
+                        >
                           Purchase
                         </label>
                       </div>

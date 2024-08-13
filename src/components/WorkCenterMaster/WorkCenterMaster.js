@@ -338,7 +338,7 @@ const WorkCenterMaster = () => {
                                 </div>
                               </div>
                               <div className="row mb-3">
-                                <div class="row mb-3 text-start">
+                                <div className="row mb-3 text-start">
                                   <label
                                     htmlFor="Category"
                                     className="col-sm-3 col-form-label"
@@ -363,7 +363,7 @@ const WorkCenterMaster = () => {
                                     )}
                                   </div>
                                 </div>
-                                <div class="row mb-3 text-start">
+                                <div className="row mb-3 text-start">
                                   <label
                                     htmlFor="WorkCenterCode"
                                     className="col-sm-3 col-form-label"
@@ -385,7 +385,7 @@ const WorkCenterMaster = () => {
                                     )}
                                   </div>
                                 </div>
-                                <div class="row mb-3 text-start">
+                                <div className="row mb-3 text-start">
                                   <label
                                     htmlFor="WorkCenterName"
                                     className="col-sm-3 col-form-label"
@@ -407,7 +407,7 @@ const WorkCenterMaster = () => {
                                     )}
                                   </div>
                                 </div>
-                                <div class="row mb-3 text-start">
+                                <div className="row mb-3 text-start">
                                   <label
                                     htmlFor="WorkCenterType"
                                     className="col-sm-3 col-form-label"
@@ -591,7 +591,7 @@ const WorkCenterMaster = () => {
                               </div>
                               <div className="row mb-3">
                                 <div className="col-md-6">
-                                  <div class="row mb-3 text-start">
+                                  <div className="row mb-3 text-start">
                                     <label
                                       htmlFor="Mhr_Rate"
                                       className="col-sm-6 col-form-label"
@@ -613,7 +613,7 @@ const WorkCenterMaster = () => {
                                       )}
                                     </div>
                                   </div>
-                                  <div class="row mb-3 text-start">
+                                  <div className="row mb-3 text-start">
                                     <label
                                       htmlFor="Electricity"
                                       className="col-sm-6 col-form-label"
@@ -635,7 +635,7 @@ const WorkCenterMaster = () => {
                                       )}
                                     </div>
                                   </div>
-                                  <div class="row mb-3 text-start">
+                                  <div className="row mb-3 text-start">
                                     <label
                                       htmlFor="PPM_SPM"
                                       className="col-sm-6 col-form-label"
@@ -657,7 +657,7 @@ const WorkCenterMaster = () => {
                                       )}
                                     </div>
                                   </div>
-                                  <div class="row mb-3 text-start">
+                                  <div className="row mb-3 text-start">
                                     <label
                                       htmlFor="PPM"
                                       className="col-sm-6 col-form-label"
@@ -681,7 +681,7 @@ const WorkCenterMaster = () => {
                                   </div>
                                 </div>
                                 <div className="col-md-6">
-                                  <div class="row mb-3 text-start">
+                                  <div className="row mb-3 text-start">
                                     <label
                                       htmlFor="BatchQty"
                                       className="col-sm-6 col-form-label"
@@ -702,11 +702,11 @@ const WorkCenterMaster = () => {
                                         </div>
                                       )}
                                     </div>
-                                    {/* <div class="col-sm-2">
+                                    {/* <div className="col-sm-2">
                                       <span>kg</span>
                                     </div> */}
                                   </div>
-                                  <div class="row mb-3 text-start">
+                                  <div className="row mb-3 text-start">
                                     <label
                                       htmlFor="Oil"
                                       className="col-sm-6 col-form-label"
@@ -728,7 +728,7 @@ const WorkCenterMaster = () => {
                                       )}
                                     </div>
                                   </div>
-                                  <div class="row mb-3 text-start">
+                                  <div className="row mb-3 text-start">
                                     <label
                                       htmlFor="Proud_Hours"
                                       className="col-sm-6 col-form-label"
@@ -750,7 +750,7 @@ const WorkCenterMaster = () => {
                                       )}
                                     </div>
                                   </div>
-                                  <div class="row mb-3 text-start">
+                                  <div className="row mb-3 text-start">
                                     <label
                                       htmlFor="Daily_Running_Hr"
                                       className="col-sm-6 col-form-label"
@@ -775,7 +775,7 @@ const WorkCenterMaster = () => {
                                 </div>
                               </div>
                               <div className="row mb-3">
-                                <div class="row mb-3 text-start">
+                                <div className="row mb-3 text-start">
                                   <label
                                     htmlFor="Operator"
                                     className="col-sm-3 col-form-label"

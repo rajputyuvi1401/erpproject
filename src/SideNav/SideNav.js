@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo-light.png";
 import { Dropdown } from "react-bootstrap";
-import {
-  FaHome,
-  FaInfoCircle,
-  FaServicestack,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaHome, FaInfoCircle, FaServicestack } from "react-icons/fa";
 import "./SideNav.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,9 +10,23 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
   const [dropdownsOpen, setDropdownsOpen] = useState({
     services: false,
     about: false,
+    home: false,
   });
 
   const toggleDropdown = (dropdown) => {
+    setDropdownsOpen((prevState) => ({
+      ...prevState,
+      [dropdown]: !prevState[dropdown],
+    }));
+  };
+
+  const toggleDropdown1 = (dropdown) => {
+    setDropdownsOpen((prevState) => ({
+      ...prevState,
+      [dropdown]: !prevState[dropdown],
+    }));
+  };
+  const toggleDropdown2 = (dropdown) => {
     setDropdownsOpen((prevState) => ({
       ...prevState,
       [dropdown]: !prevState[dropdown],
@@ -122,7 +131,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
           <li className="dropdown-container">
             <div
               className="dropdown-toggle"
-              onClick={() => toggleDropdown("services")}
+              onClick={() => toggleDropdown1("services")}
             >
               <FaServicestack />
               <span style={{ marginRight: "100px" }}>Masters</span>
@@ -218,38 +227,98 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/master-report">
                 Master Report
               </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/customerState">
+                CustomerState
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/masterCustomer">
+                MasterCustomers
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/masterState">
+                MasterState
+              </Dropdown.Item>
             </Dropdown.Menu>
           </li>
-          <li>
-            <Link to="/customerState">
-              <FaEnvelope />
-              CustomerState
-            </Link>
+          <li className="dropdown-container">
+            <div
+              className="dropdown-toggle"
+              onClick={() => toggleDropdown2("home")}
+            >
+              <FaServicestack />
+              <span style={{ marginRight: "100px" }}>Purchase</span>
+            </div>
+            <Dropdown.Menu show={dropdownsOpen.home}>
+              <Dropdown.Item as={Link} to="/new-indent">
+                New Indent
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/new-purchase-order">
+                New Purchase Order
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#">
+                New Jobwork Purchase Order
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#">
+                Pending Indent Release
+              </Dropdown.Item>
+
+              <Dropdown.Item as={Link} to="#">
+                Purchase MRN Release
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#">
+                Purchase Order Status
+              </Dropdown.Item>
+
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Quote Comparison
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="#">
+                    Customer / Supplier Item Link
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Item Cross Reference
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Customer Item Wise
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Report
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="#">
+                    Customer / Supplier Item Link
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Item Cross Reference
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Customer Item Wise
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <Dropdown.Item as={Link} to="/#">
+                Import
+              </Dropdown.Item>
+            </Dropdown.Menu>
           </li>
-          <li>
-            <Link to="/masterCustomer">
+          {/* <li>
+            <Link to="">
               <FaEnvelope />
-              MasterCustomers
-            </Link>
-          </li>
-          <li>
-            <Link to="/masterState">
-              <FaEnvelope />
-              MasterState
-            </Link>
-          </li>
-          <li>
-            <Link to="/new-indent">
-              <FaEnvelope />
-              New Indent
+            
             </Link>
           </li>
           <li>
             <Link to="/purchase-master">
               <FaEnvelope />
-              Purchase Master
+             
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

@@ -125,11 +125,17 @@ const ItemMaster = () => {
                     className="col-md-6 text-start"
                     style={{ color: "blue" }}
                   >
-                    <div class="row mb-3">
-                      <label for="inputEmail3" class="col-sm-3 col-form-label">
+                    <div className="row mb-3">
+                      <label
+                        for="inputEmail3"
+                        className="col-sm-3 col-form-label"
+                      >
                         Total Record : 00
                       </label>
-                      <label for="inputEmail3" class="col-sm-6 col-form-label">
+                      <label
+                        for="inputEmail3"
+                        className="col-sm-6 col-form-label"
+                      >
                         Total Pending BOM FG=8 SFG=2
                       </label>
                     </div>

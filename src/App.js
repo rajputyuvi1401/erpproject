@@ -90,6 +90,9 @@ import MasterReport from "./components/MasterReport/MasterReport";
 // new indent
 import Newindent from "./PurchaseMaster/Newindent/Newindent";
 
+// New Purchase Order
+import NewPurchaseOrder from "./PurchaseMaster/NewPurchaseOrder/NewPurchaseOrder.jsx";
+
 function App() {
   return (
     <div className="App">
@@ -203,6 +206,9 @@ function App() {
 
         {/* New indent */}
         <Route path="/new-indent" element={<Newindent />} />
+
+        {/* New Purchase Order */}
+        <Route path="/new-purchase-order" element={<NewPurchaseOrder />} />
       </Routes>
     </div>
   );

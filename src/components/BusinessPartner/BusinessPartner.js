@@ -605,7 +605,7 @@ const BusinessPartner = () => {
                             />
                             <label
                               className="form-check-label"
-                              for="flexRadioDefault1"
+                              htmlFor="flexRadioDefault1"
                             >
                               View All BSP
                             </label>
@@ -621,7 +621,7 @@ const BusinessPartner = () => {
                             />
                             <label
                               className="form-check-label"
-                              for="flexRadioDefault1"
+                              htmlFor="flexRadioDefault1"
                             >
                               Add Code
                             </label>
@@ -637,7 +637,7 @@ const BusinessPartner = () => {
                             />
                             <label
                               className="form-check-label"
-                              for="flexRadioDefault1"
+                              htmlFor="flexRadioDefault1"
                             >
                               Address
                             </label>

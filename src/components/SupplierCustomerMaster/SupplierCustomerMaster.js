@@ -10,7 +10,7 @@ import BankDetail from "./BankDetail";
 import BuyerContactDetail from "./BuyerContactDetail";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { saveSupplierCustomerData } from "../Service/Api.jsx";
+import { saveSupplierCustomerData, fetchCategories } from "../Service/Api.jsx";
 import ToggleCard1 from "./ToggleCard1.jsx";
 import ToggleCardCity from "./ToggleCardCity.jsx";
 import ToggleCardCountry from "./ToggleCardCountry.jsx";
@@ -39,7 +39,7 @@ const SupplierCustomerMaster = () => {
 
   // New button open card
   const [isCardOpen, setIsCardOpen] = useState(false);
-
+  const [categories, setCategories] = useState([]);
   const toggleCard = () => {
     setIsCardOpen(!isCardOpen);
   };
@@ -216,6 +216,20 @@ const SupplierCustomerMaster = () => {
     setFormData(initialFormData);
   };
 
+  // card
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const data = await fetchCategories();
+        setCategories(data);
+      } catch (error) {
+        toast.error("Failed to fetch categories");
+      }
+    };
+
+    getCategories();
+  }, []);
+
   return (
     <div className="SupplierC">
       <ToastContainer />
@@ -305,7 +319,7 @@ const SupplierCustomerMaster = () => {
                               id="pills-home"
                               role="tabpanel"
                               aria-labelledby="pills-home-tab"
-                              tabindex="0"
+                              tabIndex="0"
                             >
                               <div className="Suppliergernal">
                                 <div className="container-fluid">
@@ -351,6 +365,18 @@ const SupplierCustomerMaster = () => {
                                                 <option value="" disabled>
                                                   Select ..
                                                 </option>
+                                                {categories.map(
+                                                  (category, index) => (
+                                                    <option
+                                                      key={index}
+                                                      value={
+                                                        category.Category_Name
+                                                      }
+                                                    >
+                                                      {category.Category_Name}
+                                                    </option>
+                                                  )
+                                                )}
                                                 <option value="Customer">
                                                   Customer
                                                 </option>
@@ -2074,7 +2100,11 @@ const SupplierCustomerMaster = () => {
                                     </button>
                                   </div>
 
-                                  <ToggleCard1 />
+                                  <ToggleCard1
+                                    onCategoryChange={(newCategories) =>
+                                      setCategories(newCategories)
+                                    }
+                                  />
                                 </div>
                               )}
                               {isCardOpenregion && (
@@ -2227,7 +2257,7 @@ const SupplierCustomerMaster = () => {
                               id="pills-profile"
                               role="tabpanel"
                               aria-labelledby="pills-profile-tab"
-                              tabindex="0"
+                              tabIndex="0"
                             >
                               <BuyerContactDetail />
                             </div>
@@ -2236,7 +2266,7 @@ const SupplierCustomerMaster = () => {
                               id="pills-contact"
                               role="tabpanel"
                               aria-labelledby="pills-contact-tab"
-                              tabindex="0"
+                              tabIndex="0"
                             >
                               <BankDetail />
                             </div>

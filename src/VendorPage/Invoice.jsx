@@ -8,7 +8,10 @@ const Invoice = () => {
           <div className="row text-start">
             <div className="col-md-8">
               <div className="row mb-3">
-                <label for="inputEmail31" className="col-sm-4 col-form-label">
+                <label
+                  htmlFor="inputEmail31"
+                  className="col-sm-4 col-form-label"
+                >
                   SE GST NO:
                 </label>
                 <div className="col-sm-8">
@@ -21,7 +24,10 @@ const Invoice = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail33" className="col-sm-4 col-form-label">
+                <label
+                  htmlFor="inputEmail33"
+                  className="col-sm-4 col-form-label"
+                >
                   GSP APP ID:
                 </label>
                 <div className="col-sm-8">
@@ -34,7 +40,10 @@ const Invoice = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail35" className="col-sm-4 col-form-label">
+                <label
+                  htmlFor="inputEmail35"
+                  className="col-sm-4 col-form-label"
+                >
                   GSP APP Secret:
                 </label>
                 <div className="col-sm-8">
@@ -47,19 +56,25 @@ const Invoice = () => {
                 </div>
               </div>
               <div className="row mb-5">
-                <label for="inputEmail37" className="col-sm-4 col-form-label">
+                <label
+                  htmlFor="inputEmail37"
+                  className="col-sm-4 col-form-label"
+                >
                   Access Token:
                 </label>
                 <div className="col-sm-8">
                   <textarea
-                    class="form-control"
+                    className="form-control"
                     id="exampleFormControlTextarea1"
                     rows="3"
                   ></textarea>
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail38" className="col-sm-4 col-form-label">
+                <label
+                  htmlFor="inputEmail38"
+                  className="col-sm-4 col-form-label"
+                >
                   Access Token Date::
                 </label>
                 <div className="col-sm-8">
@@ -72,7 +87,10 @@ const Invoice = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail32" className="col-sm-4 col-form-label">
+                <label
+                  htmlFor="inputEmail32"
+                  className="col-sm-4 col-form-label"
+                >
                   SE API UserName:
                 </label>
                 <div className="col-sm-8">
@@ -85,7 +103,10 @@ const Invoice = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail2" className="col-sm-4 col-form-label">
+                <label
+                  htmlFor="inputEmail2"
+                  className="col-sm-4 col-form-label"
+                >
                   SE API PassWord:
                 </label>
                 <div className="col-sm-8">
@@ -98,7 +119,10 @@ const Invoice = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail7" className="col-sm-4 col-form-label">
+                <label
+                  htmlFor="inputEmail7"
+                  className="col-sm-4 col-form-label"
+                >
                   API Url:
                 </label>
                 <div className="col-sm-8">
