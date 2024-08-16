@@ -1,0 +1,81 @@
+.GStDetails {
+    padding: 15px 15px;
+    background-color: white;
+    margin: 10px 10px;
+  }  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .table td input {
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding does not exceed cell width */
+  }
+  
+  .table td div {
+    margin-bottom: 5px;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .table th, .table td {
+      padding: 4px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .table th, .table td {
+      font-size: 12px;
+      padding: 2px;
+    }
+  }
+
+
+   .gsttable {
+    padding: 15px;
+  }
+  
+  .gsttable .table {
+    width: 100%;
+    border-collapse: collapse;
+  } 
+  
+   .gsttable  .table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #dee2e6;
+  }
+  
+  .gsttable .table input[type="text"] {
+    width: 100%;
+    box-sizing: border-box; 
+  }
+  
+  .gsttable .table input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .gsttable .table label {
+    margin-left: 5px;
+  }
+  
+  .gsttable .table-responsive {
+    overflow-x: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .gsttable  .table td {
+      padding: 4px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+  .gsttable   .table td {
+      font-size: 12px;
+      padding: 2px;
+    }
+  }
+   

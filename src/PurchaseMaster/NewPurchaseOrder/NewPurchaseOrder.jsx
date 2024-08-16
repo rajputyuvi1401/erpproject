@@ -9,6 +9,7 @@ import GSTDetails from "./GSTDetails/GSTDetails.jsx";
 import ItemOther from "./ItemOther/ItemOther.jsx";
 import Schedule from "./Schedule/Schedule.jsx";
 import Ship from "./Ship/Ship.jsx";
+import Poinfo from "./POInfo/Poinfo.jsx";
 const NewPurchaseOrder = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -253,7 +254,7 @@ const NewPurchaseOrder = () => {
                           aria-labelledby="pills-PO-Info-tab"
                           tabindex="0"
                         >
-                          PO Info
+                          <Poinfo/>
                         </div>
                       </div>
                     </div>

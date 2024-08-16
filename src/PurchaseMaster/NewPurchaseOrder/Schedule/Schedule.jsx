@@ -1,7 +1,81 @@
-import React from "react";
-import "./Schedule.css";
+import React from 'react'
+import './Schedule.css';
 const Schedule = () => {
-  return <div></div>;
-};
+  return (
+    <div className='scheduleline'>
+    <div className='container-fluid'>
+      <div className='row'>
+        <div className='col-md-12 text-start'>
+          <div className='form-check form-check-inline'>
+            <input className='form-check-input' type='checkbox' id='autoCalculate' />
+            <label className='form-check-label' htmlFor='autoCalculate'>Auto Calculate Schedule Line On Report:</label>
+          </div>
+          <div className='form-check form-check-inline'>
+            <input className='form-check-input' type='radio' id='yes' name='autoCalculate' />
+            <label className='form-check-label' htmlFor='yes'>Yes</label>
+          </div>
+          <div className='form-check form-check-inline'>
+            <input className='form-check-input' type='radio' id='no' name='autoCalculate' />
+            <label className='form-check-label' htmlFor='no'>No</label>
+          </div>
+        </div>
+      </div>
+  
+      <div className='scheduletable'>
+        <div className='row'>
+          <div className='col-md-12'>
+            <div className='table-responsive'>
+              <table className='table table-bordered'>
+                <thead>
+                  <tr>
+                    <th>Sr.</th>
+                    <th>Item Code</th>
+                    <th>Description</th>
+                    <th>Total Qty</th>
+                    <th>Date 1</th>
+                    <th>Qty 1</th>
+                    <th>Date 2</th>
+                    <th>Qty 2</th>
+                    <th>Date 3</th>
+                    <th>Qty 3</th>
+                    <th>Date 4</th>
+                    <th>Qty 4</th>
+                    <th>Date 5</th>
+                    <th>Qty 5</th>
+                    <th>Date 6</th>
+                    <th>Qty 6</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type='text' className='form-control' /></td>
+                    <td><input type='text' className='form-control' /></td>
+                    <td><input type='text' className='form-control' /></td>
+                    <td><input type='text' className='form-control' /></td>
+                    <td><input type='date' className='form-control' /></td>
+                    <td><input type='text' className='form-control' /></td>
+                    <td><input type='date' className='form-control' /></td>
+                    <td><input type='text' className='form-control' /></td>
+                    <td><input type='date' className='form-control' /></td>
+                    <td><input type='text' className='form-control' /></td>
+                    <td><input type='date' className='form-control' /></td>
+                    <td><input type='text' className='form-control' /></td>
+                    <td><input type='date' className='form-control' /></td>
+                    <td><input type='text' className='form-control' /></td>
+                    <td><input type='date' className='form-control' /></td>
+                    <td><input type='text' className='form-control' /></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  )
+}
 
-export default Schedule;
+export default Schedule
