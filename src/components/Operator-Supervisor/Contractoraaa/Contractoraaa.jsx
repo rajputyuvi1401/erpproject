@@ -1,6 +1,6 @@
 import "../Contractoraaa/Contractoraaa.css";
 import React, { useState } from "react";
-import { addContractor } from "../../Service/Api";
+import { addContractor } from "../../../Service/Api";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Contractoraaa = () => {

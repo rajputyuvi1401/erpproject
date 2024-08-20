@@ -4,7 +4,7 @@ import {
   addCategory,
   updateCategory,
   deleteCategory,
-} from "../Service/Api.jsx";
+} from "../../Service/Api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
@@ -138,13 +138,13 @@ const ToggleCard1 = ({ onCategoryChange }) => {
                     {editingCategory === category.id ? (
                       <>
                         <button
-                          className="btn btn-success btn-sm"
+                          className="btn btn-sm"
                           onClick={handleSaveEdit}
                         >
                           Save
                         </button>
                         <button
-                          className="btn btn-danger btn-sm ms-2"
+                          className="btn btn-sm ms-2"
                           onClick={() => setEditingCategory(null)}
                         >
                           Cancel
@@ -153,7 +153,7 @@ const ToggleCard1 = ({ onCategoryChange }) => {
                     ) : (
                       <>
                         <button
-                          className="btn btn-primary btn-sm"
+                          className="btn btn-sm"
                           onClick={() =>
                             handleEditCategory(
                               category.id,
@@ -164,7 +164,7 @@ const ToggleCard1 = ({ onCategoryChange }) => {
                           <FaEdit />
                         </button>
                         <button
-                          className="btn btn-danger btn-sm ms-2"
+                          className="btn btn-sm ms-2"
                           onClick={() => handleDeleteCategory(category.id)}
                         >
                           <FaTrashAlt />

@@ -5,10 +5,10 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import "./UnitConversion.css";
-import { saveUnitConversion } from "../Service/Api.jsx";
+import { saveUnitConversion } from "../../Service/Api.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { fetchUnitConversionData } from "../Service/Api.jsx";
+import { fetchUnitConversionData } from "../../Service/Api.jsx";
 
 const UnitConversion = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);

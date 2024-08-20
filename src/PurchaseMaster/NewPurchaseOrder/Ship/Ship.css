@@ -4,30 +4,30 @@
     margin: 10px 10px;
   }
   
-  .form-check-label {
+  .shiptoadd .form-check-label {
     margin-left: 5px;
   }
   
-  .form-group {
+  .shiptoadd .form-group {
     margin-bottom: 15px;
   }
   
-  .form-control {
+  .shiptoadd .form-control {
     width: 100%;
   }
   
-  textarea.form-control {
+  .shiptoadd textarea.form-control {
     resize: vertical; /* Allows vertical resizing only */
   }
   
   @media (max-width: 768px) {
-    .form-group {
+    .shiptoadd .form-group {
       margin-bottom: 10px;
     }
   }
   
   @media (max-width: 576px) {
-    textarea.form-control {
+    .shiptoadd textarea.form-control {
       font-size: 14px;
     }
   }

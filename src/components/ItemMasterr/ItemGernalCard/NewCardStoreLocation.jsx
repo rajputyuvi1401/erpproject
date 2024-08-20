@@ -7,12 +7,12 @@ import {
   getStoreLocations,
   deleteStoreLocation,
   updateStoreLocation,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 const NewCardStoreLocation = () => {
   const [formData, setFormData] = useState({ EnterStoreName: "" });
   const [errors, setErrors] = useState({});
-  const [data, setData] = useState([]);
+  const [storelocation, setStoreLocation] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
 
@@ -62,7 +62,7 @@ const NewCardStoreLocation = () => {
   const fetchStoreLocations = async () => {
     try {
       const response = await getStoreLocations();
-      setData(response);
+      setStoreLocation(response);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -126,8 +126,8 @@ const NewCardStoreLocation = () => {
             </tr>
           </thead>
           <tbody>
-            {data.length > 0 ? (
-              data.map((item, index) => (
+            {storelocation.length > 0 ? (
+              storelocation.map((item, index) => (
                 <tr key={item.id}>
                   <td>{index + 1}</td>
                   <td>{item.EnterStoreName}</td>

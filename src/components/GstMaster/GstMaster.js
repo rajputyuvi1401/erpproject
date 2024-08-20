@@ -10,7 +10,7 @@ import {
   createGstMasterRecord,
   updateGstMasterRecord,
   deleteGstMasterRecord,
-} from "../Service/Api.jsx"; // Adjust path as necessary
+} from "../../Service/Api.jsx"; // Adjust path as necessary
 import "./GstMaster.css";
 
 const GstMaster = () => {

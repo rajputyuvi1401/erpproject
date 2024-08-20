@@ -7,34 +7,14 @@ import "./SideNav.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const SideNav = ({ sideNavOpen, toggleSideNav }) => {
-  const [dropdownsOpen, setDropdownsOpen] = useState({
-    services: false,
-    about: false,
-    home: false,
-  });
+  const [openDropdown, setOpenDropdown] = useState(null);
 
-  const toggleDropdown = (dropdown) => {
-    setDropdownsOpen((prevState) => ({
-      ...prevState,
-      [dropdown]: !prevState[dropdown],
-    }));
-  };
-
-  const toggleDropdown1 = (dropdown) => {
-    setDropdownsOpen((prevState) => ({
-      ...prevState,
-      [dropdown]: !prevState[dropdown],
-    }));
-  };
-  const toggleDropdown2 = (dropdown) => {
-    setDropdownsOpen((prevState) => ({
-      ...prevState,
-      [dropdown]: !prevState[dropdown],
-    }));
+  const handleDropdownToggle = (dropdown) => {
+    setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
   return (
-    <div className="blueside-Nav">
+    <div className={`blueside-Nav ${sideNavOpen ? "open" : ""}`}>
       <div className={`side-nav ${sideNavOpen ? "open" : ""}`}>
         <button className="close-button" onClick={toggleSideNav}>
           &times;
@@ -45,12 +25,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <img className="logo-light" src={logo} alt="logo" />
             </Link>
           </li>
-          {/* <li>
-            <Link to="/home">
-              <FaHome />
-              Admin Login
-            </Link>
-          </li> */}
           <li>
             <Link to="/mainpage">
               <FaHome />
@@ -61,31 +35,31 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
           <li className="dropdown-container">
             <div
               className="dropdown-toggle"
-              onClick={() => toggleDropdown("about")}
+              onClick={() => handleDropdownToggle("erp")}
             >
               <FaInfoCircle />
-              <span style={{ marginRight: "100px" }}>ERP Setting</span>
+              <span>ERP Setting</span>
             </div>
-            <Dropdown.Menu show={dropdownsOpen.about}>
+            <Dropdown.Menu show={openDropdown === "erp"}>
               <Dropdown.Item as={Link} to="#/user-configuration">
                 User Configuration
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/erp-configuration">
                 ERP Configuration
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/erp-configuration">
+              <Dropdown.Item as={Link} to="#/change-password">
                 Change Password
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/erp-configuration">
-                Login Histroy
+              <Dropdown.Item as={Link} to="#/login-history">
+                Login History
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/user-management">
+              <Dropdown.Item as={Link} to="#/delete-management">
                 Delete Management
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/back-date-entry-setting">
+              <Dropdown.Item as={Link} to="#/dashboard-backup">
                 Dashboard Backup
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/erp-configuration">
+              <Dropdown.Item as={Link} to="#/delete-record">
                 Delete Record
               </Dropdown.Item>
               <Dropdown.Divider />
@@ -94,54 +68,53 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   Dashboard Permission
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="#/dashboard-permission-1">
+                  <Dropdown.Item as={Link} to="#/select-module">
                     Select Module
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/dashboard-permission-2">
+                  <Dropdown.Item as={Link} to="#/master">
                     Master
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/dashboard-permission-3">
+                  <Dropdown.Item as={Link} to="#/purchase">
                     Purchase
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/dashboard-permission-4">
+                  <Dropdown.Item as={Link} to="#/store">
                     Store
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/dashboard-permission-5">
+                  <Dropdown.Item as={Link} to="#/quality">
                     Quality
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/dashboard-permission-6">
+                  <Dropdown.Item as={Link} to="#/planning">
                     Planning
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/dashboard-permission-7">
+                  <Dropdown.Item as={Link} to="#/production">
                     Production
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/dashboard-permission-8">
+                  <Dropdown.Item as={Link} to="#/gst-sales">
                     GST Sales
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/dashboard-permission-9">
+                  <Dropdown.Item as={Link} to="#/maintenance">
                     Maintenance
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/dashboard-permission-10">
+                  <Dropdown.Item as={Link} to="#/accounts">
                     Accounts
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Dropdown.Menu>
           </li>
+
           <li className="dropdown-container">
             <div
               className="dropdown-toggle"
-              onClick={() => toggleDropdown1("services")}
+              onClick={() => handleDropdownToggle("masters")}
             >
               <FaServicestack />
-              <span style={{ marginRight: "100px" }}>Masters</span>
-              {/* {dropdownsOpen.services ? <FaChevronUp /> : <FaChevronDown />} */}
+              <span>Masters</span>
             </div>
-            <Dropdown.Menu show={dropdownsOpen.services}>
-              <Dropdown.Item as={Link} to="/vender-list">
+            <Dropdown.Menu show={openDropdown === "masters"}>
+              <Dropdown.Item as={Link} to="/supplier-customer-master">
                 Supplier Customer Master
               </Dropdown.Item>
-
               <Dropdown.Item as={Link} to="/business-partner">
                 Business Partner Address
               </Dropdown.Item>
@@ -154,18 +127,17 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   Cross Reference
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/Customer-Supplier-Item-Link">
+                  <Dropdown.Item as={Link} to="/customer-supplier-item-link">
                     Customer / Supplier Item Link
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Item-Cross-Reference">
+                  <Dropdown.Item as={Link} to="/item-cross-reference">
                     Item Cross Reference
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Customer-Item-Wise">
+                  <Dropdown.Item as={Link} to="/customer-item-wise">
                     Customer Item Wise
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-
               <Dropdown.Item as={Link} to="/gst-rate-master">
                 GST Rate Master
               </Dropdown.Item>
@@ -175,14 +147,12 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/bom-routing">
                 BOM Routing Master
               </Dropdown.Item>
-
               <Dropdown.Item as={Link} to="/work-center-master">
                 Work Center Master
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="/cycle-time-master">
                 Cycle Time Master
               </Dropdown.Item>
-
               <Dropdown.Item as={Link} to="/operator-supervisor-master">
                 Operator and Supervisor Master
               </Dropdown.Item>
@@ -197,9 +167,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="/unit-conversion">
                 Unit Conversion
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#">
-                Price List
               </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown>
@@ -227,61 +194,64 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/master-report">
                 Master Report
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/customerState">
-                CustomerState
+              <Dropdown.Item as={Link} to="/customer-state">
+                Customer State
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/masterCustomer">
-                MasterCustomers
+              <Dropdown.Item as={Link} to="/master-customers">
+                Master Customers
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/masterState">
-                MasterState
+              <Dropdown.Item as={Link} to="/master-state">
+                Master State
               </Dropdown.Item>
             </Dropdown.Menu>
           </li>
+
           <li className="dropdown-container">
             <div
               className="dropdown-toggle"
-              onClick={() => toggleDropdown2("home")}
+              onClick={() => handleDropdownToggle("purchase")}
             >
               <FaServicestack />
-              <span style={{ marginRight: "100px" }}>Purchase</span>
+              <span>Purchase</span>
             </div>
-            <Dropdown.Menu show={dropdownsOpen.home}>
+            <Dropdown.Menu show={openDropdown === "purchase"}>
               <Dropdown.Item as={Link} to="/new-indent">
                 New Indent
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="/new-purchase-order">
                 New Purchase Order
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#">
+              <Dropdown.Item as={Link} to="/new-jobwork-order">
                 New Jobwork Purchase Order
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#">
+              <Dropdown.Item as={Link} to="/pendingpo">
+                Pending PO Release
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/pendingindent">
                 Pending Indent Release
               </Dropdown.Item>
-
-              <Dropdown.Item as={Link} to="#">
+              <Dropdown.Item as={Link} to="/Purchse-Mrn">
                 Purchase MRN Release
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#">
+              <Dropdown.Item as={Link} to="/Purchse-order-status">
                 Purchase Order Status
               </Dropdown.Item>
-
               <Dropdown.Divider />
               <Dropdown>
                 <Dropdown.Toggle as="div" className="dropdown-item">
                   Quote Comparison
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="#">
-                    Customer / Supplier Item Link
+                  <Dropdown.Item as={Link} to="/Rfo">
+                    RFO
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
-                    Item Cross Reference
+                  <Dropdown.Item as={Link} to="/Quoto-Comparison-Statement">
+                    Quoto Comparison Statement
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
-                    Customer Item Wise
+                  <Dropdown.Item as={Link} to="/Quoto-Comparison-Pending">
+                  Quoto Comparison Statement Pending
                   </Dropdown.Item>
+                 
                 </Dropdown.Menu>
               </Dropdown>
               <Dropdown.Divider />
@@ -290,35 +260,70 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   Report
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="#">
-                    Customer / Supplier Item Link
+                  <Dropdown.Item as={Link} to="/purchase-order-list">
+                    Purchase Order List
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
-                    Item Cross Reference
+                  <Dropdown.Item as={Link} to="/jobwork-purchase-order-list">
+                    Jobwork Purchase Order List
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
-                    Customer Item Wise
+                  <Dropdown.Item as={Link} to="/supplier-wise-list">
+                    Supplier Wise Item Purchase List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/purchase-report">
+                    Purchase Report (Cost Center Wise)
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-
-              <Dropdown.Item as={Link} to="/#">
+              <Dropdown.Item as={Link} to="#">
                 Import
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/#">
+                .
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/#">
+                .
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/#">
+                .
               </Dropdown.Item>
             </Dropdown.Menu>
           </li>
-          {/* <li>
-            <Link to="">
-              <FaEnvelope />
-            
-            </Link>
+
+          <li className="dropdown-container">
+            <div
+              className="dropdown-toggle"
+              onClick={() => handleDropdownToggle("store")}
+            >
+              <FaServicestack />
+              <span>Store</span>
+            </div>
+            <Dropdown.Menu show={openDropdown === "store"}>
+              <Dropdown.Item as={Link} to="/inventory-management">
+                Inventory Management
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/stock-entry">
+                Stock Entry
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/stock-report">
+                Stock Report
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/stock-summary">
+                Stock Summary
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/stock-transfer">
+                Stock Transfer
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/stock-adjustment">
+                Stock Adjustment
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/store-report">
+                Store Report
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/store-summary">
+                Store Summary
+              </Dropdown.Item>
+            </Dropdown.Menu>
           </li>
-          <li>
-            <Link to="/purchase-master">
-              <FaEnvelope />
-             
-            </Link>
-          </li> */}
         </ul>
       </div>
     </div>

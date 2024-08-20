@@ -4,7 +4,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../../NavBar/NavBar";
 import SideNav from "../../../SideNav/SideNav";
-import { uploadFile } from "../../Service/Api.jsx"; // Adjust path as necessary
+import { uploadFile } from "../../../Service/Api.jsx"; // Adjust path as necessary
 import "./CustomerItem.css";
 
 const CustomerItem = () => {

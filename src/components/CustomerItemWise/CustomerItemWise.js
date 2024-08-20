@@ -6,7 +6,7 @@ import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import "./CustomerItemWise.css";
 import { toast, ToastContainer } from "react-toastify"; // Ensure you have react-toastify installed
-import { saveItemRate } from "../Service/Api";
+import { saveItemRate } from "../../Service/Api.jsx";
 import "react-toastify/dist/ReactToastify.css";
 
 const CustomerItemWise = () => {

@@ -7,7 +7,7 @@ import {
   getQtyPacks,
   deleteQtyPack,
   updateQtyPack,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 const NewCardQtyPack = () => {
   const [formData, setFormData] = useState({ EnterUnit_Name: "" });

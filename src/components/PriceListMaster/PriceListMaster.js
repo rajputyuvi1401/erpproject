@@ -6,7 +6,7 @@ import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import "./PriceListMaster.css";
 import { ToastContainer, toast } from "react-toastify";
-import { savePriceList } from "../Service/Api.jsx";
+import { savePriceList } from "../../Service/Api.jsx";
 
 const PriceListMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);

@@ -7,7 +7,7 @@ import {
   getBomItemGroups,
   updateBomItemGroup,
   deleteBomItemGroup,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api";
 
 const VisibleBomitem = () => {
   const [data, setData] = useState([]);

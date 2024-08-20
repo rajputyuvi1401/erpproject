@@ -7,7 +7,7 @@ import {
   getStdRoutings,
   updateStdRouting,
   deleteStdRouting,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api";
 
 const VisibleStandard = () => {
   const [data, setData] = useState([]);

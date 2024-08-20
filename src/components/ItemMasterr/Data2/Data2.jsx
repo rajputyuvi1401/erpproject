@@ -1,9 +1,10 @@
 import CachedIcon from "@mui/icons-material/Cached";
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { saveItemMasterData } from "../../Service/Api";
+import { saveItemMasterData } from "../../../Service/Api.jsx";
 import NewCardQtyPack from "../ItemGernalCard/NewCardQtyPack.jsx";
+import { getQtyPacks } from '../../../Service/Api.jsx';
 const Data2 = () => {
   const [showNewCardQtypack, setShowNewCardQtypack] = useState(false);
 
@@ -61,6 +62,8 @@ const Data2 = () => {
 
   const [errors, setErrors] = useState({});
   const [isCleared, setIsCleared] = useState(false);
+  const [qtyPacks, setQtyPacks] = useState([]);
+
 
   const validate = () => {
     const newErrors = {};
@@ -88,22 +91,21 @@ const Data2 = () => {
   };
 
   const handleSavedata = async (e) => {
-    console.log("save");
-
     e.preventDefault();
     if (!validate()) return;
-
+  
     try {
-      await saveItemMasterData(formData);
+      console.log("Sending data:", formData); // Check if data is correct
+      const response = await saveItemMasterData(formData);
+      console.log("Response:", response); // Check API response
       toast.success("Data saved successfully!");
-      console.log("data save", formData);
-
       setIsCleared(false);
     } catch (error) {
       console.error("Error saving data:", error);
       toast.error("Failed to save data. Check console for errors.");
     }
   };
+  
 
   const handleCleardata = () => {
     if (!isCleared) {
@@ -155,7 +157,21 @@ const Data2 = () => {
       });
       setErrors({});
       setIsCleared(true);
-      console.log("data clear");
+      console.log("Form cleared");
+    }
+  };
+
+
+  useEffect(() => {
+    fetchQtyPacks();
+  }, []);
+  
+  const fetchQtyPacks = async () => {
+    try {
+      const response = await getQtyPacks();
+      setQtyPacks(response);
+    } catch (error) {
+      console.error("Error fetching qty packs:", error);
     }
   };
 
@@ -423,18 +439,15 @@ const Data2 = () => {
                     Is Service:
                   </label>
                   <div className="col-sm-7">
-                    <select
-                      id="Is_Service"
+                  <input
                       type="text"
+                      className="form-control"
                       name="Is_Service"
-                      className="form-select"
+                      id="Is_Service"
                       value={formData.Is_Service}
                       onChange={handleChange}
-                    >
-                      <option selected>select ..</option>
-                      <option value="1">No</option>
-                      <option value="2">Yes</option>
-                    </select>
+                      style={{ width: "115%" }}
+                    />
                     {errors.Is_Service && (
                       <div className="text-danger">{errors.Is_Service}</div>
                     )}
@@ -588,6 +601,11 @@ const Data2 = () => {
                       className="form-select"
                     >
                       <option value="">Select ..</option>
+                      {qtyPacks.map((item) => (
+            <option key={item.id} value={item.EnterUnit_Name}>
+              {item.EnterUnit_Name}
+            </option>
+          ))}
                       <option value="FG">FG</option>
                       <option value="RM">RM</option>
                     </select>
@@ -596,12 +614,12 @@ const Data2 = () => {
                     )}
                   </div>
                   <div className="col-sm-2">
-                    <button className="btn" onClick={handleNewButtonQtypack}>
+                    <button className="btn" type="button" onClick={handleNewButtonQtypack}>
                       New
                     </button>
                   </div>
                   <div className="col-sm-1">
-                    <button className="btn" style={{ fontSize: "10px" }}>
+                    <button className="btn"type="button" style={{ fontSize: "10px" }}>
                       <CachedIcon />
                     </button>
                   </div>
@@ -1228,24 +1246,52 @@ const Data2 = () => {
                     )}
                   </div>
                 </div>
+                <div className="row mb-5">
+                  <label
+                    htmlFor="Production_Lead_Time"
+                    className="col-sm-5 col-form-label"
+                  >
+                    Eoonomical Batch Size:
+                  </label>
+                  <div className="col-sm-7">
+                    <input
+                      type="text"
+                      id="Production_Lead_Time"
+                      name="Production_Lead_Time"
+                      className="form-control"
+                      style={{ width: "115%" }}
+                      value={formData.Production_Lead_Time}
+                      onChange={handleChange}
+                    />
+                    {errors.Production_Lead_Time && (
+                      <div className="text-danger">
+                        {errors.Production_Lead_Time}
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div className="row mb-3 text-end">
             <div className="col-sm-12">
-              <button type="button" className="btn" onClick={handleSavedata}>
-                Save
-              </button>
-              <button
-                type="button"
-                className="btn ms-2"
-                onClick={handleCleardata}
-              >
-                Clear
-              </button>
+            <button type="button" className="btn" onClick={handleSavedata}>
+  Save Data
+</button>
+
+          <button
+            type="button"
+            className="btn"
+            onClick={handleCleardata}
+          >
+            Clear Data
+          </button>
             </div>
           </div>
-          {showNewCardQtypack && (
+        
+        </form>
+      </div>
+      {showNewCardQtypack && (
             <div className="RouteCard">
               <div className="new-card-overlay">
                 <div className="new-card">
@@ -1279,8 +1325,6 @@ const Data2 = () => {
               </div>
             </div>
           )}
-        </form>
-      </div>
     </div>
   );
 };

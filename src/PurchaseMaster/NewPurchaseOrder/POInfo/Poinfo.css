@@ -34,9 +34,10 @@
       flex: 1;
     }
   }
-  .pobtn{
+  .po1btn{
     border: none;
     padding: 5px;
+    margin-left: -10px;
   }
 
   /* styles.css */

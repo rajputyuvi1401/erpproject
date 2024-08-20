@@ -7,12 +7,12 @@ import {
   getParentFgCodes,
   updateParentFgCode,
   deleteParentFgCode,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 const NewCardParentFg = () => {
-  const [data, setData] = useState([]);
+  const [ParentFG, setParentFG] = useState([]);
   const [formData, setFormData] = useState({
-    EnterUnit_Name: "",
+    Parent_FG_Code: "",
   });
   const [errors, setErrors] = useState({});
   const [isEditing, setIsEditing] = useState(false);
@@ -24,8 +24,8 @@ const NewCardParentFg = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.EnterUnit_Name) {
-      newErrors.EnterUnit_Name = "This field is required.";
+    if (!formData.Parent_FG_Code) {
+      newErrors.Parent_FG_Code = "This field is required.";
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -50,7 +50,7 @@ const NewCardParentFg = () => {
         toast.success("Data saved successfully!");
       }
       fetchItems(); // Refresh data
-      setFormData({ EnterUnit_Name: "" });
+      setFormData({ Parent_FG_Code: "" });
       setIsEditing(false);
       setEditId(null);
     } catch (error) {
@@ -62,7 +62,7 @@ const NewCardParentFg = () => {
   const fetchItems = async () => {
     try {
       const response = await getParentFgCodes();
-      setData(response);
+      setParentFG(response);
     } catch (error) {
       toast.error("Failed to fetch items.");
       console.error("Error fetching data:", error);
@@ -81,33 +81,33 @@ const NewCardParentFg = () => {
   };
 
   const handleEdit = (item) => {
-    setFormData({ EnterUnit_Name: item.EnterUnit_Name });
+    setFormData({ Parent_FG_Code: item.Parent_FG_Code });
     setIsEditing(true);
     setEditId(item.id);
   };
 
   return (
     <div className="card-body">
-      <h5 className="card-title text-start">Quantity Packing Master</h5>
+     
       <form onSubmit={handleSave}>
         <div className="row mb-3" style={{ marginTop: "40px" }}>
           <div className="col-sm-4 mb-3 text-start">
-            <label htmlFor="EnterUnit_Name" className="form-label">
-              Enter Unit Name:
+            <label htmlFor="Parent_FG_Code" className="form-label">
+            Parent FG Name:
             </label>
             <input
               type="text"
               className={`form-control ${
-                errors.EnterUnit_Name ? "is-invalid" : ""
+                errors.Parent_FG_Code ? "is-invalid" : ""
               }`}
-              id="EnterUnit_Name"
-              name="EnterUnit_Name"
+              id="Parent_FG_Code"
+              name="Parent_FG_Code"
               placeholder="Enter unit name"
-              value={formData.EnterUnit_Name}
+              value={formData.Parent_FG_Code}
               onChange={handleInputChange}
             />
-            {errors.EnterUnit_Name && (
-              <div className="invalid-feedback">{errors.EnterUnit_Name}</div>
+            {errors.Parent_FG_Code && (
+              <div className="invalid-feedback">{errors.Parent_FG_Code}</div>
             )}
           </div>
           <div className="col-sm-4 d-flex align-items-end">
@@ -125,17 +125,17 @@ const NewCardParentFg = () => {
         <thead>
           <tr>
             <th scope="col">Sr No.</th>
-            <th scope="col">Enter Unit Name</th>
+            <th scope="col">Enter Parent Name</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
-          {data.length > 0 ? (
-            data.map((item, index) => (
+          {ParentFG.length > 0 ? (
+            ParentFG.map((item, index) => (
               <tr key={item.id}>
                 <td>{index + 1}</td>
-                <td>{item.EnterUnit_Name}</td>
+                <td>{item.Parent_FG_Code}</td>
                 <td>
                   <FaEdit
                     className="text-primary mx-2"

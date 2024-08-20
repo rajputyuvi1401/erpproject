@@ -7,7 +7,7 @@ import SideNav from "../../../SideNav/SideNav";
 import "./VenderList.css";
 import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
-import { getSupplierCustomerData } from "../../Service/Api.jsx";
+import { getSupplierCustomerData } from "../../../Service/Api.jsx";
 const VenderList = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 

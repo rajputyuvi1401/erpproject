@@ -5,7 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../../NavBar/NavBar";
 import SideNav from "../../../SideNav/SideNav";
 import { Link } from "react-router-dom";
-import Api from "../../Service/Api";
+import Api from "../../../Service/Api.jsx";
 import "./Cutwise.css";
 
 const Cutwise = () => {

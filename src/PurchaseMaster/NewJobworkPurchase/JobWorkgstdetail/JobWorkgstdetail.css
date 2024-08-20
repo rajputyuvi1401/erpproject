@@ -1,0 +1,81 @@
+.JobworkGStDetails {
+    padding: 15px 15px;
+    background-color: white;
+    margin: 10px 10px;
+  }  
+  .JobworkGStDetails .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .JobworkGStDetails .table td input {
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding does not exceed cell width */
+  }
+  
+  .JobworkGStDetails .table td div {
+    margin-bottom: 5px;
+  }
+  
+  .JobworkGStDetails .table-responsive {
+    overflow-x: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .JobworkGStDetails  .table th, .table td {
+      padding: 4px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .JobworkGStDetails .table th, .table td {
+      font-size: 12px;
+      padding: 2px;
+    }
+  }
+
+
+   .jobworkgsttable {
+    padding: 15px;
+  }
+  
+  .jobworkgsttable .table {
+    width: 100%;
+    border-collapse: collapse;
+  } 
+  
+   .jobworkgsttable  .table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #dee2e6;
+  }
+  
+  .jobworkgsttable .table input[type="text"] {
+    width: 100%;
+    box-sizing: border-box; 
+  }
+  
+  .jobworkgsttable .table input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .jobworkgsttable .table label {
+    margin-left: 5px;
+  }
+  
+  .jobworkgsttable .table-responsive {
+    overflow-x: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .jobworkgsttable .table td {
+      padding: 4px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+  .jobworkgsttable .table td {
+      font-size: 12px;
+      padding: 2px;
+    }
+  }
+   

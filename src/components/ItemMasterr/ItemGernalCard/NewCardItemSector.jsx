@@ -7,7 +7,7 @@ import {
   getItemSections,
   deleteItemSection,
   updateItemSection,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 const NewCardItemSector = () => {
   const [formData, setFormData] = useState({ Prefix: "", Section_Name: "" });

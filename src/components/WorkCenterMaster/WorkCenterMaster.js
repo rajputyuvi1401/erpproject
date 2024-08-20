@@ -6,10 +6,10 @@ import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import "./WorkCenterMaster.css";
 import { toast, ToastContainer } from "react-toastify";
-import { saveWorkCenter } from "../Service/Api";
+import { saveWorkCenter } from "../../Service/Api.jsx";
 import "react-toastify/dist/ReactToastify.css";
-import { saveMachineGroupData } from "../Service/Api.jsx";
-import { saveWorkCenterTypeGroupData } from "../Service/Api.jsx";
+import { saveMachineGroupData } from "../../Service/Api.jsx";
+import { saveWorkCenterTypeGroupData } from "../../Service/Api.jsx";
 
 const WorkCenterMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);

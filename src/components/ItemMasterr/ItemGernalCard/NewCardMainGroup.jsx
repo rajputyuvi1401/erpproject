@@ -6,7 +6,7 @@ import {
   saveMainGroup,
   getMainGroups,
   deleteMainGroup,
-} from "../../Service/Api";
+} from "../../../Service/Api";
 
 const NewCardMainGroup = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ const NewCardMainGroup = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [data, setData] = useState([]);
+  const [MainGroup, setMainGroup] = useState([]);
 
   useEffect(() => {
     fetchMainGroups();
@@ -65,7 +65,7 @@ const NewCardMainGroup = () => {
   const fetchMainGroups = async () => {
     try {
       const response = await getMainGroups();
-      setData(response);
+      setMainGroup(response);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -165,7 +165,7 @@ const NewCardMainGroup = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
+          {MainGroup.map((item) => (
             <tr key={item.id}>
               <td>{item.Prefix}</td>
               <td>{item.Sub_Group_Code}</td>

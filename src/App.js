@@ -87,11 +87,42 @@ import DocumentManagement from "./components/DocumentManagement/DocumentManageme
 // Master Report
 import MasterReport from "./components/MasterReport/MasterReport";
 
+////////////////////////////////Purchase//////////////////////////////////////////////////////
+
+
 // new indent
 import Newindent from "./PurchaseMaster/Newindent/Newindent";
 
 // New Purchase Order
 import NewPurchaseOrder from "./PurchaseMaster/NewPurchaseOrder/NewPurchaseOrder.jsx";
+
+// New JobWork
+import NewJobworkPurchase from "./PurchaseMaster/NewJobworkPurchase/NewJobworkPurchase.jsx";
+
+// PendingPo
+import PendingPo from "./PurchaseMaster/PendingPo/PendingPo.jsx";
+
+// Pending Indent
+import PendingIndent from "./PurchaseMaster/PendingIndent/PendingIndent.jsx";
+
+// PEnding MRN
+import PurchaseMrn from "./PurchaseMaster/PurchaseMRN/PurchaseMrn.jsx";
+
+// PUrchaseOrderStatus
+import PurchseOrderStatus from "./PurchaseMaster/PurchseOrderStatus/PurchseOrderStatus.jsx";
+
+// Quote Comparison
+import Rfo from "./PurchaseMaster/QuotoComparison/RFo/Rfo.jsx";
+import QuotoComparisonStatement from "./PurchaseMaster/QuotoComparison/QuotoComparisonStatement/QuotoComparisonStatement.jsx";
+import QuotoComparisonPending from "./PurchaseMaster/QuotoComparison/QuotoComparisonPending/QuotoComparisonPending.jsx";
+
+// Report
+import JobWorkPurchseOrderList from "./PurchaseMaster/Report/JobWorkPurchaseOrderList1/JobWorkPurchseOrderList.jsx";
+import PurchseOderList from "./PurchaseMaster/Report/PurchaseOrderList1/PurchseOderList.jsx";
+import PurchaseReport from "./PurchaseMaster/Report/PurchaseReport1/PurchaseReport.jsx";
+import SupplierWiseList from "./PurchaseMaster/Report/SupplierWiseList1/SupplierWiseList.jsx";
+
+
 
 function App() {
   return (
@@ -204,11 +235,43 @@ function App() {
         {/* Master Report */}
         <Route path="/master-report" element={<MasterReport />} />
 
+        {/* ////////////////////////////////Purchase////////////////////////////////////////////////////////////// */}
+
         {/* New indent */}
         <Route path="/new-indent" element={<Newindent />} />
 
         {/* New Purchase Order */}
         <Route path="/new-purchase-order" element={<NewPurchaseOrder />} />
+
+        {/* New Jobwork */}
+        <Route path="/new-jobwork-order" element={<NewJobworkPurchase/>}/>
+
+        {/* New Pending Po */}
+        <Route path="/pendingpo" element={<PendingPo/>}/>
+
+        {/* New Pending Indent */}
+        <Route path="/pendingindent" element={<PendingIndent/>}/>
+
+        {/* New Purchse MRN */}
+        <Route path="/Purchse-Mrn" element={<PurchaseMrn/>}/>
+
+        {/* New Purchse Order Status */}
+        <Route path="/Purchse-order-status" element={<PurchseOrderStatus/>}/>
+
+
+        {/* Quoto Comparision */}
+        <Route path="/Rfo" element={<Rfo/>} />
+        <Route path="/Quoto-Comparison-Statement" element={<QuotoComparisonStatement/>} />
+        <Route path="/Quoto-Comparison-Pending" element={<QuotoComparisonPending/>} />
+
+        {/* Purchase Report */}
+        <Route path="purchase-order-list" element={<PurchseOderList/>}/>
+
+        <Route path="jobwork-purchase-order-list" element={<JobWorkPurchseOrderList/>}/>
+
+        <Route path="supplier-wise-list" element={<SupplierWiseList/>}/>
+
+        <Route path="purchase-report" element={<PurchaseReport/>} />
       </Routes>
     </div>
   );

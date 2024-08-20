@@ -4,7 +4,7 @@ import {
   addCity,
   updateCity,
   deleteCity,
-} from "../Service/Api.jsx";
+} from "../../Service/Api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
@@ -122,8 +122,8 @@ const ToggleCardCity = () => {
               />
             </div>
           </div>
-          <div className="col-md-3">
-            <button className="btn mt-4" onClick={handleAddCity}>
+          <div className="col-md-3 mt-4">
+            <button className="btn " onClick={handleAddCity}>
               Save
             </button>
           </div>

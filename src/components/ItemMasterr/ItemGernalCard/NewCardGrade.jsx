@@ -7,7 +7,7 @@ import {
   getGrades,
   deleteGrade,
   updateGrade,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 const NewCardGrade = () => {
   const [grades, setGrades] = useState([]);

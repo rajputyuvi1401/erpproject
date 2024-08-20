@@ -7,12 +7,12 @@ import {
   getRoutes,
   deleteRoute,
   updateRoute,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 const NewCardRoute = () => {
   const [formData, setFormData] = useState({ Prefix: "", Name: "" });
   const [errors, setErrors] = useState({});
-  const [data, setData] = useState([]);
+  const [Route, setRoute] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
 
@@ -65,7 +65,7 @@ const NewCardRoute = () => {
   const fetchRoutes = async () => {
     try {
       const response = await getRoutes();
-      setData(response);
+      setRoute(response);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -153,8 +153,8 @@ const NewCardRoute = () => {
             </tr>
           </thead>
           <tbody>
-            {data.length > 0 ? (
-              data.map((item, index) => (
+            {Route.length > 0 ? (
+              Route.map((item, index) => (
                 <tr key={item.id}>
                   <td>{index + 1}</td>
                   <td>{item.Prefix}</td>

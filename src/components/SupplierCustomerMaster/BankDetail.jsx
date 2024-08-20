@@ -5,7 +5,7 @@ import {
   fetchBankDetails,
   addBankDetail,
   deleteBankDetail,
-} from "../Service/Api.jsx";
+} from "../../Service/Api.jsx";
 
 const BankDetails = () => {
   const [formData, setFormData] = useState({

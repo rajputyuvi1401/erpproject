@@ -13,7 +13,7 @@ import {
   savePriceListEntry,
   updatePriceListEntry,
   deletePriceListEntry,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 const PriceEntry = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);

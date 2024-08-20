@@ -7,26 +7,28 @@ import SideNav from "../../../SideNav/SideNav";
 import "./Supervisor.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { addOperator } from "../../Service/Api.jsx";
+import { addOperator } from "../../../Service/Api.jsx";
 import {
   fetchDepartments,
   addDepartment,
   editDepartment,
   deleteDepartment,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 import {
   fetchCompanyNames,
   addCompanyName,
   editCompanyName,
   deleteCompanyName,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 import {
   fetchTypes,
   addType,
   editType,
   deleteType,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 import Contractor from "../Contractoraaa/Contractoraaa.jsx";
+import { fetchContractors } from "../../../Service/Api.jsx";
+
 const Supervisor = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -379,6 +381,21 @@ const Supervisor = () => {
   //   setEditingId(null);
   // };
 
+  // contractors
+  const [contractors, setContractors] = useState([]);
+  useEffect(() => {
+    const loadContractors = async () => {
+      try {
+        const contractorsData = await fetchContractors();
+        setContractors(contractorsData);
+      } catch (error) {
+        console.error("Failed to fetch contractors:", error);
+      }
+    };
+
+    loadContractors();
+  }, []);
+
   return (
     <div className="Supervisor">
       <ToastContainer />
@@ -431,6 +448,14 @@ const Supervisor = () => {
                                     onChange={handleChange}
                                   >
                                     <option>Select Department</option>
+                                    {departments.map((department) => (
+                                              <option
+                                                key={department.id}
+                                                value={department.SelectCategory}
+                                              >
+                                                {department.SelectCategory}
+                                              </option>
+                                            ))}
                                     <option>Production</option>
                                     <option>Maintenance</option>
                                     <option>Quality</option>
@@ -653,6 +678,14 @@ const Supervisor = () => {
                                     onChange={handleChange}
                                   >
                                     <option>Select..</option>
+                                    {types.map((type) => (
+                                      <option
+                                        key={type.id}
+                                        value={type.EnterType}
+                                      >
+                                        {type.EnterType}
+                                      </option>
+                                    ))}
                                     <option>Supervisor</option>
                                     <option>Manager</option>
                                     <option>Staff</option>
@@ -754,7 +787,7 @@ const Supervisor = () => {
                               >
                                 Contractor:
                               </label>
-                              <div className="col-sm-6">
+                              <div className="col-sm-8">
                                 <div className="input-group">
                                   <select
                                     id="Contractor"
@@ -763,6 +796,14 @@ const Supervisor = () => {
                                     onChange={handleChange}
                                   >
                                     <option>Select..</option>
+                                    {contractors.map((contractor) => (
+                                      <option
+                                        key={contractor.id}
+                                        value={contractor.ContractorName}
+                                      >
+                                        {contractor.ContractorName}
+                                      </option>
+                                    ))}
                                     <option>Supervisor</option>
                                     <option>Manager</option>
                                     <option>Staff</option>
@@ -783,16 +824,6 @@ const Supervisor = () => {
                                     </div>
                                   )}
                                 </div>
-                              </div>
-                              <div className="col-md-1 text-center">
-                                <span className="input-group-text">
-                                  <i className="fas fa-plus"></i>
-                                </span>
-                              </div>
-                              <div className="col-md-1 text-center">
-                                <span className="input-group-text">
-                                  <i className="fas fa-sync"></i>
-                                </span>
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -966,6 +997,14 @@ const Supervisor = () => {
                                             onChange={handleChange1}
                                           >
                                             <option>Select Category</option>
+                                            {companyNames.map((card) => (
+                                              <option
+                                                key={card.id}
+                                                value={card.CategoryName}
+                                              >
+                                                {card.CategoryName}
+                                              </option>
+                                            ))}
                                             <option>Production</option>
                                             <option>Maintenance</option>
                                             <option>Quality</option>
@@ -1094,9 +1133,9 @@ const Supervisor = () => {
                                     <div className="row mb-3">
                                       <label
                                         htmlFor="CategoryName"
-                                        className="col-md-3 col-form-label"
+                                        className="col-md-4 col-form-label"
                                       >
-                                        Company Name:
+                                        Department Category Name:
                                       </label>
 
                                       <div className="col-md-4">
@@ -1126,7 +1165,7 @@ const Supervisor = () => {
                                     <thead>
                                       <tr>
                                         <th>Sr. No.</th>
-                                        <th>Company Name</th>
+                                        <th>Department Category Name</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
                                       </tr>

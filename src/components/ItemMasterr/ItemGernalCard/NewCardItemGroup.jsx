@@ -7,7 +7,7 @@ import {
   getItemGroups,
   deleteItemGroup,
   updateItemGroup,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 const NewCardItemGroup = () => {
   const [activeTab, setActiveTab] = useState("general");
@@ -178,9 +178,10 @@ const NewCardItemGroup = () => {
                   <thead>
                     <tr>
                       <th>Sc. No</th>
-                      <th>Profile</th>
+                     <th>Main Group Name</th>
+                     <th>Prefix</th>
                       <th>Item Group Name</th>
-                      <th>HC</th>
+                     
                       <th>Edit</th>
                       <th>Delete</th>
                     </tr>
@@ -190,9 +191,10 @@ const NewCardItemGroup = () => {
                       itemGroups.map((group, index) => (
                         <tr key={group.id}>
                           <td>{index + 1}</td>
-                          <td>Profile Placeholder</td>
+<td>{group.MainGroupName}</td>
+<td>{group.Prefix}</td>                         
                           <td>{group.GroupName}</td>
-                          <td>HC Placeholder</td>
+                         
                           <td>
                             <FaEdit
                               className="text-primary mx-2"

@@ -6,12 +6,12 @@ import {
   saveUnitCode,
   getUnitCodes,
   deleteUnitCode,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 const NewCardUnitCode = () => {
   const [formData, setFormData] = useState({ UnitName: "" });
   const [errors, setErrors] = useState({});
-  const [data, setData] = useState([]);
+  const [unitCode, setUnitCode] = useState([]);
 
   useEffect(() => {
     fetchUnitCodes();
@@ -52,7 +52,7 @@ const NewCardUnitCode = () => {
   const fetchUnitCodes = async () => {
     try {
       const response = await getUnitCodes();
-      setData(response);
+      setUnitCode(response);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -109,7 +109,7 @@ const NewCardUnitCode = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => (
+            {unitCode.map((item, index) => (
               <tr key={item.id}>
                 <td>{index + 1}</td>
                 <td>{item.UnitName}</td>

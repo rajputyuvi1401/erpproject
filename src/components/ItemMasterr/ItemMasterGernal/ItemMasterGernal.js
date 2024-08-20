@@ -22,10 +22,24 @@ import NewCardModelType from "../ItemGernalCard/NewCardModelType.jsx";
 import NewCardParentFg from "../ItemGernalCard/NewCardParentFg.jsx";
 
 // gernal
-import { saveItemMaster } from "../../Service/Api.jsx";
+import { saveItemMaster } from "../../../Service/Api.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  getItems,
+  getGrades,
+  getMetalTypes,
+  getTdcs,
+  getUnitCodes,
+  getStoreLocations,
+  getSectors,
+  getRoutes,
+  getParentFgCodes,
+  getMainGroups,
+  getItemSections,
+  getItemGroups
 
+} from "../../../Service/Api.jsx";
 const ItemMasterGernal = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
   const [showNewCardMainGroup, setShowNewCardMainGroup] = useState(false);
@@ -42,6 +56,8 @@ const ItemMasterGernal = () => {
   const [showNewCardGradeMaster, setShowNewCardGradeMaster] = useState(false);
   const [showNewCardModelType, setShowNewCardModelType] = useState(false);
   const [showNewCardParentFg, setShowNewCardParentFg] = useState(false);
+  const [items, setItems] = useState([]);
+  const [grades, setGrades] = useState([]);
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
@@ -274,8 +290,179 @@ const ItemMasterGernal = () => {
     console.log("data clear");
   };
 
+  // Subgroup
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  const fetchItems = async () => {
+    try {
+      const response = await getItems();
+      setItems(response);
+    } catch (error) {
+      console.error("Error fetching qty packs:", error);
+    }
+  };
+
+  // fetch grade
+
+  useEffect(() => {
+    fetchGrades();
+  }, []);
+  const fetchGrades = async () => {
+    try {
+      const response = await getGrades();
+      setGrades(response);
+    } catch (error) {
+      console.error("Error fetching qty packs:", error);
+    }
+  };
+
+  // metal type
+  const [metalTypes, setMetalTypes] = useState([]);
+  useEffect(() => {
+    fetchMetalTypes();
+  }, []);
+
+  const fetchMetalTypes = async () => {
+    try {
+      const response = await getMetalTypes();
+      setMetalTypes(response);
+    } catch (error) {
+      console.error("Error fetching metal types:", error);
+    }
+  };
+
+  // TDC
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetchTdcs();
+  }, []);
+  const fetchTdcs = async () => {
+    try {
+      const response = await getTdcs();
+      setData(response);
+    } catch (error) {
+      console.error("Error fetching metal types:", error);
+    }
+  };
+
+  // unit code
+  const [unitCode, setUnitCode] = useState([]);
+  useEffect(() => {
+    fetchunitcode();
+  }, []);
+  const fetchunitcode = async () => {
+    try {
+      const response = await getUnitCodes();
+      setUnitCode(response);
+    } catch (error) {
+      console.error("Error fetching metal types:", error);
+    }
+  };
+
+  // Store Location
+  const [storelocation, setStoreLocation] = useState([]);
+
+  useEffect(() => {
+    fetchstorelocation();
+  }, []);
+  const fetchstorelocation = async () => {
+    try {
+      const response = await getStoreLocations();
+      setStoreLocation(response);
+    } catch (error) {
+      console.error("Error fetching metal types:", error);
+    }
+  };
+
+  //  Sector
+  const [Sector, setSector] = useState([]);
+  useEffect(() => {
+    fetchSector();
+  }, []);
+  const fetchSector = async () => {
+    try {
+      const response = await getSectors();
+      setSector(response);
+    } catch (error) {
+      console.error("Error fetching metal types:", error);
+    }
+  };
+
+  // Route
+  const [Route, setRoute] = useState([]);
+  useEffect(() => {
+    fetchRoute();
+  }, []);
+  const fetchRoute = async () => {
+    try {
+      const response = await getRoutes();
+      setRoute(response);
+    } catch (error) {
+      console.error("Error fetching metal types:", error);
+    }
+  };
+
+  // Parent FG
+  const [ParentFG, setParentFG] = useState([]);
+  useEffect(() => {
+    fetchParentFG();
+  }, []);
+  const fetchParentFG = async () => {
+    try {
+      const response = await getParentFgCodes();
+      setParentFG(response);
+    } catch (error) {
+      console.error("Error fetching metal types:", error);
+    }
+  };
+
+  // Main Group
+  const [MainGroup, setMainGroup] = useState([]);
+  useEffect(() => {
+    fetchMainGroup();
+  }, []);
+  const fetchMainGroup = async () => {
+    try {
+      const response = await getMainGroups();
+      setMainGroup(response);
+    } catch (error) {
+      console.error("Error fetching metal types:", error);
+    }
+  };
+
+  // item sector
+  const [ItemSection, setItemSection] = useState([]);
+  useEffect(() => {
+    fetchItemSection();
+  }, []);
+  const fetchItemSection = async () => {
+    try {
+      const response = await getItemSections();
+      setItemSection(response);
+    } catch (error) {
+      console.error("Error fetching metal types:", error);
+    }
+  };
+
+  // item Group
+  const [itemGroups, setItemGroups] = useState([]);
+  useEffect(() => {
+    fetchitemGroups();
+  }, []);
+  const fetchitemGroups = async () => {
+    try {
+      const response = await getItemGroups();
+      setItemGroups(response);
+    } catch (error) {
+      console.error("Error fetching metal types:", error);
+    }
+  };
+
   return (
     <div className="Itemmastergernalpage">
+      <ToastContainer/>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -421,6 +608,11 @@ const ItemMasterGernal = () => {
                                                   >
                                                     Select ..
                                                   </option>
+                                                  {MainGroup.map((Main) => (
+          <option key={Main.id} value={Main.Sub_Group_Name}>
+            {Main.Sub_Group_Name}
+          </option>
+        ))}
                                                   <option value="FG">FG</option>
                                                   <option value="RM">RM</option>
                                                   <option value="Tool">
@@ -519,6 +711,14 @@ const ItemMasterGernal = () => {
                                                   <option selected>
                                                     Select ..
                                                   </option>
+                                                  {unitCode.map((unit) => (
+                                                    <option
+                                                      key={unit.id}
+                                                      value={unit.UnitName}
+                                                    >
+                                                      {unit.UnitName}
+                                                    </option>
+                                                  ))}
                                                   <option>PCS</option>
                                                   <option>KGS</option>
                                                   <option>Box</option>
@@ -581,6 +781,14 @@ const ItemMasterGernal = () => {
                                                   <option value="">
                                                     Select ..
                                                   </option>
+                                                  {data.map((Tdc) => (
+                                                    <option
+                                                      key={Tdc.id}
+                                                      value={Tdc.Name}
+                                                    >
+                                                      {Tdc.Name}
+                                                    </option>
+                                                  ))}
                                                   <option value="FA">FA</option>
                                                   <option value="FB">FB</option>
                                                 </select>
@@ -963,6 +1171,14 @@ const ItemMasterGernal = () => {
                                                   <option value="">
                                                     Select ..
                                                   </option>
+                                                  {metalTypes.map((metal) => (
+                                                    <option
+                                                      key={metal.id}
+                                                      value={metal.MetalType}
+                                                    >
+                                                      {metal.MetalType}
+                                                    </option>
+                                                  ))}
                                                   <option value="FA">FA</option>
                                                   <option value="FB">FB</option>
                                                 </select>
@@ -1042,7 +1258,11 @@ const ItemMasterGernal = () => {
                                                   >
                                                     Select ..
                                                   </option>
-
+                                                  {itemGroups.map((group) => (
+          <option key={group.id} value={group.GroupName}>
+            {group.GroupName}
+          </option>
+        ))}
                                                   <option>END PIECE</option>
                                                   <option>MACHINNING</option>
                                                   <option>BELTS</option>
@@ -1142,6 +1362,18 @@ const ItemMasterGernal = () => {
                                                   <option value="">
                                                     Select ..
                                                   </option>
+                                                  {storelocation.map(
+                                                    (store) => (
+                                                      <option
+                                                        key={store.id}
+                                                        value={
+                                                          store.EnterStoreName
+                                                        }
+                                                      >
+                                                        {store.EnterStoreName}
+                                                      </option>
+                                                    )
+                                                  )}
                                                   <option>Store</option>
                                                   <option>Maintenance</option>
                                                 </select>
@@ -1188,6 +1420,11 @@ const ItemMasterGernal = () => {
                                                   <option value="">
                                                     Select ..
                                                   </option>
+                                                  {Route.map((Route) => (
+          <option key={Route.id} value={Route.Name}>
+            {Route.Name}
+          </option>
+        ))}
                                                   <option value="SF">SF</option>
                                                   <option value="BO">BO</option>
                                                   <option value="DI">DI</option>
@@ -1235,6 +1472,11 @@ const ItemMasterGernal = () => {
                                                   <option value="">
                                                     Select ..
                                                   </option>
+                                                  {ParentFG.map((Parent) => (
+          <option key={Parent.id} value={Parent.Parent_FG_Code}>
+            {Parent.Parent_FG_Code}
+          </option>
+        ))}
                                                   <option value="FA">FA</option>
                                                   <option value="FB">FB</option>
                                                 </select>
@@ -1308,7 +1550,14 @@ const ItemMasterGernal = () => {
                                                   >
                                                     Select ..
                                                   </option>
-
+                                                  {Sector.map((Sector) => (
+                                                    <option
+                                                      key={Sector.id}
+                                                      value={Sector.Sector_Name}
+                                                    >
+                                                      {Sector.Sector_Name}
+                                                    </option>
+                                                  ))}
                                                   <option>SF</option>
                                                   <option>BO</option>
                                                   <option>DI</option>
@@ -1384,7 +1633,11 @@ const ItemMasterGernal = () => {
                                                   >
                                                     Select ..
                                                   </option>
-
+                                                  {ItemSection.map((itemselect) => (
+          <option key={itemselect.id} value={itemselect.Section_Name}>
+            {itemselect.Section_Name}
+          </option>
+        ))}
                                                   <option>SF</option>
                                                   <option>BO</option>
                                                   <option>DI</option>
@@ -1677,6 +1930,16 @@ const ItemMasterGernal = () => {
                                                   <option value="">
                                                     Select ..
                                                   </option>
+                                                  {grades.map((item) => (
+                                                    <option
+                                                      key={item.id}
+                                                      value={
+                                                        item.Item_Grade_Name
+                                                      }
+                                                    >
+                                                      {item.Item_Grade_Name}
+                                                    </option>
+                                                  ))}
                                                   <option value="SF">SF</option>
                                                   <option value="BO">BO</option>
                                                   <option value="DI">DI</option>
@@ -1723,6 +1986,14 @@ const ItemMasterGernal = () => {
                                                   <option value="">
                                                     Select ..
                                                   </option>
+                                                  {items.map((item) => (
+                                                    <option
+                                                      key={item.id}
+                                                      value={item.Sub_Group}
+                                                    >
+                                                      {item.Sub_Group}
+                                                    </option>
+                                                  ))}
                                                   <option value="SF">SF</option>
                                                   <option value="BO">BO</option>
                                                   <option value="DI">DI</option>

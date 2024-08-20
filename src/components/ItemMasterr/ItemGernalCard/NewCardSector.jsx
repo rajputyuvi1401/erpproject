@@ -7,7 +7,7 @@ import {
   getSectors,
   deleteSectorcard,
   updateSectorcard,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 const NewCardSector = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +15,7 @@ const NewCardSector = () => {
     Sector_Name: "",
   });
   const [errors, setErrors] = useState({});
-  const [data, setData] = useState([]);
+  const [Sector, setSector] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
 
@@ -68,7 +68,7 @@ const NewCardSector = () => {
   const fetchSectors = async () => {
     try {
       const response = await getSectors();
-      setData(response);
+      setSector(response);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -160,8 +160,8 @@ const NewCardSector = () => {
             </tr>
           </thead>
           <tbody>
-            {data.length > 0 ? (
-              data.map((item, index) => (
+            {Sector.length > 0 ? (
+              Sector.map((item, index) => (
                 <tr key={item.id}>
                   <td>{index + 1}</td>
                   <td>{item.Sector_Prefix}</td>

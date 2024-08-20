@@ -15,14 +15,14 @@ import {
   getDepartments,
   updateDepartment,
   deleteDepartmentCard,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 import {
   saveOperation,
   getOperations,
   updateOperation,
   deleteOperation,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 import VisibleBomitem from "./VisibleBomitem.jsx";
 

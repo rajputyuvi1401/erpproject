@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaPlus, FaTrash, FaEdit } from "react-icons/fa";
+import { FaPlus, FaTrash, FaEdit, FaSave } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
@@ -7,7 +7,7 @@ import {
   addSpecification,
   updateSpecification,
   deleteSpecification,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 import "./Technical.css";
 
 const Technical = () => {
@@ -37,11 +37,8 @@ const Technical = () => {
     }
 
     try {
-      await addSpecification(newSpec, newParam);
-      setSpecifications([
-        ...specifications,
-        { Specification: newSpec, Parameter: newParam },
-      ]);
+      const savedSpec = await addSpecification(newSpec, newParam);
+      setSpecifications([...specifications, savedSpec]);
       setNewSpec("");
       setNewParam("");
       toast.success("Specification added successfully");
@@ -57,11 +54,9 @@ const Technical = () => {
     }
 
     try {
-      await updateSpecification(id, editSpec, editParam);
+      const updatedSpec = await updateSpecification(id, editSpec, editParam);
       const updatedSpecs = specifications.map((spec) =>
-        spec.id === id
-          ? { ...spec, Specification: editSpec, Parameter: editParam }
-          : spec
+        spec.id === id ? updatedSpec : spec
       );
       setSpecifications(updatedSpecs);
       setEditId(null);
@@ -90,6 +85,13 @@ const Technical = () => {
     setEditSpec("");
     setEditParam("");
   };
+
+  const handleEditMode = (spec) => {
+    setEditId(spec.id);
+    setEditSpec(spec.Specification);
+    setEditParam(spec.Parameter);
+  };
+
 
   return (
     <div className="technical">
@@ -239,6 +241,7 @@ const Technical = () => {
             </table>
           </div>
         </div>
+
         <div className="row" style={{ marginTop: "80px" }}>
           <div className="col-md-8">
             <table className="table table-bordered">
@@ -246,7 +249,6 @@ const Technical = () => {
                 <tr>
                   <th scope="col">Specification</th>
                   <th scope="col">Parameter</th>
-                  <th scope="col">Add</th>
                   <th scope="col">Edit</th>
                   <th scope="col">Delete</th>
                 </tr>
@@ -255,42 +257,41 @@ const Technical = () => {
                 {specifications.map((spec) => (
                   <tr key={spec.id}>
                     <td>
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={
-                          editId === spec.id ? editSpec : spec.Specification
-                        }
-                        onChange={(e) => setEditSpec(e.target.value)}
-                        disabled={editId !== spec.id}
-                      />
+                      {editId === spec.id ? (
+                        <input
+                          type="text"
+                          className="form-control"
+                          value={editSpec}
+                          onChange={(e) => setEditSpec(e.target.value)}
+                        />
+                      ) : (
+                        spec.Specification
+                      )}
                     </td>
                     <td>
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={editId === spec.id ? editParam : spec.Parameter}
-                        onChange={(e) => setEditParam(e.target.value)}
-                        disabled={editId !== spec.id}
-                      />
-                    </td>
-                    <td>
-                      <button className="btn-para" onClick={handleSave}>
-                        <FaPlus />
-                      </button>
+                      {editId === spec.id ? (
+                        <input
+                          type="text"
+                          className="form-control"
+                          value={editParam}
+                          onChange={(e) => setEditParam(e.target.value)}
+                        />
+                      ) : (
+                        spec.Parameter
+                      )}
                     </td>
                     <td>
                       {editId === spec.id ? (
                         <button
-                          className="btn-para"
+                          className="btn-tech"
                           onClick={() => handleEdit(spec.id)}
                         >
-                          <FaEdit />
+                          <FaSave />
                         </button>
                       ) : (
                         <button
-                          className="btn-para"
-                          onClick={() => setEditId(spec.id)}
+                          className="btn-tech"
+                          onClick={() => handleEditMode(spec)}
                         >
                           <FaEdit />
                         </button>
@@ -298,7 +299,7 @@ const Technical = () => {
                     </td>
                     <td>
                       <button
-                        className="btn-para"
+                        className="btn-tech"
                         onClick={() => handleDelete(spec.id)}
                       >
                         <FaTrash />
@@ -350,5 +351,5 @@ const Technical = () => {
     </div>
   );
 };
-
 export default Technical;
+

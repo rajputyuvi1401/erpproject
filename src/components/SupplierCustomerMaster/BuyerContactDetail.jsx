@@ -5,7 +5,7 @@ import {
   fetchBuyerContactDetails,
   addBuyerContactDetail,
   deleteBuyerContactDetail,
-} from "../Service/Api.jsx";
+} from "../../Service/Api";
 
 const BuyerContactDetail = () => {
   const [formData, setFormData] = useState({

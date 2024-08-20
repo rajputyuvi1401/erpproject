@@ -10,7 +10,19 @@ import BankDetail from "./BankDetail";
 import BuyerContactDetail from "./BuyerContactDetail";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { saveSupplierCustomerData, fetchCategories } from "../Service/Api.jsx";
+import {
+  saveSupplierCustomerData,
+  fetchCategories,
+  fetchSectors,
+  fetchGroups,
+  fetchQMSCodes,
+  fetchCities,
+  fetchCurrencies,
+  fetchCountries,
+  fetchPaymentTerms,
+  fetchRegions,
+  fetchStates
+} from "../../Service/Api.jsx";
 import ToggleCard1 from "./ToggleCard1.jsx";
 import ToggleCardCity from "./ToggleCardCity.jsx";
 import ToggleCardCountry from "./ToggleCardCountry.jsx";
@@ -40,6 +52,16 @@ const SupplierCustomerMaster = () => {
   // New button open card
   const [isCardOpen, setIsCardOpen] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [sectors, setSectors] = useState([]);
+  const [groups, setGroups] = useState([]);
+  const [qmsCodes, setQMSCodes] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [currencies, setCurrencies] = useState([]);
+  const [countries, setCountries] = useState([]);
+  const [paymentTerms, setPaymentTerms] = useState([]);
+  const [regions, setRegions] = useState([]);
+  const [states, setStates] = useState([]);
+
   const toggleCard = () => {
     setIsCardOpen(!isCardOpen);
   };
@@ -229,6 +251,133 @@ const SupplierCustomerMaster = () => {
 
     getCategories();
   }, []);
+
+  // sector
+  useEffect(() => {
+    const getSectors = async () => {
+      try {
+        const data = await fetchSectors();
+        setSectors(data);
+      } catch (error) {
+        console.error("Failed to fetch sectors", error);
+      }
+    };
+
+    getSectors();
+  }, []);
+
+  // group
+  useEffect(() => {
+    const getGroups = async () => {
+      try {
+        const data = await fetchGroups();
+        setGroups(data);
+      } catch (error) {
+        console.error("Failed to fetch groups", error);
+      }
+    };
+
+    getGroups();
+  }, []);
+
+  // QMSC
+  useEffect(() => {
+    const getQMSCodes = async () => {
+      try {
+        const data = await fetchQMSCodes();
+        setQMSCodes(data);
+      } catch (error) {
+        toast.error("Failed to fetch QMS Codes");
+      }
+    };
+
+    getQMSCodes();
+  }, []);
+
+  // Cities
+  useEffect(() => {
+    const getCities = async () => {
+      try {
+        const data = await fetchCities();
+        setCities(data);
+      } catch (error) {
+        toast.error("Failed to fetch cities");
+      }
+    };
+
+    getCities();
+  }, []);
+
+  // currencies
+  useEffect(() => {
+    const getCurrencies = async () => {
+      try {
+        const data = await fetchCurrencies();
+        setCurrencies(data);
+      } catch (error) {
+        toast.error("Failed to fetch currencies");
+      }
+    };
+
+    getCurrencies();
+  }, []);
+
+  // Country
+  useEffect(() => {
+    const getCountries = async () => {
+      try {
+        const data = await fetchCountries();
+        setCountries(data);
+      } catch (error) {
+        console.error("Failed to fetch countries:", error);
+      }
+    };
+
+    getCountries();
+  }, []);
+
+  // Payment Terms
+  useEffect(() => {
+    const getPaymentTerms = async () => {
+      try {
+        const data = await fetchPaymentTerms();
+        setPaymentTerms(data);
+      } catch (error) {
+        console.error("Failed to fetch payment terms:", error);
+      }
+    };
+
+    getPaymentTerms();
+  }, []);
+
+  // Region
+  useEffect(() => {
+    const getRegions = async () => {
+      try {
+        const data = await fetchRegions();
+        setRegions(data);
+      } catch (error) {
+        console.error("Failed to fetch regions:", error);
+      }
+    };
+
+    getRegions();
+  }, []);
+
+  // statecode
+  useEffect(() => {
+    const getStates = async () => {
+      try {
+        const data = await fetchStates();
+        setStates(data);
+      } catch (error) {
+        console.error("Failed to fetch states", error);
+      }
+    };
+
+    getStates();
+  }, []);
+
 
   return (
     <div className="SupplierC">
@@ -534,6 +683,14 @@ const SupplierCustomerMaster = () => {
                                                 <option value="" disabled>
                                                   Select ..
                                                 </option>
+                                                {regions.map((region) => (
+                                                  <option
+                                                    key={region.id}
+                                                    value={region.RegionCode}
+                                                  >
+                                                    {region.RegionName}
+                                                  </option>
+                                                ))}
                                                 <option value="1">
                                                   Ludhiana
                                                 </option>
@@ -670,6 +827,11 @@ const SupplierCustomerMaster = () => {
                                                 <option value="" disabled>
                                                   Select ..
                                                 </option>
+                                                {states.map((state) => (
+              <option key={state.id} value={state.State_Code_Alpha}>
+                {state.State_Code_Alpha}
+              </option>
+            ))}
                                                 <option value="FG">FG</option>
                                                 <option value="RM">RM</option>
                                               </select>
@@ -975,8 +1137,15 @@ const SupplierCustomerMaster = () => {
                                                 <option value="">
                                                   Select ..
                                                 </option>
-                                                <option value="FG">FG</option>
-                                                <option value="RM">RM</option>
+
+                                                {paymentTerms.map((term) => (
+                                                  <option
+                                                    key={term.id}
+                                                    value={term.Code}
+                                                  >
+                                                    {term.Code} - {term.Desc}
+                                                  </option>
+                                                ))}
                                               </select>
                                             </div>
                                             <div className="col-sm-2">
@@ -1018,6 +1187,14 @@ const SupplierCustomerMaster = () => {
                                                 <option value="">
                                                   Select ..
                                                 </option>
+                                                {countries.map((country) => (
+                                                  <option
+                                                    key={country.Code}
+                                                    value={country.Code}
+                                                  >
+                                                    {country.Country}
+                                                  </option>
+                                                ))}
                                                 <option value="India">
                                                   India
                                                 </option>
@@ -1071,6 +1248,15 @@ const SupplierCustomerMaster = () => {
                                                 <option value="">
                                                   Select ..
                                                 </option>
+                                                {currencies.map((currency) => (
+                                                  <option
+                                                    key={currency.id}
+                                                    value={currency.Symbol}
+                                                  >
+                                                    {currency.Symbol}
+                                                  </option>
+                                                ))}
+
                                                 <option value="Pantinagar">
                                                   Pantinagar
                                                 </option>
@@ -1157,8 +1343,14 @@ const SupplierCustomerMaster = () => {
                                                 <option value="">
                                                   Select ..
                                                 </option>
-                                                <option value="FG">FG</option>
-                                                <option value="RM">RM</option>
+                                                {cities.map((city) => (
+                                                  <option
+                                                    key={city.id}
+                                                    value={city.CityName}
+                                                  >
+                                                    {city.CityName}
+                                                  </option>
+                                                ))}
                                               </select>
                                             </div>
                                             <div className="col-sm-2">
@@ -1532,6 +1724,14 @@ const SupplierCustomerMaster = () => {
                                                 <option value="">
                                                   Select ..
                                                 </option>
+                                                {sectors.map((sector) => (
+                                                  <option
+                                                    key={sector.id}
+                                                    value={sector.SectorName}
+                                                  >
+                                                    {sector.SectorName}
+                                                  </option>
+                                                ))}
                                                 <option value="FG">FG</option>
                                                 <option value="RM">RM</option>
                                               </select>
@@ -1575,8 +1775,14 @@ const SupplierCustomerMaster = () => {
                                                 <option value="">
                                                   Select ..
                                                 </option>
-                                                <option value="FG">FG</option>
-                                                <option value="RM">RM</option>
+                                                {groups.map((g) => (
+                                                  <option
+                                                    key={g.id}
+                                                    value={g.Group}
+                                                  >
+                                                    {g.Group}
+                                                  </option>
+                                                ))}
                                               </select>
                                             </div>
                                             <div className="col-sm-2">
@@ -1804,14 +2010,26 @@ const SupplierCustomerMaster = () => {
                                               QMSC Code:
                                             </label>
                                             <div className="col-sm-2">
-                                              <input
-                                                type="text"
-                                                className="form-control"
+                                              <select
                                                 id="QMSC_Code"
                                                 name="QMSC_Code"
+                                                className="form-select"
                                                 value={formData.QMSC_Code}
                                                 onChange={handleChange}
-                                              />
+                                              >
+                                                <option value="">
+                                                  Select ..
+                                                </option>
+                                                {qmsCodes.map((code) => (
+                                                  <option
+                                                    key={code.id}
+                                                    value={code.QMSC_Code}
+                                                  >
+                                                    {code.QMSC_Code}
+                                                  </option>
+                                                ))}
+                                              </select>
+
                                               {errors.QMSC_Code && (
                                                 <small className="text-danger">
                                                   {errors.QMSC_Code}

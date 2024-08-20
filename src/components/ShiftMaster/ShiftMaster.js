@@ -5,7 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import "./ShiftMaster.css";
-import { saveShiftMaster, fetchShiftMasters } from "../Service/Api.jsx";
+import { saveShiftMaster, fetchShiftMasters } from "../../Service/Api.jsx";
 import { toast, ToastContainer } from "react-toastify"; // Ensure this is installed
 
 const ShiftMaster = () => {

@@ -12,14 +12,13 @@ import {
   fetchCostCenters,
   updateCostCenter,
   deleteCostCenter,
-} from "../Service/Api";
-
+} from "../../Service/Api.jsx";
 import {
   saveCostCenterAdd,
   fetchCostCentersAdd,
   updateCostCenterAdd,
   deleteCostCenterAdd,
-} from "../Service/Api.jsx";
+} from "../../Service/Api.jsx";
 import { toast, ToastContainer } from "react-toastify";
 
 const CostCenterMaster = () => {

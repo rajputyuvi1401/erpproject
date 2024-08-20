@@ -1,3 +1,4 @@
+/* Navbar styling */
 .navbar {
   position: fixed;
   top: 0;
@@ -5,19 +6,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 10px;
   background-color: #fff;
   border-bottom: 1px solid #ccc;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   color: grey;
+  margin-left: -10px;
 }
-
 .navbar-brand {
   display: flex;
   align-items: center;
 }
-
 .navbar-toggle {
   font-size: 24px;
   background: none;
@@ -32,6 +32,8 @@
 
 .navbar-menu {
   display: flex;
+  flex-grow: 1; /* Flex-grow to occupy available space */
+  justify-content: flex-end; /* Aligns menu items to the right */
 }
 
 .navbar-dropdown {
@@ -52,14 +54,16 @@
   top: 100%;
   left: 0;
   display: none;
-  background-color: #fff;
+  background-color: #dcd9d9;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   list-style-type: none;
   padding: 0;
   margin: 0;
+ 
 }
 
-.navbar-dropdown:hover .navbar-dropdown-menu {
+.navbar-dropdown:hover .navbar-dropdown-menu,
+.navbar-dropdown-menu.show {
   display: block;
 }
 
@@ -69,8 +73,10 @@
   text-decoration: none;
   color: #333;
 }
+
 .navbar-dropdown-item:hover {
-  background-color: #f1f1f1;
+  /* background-color: #f1f1f1; */
+  background-color: #333;
 }
 
 .navbar-actions {
@@ -81,7 +87,8 @@
 .navbar-search {
   padding: 5px 10px;
   margin-right: 10px;
-  border-radius: 40px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
 }
 
 .navbar-icon {
@@ -91,15 +98,16 @@
 
 .navbar-us {
   height: 20px;
-
   margin: 0 10px;
 }
+
 .navbar-user {
   height: 30px;
   border-radius: 50%;
   margin: 0 10px;
 }
 
+/* Responsive styles */
 @media (max-width: 768px) {
   .navbar-menu {
     display: none;
@@ -112,18 +120,32 @@
   .navbar-toggle {
     display: block;
   }
+
+  .side-nav.open .navbar-menu,
+  .side-nav.open .navbar-actions {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
 }
 
 @media (max-width: 576px) {
   .navbar {
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Wrap items to fit on smaller screens */
+    padding: 10px; /* Adjust padding for smaller screens */
   }
 
   .navbar-brand {
     justify-content: space-between;
-    width: 100%;
+    width: 100%; /* Ensure brand section spans full width */
   }
 }
+/* Custom style for logout button */
 #navid {
   border: none;
   padding: 10px 20px;
@@ -132,7 +154,7 @@
   width: 100%;
   color: #333;
 }
+
 #navid:hover {
   background-color: #f1f1f1;
-  width: 100%;
 }

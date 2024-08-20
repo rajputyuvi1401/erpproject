@@ -7,7 +7,7 @@ import {
   getItems,
   updateItem,
   deleteItem,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 const NewCardGradeMaster = () => {
   const [items, setItems] = useState([]);

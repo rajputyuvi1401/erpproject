@@ -8,7 +8,7 @@ import "./AddCycleTime.css";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { saveCycleTimeData } from "../../Service/Api.jsx";
+import { saveCycleTimeData } from "../../../Service/Api.jsx";
 
 const AddCycleTime = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);

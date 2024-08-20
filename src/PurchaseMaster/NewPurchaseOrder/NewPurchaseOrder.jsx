@@ -10,6 +10,7 @@ import ItemOther from "./ItemOther/ItemOther.jsx";
 import Schedule from "./Schedule/Schedule.jsx";
 import Ship from "./Ship/Ship.jsx";
 import Poinfo from "./POInfo/Poinfo.jsx";
+import { fetchSupplierData } from '../../Service/PurchaseApi.jsx';
 const NewPurchaseOrder = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -24,6 +25,69 @@ const NewPurchaseOrder = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+
+  const [supplierData, setSupplierData] = useState([]);
+  const [selectedSupplier, setSelectedSupplier] = useState('');
+  const [selectedCode, setSelectedCode] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const data = await fetchSupplierData();
+        setSupplierData(data);
+      } catch (error) {
+        console.error("Error fetching initial data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleSupplierChange = async (e) => {
+    const supplierName = e.target.value;
+    setSelectedSupplier(supplierName);
+
+    if (supplierName) {
+      try {
+        const data = await fetchSupplierData(supplierName);
+        if (data.length > 0) {
+          setSelectedCode(data[0].Code_No); // Assume the first result is the correct one
+        } else {
+          setSelectedCode('');
+        }
+      } catch (error) {
+        console.error("Error fetching supplier code:", error);
+      }
+    } else {
+      setSelectedCode('');
+    }
+  };
+
+  const handleCodeChange = async (e) => {
+    const code = e.target.value;
+    setSelectedCode(code);
+
+    if (code) {
+      try {
+        const data = await fetchSupplierData(code);
+        if (data.length > 0) {
+          setSelectedSupplier(data[0].Name); // Assume the first result is the correct one
+        } else {
+          setSelectedSupplier('');
+        }
+      } catch (error) {
+        console.error("Error fetching supplier name:", error);
+      }
+    } else {
+      setSelectedSupplier('');
+    }
+  };
+
   return (
     <div className="NewPurchaseMaster">
       <div className="container-fluid">
@@ -74,20 +138,34 @@ const NewPurchaseOrder = () => {
                         </div>
                         <div className="col-md-1">
                           <label>Supplier:</label>
-                          <input type="text" className="form-control" />
+                          <input
+              type="text"
+              className="form-control"
+              value={selectedSupplier}
+              onChange={handleSupplierChange}
+              disabled={loading}
+            />
                         </div>
                         <div className="col-md-1">
-                          <button className="btn newpurchase-btn mt-4">
-                            Select
-                          </button>
+                        <button className="btn  mt-4" onClick={() => {}}>
+            Select
+          </button>
                         </div>
                         <div className="col-md-1">
-                          <label></label>
-                          <select className="form-control">
-                            <option value="">S0053</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                          </select>
+                          <label>Code:</label>
+                          <select
+              className="form-control"
+              value={selectedCode}
+              onChange={handleCodeChange}
+              disabled={loading}
+            >
+              <option value="">Select Code</option>
+              {supplierData.map((supplier) => (
+                <option key={supplier.id} value={supplier.Code_No}>
+                  {supplier.Code_No}
+                </option>
+              ))}
+            </select>
                         </div>
                         <div className="col-md-1 text-start mt-4">
                           <i
@@ -112,13 +190,13 @@ const NewPurchaseOrder = () => {
                     </div>
                     <div className="newpirchase-main">
                       <ul
-                        class="nav nav-pills mb-3"
+                        className="nav nav-pills mb-3"
                         id="pills-tab"
                         role="tablist"
                       >
-                        <li class="nav-item" role="presentation">
+                        <li className="nav-item" role="presentation">
                           <button
-                            class="nav-link active"
+                            className="nav-link active"
                             id="pills-Item-Details-tab"
                             data-bs-toggle="pill"
                             data-bs-target="#pills-Item-Details"
@@ -130,9 +208,9 @@ const NewPurchaseOrder = () => {
                             Item Details
                           </button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        <li className="nav-item" role="presentation">
                           <button
-                            class="nav-link"
+                            className="nav-link"
                             id="pills-GST-Details-tab"
                             data-bs-toggle="pill"
                             data-bs-target="#pills-GST-Details"
@@ -144,9 +222,9 @@ const NewPurchaseOrder = () => {
                             GST Details
                           </button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        <li className="nav-item" role="presentation">
                           <button
-                            class="nav-link"
+                            className="nav-link"
                             id="pills-contact-tab"
                             data-bs-toggle="pill"
                             data-bs-target="#pills-contact"
@@ -158,9 +236,9 @@ const NewPurchaseOrder = () => {
                             Item Details Other
                           </button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        <li className="nav-item" role="presentation">
                           <button
-                            class="nav-link"
+                            className="nav-link"
                             id="pills-Schedule-tab"
                             data-bs-toggle="pill"
                             data-bs-target="#pills-Schedule"
@@ -172,9 +250,9 @@ const NewPurchaseOrder = () => {
                             Schedule Line
                           </button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        <li className="nav-item" role="presentation">
                           <button
-                            class="nav-link"
+                            className="nav-link"
                             id="pills-Ship-tab"
                             data-bs-toggle="pill"
                             data-bs-target="#pills-Ship"
@@ -186,9 +264,9 @@ const NewPurchaseOrder = () => {
                             Ship To Add
                           </button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        <li className="nav-item" role="presentation">
                           <button
-                            class="nav-link"
+                            className="nav-link"
                             id="pills-PO-Info-tab"
                             data-bs-toggle="pill"
                             data-bs-target="#pills-PO-Info"
@@ -201,9 +279,9 @@ const NewPurchaseOrder = () => {
                           </button>
                         </li>
                       </ul>
-                      <div class="tab-content" id="pills-tabContent">
+                      <div className="tab-content" id="pills-tabContent">
                         <div
-                          class="tab-pane fade show active"
+                          className="tab-pane fade show active"
                           id="pills-Item-Details"
                           role="tabpanel"
                           aria-labelledby="pills-Item-Details-tab"
@@ -212,7 +290,7 @@ const NewPurchaseOrder = () => {
                           <ItemDetails />
                         </div>
                         <div
-                          class="tab-pane fade"
+                          className="tab-pane fade"
                           id="pills-GST-Details"
                           role="tabpanel"
                           aria-labelledby="pills-GST-Details-tab"
@@ -221,7 +299,7 @@ const NewPurchaseOrder = () => {
                           <GSTDetails />
                         </div>
                         <div
-                          class="tab-pane fade"
+                          className="tab-pane fade"
                           id="pills-contact"
                           role="tabpanel"
                           aria-labelledby="pills-contact-tab"
@@ -230,7 +308,7 @@ const NewPurchaseOrder = () => {
                           <ItemOther />
                         </div>
                         <div
-                          class="tab-pane fade show active"
+                          className="tab-pane fade"
                           id="pills-Schedule"
                           role="tabpanel"
                           aria-labelledby="pills-Schedule-tab"
@@ -239,7 +317,7 @@ const NewPurchaseOrder = () => {
                           <Schedule />
                         </div>
                         <div
-                          class="tab-pane fade"
+                          className="tab-pane fade"
                           id="pills-Ship"
                           role="tabpanel"
                           aria-labelledby="pills-Ship-tab"
@@ -248,7 +326,7 @@ const NewPurchaseOrder = () => {
                           <Ship />
                         </div>
                         <div
-                          class="tab-pane fade"
+                          className="tab-pane fade"
                           id="pills-PO-Info"
                           role="tabpanel"
                           aria-labelledby="pills-PO-Info-tab"

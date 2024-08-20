@@ -7,7 +7,7 @@ import {
   getMetalTypes,
   updateMetalType,
   deleteMetalType,
-} from "../../Service/Api.jsx";
+} from "../../../Service/Api.jsx";
 
 const NewCardModelType = () => {
   const [data, setData] = useState([]);
@@ -103,7 +103,7 @@ const NewCardModelType = () => {
       <h5 className="card-title text-start">Model Type Master</h5>
       <form onSubmit={handleSave}>
         <div className="row mb-3" style={{ marginTop: "40px" }}>
-          <div className="col-sm-4 mb-3 text-start">
+          <div className="col-sm-3 mb-3 text-start">
             <label htmlFor="Prefix" className="form-label">
               Prefix:
             </label>
@@ -120,7 +120,7 @@ const NewCardModelType = () => {
               <div className="invalid-feedback">{errors.Prefix}</div>
             )}
           </div>
-          <div className="col-sm-4 mb-3 text-start">
+          <div className="col-sm-3 mb-3 text-start">
             <label htmlFor="MetalType" className="form-label">
               Metal Type:
             </label>
@@ -137,7 +137,7 @@ const NewCardModelType = () => {
               <div className="invalid-feedback">{errors.MetalType}</div>
             )}
           </div>
-          <div className="col-sm-4 mb-3 text-start">
+          <div className="col-sm-3 mb-3 text-start">
             <label htmlFor="ItemSizeUnit" className="form-label">
               Item Size Unit:
             </label>
@@ -156,7 +156,7 @@ const NewCardModelType = () => {
               <div className="invalid-feedback">{errors.ItemSizeUnit}</div>
             )}
           </div>
-          <div className="col-sm-4 d-flex align-items-end">
+          <div className="col-sm-3 d-flex align-items-end">
             <button
               type="submit"
               className="card-btn w-100"

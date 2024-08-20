@@ -4,7 +4,7 @@ import {
   addSector,
   updateSector,
   deleteSector,
-} from "../Service/Api.jsx";
+} from "../../Service/Api.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
@@ -100,7 +100,7 @@ const ToggleCardSector = () => {
     <div className="container">
       <div className="card-body">
         <div className="row text-start mb-3">
-          <div className="col-md-2">
+          <div className="col-md-4">
             <div className="mb-3">
               <label htmlFor="sectorPrefix" className="form-label">
                 Sector Profile:
@@ -128,7 +128,7 @@ const ToggleCardSector = () => {
               />
             </div>
           </div>
-          <div className="col-md-2">
+          <div className="col-md-2 mt-4">
             <div className="mb-3">
               <button className="btn" onClick={handleAddSector}>
                 Save

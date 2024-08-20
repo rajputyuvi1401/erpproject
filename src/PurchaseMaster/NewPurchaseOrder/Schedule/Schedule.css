@@ -4,37 +4,37 @@
     margin: 10px 10px;
   }
   
-  .table {
+  .scheduleline .table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  .table th, .table td {
+  .scheduleline .table th, .table td {
     text-align: center;
     padding: 8px;
     border: 1px solid #dee2e6;
   }
   
-  .table .form-control {
+  .scheduleline .table .form-control {
     width: 100%;
   }
   
-  .table-responsive {
+  .scheduleline .table-responsive {
     overflow-x: auto;
   }
   
-  .text-right {
+  .scheduleline .text-right {
     text-align: right;
   }
   
   @media (max-width: 768px) {
-    .table th, .table td {
+    .scheduleline  .table th, .table td {
       padding: 4px;
     }
   }
   
   @media (max-width: 576px) {
-    .table th, .table td {
+    .scheduleline .table th, .table td {
       font-size: 12px;
       padding: 2px;
     }

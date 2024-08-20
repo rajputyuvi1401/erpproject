@@ -4,7 +4,7 @@ import {
   addRegion,
   updateRegion,
   deleteRegion,
-} from "../Service/Api.jsx";
+} from "../../Service/Api.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
@@ -124,7 +124,7 @@ const ToggleCardRegion1 = () => {
               />
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 mt-4">
             <div className="mb-3">
               <button className="btn" onClick={handleAddRegion}>
                 Save

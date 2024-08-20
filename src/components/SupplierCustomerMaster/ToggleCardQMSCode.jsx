@@ -4,7 +4,7 @@ import {
   addQMSCode,
   updateQMSCode,
   deleteQMSCode,
-} from "../Service/Api.jsx";
+} from "../../Service/Api.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";

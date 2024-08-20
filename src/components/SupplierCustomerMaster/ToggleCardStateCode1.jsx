@@ -4,7 +4,7 @@ import {
   addState,
   updateState,
   deleteState,
-} from "../Service/Api.jsx";
+} from "../../Service/Api.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
@@ -158,9 +158,9 @@ const ToggleCardStateCode1 = () => {
               />
             </div>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-3 mt-4">
             <div className="mb-3">
-              <button className="btn btn-primary" onClick={handleAddState}>
+              <button className="btn " onClick={handleAddState}>
                 Save
               </button>
             </div>
@@ -230,7 +230,7 @@ const ToggleCardStateCode1 = () => {
                         </button>
                       ) : (
                         <button
-                          className="btn btn-warning me-2"
+                          className="btn  me-2"
                           onClick={() =>
                             handleEditState(
                               s.id,
@@ -246,7 +246,7 @@ const ToggleCardStateCode1 = () => {
                     </td>
                     <td>
                       <button
-                        className="btn btn-danger"
+                        className="btn "
                         onClick={() => handleDeleteState(s.id)}
                       >
                         <FaTrashAlt />
