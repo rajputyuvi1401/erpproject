@@ -3,8 +3,8 @@
 import axios from "axios";
 
 // Define base URLs
-// const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
-const BASE_URL = "api/All_Masters/";
+const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
+// const BASE_URL = "api/All_Masters/";
 const TAX_CODE_URL = `${BASE_URL}Tax_Code/`;
 const GST_MASTER_URL = `${BASE_URL}GST_Master/`;
 const CUT_WISE_URL = `${BASE_URL}Cut_Wise/`;
@@ -2201,3 +2201,4 @@ export const deleteBomItemGroup = async (id) => {
     throw new Error("Failed to delete BOM item group");
   }
 };
+

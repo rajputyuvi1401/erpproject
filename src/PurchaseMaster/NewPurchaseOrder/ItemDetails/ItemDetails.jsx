@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaTrash, FaEdit } from 'react-icons/fa';
-import { addItem, getItems, updateItem, deleteItem } from '../../../Service/PurchaseApi';
+import { addItem, getItems, updateItem, deleteItem ,fetchItemFields} from '../../../Service/PurchaseApi';
 import { toast, ToastContainer } from 'react-toastify';
 
 const ItemDetails = () => {
@@ -120,6 +120,36 @@ const ItemDetails = () => {
     }
   };
 
+  const handleSearch = async () => {
+    if (formData.Item) {
+      try {
+        const items = await fetchItemFields(formData.Item);
+        if (items.length > 0) {
+          // Assume the first match is the correct one
+          const item = items[0];
+          setFormData({
+            ...formData,
+            ItemDescription: item.Name_Description,
+            Rate: item.Rate
+          });
+        } else {
+          setFormData({
+            ...formData,
+            ItemDescription: '',
+            Rate: ''
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching item data:", error);
+        setFormData({
+          ...formData,
+          ItemDescription: '',
+          Rate: ''
+        });
+      }
+    }
+  };
+
   return (
     <div className="container-fluid">
       <ToastContainer />
@@ -130,7 +160,7 @@ const ItemDetails = () => {
               <table className="table table-responsive">
                 <thead>
                   <tr>
-                    <th>Item</th>
+                    <th>SE Item</th>
                     <th>Item Description</th>
                     <th>Item Size</th>
                     <th>Rate</th>
@@ -155,7 +185,7 @@ const ItemDetails = () => {
                         onChange={handleChange}
                       />
                       <span>
-                        <button className="btnpurchase" >Search</button>
+                        <button className="btnpurchase" onClick={handleSearch} >Search</button>
                       </span>
                     </td>
                     <td>

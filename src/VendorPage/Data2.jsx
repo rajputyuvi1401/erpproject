@@ -68,7 +68,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
       <form autoComplete="off">
         <div className="date-2">
           <div className="container-fluid">
-            <div className="row">
+            <div className="row text-start">
               <div className="col-md-6">
                 <div className="row mb-3">
                   <label className="col-sm-4 col-form-label">VAT TIN:</label>
@@ -267,7 +267,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
                   </label>
                   <div className="col-sm-8">
                     <input
-                      type="text"
+                      type="date"
                       className="form-control"
                       name="Vat_Tin_Date"
                       value={formData.Vat_Tin_Date || ""}
@@ -284,7 +284,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
                   </label>
                   <div className="col-sm-8">
                     <input
-                      type="text"
+                      type="date"
                       className="form-control"
                       name="Cst_Tin_Date"
                       value={formData.Cst_Tin_Date || ""}
@@ -391,7 +391,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
                   </label>
                   <div className="col-sm-8">
                     <input
-                      type="text"
+                      type="date"
                       className="form-control"
                       name="Import_Export_Date"
                       value={formData.Import_Export_Date || ""}
@@ -408,7 +408,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
                   <label className="col-sm-4 col-form-label">ARN Date:</label>
                   <div className="col-sm-8">
                     <input
-                      type="text"
+                      type="date"
                       className="form-control"
                       name="ARN_Date"
                       value={formData.ARN_Date || ""}
@@ -438,7 +438,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
                   <label className="col-sm-4 col-form-label">LUT Date:</label>
                   <div className="col-sm-8">
                     <input
-                      type="text"
+                      type="date"
                       className="form-control"
                       name="LUT_Date"
                       value={formData.LUT_Date || ""}

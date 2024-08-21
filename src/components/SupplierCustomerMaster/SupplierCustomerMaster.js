@@ -12,7 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
   saveSupplierCustomerData,
-  fetchCategories,
+  // fetchCategories,
   fetchSectors,
   fetchGroups,
   fetchQMSCodes,
@@ -21,7 +21,7 @@ import {
   fetchCountries,
   fetchPaymentTerms,
   fetchRegions,
-  fetchStates
+  fetchStates,
 } from "../../Service/Api.jsx";
 import ToggleCard1 from "./ToggleCard1.jsx";
 import ToggleCardCity from "./ToggleCardCity.jsx";
@@ -33,6 +33,7 @@ import ToggleCardRegion1 from "./ToggleCardRegion1";
 import ToggleCardStateCode1 from "./ToggleCardStateCode1";
 import ToggleCardSector from "./ToggleCardSector.jsx";
 import ToggleCardQMSCode from "./ToggleCardQMSCode.jsx";
+
 
 const SupplierCustomerMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -51,7 +52,7 @@ const SupplierCustomerMaster = () => {
 
   // New button open card
   const [isCardOpen, setIsCardOpen] = useState(false);
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
   const [sectors, setSectors] = useState([]);
   const [groups, setGroups] = useState([]);
   const [qmsCodes, setQMSCodes] = useState([]);
@@ -181,26 +182,58 @@ const SupplierCustomerMaster = () => {
 
   const validate = () => {
     const newErrors = {};
+    
+    // List of fields that are required
+    const requiredFields = [
+      "Type",
+      "Name",
+      "Address_Line_1",
+      "Address_Line_2",
+      "Address_Line_3",
+      "Region",
+      "PAN_Type",
+      "PAN_NO",
+      "State_Code",
+      "GST_Tax_Code",
+      "Code_No",
+    "Payment_Term",
+    "Pin_Code",
+    "GST_No2",
+    "Payment_Remarke",
+    "Vendor_Code",
+      // Add other required fields here
+    ];
+  
     for (const key in formData) {
-      if (
-        formData[key] === "" ||
-        (typeof formData[key] === "boolean" && !formData[key])
-      ) {
-        newErrors[key] = "This field is required";
+      // Check if the field is required
+      if (requiredFields.includes(key)) {
+        if (
+          formData[key] === "" ||
+          (typeof formData[key] === "boolean" && !formData[key])
+        ) {
+          newErrors[key] = "This field is required";
+        }
       }
     }
+    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
+  
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
+    
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: type === "checkbox" ? checked : value,
-    });
+  
+      Payment_Remarke:
+        name === "Payment_Term"
+          ? paymentTerms.find((term) => term.Code === value)?.Desc || ""
+          : prevFormData.Payment_Remarke,
+    }));
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data Before Submission:", formData);
@@ -239,145 +272,157 @@ const SupplierCustomerMaster = () => {
   };
 
   // card
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const data = await fetchCategories();
-        setCategories(data);
-      } catch (error) {
-        toast.error("Failed to fetch categories");
-      }
-    };
-
-    getCategories();
-  }, []);
+  // useEffect(() => {
+   
+  //  fetchCategoriesAndSet();
+  // }, []);
+  // const fetchCategoriesAndSet = async () => {
+  //   try {
+  //     const data = await fetchCategories();
+  //     setCategories(data);
+  //   } catch (error) {
+  //     toast.error("Failed to fetch categories");
+  //   }
+  // };
 
   // sector
   useEffect(() => {
-    const getSectors = async () => {
-      try {
-        const data = await fetchSectors();
-        setSectors(data);
-      } catch (error) {
-        console.error("Failed to fetch sectors", error);
-      }
-    };
-
-    getSectors();
+    fetchSectorsAndSet();
   }, []);
+
+  const fetchSectorsAndSet = async () => {
+    try {
+      const data = await fetchSectors();
+      setSectors(data);
+    } catch (error) {
+      console.error("Failed to fetch sectors", error);
+    }
+  };
 
   // group
   useEffect(() => {
-    const getGroups = async () => {
-      try {
-        const data = await fetchGroups();
-        setGroups(data);
-      } catch (error) {
-        console.error("Failed to fetch groups", error);
-      }
-    };
-
-    getGroups();
+        fetchGroupsAndSet();
   }, []);
+  const fetchGroupsAndSet = async () => {
+    try {
+      const data = await fetchGroups();
+      setGroups(data);
+    } catch (error) {
+      console.error("Failed to fetch groups", error);
+    }
+  };
+
 
   // QMSC
   useEffect(() => {
-    const getQMSCodes = async () => {
-      try {
-        const data = await fetchQMSCodes();
-        setQMSCodes(data);
-      } catch (error) {
-        toast.error("Failed to fetch QMS Codes");
-      }
-    };
-
-    getQMSCodes();
+    
+fetchQMSCodesAndSet();
   }, []);
-
+  const fetchQMSCodesAndSet = async () => {
+    try {
+      const data = await fetchQMSCodes();
+      setQMSCodes(data);
+    } catch (error) {
+      toast.error("Failed to fetch QMS Codes");
+    }
+  };
   // Cities
   useEffect(() => {
-    const getCities = async () => {
-      try {
-        const data = await fetchCities();
-        setCities(data);
-      } catch (error) {
-        toast.error("Failed to fetch cities");
-      }
-    };
-
-    getCities();
+    
+        fetchCityAndSet();
   }, []);
-
+  const fetchCityAndSet = async () => {
+    try {
+      const data = await fetchCities();
+      setCities(data);
+    } catch (error) {
+      toast.error("Failed to fetch cities");
+    }
+  };
   // currencies
   useEffect(() => {
-    const getCurrencies = async () => {
-      try {
-        const data = await fetchCurrencies();
-        setCurrencies(data);
-      } catch (error) {
-        toast.error("Failed to fetch currencies");
-      }
-    };
-
-    getCurrencies();
+   
+fetchCurrencyAndSet();
   }, []);
-
+  const fetchCurrencyAndSet = async () => {
+    try {
+      const data = await fetchCurrencies();
+      setCurrencies(data);
+    } catch (error) {
+      toast.error("Failed to fetch currencies");
+    }
+  };
   // Country
   useEffect(() => {
-    const getCountries = async () => {
-      try {
-        const data = await fetchCountries();
-        setCountries(data);
-      } catch (error) {
-        console.error("Failed to fetch countries:", error);
-      }
-    };
-
-    getCountries();
+fetchCountryAndSet();
   }, []);
-
+  const fetchCountryAndSet = async () => {
+    try {
+      const data = await fetchCountries();
+      setCountries(data);
+    } catch (error) {
+      console.error("Failed to fetch countries:", error);
+    }
+  };
   // Payment Terms
   useEffect(() => {
-    const getPaymentTerms = async () => {
-      try {
-        const data = await fetchPaymentTerms();
-        setPaymentTerms(data);
-      } catch (error) {
-        console.error("Failed to fetch payment terms:", error);
-      }
-    };
-
-    getPaymentTerms();
+    fetchPaymentTermsAndSet();
+   
   }, []);
+  const fetchPaymentTermsAndSet = async () => {
+    try {
+      const data = await fetchPaymentTerms();
+      setPaymentTerms(data);
+    } catch (error) {
+      console.error("Failed to fetch payment terms:", error);
+    }
+  };
+
+ 
 
   // Region
   useEffect(() => {
-    const getRegions = async () => {
-      try {
-        const data = await fetchRegions();
-        setRegions(data);
-      } catch (error) {
-        console.error("Failed to fetch regions:", error);
-      }
-    };
-
-    getRegions();
+    fetchRegionsAndSet();
   }, []);
+
+  const  fetchRegionsAndSet = async () => {
+    try {
+      const data = await fetchRegions();
+      setRegions(data);
+    } catch (error) {
+      console.error("Failed to fetch regions:", error);
+    }
+  };
 
   // statecode
   useEffect(() => {
-    const getStates = async () => {
-      try {
-        const data = await fetchStates();
-        setStates(data);
-      } catch (error) {
-        console.error("Failed to fetch states", error);
-      }
-    };
-
-    getStates();
+   
+    fetchStatesAndSet();
   }, []);
 
+  const fetchStatesAndSet = async () => {
+    try {
+      const data = await fetchStates();
+      setStates(data);
+    } catch (error) {
+      console.error("Failed to fetch states", error);
+    }
+  };
+  const handleRefresh = () => {
+    fetchStatesAndSet();
+    fetchSectorsAndSet(); 
+    fetchRegionsAndSet();
+    fetchQMSCodesAndSet();
+    fetchPaymentTermsAndSet();
+    fetchGroupsAndSet();
+    fetchCurrencyAndSet();
+    fetchCountryAndSet();
+    fetchCityAndSet();
+    // fetchCategoriesAndSet();
+  };
+
+
+  // state c
 
   return (
     <div className="SupplierC">
@@ -503,7 +548,7 @@ const SupplierCustomerMaster = () => {
                                             >
                                               Type:
                                             </label>
-                                            <div className="col-sm-5">
+                                            <div className="col-sm-8">
                                               <select
                                                 id="Type"
                                                 name="Type"
@@ -514,7 +559,7 @@ const SupplierCustomerMaster = () => {
                                                 <option value="" disabled>
                                                   Select ..
                                                 </option>
-                                                {categories.map(
+                                                {/* {categories.map(
                                                   (category, index) => (
                                                     <option
                                                       key={index}
@@ -525,7 +570,7 @@ const SupplierCustomerMaster = () => {
                                                       {category.Category_Name}
                                                     </option>
                                                   )
-                                                )}
+                                                )} */}
                                                 <option value="Customer">
                                                   Customer
                                                 </option>
@@ -545,7 +590,7 @@ const SupplierCustomerMaster = () => {
                                                 </small>
                                               )}
                                             </div>
-                                            <div className="col-sm-2">
+                                            {/* <div className="col-sm-2">
                                               <button
                                                 className="btn"
                                                 onClick={() => toggleCard()}
@@ -556,11 +601,12 @@ const SupplierCustomerMaster = () => {
                                             <div className="col-sm-1">
                                               <button
                                                 className="btn"
+                                                onClick={handleRefresh} 
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
                                               </button>
-                                            </div>
+                                            </div> */}
                                           </div>
                                           <div className="row mb-3">
                                             <label
@@ -691,33 +737,7 @@ const SupplierCustomerMaster = () => {
                                                     {region.RegionName}
                                                   </option>
                                                 ))}
-                                                <option value="1">
-                                                  Ludhiana
-                                                </option>
-                                                <option value="2">
-                                                  Uttarakhand
-                                                </option>
-                                                <option value="3">
-                                                  Haryana
-                                                </option>
-                                                <option value="4">
-                                                  Rajasthan
-                                                </option>
-                                                <option value="5">
-                                                  Utter Pradesh
-                                                </option>
-                                                <option value="6">
-                                                  Gujrat
-                                                </option>
-                                                <option value="7">
-                                                  Maharashtra
-                                                </option>
-                                                <option value="8">
-                                                  TamilNadu
-                                                </option>
-                                                <option value="9">
-                                                  Telangana
-                                                </option>
+                                               
                                               </select>
                                               {errors.Region && (
                                                 <small className="text-danger">
@@ -738,6 +758,7 @@ const SupplierCustomerMaster = () => {
                                             <div className="col-sm-1">
                                               <button
                                                 className="btn"
+                                                onClick={handleRefresh} 
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -828,12 +849,16 @@ const SupplierCustomerMaster = () => {
                                                   Select ..
                                                 </option>
                                                 {states.map((state) => (
-              <option key={state.id} value={state.State_Code_Alpha}>
-                {state.State_Code_Alpha}
-              </option>
-            ))}
-                                                <option value="FG">FG</option>
-                                                <option value="RM">RM</option>
+                                                  <option
+                                                    key={state.id}
+                                                    value={
+                                                      state.State_Code_Alpha
+                                                    }
+                                                  >
+                                                    {state.State_Code_Alpha}
+                                                  </option>
+                                                ))}
+                                               
                                               </select>
                                               {errors.State_Code && (
                                                 <small className="text-danger">
@@ -853,7 +878,7 @@ const SupplierCustomerMaster = () => {
                                             </div>
                                             <div className="col-sm-1">
                                               <button
-                                                className="btn"
+                                                className="btn" onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -930,11 +955,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Email_Id}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Email_Id && (
+                                              {/* {errors.Email_Id && (
                                                 <small className="text-danger">
                                                   {errors.Email_Id}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -955,11 +980,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Contact_No}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Contact_No && (
+                                              {/* {errors.Contact_No && (
                                                 <small className="text-danger">
                                                   {errors.Contact_No}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -995,11 +1020,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.TCS}
                                                 onChange={handleChange}
                                               />
-                                              {errors.TCS && (
+                                              {/* {errors.TCS && (
                                                 <small className="text-danger">
                                                   {errors.TCS}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1024,11 +1049,11 @@ const SupplierCustomerMaster = () => {
                                                 }
                                                 onChange={handleChange}
                                               />
-                                              {errors.Insurance_Policy_No && (
+                                              {/* {errors.Insurance_Policy_No && (
                                                 <small className="text-danger">
                                                   {errors.Insurance_Policy_No}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1051,11 +1076,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Subcon_Challan}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Subcon_Challan && (
+                                              {/* {errors.Subcon_Challan && (
                                                 <small className="text-danger">
                                                   {errors.Subcon_Challan}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1082,11 +1107,11 @@ const SupplierCustomerMaster = () => {
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
                                               </select>
-                                              {errors.GL && (
+                                              {/* {errors.GL && (
                                                 <small className="text-danger">
                                                   {errors.GL}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
                                         </div>
@@ -1143,7 +1168,7 @@ const SupplierCustomerMaster = () => {
                                                     key={term.id}
                                                     value={term.Code}
                                                   >
-                                                    {term.Code} - {term.Desc}
+                                                  {term.Desc}
                                                   </option>
                                                 ))}
                                               </select>
@@ -1161,6 +1186,7 @@ const SupplierCustomerMaster = () => {
                                               <button
                                                 className="btn"
                                                 type="button"
+                                                onClick={handleRefresh} 
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -1222,6 +1248,7 @@ const SupplierCustomerMaster = () => {
                                               <button
                                                 className="btn"
                                                 type="button"
+                                                onClick={handleRefresh} 
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -1292,6 +1319,7 @@ const SupplierCustomerMaster = () => {
                                               <button
                                                 className="btn"
                                                 type="button"
+                                                onClick={handleRefresh} 
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -1366,6 +1394,7 @@ const SupplierCustomerMaster = () => {
                                               <button
                                                 className="btn"
                                                 type="button"
+                                                onClick={handleRefresh} 
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -1402,11 +1431,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.TDS_Rate}
                                                 onChange={handleChange}
                                               />
-                                              {errors.TDS_Rate && (
+                                              {/* {errors.TDS_Rate && (
                                                 <small className="text-danger">
                                                   {errors.TDS_Rate}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1416,7 +1445,7 @@ const SupplierCustomerMaster = () => {
                                               htmlFor="GST_No"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              GST No:
+                                              GST Type:
                                             </label>
                                             <div className="col-sm-5">
                                               <select
@@ -1514,11 +1543,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.CIN_No}
                                                 onChange={handleChange}
                                               />
-                                              {errors.CIN_No && (
+                                              {/* {errors.CIN_No && (
                                                 <small className="text-danger">
                                                   {errors.CIN_No}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1539,11 +1568,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Website}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Website && (
+                                              {/* {errors.Website && (
                                                 <small className="text-danger">
                                                   {errors.Website}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1564,11 +1593,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Mobile_NO}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Mobile_NO && (
+                                              {/* {errors.Mobile_NO && (
                                                 <small className="text-danger">
                                                   {errors.Mobile_NO}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1589,11 +1618,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Incoterms}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Incoterms && (
+                                              {/* {errors.Incoterms && (
                                                 <small className="text-danger">
                                                   {errors.Incoterms}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1616,13 +1645,13 @@ const SupplierCustomerMaster = () => {
                                                 }
                                                 onChange={handleChange}
                                               />
-                                              {errors.Insurance_Policy_Expiry_Date && (
+                                              {/* {errors.Insurance_Policy_Expiry_Date && (
                                                 <small className="text-danger">
                                                   {
                                                     errors.Insurance_Policy_Expiry_Date
                                                   }
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1643,11 +1672,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.VAT_TIN}
                                                 onChange={handleChange}
                                               />
-                                              {errors.VAT_TIN && (
+                                              {/* {errors.VAT_TIN && (
                                                 <small className="text-danger">
                                                   {errors.VAT_TIN}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1668,11 +1697,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Montly_Sale}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Montly_Sale && (
+                                              {/* {errors.Montly_Sale && (
                                                 <small className="text-danger">
                                                   {errors.Montly_Sale}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
                                         </div>
@@ -1695,6 +1724,7 @@ const SupplierCustomerMaster = () => {
                                                 id="Payment_Remarke"
                                                 name="Payment_Remarke"
                                                 value={formData.Payment_Remarke}
+                                                
                                                 onChange={handleChange}
                                               />
                                               {errors.Payment_Remarke && (
@@ -1732,8 +1762,7 @@ const SupplierCustomerMaster = () => {
                                                     {sector.SectorName}
                                                   </option>
                                                 ))}
-                                                <option value="FG">FG</option>
-                                                <option value="RM">RM</option>
+                                                
                                               </select>
                                             </div>
                                             <div className="col-sm-2">
@@ -1749,6 +1778,7 @@ const SupplierCustomerMaster = () => {
                                               <button
                                                 className="btn"
                                                 type="button"
+                                                onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -1798,6 +1828,7 @@ const SupplierCustomerMaster = () => {
                                               <button
                                                 className="btn"
                                                 type="button"
+                                                onClick={handleRefresh} 
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -1822,11 +1853,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Distance}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Distance && (
+                                              {/* {errors.Distance && (
                                                 <small className="text-danger">
                                                   {errors.Distance}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1872,11 +1903,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Legal_Name_GST}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Legal_Name_GST && (
+                                              {/* {errors.Legal_Name_GST && (
                                                 <small className="text-danger">
                                                   {errors.Legal_Name_GST}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1897,11 +1928,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Cust_Short_Name}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Cust_Short_Name && (
+                                              {/* {errors.Cust_Short_Name && (
                                                 <small className="text-danger">
                                                   {errors.Cust_Short_Name}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1947,11 +1978,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.MSME_No}
                                                 onChange={handleChange}
                                               />
-                                              {errors.MSME_No && (
+                                              {/* {errors.MSME_No && (
                                                 <small className="text-danger">
                                                   {errors.MSME_No}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -1972,11 +2003,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.LUT_No}
                                                 onChange={handleChange}
                                               />
-                                              {errors.LUT_No && (
+                                              {/* {errors.LUT_No && (
                                                 <small className="text-danger">
                                                   {errors.LUT_No}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -2029,12 +2060,12 @@ const SupplierCustomerMaster = () => {
                                                   </option>
                                                 ))}
                                               </select>
-
+{/* 
                                               {errors.QMSC_Code && (
                                                 <small className="text-danger">
                                                   {errors.QMSC_Code}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                             <div className="col-sm-2">
                                               <button
@@ -2051,6 +2082,7 @@ const SupplierCustomerMaster = () => {
                                               <button
                                                 className="btn"
                                                 type="button"
+                                                onClick={handleRefresh} 
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -2066,61 +2098,32 @@ const SupplierCustomerMaster = () => {
                                             >
                                               Active:
                                             </label>
-                                            {/* <div className="col-sm-2">
-                                              <div className="form-check">
-                                                <input
-                                                  className="form-check-input"
-                                                  type="checkbox"
-                                                  id="Active"
-                                                  name="Active"
-                                                  checked={formData.Active}
-                                                  onChange={handleChange}
-                                                />
-                                                <label
-                                                  className="form-check-label"
-                                                  htmlFor="Active"
-                                                >
-                                                  Sales
-                                                </label>
-                                              </div>
-                                            </div>
-                                            <div className="col-sm-2">
-                                              <div className="form-check">
-                                                <input
-                                                  className="form-check-input"
-                                                  type="checkbox"
-                                                  id="Active"
-                                                  name="Active"
-                                                  checked={formData.Active}
-                                                  onChange={handleChange}
-                                                />
-                                                <label
-                                                  className="form-check-label"
-                                                  htmlFor="Active"
-                                                >
-                                                  Purchase
-                                                </label>
-                                              </div>
-                                            </div> */}
-                                            <div className="col-md-2">
-                                              <input
-                                                type="text"
-                                                className="form-control"
+                                         
+                                            <div className="col-md-3">
+                                            <select
                                                 id="Active"
                                                 name="Active"
+                                                className="form-select"
                                                 value={formData.Active}
                                                 onChange={handleChange}
-                                              />
-                                              {errors.Active && (
+                                              >
+                                                <option value="">
+                                                  Select ..
+                                                </option>
+                                                <option>Sale</option>
+                                                <option>Purchase</option>
+
+                                              </select>
+                                              {/* {errors.Active && (
                                                 <small className="text-danger">
                                                   {errors.Active}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
 
                                             <label
                                               htmlFor="QMSC_Date"
-                                              className="col-sm-3 col-form-label"
+                                              className="col-sm-2 col-form-label"
                                             >
                                               QMSC Date:
                                             </label>
@@ -2133,11 +2136,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.QMSC_Date}
                                                 onChange={handleChange}
                                               />
-                                              {errors.QMSC_Date && (
+                                              {/* {errors.QMSC_Date && (
                                                 <small className="text-danger">
                                                   {errors.QMSC_Date}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -2158,11 +2161,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Std_Packing}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Std_Packing && (
+                                              {/* {errors.Std_Packing && (
                                                 <small className="text-danger">
                                                   {errors.Std_Packing}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -2183,11 +2186,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Old_ERP_Code}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Old_ERP_Code && (
+                                              {/* {errors.Old_ERP_Code && (
                                                 <small className="text-danger">
                                                   {errors.Old_ERP_Code}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                             <label
                                               htmlFor="Delivery_Lead_Time"
@@ -2206,11 +2209,11 @@ const SupplierCustomerMaster = () => {
                                                 }
                                                 onChange={handleChange}
                                               />
-                                              {errors.Delivery_Lead_Time && (
+                                              {/* {errors.Delivery_Lead_Time && (
                                                 <small className="text-danger">
                                                   {errors.Delivery_Lead_Time}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -2231,11 +2234,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.EORI_No}
                                                 onChange={handleChange}
                                               />
-                                              {errors.EORI_No && (
+                                              {/* {errors.EORI_No && (
                                                 <small className="text-danger">
                                                   {errors.EORI_No}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
 
@@ -2256,11 +2259,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Montly_Purchase}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Montly_Purchase && (
+                                              {/* {errors.Montly_Purchase && (
                                                 <small className="text-danger">
                                                   {errors.Montly_Purchase}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                             <label
                                               htmlFor="Discount_Per"
@@ -2277,11 +2280,11 @@ const SupplierCustomerMaster = () => {
                                                 value={formData.Discount_Per}
                                                 onChange={handleChange}
                                               />
-                                              {errors.Discount_Per && (
+                                              {/* {errors.Discount_Per && (
                                                 <small className="text-danger">
                                                   {errors.Discount_Per}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
                                         </div>
@@ -2319,9 +2322,7 @@ const SupplierCustomerMaster = () => {
                                   </div>
 
                                   <ToggleCard1
-                                    onCategoryChange={(newCategories) =>
-                                      setCategories(newCategories)
-                                    }
+                                    
                                   />
                                 </div>
                               )}

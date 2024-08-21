@@ -37,13 +37,13 @@ const ToggleCardRegion1 = () => {
       toast.error("All fields are required");
       return;
     }
-
+  
     try {
       await addRegion(regionCode, regionName);
-      setRegions([
-        ...regions,
-        { RegionCode: regionCode, RegionName: regionName },
-      ]);
+      // Re-fetch the regions
+      const updatedRegions = await fetchRegions();
+      setRegions(updatedRegions);
+  
       setRegionCode("");
       setRegionName("");
       toast.success("Region added successfully");
@@ -51,7 +51,7 @@ const ToggleCardRegion1 = () => {
       toast.error("Failed to add region");
     }
   };
-
+  
   const handleEditRegion = (id, code, name) => {
     setEditingRegion(id);
     setEditRegionCode(code);
@@ -99,7 +99,7 @@ const ToggleCardRegion1 = () => {
           <div className="col-md-4">
             <div className="mb-3">
               <label htmlFor="regionCode" className="form-label">
-                Region Code:
+                State Code:
               </label>
               <input
                 type="text"
@@ -113,7 +113,7 @@ const ToggleCardRegion1 = () => {
           <div className="col-md-4">
             <div className="mb-3">
               <label htmlFor="regionName" className="form-label">
-                Region Name:
+                State Name:
               </label>
               <input
                 type="text"

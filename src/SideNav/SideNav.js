@@ -112,7 +112,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <span>Masters</span>
             </div>
             <Dropdown.Menu show={openDropdown === "masters"}>
-              <Dropdown.Item as={Link} to="/supplier-customer-master">
+              <Dropdown.Item as={Link} to="/vender-list">
                 Supplier Customer Master
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="/business-partner">

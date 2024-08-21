@@ -161,7 +161,7 @@ const VendorPage = () => {
                     <div className="container-fluid">
                       <div className="top-but">
                         <div className="row text-start">
-                          <div className="col-md-10">
+                          <div className="col-md-9">
                             <button className="btn" type="button">
                               Company Setup
                             </button>
@@ -172,7 +172,7 @@ const VendorPage = () => {
                               On D1 12/07/2022 2:57 PM
                             </button>
                           </div>
-                          <div className="col-md-2 text-end">
+                          <div className="col-md-3 text-end">
                             <button className="btn">General Setting</button>
                           </div>
                         </div>

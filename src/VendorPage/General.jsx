@@ -59,7 +59,7 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
     <div className="VendorGeneral">
       <div className="container-fluid">
         <form onSubmit={handleGeneralSubmit} autoComplete="off">
-          <div className="row">
+          <div className="row text-start">
             <div className="col-md-6">
               <div className="form">
                 <div className="row mb-3">
