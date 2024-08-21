@@ -837,29 +837,16 @@ fetchCountryAndSet();
                                             >
                                               State Code:
                                             </label>
-                                            <div className="col-sm-5">
-                                              <select
+                                            <div className="col-sm-4">
+                                            <input
+                                                type="email"
+                                                className="form-control"
                                                 id="State_Code"
                                                 name="State_Code"
-                                                className="form-select"
                                                 value={formData.State_Code}
                                                 onChange={handleChange}
-                                              >
-                                                <option value="" disabled>
-                                                  Select ..
-                                                </option>
-                                                {states.map((state) => (
-                                                  <option
-                                                    key={state.id}
-                                                    value={
-                                                      state.State_Code_Alpha
-                                                    }
-                                                  >
-                                                    {state.State_Code_Alpha}
-                                                  </option>
-                                                ))}
-                                               
-                                              </select>
+                                              />
+                                            
                                               {errors.State_Code && (
                                                 <small className="text-danger">
                                                   {errors.State_Code}
@@ -867,6 +854,9 @@ fetchCountryAndSet();
                                               )}
                                             </div>
                                             <div className="col-sm-2">
+                                              <button className="btn"></button>
+                                            </div>
+                                            <div className="col-sm-1">
                                               <button
                                                 className="btn"
                                                 onClick={() =>

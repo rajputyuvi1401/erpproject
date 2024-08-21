@@ -3,8 +3,8 @@
 import axios from 'axios';
 
 // Services/PurchaseApi.jsx
-const BASE_URL = "http://13.201.136.34:8000/Purchase/";
-// const BASE_URL = "api/Purchase/";
+// const BASE_URL = "http://13.201.136.34:8000/Purchase/";
+const BASE_URL = "api/Purchase/";
 export const addItem = async (data) => {
     try {
         const response = await fetch(`${BASE_URL}ItemDetail/`, {
@@ -254,23 +254,4 @@ export const fetchItemFields = async (searchTerm = '') => {
   };
 
 
-  // fetch type code
-  export const fetchCodeByName = async (name) => {
-    try {
-      const response = await axios.get(`${BASE_URL}CodeGenerated/customers/?name=${name}`);
-      return response.data;
-  } catch (error) {
-    console.error('Error fetching code:', error);
-    throw error;
-  }
-  };
-
-  export const postSupplier = async (supplierData) => {
-    try {
-      const response = await axios.post(`${BASE_URL}CodeGenerated/customers/`, supplierData);
-      return response.data;
-    } catch (error) {
-      console.error('Error posting supplier:', error);
-      throw error;
-    }
-  };
+  
