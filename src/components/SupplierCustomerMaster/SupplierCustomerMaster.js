@@ -33,6 +33,8 @@ import ToggleCardRegion1 from "./ToggleCardRegion1";
 import ToggleCardStateCode1 from "./ToggleCardStateCode1";
 import ToggleCardSector from "./ToggleCardSector.jsx";
 import ToggleCardQMSCode from "./ToggleCardQMSCode.jsx";
+import { Link } from "react-router-dom";
+import { getCustomerCode } from "../../Service/PurchaseApi.jsx";
 
 
 const SupplierCustomerMaster = () => {
@@ -220,18 +222,33 @@ const SupplierCustomerMaster = () => {
     return Object.keys(newErrors).length === 0;
   };
   
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const { name, value, type, checked } = e.target;
-    
+  
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: type === "checkbox" ? checked : value,
-  
+      [name]: type === 'checkbox' ? checked : value,
       Payment_Remarke:
-        name === "Payment_Term"
-          ? paymentTerms.find((term) => term.Code === value)?.Desc || ""
+        name === 'Payment_Term'
+          ? paymentTerms.find((term) => term.Code === value)?.Desc || ''
           : prevFormData.Payment_Remarke,
     }));
+  
+    if (name === 'Type' && value === 'Customer') {
+      try {
+        const customerData = await getCustomerCode();
+        if (customerData && customerData.code) {
+          console.log('Fetched Customer Code:', customerData.code);
+  
+          setFormData((prevData) => ({
+            ...prevData,
+            Code_No: customerData.code,
+          }));
+        }
+      } catch (error) {
+        console.error('Error setting customer code:', error);
+      }
+    }
   };
   
   const handleSubmit = async (e) => {
@@ -422,7 +439,8 @@ fetchCountryAndSet();
   };
 
 
-  // state c
+  // Type supplier
+
 
   return (
     <div className="SupplierC">
@@ -447,9 +465,14 @@ fetchCountryAndSet();
                           </h5>
                         </div>
                         <div className="col-md-6 text-end">
-                          <button className="SupplierCusbtn">
-                            Supplier/Customer List
-                          </button>
+                         
+                          <Link
+                        
+                            to={"/Vender-List"}
+                            className="SupplierCusbtn"
+                          >
+                           Supplier/Customer List
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -559,22 +582,11 @@ fetchCountryAndSet();
                                                 <option value="" disabled>
                                                   Select ..
                                                 </option>
-                                                {/* {categories.map(
-                                                  (category, index) => (
-                                                    <option
-                                                      key={index}
-                                                      value={
-                                                        category.Category_Name
-                                                      }
-                                                    >
-                                                      {category.Category_Name}
-                                                    </option>
-                                                  )
-                                                )} */}
+                                                
                                                 <option value="Customer">
                                                   Customer
                                                 </option>
-                                                <option value="Supplier">
+                                                {/* <option value="Supplier">
                                                   Supplier
                                                 </option>
                                                 <option value="Job Work">
@@ -582,7 +594,7 @@ fetchCountryAndSet();
                                                 </option>
                                                 <option value="C/S/JW">
                                                   C/S/JW
-                                                </option>
+                                                </option> */}
                                               </select>
                                               {errors.Type && (
                                                 <small className="text-danger">
@@ -1135,6 +1147,7 @@ fetchCountryAndSet();
                                                 name="Code_No"
                                                 value={formData.Code_No}
                                                 onChange={handleChange}
+                                              readOnly
                                               />
                                               {errors.Code_No && (
                                                 <small className="text-danger">

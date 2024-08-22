@@ -253,5 +253,15 @@ export const fetchItemFields = async (searchTerm = '') => {
     }
   };
 
+// Type Customer
 
   
+export const getCustomerCode = async () => {
+  try {
+    const response = await axios.post(`${BASE_URL}CodeGenerated/customers/`, { name: "customers" });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching customer code:", error);
+    throw error;
+  }
+};
