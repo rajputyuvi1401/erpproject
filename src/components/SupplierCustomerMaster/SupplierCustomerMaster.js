@@ -20,8 +20,8 @@ import {
   fetchCurrencies,
   fetchCountries,
   fetchPaymentTerms,
-  fetchRegions,
-  fetchStates,
+  // fetchRegions,
+  // fetchStates,
 } from "../../Service/Api.jsx";
 import { fetchStatesAndUTs } from '../../Service/Api.jsx';
 import { fetchStateByCode } from "../../Service/Api.jsx";
@@ -64,8 +64,7 @@ const SupplierCustomerMaster = () => {
   const [currencies, setCurrencies] = useState([]);
   const [countries, setCountries] = useState([]);
   const [paymentTerms, setPaymentTerms] = useState([]);
-  const [regions, setRegions] = useState([]);
-  const [states, setStates] = useState([]);
+
   const [statesAndUTs, setStatesAndUTs] = useState([]);
  
 
@@ -452,34 +451,9 @@ fetchCurrencyAndSet();
 
  
 
-  // Region
-  useEffect(() => {
-    fetchRegionsAndSet();
-  }, []);
 
-  const  fetchRegionsAndSet = async () => {
-    try {
-      const data = await fetchRegions();
-      setRegions(data);
-    } catch (error) {
-      console.error("Failed to fetch regions:", error);
-    }
-  };
 
-  // statecode
-  useEffect(() => {
-   
-    fetchStatesAndSet();
-  }, []);
 
-  const fetchStatesAndSet = async () => {
-    try {
-      const data = await fetchStates();
-      setStates(data);
-    } catch (error) {
-      console.error("Failed to fetch states", error);
-    }
-  };
 
   // state
 
@@ -540,9 +514,9 @@ fetchCurrencyAndSet();
 
 
   const handleRefresh = () => {
-    fetchStatesAndSet();
+   
     fetchSectorsAndSet(); 
-    fetchRegionsAndSet();
+  
     fetchQMSCodesAndSet();
     fetchPaymentTermsAndSet();
     fetchGroupsAndSet();
