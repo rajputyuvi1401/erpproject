@@ -7,9 +7,15 @@ import SideNav from "../../../SideNav/SideNav";
 import "./VenderList.css";
 import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
-import { getSupplierCustomerData } from "../../../Service/Api.jsx";
+import { getSupplierList } from "../../../Service/Api.jsx"; // Import the getSupplierList function
+
 const VenderList = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchType, setSearchType] = useState("");
+  const [searchName, setSearchName] = useState("");
+  const [showData, setShowData] = useState(false); // State to control data display
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
@@ -23,35 +29,34 @@ const VenderList = () => {
     }
   }, [sideNavOpen]);
 
-  const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  const [searchType, setSearchType] = useState("");
-  const [searchName, setSearchName] = useState("");
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     try {
-      const result = await getSupplierCustomerData();
-      console.log("Fetched data:", result); // Log fetched data
-      setData(result);
-      setFilteredData(result);
+      const supplierList = await getSupplierList(); // Fetch data using the API function
+      setData(supplierList);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const handleSearch = () => {
-    const filtered = data.filter(
-      (item) =>
-        (searchType ? item.Type === searchType : true) &&
-        (searchName
-          ? item.Name.toLowerCase().includes(searchName.toLowerCase())
-          : true)
+    const lowerCaseName = searchName.toLowerCase();
+    const filtered = data.filter(item => 
+      (searchType ? item.Type === searchType : true) && 
+      (searchName ? item.Name.toLowerCase().includes(lowerCaseName) : true)
     );
     setFilteredData(filtered);
+    setShowData(true); // Show the data in the table after search
+  };
+
+  const handleViewAll = () => {
+    // setSearchType("");
+    setSearchName("");
+    setFilteredData(data); // Show all data when "View All" is clicked
+    setShowData(true); 
   };
 
   return (
@@ -90,7 +95,7 @@ const VenderList = () => {
                   <div className="VenderListMain">
                     <div className="container-fluid">
                       <div className="row text-start">
-                        <div className="row mb-3 text-start">
+                        <div className="row mb-3 text-start mt-4">
                           <label
                             htmlFor="Type"
                             className="col-sm-1 col-form-label"
@@ -136,7 +141,7 @@ const VenderList = () => {
                             </button>
                             <button
                               className="Vendermainbtn"
-                              onClick={() => fetchData()}
+                              onClick={handleViewAll}
                             >
                               View All
                             </button>
@@ -145,101 +150,103 @@ const VenderList = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="Vender3table">
-                    <div className="Container-fluid">
-                      <div className="row">
-                        <div className="col-md-12">
-                          <div className="table-responsive">
-                            <table className="table">
-                              <thead>
-                                <tr>
-                                  <th className="blue-th" scope="col">
-                                    Sr.
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    Type
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    Code
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    Name
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    Contact No.
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    Email
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    V.Code
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    P.team
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    Is Reg
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    GST No.
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    GST Code
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    Auth
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    User
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    Rev
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    Edit
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    View1
-                                  </th>
-                                  <th className="blue-th" scope="col">
-                                    View2
-                                  </th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {filteredData.map((item, index) => (
-                                  <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>{item.Type}</td>
-                                    <td>{item.Code_No}</td>
-                                    <td>{item.Name}</td>
-                                    <td>{item.Contact_No}</td>
-                                    <td>{item.Email_Id}</td>
-                                    <td>{item.Vendor_Code}</td>
-                                    <td>{item.Payment_Term}</td>
-                                    <td>{item.Active}</td>
-                                    <td>{item.GST_No}</td>
-                                    <td>{item.GST_Tax_Code}</td>
-                                    <td>{item.Auth}</td>
-                                    <td>{item.User}</td>
-                                    <td>{item.Rev}</td>
-                                    <td>
-                                      <button style={{ border: "none" }}>
-                                        <FaEdit />
-                                      </button>
-                                    </td>
-                                    <td>View</td>
-                                    <td>View</td>
+                  {showData && ( // Conditionally render the table based on showData
+                    <div className="Vender3table">
+                      <div className="Container-fluid">
+                        <div className="row">
+                          <div className="col-md-12">
+                            <div className="table-responsive">
+                              <table className="table">
+                                <thead>
+                                  <tr>
+                                    <th className="blue-th" scope="col">
+                                      Sr.
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      Type
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      Code
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      Name
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      Contact No.
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      Email
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      V.Code
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      P.team
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      Is Reg
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      GST No.
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      GST Code
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      Auth
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      User
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      Rev
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      Edit
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      View1
+                                    </th>
+                                    <th className="blue-th" scope="col">
+                                      View2
+                                    </th>
                                   </tr>
-                                ))}
-                              </tbody>
-                            </table>
+                                </thead>
+                                <tbody>
+                                  {filteredData.map((item, index) => (
+                                    <tr key={index}>
+                                      <td>{index + 1}</td>
+                                      <td>{item.Type}</td>
+                                      <td>{item.Code_No}</td>
+                                      <td>{item.Name}</td>
+                                      <td>{item.Contact_No}</td>
+                                      <td>{item.Email_Id}</td>
+                                      <td>{item.Vendor_Code}</td>
+                                      <td>{item.Payment_Term}</td>
+                                      <td>{item.Active}</td>
+                                      <td>{item.GST_No}</td>
+                                      <td>{item.GST_Tax_Code}</td>
+                                      <td>{item.Auth}</td>
+                                      <td>{item.User}</td>
+                                      <td>{item.Rev}</td>
+                                      <td>
+                                        <button style={{ border: "none" }}>
+                                          <FaEdit />
+                                        </button>
+                                      </td>
+                                      <td>View</td>
+                                      <td>View</td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="vender-bottom">
+                  )}
+                <div className="vender-bottom">
                     <div className="row" style={{ color: "blue" }}>
                       <div className="col-md-12 text-start">
                         <div className="row mb-3 text-start">

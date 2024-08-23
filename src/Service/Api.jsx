@@ -3,8 +3,8 @@
 import axios from "axios";
 
 // Define base URLs
-// const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
-const BASE_URL = "api/All_Masters/";
+const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
+// const BASE_URL = "api/All_Masters/";
 const TAX_CODE_URL = `${BASE_URL}Tax_Code/`;
 const GST_MASTER_URL = `${BASE_URL}GST_Master/`;
 const CUT_WISE_URL = `${BASE_URL}Cut_Wise/`;
@@ -364,10 +364,7 @@ export const deleteCity = async (id) => {
 };
 
 //card country
-export const fetchCountries = async () => {
-  const response = await axios.get(`${BASE_URL}Country/`);
-  return response.data;
-};
+
 
 export const addCountry = async (code, country) => {
   const response = await axios.post(`${BASE_URL}Country/`, {
@@ -451,20 +448,30 @@ export const fetchPaymentTerms = async () => {
   const response = await axios.get(`${BASE_URL}Payment_Term/`);
   return response.data;
 };
+export const addPaymentTerm = async (days) => {
+  try {
+    // Log the data to be sent
+    console.log("Sending data:", { Days: days });
 
-export const addPaymentTerm = async (code, desc, days) => {
-  const response = await axios.post(`${BASE_URL}Payment_Term/`, {
-    Code: code,
-    Desc: desc,
-    Days: days,
-  });
-  return response.data;
+    const response = await axios.post(`${BASE_URL}Payment_Term/`, {
+      Days: days,
+    });
+
+    // Log the response from the server
+    console.log("Response data:", response.data);
+    return response.data;
+
+  } catch (error) {
+    // Log the error response from the server
+    console.error("Error response:", error.response);
+    throw error;
+  }
 };
+
 
 export const updatePaymentTerm = async (id, code, desc, days) => {
   const response = await axios.put(`${BASE_URL}Payment_Term/${id}/`, {
-    Code: code,
-    Desc: desc,
+  
     Days: days,
   });
   return response.data;
@@ -2211,5 +2218,63 @@ export const searchRegionByCode = async (code) => {
   } catch (error) {
     console.error('Error searching for region:', error);
     throw error;
+  }
+};
+
+
+// Vendor List
+export const getSupplierList = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}Supplier_List/`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching supplier list:', error);
+    throw error;
+  }
+};
+
+
+// Supplier Fetch country
+export const fetchCountries = async (searchTerm = '') => {
+  try {
+    const response = await fetch(`${BASE_URL}SupplierCountry/?search=${searchTerm}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Failed to fetch countries:', error);
+    throw error;
+  }
+};
+
+// Supplier sttae code
+export const fetchStatesAndUTs = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}states-uts/`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching states and UTs:', error);
+    return [];
+  }
+};
+
+// Service/Api.jsx
+
+export const fetchStateByCode = async (code) => {
+  try {
+    const response = await fetch(`${BASE_URL}states-uts/?search=${code}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    return data.length > 0 ? data[0] : null; // Assuming the API returns an array
+  } catch (error) {
+    console.error('Error fetching state by code:', error);
+    return null;
   }
 };

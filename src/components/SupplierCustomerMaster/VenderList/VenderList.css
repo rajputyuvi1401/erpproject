@@ -59,8 +59,8 @@ body.no-scroll {
 }
 .VenderListMain {
   background-color: aliceblue;
-  height: 10vh;
-  padding: 20px;
+  height: auto;
+  padding: 10px;
   margin-top: 80px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

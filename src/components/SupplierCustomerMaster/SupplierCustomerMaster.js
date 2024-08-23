@@ -23,6 +23,8 @@ import {
   fetchRegions,
   fetchStates,
 } from "../../Service/Api.jsx";
+import { fetchStatesAndUTs } from '../../Service/Api.jsx';
+import { fetchStateByCode } from "../../Service/Api.jsx";
 import ToggleCard1 from "./ToggleCard1.jsx";
 import ToggleCardCity from "./ToggleCardCity.jsx";
 import ToggleCardCountry from "./ToggleCardCountry.jsx";
@@ -64,6 +66,9 @@ const SupplierCustomerMaster = () => {
   const [paymentTerms, setPaymentTerms] = useState([]);
   const [regions, setRegions] = useState([]);
   const [states, setStates] = useState([]);
+  const [statesAndUTs, setStatesAndUTs] = useState([]);
+ 
+
 
   const toggleCard = () => {
     setIsCardOpen(!isCardOpen);
@@ -127,8 +132,7 @@ const SupplierCustomerMaster = () => {
     Type: "",
     Name: "",
     Address_Line_1: "",
-    Address_Line_2: "",
-    Address_Line_3: "",
+
     Region: "",
     PAN_Type: "",
     PAN_NO: "",
@@ -157,7 +161,7 @@ const SupplierCustomerMaster = () => {
     Insurance_Policy_Expiry_Date: "",
     VAT_TIN: "",
     Montly_Sale: "",
-    Payment_Remarke: "",
+    
     Sector: "",
     Group: "",
     Distance: "",
@@ -190,8 +194,7 @@ const SupplierCustomerMaster = () => {
       "Type",
       "Name",
       "Address_Line_1",
-      "Address_Line_2",
-      "Address_Line_3",
+   
       "Region",
       "PAN_Type",
       "PAN_NO",
@@ -201,37 +204,62 @@ const SupplierCustomerMaster = () => {
     "Payment_Term",
     "Pin_Code",
     "GST_No2",
-    "Payment_Remarke",
+    
     "Vendor_Code",
       // Add other required fields here
     ];
-  
-    for (const key in formData) {
-      // Check if the field is required
-      if (requiredFields.includes(key)) {
-        if (
-          formData[key] === "" ||
-          (typeof formData[key] === "boolean" && !formData[key])
-        ) {
-          newErrors[key] = "This field is required";
-        }
+    requiredFields.forEach(field => {
+      if (!formData[field] || formData[field].trim() === "") {
+        newErrors[field] = "This field is required";
       }
+    });
+  
+    // Validate PAN number format
+    if (formData.PAN_NO && !validatePAN(formData.PAN_NO)) {
+      newErrors.PAN_NO = "Invalid PAN format";
     }
-    
+  
+    // Validate email format
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (formData.Email_Id && !emailPattern.test(formData.Email_Id)) {
+      newErrors.Email_Id = "Invalid email format";
+    }
+  
+    // Validate phone number (example pattern)
+    const phonePattern = /^[0-9]{10}$/;
+    if (formData.Contact_No && !phonePattern.test(formData.Contact_No)) {
+      newErrors.Contact_No = "Invalid contact number";
+    }
+  
+    // Validate GST number format (example pattern)
+    const gstPattern = /^[0-9A-Z]{15}$/;
+    if (formData.GST_No && !gstPattern.test(formData.GST_No)) {
+      newErrors.GST_No = "Invalid GST number format";
+    }
+  
+    // Validate URL format for website
+    const urlPattern = /^(https?:\/\/)?[^\s/$.?#].[^\s]*$/i;
+    if (formData.Website && !urlPattern.test(formData.Website)) {
+      newErrors.Website = "Invalid URL format";
+    }
+  
+    // Validate discount percentage (0-100)
+    if (formData.Discount_Per && (formData.Discount_Per < 0 || formData.Discount_Per > 100)) {
+      newErrors.Discount_Per = "Discount percentage must be between 0 and 100";
+    }
+  
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+   
   };
   
   const handleChange = async (e) => {
     const { name, value, type, checked } = e.target;
-  
+   
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: type === 'checkbox' ? checked : value,
-      Payment_Remarke:
-        name === 'Payment_Term'
-          ? paymentTerms.find((term) => term.Code === value)?.Desc || ''
-          : prevFormData.Payment_Remarke,
+     
     }));
   
     if (name === 'Type' && value === 'Customer') {
@@ -250,11 +278,27 @@ const SupplierCustomerMaster = () => {
       }
     }
   };
+
+  const validatePAN = (pan) => {
+    const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+    return panPattern.test(pan);
+  };
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const newErrors = {};
+
     console.log("Form Data Before Submission:", formData);
 
+    if (!formData.PAN_NO) {
+      newErrors.PAN_NO = "PAN is required";
+    } else if (!validatePAN(formData.PAN_NO)) {
+      newErrors.PAN_NO = "Invalid PAN format";
+    }
+
+    if (!formData.PAN_Type) {
+      newErrors.PAN_Type = "PAN type is required";
+    }
     if (validate()) {
       try {
         const response = await saveSupplierCustomerData(formData);
@@ -371,16 +415,27 @@ fetchCurrencyAndSet();
   };
   // Country
   useEffect(() => {
-fetchCountryAndSet();
+    const loadCountries = async () => {
+      try {
+        const data = await fetchCountries();
+        setCountries(data);
+      } catch (error) {
+        console.error('Error loading countries:', error);
+      }
+    };
+
+    loadCountries();
   }, []);
-  const fetchCountryAndSet = async () => {
-    try {
-      const data = await fetchCountries();
-      setCountries(data);
-    } catch (error) {
-      console.error("Failed to fetch countries:", error);
-    }
+  
+  const handleDropdownChange = (event) => {
+    const selectedCountry = event.target.value;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      Country: selectedCountry
+    }));
   };
+
+
   // Payment Terms
   useEffect(() => {
     fetchPaymentTermsAndSet();
@@ -425,6 +480,65 @@ fetchCountryAndSet();
       console.error("Failed to fetch states", error);
     }
   };
+
+  // state
+
+  useEffect(() => {
+    const loadStatesAndUTs = async () => {
+      const data = await fetchStatesAndUTs();
+      setStatesAndUTs(data);
+    };
+
+    loadStatesAndUTs();
+  }, []);
+
+
+
+// State Code
+
+
+  const [stateName, setStateName] = useState('');
+  useEffect(() => {
+    const loadStateName = async () => {
+      if (formData.State_Code.length >= 2) { // Trigger search for valid codes
+        const state = await fetchStateByCode(formData.State_Code);
+        if (state) {
+          setStateName(state.name);
+        } else {
+          setStateName('');
+        }
+      } else {
+        setStateName('');
+      }
+    };
+
+    loadStateName();
+  }, [formData.State_Code]);
+
+
+  const handleStateCodeChange = (e) => {
+    const { value } = e.target;
+    setFormData({
+      ...formData,
+      State_Code: value,
+    });
+
+    // Optional: Add validation for state code
+    if (!value) {
+      setErrors({
+        ...errors,
+        State_Code: 'State code is required',
+      });
+    } else {
+      setErrors({
+        ...errors,
+        State_Code: '',
+      });
+    }
+  };
+
+
+
   const handleRefresh = () => {
     fetchStatesAndSet();
     fetchSectorsAndSet(); 
@@ -433,7 +547,7 @@ fetchCountryAndSet();
     fetchPaymentTermsAndSet();
     fetchGroupsAndSet();
     fetchCurrencyAndSet();
-    fetchCountryAndSet();
+    // fetchCountryAndSet();
     fetchCityAndSet();
     // fetchCategoriesAndSet();
   };
@@ -569,7 +683,7 @@ fetchCountryAndSet();
                                               htmlFor="Type"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Type:
+                                              Type:Type: <span className="text-danger">*</span>
                                             </label>
                                             <div className="col-sm-8">
                                               <select
@@ -625,7 +739,7 @@ fetchCountryAndSet();
                                               htmlFor="Name"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Name:
+                                              Name: <span className="text-danger">*</span>
                                             </label>
                                             <div className="col-sm-8">
                                               <input
@@ -650,18 +764,18 @@ fetchCountryAndSet();
                                               htmlFor="Address_Line_1"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Address Line 1:
+                                              Address : <span className="text-danger">*</span>
                                             </label>
                                             <div className="col-sm-8">
-                                              <input
+                                              <textarea
                                                 type="text"
                                                 className="form-control"
                                                 id="Address_Line_1"
                                                 name="Address_Line_1"
                                                 value={formData.Address_Line_1}
                                                 onChange={handleChange}
-                                                placeholder="Address Line 1"
-                                              />
+                                                placeholder="Address"
+                                              ></textarea>
                                               {errors.Address_Line_1 && (
                                                 <small className="text-danger">
                                                   {errors.Address_Line_1}
@@ -670,57 +784,7 @@ fetchCountryAndSet();
                                             </div>
                                           </div>
 
-                                          {/* Address Line 2 */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="Address_Line_2"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              Address Line 2:
-                                            </label>
-                                            <div className="col-sm-8">
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                                id="Address_Line_2"
-                                                name="Address_Line_2"
-                                                value={formData.Address_Line_2}
-                                                onChange={handleChange}
-                                                placeholder="Address Line 2"
-                                              />
-                                              {errors.Address_Line_2 && (
-                                                <small className="text-danger">
-                                                  {errors.Address_Line_2}
-                                                </small>
-                                              )}
-                                            </div>
-                                          </div>
-
-                                          {/* Address Line 3 */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="Address_Line_3"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              Address Line 3:
-                                            </label>
-                                            <div className="col-sm-8">
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                                id="Address_Line_3"
-                                                name="Address_Line_3"
-                                                value={formData.Address_Line_3}
-                                                onChange={handleChange}
-                                                placeholder="Address Line 3"
-                                              />
-                                              {errors.Address_Line_3 && (
-                                                <small className="text-danger">
-                                                  {errors.Address_Line_3}
-                                                </small>
-                                              )}
-                                            </div>
-                                          </div>
+                 
 
                                           {/* Region */}
                                           <div className="row mb-3">
@@ -728,9 +792,9 @@ fetchCountryAndSet();
                                               htmlFor="Region"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Region:
+                                              State: <span className="text-danger">*</span>
                                             </label>
-                                            <div className="col-sm-5">
+                                            <div className="col-sm-8">
                                               <select
                                                 id="Region"
                                                 name="Region"
@@ -741,14 +805,11 @@ fetchCountryAndSet();
                                                 <option value="" disabled>
                                                   Select ..
                                                 </option>
-                                                {regions.map((region) => (
-                                                  <option
-                                                    key={region.id}
-                                                    value={region.RegionCode}
-                                                  >
-                                                    {region.RegionName}
-                                                  </option>
-                                                ))}
+                                                 {statesAndUTs.map((state) => (
+        <option key={state.code} value={state.code}>
+          {state.name}
+        </option>
+      ))}
                                                
                                               </select>
                                               {errors.Region && (
@@ -757,48 +818,22 @@ fetchCountryAndSet();
                                                 </small>
                                               )}
                                             </div>
-                                            <div className="col-sm-2">
-                                              <button
-                                                className="btn"
-                                                onClick={() =>
-                                                  toggleCardregion()
-                                                }
-                                              >
-                                                New
-                                              </button>
-                                            </div>
-                                            <div className="col-sm-1">
-                                              <button
-                                                className="btn"
-                                                onClick={handleRefresh} 
-                                                style={{ fontSize: "10px" }}
-                                              >
-                                                <CachedIcon />
-                                              </button>
-                                            </div>
+                                          
                                           </div>
 
                                           {/* PAN No. */}
                                           <div className="row mb-3">
-                                            <div className="form-check col-sm-4">
-                                              <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="PAN_No"
-                                                name="PAN_No"
-                                                checked={
-                                                  formData.PAN_NO || false
-                                                }
-                                                onChange={handleChange}
-                                              />
+                                            
+                                             
+                                          
                                               <label
-                                                className="form-check-label"
+                                                className="col-sm-3 col-form-label"
                                                 htmlFor="PAN_No"
                                               >
-                                                PAN No.:
+                                                PAN No. <span className="text-danger">*</span>
                                               </label>
-                                            </div>
-                                            <div className="col-sm-2">
+                                            
+                                            <div className="col-sm-3">
                                               <input
                                                 type="text"
                                                 className="form-control"
@@ -806,6 +841,8 @@ fetchCountryAndSet();
                                                 name="PAN_NO"
                                                 value={formData.PAN_NO}
                                                 onChange={handleChange}
+                                                 maxLength="10"
+            placeholder="ABCDE1234F"
                                               />
                                               {errors.PAN_NO && (
                                                 <small className="text-danger">
@@ -830,8 +867,10 @@ fetchCountryAndSet();
                                                 <option value="" disabled>
                                                   Select ..
                                                 </option>
-                                                <option value="FG">FG</option>
-                                                <option value="RM">RM</option>
+                                                <option value="FG">Company</option>
+                                                <option value="RM">Form</option>
+                                                <option value="FG1">Indivisual</option>
+                                                <option value="RM1">Trust</option>
                                               </select>
                                               {errors.PAN_Type && (
                                                 <small className="text-danger">
@@ -847,56 +886,36 @@ fetchCountryAndSet();
                                               htmlFor="State_Code"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              State Code:
+                                              State Code: <span className="text-danger">*</span>
                                             </label>
-                                            <div className="col-sm-5">
-                                              
-                                              <select
-                                                id="State_Code"
-                                                name="State_Code"
-                                                className="form-select"
-                                                value={formData.State_Code}
-                                                onChange={handleChange}
-                                              >
-                                                <option value="" disabled>
-                                                  Select ..
-                                                </option>
-                                                {states.map((state) => (
-                                                  <option
-                                                    key={state.id}
-                                                    value={
-                                                      state.State_Code_Alpha
-                                                    }
-                                                  >
-                                                    {state.State_Code_Alpha}
-                                                  </option>
-                                                ))}
-                                               
-                                              </select>
-                                              {errors.State_Code && (
+                                            <div className="col-sm-8">
+                                            <input
+          type="text"
+          id="State_Code"
+          name="State_Code"
+          className="form-control"
+          value={`${formData.State_Code}${stateName ? ` - ${stateName}` : ''}`}
+          onChange={handleStateCodeChange}
+          placeholder="Enter State Code"
+        />
+                                         {errors.State_Code && (
                                                 <small className="text-danger">
                                                   {errors.State_Code}
                                                 </small>
                                               )}
                                             </div>
-                                            <div className="col-sm-2">
-                                              <button
-                                                className="btn"
-                                                onClick={() =>
-                                                  toggleCardStateCode()
-                                                }
-                                              >
-                                                New
-                                              </button>
-                                            </div>
-                                            <div className="col-sm-1">
-                                              <button
-                                                className="btn" onClick={handleRefresh}
-                                                style={{ fontSize: "10px" }}
-                                              >
-                                                <CachedIcon />
-                                              </button>
-                                            </div>
+                                            
+                                            <div className="col-sm-0">
+         {/* <input
+          type="text"
+          id="State_Name"
+          name="State_Name"
+          className="form-control"
+          value={stateName}
+          readOnly
+        /> */}
+    </div>
+            
                                           </div>
 
                                           {/* GST Tax Code */}
@@ -905,7 +924,7 @@ fetchCountryAndSet();
                                               htmlFor="GST_Tax_Code"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              GST Tax Code:
+                                              GST Tax Code: <span className="text-danger">*</span>
                                             </label>
                                             <div className="col-sm-5">
                                               <select
@@ -1137,7 +1156,7 @@ fetchCountryAndSet();
                                               htmlFor="Code_No"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Code No:
+                                              Code No: <span className="text-danger">*</span>
                                             </label>
                                             <div className="col-sm-8">
                                               <input
@@ -1178,13 +1197,10 @@ fetchCountryAndSet();
                                                 </option>
 
                                                 {paymentTerms.map((term) => (
-                                                  <option
-                                                    key={term.id}
-                                                    value={term.Code}
-                                                  >
-                                                  {term.Desc}
-                                                  </option>
-                                                ))}
+          <option key={term.id} value={term.id}>
+            {term.Days} 
+          </option>
+        ))}
                                               </select>
                                             </div>
                                             <div className="col-sm-2">
@@ -1210,65 +1226,27 @@ fetchCountryAndSet();
 
                                           {/* Country */}
                                           <div className="row mb-3">
-                                            <label
-                                              htmlFor="Country"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              Country:
-                                            </label>
-                                            <div className="col-sm-5">
-                                              <select
-                                                id="Country"
-                                                name="Country"
-                                                className="form-select"
-                                                value={formData.Country}
-                                                onChange={handleChange}
-                                              >
-                                                <option value="">
-                                                  Select ..
-                                                </option>
-                                                {countries.map((country) => (
-                                                  <option
-                                                    key={country.Code}
-                                                    value={country.Code}
-                                                  >
-                                                    {country.Country}
-                                                  </option>
-                                                ))}
-                                                <option value="India">
-                                                  India
-                                                </option>
-                                                <option value="China">
-                                                  China
-                                                </option>
-                                                <option value="Russia">
-                                                  Russia
-                                                </option>
-                                                <option value="Sri Lanka">
-                                                  Sri Lanka
-                                                </option>
-                                              </select>
-                                            </div>
-                                            <div className="col-sm-2">
-                                              <button
-                                                className="btn"
-                                                type="button"
-                                                onClick={toggleCardCountry}
-                                              >
-                                                New
-                                              </button>
-                                            </div>
-                                            <div className="col-sm-1">
-                                              <button
-                                                className="btn"
-                                                type="button"
-                                                onClick={handleRefresh} 
-                                                style={{ fontSize: "10px" }}
-                                              >
-                                                <CachedIcon />
-                                              </button>
-                                            </div>
-                                          </div>
+      <label htmlFor="Country" className="col-sm-4 col-form-label">
+        Country:
+      </label>
+      <div className="col-sm-8">
+       
+      <select
+          id="Country"
+          name="Country"
+          className="form-select"
+          value={formData.Country}
+          onChange={handleDropdownChange}
+        >
+          <option value="">Select ..</option>
+          {countries.map((country, index) => (
+            <option key={index} value={country.name}>
+              {country.name}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
 
                                           {/* Currency */}
                                           <div className="row mb-3">
@@ -1347,7 +1325,7 @@ fetchCountryAndSet();
                                               htmlFor="Pin_Code"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Pin Code:
+                                              Pin Code: <span className="text-danger">*</span>
                                             </label>
                                             <div className="col-sm-8">
                                               <input
@@ -1495,7 +1473,7 @@ fetchCountryAndSet();
                                                 className="form-check-label"
                                                 htmlFor="GST_No2"
                                               >
-                                                GST No:
+                                                GST No: <span className="text-danger">*</span>
                                               </label>
                                             </div>
                                             <div className="col-sm-8">
@@ -1700,7 +1678,7 @@ fetchCountryAndSet();
                                               htmlFor="Montly_Sale"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Montly Sale:
+                                              Monthly Sales:
                                             </label>
                                             <div className="col-sm-8">
                                               <input
@@ -1723,32 +1701,7 @@ fetchCountryAndSet();
                                           className="col-md-4"
                                           style={{ padding: "10px" }}
                                         >
-                                          {/* Payment Remark: */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="Payment_Remarke"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              Payment Remark:
-                                            </label>
-                                            <div className="col-sm-8">
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                                id="Payment_Remarke"
-                                                name="Payment_Remarke"
-                                                value={formData.Payment_Remarke}
-                                                
-                                                onChange={handleChange}
-                                              />
-                                              {errors.Payment_Remarke && (
-                                                <small className="text-danger">
-                                                  {errors.Payment_Remarke}
-                                                </small>
-                                              )}
-                                            </div>
-                                          </div>
-
+                    
                                           {/* Sector */}
                                           <div className="row mb-3">
                                             <label
@@ -1881,7 +1834,7 @@ fetchCountryAndSet();
                                               htmlFor="Vendor_Code"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Vendor Code:
+                                              Vendor Code: <span className="text-danger">*</span>
                                             </label>
                                             <div className="col-sm-8">
                                               <input

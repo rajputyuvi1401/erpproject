@@ -13,12 +13,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const ToggleCardPayment1 = () => {
   const [paymentTerms, setPaymentTerms] = useState([]);
-  const [code, setCode] = useState("");
-  const [desc, setDesc] = useState("");
   const [days, setDays] = useState("");
   const [editingTerm, setEditingTerm] = useState(null);
-  const [editCode, setEditCode] = useState("");
-  const [editDesc, setEditDesc] = useState("");
   const [editDays, setEditDays] = useState("");
 
   useEffect(() => {
@@ -35,51 +31,44 @@ const ToggleCardPayment1 = () => {
   }, []);
 
   const handleAddPaymentTerm = async () => {
-    if (!code.trim() || !desc.trim() || !days.trim()) {
-      toast.error("All fields are required");
+    if (!days.trim() || isNaN(days) || parseInt(days) <= 0) {
+      toast.error("Days must be a positive integer");
       return;
     }
-
+  
     try {
-      await addPaymentTerm(code, desc, days);
+      const newTerm = await addPaymentTerm(parseInt(days));
       setPaymentTerms([
         ...paymentTerms,
-        { Code: code, Desc: desc, Days: days },
+        { id: newTerm.id, Days: newTerm.Days },
       ]);
-      setCode("");
-      setDesc("");
       setDays("");
       toast.success("Payment term added successfully");
     } catch (error) {
+      console.error("Error adding payment term:", error); // Log the error for debugging
       toast.error("Failed to add payment term");
     }
   };
-
-  const handleEditPaymentTerm = (id, code, desc, days) => {
+  
+  const handleEditPaymentTerm = (id, days) => {
     setEditingTerm(id);
-    setEditCode(code);
-    setEditDesc(desc);
     setEditDays(days);
   };
 
   const handleSaveEdit = async () => {
-    if (!editCode.trim() || !editDesc.trim() || !editDays.trim()) {
-      toast.error("All fields are required");
+    if (!editDays.trim() || isNaN(editDays) || parseInt(editDays) <= 0 || !Number.isInteger(parseFloat(editDays))) {
+      toast.error("Days must be a positive integer");
       return;
     }
 
     try {
-      await updatePaymentTerm(editingTerm, editCode, editDesc, editDays);
+      await updatePaymentTerm(editingTerm, parseInt(editDays));
       setPaymentTerms(
         paymentTerms.map((pt) =>
-          pt.id === editingTerm
-            ? { ...pt, Code: editCode, Desc: editDesc, Days: editDays }
-            : pt
+          pt.id === editingTerm ? { ...pt, Days: parseInt(editDays) } : pt
         )
       );
       setEditingTerm(null);
-      setEditCode("");
-      setEditDesc("");
       setEditDays("");
       toast.success("Payment term updated successfully");
     } catch (error) {
@@ -103,34 +92,6 @@ const ToggleCardPayment1 = () => {
         <div className="row text-start mb-3">
           <div className="col-md-3">
             <div className="mb-3">
-              <label htmlFor="code" className="form-label">
-                Code:
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="code"
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="mb-3">
-              <label htmlFor="desc" className="form-label">
-                Description:
-              </label>
-              <textarea
-                className="form-control"
-                id="desc"
-                rows="3"
-                value={desc}
-                onChange={(e) => setDesc(e.target.value)}
-              ></textarea>
-            </div>
-          </div>
-          <div className="col-md-3">
-            <div className="mb-3">
               <label htmlFor="days" className="form-label">
                 Days:
               </label>
@@ -140,6 +101,12 @@ const ToggleCardPayment1 = () => {
                 id="days"
                 value={days}
                 onChange={(e) => setDays(e.target.value)}
+                onKeyPress={(e) => {
+                  // Allow only numeric input
+                  if (!/^[0-9]*$/.test(e.key)) {
+                    e.preventDefault();
+                  }
+                }}
               />
             </div>
           </div>
@@ -155,8 +122,6 @@ const ToggleCardPayment1 = () => {
               <thead>
                 <tr>
                   <th>Sr. No</th>
-                  <th>Code</th>
-                  <th>Description</th>
                   <th>Days</th>
                   <th>Edit</th>
                   <th>Delete</th>
@@ -164,32 +129,8 @@ const ToggleCardPayment1 = () => {
               </thead>
               <tbody>
                 {paymentTerms.map((pt, index) => (
-                  <tr key={index}>
+                  <tr key={pt.id}>
                     <td>{index + 1}</td>
-                    <td>
-                      {editingTerm === pt.id ? (
-                        <input
-                          type="text"
-                          className="form-control"
-                          value={editCode}
-                          onChange={(e) => setEditCode(e.target.value)}
-                        />
-                      ) : (
-                        pt.Code
-                      )}
-                    </td>
-                    <td>
-                      {editingTerm === pt.id ? (
-                        <textarea
-                          className="form-control"
-                          rows="3"
-                          value={editDesc}
-                          onChange={(e) => setEditDesc(e.target.value)}
-                        ></textarea>
-                      ) : (
-                        pt.Desc
-                      )}
-                    </td>
                     <td>
                       {editingTerm === pt.id ? (
                         <input
@@ -197,6 +138,12 @@ const ToggleCardPayment1 = () => {
                           className="form-control"
                           value={editDays}
                           onChange={(e) => setEditDays(e.target.value)}
+                          onKeyPress={(e) => {
+                            // Allow only numeric input
+                            if (!/^[0-9]*$/.test(e.key)) {
+                              e.preventDefault();
+                            }
+                          }}
                         />
                       ) : (
                         pt.Days
@@ -214,12 +161,7 @@ const ToggleCardPayment1 = () => {
                         <button
                           className="card11 me-2"
                           onClick={() =>
-                            handleEditPaymentTerm(
-                              pt.id,
-                              pt.Code,
-                              pt.Desc,
-                              pt.Days
-                            )
+                            handleEditPaymentTerm(pt.id, pt.Days)
                           }
                         >
                           <FaEdit />

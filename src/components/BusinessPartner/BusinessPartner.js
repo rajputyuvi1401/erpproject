@@ -1,22 +1,46 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
-import CachedIcon from "@mui/icons-material/Cached";
 import "./BusinessPartner.css";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-
+import { fetchCountries } from '../../Service/Api.jsx';
 const BusinessPartner = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
   };
+
+
+  const [countries, setCountries] = useState([]);
+  useEffect(() => {
+    const loadCountries = async () => {
+      try {
+        const data = await fetchCountries();
+        setCountries(data);
+      } catch (error) {
+        console.error('Error loading countries:', error);
+      }
+    };
+
+    loadCountries();
+  }, []);
+
+  // Handle dropdown change
+  const handleDropdownChange = (event) => {
+    setFormData({
+      ...formData,
+      country: event.target.value
+    });
+
+  };
+
 
   const [formData, setFormData] = useState({
     cust_supp_name: "",
@@ -376,17 +400,20 @@ const BusinessPartner = () => {
                               >
                                 Country:
                               </label>
-                              <div className="col-sm-6">
+                              <div className="col-sm-8">
                                 <select
                                   className="form-select"
                                   id="country"
+                                  name="country"
                                   value={formData.country}
-                                  onChange={handleChange}
+                                  onChange={handleDropdownChange}
                                 >
                                   <option value="">Select</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
+                                  {countries.map((country, index) => (
+            <option key={index} value={country.name}>
+              {country.name}
+            </option>
+          ))}
                                 </select>
                                 {errors.country && (
                                   <div className="text-danger">
@@ -394,17 +421,7 @@ const BusinessPartner = () => {
                                   </div>
                                 )}
                               </div>
-                              <div className="col-sm-1">
-                                <button className="btn-fg">New</button>
-                              </div>
-                              <div className="col-sm-1">
-                                <button
-                                  className="btn-fg"
-                                  style={{ fontSize: "10px" }}
-                                >
-                                  <CachedIcon />
-                                </button>
-                              </div>
+                              
                             </div>
                             <div className="row mb-3">
                               <label
