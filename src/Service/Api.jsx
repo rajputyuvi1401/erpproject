@@ -3,32 +3,15 @@
 import axios from "axios";
 
 // Define base URLs
-const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
-// const BASE_URL = "api/All_Masters/";
+// const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
+const BASE_URL = "api/All_Masters/";
 const TAX_CODE_URL = `${BASE_URL}Tax_Code/`;
 const GST_MASTER_URL = `${BASE_URL}GST_Master/`;
 const CUT_WISE_URL = `${BASE_URL}Cut_Wise/`;
 const UPLOAD_URL = `${BASE_URL}upload/`;
 
 // Home
-const LOGIN_URL = "http://13.201.136.34:8000/api/Erp_admin/api/auth/login/";
 
-export const login = async (data) => {
-  try {
-    const response = await axios.post(LOGIN_URL, data, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return response.data;
-  } catch (error) {
-    console.error(
-      "Error logging in:",
-      error.response ? error.response.data : error.message
-    );
-    throw new Error("Error logging in");
-  }
-};
 
 // GST Master
 export const fetchGstMasterRecords = async () => {
