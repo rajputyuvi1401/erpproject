@@ -47,8 +47,8 @@ const AddNewItem = () => {
                 <div className="assd">
                   <div className="top-but2">
                     <div className="row align-items-center">
-                      <div className="col-md-2 text-start">
-                        <p>Item List</p>
+                      <div className="col-md-2 mt-4 text-start">
+                        <p style={{color:"blue"}}>Item List</p>
                       </div>
                       <div className="col-md-10 text-end">
                         <div className="d-flex align-items-center justify-content-end">
@@ -60,7 +60,7 @@ const AddNewItem = () => {
                           <button className="btn-uper me-2">
                             Section Group Master
                           </button>
-                          <button className="btn-uper">Item List</button>
+                          <Link to={"/item-master"} className="btn-uper" >Item List</Link>
                         </div>
                       </div>
                     </div>
@@ -185,19 +185,98 @@ const AddNewItem = () => {
                                                 </Link>
                                               </option>
 
-                                              <option>RM</option>
-                                              <option>Tool</option>
-                                              <option>Instrument</option>
-                                              <option>Machine</option>
-                                              <option>Consumable</option>
-                                              <option>Safety Equ</option>
-                                              <option>Service</option>
-                                              <option>Assest</option>
-                                              <option>F4</option>
-                                              <option>Scrap</option>
-                                              <option>SF</option>
-                                              <option>BO</option>
-                                              <option>DI</option>
+                                              <option>{" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                  RM
+                                                </Link></option>
+                                              <option>{" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                 Tool
+                                                </Link></option>
+                                              <option>{" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                Instrument
+                                                </Link></option>
+                                              <option>{" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                 Machine
+                                                </Link></option>
+                                              <option>{" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                  Consumable
+                                                </Link></option>
+                                              <option>{" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                  Safety Equiment
+                                                </Link></option>
+                                              <option>{" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                  Service
+                                                </Link></option>
+                                              <option>{" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                  Asset
+                                                </Link></option>
+                                              <option>{" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                  F4
+                                                </Link></option>
+                                              <option>{" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                 Scrap
+                                                </Link></option>
+                                              <option>{" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                  SF
+                                                </Link></option>
+                                              <option>
+                                              {" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                 BO
+                                                </Link></option>
+                                              <option>{" "}
+                                                <Link
+                                                  to="/item-master-gernal"
+                                                  className="link btn12 me-2"
+                                                >
+                                                  DI
+                                                </Link>DI</option>
                                             </select>
                                           </div>
                                           <div className="col-sm-2">
@@ -217,7 +296,7 @@ const AddNewItem = () => {
                                             htmlFor="inputEmail3"
                                             className="col-sm-5 col-form-label"
                                           >
-                                            SE Item/Part No:
+                                          Part No:
                                           </label>
                                           <div className="col-sm-7">
                                             <input
@@ -243,8 +322,10 @@ const AddNewItem = () => {
                                               <option selected>
                                                 Select ..
                                               </option>
-                                              <option>FA</option>
-                                              <option>FA</option>
+                                              <option>PCS</option>
+                                              <option>KGS</option>
+                                              <option>BOX</option>
+                                              <option>LTR</option>
                                             </select>
                                           </div>
                                           <div className="col-sm-2">
@@ -325,8 +406,8 @@ const AddNewItem = () => {
                                               <option selected>
                                                 Select ..
                                               </option>
-                                              <option>FA</option>
-                                              <option>FA</option>
+                                              <option>STORE</option>
+                                              <option>MAINTENANCE</option>
                                             </select>
                                           </div>
                                           <div className="col-sm-2">

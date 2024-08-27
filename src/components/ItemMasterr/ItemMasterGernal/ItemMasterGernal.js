@@ -16,7 +16,7 @@ import NewCardMainGroup from "../ItemGernalCard/NewCardMainGroup.jsx";
 import NewCardRoute from "../ItemGernalCard/NewCardRoute.jsx";
 import NewCardSector from "../ItemGernalCard/NewCardSector.jsx";
 import NewCardStoreLocation from "../ItemGernalCard/NewCardStoreLocation.jsx";
-import NewCardTdc from "../ItemGernalCard/NewCardTdc.jsx";
+// import NewCardTdc from "../ItemGernalCard/NewCardTdc.jsx";
 import NewCardUnitCode from "../ItemGernalCard/NewCardUnitCode.jsx";
 import NewCardModelType from "../ItemGernalCard/NewCardModelType.jsx";
 import NewCardParentFg from "../ItemGernalCard/NewCardParentFg.jsx";
@@ -27,9 +27,9 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
   getItems,
-  getGrades,
+  // getGrades,
   getMetalTypes,
-  getTdcs,
+  // getTdcs,
   getUnitCodes,
   getStoreLocations,
   getSectors,
@@ -37,8 +37,7 @@ import {
   getParentFgCodes,
   getMainGroups,
   getItemSections,
-  getItemGroups
-
+  getItemGroups,
 } from "../../../Service/Api.jsx";
 const ItemMasterGernal = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -57,7 +56,7 @@ const ItemMasterGernal = () => {
   const [showNewCardModelType, setShowNewCardModelType] = useState(false);
   const [showNewCardParentFg, setShowNewCardParentFg] = useState(false);
   const [items, setItems] = useState([]);
-  const [grades, setGrades] = useState([]);
+  // const [grades, setGrades] = useState([]);
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
@@ -136,7 +135,7 @@ const ItemMasterGernal = () => {
     Main_Group: "",
     SE_Item: "",
     Unit_Code: "",
-    TDC: "",
+    // TDC: "",
     Part_Code: "",
     Cut_Weight_kg: "",
     Rate: "",
@@ -145,7 +144,7 @@ const ItemMasterGernal = () => {
     Heat_Treatment: "",
     Color_Code: "",
     Min_Rate: "",
-    VA_Rate1: "",
+   
     Length: "",
     Shape: "",
     Rate_Remark: "",
@@ -163,14 +162,13 @@ const ItemMasterGernal = () => {
     Hardness: "",
     Male: "",
     Max_Rate: "",
-    VA_Rate2: "",
+   
     Thickness: "",
     Diameter: "",
     Other_Desce: "",
     Metal: "",
     Finish: "",
-    Type: "",
-    Grade: "",
+   
     Subgroup: "",
     HSN_SAC_Code: "",
     Gross_Weight: "",
@@ -191,11 +189,24 @@ const ItemMasterGernal = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    Object.keys(formData).forEach((key) => {
-      if (!formData[key]) {
-        newErrors[key] = "This field is required.";
+    const requiredFields = [
+      "Main_Group",
+      "SE_Item",
+      "Unit_Code",
+      "Part_Code",
+      "Item_Group",
+      "Name_Description",
+      "Store_Location",
+      "SAC_Code",
+      "HSN_SAC_Code",
+    ];
+
+    requiredFields.forEach((field) => {
+      if (!formData[field]) {
+        newErrors[field] = "This field is required.";
       }
     });
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -205,7 +216,9 @@ const ItemMasterGernal = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setErrors({ ...errors, [e.target.name]: "" }); // Clear errors on input change
   };
+
 
   const handleSaveitem = async (e) => {
     e.preventDefault();
@@ -236,7 +249,7 @@ const ItemMasterGernal = () => {
       Main_Group: "",
       SE_Item: "",
       Unit_Code: "",
-      TDC: "",
+      // TDC: "",
       Part_Code: "",
       Cut_Weight_kg: "",
       Rate: "",
@@ -245,7 +258,7 @@ const ItemMasterGernal = () => {
       Heat_Treatment: "",
       Color_Code: "",
       Min_Rate: "",
-      VA_Rate1: "",
+     
       Length: "",
       Shape: "",
       Rate_Remark: "",
@@ -263,14 +276,13 @@ const ItemMasterGernal = () => {
       Hardness: "",
       Male: "",
       Max_Rate: "",
-      VA_Rate2: "",
+    
       Thickness: "",
       Diameter: "",
       Other_Desce: "",
       Metal: "",
       Finish: "",
-      Type: "",
-      Grade: "",
+    
       Subgroup: "",
       HSN_SAC_Code: "",
       Gross_Weight: "",
@@ -306,17 +318,17 @@ const ItemMasterGernal = () => {
 
   // fetch grade
 
-  useEffect(() => {
-    fetchGrades();
-  }, []);
-  const fetchGrades = async () => {
-    try {
-      const response = await getGrades();
-      setGrades(response);
-    } catch (error) {
-      console.error("Error fetching qty packs:", error);
-    }
-  };
+  // useEffect(() => {
+  //   fetchGrades();
+  // }, []);
+  // const fetchGrades = async () => {
+  //   try {
+  //     const response = await getGrades();
+  //     setGrades(response);
+  //   } catch (error) {
+  //     console.error("Error fetching qty packs:", error);
+  //   }
+  // };
 
   // metal type
   const [metalTypes, setMetalTypes] = useState([]);
@@ -333,19 +345,19 @@ const ItemMasterGernal = () => {
     }
   };
 
-  // TDC
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetchTdcs();
-  }, []);
-  const fetchTdcs = async () => {
-    try {
-      const response = await getTdcs();
-      setData(response);
-    } catch (error) {
-      console.error("Error fetching metal types:", error);
-    }
-  };
+  // // TDC
+  // const [data, setData] = useState([]);
+  // useEffect(() => {
+  //   fetchTdcs();
+  // }, []);
+  // const fetchTdcs = async () => {
+  //   try {
+  //     const response = await getTdcs();
+  //     setData(response);
+  //   } catch (error) {
+  //     console.error("Error fetching metal types:", error);
+  //   }
+  // };
 
   // unit code
   const [unitCode, setUnitCode] = useState([]);
@@ -462,7 +474,7 @@ const ItemMasterGernal = () => {
 
   return (
     <div className="Itemmastergernalpage">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -592,7 +604,9 @@ const ItemMasterGernal = () => {
                                                 htmlFor="Main_Group"
                                                 className="col-sm-5 col-form-label"
                                               >
-                                                Main Group:
+                                                Main Group: <span className="text-danger">
+                                                *
+                                              </span>
                                               </label>
                                               <div className="col-sm-4">
                                                 <select
@@ -609,10 +623,15 @@ const ItemMasterGernal = () => {
                                                     Select ..
                                                   </option>
                                                   {MainGroup.map((Main) => (
-          <option key={Main.id} value={Main.Sub_Group_Name}>
-            {Main.Sub_Group_Name}
-          </option>
-        ))}
+                                                    <option
+                                                      key={Main.id}
+                                                      value={
+                                                        Main.Sub_Group_Name
+                                                      }
+                                                    >
+                                                      {Main.Sub_Group_Name}
+                                                    </option>
+                                                  ))}
                                                   <option value="FG">FG</option>
                                                   <option value="RM">RM</option>
                                                   <option value="Tool">
@@ -674,7 +693,7 @@ const ItemMasterGernal = () => {
                                                 for="SE_Item"
                                                 className="col-sm-5 col-form-label"
                                               >
-                                                SE Item/Part No:
+                                               Part No: <span className="text-danger">*</span>
                                               </label>
                                               <div className="col-sm-7">
                                                 <input
@@ -698,7 +717,7 @@ const ItemMasterGernal = () => {
                                                 for="Unit_Code"
                                                 className="col-sm-5 col-form-label"
                                               >
-                                                Unit Code:
+                                                Unit Code:<span className="text-danger">*</span>
                                               </label>
                                               <div className="col-sm-4">
                                                 <select
@@ -763,7 +782,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                             </div>
 
-                                            <div className="row mb-3">
+                                            {/* <div className="row mb-3">
                                               <label
                                                 htmlFor="TDC"
                                                 className="col-sm-5 col-form-label"
@@ -814,13 +833,13 @@ const ItemMasterGernal = () => {
                                                   <CachedIcon />
                                                 </button>
                                               </div>
-                                            </div>
+                                            </div> */}
                                             <div className="row mb-3">
                                               <label
                                                 htmlFor="Part_Code"
                                                 className="col-sm-5 col-form-label"
                                               >
-                                                Item/Part Code:
+                                                Item/Part Code:<span className="text-danger">*</span>
                                               </label>
                                               <div className="col-sm-7">
                                                 <input
@@ -870,11 +889,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Cut_Weight_kg}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Cut_Weight_kg && (
+                                                {/* {errors.Cut_Weight_kg && (
                                                   <div className="text-danger">
                                                     {errors.Cut_Weight_kg}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -894,11 +913,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Rate}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Rate && (
+                                                {/* {errors.Rate && (
                                                   <div className="text-danger">
                                                     {errors.Rate}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <p
@@ -927,11 +946,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Revision_No}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Revision_No && (
+                                                {/* {errors.Revision_No && (
                                                   <div className="text-danger">
                                                     {errors.Revision_No}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -951,11 +970,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Item_Size}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Item_Size && (
+                                                {/* {errors.Item_Size && (
                                                   <div className="text-danger">
                                                     {errors.Item_Size}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                               <div className="col-sm-3">
                                                 <select
@@ -976,11 +995,11 @@ const ItemMasterGernal = () => {
                                                   <option>RD</option>
                                                   <option>SQ</option>
                                                 </select>
-                                                {errors.Item_Size && (
+                                                {/* {errors.Item_Size && (
                                                   <div className="text-danger">
                                                     {errors.Item_Size}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1002,11 +1021,11 @@ const ItemMasterGernal = () => {
                                                   }
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Heat_Treatment && (
+                                                {/* {errors.Heat_Treatment && (
                                                   <div className="text-danger">
                                                     {errors.Heat_Treatment}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1026,11 +1045,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Color_Code}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Color_Code && (
+                                                {/* {errors.Color_Code && (
                                                   <div className="text-danger">
                                                     {errors.Color_Code}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1050,37 +1069,14 @@ const ItemMasterGernal = () => {
                                                   value={formData.Min_Rate}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Min_Rate && (
+                                                {/* {errors.Min_Rate && (
                                                   <div className="text-danger">
                                                     {errors.Min_Rate}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
-                                            <div className="row mb-3">
-                                              <label
-                                                htmlFor="VA_Rate1"
-                                                className="col-sm-5 col-form-label"
-                                              >
-                                                VA Rate 1:
-                                              </label>
-                                              <div className="col-sm-7">
-                                                <input
-                                                  type="text"
-                                                  id="VA_Rate1"
-                                                  name="VA_Rate1"
-                                                  className="form-control"
-                                                  style={{ width: "115%" }}
-                                                  value={formData.VA_Rate1}
-                                                  onChange={handleInputChange}
-                                                />
-                                                {errors.VA_Rate1 && (
-                                                  <div className="text-danger">
-                                                    {errors.VA_Rate1}
-                                                  </div>
-                                                )}
-                                              </div>
-                                            </div>
+                                         
                                             <div className="row mb-3">
                                               <label
                                                 htmlFor="Length"
@@ -1098,11 +1094,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Length}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Length && (
+                                                {/* {errors.Length && (
                                                   <div className="text-danger">
                                                     {errors.Length}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1122,11 +1118,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Shape}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Shape && (
+                                                {/* {errors.Shape && (
                                                   <div className="text-danger">
                                                     {errors.Shape}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1146,11 +1142,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Rate_Remark}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Rate_Remark && (
+                                                {/* {errors.Rate_Remark && (
                                                   <div className="text-danger">
                                                     {errors.Rate_Remark}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1182,11 +1178,11 @@ const ItemMasterGernal = () => {
                                                   <option value="FA">FA</option>
                                                   <option value="FB">FB</option>
                                                 </select>
-                                                {errors.Metal_Type && (
+                                                {/* {errors.Metal_Type && (
                                                   <div className="text-danger">
                                                     {errors.Metal_Type}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
@@ -1230,11 +1226,11 @@ const ItemMasterGernal = () => {
                                                   }
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Specific_Gravity && (
+                                                {/* {errors.Specific_Gravity && (
                                                   <div className="text-danger">
                                                     {errors.Specific_Gravity}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1242,7 +1238,7 @@ const ItemMasterGernal = () => {
                                                 htmlFor="Item_Group"
                                                 className="col-sm-5 col-form-label"
                                               >
-                                                Item Group:
+                                                Item Group:<span className="text-danger">*</span>
                                               </label>
                                               <div className="col-sm-4">
                                                 <select
@@ -1259,10 +1255,13 @@ const ItemMasterGernal = () => {
                                                     Select ..
                                                   </option>
                                                   {itemGroups.map((group) => (
-          <option key={group.id} value={group.GroupName}>
-            {group.GroupName}
-          </option>
-        ))}
+                                                    <option
+                                                      key={group.id}
+                                                      value={group.GroupName}
+                                                    >
+                                                      {group.GroupName}
+                                                    </option>
+                                                  ))}
                                                   <option>END PIECE</option>
                                                   <option>MACHINNING</option>
                                                   <option>BELTS</option>
@@ -1321,7 +1320,7 @@ const ItemMasterGernal = () => {
                                                 htmlFor="Name_Description"
                                                 className="col-sm-5 col-form-label"
                                               >
-                                                Name Description:
+                                                Name Description:<span className="text-danger">*</span>
                                               </label>
                                               <div className="col-sm-7">
                                                 <input
@@ -1347,7 +1346,7 @@ const ItemMasterGernal = () => {
                                                 htmlFor="Store_Location"
                                                 className="col-sm-5 col-form-label"
                                               >
-                                                Store Location:
+                                                Store Location:<span className="text-danger">*</span>
                                               </label>
                                               <div className="col-sm-4">
                                                 <select
@@ -1421,19 +1420,22 @@ const ItemMasterGernal = () => {
                                                     Select ..
                                                   </option>
                                                   {Route.map((Route) => (
-          <option key={Route.id} value={Route.Name}>
-            {Route.Name}
-          </option>
-        ))}
+                                                    <option
+                                                      key={Route.id}
+                                                      value={Route.Name}
+                                                    >
+                                                      {Route.Name}
+                                                    </option>
+                                                  ))}
                                                   <option value="SF">SF</option>
                                                   <option value="BO">BO</option>
                                                   <option value="DI">DI</option>
                                                 </select>
-                                                {errors.Route && (
+                                                {/* {errors.Route && (
                                                   <div className="text-danger">
                                                     {errors.Route}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
@@ -1473,18 +1475,23 @@ const ItemMasterGernal = () => {
                                                     Select ..
                                                   </option>
                                                   {ParentFG.map((Parent) => (
-          <option key={Parent.id} value={Parent.Parent_FG_Code}>
-            {Parent.Parent_FG_Code}
-          </option>
-        ))}
+                                                    <option
+                                                      key={Parent.id}
+                                                      value={
+                                                        Parent.Parent_FG_Code
+                                                      }
+                                                    >
+                                                      {Parent.Parent_FG_Code}
+                                                    </option>
+                                                  ))}
                                                   <option value="FA">FA</option>
                                                   <option value="FB">FB</option>
                                                 </select>
-                                                {errors.Parent_FG_Code && (
+                                                {/* {errors.Parent_FG_Code && (
                                                   <div className="text-danger">
                                                     {errors.Parent_FG_Code}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
@@ -1522,11 +1529,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Finish_Weight}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Finish_Weight && (
+                                                {/* {errors.Finish_Weight && (
                                                   <div className="text-danger">
                                                     {errors.Finish_Weight}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1562,11 +1569,11 @@ const ItemMasterGernal = () => {
                                                   <option>BO</option>
                                                   <option>DI</option>
                                                 </select>
-                                                {errors.Sector && (
+                                                {/* {errors.Sector && (
                                                   <div className="text-danger">
                                                     {errors.Sector}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
@@ -1592,7 +1599,7 @@ const ItemMasterGernal = () => {
                                                 for="SAC_Code"
                                                 className="col-sm-5 col-form-label"
                                               >
-                                                SAC Code:
+                                                SAC Code:<span className="text-danger">*</span>
                                               </label>
                                               <div className="col-sm-7">
                                                 <input
@@ -1633,20 +1640,29 @@ const ItemMasterGernal = () => {
                                                   >
                                                     Select ..
                                                   </option>
-                                                  {ItemSection.map((itemselect) => (
-          <option key={itemselect.id} value={itemselect.Section_Name}>
-            {itemselect.Section_Name}
-          </option>
-        ))}
+                                                  {ItemSection.map(
+                                                    (itemselect) => (
+                                                      <option
+                                                        key={itemselect.id}
+                                                        value={
+                                                          itemselect.Section_Name
+                                                        }
+                                                      >
+                                                        {
+                                                          itemselect.Section_Name
+                                                        }
+                                                      </option>
+                                                    )
+                                                  )}
                                                   <option>SF</option>
                                                   <option>BO</option>
                                                   <option>DI</option>
                                                 </select>
-                                                {errors.Item_Sector && (
+                                                {/* {errors.Item_Sector && (
                                                   <div className="text-danger">
                                                     {errors.Item_Sector}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
@@ -1684,11 +1700,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Hardness}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Hardness && (
+                                                {/* {errors.Hardness && (
                                                   <div className="text-danger">
                                                     {errors.Hardness}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1708,11 +1724,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Male}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Male && (
+                                                {/* {errors.Male && (
                                                   <div className="text-danger">
                                                     {errors.Male}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1732,37 +1748,14 @@ const ItemMasterGernal = () => {
                                                   value={formData.Max_Rate}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Max_Rate && (
+                                                {/* {errors.Max_Rate && (
                                                   <div className="text-danger">
                                                     {errors.Max_Rate}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
-                                            <div className="row mb-3">
-                                              <label
-                                                for="VA_Rate2"
-                                                className="col-sm-5 col-form-label"
-                                              >
-                                                VA Rate 2:
-                                              </label>
-                                              <div className="col-sm-7">
-                                                <input
-                                                  id="VA_Rate2"
-                                                  name="VA_Rate2"
-                                                  type="text"
-                                                  className="form-control"
-                                                  style={{ width: "115%" }}
-                                                  value={formData.VA_Rate2}
-                                                  onChange={handleInputChange}
-                                                />
-                                                {errors.VA_Rate2 && (
-                                                  <div className="text-danger">
-                                                    {errors.VA_Rate2}
-                                                  </div>
-                                                )}
-                                              </div>
-                                            </div>
+                                           
                                             <div className="row mb-3">
                                               <label
                                                 for="Thickness"
@@ -1780,11 +1773,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Thickness}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Thickness && (
+                                                {/* {errors.Thickness && (
                                                   <div className="text-danger">
                                                     {errors.Thickness}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1804,11 +1797,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Diameter}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Diameter && (
+                                                {/* {errors.Diameter && (
                                                   <div className="text-danger">
                                                     {errors.Diameter}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1828,14 +1821,14 @@ const ItemMasterGernal = () => {
                                                   value={formData.Other_Desce}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Other_Desce && (
+                                                {/* {errors.Other_Desce && (
                                                   <div className="text-danger">
                                                     {errors.Other_Desce}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
-                                            <div className="row mb-3">
+                                            {/* <div className="row mb-3">
                                               <label
                                                 for="Grade"
                                                 className="col-sm-5 col-form-label"
@@ -1858,7 +1851,7 @@ const ItemMasterGernal = () => {
                                                   </div>
                                                 )}
                                               </div>
-                                            </div>
+                                            </div> */}
                                           </div>
                                         </div>
                                         <div className="col-md-4">
@@ -1880,11 +1873,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Metal}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Metal && (
+                                                {/* {errors.Metal && (
                                                   <div className="text-danger">
                                                     {errors.Metal}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -1904,15 +1897,15 @@ const ItemMasterGernal = () => {
                                                   value={formData.Finish}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Finish && (
+                                                {/* {errors.Finish && (
                                                   <div className="text-danger">
                                                     {errors.Finish}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
 
-                                            <div className="row mb-3">
+                                            {/* <div className="row mb-3">
                                               <label
                                                 htmlFor="Type"
                                                 className="col-sm-5 col-form-label"
@@ -1940,9 +1933,9 @@ const ItemMasterGernal = () => {
                                                       {item.Item_Grade_Name}
                                                     </option>
                                                   ))}
-                                                  <option value="SF">SF</option>
-                                                  <option value="BO">BO</option>
-                                                  <option value="DI">DI</option>
+                                                  <option value="SF">Type</option>
+                                                  <option value="BO">V</option>
+                                                  <option value="DI">NV</option>
                                                 </select>
                                                 {errors.Type && (
                                                   <div className="text-danger">
@@ -1967,7 +1960,9 @@ const ItemMasterGernal = () => {
                                                   <CachedIcon />
                                                 </button>
                                               </div>
-                                            </div>
+                                            </div> */}
+
+
                                             <div className="row mb-3">
                                               <label
                                                 htmlFor="Subgroup"
@@ -1994,15 +1989,13 @@ const ItemMasterGernal = () => {
                                                       {item.Sub_Group}
                                                     </option>
                                                   ))}
-                                                  <option value="SF">SF</option>
-                                                  <option value="BO">BO</option>
-                                                  <option value="DI">DI</option>
+                                              
                                                 </select>
-                                                {errors.Subgroup && (
+                                                {/* {errors.Subgroup && (
                                                   <div className="text-danger">
                                                     {errors.Subgroup}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
@@ -2028,7 +2021,7 @@ const ItemMasterGernal = () => {
                                                 htmlFor="HSN_SAC_Code"
                                                 className="col-sm-5 col-form-label"
                                               >
-                                                HSN/SAC Code:
+                                                HSN/SAC Code:<span className="text-danger">*</span>
                                               </label>
                                               <div className="col-sm-7">
                                                 <input
@@ -2064,11 +2057,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Gross_Weight}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Gross_Weight && (
+                                                {/* {errors.Gross_Weight && (
                                                   <div className="text-danger">
                                                     {errors.Gross_Weight}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -2088,11 +2081,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Tool_Die_Life}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Tool_Die_Life && (
+                                                {/* {errors.Tool_Die_Life && (
                                                   <div className="text-danger">
                                                     {errors.Tool_Die_Life}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -2115,13 +2108,13 @@ const ItemMasterGernal = () => {
                                                   }
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Resharpening_Reconditionning && (
+                                                {/* {errors.Resharpening_Reconditionning && (
                                                   <div className="text-danger">
                                                     {
                                                       errors.Resharpening_Reconditionning
                                                     }
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -2129,25 +2122,32 @@ const ItemMasterGernal = () => {
                                                 htmlFor="Item_ClassName"
                                                 className="col-sm-5 col-form-label"
                                               >
-                                                Item ClassName:
+                                                Item Class:
                                               </label>
                                               <div className="col-sm-7">
-                                                <input
+                                              <select
                                                   id="Item_ClassName"
                                                   name="Item_ClassName"
-                                                  type="text"
-                                                  className="form-control"
-                                                  style={{ width: "115%" }}
-                                                  value={
-                                                    formData.Item_ClassName
-                                                  }
+                                                  className="form-select"
+                                                  value={formData.Item_ClassName}
                                                   onChange={handleInputChange}
-                                                />
-                                                {errors.Item_ClassName && (
+                                                >
+                                                  <option value="">
+                                                    Select ..
+                                                  </option>
+                                                  
+                                                  <option value="SF">A</option>
+                                                  <option value="BO">B</option>
+                                                  <option value="BO">C</option>
+
+                                                  <option value="DI">D</option>
+                                                </select>
+                                            
+                                                {/* {errors.Item_ClassName && (
                                                   <div className="text-danger">
                                                     {errors.Item_ClassName}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -2158,22 +2158,27 @@ const ItemMasterGernal = () => {
                                                 QC Application:
                                               </label>
                                               <div className="col-sm-7">
-                                                <input
+                                              <select
                                                   id="QC_Application"
                                                   name="QC_Application"
-                                                  type="text"
-                                                  className="form-control"
-                                                  style={{ width: "115%" }}
-                                                  value={
-                                                    formData.QC_Application
-                                                  }
+                                                  className="form-select"
+                                                  value={formData.QC_Application}
                                                   onChange={handleInputChange}
-                                                />
-                                                {errors.QC_Application && (
+                                                >
+                                                  <option value="">
+                                                    Select ..
+                                                  </option>
+                                                  
+                                                  <option value="SF">Yes</option>
+                                                  <option value="BO">No</option>
+                                                 
+                                                </select>
+                                               
+                                                {/* {errors.QC_Application && (
                                                   <div className="text-danger">
                                                     {errors.QC_Application}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -2193,11 +2198,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Jominy}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Jominy && (
+                                                {/* {errors.Jominy && (
                                                   <div className="text-danger">
                                                     {errors.Jominy}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -2219,11 +2224,11 @@ const ItemMasterGernal = () => {
                                                   }
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Microstructure && (
+                                                {/* {errors.Microstructure && (
                                                   <div className="text-danger">
                                                     {errors.Microstructure}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -2243,11 +2248,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Drawing_No}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Drawing_No && (
+                                                {/* {errors.Drawing_No && (
                                                   <div className="text-danger">
                                                     {errors.Drawing_No}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                               <div className="form-check">
                                                 <input
@@ -2281,11 +2286,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Width}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Width && (
+                                                {/* {errors.Width && (
                                                   <div className="text-danger">
                                                     {errors.Width}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -2305,11 +2310,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Old_ERP_Code}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Old_ERP_Code && (
+                                                {/* {errors.Old_ERP_Code && (
                                                   <div className="text-danger">
                                                     {errors.Old_ERP_Code}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -2329,11 +2334,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.Note}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.Note && (
+                                                {/* {errors.Note && (
                                                   <div className="text-danger">
                                                     {errors.Note}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                             <div className="row mb-3">
@@ -2353,11 +2358,11 @@ const ItemMasterGernal = () => {
                                                   value={formData.KgMM3}
                                                   onChange={handleInputChange}
                                                 />
-                                                {errors.KgMM3 && (
+                                                {/* {errors.KgMM3 && (
                                                   <div className="text-danger">
                                                     {errors.KgMM3}
                                                   </div>
-                                                )}
+                                                )} */}
                                               </div>
                                             </div>
                                           </div>
@@ -2387,7 +2392,7 @@ const ItemMasterGernal = () => {
                                                   className="form-check-label"
                                                   for="flexCheckDefault"
                                                 >
-                                                  Save
+                                                  Sales
                                                 </label>
                                               </div>
                                             </div>
@@ -2534,7 +2539,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                           </div>
                                         </div>
-                                        <NewCardTdc />
+                                        {/* <NewCardTdc /> */}
                                       </div>
                                     </div>
                                   </div>

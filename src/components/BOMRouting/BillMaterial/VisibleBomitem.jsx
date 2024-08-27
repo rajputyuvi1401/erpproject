@@ -116,7 +116,8 @@ const VisibleBomitem = () => {
         <form onSubmit={handleSave2}>
           <div className="row mb-3">
             <div className="col-md-3 mb-3">
-              <label className="form-label">BOM Item Group:</label>
+              <label className="form-label">BOM Item Group:<span className="text-danger">*</span>
+                                               </label>
               <select
                 className={`form-select ${
                   errors.Bom_Item_Group ? "is-invalid" : ""
@@ -126,8 +127,8 @@ const VisibleBomitem = () => {
                 onChange={handleInputChange2}
               >
                 <option value="">Select Option</option>
-                <option>he</option>
-                <option>hey</option>
+                <option></option>
+                <option></option>
               </select>
               {errors.Bom_Item_Group && (
                 <div className="invalid-feedback">{errors.Bom_Item_Group}</div>

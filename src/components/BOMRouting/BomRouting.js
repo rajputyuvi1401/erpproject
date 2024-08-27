@@ -55,11 +55,57 @@ const BomRouting = () => {
                           <button className="BOMRoutingbtn">Un-Auth:2</button>
                           <button className="BOMRoutingbtn">Auth:591</button>
 
-                          <button className="BOMRoutingbtn">BOM:Report</button>
+                          
+                          
+                            <button  style={{marginLeft:"3px", padding:'5px'}}
+                              className="BOMRoutingbtn dropdown-toggle"
+                              type="button"
+                              id="dropdownMenuButton"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
+                              BOM:Report
+                            </button>
+                            <ul
+                              className="dropdown-menu"
+                              aria-labelledby="dropdownMenuButton"
+                            >
+                              <li>
+                                <a className="dropdown-item" href="#report1">
+                                  Upload WIP Value
+                                </a>
+                              </li>
+                              <li>
+                                <a className="dropdown-item" href="#report2">
+                                  Upload Operation Specification
+                                </a>
+                              </li>
+                              <li>
+                                <a className="dropdown-item" href="#report3">
+                                  Manual BOM Working Sheet
+                                </a>
+                              </li>
+                              <li>
+                                <a className="dropdown-item" href="#report1">
+                                  BOM Item Traceability
+                                </a>
+                              </li>
+                              <li>
+                                <a className="dropdown-item" href="#report2">
+                                  BOM Value Report
+                                </a>
+                              </li>
+                              <li>
+                                <a className="dropdown-item" href="#report3">
+                                 BOM Tree View
+                                </a>
+                              </li>
+                            </ul>
+                          
                           <Link
                             to={"/bill-material"}
                             className="BOMRoutingbtn"
-                            style={{ padding: "12px" }}
+                            style={{ padding: "8px" }}
                           >
                             New / Modify BOM
                           </Link>
@@ -77,9 +123,9 @@ const BomRouting = () => {
                             aria-label="Default select example"
                           >
                             <option selected>ALL</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="1">FG</option>
+                            <option value="2">RM</option>
+                            <option value="3">SFG</option>
                           </select>
                         </div>
                         <div className="col-sm-2">
@@ -100,14 +146,20 @@ const BomRouting = () => {
                             className="form-select"
                             aria-label="Default select example"
                           >
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option selected>ALl</option>
+                            <option value="1">BEARING</option>
+                            <option value="2">BELTS</option>
+                            <option value="3">CAMS</option>
+                            <option value="1">COLLETS & HOLDERS</option>
+                            <option value="2">COMPUTER</option>
+                            <option value="3">CUTTING TOOL</option>
+                            <option value="1">ELECTRICS PARTS</option>
+                            <option value="2">END PIECE</option>
+                            <option value="3">FIXCTURE</option>
                           </select>
                         </div>
                         <div className="col-md-6">
-                          <button className="BOMMainbtn">search</button>
+                          <button className="BOMMainbtn">Search</button>
                           <button className="BOMMainbtn">View All</button>
                           <button className="BOMMainbtn">
                             Export Excel (Routing)
@@ -154,45 +206,7 @@ const BomRouting = () => {
                                 <td>Tree 1</td>
                                 <td>Tree 1</td>
                               </tr>
-                              <tr>
-                                <td>2</td>
-                                <td>Item No 2</td>
-                                <td>Item Code 2</td>
-                                <td>Item Docs 2</td>
-                                <td>NPO 2</td>
-                                <td>Auth 2</td>
-                                <td>User 2</td>
-                                <td>View 2</td>
-                                <td>View 2</td>
-                                <td>Tree 2</td>
-                                <td>Tree 2</td>
-                              </tr>
-                              <tr>
-                                <td>3</td>
-                                <td>Item No 1</td>
-                                <td>Item Code 1</td>
-                                <td>Item Docs 1</td>
-                                <td>NPO 1</td>
-                                <td>Auth 1</td>
-                                <td>User 1</td>
-                                <td>View 1</td>
-                                <td>View 1</td>
-                                <td>Tree 1</td>
-                                <td>Tree 1</td>
-                              </tr>
-                              <tr>
-                                <td>4</td>
-                                <td>Item No 2</td>
-                                <td>Item Code 2</td>
-                                <td>Item Docs 2</td>
-                                <td>NPO 2</td>
-                                <td>Auth 2</td>
-                                <td>User 2</td>
-                                <td>View 2</td>
-                                <td>View 2</td>
-                                <td>Tree 2</td>
-                                <td>Tree 2</td>
-                              </tr>
+                            
                             </tbody>
                           </table>
                         </div>

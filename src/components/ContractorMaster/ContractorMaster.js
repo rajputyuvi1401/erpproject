@@ -68,12 +68,11 @@ const ContractorMaster = () => {
                                 Plant:
                               </label>
                               <select id="plantSelect" className="form-select">
-                                <option value="plant1">Plant 1</option>
-                                <option value="plant2">Plant 2</option>
-                                <option value="plant3">Plant 3</option>
+                                <option value="plant1">SHARP</option>
+                                
                               </select>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-3">
                               <label
                                 htmlFor="contractorName"
                                 className="form-label"
@@ -131,14 +130,14 @@ const ContractorMaster = () => {
                                 <td>Sharp</td>
                                 <td>Company</td>
                                 <td>MIDC</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td>
                                   <button className="contractorbtnicon">
                                     <i className="fas fa-edit"></i>

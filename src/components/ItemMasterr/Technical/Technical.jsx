@@ -121,7 +121,7 @@ const Technical = () => {
             <table className="table table-bordered">
               <thead>
                 <tr>
-                  <th scope="col">Specification</th>
+                  <th scope="col">Specification<span className="text-danger">*</span></th>
                   <th scope="col">Parameter</th>
                   <th scope="col">Action</th>
                 </tr>
@@ -328,7 +328,7 @@ const Technical = () => {
                 id="flexCheckDefault"
               />
               <label className="form-check-label" for="flexCheckDefault">
-                Save
+                Sales
               </label>
             </div>
           </div>

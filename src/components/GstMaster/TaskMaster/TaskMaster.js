@@ -12,6 +12,8 @@ import {
   updateTaxCode,
   deleteTaxCode,
 } from "../../../Service/Api.jsx"; // Adjust the import path as needed
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const TaskMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -50,8 +52,10 @@ const TaskMaster = () => {
       const data = await getTaxCodes();
       console.log("Fetched tax codes data:", data); // Debugging
       setTaxCodes(data);
+
     } catch (error) {
       console.error("Error fetching tax codes:", error);
+      toast.error("Failed to fetch tax codes.");
     }
   };
 
@@ -66,14 +70,17 @@ const TaskMaster = () => {
       if (editMode) {
         console.log("Updating tax code with ID:", formData.id);
         await updateTaxCode(formData.id, formData);
+        toast.success("Tax code updated successfully!");
       } else {
         console.log("Creating new tax code");
         await createTaxCode(formData);
+        toast.success("Tax code created successfully!");
       }
       fetchTaxCodes();
       resetForm();
     } catch (error) {
       console.error("Error saving tax code:", error);
+      toast.error("Failed to save tax code.");
     }
   };
 
@@ -86,8 +93,10 @@ const TaskMaster = () => {
     try {
       await deleteTaxCode(id);
       fetchTaxCodes();
+      toast.success("Tax code deleted successfully!");
     } catch (error) {
       console.error("Error deleting tax code:", error);
+      toast.error("Failed to delete tax code.");
     }
   };
 
@@ -112,6 +121,7 @@ const TaskMaster = () => {
 
   return (
     <div className="taskmaster">
+      <ToastContainer/>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">

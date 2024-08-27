@@ -40,62 +40,8 @@ const CycleTime = () => {
       Partcode: "P003",
       Machinetype: "Type 1",
     },
-    {
-      id: 4,
-      ItemNo: "1004",
-      ItemDesc: "Widget D",
-      OpNo: "004",
-      Partcode: "P004",
-      Machinetype: "Type 3",
-    },
-    {
-      id: 5,
-      ItemNo: "1005",
-      ItemDesc: "Widget E",
-      OpNo: "005",
-      Partcode: "P005",
-      Machinetype: "Type 2",
-    },
-    {
-      id: 6,
-      ItemNo: "1006",
-      ItemDesc: "Widget F",
-      OpNo: "006",
-      Partcode: "P006",
-      Machinetype: "Type 1",
-    },
-    {
-      id: 7,
-      ItemNo: "1007",
-      ItemDesc: "Widget G",
-      OpNo: "007",
-      Partcode: "P007",
-      Machinetype: "Type 3",
-    },
-    {
-      id: 8,
-      ItemNo: "1008",
-      ItemDesc: "Widget H",
-      OpNo: "008",
-      Partcode: "P008",
-      Machinetype: "Type 2",
-    },
-    {
-      id: 9,
-      ItemNo: "1009",
-      ItemDesc: "Widget I",
-      OpNo: "009",
-      Partcode: "P009",
-      Machinetype: "Type 1",
-    },
-    {
-      id: 10,
-      ItemNo: "1010",
-      ItemDesc: "Widget J",
-      OpNo: "010",
-      Partcode: "P010",
-      Machinetype: "Type 3",
-    },
+    
+
   ]);
 
   const handleAddNewCycleTime = () => {

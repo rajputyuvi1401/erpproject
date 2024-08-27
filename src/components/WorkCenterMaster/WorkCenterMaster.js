@@ -129,12 +129,11 @@ const WorkCenterMaster = () => {
     let valid = true;
     let errors = {};
 
-    for (const key in formData) {
-      if (!formData[key]) {
-        valid = false;
-        errors[key] = "This field is required";
-      }
+    if (!formData.Category) {
+      valid = false;
+      errors.Category = "This field is required";
     }
+
 
     setErrors(errors);
     return valid;
@@ -148,7 +147,8 @@ const WorkCenterMaster = () => {
     try {
       const response = await saveWorkCenter(formData);
       console.log("Saved Data:", response); // Log the response data to the console
-      toast.success("Work Center saved successfully"); // Show success toaster notification
+     
+      toast.success("Work Center saved successfully");
     } catch (error) {
       console.log(
         "Error:",
@@ -322,8 +322,6 @@ const WorkCenterMaster = () => {
                                   >
                                     <option value="">Select</option>
                                     <option value="SHARP">SHARP</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
                                   </select>
                                   {errors.Plant && (
                                     <div className="text-danger">
@@ -344,6 +342,7 @@ const WorkCenterMaster = () => {
                                     className="col-sm-3 col-form-label"
                                   >
                                     Category
+                                    <span className="text-danger">*</span>
                                   </label>
                                   <div className="col-sm-9">
                                     <select
@@ -353,8 +352,8 @@ const WorkCenterMaster = () => {
                                       onChange={handleChange}
                                     >
                                       <option value="">Select</option>
-                                      <option value="1">Option 1</option>
-                                      <option value="2">Option 2</option>
+                                      <option value="Production">Production</option>
+                                      <option value="Gernal">Gernal</option>
                                     </select>
                                     {errors.Category && (
                                       <div className="text-danger">
@@ -378,11 +377,11 @@ const WorkCenterMaster = () => {
                                       value={formData.WorkCenterCode}
                                       onChange={handleChange}
                                     />
-                                    {errors.WorkCenterCode && (
+                                    {/* {errors.WorkCenterCode && (
                                       <div className="text-danger">
                                         {errors.WorkCenterCode}
                                       </div>
-                                    )}
+                                    )} */}
                                   </div>
                                 </div>
                                 <div className="row mb-3 text-start">
@@ -400,11 +399,11 @@ const WorkCenterMaster = () => {
                                       value={formData.WorkCenterName}
                                       onChange={handleChange}
                                     />
-                                    {errors.WorkCenterName && (
+                                    {/* {errors.WorkCenterName && (
                                       <div className="text-danger">
                                         {errors.WorkCenterName}
                                       </div>
-                                    )}
+                                    )} */}
                                   </div>
                                 </div>
                                 <div className="row mb-3 text-start">
@@ -446,11 +445,11 @@ const WorkCenterMaster = () => {
                                       <option value="TROUB">TROUB</option>
                                       <option value="VMC">VMC</option>
                                     </select>
-                                    {errors.WorkCenterType && (
+                                    {/* {errors.WorkCenterType && (
                                       <div className="text-danger">
                                         {errors.WorkCenterType}
                                       </div>
-                                    )}
+                                    )} */}
                                   </div>
                                   <div className="col-sm-2">
                                     <button
@@ -569,21 +568,7 @@ const WorkCenterMaster = () => {
                                           </table>
                                         </div>
 
-                                        <div className="row">
-                                          <div className="col-md-12 text-start">
-                                            <button
-                                              style={{
-                                                border: "none",
-                                                padding: "10px",
-                                                backgroundColor: "blue",
-                                                color: "white",
-                                                borderRadius: "10px",
-                                              }}
-                                            >
-                                              Save
-                                            </button>
-                                          </div>
-                                        </div>
+                                      
                                       </div>
                                     </div>
                                   </div>
@@ -606,11 +591,11 @@ const WorkCenterMaster = () => {
                                         value={formData.Mhr_Rate}
                                         onChange={handleChange}
                                       />
-                                      {errors.Mhr_Rate && (
+                                      {/* {errors.Mhr_Rate && (
                                         <div className="text-danger">
                                           {errors.Mhr_Rate}
                                         </div>
-                                      )}
+                                      )} */}
                                     </div>
                                   </div>
                                   <div className="row mb-3 text-start">
@@ -628,11 +613,11 @@ const WorkCenterMaster = () => {
                                         value={formData.Electricity}
                                         onChange={handleChange}
                                       />
-                                      {errors.Electricity && (
+                                      {/* {errors.Electricity && (
                                         <div className="text-danger">
                                           {errors.Electricity}
                                         </div>
-                                      )}
+                                      )} */}
                                     </div>
                                   </div>
                                   <div className="row mb-3 text-start">
@@ -650,11 +635,11 @@ const WorkCenterMaster = () => {
                                         value={formData.PPM_SPM}
                                         onChange={handleChange}
                                       />
-                                      {errors.PPM_SPM && (
+                                      {/* {errors.PPM_SPM && (
                                         <div className="text-danger">
                                           {errors.PPM_SPM}
                                         </div>
-                                      )}
+                                      )} */}
                                     </div>
                                   </div>
                                   <div className="row mb-3 text-start">
@@ -672,11 +657,11 @@ const WorkCenterMaster = () => {
                                         value={formData.PPM}
                                         onChange={handleChange}
                                       />
-                                      {errors.PPM && (
+                                      {/* {errors.PPM && (
                                         <div className="text-danger">
                                           {errors.PPM}
                                         </div>
-                                      )}
+                                      )} */}
                                     </div>
                                   </div>
                                 </div>
@@ -696,11 +681,11 @@ const WorkCenterMaster = () => {
                                         value={formData.BatchQty}
                                         onChange={handleChange}
                                       />
-                                      {errors.BatchQty && (
+                                      {/* {errors.BatchQty && (
                                         <div className="text-danger">
                                           {errors.BatchQty}
                                         </div>
-                                      )}
+                                      )} */}
                                     </div>
                                     {/* <div className="col-sm-2">
                                       <span>kg</span>
@@ -721,11 +706,11 @@ const WorkCenterMaster = () => {
                                         value={formData.Oil}
                                         onChange={handleChange}
                                       />
-                                      {errors.Oil && (
+                                      {/* {errors.Oil && (
                                         <div className="text-danger">
                                           {errors.Oil}
                                         </div>
-                                      )}
+                                      )} */}
                                     </div>
                                   </div>
                                   <div className="row mb-3 text-start">
@@ -743,11 +728,11 @@ const WorkCenterMaster = () => {
                                         value={formData.Proud_Hours}
                                         onChange={handleChange}
                                       />
-                                      {errors.Proud_Hours && (
+                                      {/* {errors.Proud_Hours && (
                                         <div className="text-danger">
                                           {errors.Proud_Hours}
                                         </div>
-                                      )}
+                                      )} */}
                                     </div>
                                   </div>
                                   <div className="row mb-3 text-start">
@@ -765,11 +750,11 @@ const WorkCenterMaster = () => {
                                         value={formData.Daily_Running_Hr}
                                         onChange={handleChange}
                                       />
-                                      {errors.Daily_Running_Hr && (
+                                      {/* {errors.Daily_Running_Hr && (
                                         <div className="text-danger">
                                           {errors.Daily_Running_Hr}
                                         </div>
-                                      )}
+                                      )} */}
                                     </div>
                                   </div>
                                 </div>
@@ -783,18 +768,18 @@ const WorkCenterMaster = () => {
                                     Operator
                                   </label>
                                   <div className="col-sm-6">
-                                    <input
-                                      type="text"
-                                      className="form-control"
+                                    <select
                                       id="Operator"
+                                      className="form-select"
                                       value={formData.Operator}
                                       onChange={handleChange}
-                                    />
-                                    {errors.Operator && (
-                                      <div className="text-danger">
-                                        {errors.Operator}
-                                      </div>
-                                    )}
+                                    >
+                                      <option value="">Select</option>
+                                      <option value="">BHUSHAN</option>{" "}
+                                      <option value="">ANITA BAI</option>{" "}
+                                      <option value="">PRANAY</option>{" "}
+                                      <option value="">RANJAN</option>
+                                    </select>
                                   </div>
                                 </div>
                               </div>
@@ -855,7 +840,7 @@ const WorkCenterMaster = () => {
                                   htmlFor="inputType"
                                   className="col-sm-2 col-form-label text-start"
                                 >
-                                  Enter Type Group:
+                                  Enter Type Group:<span className="text-danger">*</span>
                                 </label>
                                 <div className="col-sm-3">
                                   <input
@@ -879,7 +864,7 @@ const WorkCenterMaster = () => {
                                   htmlFor="inputType"
                                   className="col-sm-2 col-form-label text-start"
                                 >
-                                  Prod WT:
+                                  Prod WT:<span className="text-danger">*</span>
                                 </label>
                                 <div className="col-sm-3">
                                   <select

@@ -103,16 +103,18 @@ const Supervisor = () => {
   const validate = () => {
     let tempErrors = {};
     let isValid = true;
-    for (let key in formData) {
-      if (!formData[key]) {
-        tempErrors[key] = "This field is required";
+    const requiredFields = ["Department", "Name", "Designation", "Type", "DailyWorkHours"];
+
+    requiredFields.forEach((field) => {
+      if (!formData[field]) {
+        tempErrors[field] = "This field is required";
         isValid = false;
       }
-    }
+    });
+
     for (let key in tempErrors) {
       console.error(`Field: ${key}, Error: ${tempErrors[key]}`);
     }
-
     setErrors(tempErrors);
     return isValid;
   };
@@ -429,7 +431,7 @@ const Supervisor = () => {
                   </div>
                   <div className="SupervisorMain">
                     <div className="container-fluid">
-                      <form onSubmit={handleSubmit}>
+                      <form onSubmit={handleSubmit} autoComplete="off">
                         <div className="row text-start">
                           <div className="col-md-4 col-sm-12">
                             <div className="row mb-3">
@@ -438,6 +440,7 @@ const Supervisor = () => {
                                 className="col-sm-4 col-form-label"
                               >
                                 Department:
+                                <span className="text-danger">*</span>
                               </label>
                               <div className="col-sm-8">
                                 <div className="input-group">
@@ -449,13 +452,13 @@ const Supervisor = () => {
                                   >
                                     <option>Select Department</option>
                                     {departments.map((department) => (
-                                              <option
-                                                key={department.id}
-                                                value={department.SelectCategory}
-                                              >
-                                                {department.SelectCategory}
-                                              </option>
-                                            ))}
+                                      <option
+                                        key={department.id}
+                                        value={department.SelectCategory}
+                                      >
+                                        {department.SelectCategory}
+                                      </option>
+                                    ))}
                                     <option>Production</option>
                                     <option>Maintenance</option>
                                     <option>Quality</option>
@@ -484,7 +487,7 @@ const Supervisor = () => {
                                 htmlFor="Name"
                                 className="col-sm-4 col-form-label"
                               >
-                                Name:
+                                Name:<span className="text-danger">*</span>
                               </label>
                               <div className="col-sm-8">
                                 <input
@@ -517,11 +520,11 @@ const Supervisor = () => {
                                   value={formData.Address}
                                   onChange={handleChange}
                                 ></textarea>
-                                {errors.Address && (
+                                {/* {errors.Address && (
                                   <div className="text-danger">
                                     {errors.Address}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -539,11 +542,11 @@ const Supervisor = () => {
                                   value={formData.Contact_No}
                                   onChange={handleChange}
                                 />
-                                {errors.Contact_No && (
+                                {/* {errors.Contact_No && (
                                   <div className="text-danger">
                                     {errors.Contact_No}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -562,11 +565,11 @@ const Supervisor = () => {
                                     value={formData.Birth_Date}
                                     onChange={handleChange}
                                   />
-                                  {errors.Birth_Date && (
+                                  {/* {errors.Birth_Date && (
                                     <div className="text-danger">
                                       {errors.Birth_Date}
                                     </div>
-                                  )}
+                                  )} */}
                                 </div>
                               </div>
                             </div>
@@ -585,11 +588,11 @@ const Supervisor = () => {
                                   value={formData.Salary}
                                   onChange={handleChange}
                                 />
-                                {errors.Salary && (
+                                {/* {errors.Salary && (
                                   <div className="text-danger">
                                     {errors.Salary}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -608,11 +611,11 @@ const Supervisor = () => {
                                     value={formData.Date_Of_Leaving}
                                     onChange={handleChange}
                                   />
-                                  {errors.Date_Of_Leaving && (
+                                  {/* {errors.Date_Of_Leaving && (
                                     <div className="text-danger">
                                       {errors.Date_Of_Leaving}
                                     </div>
-                                  )}
+                                  )} */}
                                 </div>
                               </div>
                             </div>
@@ -631,11 +634,11 @@ const Supervisor = () => {
                                   value={formData.Aadhar_No}
                                   onChange={handleChange}
                                 />
-                                {errors.Aadhar_No && (
+                                {/* {errors.Aadhar_No && (
                                   <div className="text-danger">
                                     {errors.Aadhar_No}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                           </div>
@@ -655,11 +658,11 @@ const Supervisor = () => {
                                   value={formData.Code}
                                   onChange={handleChange}
                                 />
-                                {errors.Code && (
+                                {/* {errors.Code && (
                                   <div className="text-danger">
                                     {errors.Code}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -668,6 +671,7 @@ const Supervisor = () => {
                                 className="col-sm-4 col-form-label"
                               >
                                 Designation:
+                                <span className="text-danger">*</span>
                               </label>
                               <div className="col-sm-8">
                                 <div className="input-group">
@@ -724,11 +728,11 @@ const Supervisor = () => {
                                   value={formData.CorrespondingAddress}
                                   onChange={handleChange}
                                 ></textarea>
-                                {errors.CorrespondingAddress && (
+                                {/* {errors.CorrespondingAddress && (
                                   <div className="text-danger">
                                     {errors.CorrespondingAddress}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -736,7 +740,7 @@ const Supervisor = () => {
                                 htmlFor="Type"
                                 className="col-sm-4 col-form-label"
                               >
-                                Type:
+                                Type:<span className="text-danger">*</span>
                               </label>
                               <div className="col-sm-8">
                                 <select
@@ -772,11 +776,11 @@ const Supervisor = () => {
                                     value={formData.Joining_Sal_Date}
                                     onChange={handleChange}
                                   />
-                                  {errors.Joining_Sal_Date && (
+                                  {/* {errors.Joining_Sal_Date && (
                                     <div className="text-danger">
                                       {errors.Joining_Sal_Date}
                                     </div>
-                                  )}
+                                  )} */}
                                 </div>
                               </div>
                             </div>
@@ -818,11 +822,11 @@ const Supervisor = () => {
                                   <span type="button" className="Supbtn">
                                     <i className="fas fa-sync"></i>
                                   </span>
-                                  {errors.Contractor && (
+                                  {/* {errors.Contractor && (
                                     <div className="text-danger">
                                       {errors.Contractor}
                                     </div>
-                                  )}
+                                  )} */}
                                 </div>
                               </div>
                             </div>
@@ -832,6 +836,7 @@ const Supervisor = () => {
                                 className="col-sm-4 col-form-label"
                               >
                                 Daily Working Hours:
+                                <span className="text-danger">*</span>
                               </label>
                               <div className="col-sm-8">
                                 <div className="input-group">
@@ -865,11 +870,11 @@ const Supervisor = () => {
                                   value={formData.PanNo}
                                   onChange={handleChange}
                                 />
-                                {errors.PanNo && (
+                                {/* {errors.PanNo && (
                                   <div className="text-danger">
                                     {errors.PanNo}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                           </div>
@@ -889,11 +894,11 @@ const Supervisor = () => {
                                   value={formData.BankName}
                                   onChange={handleChange}
                                 />
-                                {errors.BankName && (
+                                {/* {errors.BankName && (
                                   <div className="text-danger">
                                     {errors.BankName}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -911,11 +916,11 @@ const Supervisor = () => {
                                   value={formData.BankAccountNo}
                                   onChange={handleChange}
                                 />
-                                {errors.BankAccountNo && (
+                                {/* {errors.BankAccountNo && (
                                   <div className="text-danger">
                                     {errors.BankAccountNo}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -933,11 +938,11 @@ const Supervisor = () => {
                                   value={formData.BankIFSC_Code}
                                   onChange={handleChange}
                                 />
-                                {errors.BankIFSC_Code && (
+                                {/* {errors.BankIFSC_Code && (
                                   <div className="text-danger">
                                     {errors.BankIFSC_Code}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                           </div>

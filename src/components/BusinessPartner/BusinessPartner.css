@@ -1,27 +1,30 @@
+/* Global Reset */
 * {
   box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
+
+/* Prevent scrolling when needed */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* App Container */
 .App {
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
+/* Main Content Styling */
 main {
   flex: 1;
   padding: 20px;
   margin-top: 60px;
   transition: margin-left 0.3s;
 }
-.main-content.shifted {
-  margin-left: 260px;
-}
 
-body.no-scroll {
-  overflow: hidden;
-}
 .main-content {
   transition: margin-left 0.3s;
 }
@@ -29,49 +32,32 @@ body.no-scroll {
 .main-content.shifted {
   margin-left: 250px; /* Adjust based on your sidebar width */
 }
+
+/* Business Section Styling */
 .Bussiness {
   width: 100%;
   background-color: rgb(241, 242, 244);
-  height: 150vh;
+  min-height: 100vh; /* Ensures full viewport height */
 }
 
-.btn-bus {
-  border: none;
-  padding: 10px;
-  background-color: rgba(220, 222, 224, 0.833);
-  border-radius: 10px;
-}
 .fullbus {
   background-color: white;
-  padding: 20px 20px;
+  padding: 20px;
   margin-top: 20px;
 }
-.bussiness-main {
-  background-color: aliceblue;
-  height: auto;
-  padding: 20px 20px;
-  margin-top: 80px;
-  text-align: start;
-}
+
 .bussiness1 {
-  padding: 20px 20px;
+  padding: 20px;
   background-color: aliceblue;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 80px;
 }
 
-.btn-bus {
-  background-color: rgba(235, 233, 233, 0.685);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
 .bussiness-main {
+  background-color: aliceblue;
   padding: 20px 30px;
   margin: 20px 0;
-  padding: 10px;
-  background-color: aliceblue;
+  text-align: left;
 }
 
 .bussiness-main .form-control,
@@ -79,38 +65,64 @@ body.no-scroll {
   margin-bottom: 10px;
 }
 
-.btn-fg {
+/* Button Styles */
+.btn-bus {
   background-color: rgba(235, 233, 233, 0.685);
-
   border: none;
-  padding: 5px;
-  margin: 5px;
+  padding: 10px 20px;
   border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.btn-ty {
-  background-color: rgba(235, 233, 233, 0.685);
-
-  border: none;
-  padding: 8px;
-  border-radius: 5px;
-  margin: 5px;
+.btn-bus:hover {
+  background-color: rgba(220, 220, 220, 0.8);
 }
 
+.btn-fg,
+.btn-ty,
 .bsi-btn {
   background-color: rgba(235, 233, 233, 0.685);
-
   border: none;
-  padding: 8px;
   border-radius: 5px;
   margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
+.btn-fg {
+  padding: 5px 10px;
+}
+
+.btn-ty,
+.bsi-btn {
+  padding: 8px 16px;
+}
+
+.btn-fg:hover,
+.btn-ty:hover,
+.bsi-btn:hover {
+  background-color: rgba(220, 220, 220, 0.8);
+  
+}
+
+/* Bottom Section */
 .bus-bottom {
   padding: 20px 30px;
   margin-top: 30px;
 }
 
+.bus-bottom .form-check {
+  margin-bottom: 10px;
+}
+
+.bus-bottom .form-check-label {
+  font-size: 16px;
+}
+
+/* Responsive Design */
+
+/* Tablets and Small Screens */
 @media (max-width: 767px) {
   .bussiness-main .form-control,
   .bussiness-main .form-select {
@@ -121,23 +133,19 @@ body.no-scroll {
   .bsi-btn {
     width: 100%;
     margin-top: 10px;
+
   }
 
-  .bus-bottom .form-check {
-    margin-bottom: 10px;
-  }
-  .Bussiness {
-    width: 100%;
-    background-color: rgb(241, 242, 244);
-    height: auto;
-  }
   .bus-bottom .form-check-label {
     font-size: 14px;
   }
+
   .btn-fg {
-    margin: 1px;
+    margin: 2px;
   }
 }
+
+/* Mobile Phones */
 @media (max-width: 360px) {
   .bussiness-main .form-control,
   .bussiness-main .form-select {
@@ -150,18 +158,31 @@ body.no-scroll {
     margin-top: 10px;
   }
 
-  .bus-bottom .form-check {
-    margin-bottom: 10px;
-  }
-  .Bussiness {
-    width: 100%;
-    background-color: rgb(241, 242, 244);
-    height: auto;
-  }
   .bus-bottom .form-check-label {
     font-size: 14px;
   }
+
   .btn-fg {
-    margin: 1px;
+    margin: 2px;
   }
+}
+:root {
+  --primary-bg-color: aliceblue;
+  --secondary-bg-color: rgb(241, 242, 244);
+  --button-bg-color: rgba(235, 233, 233, 0.685);
+  --button-hover-bg-color: rgba(220, 220, 220, 0.8);
+}
+
+.bussiness-main {
+  background-color: var(--primary-bg-color);
+  /* other styles */
+}
+
+.btn-bus {
+  background-color: var(--button-bg-color);
+  /* other styles */
+}
+
+.btn-bus:hover {
+  background-color: var(--button-hover-bg-color);
 }

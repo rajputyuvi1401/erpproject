@@ -119,14 +119,15 @@ const VisibleStandard = () => {
   return (
     <div>
       <div className="card-body">
+        <ToastContainer/>
         <div className="row mb-3">
           <div className="col-md-2 text-start">
             <label className="form-label">Std Routing No:</label>
           </div>
           <div className="col-md-4 text-start">
             <select className="form-select">
-              <option>Select Option</option>
-              <option>A</option>
+              <option>ALL</option>
+              <option></option>
             </select>
           </div>
           <div className="col-md-6 text-end">
@@ -135,43 +136,168 @@ const VisibleStandard = () => {
           </div>
         </div>
         <form onSubmit={handleSave}>
-          <div className="row mb-3">
-            {Object.keys(formData).map((key) => (
-              <div className="col-md-2 mb-3" key={key}>
-                <label className="form-label">{key.replace(/_/g, " ")}</label>
-                <select
-                  className={`form-select ${errors[key] ? "is-invalid" : ""}`}
-                  name={key}
-                  value={formData[key]}
-                  onChange={handleInputChange}
-                >
-                  <option>Select Option</option>
-                  <option>item</option>
-                  <option>All</option>
-                  <option>single</option>
-                </select>
-                {errors[key] && (
-                  <div className="invalid-feedback">{errors[key]}</div>
-                )}
+        <div className="row mb-3 text-start">
+          <div className="col-md-6">
+            <div className="row">
+              <div className="col-md-4">
+                <label htmlFor="">STD Routing No<span className="text-danger">*</span></label>
               </div>
-            ))}
-            <div className="col-md-2 text-end">
-              <button
-                type="submit"
-                className="StandardButton"
-                style={{ marginTop: "24px" }}
-              >
-                {isEditing ? "Update" : "Save"}
-              </button>
+              <div className="col-md-8">
+                <input
+                  type="text"
+                  name="Std_Routing_No"
+                  value={formData.Std_Routing_No}
+                  onChange={handleInputChange}
+                  className="form-control"
+                />
+                {errors.Std_Routing_No && <span className="text-danger">{errors.Std_Routing_No}</span>}
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-4">
+                <label htmlFor="">Op No</label>
+              </div>
+              <div className="col-md-8">
+                <input
+                  type="text"
+                  name="Op_No"
+                  value={formData.Op_No}
+                  onChange={handleInputChange}
+                  className="form-control"
+                />
+                {errors.Op_No && <span className="text-danger">{errors.Op_No}</span>}
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-4">
+                <label htmlFor="">Op Name</label>
+              </div>
+              <div className="col-md-8">
+              <select className="form-select">
+              <option>Select</option>
+              <option value="ASSEMLY">ASSEMLY</option>
+              <option value={"BENDING"}>BENDING</option>
+              <option value="BLACK PLATING">BLACK PLATING</option>
+              <option value={"BLOCKDISING"}>BLOCKDISING</option>
+              <option value="CED COATING">CED COATING</option>
+              <option value={"CHAKING"}>CHAKING</option>
+              <option value="CHAMPFER 1X45">CHAMPFER 1X45</option>
+              <option value={"CNC1"}>CNC1</option>
+              <option value="COLD FORGING">COLD FORGING</option>
+              <option value={"CROSS HOLE"}>CROSS HOLE</option>
+            </select>
+                {errors.Op_Name && <span className="text-danger">{errors.Op_Name}</span>}
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-4">
+                <label htmlFor="">Ass Prod</label>
+              </div>
+              <div className="col-md-8">
+                <input
+                  type="text"
+                  name="Ass_Prod"
+                  value={formData.Ass_Prod}
+                  onChange={handleInputChange}
+                  className="form-control"
+                />
+                {errors.Ass_Prod && <span className="text-danger">{errors.Ass_Prod}</span>}
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-4">
+                <label htmlFor="">Part Code</label>
+              </div>
+              <div className="col-md-8">
+                <input
+                  type="text"
+                  name="Part_Code"
+                  value={formData.Part_Code}
+                  onChange={handleInputChange}
+                  className="form-control"
+                />
+                {errors.Part_Code && <span className="text-danger">{errors.Part_Code}</span>}
+              </div>
             </div>
           </div>
-        </form>
+          <div className="col-md-6">
+            <div className="row">
+              <div className="col-md-4">
+                <label htmlFor="">Part Type</label>
+              </div>
+              <div className="col-md-8">
+              <select className="form-select">
+              <option>Select</option>
+              <option value="RM">RM</option>
+              <option value={"COM"}>COM</option>
+              <option value={"BOM"}>BOM</option>
+              </select>
+                {errors.Part_Type && <span className="text-danger">{errors.Part_Type}</span>}
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-4">
+                <label htmlFor="">WIP WT</label>
+              </div>
+              <div className="col-md-8">
+              <select className="form-select">
+              <option>Select</option>
+              <option value="CUT_WT">CUT_WT</option>
+              <option value={"FINISH_WT"}>FINISH_WT</option>
+              <option value={"GROSS_WT"}>GROSS_WT</option>
+              </select>
+                {errors.Wip_Wt && <span className="text-danger">{errors.Wip_Wt}</span>}
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-4">
+                <label htmlFor="">Op Type</label>
+              </div>
+              <div className="col-md-8">
+                <input
+                  type="text"
+                  name="Op_Type"
+                  value={formData.Op_Type}
+                  onChange={handleInputChange}
+                  className="form-control"
+                />
+                {errors.Op_Type && <span className="text-danger">{errors.Op_Type}</span>}
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-4">
+                <label htmlFor="">QC</label>
+              </div>
+              <div className="col-md-8">
+                <input
+                  type="text"
+                  name="QC"
+                  value={formData.QC}
+                  onChange={handleInputChange}
+                  className="form-control"
+                />
+                {errors.QC && <span className="text-danger">{errors.QC}</span>}
+              </div>
+            </div>
+          </div>
+          <div className="col-md-12 text-end">
+            <button
+              type="submit"
+              className="StandardButton"
+              style={{ marginTop: "24px" }}
+            >
+              {isEditing ? "Update" : "Save"}
+            </button>
+          </div>
+        </div>
+      </form>
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12 text-start">
             <div className="table-responsive">
               <table className="table table-bordered">
                 <thead>
                   <tr>
+                    
                     <th>Std Routing No</th>
                     <th>Op No</th>
                     <th>Op Name</th>

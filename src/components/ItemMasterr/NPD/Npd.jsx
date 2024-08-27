@@ -127,7 +127,7 @@ const Npd = () => {
                       id="flexCheckDefault"
                     />
                     <label className="form-check-label" for="flexCheckDefault">
-                      Save
+                      Sales
                     </label>
                   </div>
                 </div>

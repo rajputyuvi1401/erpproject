@@ -1,10 +1,10 @@
 import CachedIcon from "@mui/icons-material/Cached";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { saveItemMasterData } from "../../../Service/Api.jsx";
 import NewCardQtyPack from "../ItemGernalCard/NewCardQtyPack.jsx";
-import { getQtyPacks } from '../../../Service/Api.jsx';
+import { getQtyPacks } from "../../../Service/Api.jsx";
 const Data2 = () => {
   const [showNewCardQtypack, setShowNewCardQtypack] = useState(false);
 
@@ -64,7 +64,6 @@ const Data2 = () => {
   const [isCleared, setIsCleared] = useState(false);
   const [qtyPacks, setQtyPacks] = useState([]);
 
-
   const validate = () => {
     const newErrors = {};
     Object.keys(formData).forEach((key) => {
@@ -93,7 +92,7 @@ const Data2 = () => {
   const handleSavedata = async (e) => {
     e.preventDefault();
     if (!validate()) return;
-  
+
     try {
       console.log("Sending data:", formData); // Check if data is correct
       const response = await saveItemMasterData(formData);
@@ -105,7 +104,6 @@ const Data2 = () => {
       toast.error("Failed to save data. Check console for errors.");
     }
   };
-  
 
   const handleCleardata = () => {
     if (!isCleared) {
@@ -161,11 +159,10 @@ const Data2 = () => {
     }
   };
 
-
   useEffect(() => {
     fetchQtyPacks();
   }, []);
-  
+
   const fetchQtyPacks = async () => {
     try {
       const response = await getQtyPacks();
@@ -242,6 +239,9 @@ const Data2 = () => {
                       <option value="Machine_1">AY CGR 1</option>
                       <option value="Machine_2">Centerless</option>
                       <option value="Machine_3">Grinding 1</option>
+                      <option value="Machine_1">AY CGR 2</option>
+                      <option value="Machine_2">Centerless</option>
+                      <option value="Machine_3">Grinding 2</option>
                       {/* Add other options here */}
                     </select>
                     {errors.Machine && (
@@ -439,7 +439,20 @@ const Data2 = () => {
                     Is Service:
                   </label>
                   <div className="col-sm-7">
-                  <input
+                  <select
+                      id="Is_Service"
+                      type="text"
+                      name="Is_Service"
+                      className="form-select"
+                      value={formData.Is_Service}
+                      onChange={handleChange}
+                    >
+                      <option selected>Select</option>
+                      <option value="1">PCS</option>
+                      <option value="2">KGS</option>
+                     
+                    </select>
+                    <input
                       type="text"
                       className="form-control"
                       name="Is_Service"
@@ -602,10 +615,10 @@ const Data2 = () => {
                     >
                       <option value="">Select ..</option>
                       {qtyPacks.map((item) => (
-            <option key={item.id} value={item.EnterUnit_Name}>
-              {item.EnterUnit_Name}
-            </option>
-          ))}
+                        <option key={item.id} value={item.EnterUnit_Name}>
+                          {item.EnterUnit_Name}
+                        </option>
+                      ))}
                       <option value="FG">FG</option>
                       <option value="RM">RM</option>
                     </select>
@@ -614,12 +627,20 @@ const Data2 = () => {
                     )}
                   </div>
                   <div className="col-sm-2">
-                    <button className="btn" type="button" onClick={handleNewButtonQtypack}>
+                    <button
+                      className="btn"
+                      type="button"
+                      onClick={handleNewButtonQtypack}
+                    >
                       New
                     </button>
                   </div>
                   <div className="col-sm-1">
-                    <button className="btn"type="button" style={{ fontSize: "10px" }}>
+                    <button
+                      className="btn"
+                      type="button"
+                      style={{ fontSize: "10px" }}
+                    >
                       <CachedIcon />
                     </button>
                   </div>
@@ -771,8 +792,8 @@ const Data2 = () => {
                       aria-label="Default select example"
                     >
                       <option value="">Select ..</option>
-                      <option value="1">No</option>
-                      <option value="2">Yes</option>
+                      <option value="1">Standard</option>
+                      <option value="2">Special</option>
                     </select>
                     {errors.Product_Category && (
                       <div className="text-danger">
@@ -1008,7 +1029,7 @@ const Data2 = () => {
                       value={formData.Department}
                       onChange={handleChange}
                     >
-                      <option value="">select ..</option>
+                      <option value="">Common Square</option>
                       <option value="1">AYUSH</option>
                       <option value="2">Production</option>
                       <option value="3">Purchase</option>
@@ -1275,56 +1296,51 @@ const Data2 = () => {
           </div>
           <div className="row mb-3 text-end">
             <div className="col-sm-12">
-            <button type="button" className="btn" onClick={handleSavedata}>
-  Save Data
-</button>
+              <button type="button" className="btn" onClick={handleSavedata}>
+                Save Data
+              </button>
 
-          <button
-            type="button"
-            className="btn"
-            onClick={handleCleardata}
-          >
-            Clear Data
-          </button>
+              <button type="button" className="btn" onClick={handleCleardata}>
+                Clear Data
+              </button>
             </div>
           </div>
-        
         </form>
       </div>
       {showNewCardQtypack && (
-            <div className="RouteCard">
-              <div className="new-card-overlay">
-                <div className="new-card">
-                  <div className="card">
-                    <div className="card-header">
-                      <div className="row">
-                        <div className="col-md-6 text-start">
-                          <h5 className="card-title text-start">
-                            Item Sector Master
-                          </h5>
-                        </div>
-                        <div className="col-md-6 text-end">
-                          <button
-                            className="btn-cl justify-content-end"
-                            style={{
-                              margin: "5px",
-                              color: "gray",
-                              border: "none",
-                              padding: "10px",
-                            }}
-                            onClick={handleNewButtonQtypack}
-                          >
-                            X
-                          </button>
-                        </div>
-                      </div>
+        <div className="RouteCard">
+          <div className="new-card-overlay">
+            <div className="new-card">
+              <div className="card">
+                <div className="card-header">
+                  <div className="row">
+                    <div className="col-md-6 text-start">
+                      <h5 className="card-title text-start">
+                        Item Sector Master
+                      </h5>
                     </div>
-                    <NewCardQtyPack />
+                    <div className="col-md-6 text-end">
+                      <button
+                        className="btn-cl justify-content-end"
+                        style={{
+                          margin: "5px",
+                          color: "gray",
+                          border: "none",
+                          padding: "10px",
+                        }}
+                        onClick={handleNewButtonQtypack}
+                      >
+                        X
+                      </button>
+                    </div>
                   </div>
                 </div>
+                <NewCardQtyPack />
               </div>
             </div>
-          )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

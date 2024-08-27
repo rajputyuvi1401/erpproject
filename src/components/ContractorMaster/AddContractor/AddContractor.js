@@ -46,9 +46,9 @@ const AddContractor = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    Object.keys(formData).forEach((key) => {
-      if (!formData[key]) newErrors[key] = "This field is required";
-    });
+    if (!formData.ContractorName) {
+      newErrors.ContractorName = "This field is required";
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -128,7 +128,7 @@ const AddContractor = () => {
                                 onChange={handleChange}
                               >
                                 <option value="">Select Plant</option>
-                                <option value="plant1">Plant 1</option>
+                                <option value="plant1">Sharp</option>
                                 <option value="plant2">Plant 2</option>
                                 <option value="plant3">Plant 3</option>
                               </select>
@@ -144,7 +144,7 @@ const AddContractor = () => {
                               htmlFor="ContractorName"
                               className="col-sm-4 col-form-label"
                             >
-                              Contractor Name:
+                              Contractor Name:<span className="text-danger">*</span>
                             </label>
                             <div className="col-sm-8">
                               <input

@@ -133,9 +133,9 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   <Dropdown.Item as={Link} to="/item-cross-reference">
                     Item Cross Reference
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/customer-item-wise">
+                  {/* <Dropdown.Item as={Link} to="/customer-item-wise">
                     Customer Item Wise
-                  </Dropdown.Item>
+                  </Dropdown.Item> */}
                 </Dropdown.Menu>
               </Dropdown>
               <Dropdown.Item as={Link} to="/gst-rate-master">

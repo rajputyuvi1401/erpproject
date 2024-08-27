@@ -17,13 +17,13 @@ import {
   fetchGroups,
   fetchQMSCodes,
   fetchCities,
-  fetchCurrencies,
+  // fetchCurrencies,
   fetchCountries,
   fetchPaymentTerms,
   // fetchRegions,
   // fetchStates,
 } from "../../Service/Api.jsx";
-import { fetchStatesAndUTs } from '../../Service/Api.jsx';
+import { fetchStatesAndUTs } from "../../Service/Api.jsx";
 import { fetchStateByCode } from "../../Service/Api.jsx";
 import ToggleCard1 from "./ToggleCard1.jsx";
 import ToggleCardCity from "./ToggleCardCity.jsx";
@@ -37,7 +37,7 @@ import ToggleCardSector from "./ToggleCardSector.jsx";
 import ToggleCardQMSCode from "./ToggleCardQMSCode.jsx";
 import { Link } from "react-router-dom";
 import { getCustomerCode } from "../../Service/PurchaseApi.jsx";
-
+import { fetchCurrencyCodes } from "../../Service/Api.jsx";
 
 const SupplierCustomerMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -61,13 +61,11 @@ const SupplierCustomerMaster = () => {
   const [groups, setGroups] = useState([]);
   const [qmsCodes, setQMSCodes] = useState([]);
   const [cities, setCities] = useState([]);
-  const [currencies, setCurrencies] = useState([]);
+  const [currencyCodes, setCurrencyCodes] = useState([]);
   const [countries, setCountries] = useState([]);
   const [paymentTerms, setPaymentTerms] = useState([]);
 
   const [statesAndUTs, setStatesAndUTs] = useState([]);
- 
-
 
   const toggleCard = () => {
     setIsCardOpen(!isCardOpen);
@@ -160,7 +158,7 @@ const SupplierCustomerMaster = () => {
     Insurance_Policy_Expiry_Date: "",
     VAT_TIN: "",
     Montly_Sale: "",
-    
+
     Sector: "",
     Group: "",
     Distance: "",
@@ -187,93 +185,94 @@ const SupplierCustomerMaster = () => {
 
   const validate = () => {
     const newErrors = {};
-    
+
     // List of fields that are required
     const requiredFields = [
       "Type",
       "Name",
       "Address_Line_1",
-   
+
       "Region",
       "PAN_Type",
       "PAN_NO",
       "State_Code",
       "GST_Tax_Code",
       "Code_No",
-    "Payment_Term",
-    "Pin_Code",
-    "GST_No2",
-    
-    "Vendor_Code",
+      "Payment_Term",
+      "Pin_Code",
+      "GST_No2",
+
+      "Vendor_Code",
       // Add other required fields here
     ];
-    requiredFields.forEach(field => {
+    requiredFields.forEach((field) => {
       if (!formData[field] || formData[field].trim() === "") {
         newErrors[field] = "This field is required";
       }
     });
-  
+
     // Validate PAN number format
     if (formData.PAN_NO && !validatePAN(formData.PAN_NO)) {
       newErrors.PAN_NO = "Invalid PAN format";
     }
-  
+
     // Validate email format
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (formData.Email_Id && !emailPattern.test(formData.Email_Id)) {
       newErrors.Email_Id = "Invalid email format";
     }
-  
+
     // Validate phone number (example pattern)
     const phonePattern = /^[0-9]{10}$/;
     if (formData.Contact_No && !phonePattern.test(formData.Contact_No)) {
       newErrors.Contact_No = "Invalid contact number";
     }
-  
+
     // Validate GST number format (example pattern)
-    const gstPattern = /^[0-9A-Z]{15}$/;
-    if (formData.GST_No && !gstPattern.test(formData.GST_No)) {
-      newErrors.GST_No = "Invalid GST number format";
-    }
-  
+    // const gstPattern = /^[0-9A-Z]{15}$/;
+    // if (formData.GST_No && !gstPattern.test(formData.GST_No)) {
+    //   newErrors.GST_No = "Invalid GST number format";
+    // }
+
     // Validate URL format for website
     const urlPattern = /^(https?:\/\/)?[^\s/$.?#].[^\s]*$/i;
     if (formData.Website && !urlPattern.test(formData.Website)) {
       newErrors.Website = "Invalid URL format";
     }
-  
+
     // Validate discount percentage (0-100)
-    if (formData.Discount_Per && (formData.Discount_Per < 0 || formData.Discount_Per > 100)) {
+    if (
+      formData.Discount_Per &&
+      (formData.Discount_Per < 0 || formData.Discount_Per > 100)
+    ) {
       newErrors.Discount_Per = "Discount percentage must be between 0 and 100";
     }
-  
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-   
   };
-  
+
   const handleChange = async (e) => {
     const { name, value, type, checked } = e.target;
-   
+
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: type === 'checkbox' ? checked : value,
-     
+      [name]: type === "checkbox" ? checked : value,
     }));
-  
-    if (name === 'Type' && value === 'Customer') {
+
+    if (name === "Type" && value === "Customer") {
       try {
         const customerData = await getCustomerCode();
         if (customerData && customerData.code) {
-          console.log('Fetched Customer Code:', customerData.code);
-  
+          console.log("Fetched Customer Code:", customerData.code);
+
           setFormData((prevData) => ({
             ...prevData,
             Code_No: customerData.code,
           }));
         }
       } catch (error) {
-        console.error('Error setting customer code:', error);
+        console.error("Error setting customer code:", error);
       }
     }
   };
@@ -282,7 +281,7 @@ const SupplierCustomerMaster = () => {
     const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
     return panPattern.test(pan);
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
@@ -333,7 +332,7 @@ const SupplierCustomerMaster = () => {
 
   // card
   // useEffect(() => {
-   
+
   //  fetchCategoriesAndSet();
   // }, []);
   // const fetchCategoriesAndSet = async () => {
@@ -361,7 +360,7 @@ const SupplierCustomerMaster = () => {
 
   // group
   useEffect(() => {
-        fetchGroupsAndSet();
+    fetchGroupsAndSet();
   }, []);
   const fetchGroupsAndSet = async () => {
     try {
@@ -372,11 +371,9 @@ const SupplierCustomerMaster = () => {
     }
   };
 
-
   // QMSC
   useEffect(() => {
-    
-fetchQMSCodesAndSet();
+    fetchQMSCodesAndSet();
   }, []);
   const fetchQMSCodesAndSet = async () => {
     try {
@@ -388,8 +385,7 @@ fetchQMSCodesAndSet();
   };
   // Cities
   useEffect(() => {
-    
-        fetchCityAndSet();
+    fetchCityAndSet();
   }, []);
   const fetchCityAndSet = async () => {
     try {
@@ -401,17 +397,15 @@ fetchQMSCodesAndSet();
   };
   // currencies
   useEffect(() => {
-   
-fetchCurrencyAndSet();
+    const loadCurrencyCodes = async () => {
+      const codes = await fetchCurrencyCodes();
+      setCurrencyCodes(codes);
+    };
+
+    loadCurrencyCodes();
   }, []);
-  const fetchCurrencyAndSet = async () => {
-    try {
-      const data = await fetchCurrencies();
-      setCurrencies(data);
-    } catch (error) {
-      toast.error("Failed to fetch currencies");
-    }
-  };
+
+
   // Country
   useEffect(() => {
     const loadCountries = async () => {
@@ -419,26 +413,24 @@ fetchCurrencyAndSet();
         const data = await fetchCountries();
         setCountries(data);
       } catch (error) {
-        console.error('Error loading countries:', error);
+        console.error("Error loading countries:", error);
       }
     };
 
     loadCountries();
   }, []);
-  
+
   const handleDropdownChange = (event) => {
     const selectedCountry = event.target.value;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      Country: selectedCountry
+      Country: selectedCountry,
     }));
   };
-
 
   // Payment Terms
   useEffect(() => {
     fetchPaymentTermsAndSet();
-   
   }, []);
   const fetchPaymentTermsAndSet = async () => {
     try {
@@ -448,12 +440,6 @@ fetchCurrencyAndSet();
       console.error("Failed to fetch payment terms:", error);
     }
   };
-
- 
-
-
-
-
 
   // state
 
@@ -466,29 +452,39 @@ fetchCurrencyAndSet();
     loadStatesAndUTs();
   }, []);
 
+  // State Code
 
-
-// State Code
-
-
-  const [stateName, setStateName] = useState('');
+  const [stateName, setStateName] = useState("");
   useEffect(() => {
     const loadStateName = async () => {
-      if (formData.State_Code.length >= 2) { // Trigger search for valid codes
+      if (formData.State_Code.length >= 2) {
+        // Trigger search for valid codes
         const state = await fetchStateByCode(formData.State_Code);
         if (state) {
           setStateName(state.name);
+          const gstPrefix = state.gstPrefix || ""; // Adjust this if you have a specific format for the GST number
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            GST_No2: `${gstPrefix}${formData.State_Code}`,
+          }));
         } else {
-          setStateName('');
+          setStateName("");
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            GST_No2: "",
+          }));
         }
       } else {
-        setStateName('');
+        setStateName("");
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          GST_No2: "",
+        }));
       }
     };
 
     loadStateName();
   }, [formData.State_Code]);
-
 
   const handleStateCodeChange = (e) => {
     const { value } = e.target;
@@ -501,34 +497,29 @@ fetchCurrencyAndSet();
     if (!value) {
       setErrors({
         ...errors,
-        State_Code: 'State code is required',
+        State_Code: "State code is required",
       });
     } else {
       setErrors({
         ...errors,
-        State_Code: '',
+        State_Code: "",
       });
     }
   };
 
-
-
   const handleRefresh = () => {
-   
-    fetchSectorsAndSet(); 
-  
+    fetchSectorsAndSet();
+
     fetchQMSCodesAndSet();
     fetchPaymentTermsAndSet();
     fetchGroupsAndSet();
-    fetchCurrencyAndSet();
+    // fetchCurrencyAndSet();
     // fetchCountryAndSet();
     fetchCityAndSet();
     // fetchCategoriesAndSet();
   };
 
-
   // Type supplier
-
 
   return (
     <div className="SupplierC">
@@ -553,13 +544,8 @@ fetchCurrencyAndSet();
                           </h5>
                         </div>
                         <div className="col-md-6 text-end">
-                         
-                          <Link
-                        
-                            to={"/Vender-List"}
-                            className="SupplierCusbtn"
-                          >
-                           Supplier/Customer List
+                          <Link to={"/Vender-List"} className="SupplierCusbtn">
+                            Supplier/Customer List
                           </Link>
                         </div>
                       </div>
@@ -657,7 +643,8 @@ fetchCurrencyAndSet();
                                               htmlFor="Type"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Type:Type: <span className="text-danger">*</span>
+                                              Type:{" "}
+                                              <span className="text-danger">*</span>
                                             </label>
                                             <div className="col-sm-8">
                                               <select
@@ -670,7 +657,7 @@ fetchCurrencyAndSet();
                                                 <option value="" disabled>
                                                   Select ..
                                                 </option>
-                                                
+
                                                 <option value="Customer">
                                                   Customer
                                                 </option>
@@ -713,7 +700,10 @@ fetchCurrencyAndSet();
                                               htmlFor="Name"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Name: <span className="text-danger">*</span>
+                                              Name:{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
                                             </label>
                                             <div className="col-sm-8">
                                               <input
@@ -738,7 +728,10 @@ fetchCurrencyAndSet();
                                               htmlFor="Address_Line_1"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Address : <span className="text-danger">*</span>
+                                              Address :{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
                                             </label>
                                             <div className="col-sm-8">
                                               <textarea
@@ -758,15 +751,16 @@ fetchCurrencyAndSet();
                                             </div>
                                           </div>
 
-                 
-
                                           {/* Region */}
                                           <div className="row mb-3">
                                             <label
                                               htmlFor="Region"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              State: <span className="text-danger">*</span>
+                                              State:{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
                                             </label>
                                             <div className="col-sm-8">
                                               <select
@@ -779,12 +773,14 @@ fetchCurrencyAndSet();
                                                 <option value="" disabled>
                                                   Select ..
                                                 </option>
-                                                 {statesAndUTs.map((state) => (
-        <option key={state.code} value={state.code}>
-          {state.name}
-        </option>
-      ))}
-                                               
+                                                {statesAndUTs.map((state) => (
+                                                  <option
+                                                    key={state.code}
+                                                    value={state.code}
+                                                  >
+                                                    {state.name}
+                                                  </option>
+                                                ))}
                                               </select>
                                               {errors.Region && (
                                                 <small className="text-danger">
@@ -792,21 +788,20 @@ fetchCurrencyAndSet();
                                                 </small>
                                               )}
                                             </div>
-                                          
                                           </div>
 
                                           {/* PAN No. */}
                                           <div className="row mb-3">
-                                            
-                                             
-                                          
-                                              <label
-                                                className="col-sm-3 col-form-label"
-                                                htmlFor="PAN_No"
-                                              >
-                                                PAN No. <span className="text-danger">*</span>
-                                              </label>
-                                            
+                                            <label
+                                              className="col-sm-3 col-form-label"
+                                              htmlFor="PAN_No"
+                                            >
+                                              Pan No.{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
+                                            </label>
+
                                             <div className="col-sm-3">
                                               <input
                                                 type="text"
@@ -815,8 +810,8 @@ fetchCurrencyAndSet();
                                                 name="PAN_NO"
                                                 value={formData.PAN_NO}
                                                 onChange={handleChange}
-                                                 maxLength="10"
-            placeholder="ABCDE1234F"
+                                                maxLength="10"
+                                                placeholder="ABCDE1234F"
                                               />
                                               {errors.PAN_NO && (
                                                 <small className="text-danger">
@@ -828,7 +823,7 @@ fetchCurrencyAndSet();
                                               htmlFor="PAN_Type"
                                               className="col-sm-3 col-form-label"
                                             >
-                                              PAN Type:
+                                              Pan Type:
                                             </label>
                                             <div className="col-sm-3">
                                               <select
@@ -841,10 +836,16 @@ fetchCurrencyAndSet();
                                                 <option value="" disabled>
                                                   Select ..
                                                 </option>
-                                                <option value="FG">Company</option>
+                                                <option value="FG">
+                                                  Company
+                                                </option>
                                                 <option value="RM">Form</option>
-                                                <option value="FG1">Indivisual</option>
-                                                <option value="RM1">Trust</option>
+                                                <option value="FG1">
+                                                  Indivisual
+                                                </option>
+                                                <option value="RM1">
+                                                  Trust
+                                                </option>
                                               </select>
                                               {errors.PAN_Type && (
                                                 <small className="text-danger">
@@ -860,27 +861,34 @@ fetchCurrencyAndSet();
                                               htmlFor="State_Code"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              State Code: <span className="text-danger">*</span>
+                                              State Code:{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
                                             </label>
                                             <div className="col-sm-8">
-                                            <input
-          type="text"
-          id="State_Code"
-          name="State_Code"
-          className="form-control"
-          value={`${formData.State_Code}${stateName ? ` - ${stateName}` : ''}`}
-          onChange={handleStateCodeChange}
-          placeholder="Enter State Code"
-        />
-                                         {errors.State_Code && (
+                                              <input
+                                                type="text"
+                                                id="State_Code"
+                                                name="State_Code"
+                                                className="form-control"
+                                                value={`${formData.State_Code}${
+                                                  stateName
+                                                    ? ` - ${stateName}`
+                                                    : ""
+                                                }`}
+                                                onChange={handleStateCodeChange}
+                                                placeholder="Enter State Code"
+                                              />
+                                              {errors.State_Code && (
                                                 <small className="text-danger">
                                                   {errors.State_Code}
                                                 </small>
                                               )}
                                             </div>
-                                            
+
                                             <div className="col-sm-0">
-         {/* <input
+                                              {/* <input
           type="text"
           id="State_Name"
           name="State_Name"
@@ -888,8 +896,7 @@ fetchCurrencyAndSet();
           value={stateName}
           readOnly
         /> */}
-    </div>
-            
+                                            </div>
                                           </div>
 
                                           {/* GST Tax Code */}
@@ -898,7 +905,10 @@ fetchCurrencyAndSet();
                                               htmlFor="GST_Tax_Code"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              GST Tax Code: <span className="text-danger">*</span>
+                                              GST Tax Code:{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
                                             </label>
                                             <div className="col-sm-5">
                                               <select
@@ -1120,6 +1130,31 @@ fetchCurrencyAndSet();
                                               )} */}
                                             </div>
                                           </div>
+
+                                            {/* LUT No */}
+                                            <div className="row mb-3">
+                                            <label
+                                              htmlFor="LUT_No"
+                                              className="col-sm-4 col-form-label"
+                                            >
+                                              LUT No:
+                                            </label>
+                                            <div className="col-sm-8">
+                                              <input
+                                                type="text"
+                                                className="form-control"
+                                                id="LUT_No"
+                                                name="LUT_No"
+                                                value={formData.LUT_No}
+                                                onChange={handleChange}
+                                              />
+                                              {/* {errors.LUT_No && (
+                                                <small className="text-danger">
+                                                  {errors.LUT_No}
+                                                </small>
+                                              )} */}
+                                            </div>
+                                          </div>
                                         </div>
                                         <div
                                           className="col-md-4"
@@ -1130,7 +1165,10 @@ fetchCurrencyAndSet();
                                               htmlFor="Code_No"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Code No: <span className="text-danger">*</span>
+                                              Code No:{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
                                             </label>
                                             <div className="col-sm-8">
                                               <input
@@ -1140,7 +1178,7 @@ fetchCurrencyAndSet();
                                                 name="Code_No"
                                                 value={formData.Code_No}
                                                 onChange={handleChange}
-                                              readOnly
+                                                readOnly
                                               />
                                               {errors.Code_No && (
                                                 <small className="text-danger">
@@ -1171,10 +1209,13 @@ fetchCurrencyAndSet();
                                                 </option>
 
                                                 {paymentTerms.map((term) => (
-          <option key={term.id} value={term.id}>
-            {term.Days} 
-          </option>
-        ))}
+                                                  <option
+                                                    key={term.id}
+                                                    value={term.id}
+                                                  >
+                                                    {term.Days}
+                                                  </option>
+                                                ))}
                                               </select>
                                             </div>
                                             <div className="col-sm-2">
@@ -1190,7 +1231,7 @@ fetchCurrencyAndSet();
                                               <button
                                                 className="btn"
                                                 type="button"
-                                                onClick={handleRefresh} 
+                                                onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -1200,27 +1241,36 @@ fetchCurrencyAndSet();
 
                                           {/* Country */}
                                           <div className="row mb-3">
-      <label htmlFor="Country" className="col-sm-4 col-form-label">
-        Country:
-      </label>
-      <div className="col-sm-8">
-       
-      <select
-          id="Country"
-          name="Country"
-          className="form-select"
-          value={formData.Country}
-          onChange={handleDropdownChange}
-        >
-          <option value="">Select ..</option>
-          {countries.map((country, index) => (
-            <option key={index} value={country.name}>
-              {country.name}
-            </option>
-          ))}
-        </select>
-      </div>
-    </div>
+                                            <label
+                                              htmlFor="Country"
+                                              className="col-sm-4 col-form-label"
+                                            >
+                                              Country:
+                                            </label>
+                                            <div className="col-sm-8">
+                                              <select
+                                                id="Country"
+                                                name="Country"
+                                                className="form-select"
+                                                value={formData.Country}
+                                                onChange={handleDropdownChange}
+                                              >
+                                                <option value="">
+                                                  Select ..
+                                                </option>
+                                                {countries.map(
+                                                  (country, index) => (
+                                                    <option
+                                                      key={index}
+                                                      value={country.name}
+                                                    >
+                                                      {country.name}
+                                                    </option>
+                                                  )
+                                                )}
+                                              </select>
+                                            </div>
+                                          </div>
 
                                           {/* Currency */}
                                           <div className="row mb-3">
@@ -1230,7 +1280,7 @@ fetchCurrencyAndSet();
                                             >
                                               Currency:
                                             </label>
-                                            <div className="col-sm-5">
+                                            <div className="col-sm-8">
                                               <select
                                                 id="Currency"
                                                 name="Currency"
@@ -1241,56 +1291,16 @@ fetchCurrencyAndSet();
                                                 <option value="">
                                                   Select ..
                                                 </option>
-                                                {currencies.map((currency) => (
-                                                  <option
-                                                    key={currency.id}
-                                                    value={currency.Symbol}
-                                                  >
-                                                    {currency.Symbol}
-                                                  </option>
-                                                ))}
+                                                {currencyCodes.map((currency) => (
+        <option key={currency.code} value={currency.code}>
+          {currency.code}
+        </option>
+      ))}
 
-                                                <option value="Pantinagar">
-                                                  Pantinagar
-                                                </option>
-                                                <option value="a1 : x1">
-                                                  a1 : x1
-                                                </option>
-                                                <option value="EURO">
-                                                  EURO
-                                                </option>
-                                                <option value="INR">
-                                                  Indian Rupees
-                                                </option>
-                                                <option value="KD">
-                                                  DINAR
-                                                </option>
-                                                <option value="UKPD">
-                                                  UKPD
-                                                </option>
-                                                <option value="USD">USD</option>
-                                                <option value="YEN">YEN</option>
+                                                
                                               </select>
                                             </div>
-                                            <div className="col-sm-2">
-                                              <button
-                                                className="btn"
-                                                type="button"
-                                                onClick={toggleCardCurrency}
-                                              >
-                                                New
-                                              </button>
-                                            </div>
-                                            <div className="col-sm-1">
-                                              <button
-                                                className="btn"
-                                                type="button"
-                                                onClick={handleRefresh} 
-                                                style={{ fontSize: "10px" }}
-                                              >
-                                                <CachedIcon />
-                                              </button>
-                                            </div>
+                                           
                                           </div>
 
                                           {/* Pin Code */}
@@ -1299,7 +1309,10 @@ fetchCurrencyAndSet();
                                               htmlFor="Pin_Code"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Pin Code: <span className="text-danger">*</span>
+                                              Pin Code:{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
                                             </label>
                                             <div className="col-sm-8">
                                               <input
@@ -1360,7 +1373,7 @@ fetchCurrencyAndSet();
                                               <button
                                                 className="btn"
                                                 type="button"
-                                                onClick={handleRefresh} 
+                                                onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -1424,30 +1437,27 @@ fetchCurrencyAndSet();
                                                 <option value="">
                                                   Select ..
                                                 </option>
-                                                <option value="FG">FG</option>
-                                                <option value="RM">RM</option>
+                                                
+                                                <option value="Registered">Registered</option>
+            <option value="Unregistered">Unregistered</option>
+                                                
                                               </select>
                                             </div>
                                           </div>
 
                                           {/* GST No */}
+                                          {formData.GST_No === "Registered" && (
                                           <div className="row mb-3">
                                             <div className="form-check col-sm-4">
-                                              <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="GST_No2"
-                                                name="GST_No2"
-                                                checked={
-                                                  formData.GST_No || false
-                                                }
-                                                onChange={handleChange}
-                                              />
+                                             
                                               <label
                                                 className="form-check-label"
                                                 htmlFor="GST_No2"
                                               >
-                                                GST No: <span className="text-danger">*</span>
+                                                GST No:{" "}
+                                                <span className="text-danger">
+                                                  *
+                                                </span>
                                               </label>
                                             </div>
                                             <div className="col-sm-8">
@@ -1457,7 +1467,9 @@ fetchCurrencyAndSet();
                                                 id="GST_No2"
                                                 name="GST_No2"
                                                 value={formData.GST_No2}
-                                                onChange={handleChange}
+                                                onChange={(e) =>
+                                                  setFormData({ ...formData, GST_No2: e.target.value })
+                                                }
                                               />
                                               {errors.GST_No2 && (
                                                 <small className="text-danger">
@@ -1465,7 +1477,7 @@ fetchCurrencyAndSet();
                                                 </small>
                                               )}
                                             </div>
-                                          </div>
+                                          </div>)}
 
                                           {/* Invoice Type */}
                                           <div className="row mb-3">
@@ -1486,8 +1498,12 @@ fetchCurrencyAndSet();
                                                 <option value="">
                                                   Select ..
                                                 </option>
-                                                <option value="FG">FG</option>
-                                                <option value="RM">RM</option>
+                                                <option value="FG">
+                                                  Gernal
+                                                </option>
+                                                <option value="RM">
+                                                  Export
+                                                </option>
                                               </select>
                                             </div>
                                           </div>
@@ -1675,7 +1691,6 @@ fetchCurrencyAndSet();
                                           className="col-md-4"
                                           style={{ padding: "10px" }}
                                         >
-                    
                                           {/* Sector */}
                                           <div className="row mb-3">
                                             <label
@@ -1703,7 +1718,6 @@ fetchCurrencyAndSet();
                                                     {sector.SectorName}
                                                   </option>
                                                 ))}
-                                                
                                               </select>
                                             </div>
                                             <div className="col-sm-2">
@@ -1769,7 +1783,7 @@ fetchCurrencyAndSet();
                                               <button
                                                 className="btn"
                                                 type="button"
-                                                onClick={handleRefresh} 
+                                                onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -1808,7 +1822,10 @@ fetchCurrencyAndSet();
                                               htmlFor="Vendor_Code"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Vendor Code: <span className="text-danger">*</span>
+                                              Vendor Code:{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
                                             </label>
                                             <div className="col-sm-8">
                                               <input
@@ -1885,7 +1902,7 @@ fetchCurrencyAndSet();
                                             >
                                               MSME Type:
                                             </label>
-                                            <div className="col-sm-5">
+                                            <div className="col-sm-8">
                                               <select
                                                 id="MSME_Type"
                                                 name="MSME_Type"
@@ -1896,8 +1913,15 @@ fetchCurrencyAndSet();
                                                 <option value="">
                                                   Select ..
                                                 </option>
-                                                <option value="FG">FG</option>
-                                                <option value="RM">RM</option>
+                                                <option value="FG">
+                                                  Micro
+                                                </option>
+                                                <option value="RM">
+                                                  Small
+                                                </option>
+                                                <option value="FG">
+                                                  Medium
+                                                </option>
                                               </select>
                                             </div>
                                           </div>
@@ -1927,30 +1951,7 @@ fetchCurrencyAndSet();
                                             </div>
                                           </div>
 
-                                          {/* LUT No */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="LUT_No"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              LUT No:
-                                            </label>
-                                            <div className="col-sm-8">
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                                id="LUT_No"
-                                                name="LUT_No"
-                                                value={formData.LUT_No}
-                                                onChange={handleChange}
-                                              />
-                                              {/* {errors.LUT_No && (
-                                                <small className="text-danger">
-                                                  {errors.LUT_No}
-                                                </small>
-                                              )} */}
-                                            </div>
-                                          </div>
+                                        
 
                                           {/* ISO */}
                                           <div className="row mb-3">
@@ -1971,8 +1972,8 @@ fetchCurrencyAndSet();
                                                 <option value="">
                                                   Select ..
                                                 </option>
-                                                <option value="FG">FG</option>
-                                                <option value="RM">RM</option>
+                                                <option value="FG">Yes</option>
+                                                <option value="RM">No</option>
                                               </select>
                                             </div>
                                             <label
@@ -2001,7 +2002,7 @@ fetchCurrencyAndSet();
                                                   </option>
                                                 ))}
                                               </select>
-{/* 
+                                              {/* 
                                               {errors.QMSC_Code && (
                                                 <small className="text-danger">
                                                   {errors.QMSC_Code}
@@ -2023,7 +2024,7 @@ fetchCurrencyAndSet();
                                               <button
                                                 className="btn"
                                                 type="button"
-                                                onClick={handleRefresh} 
+                                                onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
                                               >
                                                 <CachedIcon />
@@ -2039,9 +2040,9 @@ fetchCurrencyAndSet();
                                             >
                                               Active:
                                             </label>
-                                         
+
                                             <div className="col-md-3">
-                                            <select
+                                              <select
                                                 id="Active"
                                                 name="Active"
                                                 className="form-select"
@@ -2053,7 +2054,6 @@ fetchCurrencyAndSet();
                                                 </option>
                                                 <option>Sale</option>
                                                 <option>Purchase</option>
-
                                               </select>
                                               {/* {errors.Active && (
                                                 <small className="text-danger">
@@ -2242,7 +2242,7 @@ fetchCurrencyAndSet();
                                             className="subGernalbtn1"
                                             onClick={handleClear}
                                           >
-                                            Clear
+                                            CLEAR
                                           </button>
                                         </div>
                                       </div>
@@ -2262,9 +2262,7 @@ fetchCurrencyAndSet();
                                     </button>
                                   </div>
 
-                                  <ToggleCard1
-                                    
-                                  />
+                                  <ToggleCard1 />
                                 </div>
                               )}
                               {isCardOpenregion && (

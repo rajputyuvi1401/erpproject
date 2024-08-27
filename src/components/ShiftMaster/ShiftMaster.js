@@ -73,7 +73,9 @@ const ShiftMaster = () => {
     // Validation
     const newErrors = {};
     Object.keys(formData).forEach((key) => {
-      if (!formData[key]) newErrors[key] = "This field is required";
+      if (!formData[key] && key !== "Plant" && key !== "Shift_Prefix") {
+        newErrors[key] = "This field is required";
+      }
     });
 
     if (Object.keys(newErrors).length > 0) {
@@ -145,16 +147,16 @@ const ShiftMaster = () => {
                               <option value="2">Two</option>
                               <option value="3">Three</option>
                             </select>
-                            {errors.Plant && (
+                            {/* {errors.Plant && (
                               <small className="text-danger">
                                 {errors.Plant}
                               </small>
-                            )}
+                            )} */}
                           </div>
                         </div>
                         <div className="col-md-1">
                           <label htmlFor="Shift_Name" className="form-label">
-                            Shift Name:
+                            Shift Name:<span className="text-danger">*</span>
                           </label>
                           <input
                             type="text"
@@ -184,17 +186,17 @@ const ShiftMaster = () => {
                               value={formData.Shift_Prefix}
                               onChange={handleChange1}
                             />
-                            {errors.Shift_Prefix && (
+                            {/* {errors.Shift_Prefix && (
                               <small className="text-danger">
                                 {errors.Shift_Prefix}
                               </small>
-                            )}
+                            )} */}
                           </div>
                         </div>
                         <div className="col-md-1">
                           <div className="mb-3">
                             <label htmlFor="Shift_From" className="form-label">
-                              Shift From:
+                              Shift From:<span className="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -213,7 +215,7 @@ const ShiftMaster = () => {
                         <div className="col-md-1">
                           <div className="mb-3">
                             <label htmlFor="Shift_Till" className="form-label">
-                              Shift Till:
+                              Shift Till:<span className="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -232,7 +234,7 @@ const ShiftMaster = () => {
                         <div className="col-md-2">
                           <div className="mb-3">
                             <label htmlFor="Break_Name" className="form-label">
-                              Break Name:
+                              Break Name:<span className="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -251,7 +253,7 @@ const ShiftMaster = () => {
                         <div className="col-md-1">
                           <div className="mb-3">
                             <label htmlFor="Break_Till" className="form-label">
-                              Break Till:
+                              Break Till:<span className="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -270,7 +272,7 @@ const ShiftMaster = () => {
                         <div className="col-md-1">
                           <div className="mb-3">
                             <label htmlFor="Break_Time" className="form-label">
-                              Break Time:
+                              Break Time:<span className="text-danger">*</span>
                             </label>
                             <input
                               type="text"
@@ -289,7 +291,7 @@ const ShiftMaster = () => {
                         <div className="col-md-1">
                           <div className="mb-3">
                             <label htmlFor="Total_Hours" className="form-label">
-                              Total Hours:
+                              Total Hours:<span className="text-danger">*</span>
                             </label>
                             <input
                               type="text"

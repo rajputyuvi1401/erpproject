@@ -118,7 +118,7 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                       name="website"
                       value={formData.website}
                       onChange={handleChange}
-                      placeholder="sharp-engineers.com"
+                      placeholder="https://www.youtube.com/"
                     />
                     {errors.website && (
                       <div className="text-danger">{errors.website}</div>

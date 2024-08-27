@@ -46,9 +46,8 @@ const BusinessPartner = () => {
     cust_supp_name: "",
     add_code: "",
     partner_name: "",
-    address1: "",
-    address2: "",
-    address3: "",
+    address: "",
+   
     city: "",
     pin_code: "",
     email: "",
@@ -67,7 +66,9 @@ const BusinessPartner = () => {
   const [apiError, setApiError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [supplierList, setSupplierList] = useState([]);
+  const navigate = useNavigate();
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -79,9 +80,8 @@ const BusinessPartner = () => {
       cust_supp_name: "",
       add_code: "",
       partner_name: "",
-      address1: "",
-      address2: "",
-      address3: "",
+      address: "",
+     
       city: "",
       pin_code: "",
       email: "",
@@ -100,13 +100,35 @@ const BusinessPartner = () => {
     setSuccessMessage("");
   };
 
+  const validateGSTNo = () => {
+    // Regex pattern for Indian GST number
+    const gstRegex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+    if (!gstRegex.test(formData.gst_no)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        gst_no: "GST number is incorrect.",
+      }));
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (validateGSTNo()) {
+      // Proceed with form submission (e.g., API call)
+      alert("Form submitted successfully");
+    } else {
+      alert("Form has errors");
+    }
+
     const newErrors = {};
-    Object.keys(formData).forEach((key) => {
-      if (!formData[key]) {
-        newErrors[key] = "This field is required.";
+    const requiredFields = ["cust_supp_name", "add_code", "partner_name"];
+
+    requiredFields.forEach((field) => {
+      if (!formData[field] || formData[field].trim() === "") {
+        newErrors[field] = "This field is required";
       }
     });
 
@@ -133,6 +155,16 @@ const BusinessPartner = () => {
       );
     }
   };
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(`api/master/Supplier_Name/?search=${formData.cust_supp_name}`);
+      setSupplierList(response.data);
+    } catch (error) {
+      console.error('Error fetching supplier data:', error);
+    }
+  };
+
 
   return (
     <div className="Bussiness">
@@ -164,7 +196,7 @@ const BusinessPartner = () => {
                   <div className="bussiness-main">
                     <div className="container-fluid">
                       <form onSubmit={handleSubmit} autoComplete="off">
-                        <div className="row">
+                        <div className="row mt-4">
                           <div className="col-md-6">
                             <div className="row mb-3">
                               <label
@@ -173,7 +205,7 @@ const BusinessPartner = () => {
                               >
                                 Cust / Supp Name:
                               </label>
-                              <div className="col-sm-8">
+                              <div className="col-sm-6">
                                 <input
                                   type="text"
                                   placeholder="Please enter name"
@@ -187,6 +219,11 @@ const BusinessPartner = () => {
                                     {errors.cust_supp_name}
                                   </div>
                                 )}
+                              </div>
+                              <div className="col-md-2">
+                                <button type="button" className="btn-ty" onClick={handleSearch}>
+                                  Search
+                                </button>
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -243,10 +280,10 @@ const BusinessPartner = () => {
                               <div className="col-sm-8">
                                 <input
                                   type="text"
-                                  placeholder="Address Line 1"
+                                  placeholder="Address"
                                   className="form-control"
-                                  id="address1"
-                                  value={formData.address1}
+                                  id="address"
+                                  value={formData.address}
                                   onChange={handleChange}
                                 />
                                 {errors.address && (
@@ -255,29 +292,7 @@ const BusinessPartner = () => {
                                   </div>
                                 )}
                                 <br />
-                                <input
-                                  type="text"
-                                  placeholder="Address Line 2"
-                                  className="form-control"
-                                  id="address2"
-                                  value={formData.address2}
-                                  onChange={handleChange}
-                                />
-
-                                <br />
-                                <input
-                                  type="text"
-                                  placeholder="Address Line 3"
-                                  className="form-control"
-                                  id="address3"
-                                  value={formData.address3}
-                                  onChange={handleChange}
-                                />
-                                {errors.address && (
-                                  <div className="text-danger">
-                                    {errors.address3}
-                                  </div>
-                                )}
+                               
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -296,11 +311,11 @@ const BusinessPartner = () => {
                                   value={formData.city}
                                   onChange={handleChange}
                                 />
-                                {errors.city && (
+                                {/* {errors.city && (
                                   <div className="text-danger">
                                     {errors.city}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -318,11 +333,11 @@ const BusinessPartner = () => {
                                   value={formData.pin_code}
                                   onChange={handleChange}
                                 />
-                                {errors.pin_code && (
+                                {/* {errors.pin_code && (
                                   <div className="text-danger">
                                     {errors.pin_code}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -340,11 +355,11 @@ const BusinessPartner = () => {
                                   value={formData.email}
                                   onChange={handleChange}
                                 />
-                                {errors.email && (
+                                {/* {errors.email && (
                                   <div className="text-danger">
                                     {errors.email}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                           </div>
@@ -364,11 +379,11 @@ const BusinessPartner = () => {
                                   value={formData.contact_no}
                                   onChange={handleChange}
                                 />
-                                {errors.contact_no && (
+                                {/* {errors.contact_no && (
                                   <div className="text-danger">
                                     {errors.contact_no}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -386,11 +401,11 @@ const BusinessPartner = () => {
                                   value={formData.state_code}
                                   onChange={handleChange}
                                 />
-                                {errors.state_code && (
+                                {/* {errors.state_code && (
                                   <div className="text-danger">
                                     {errors.state_code}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -415,11 +430,11 @@ const BusinessPartner = () => {
             </option>
           ))}
                                 </select>
-                                {errors.country && (
+                                {/* {errors.country && (
                                   <div className="text-danger">
                                     {errors.country}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                               
                             </div>
@@ -435,14 +450,15 @@ const BusinessPartner = () => {
                                   type="text"
                                   className="form-control"
                                   id="gst_no"
+                                  placeholder="12ABCDE1234Z1X"
                                   value={formData.gst_no}
                                   onChange={handleChange}
                                 />
-                                {errors.gst_no && (
+                                {/* {errors.gst_no && (
                                   <div className="text-danger">
                                     {errors.gst_no}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -460,15 +476,16 @@ const BusinessPartner = () => {
                                   onChange={handleChange}
                                 >
                                   <option value="">Select</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
+                                  <option value="1">CGST + SGST</option>
+                                  <option value="2">IGST</option>
+                                  <option value="3">UTGST</option>
+                                  <option value="4">NA</option>
                                 </select>
-                                {errors.gst_code && (
+                                {/* {errors.gst_code && (
                                   <div className="text-danger">
                                     {errors.gst_code}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -486,11 +503,11 @@ const BusinessPartner = () => {
                                   value={formData.pan_no}
                                   onChange={handleChange}
                                 />
-                                {errors.pan_no && (
+                                {/* {errors.pan_no && (
                                   <div className="text-danger">
                                     {errors.pan_no}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -508,11 +525,11 @@ const BusinessPartner = () => {
                                   value={formData.distance}
                                   onChange={handleChange}
                                 />
-                                {errors.distance && (
+                                {/* {errors.distance && (
                                   <div className="text-danger">
                                     {errors.distance}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -530,11 +547,11 @@ const BusinessPartner = () => {
                                   value={formData.cin_no}
                                   onChange={handleChange}
                                 />
-                                {errors.cin_no && (
+                                {/* {errors.cin_no && (
                                   <div className="text-danger">
                                     {errors.cin_no}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3">
@@ -544,7 +561,7 @@ const BusinessPartner = () => {
                               >
                                 Invoice Type:
                               </label>
-                              <div className="col-sm-6">
+                              <div className="col-sm-8">
                                 <select
                                   className="form-select"
                                   id="invoice_type"
@@ -552,22 +569,24 @@ const BusinessPartner = () => {
                                   onChange={handleChange}
                                 >
                                   <option value="">Select</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
+                                  <option value="1">Gernal</option>
+                                  <option value="2">Export</option>
+                                 
                                 </select>
-                                {errors.invoice_type && (
+                                {/* {errors.invoice_type && (
                                   <div className="text-danger">
                                     {errors.invoice_type}
                                   </div>
-                                )}
+                                )} */}
                               </div>
-                              <div className="col-sm-1">
+                              </div>
+                              <div className="row mb-3 text-end">
+                              <div className="col-sm-10">
                                 <button type="submit" className="btn-ty">
                                   Save
                                 </button>
                               </div>
-                              <div className="col-sm-1">
+                              <div className="col-sm-2">
                                 <button
                                   type="button"
                                   className="btn-ty"
@@ -590,6 +609,38 @@ const BusinessPartner = () => {
                           </div>
                         )}
                       </form>
+                      <table className="table mt-4">
+                        <thead>
+                          <tr>
+                            <th>Code No</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>State Code</th>
+                            <th>Country</th>
+                            <th>Contact No</th>
+                            <th>Email</th>
+                            <th>GST Tax Code</th>
+                            <th>PAN No</th>
+                            <th>Distance</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {supplierList.map((supplier) => (
+                            <tr key={supplier.id}>
+                              <td>{supplier.Code_No}</td>
+                              <td>{supplier.Name}</td>
+                              <td>{supplier.Address_Line_1}</td>
+                              <td>{supplier.State_Code}</td>
+                              <td>{supplier.Country}</td>
+                              <td>{supplier.Contact_No}</td>
+                              <td>{supplier.Email_Id}</td>
+                              <td>{supplier.GST_Tax_Code}</td>
+                              <td>{supplier.PAN_NO}</td>
+                              <td>{supplier.Distance}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                       <Modal
                         show={showModal}
                         onHide={() => setShowModal(false)}

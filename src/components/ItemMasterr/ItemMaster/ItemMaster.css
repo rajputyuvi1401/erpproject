@@ -72,6 +72,8 @@ body.no-scroll {
   border: none;
   border-radius: 10px;
   margin-left: 10px;
+  text-decoration: none;
+  color: black;
 }
 
 .search-row {

@@ -176,7 +176,7 @@ const ItemCrossReference = () => {
 
                             <div className="row mb-3 text-start">
                               <label className="col-sm-3 col-form-label">
-                                Cross Ref-Item No:
+                                Cross Ref-Item No:<span className="text-danger">*</span>
                               </label>
                               <div className="col-sm-9">
                                 <input

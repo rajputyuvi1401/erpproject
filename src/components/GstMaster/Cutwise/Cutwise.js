@@ -7,6 +7,8 @@ import SideNav from "../../../SideNav/SideNav";
 import { Link } from "react-router-dom";
 import Api from "../../../Service/Api.jsx";
 import "./Cutwise.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cutwise = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -27,6 +29,7 @@ const Cutwise = () => {
   });
   const [editMode, setEditMode] = useState(false);
   const [currentId, setCurrentId] = useState(null);
+  const [errors, setErrors] = useState({}); // State for validation errors
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
@@ -49,8 +52,10 @@ const Cutwise = () => {
       const result = await Api.get();
       console.log("Data fetched:", result);
       setData(result);
+      
     } catch (error) {
       console.error("Error fetching data", error);
+      toast.error("Failed to fetch data.");
     }
   };
 
@@ -60,34 +65,62 @@ const Cutwise = () => {
       ...prevData,
       [name]: value,
     }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "", // Clear error when user starts typing
+    }));
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.HSN_Code) newErrors.HSN_Code = "This field is required";
+   
+    if (!formData.CGST) newErrors.CGST = "This field is required";
+    if (!formData.SGST) newErrors.SGST = "This field is required";
+    if (!formData.IGST) newErrors.IGST = "This field is required";
+    if (!formData.UTGST) newErrors.UTGST = "This field is required";
+    if (!formData.EXPORT_CGST) newErrors.EXPORT_CGST = "This field is required";
+    if (!formData.EXPORT_SGST) newErrors.EXPORT_SGST = "This field is required";
+    if (!formData.EXPORT_IGST) newErrors.EXPORT_IGST = "This field is required";
+    if (!formData.CESS) newErrors.CESS = "This field is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Return true if no errors
   };
 
   const handleSave = async () => {
-    try {
-      if (editMode) {
-        await Api.put(currentId, formData);
-        setEditMode(false);
-        setCurrentId(null);
-      } else {
-        await Api.post(formData);
+    if (validateForm()) {
+      try {
+        if (editMode) {
+          await Api.put(currentId, formData);
+          setEditMode(false);
+          setCurrentId(null);
+          toast.success("Data updated successfully!");
+        } else {
+          await Api.post(formData);
+          toast.success("Data saved successfully!");
+        }
+        setFormData({
+          HSN_Code: "",
+          Cust_Name: "",
+          Item: "",
+          Cust_PO_NO: "",
+          CGST: "",
+          SGST: "",
+          IGST: "",
+          UTGST: "",
+          EXPORT_CGST: "",
+          EXPORT_SGST: "",
+          EXPORT_IGST: "",
+          CESS: "",
+        });
+        fetchData();
+      } catch (error) {
+        console.error("Error saving data", error);
+        toast.error("Failed to save data.");
       }
-      setFormData({
-        HSN_Code: "",
-        Cust_Name: "",
-        Item: "",
-        Cust_PO_NO: "",
-        CGST: "",
-        SGST: "",
-        IGST: "",
-        UTGST: "",
-        EXPORT_CGST: "",
-        EXPORT_SGST: "",
-        EXPORT_IGST: "",
-        CESS: "",
-      });
-      fetchData();
-    } catch (error) {
-      console.error("Error saving data", error);
+    } else {
+      toast.error("Please fill all required fields.");
     }
   };
 
@@ -101,13 +134,17 @@ const Cutwise = () => {
     try {
       await Api.delete(id);
       fetchData();
+      toast.success("Data deleted successfully!");
     } catch (error) {
       console.error("Error deleting data", error);
+      toast.error("Failed to delete data.");
     }
   };
 
+
   return (
     <div className="Cutwise">
+      <ToastContainer/>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -139,7 +176,7 @@ const Cutwise = () => {
                             <table className="table table-bordered">
                               <thead>
                                 <tr>
-                                  <th>HSN/SAC Code</th>
+                                  <th>HSN/SAC Code<span className="text-danger">*</span></th>
                                   <th>Customer/Supplier Name</th>
                                   <th>Item</th>
                                   <th>Cust.PO No</th>
@@ -159,6 +196,7 @@ const Cutwise = () => {
                                       onChange={handleChange}
                                       placeholder="HSN/SAC Code"
                                     />
+                                    {errors.HSN_Code && <div className="text-danger">{errors.HSN_Code}</div>}
                                   </td>
                                   <td>
                                     <input
@@ -193,10 +231,10 @@ const Cutwise = () => {
                                   <td>
                                     <thead>
                                       <tr>
-                                        <th>CGST (%)</th>
-                                        <th>SGST (%)</th>
-                                        <th>IGST (%)</th>
-                                        <th>UTGST (%)</th>
+                                        <th>CGST (%)<span className="text-danger">*</span></th>
+                                        <th>SGST (%)<span className="text-danger">*</span></th>
+                                        <th>IGST (%)<span className="text-danger">*</span></th>
+                                        <th>UTGST (%)<span className="text-danger">*</span></th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -210,6 +248,7 @@ const Cutwise = () => {
                                             onChange={handleChange}
                                             placeholder="CGST (%)"
                                           />
+                                           {errors.CGST && <div className="text-danger">{errors.CGST}</div>}
                                         </td>
                                         <td>
                                           <input
@@ -220,6 +259,7 @@ const Cutwise = () => {
                                             onChange={handleChange}
                                             placeholder="SGST (%)"
                                           />
+                                           {errors.SGST && <div className="text-danger">{errors.SGST}</div>}
                                         </td>
                                         <td>
                                           <input
@@ -230,6 +270,7 @@ const Cutwise = () => {
                                             onChange={handleChange}
                                             placeholder="IGST (%)"
                                           />
+                                           {errors.IGST && <div className="text-danger">{errors.IGST}</div>}
                                         </td>
                                         <td>
                                           <input
@@ -240,6 +281,7 @@ const Cutwise = () => {
                                             onChange={handleChange}
                                             placeholder="UTGST (%)"
                                           />
+                                           {errors.UTGST && <div className="text-danger">{errors.UTGST}</div>}
                                         </td>
                                       </tr>
                                     </tbody>
@@ -247,10 +289,10 @@ const Cutwise = () => {
                                   <td>
                                     <thead>
                                       <tr>
-                                        <th>SGST (%)</th>
-                                        <th>CGST (%)</th>
-                                        <th>IGST (%)</th>
-                                        <th>CESS (%)</th>
+                                        <th>SGST (%)<span className="text-danger">*</span></th>
+                                        <th>CGST (%)<span className="text-danger">*</span></th>
+                                        <th>IGST (%)<span className="text-danger">*</span></th>
+                                        <th>CESS (%)<span className="text-danger">*</span></th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -264,6 +306,7 @@ const Cutwise = () => {
                                             onChange={handleChange}
                                             placeholder="Export CGST (%)"
                                           />
+                                           {errors.EXPORT_CGST && <div className="text-danger">{errors.EXPORT_CGST}</div>}
                                         </td>
                                         <td>
                                           <input
@@ -274,6 +317,7 @@ const Cutwise = () => {
                                             onChange={handleChange}
                                             placeholder="Export SGST (%)"
                                           />
+                                           {errors.EXPORT_SGST && <div className="text-danger">{errors.EXPORT_SGST}</div>}
                                         </td>
                                         <td>
                                           <input
@@ -284,6 +328,7 @@ const Cutwise = () => {
                                             onChange={handleChange}
                                             placeholder="Export IGST (%)"
                                           />
+                                           {errors.EXPORT_IGST && <div className="text-danger">{errors.EXPORT_IGST}</div>}
                                         </td>
                                         <td>
                                           <input
@@ -294,6 +339,7 @@ const Cutwise = () => {
                                             onChange={handleChange}
                                             placeholder="CESS (%)"
                                           />
+                                           {errors.CESS && <div className="text-danger">{errors.CESS}</div>}
                                         </td>
                                       </tr>
                                     </tbody>

@@ -77,7 +77,7 @@ const VenderList = () => {
                       <div className="row">
                         <div className="col-md-6 text-start">
                           <h5 style={{ color: "blue" }}>
-                            Supplier / Customer / Vender-List
+                            Supplier / Customer / Vendor-List
                           </h5>
                         </div>
                         <div className="col-md-6 text-end">
@@ -178,10 +178,10 @@ const VenderList = () => {
                                       Email
                                     </th>
                                     <th className="blue-th" scope="col">
-                                      V.Code
+                                      Vendor Code
                                     </th>
                                     <th className="blue-th" scope="col">
-                                      P.team
+                                      Payment team
                                     </th>
                                     <th className="blue-th" scope="col">
                                       Is Reg

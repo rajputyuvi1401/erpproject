@@ -45,11 +45,21 @@ const AddCycleTime = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    Object.keys(formData).forEach((key) => {
-      if (!formData[key] && key !== "timeInMinutes") {
-        newErrors[key] = "This field is required";
-      }
-    });
+    if (!formData.OPTime) {
+      newErrors.OPTime = "This field is required";
+    }
+
+    if (!formData.Load_Unload_Time) {
+      newErrors.Load_Unload_Time = "This field is required";
+    }
+
+    if (!formData.MO_Time) {
+      newErrors.MO_Time = "This field is required";
+    }
+
+    if (!formData.Total_Time) {
+      newErrors.Total_Time = "This field is required";
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -167,11 +177,11 @@ const AddCycleTime = () => {
                                 <option value="Plant1">Plant 1</option>
                                 <option value="Plant2">Plant 2</option>
                               </select>
-                              {errors.Plant && (
+                              {/* {errors.Plant && (
                                 <div className="text-danger">
                                   {errors.Plant}
                                 </div>
-                              )}
+                              )} */}
                             </div>
                           </div>
                           <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
@@ -190,11 +200,11 @@ const AddCycleTime = () => {
                                 <option value="P001">P001</option>
                                 <option value="P002">P002</option>
                               </select>
-                              {errors.PartCode && (
+                              {/* {errors.PartCode && (
                                 <div className="text-danger">
                                   {errors.PartCode}
                                 </div>
-                              )}
+                              )} */}
                             </div>
                           </div>
                           <div className="col-md-2 col-sm-6 mb-3 mb-sm-0">
@@ -213,14 +223,18 @@ const AddCycleTime = () => {
                                 onChange={handleChange}
                               >
                                 <option value="">Select Machine Type</option>
-                                <option value="Type1">Type 1</option>
-                                <option value="Type2">Type 2</option>
+                                <option value="CENTERLESS GRINDING">CENTERLESS GRINDING</option>
+                                <option value="CNC">CNC</option>
+                                <option value="DRILLING">DRILLING</option>
+                                <option value="GRINDER">GRINDER</option>
+                                <option value="INDUCTION">INDUCTION</option>
+                                <option value="LATHE">LATHE</option>
                               </select>
-                              {errors.MachineType && (
+                              {/* {errors.MachineType && (
                                 <div className="text-danger">
                                   {errors.MachineType}
                                 </div>
-                              )}
+                              )} */}
                             </div>
                           </div>
                           <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
@@ -249,7 +263,9 @@ const AddCycleTime = () => {
                           <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
                             <div className="mb-3">
                               <label htmlFor="OPTime" className="form-label">
-                                Op Time
+                                Op Time<span className="text-danger">
+                                                *
+                                              </span>
                               </label>
                               <input
                                 type="text"
@@ -272,7 +288,9 @@ const AddCycleTime = () => {
                                 htmlFor="Load_Unload_Time"
                                 className="form-label"
                               >
-                                Load/Unload Time
+                                Load/Unload Time<span className="text-danger">
+                                                *
+                                              </span>
                               </label>
                               <input
                                 type="text"
@@ -292,7 +310,9 @@ const AddCycleTime = () => {
                           <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
                             <div className="mb-3">
                               <label htmlFor="MO_Time" className="form-label">
-                                Mo Time
+                                Mo Time<span className="text-danger">
+                                                *
+                                              </span>
                               </label>
                               <input
                                 type="text"
@@ -315,7 +335,9 @@ const AddCycleTime = () => {
                                 htmlFor="Total_Time"
                                 className="form-label"
                               >
-                                Total Time
+                                Total Time<span className="text-danger">
+                                                *
+                                              </span>
                               </label>
                               <input
                                 type="text"
@@ -362,11 +384,11 @@ const AddCycleTime = () => {
                                 value={formData.Time_in_Minutes}
                                 onChange={handleChange}
                               />
-                              {errors.Time_in_Minutes && (
+                              {/* {errors.Time_in_Minutes && (
                                 <div className="text-danger">
                                   {errors.Time_in_Minutes}
                                 </div>
-                              )}
+                              )} */}
                             </div>
                           </div>
                           <div className="row text-end">

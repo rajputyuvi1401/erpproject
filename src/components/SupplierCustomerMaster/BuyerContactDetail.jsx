@@ -113,22 +113,22 @@ const BuyerContactDetail = () => {
                   <thead>
                     <tr>
                       <th className="blue-th" scope="col">
-                        Person Name
+                        Person Name<span className="text-danger">*</span>
                       </th>
                       <th className="blue-th" scope="col">
-                        Contact No
+                        Contact No<span className="text-danger">*</span>
                       </th>
                       <th className="blue-th" scope="col">
-                        Email
+                        Email<span className="text-danger">*</span>
                       </th>
                       <th className="blue-th" scope="col">
-                        Department
+                        Department<span className="text-danger">*</span>
                       </th>
                       <th className="blue-th" scope="col">
-                        Designation
+                        Designation<span className="text-danger">*</span>
                       </th>
                       <th className="blue-th" scope="col">
-                        Birth Date
+                        Birth Date<span className="text-danger">*</span>
                       </th>
                       <th className="blue-th" scope="col">
                         Action

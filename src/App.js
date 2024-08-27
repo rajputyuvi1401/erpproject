@@ -16,6 +16,7 @@ import CustomerState from "./components/Master2/CustomerState";
 import ItemMaster from "./components/ItemMasterr/ItemMaster/ItemMaster";
 import AddNewItem from "./components/ItemMasterr/AddNewItem/AddNewItem";
 import ItemMasterGernal from "./components/ItemMasterr/ItemMasterGernal/ItemMasterGernal";
+import ItemMasterQuery from "./components/ItemMasterr/ItemMasterQuery/ItemMasterQuery.jsx";
 
 // Work Center Master
 import WorkCenterMaster from "./components/WorkCenterMaster/WorkCenterMaster";
@@ -143,6 +144,7 @@ function App() {
         <Route path="/item-master" element={<ItemMaster />} />
         <Route path="/add-new-item" element={<AddNewItem />} />
         <Route path="/item-master-gernal" element={<ItemMasterGernal />} />
+        <Route path="/item-master-query" element={<ItemMasterQuery/>}/>
 
         {/* Work Center Master */}
         <Route path="/Work-center-master" element={<WorkCenterMaster />} />

@@ -135,9 +135,14 @@ const UnitConversion = () => {
                             onChange={handleChange}
                           >
                             <option value="">Select...</option>
-                            <option value="1">FG</option>
-                            <option value="2">RM</option>
-                            <option value="3">TOOLS</option>
+                            <option value="FG">FG</option>
+                            <option value="RM">RM</option>
+                            <option value="TOOLs">TOOLS</option>
+                            <option value="Instrument">Instrument</option>
+                            <option value="Machine">Machine</option>
+                            <option value="Consumable">Consumable</option>
+                            <option value="Service">Service</option>
+                            <option value="Asset">Asset</option>
                           </select>
                           {errors.SubGroup && (
                             <div className="text-danger">{errors.SubGroup}</div>
@@ -145,7 +150,7 @@ const UnitConversion = () => {
                         </div>
                         <div className="col-md-1 mb-3">
                           <label htmlFor="Item" className="form-label">
-                            Item:
+                            Item:<span className="text-danger">*</span>
                           </label>
                           <input
                             type="text"
@@ -180,6 +185,16 @@ const UnitConversion = () => {
                             <option value="1">PCS</option>
                             <option value="2">KGS</option>
                             <option value="3">BOX</option>
+                            <option value="4">LTR</option>
+                            <option value="5">NOS</option>
+                            <option value="6">SQFT</option>
+                            <option value="7">MTR</option>
+                            <option value="8">FOOT</option>
+                            <option value="9">SQMTR</option>
+                            <option value="10">PAIR</option>
+                            <option value="11">BAG</option>
+                            <option value="12">PACKET</option>
+
                           </select>
                           {errors.Unit && (
                             <div className="text-danger">{errors.Unit}</div>
@@ -214,6 +229,15 @@ const UnitConversion = () => {
                             <option value="1">PCS</option>
                             <option value="2">KGS</option>
                             <option value="3">BOX</option>
+                            <option value="4">LTR</option>
+                            <option value="5">NOS</option>
+                            <option value="6">SQFT</option>
+                            <option value="7">MTR</option>
+                            <option value="8">FOOT</option>
+                            <option value="9">SQMTR</option>
+                            <option value="10">PAIR</option>
+                            <option value="11">BAG</option>
+                            <option value="12">PACKET</option>
                           </select>
                           {errors.StockUnit && (
                             <div className="text-danger">

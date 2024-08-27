@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar";
 import SideNav from "../../../SideNav/SideNav";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ItemMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -52,7 +52,7 @@ const ItemMaster = () => {
                         >
                           Add New Item
                         </button>
-                        <button className="btn12">Item Query</button>
+                        <Link to={"/item-master-query"} className="btn12">Item Query</Link>
                       </div>
                     </div>
                   </div>
@@ -82,9 +82,9 @@ const ItemMaster = () => {
                       <div className="col-md-1">
                         <select className="form-select" id="mainGroup">
                           <option>All</option>
-                          <option>Group 1</option>
-                          <option>Group 2</option>
-                          <option>Group 3</option>
+                          <option>FG</option>
+                          <option>RM</option>
+                          <option>Tools</option>
                         </select>
                       </div>
                       <div className="col-md-1">
@@ -93,9 +93,12 @@ const ItemMaster = () => {
                       <div className="col-md-1">
                         <select className="form-select" id="itemGroup">
                           <option>All</option>
-                          <option>Option 1</option>
-                          <option>Option 2</option>
-                          <option>Option 3</option>
+                          <option>END PIECE</option>
+                          <option>MACHINE</option>
+                          <option>BELTS</option>
+                          <option>BEARING</option>
+                          <option>COLLETS & HOLDERS</option>
+                          <option>CAMS</option>
                         </select>
                       </div>
                       <div className="col-md-1">

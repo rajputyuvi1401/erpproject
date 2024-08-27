@@ -17,8 +17,10 @@ const BankDetails = () => {
   });
 
   const [bankDetails, setBankDetails] = useState([]);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
+    
     const loadBankDetails = async () => {
       try {
         const data = await fetchBankDetails();
@@ -36,9 +38,41 @@ const BankDetails = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setErrors({ ...errors, [e.target.name]: "" });
+  };
+  const validateIFSC = () => {
+    const ifscRegex = /^[A-Z]{4}0[A-Z0-9]{6}$/;
+    if (!ifscRegex.test(formData.IFSC_Code)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        IFSC_Code: "Invalid IFSC Code. It should be in the format ABCD0123456.",
+      }));
+      return false;
+    }
+    return true;
+  };
+  const validateBankAccount = () => {
+    const bankAccountRegex = /^\d{9,18}$/;
+    if (!bankAccountRegex.test(formData.Bank_Account)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        Bank_Account: "Invalid account number. It should be 9 to 18 digits long.",
+      }));
+      return false;
+    }
+    return true;
   };
 
+
   const handleAddBankDetail = async () => {
+    if (validateIFSC()) {
+      // Proceed with form submission
+      console.log("Form submitted successfully");
+    }
+    if (validateBankAccount()) {
+      // Proceed with form submission
+      console.log("Form submitted successfully");
+    }
     try {
       await addBankDetail(formData);
       const updatedBankDetails = await fetchBankDetails(); // Refresh the list
@@ -79,11 +113,11 @@ const BankDetails = () => {
                 <table className="table table-bordered">
                   <thead>
                     <tr>
-                      <th className="blue-th">Account Holder Name :</th>
-                      <th className="blue-th">Bank Name:</th>
-                      <th className="blue-th">Branch Name:</th>
-                      <th className="blue-th">Bank A/c No:</th>
-                      <th className="blue-th">IFSC Code:</th>
+                      <th className="blue-th">Account Holder Name <span className="text-danger">*</span>:</th>
+                      <th className="blue-th">Bank Name<span className="text-danger">*</span>:</th>
+                      <th className="blue-th">Branch Name<span className="text-danger">*</span>:</th>
+                      <th className="blue-th">Bank A/c No<span className="text-danger">*</span>:</th>
+                      <th className="blue-th">IFSC Code<span className="text-danger">*</span>:</th>
                       <th className="blue-th">Action</th>
                     </tr>
                   </thead>

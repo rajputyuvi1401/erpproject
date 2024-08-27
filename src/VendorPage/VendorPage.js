@@ -160,20 +160,20 @@ const VendorPage = () => {
                   <div className="Vendorpage1">
                     <div className="container-fluid">
                       <div className="top-but">
-                        <div className="row text-start">
-                          <div className="col-md-9">
-                            <button className="btn" type="button">
+                        <div className="row">
+                          <div className="col-md-9 col-12 text-start">
+                            <button className="btnv" type="button">
                               Company Setup
                             </button>
-                            <button className="btn" type="button">
+                            <button className="btnv" type="button">
                               Last Updated By Admin
                             </button>
-                            <button className="btn" type="button">
+                            <button className="btnv" type="button">
                               On D1 12/07/2022 2:57 PM
                             </button>
                           </div>
-                          <div className="col-md-3 text-end">
-                            <button className="btn">General Setting</button>
+                          <div className="col-md-3 col-12 text-md-end text-start mt-3 mt-md-0">
+                            <button className="btnv">General Setting</button>
                           </div>
                         </div>
                       </div>
@@ -191,12 +191,12 @@ const VendorPage = () => {
                                 className={`nav-link ${
                                   activeTab === "general" ? "active" : ""
                                 }`}
-                                id="pills-home-tab"
+                                id="pills-general-tab"
                                 data-bs-toggle="pill"
-                                data-bs-target="#pills-home"
+                                data-bs-target="#pills-general"
                                 type="button"
                                 role="tab"
-                                aria-controls="pills-home"
+                                aria-controls="pills-general"
                                 aria-selected={activeTab === "general"}
                                 onClick={() => setActiveTab("general")}
                               >
@@ -208,12 +208,12 @@ const VendorPage = () => {
                                 className={`nav-link ${
                                   activeTab === "data2" ? "active" : ""
                                 }`}
-                                id="pills-profile-tab"
+                                id="pills-data2-tab"
                                 data-bs-toggle="pill"
-                                data-bs-target="#pills-profile"
+                                data-bs-target="#pills-data2"
                                 type="button"
                                 role="tab"
-                                aria-controls="pills-profile"
+                                aria-controls="pills-data2"
                                 aria-selected={activeTab === "data2"}
                                 onClick={() => setActiveTab("data2")}
                               >
@@ -225,12 +225,12 @@ const VendorPage = () => {
                                 className={`nav-link ${
                                   activeTab === "logoImage" ? "active" : ""
                                 }`}
-                                id="pills-contact-tab"
+                                id="pills-logoImage-tab"
                                 data-bs-toggle="pill"
-                                data-bs-target="#pills-contact"
+                                data-bs-target="#pills-logoImage"
                                 type="button"
                                 role="tab"
-                                aria-controls="pills-contact"
+                                aria-controls="pills-logoImage"
                                 aria-selected={activeTab === "logoImage"}
                                 onClick={() => setActiveTab("logoImage")}
                               >
@@ -242,12 +242,12 @@ const VendorPage = () => {
                                 className={`nav-link ${
                                   activeTab === "eInvoice" ? "active" : ""
                                 }`}
-                                id="pills-service-tab"
+                                id="pills-Invoice-tab"
                                 data-bs-toggle="pill"
-                                data-bs-target="#pills-service"
+                                data-bs-target="#pills-Invoice"
                                 type="button"
                                 role="tab"
-                                aria-controls="pills-service"
+                                aria-controls="pills-Invoice"
                                 aria-selected={activeTab === "eInvoice"}
                                 onClick={() => setActiveTab("eInvoice")}
                               >
@@ -260,9 +260,9 @@ const VendorPage = () => {
                               className={`tab-pane fade ${
                                 activeTab === "general" ? "show active" : ""
                               }`}
-                              id="pills-home"
+                              id="pills-general"
                               role="tabpanel"
-                              aria-labelledby="pills-home-tab"
+                              aria-labelledby="pills-general-tab"
                             >
                               <General
                                 formData={formData}
@@ -275,9 +275,9 @@ const VendorPage = () => {
                               className={`tab-pane fade ${
                                 activeTab === "data2" ? "show active" : ""
                               }`}
-                              id="pills-profile"
+                              id="pills-data2"
                               role="tabpanel"
-                              aria-labelledby="pills-profile-tab"
+                              aria-labelledby="pills-data2-tab"
                             >
                               <Data2
                                 formData={formData}
@@ -291,9 +291,9 @@ const VendorPage = () => {
                               className={`tab-pane fade ${
                                 activeTab === "logoImage" ? "show active" : ""
                               }`}
-                              id="pills-contact"
+                              id="pills-logoImage"
                               role="tabpanel"
-                              aria-labelledby="pills-contact-tab"
+                              aria-labelledby="pills-logoImage-tab"
                             >
                               <LogoImage
                                 formData={formData}
@@ -305,9 +305,9 @@ const VendorPage = () => {
                               className={`tab-pane fade ${
                                 activeTab === "Invoice" ? "show active" : ""
                               }`}
-                              id="pills-service"
+                              id="pills-Invoice"
                               role="tabpanel"
-                              aria-labelledby="pills-service-tab"
+                              aria-labelledby="pills-Invoice-tab"
                             >
                               {/* invoice */}
                               <Invoice />

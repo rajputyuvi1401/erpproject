@@ -77,61 +77,7 @@ const OperatorSupervisor = () => {
       deptName: "Quality",
       contractor: "Company",
     },
-    {
-      id: 6,
-      plant: "sharp",
-      code: "006",
-      name: "Michael White",
-      type: "Operator",
-      description: "Machining",
-      contact: "5",
-      deptName: "Production",
-      contractor: "Company",
-    },
-    {
-      id: 7,
-      plant: "sharp",
-      code: "007",
-      name: "Laura Black",
-      type: "Staff",
-      description: "Welding",
-      contact: "6",
-      deptName: "Maintenance",
-      contractor: "Contractor",
-    },
-    {
-      id: 8,
-      plant: "sharp",
-      code: "008",
-      name: "David Blue",
-      type: "Operator",
-      description: "Assembly",
-      contact: "7",
-      deptName: "Production",
-      contractor: "Company",
-    },
-    {
-      id: 9,
-      plant: "sharp",
-      code: "009",
-      name: "Alice Yellow",
-      type: "Supervisor",
-      description: "Packing",
-      contact: "8",
-      deptName: "Logistics",
-      contractor: "Contractor",
-    },
-    {
-      id: 10,
-      plant: "sharp",
-      code: "010",
-      name: "Robert Red",
-      type: "Staff",
-      description: "Quality Control",
-      contact: "9",
-      deptName: "Quality",
-      contractor: "Company",
-    },
+
   ];
 
   return (
@@ -207,6 +153,7 @@ const OperatorSupervisor = () => {
                           </label>
                           <select id="contractor" className="form-select">
                             <option value="">All</option>
+                            <option value="">All</option>
                             {/* Add options here */}
                           </select>
                         </div>
@@ -216,7 +163,14 @@ const OperatorSupervisor = () => {
                           </label>
                           <select id="contractor" className="form-select">
                             <option value="">All</option>
-                            {/* Add options here */}
+                            <option value="Company">Company</option>
+                            <option value="SAINATH JADHAV">
+                              SAINATH JADHAV
+                            </option>
+                            <option value="MOMIN PATEL">MOMIN PATEL</option>
+                            <option value="QUALITY CONTROL">
+                              QUALITY CONTROL
+                            </option>
                           </select>
                         </div>
                         <div className="col-md-2 col-6">
@@ -225,7 +179,12 @@ const OperatorSupervisor = () => {
                           </label>
                           <select id="type" className="form-select">
                             <option value="">All</option>
-                            {/* Add options here */}
+                            <option value="FID">FID</option>{" "}
+                            <option value="INSPECTOR">INSPECTOR</option>{" "}
+                            <option value="MACHINING">MACHINING</option>{" "}
+                            <option value="NIRAJ">NIRAJ</option>{" "}
+                            <option value="QA SUPERWISER">QA SUPERWISER</option>{" "}
+                            <option value="STORE">STORE</option>
                           </select>
                         </div>
                         <div className="col-md-2 col-6">
@@ -233,8 +192,9 @@ const OperatorSupervisor = () => {
                             Status
                           </label>
                           <select id="status" className="form-select">
-                            <option value="">All</option>
-                            {/* Add options here */}
+                            <option>All</option>
+                            <option value="Status1">Status1</option>
+                            <option value="Status2">Status2</option>
                           </select>
                         </div>
                         <div className="col-md-1 col-12">

@@ -3,10 +3,12 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: Arial, sans-serif;
   background-color: rgb(241, 242, 244); /* Set a default background color */
 }
+
 .App {
   display: flex;
   flex-direction: column;
@@ -17,7 +19,7 @@ main {
   flex: 1;
   padding: 20px;
   margin-top: 60px;
-  transition: margin-left 0.3s;
+  transition: margin-left 0.3s ease;
 }
 
 .main-content.shifted {
@@ -28,10 +30,11 @@ body.no-scroll {
   overflow: hidden;
 }
 
+/* Vendor Section */
 .Vendor {
   width: 100%;
   background-color: rgb(241, 242, 244);
-  min-height: 160vh; /* Adjust height as needed */
+  min-height: 160vh;
   padding: 20px;
 }
 
@@ -40,65 +43,77 @@ body.no-scroll {
   padding: 20px;
   height: 10vh;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  align-items: start;
   margin-top: 20px;
+  /* display: flex; */
+  align-items: flex-start;
 }
+
 .top-but {
   margin-top: -12px;
+  /* display: flex; */
 }
-.top-but .btn {
-  border: 1px solid black;
+
+.top-but .btnv {
+  border: none;
   margin: 5px;
   padding: 10px 20px;
   border-radius: 10px;
 }
-.VendorPageMain {
+
+.VendorPageMain,
+.VendorGeneral,
+.Vendordata2,
+.VendorLogoImages,
+.VendorEinvoice {
   background-color: aliceblue;
-  padding: 20px 20px;
-  height: auto;
+  padding: 20px;
   margin-top: 50px;
 }
-.VendorGeneral{
+
+.VendorGeneral,
+.Vendordata2,
+.VendorLogoImages,
+.VendorEinvoice .form,
+.date-2,
+.logo-image,
+.einvoice {
   background-color: white;
-  padding: 20px 20px;
-  margin: 10px 10px;
-}
-.gernal-update {
-  border: none;
-  padding: 10px;
+  padding: 20px;
+  margin: 10px 0;
   border-radius: 10px;
-  background-color: blueviolet;
-  color: white;
 }
-.gernal-update:hover {
-  background-color: rgba(0, 0, 255, 0.701);
-  color: white;
-}
+
+.gernal-update,
 .date-update {
   border: none;
   padding: 10px;
   border-radius: 10px;
   background-color: blueviolet;
   color: white;
-}
-.date-update:hover {
-  background-color: rgba(0, 0, 255, 0.701);
-  color: white;
+  cursor: pointer;
 }
 
-/* nav bar tabs */
+.gernal-update:hover,
+.date-update:hover {
+  background-color: rgba(0, 0, 255, 0.7);
+}
+
+/* Navbar Tabs */
 #pills-tab {
-  text-align: start;
   margin-top: 20px;
+  text-align: start;
 }
 
 .nav-pills .nav-link {
   color: grey;
   background-color: white;
+  transition: background-color 0.3s ease;
 }
+
 .nav-pills .nav-link:hover {
   color: gray;
 }
+
 .nav-pills .nav-link.active {
   background-color: blueviolet !important;
   color: white !important;
@@ -109,163 +124,59 @@ body.no-scroll {
   color: grey;
   padding: 12px;
   margin: 10px;
-  background-color: blueviolet;
-  color: grey;
 }
 
-/* general */
-.VendorGernal {
-  background-color: white;
-  height: auto;
-  padding: 20px 20px;
-  text-align: start;
-}
-.VendorGernal .form {
-  margin-top: 30px;
-  height: auto;
-  width: 100%;
-  justify-content: start;
-  background-color: white;
-  padding: 20px;
-  margin: 5px;
-  border-radius: 10px;
-}
-/* Data 2 */
-.Vendordata2 {
-  background-color: white;
-  height: auto;
-  padding: 20px 20px;
-  text-align: start;
-}
-.date-2 {
-  margin-top: 30px;
-  height: auto;
-  width: 100%;
-  justify-content: start;
-
-  padding: 20px;
-  margin: 5px;
-  border-radius: 10px;
-}
-/* Logo Image */
-.VendorLogoImages {
-  background-color: white;
-  height: auto;
-  padding: 20px 20px;
-}
-
-.logo-image {
-  margin-top: 30px;
-  height: auto;
-  width: 100%;
-  justify-content: start;
-  background-color: white;
-  padding: 20px;
-  margin: 5px;
-  border-radius: 10px;
-}
-.logo-image label {
-  height: 80px;
-}
-.logo-image input {
-  height: 80px;
-  width: 30%;
-}
-/* envoice */
-.VendorEinvoice {
-  background-color: white;
-  height: auto;
-  padding: 20px 20px;
-}
-.einvoice {
-  margin-top: 30px;
-  height: auto;
-  width: 100%;
-  justify-content: start;
-  background-color: white;
-  padding: 20px;
-  margin: 5px;
-  border-radius: 10px;
-}
-.einvoice label {
-  padding: 3px;
-}
-
-@media (max-width: 768px) {
-  .main-content.shifted {
-    margin-left: 200px;
-  }
-  .top-but {
-    margin-left: 0;
-    text-align: center;
-  }
-  .vendor {
-    height: auto;
-  }
-}
-
-@media (max-width: 576px) {
-  .main-content.shifted {
-    margin-left: 60px;
-  }
-  .top-but {
-    flex-direction: column;
-    align-items: center;
-  }
-  .form {
-    height: auto;
-    padding: 10px;
-  }
-  .vendor {
-    height: auto;
-  }
-  .gernala {
-    height: auto;
-  }
-}
-@media (max-width: 360px) {
-  .main-content.shifted {
-    margin-left: 60px;
-  }
-  .top-but {
-    flex-direction: column;
-    align-items: start;
-  }
-  .form {
-    height: auto;
-    padding: 10px;
-  }
-  .gernala {
-    height: auto;
-  }
-  .vendor {
-    height: auto;
-  }
+/* Responsive Media Queries */
+@media (max-width: 1400px) {
   .Vendorpage1 {
     height: auto;
   }
 }
+
 @media (max-width: 768px) {
+ 
+
   .Vendorpage1 {
     margin-top: 10px;
     height: auto;
   }
-
+ 
+   
   .top-but {
     margin-left: 0;
     text-align: center;
+    /* flex-direction: column; */
+    align-items: center;
   }
+  
 }
 
 @media (max-width: 576px) {
+  .main-content.shifted {
+    margin-left: 60px;
+  }
+
   .Vendorpage1 {
     padding: 20px;
     height: auto;
   }
 
   .top-but {
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
+  }
+
+  .form {
+    height: auto;
+    padding: 10px;
+  }
+
+  .vendor {
+    height: auto;
+  }
+
+  .gernala {
+    height: auto;
   }
 }
 
@@ -275,9 +186,19 @@ body.no-scroll {
   }
 
   .top-but {
-    align-items: start;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .form,
+  .vendor,
+  .gernala {
+    height: auto;
+    padding: 10px;
   }
 }
+
+/* Form Validation */
 .is-invalid {
   border-color: #dc3545;
 }

@@ -333,10 +333,9 @@ const JobWorkPoinfo = () => {
                 value={formData.freight}
                 onChange={handleChange}
               >
-                <option value="">--Please choose an option--</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                <option value="">SELECT</option>
+                <option value="option1">EX - AURANGABAD</option>
+                
               </select>
               {errors.freight && <div className="invalid-feedback">{errors.freight}</div>}
                 </div>
@@ -419,10 +418,10 @@ const JobWorkPoinfo = () => {
                 value={formData.PoRateType}
                 onChange={handleChange}
               >
-                <option value="">--Please choose an option--</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                <option value="">SELECT</option>
+                <option value="option1">GERNAL</option>
+                <option value="option2">RATEDIFF</option>
+                
               </select>
               {errors.PoRateType && <div className="invalid-feedback">{errors.PoRateType}</div>}
                 </div>

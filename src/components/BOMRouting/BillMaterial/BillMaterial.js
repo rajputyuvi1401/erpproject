@@ -25,6 +25,7 @@ import {
 } from "../../../Service/Api.jsx";
 
 import VisibleBomitem from "./VisibleBomitem.jsx";
+import { Link } from "react-router-dom";
 
 const BillMaterial = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -257,8 +258,6 @@ const BillMaterial = () => {
     setEditId(item.id);
   };
 
-  // card2
-
   return (
     <div className="BillMaterial">
       <div className="container-fluid">
@@ -307,7 +306,9 @@ const BillMaterial = () => {
                             BOM Item Group
                           </button>
                           <button className="Billmaterialbtn">BOM Print</button>
-                          <button className="Billmaterialbtn">BOM List</button>
+                          <Link to={"/bom-routing"} className="Billmaterialbtn">
+                            BOM List
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -316,7 +317,9 @@ const BillMaterial = () => {
                     <div className="ProductionDeptCard">
                       <div className="card">
                         <div className="card-header d-flex justify-content-between">
-                          <span>Production Department Master</span>
+                          <h5 style={{ color: "blue" }}>
+                            Production Department Master
+                          </h5>
                           <button
                             className="Closebom"
                             onClick={toggleCardProduction}
@@ -326,13 +329,6 @@ const BillMaterial = () => {
                         </div>
 
                         <div className="card-body">
-                          <div className="row mb-3">
-                            <div className="col-12 text-start">
-                              <h5 style={{ color: "blue" }}>
-                                Production Department Master
-                              </h5>
-                            </div>
-                          </div>
                           <form onSubmit={handleSave}>
                             <div className="row mb-3 text-start">
                               <div className="col-md-5">
@@ -341,6 +337,7 @@ const BillMaterial = () => {
                                   className="form-label"
                                 >
                                   Department Name:
+                                  <span className="text-danger">*</span>
                                 </label>
                                 <input
                                   type="text"
@@ -443,6 +440,14 @@ const BillMaterial = () => {
                             </div>
                           </div>
                         </div>
+                        <div className="col-md-12 text-end mb-4">
+                          <button
+                            className="Closebom"
+                            onClick={toggleCardProduction}
+                          >
+                            Close
+                          </button>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -469,32 +474,249 @@ const BillMaterial = () => {
                           </div>
                           <form onSubmit={handleSave1}>
                             <div className="row mb-3 text-start">
-                              {Object.keys(formData).map((key) => (
-                                <div className="col-md-5 mb-3" key={key}>
-                                  <label className="form-label">
-                                    {key.replace(/_/g, " ")}
-                                  </label>
-                                  <input
-                                    type="text"
-                                    className={`form-control ${
-                                      errors[key] ? "is-invalid" : ""
-                                    }`}
-                                    name={key}
-                                    value={formData[key]}
-                                    onChange={handleInputChange1}
-                                    placeholder={`Enter ${key.replace(
-                                      /_/g,
-                                      " "
-                                    )}`}
-                                  />
-                                  {errors[key] && (
-                                    <div className="invalid-feedback">
-                                      {errors[key]}
-                                    </div>
-                                  )}
+                              <div className="col-md-6">
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    <label>Std. OP No.</label>
+                                  </div>
+                                  <div className="col-md-8">
+                                    <input
+                                      type="text"
+                                      name="Std_Otp"
+                                      value={formData.Std_Otp}
+                                      onChange={handleInputChange1}
+                                      className={`form-control ${
+                                        errors.Std_Otp ? "is-invalid" : ""
+                                      }`}
+                                    />
+                                    {errors.Std_Otp && (
+                                      <div className="invalid-feedback">
+                                        {errors.Std_Otp}
+                                      </div>
+                                    )}
+                                  </div>
                                 </div>
-                              ))}
-                              <div className="col-md-2">
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    <label>Operation Name</label>
+                                  </div>
+                                  <div className="col-md-8">
+                                    <input
+                                      type="text"
+                                      name="Operation_Name"
+                                      value={formData.Operation_Name}
+                                      onChange={handleInputChange1}
+                                      className={`form-control ${
+                                        errors.Operation_Name
+                                          ? "is-invalid"
+                                          : ""
+                                      }`}
+                                    />
+                                    {errors.Operation_Name && (
+                                      <div className="invalid-feedback">
+                                        {errors.Operation_Name}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    <label>Prefix</label>
+                                  </div>
+                                  <div className="col-md-8">
+                                    <input
+                                      type="text"
+                                      name="Prefix"
+                                      value={formData.Prefix}
+                                      onChange={handleInputChange1}
+                                      className={`form-control ${
+                                        errors.Prefix ? "is-invalid" : ""
+                                      }`}
+                                    />
+                                    {errors.Prefix && (
+                                      <div className="invalid-feedback">
+                                        {errors.Prefix}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    <label>MHR Rate</label>
+                                  </div>
+                                  <div className="col-md-8">
+                                    <input
+                                      type="text"
+                                      name="Mhr_Rate"
+                                      value={formData.Mhr_Rate}
+                                      onChange={handleInputChange1}
+                                      className={`form-control ${
+                                        errors.Mhr_Rate ? "is-invalid" : ""
+                                      }`}
+                                    />
+                                    {errors.Mhr_Rate && (
+                                      <div className="invalid-feedback">
+                                        {errors.Mhr_Rate}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    <label>BOM QC</label>
+                                  </div>
+                                  <div className="col-md-8">
+                                    <select
+                                      name="BomQc"
+                                      value={formData.BomQc}
+                                      onChange={handleInputChange1}
+                                      className={`form-control ${
+                                        errors.BomQc ? "is-invalid" : ""
+                                      }`}
+                                    >
+                                      <option value="">Select</option>
+                                      <option value="Yes">Yes</option>
+                                      <option value="No">No</option>
+                                    </select>
+                                    {errors.BomQc && (
+                                      <div className="invalid-feedback">
+                                        {errors.BomQc}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    <label>Production Dept</label>
+                                  </div>
+                                  <div className="col-md-8">
+                                    <select
+                                      name="ProductionDept"
+                                      value={formData.ProductionDept}
+                                      onChange={handleInputChange1}
+                                      className={`form-control ${
+                                        errors.ProductionDept
+                                          ? "is-invalid"
+                                          : ""
+                                      }`}
+                                    >
+                                      <option value="">Select</option>
+                                      <option value="">Sharp</option>
+                                    </select>
+                                    {errors.ProductionDept && (
+                                      <div className="invalid-feedback">
+                                        {errors.ProductionDept}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    <label>Machine Type</label>
+                                  </div>
+                                  <div className="col-md-8">
+                                    <select
+                                      name="MachineType"
+                                      value={formData.MachineType}
+                                      onChange={handleInputChange1}
+                                      className={`form-control ${
+                                        errors.MachineType ? "is-invalid" : ""
+                                      }`}
+                                    >
+                                      <option value="">Select</option>
+                                      <option value="">CENTERLESS</option>
+                                      <option value="">CNC</option>
+                                      <option value="">DRILLING</option>
+                                      <option value="">GRINDER</option>
+                                      <option value="">INDUCTION</option>
+                                      <option value="">LATHE</option>
+                                      <option value="">MANUAL</option>
+                                      <option value="">MILLING</option>
+                                      <option value="">PRESS</option>
+                                      <option value="">SECOND OPERATION</option>
+                                      <option value="">SPM</option>
+                                      <option value="">TAPPING</option>
+                                    </select>
+                                    {errors.MachineType && (
+                                      <div className="invalid-feedback">
+                                        {errors.MachineType}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    <label>Production Cycle Time</label>
+                                  </div>
+                                  <div className="col-md-8">
+                                    <input
+                                      type="text"
+                                      name="Production_Cycle_Time"
+                                      value={formData.Production_Cycle_Time}
+                                      onChange={handleInputChange1}
+                                      className={`form-control ${
+                                        errors.Production_Cycle_Time
+                                          ? "is-invalid"
+                                          : ""
+                                      }`}
+                                    />
+                                    {errors.Production_Cycle_Time && (
+                                      <div className="invalid-feedback">
+                                        {errors.Production_Cycle_Time}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    <label>Stop M/C Booking</label>
+                                  </div>
+                                  <div className="col-md-8">
+                                    <input
+                                      type="text"
+                                      name="Stop_Mc_Booking"
+                                      value={formData.Stop_Mc_Booking}
+                                      onChange={handleInputChange1}
+                                      className={`form-control ${
+                                        errors.Stop_Mc_Booking
+                                          ? "is-invalid"
+                                          : ""
+                                      }`}
+                                    />
+                                    {errors.Stop_Mc_Booking && (
+                                      <div className="invalid-feedback">
+                                        {errors.Stop_Mc_Booking}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    <label>Per Day Prod Qty</label>
+                                  </div>
+                                  <div className="col-md-8">
+                                    <input
+                                      type="text"
+                                      name="Per_Day_Prod_Qty"
+                                      value={formData.Per_Day_Prod_Qty}
+                                      onChange={handleInputChange1}
+                                      className={`form-control ${
+                                        errors.Per_Day_Prod_Qty
+                                          ? "is-invalid"
+                                          : ""
+                                      }`}
+                                    />
+                                    {errors.Per_Day_Prod_Qty && (
+                                      <div className="invalid-feedback">
+                                        {errors.Per_Day_Prod_Qty}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-12 text-end">
                                 <button
                                   type="submit"
                                   className="bomButton"
@@ -505,6 +727,7 @@ const BillMaterial = () => {
                               </div>
                             </div>
                           </form>
+
                           <div className="row">
                             <div className="col-md-12">
                               <div className="table-responsive">
@@ -621,23 +844,24 @@ const BillMaterial = () => {
                       </div>
                     </div>
                   )}
-                  <div className="BillMaterialsection">
+                  <div className="BillMaterialsection mt-4">
                     <div className="container-fluid">
-                      <div className="row mt-3 align-items-center">
+                      <div className="row mt-3 align-items-center mt-4">
                         <div className="col-md-2">
                           <select className="form-select">
-                            <option>Select Option</option>
+                            <option>ALL</option>
                           </select>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 mt-1">
                           <input
                             type="text"
                             className="form-control"
                             placeholder="Input Field"
                           />
                         </div>
+
                         <div className="col-md-2">
-                          <button className="materialbtn">Save</button>
+                          <button className="materialbtn">Search</button>
                           <button className="materialbtn">Clear</button>
                         </div>
                         <div className="col-md-2" style={{ marginTop: "10px" }}>
@@ -645,7 +869,8 @@ const BillMaterial = () => {
                         </div>
                         <div className="col-md-1">
                           <select className="form-select">
-                            <option>Select Option</option>
+                            <option>No</option>
+                            <option>Yes</option>
                           </select>
                         </div>
                         <div className="col-md-1">
