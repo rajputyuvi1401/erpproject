@@ -118,7 +118,7 @@ const GSTDetails = () => {
     </div>
   
   </div>
-</div>
+  </div>
 
   </div>
 

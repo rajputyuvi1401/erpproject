@@ -123,7 +123,36 @@ import PurchseOderList from "./PurchaseMaster/Report/PurchaseOrderList1/PurchseO
 import PurchaseReport from "./PurchaseMaster/Report/PurchaseReport1/PurchaseReport.jsx";
 import SupplierWiseList from "./PurchaseMaster/Report/SupplierWiseList1/SupplierWiseList.jsx";
 
+////////////////////////////////Store//////////////////////////////////////////////////////
 
+// Gate Inward Entry
+import GateInwardEntry from "./StoreMaster/GateInwardEntry/GateInwardEntry.jsx";
+
+import PendingAsnList from "./StoreMaster/PendingASNList/PendingAsnList.jsx";
+
+import NewMrn from "./StoreMaster/NewMRN/NewMrn.jsx";
+
+import PurchaseGrn from "./StoreMaster/PurchseGRN/PurchaseGrn.jsx";
+
+// Subcon Grn
+
+import InwardChallan1 from "./StoreMaster/SubconGRN/InwardChallan/InwardChallan1.jsx";
+import JobworkInwardChallan from "./StoreMaster/SubconGRN/JobworkInwardChallan/JobworkInwardChallan.jsx";
+import VendorScrapInward from "./StoreMaster/SubconGRN/VendorScrapInward/VendorScrapInward.jsx";
+
+import SubconGrn from "./StoreMaster/SubconGRN/SubconGrn.jsx";
+
+
+import MaterialIssueChallan from "./StoreMaster/MaterialIssueChallan/MaterialIssueChallan.jsx";
+import MaterialIssueGernal from "./StoreMaster/MaterialIssueGernal/MaterialIssueGernal.jsx";
+
+import DeliveryChallan from "./StoreMaster/DeliveryChallan/DeliveryChallan.jsx";
+import Dcgrn from "./StoreMaster/DCGRN/Dcgrn.jsx";
+
+import StoreNewindent from "./StoreMaster/Newindent/Newindent.jsx";
+import StockTransaction from "./StoreMaster/StockTransaction/StockTransaction.jsx";
+import ReportStore from "./StoreMaster/Report/Report.jsx";
+import StockReport from "./StoreMaster/StockReport/StorckReport.jsx"; 
 
 function App() {
   return (
@@ -274,6 +303,28 @@ function App() {
         <Route path="supplier-wise-list" element={<SupplierWiseList/>}/>
 
         <Route path="purchase-report" element={<PurchaseReport/>} />
+
+
+{/* ///////////////////////////////////////Stor//////////////////////////////////////// */}
+
+        <Route path="Gate-Inward-Entry" element={<GateInwardEntry/>}/>
+
+        <Route path="Pending-Asn-List" element={<PendingAsnList/>} />
+        <Route path="New-Mrn" element={<NewMrn/>} />
+        <Route path="Purchase-Grn" element={<PurchaseGrn/>} />
+        <Route path="Inward-challan" element={<InwardChallan1/>} />
+        <Route path="Jobwork-Inward-Challan" element={<JobworkInwardChallan/>} />
+        <Route path="Vendor-Scrap-Inward" element={<VendorScrapInward/>} />
+        <Route path="Subcon-Grn" element={<SubconGrn/>} />
+        <Route path="Material-Issue-Challan" element={<MaterialIssueChallan/>} />
+        <Route path="Material-Issue-Gernal" element={<MaterialIssueGernal/>} />
+        <Route path="Delivery-Challan" element={<DeliveryChallan/>} />
+        <Route path="Dcgrn" element={<Dcgrn/>} />
+        <Route path="Store-New-indent" element={<StoreNewindent/>} />
+        <Route path="Stock-Transaction" element={<StockTransaction/>} />
+
+        <Route path="Report-Store" element={<ReportStore/>} />
+        <Route path="Stock-Report" element={<StockReport/>} />
       </Routes>
     </div>
   );

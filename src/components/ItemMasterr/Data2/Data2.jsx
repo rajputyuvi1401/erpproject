@@ -448,19 +448,11 @@ const Data2 = () => {
                       onChange={handleChange}
                     >
                       <option selected>Select</option>
-                      <option value="1">PCS</option>
-                      <option value="2">KGS</option>
+                      <option value="1">No</option>
+                      <option value="2">Yes</option>
                      
                     </select>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="Is_Service"
-                      id="Is_Service"
-                      value={formData.Is_Service}
-                      onChange={handleChange}
-                      style={{ width: "115%" }}
-                    />
+              
                     {errors.Is_Service && (
                       <div className="text-danger">{errors.Is_Service}</div>
                     )}
@@ -1170,8 +1162,10 @@ const Data2 = () => {
                       onChange={handleChange}
                     >
                       <option value="">select ..</option>
-                      <option value="1">No</option>
-                      <option value="2">Yes</option>
+                      <option value="1">Services Purchase 18%|16</option>
+                      <option value="2">Services Purchase 18%|09</option>
+                      <option value="3">Services Purchase|17</option>
+                      <option value="4">Purchase RM 28%|02</option>
                     </select>
                     {errors.Purchase_GL && (
                       <div className="text-danger">{errors.Purchase_GL}</div>

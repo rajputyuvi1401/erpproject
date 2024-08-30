@@ -3,8 +3,8 @@
 import axios from "axios";
 
 // Define base URLs
-// const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
-const BASE_URL = "api/All_Masters/";
+const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
+// const BASE_URL = "api/All_Masters/";
 const TAX_CODE_URL = `${BASE_URL}Tax_Code/`;
 const GST_MASTER_URL = `${BASE_URL}GST_Master/`;
 const CUT_WISE_URL = `${BASE_URL}Cut_Wise/`;
@@ -293,57 +293,43 @@ export const deleteCategory = async (id) => {
   if (!response.ok) throw new Error("Failed to delete category");
 };
 
-// card city
+// Fetch all cities
 export const fetchCities = async () => {
   const response = await fetch(`${BASE_URL}City/`);
   if (!response.ok) throw new Error("Failed to fetch cities");
   return response.json();
 };
 
-export const addCity = async (cityCode, cityName) => {
+export const addCity = async (cityName) => {
   const response = await fetch(`${BASE_URL}City/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ CityCode: cityCode, CityName: cityName }),
+    body: JSON.stringify({ CityName: cityName }),
   });
   if (!response.ok) throw new Error("Failed to add city");
   return response.json();
 };
 
 export const updateCity = async (id, cityData) => {
-  try {
-    const response = await fetch(`${BASE_URL}/City/${id}/`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(cityData),
-    });
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error updating city:", error);
-    throw error;
-  }
+  const response = await fetch(`${BASE_URL}City/${id}/`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(cityData),
+  });
+  if (!response.ok) throw new Error("Failed to update city");
+  return response.json();
 };
 
 export const deleteCity = async (id) => {
-  try {
-    const response = await fetch(`${BASE_URL}/City/${id}/`, {
-      method: "DELETE",
-    });
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error deleting city:", error);
-    throw error;
-  }
+  const response = await fetch(`${BASE_URL}City/${id}/`, {
+    method: "DELETE",
+  });
+  if (!response.ok) throw new Error("Failed to delete city");
+  return response;
 };
 
 //card country
@@ -2276,3 +2262,69 @@ export const fetchCurrencyCodes = async () => {
     return [];
   }
 };
+
+export const fetchTypeCode = async (type) => {
+  try {
+    let endpoint = "";
+    switch (type) {
+      case "Customer":
+        endpoint = "SupplierTypeCode/customers/";
+        break;
+      case "Supplier":
+        endpoint = "SupplierTypeCode/suppliers/";
+        break;
+      case "JobWork":
+        endpoint = "SupplierTypeCode/jobwork/";
+        break;
+      case "CSJW":
+        endpoint = "SupplierTypeCode/csjw/";
+        break;
+      default:
+        return null;
+    }
+
+    const response = await fetch(`${BASE_URL}${endpoint}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+};
+
+
+// item master main group
+export const fetchMainGroupData = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}MainGroupCode/tools/`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching Main Group data:", error);
+    return null;
+  }
+};
+
+
+// services
+export const searchCrossRefSupplier = async (query) => {
+  return await axios.get(`${BASE_URL}Cross_Ref_Supplier/?search=${query}`);
+};
+
+export const searchItemCrossItem = async (query) => {
+  return await axios.get(`${BASE_URL}Item_Cross_Item/?search=${query}`);
+};
+
+
+// APi Item
+const fetchData = async (query) => {
+  try {
+    const response = await axios.get(`${BASE_URL}ItemMasterList/?search=${query}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+
+export { fetchData };

@@ -3,8 +3,8 @@
 import axios from 'axios';
 
 // Services/PurchaseApi.jsx
-// const BASE_URL = "http://13.201.136.34:8000/Purchase/";
-const BASE_URL = "api/Purchase/";
+const BASE_URL = "http://13.201.136.34:8000/Purchase/";
+// const BASE_URL = "api/Purchase/";
 export const addItem = async (data) => {
     try {
         const response = await fetch(`${BASE_URL}ItemDetail/`, {
@@ -256,12 +256,3 @@ export const fetchItemFields = async (searchTerm = '') => {
 // Type Customer
 
   
-export const getCustomerCode = async () => {
-  try {
-    const response = await axios.post(`${BASE_URL}CodeGenerated/customers/`, { name: "customers" });
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching customer code:", error);
-    throw error;
-  }
-};

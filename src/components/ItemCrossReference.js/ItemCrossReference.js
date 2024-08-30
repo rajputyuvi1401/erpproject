@@ -5,7 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import "./ItermCrossReference.css";
-import { postItemCrossReference } from "../../Service/Api.jsx";
+import { postItemCrossReference ,searchCrossRefSupplier ,searchItemCrossItem } from "../../Service/Api.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -39,7 +39,7 @@ const ItemCrossReference = () => {
   });
 
   const [errors, setErrors] = useState({});
-
+  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -49,15 +49,53 @@ const ItemCrossReference = () => {
 
   const validate = () => {
     let tempErrors = {};
-    Object.keys(formData).forEach((field) => {
-      if (!formData[field]) {
-        tempErrors[field] = "This field is required.";
-      }
-    });
+
+    // Check only the required fields
+    if (!formData.ItemName) tempErrors.ItemName = "This field is required.";
+    if (!formData.Cust_Supp_Name) tempErrors.Cust_Supp_Name = "This field is required.";
+    if (!formData.Cross_Ref_Item_No) tempErrors.Cross_Ref_Item_No = "This field is required.";
+    if (!formData.Cross_Ref_Item_Desc) tempErrors.Cross_Ref_Item_Desc = "This field is required.";
+
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
+  const handleSearchCustSuppName = async () => {
+    if (formData.Cust_Supp_Name) {
+      try {
+        const response = await searchCrossRefSupplier(formData.Cust_Supp_Name);
+        const supplier = response.data.find(supplier => supplier.Name === formData.Cust_Supp_Name);
+        if (supplier) {
+          setFormData({
+            ...formData,
+            Cross_Ref_Item_No: supplier.Code_No || ""
+          });
+        } else {
+          toast.error("Supplier not found.");
+        }
+      } catch (error) {
+        toast.error("Error fetching supplier data.");
+      }
+    }
+  };
 
+  const handleSearchSEItem = async () => {
+    if (formData.ItemName) {
+      try {
+        const response = await searchItemCrossItem(formData.ItemName);
+        const item = response.data.find(item => item.SE_Item === formData.ItemName);
+        if (item) {
+          setFormData({
+            ...formData,
+            Cross_Ref_Item_Desc: item.Name_Description || ""
+          });
+        } else {
+          toast.error("Item not found.");
+        }
+      } catch (error) {
+        toast.error("Error fetching item data.");
+      }
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
@@ -124,7 +162,7 @@ const ItemCrossReference = () => {
                           <form onSubmit={handleSubmit}>
                             <div className="row mb-3 text-start">
                               <label className="col-sm-3 col-form-label">
-                                Item Name:
+                                SE_Item:
                               </label>
                               <div className="col-sm-7">
                                 <input
@@ -142,7 +180,7 @@ const ItemCrossReference = () => {
                                 )}
                               </div>
                               <div className="col-sm-2">
-                                <button className="resss-btn" type="button">
+                                <button className="resss-btn" type="button" onClick={handleSearchSEItem}>
                                   Search
                                 </button>
                               </div>
@@ -168,7 +206,7 @@ const ItemCrossReference = () => {
                                 )}
                               </div>
                               <div className="col-sm-2">
-                                <button className="resss-btn" type="button">
+                                <button className="resss-btn" type="button" onClick={handleSearchCustSuppName}>
                                   Search
                                 </button>
                               </div>
@@ -196,7 +234,7 @@ const ItemCrossReference = () => {
 
                             <div className="row mb-3 text-start">
                               <label className="col-sm-3 col-form-label">
-                                Cross Ref-Item Desc:
+                                Name Desc:
                               </label>
                               <div className="col-sm-9">
                                 <input
@@ -227,11 +265,11 @@ const ItemCrossReference = () => {
                                   value={formData.Remark}
                                   onChange={handleChange}
                                 />
-                                {errors.Remark && (
+                                {/* {errors.Remark && (
                                   <div className="text-danger">
                                     {errors.Remark}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
 
@@ -248,11 +286,11 @@ const ItemCrossReference = () => {
                                   value={formData.Model}
                                   onChange={handleChange}
                                 />
-                                {errors.Model && (
+                                {/* {errors.Model && (
                                   <div className="text-danger">
                                     {errors.Model}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
 
@@ -269,11 +307,11 @@ const ItemCrossReference = () => {
                                   value={formData.ModelNo}
                                   onChange={handleChange}
                                 />
-                                {errors.ModelNo && (
+                                {/* {errors.ModelNo && (
                                   <div className="text-danger">
                                     {errors.ModelNo}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
 
@@ -290,11 +328,11 @@ const ItemCrossReference = () => {
                                   value={formData.DrawingNo}
                                   onChange={handleChange}
                                 />
-                                {errors.DrawingNo && (
+                                {/* {errors.DrawingNo && (
                                   <div className="text-danger">
                                     {errors.DrawingNo}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
 
@@ -311,11 +349,11 @@ const ItemCrossReference = () => {
                                   value={formData.RevNo}
                                   onChange={handleChange}
                                 />
-                                {errors.RevNo && (
+                                {/* {errors.RevNo && (
                                   <div className="text-danger">
                                     {errors.RevNo}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
 
@@ -331,11 +369,11 @@ const ItemCrossReference = () => {
                                   value={formData.Min_Order_Qty}
                                   onChange={handleChange}
                                 />
-                                {errors.Min_Order_Qty && (
+                                {/* {errors.Min_Order_Qty && (
                                   <div className="text-danger">
                                     {errors.Min_Order_Qty}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
 
@@ -351,11 +389,11 @@ const ItemCrossReference = () => {
                                   value={formData.Packing_Qty}
                                   onChange={handleChange}
                                 />
-                                {errors.Packing_Qty && (
+                                {/* {errors.Packing_Qty && (
                                   <div className="text-danger">
                                     {errors.Packing_Qty}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                             <div className="row mb-3 text-end">

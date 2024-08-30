@@ -298,32 +298,111 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <span>Store</span>
             </div>
             <Dropdown.Menu show={openDropdown === "store"}>
-              <Dropdown.Item as={Link} to="/inventory-management">
-                Inventory Management
+              <Dropdown.Item as={Link} to="/Gate-Inward-Entry">
+                Gate Inward Entry
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/stock-entry">
-                Stock Entry
+              <Dropdown.Item as={Link} to="/Pending-Asn-List">
+                Pending ASN List 
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/stock-report">
-                Stock Report
+              <Dropdown.Item as={Link} to="/New-Mrn">
+                New MRN
+              </Dropdown.Item>    
+              <Dropdown.Item as={Link} to="/Purchase-Grn">
+                Purchase GRN
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/stock-summary">
-                Stock Summary
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Subcon GRN
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/Inward-challan">
+                    57F4 Inward Challan
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/Jobwork-Inward-Challan">
+                    Jobwork Inward Challan
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/Vendor-Scrap-Inward">
+                    Vendor Scrap Inward
+                  </Dropdown.Item>
+                 
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Divider />
+              <Dropdown.Item as={Link} to="/Material-Issue-Challan">
+                Material Issue Challan
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/stock-transfer">
-                Stock Transfer
+              <Dropdown.Item as={Link} to="/Material-Issue-Gernal">
+                Material Issue Gernal
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/stock-adjustment">
-                Stock Adjustment
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Stock Transaction
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/Stock-Transaction">
+                    57F4 Inward Challan
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                    Jobwork Inward Challan
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                    Vendor Scrap Inward
+                  </Dropdown.Item>
+                 
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Divider />
+              <Dropdown.Item as={Link} to="/Delivery-Challan">
+                Delivery Challan
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/store-report">
-                Store Report
+              <Dropdown.Item as={Link} to="/Dcgrn">
+                DC GRN
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/store-summary">
-                Store Summary
+              <Dropdown.Item as={Link} to="/Store-New-indent">
+                New Indent
               </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Report
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/Report-Store">
+                    Inward Challan
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                    Jobwork Inward Challan
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                    Vendor Scrap Inward
+                  </Dropdown.Item>
+                 
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Divider />
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Stock Report
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/Stock-Report">
+                    57F4 Inward Challan
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                    Jobwork Inward Challan
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                    Vendor Scrap Inward
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Divider />
             </Dropdown.Menu>
           </li>
+
         </ul>
       </div>
     </div>

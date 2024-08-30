@@ -48,7 +48,7 @@ body.no-scroll {
 }
 .itemaamain {
   background-color: white;
-  height: 80vh;
+  height: auto;
   padding: 20px 20px;
   margin-top: 50px;
 }

@@ -7,21 +7,46 @@ import SideNav from "../../../SideNav/SideNav";
 import CachedIcon from "@mui/icons-material/Cached";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { fetchMainGroupData } from "../../../Service/Api.jsx";
+
 
 const AddNewItem = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
-  const navigate = useNavigate();
+  
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
   };
 
+  const [mainGroups, setMainGroups] = useState([]);
+  const [selectedGroup, setSelectedGroup] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Fetch the main group data when the component mounts
+    const fetchData = async () => {
+      try {
+        const data = await fetchMainGroupData(); // Call API to fetch main group data
+        setMainGroups(data); // Set the fetched data to state
+      } catch (error) {
+        console.error("Error fetching main group data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleDropdownChange = (event) => {
     const selectedValue = event.target.value;
-    if (selectedValue === "FG") {
+    setSelectedGroup(selectedValue);
+
+    // Navigate based on selected value
+    if (mainGroups.some((group) => group.name === selectedValue)) {
       navigate("/item-master-gernal");
     }
   };
+
+  
 
   useEffect(() => {
     if (sideNavOpen) {
@@ -155,130 +180,25 @@ const AddNewItem = () => {
                                   <div className="row text-start">
                                     <div className="col-md-4">
                                       <div className="row">
-                                        <div className="row mb-3">
-                                          <label
-                                            htmlFor="inputEmail3"
-                                            className="col-sm-4 col-form-label"
-                                          >
-                                            Main Group:
-                                          </label>
-                                          <div className="col-sm-5">
-                                            <select
-                                              id="inputState"
-                                              className="form-select"
-                                              onChange={handleDropdownChange}
-                                            >
-                                              <option
-                                                selected
-                                                style={{ color: "black" }}
-                                              >
-                                                Select ..
-                                              </option>
-
-                                              <option>
-                                                {" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                  FG
-                                                </Link>
-                                              </option>
-
-                                              <option>{" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                  RM
-                                                </Link></option>
-                                              <option>{" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                 Tool
-                                                </Link></option>
-                                              <option>{" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                Instrument
-                                                </Link></option>
-                                              <option>{" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                 Machine
-                                                </Link></option>
-                                              <option>{" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                  Consumable
-                                                </Link></option>
-                                              <option>{" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                  Safety Equiment
-                                                </Link></option>
-                                              <option>{" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                  Service
-                                                </Link></option>
-                                              <option>{" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                  Asset
-                                                </Link></option>
-                                              <option>{" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                  F4
-                                                </Link></option>
-                                              <option>{" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                 Scrap
-                                                </Link></option>
-                                              <option>{" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                  SF
-                                                </Link></option>
-                                              <option>
-                                              {" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                 BO
-                                                </Link></option>
-                                              <option>{" "}
-                                                <Link
-                                                  to="/item-master-gernal"
-                                                  className="link btn12 me-2"
-                                                >
-                                                  DI
-                                                </Link>DI</option>
-                                            </select>
-                                          </div>
+                                      <div className="row mb-3">
+      <label htmlFor="mainGroup" className="col-sm-4 col-form-label">
+        Main Group:
+      </label>
+      <div className="col-sm-5">
+        <select
+          id="mainGroup"
+          className="form-select"
+          onChange={handleDropdownChange}
+          value={selectedGroup}
+        >
+          <option style={{ color: "black" }}>Select ..</option>
+          {mainGroups.map((group) => (
+            <option key={group.id} value={group.name}>
+              {group.name}
+            </option>
+          ))}
+        </select>
+      </div>
                                           <div className="col-sm-2">
                                             <button className="btn">New</button>
                                           </div>

@@ -39,6 +39,8 @@ import {
   getItemSections,
   getItemGroups,
 } from "../../../Service/Api.jsx";
+import { fetchMainGroupData } from "../../../Service/Api.jsx";
+
 const ItemMasterGernal = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
   const [showNewCardMainGroup, setShowNewCardMainGroup] = useState(false);
@@ -186,6 +188,19 @@ const ItemMasterGernal = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [mainGroups, setMainGroups] = useState([]);
+
+  // Fetch Main Group Data on Component Mount
+  useEffect(() => {
+    const getMainGroupData = async () => {
+      const data = await fetchMainGroupData();
+      if (data) {
+        setMainGroups(data);
+      }
+    };
+
+    getMainGroupData();
+  }, []);
 
   const validateForm = () => {
     const newErrors = {};
@@ -217,6 +232,25 @@ const ItemMasterGernal = () => {
       [e.target.name]: e.target.value,
     });
     setErrors({ ...errors, [e.target.name]: "" }); // Clear errors on input change
+    
+    const { name, value } = e.target;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+     // Automatically update Part No based on selected Main Group
+     if (name === "Main_Group") {
+      const selectedGroup = mainGroups.find((group) => group.name === value);
+      if (selectedGroup) {
+        setFormData((prevData) => ({
+          ...prevData,
+          SE_Item: selectedGroup.code, // Update the Part No field with corresponding code
+        }));
+      }
+    }
+
   };
 
 
@@ -632,36 +666,11 @@ const ItemMasterGernal = () => {
                                                       {Main.Sub_Group_Name}
                                                     </option>
                                                   ))}
-                                                  <option value="FG">FG</option>
-                                                  <option value="RM">RM</option>
-                                                  <option value="Tool">
-                                                    Tool
-                                                  </option>
-                                                  <option value="Instrument">
-                                                    Instrument
-                                                  </option>
-                                                  <option value="Machine">
-                                                    Machine
-                                                  </option>
-                                                  <option value="Consumable">
-                                                    Consumable
-                                                  </option>
-                                                  <option value="SafetyEqu">
-                                                    Safety Equ
-                                                  </option>
-                                                  <option value="Service">
-                                                    Service
-                                                  </option>
-                                                  <option value="Assest">
-                                                    Assest
-                                                  </option>
-                                                  <option value="F4">F4</option>
-                                                  <option value="Scrap">
-                                                    Scrap
-                                                  </option>
-                                                  <option value="SF">SF</option>
-                                                  <option value="BO">BO</option>
-                                                  <option value="DI">DI</option>
+                                                  {mainGroups.map((main) => (
+              <option key={main.id} value={main.name}>
+                {main.name}
+              </option>
+            ))}
                                                 </select>
                                                 {errors.Main_Group && (
                                                   <div className="text-danger">

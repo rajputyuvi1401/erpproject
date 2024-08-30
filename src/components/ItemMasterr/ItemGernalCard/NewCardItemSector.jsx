@@ -12,7 +12,7 @@ import {
 const NewCardItemSector = () => {
   const [formData, setFormData] = useState({ Prefix: "", Section_Name: "" });
   const [errors, setErrors] = useState({});
-  const [data, setData] = useState([]);
+  const [ItemSection, setItemSection] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
 
@@ -65,7 +65,7 @@ const NewCardItemSector = () => {
   const fetchItemSections = async () => {
     try {
       const response = await getItemSections();
-      setData(response);
+      setItemSection(response);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -155,8 +155,8 @@ const NewCardItemSector = () => {
             </tr>
           </thead>
           <tbody>
-            {data.length > 0 ? (
-              data.map((item, index) => (
+            {ItemSection.length > 0 ? (
+              ItemSection.map((item, index) => (
                 <tr key={item.id}>
                   <td>{index + 1}</td>
                   <td>{item.Prefix}</td>

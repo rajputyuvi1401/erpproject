@@ -9,17 +9,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const ToggleCardCity = () => {
   const [cities, setCities] = useState([]);
-  const [cityCode, setCityCode] = useState("");
   const [cityName, setCityName] = useState("");
   const [editingCity, setEditingCity] = useState(null);
-  const [editCityCode, setEditCityCode] = useState("");
   const [editCityName, setEditCityName] = useState("");
 
+  // Fetch cities on component mount
   useEffect(() => {
     const getCities = async () => {
       try {
@@ -33,46 +30,32 @@ const ToggleCardCity = () => {
     getCities();
   }, []);
 
+  // Handle adding a new city
   const handleAddCity = async () => {
-    if (!cityCode.trim() || !cityName.trim()) {
-      toast.error("City Code and City Name are required");
-      return;
-    }
-
     try {
-      await addCity(cityCode, cityName);
-      setCities([...cities, { CityCode: cityCode, CityName: cityName }]);
-      setCityCode("");
-      setCityName("");
+      await addCity(cityName);
+      const data = await fetchCities(); // Refresh cities after adding
+      setCities(data);
+      setCityName(""); // Clear input field
       toast.success("City added successfully");
     } catch (error) {
       toast.error("Failed to add city");
     }
   };
 
-  const handleEditCity = (id, code, name) => {
+  // Handle editing a city
+  const handleEditCity = (id, name) => {
     setEditingCity(id);
-    setEditCityCode(code);
     setEditCityName(name);
   };
 
+  // Handle saving the edited city
   const handleSaveEdit = async () => {
-    if (!editCityCode.trim() || !editCityName.trim()) {
-      toast.error("City Code and City Name are required");
-      return;
-    }
-
     try {
-      await updateCity(editingCity, editCityCode, editCityName);
-      setCities(
-        cities.map((city) =>
-          city.id === editingCity
-            ? { ...city, CityCode: editCityCode, CityName: editCityName }
-            : city
-        )
-      );
+      await updateCity(editingCity, { CityName: editCityName });
+      const data = await fetchCities(); // Refresh cities after updating
+      setCities(data);
       setEditingCity(null);
-      setEditCityCode("");
       setEditCityName("");
       toast.success("City updated successfully");
     } catch (error) {
@@ -80,10 +63,12 @@ const ToggleCardCity = () => {
     }
   };
 
+  // Handle deleting a city
   const handleDeleteCity = async (id) => {
     try {
       await deleteCity(id);
-      setCities(cities.filter((city) => city.id !== id));
+      const data = await fetchCities(); // Refresh cities after deleting
+      setCities(data);
       toast.success("City deleted successfully");
     } catch (error) {
       toast.error("Failed to delete city");
@@ -95,21 +80,7 @@ const ToggleCardCity = () => {
       <div className="card-body">
         <div className="row text-start mb-3">
           <div className="col-md-3">
-            <div className="mb-3">
-              <label htmlFor="cityCode" className="form-label">
-                City Code:
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="cityCode"
-                value={cityCode}
-                onChange={(e) => setCityCode(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="col-md-3">
-            <div className="mb-3">
+            <div className="mb-3 mt-4">
               <label htmlFor="cityName" className="form-label">
                 City Name:
               </label>
@@ -123,7 +94,7 @@ const ToggleCardCity = () => {
             </div>
           </div>
           <div className="col-md-3 mt-4">
-            <button className="btn " onClick={handleAddCity}>
+            <button className="btn" onClick={handleAddCity}>
               Save
             </button>
           </div>
@@ -134,7 +105,6 @@ const ToggleCardCity = () => {
               <thead>
                 <tr>
                   <th>Sr. No</th>
-                  <th>City Code</th>
                   <th>City Name</th>
                   <th>Actions</th>
                 </tr>
@@ -143,18 +113,6 @@ const ToggleCardCity = () => {
                 {cities.map((city, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>
-                      {editingCity === city.id ? (
-                        <input
-                          type="text"
-                          className="form-control"
-                          value={editCityCode}
-                          onChange={(e) => setEditCityCode(e.target.value)}
-                        />
-                      ) : (
-                        city.CityCode
-                      )}
-                    </td>
                     <td>
                       {editingCity === city.id ? (
                         <input
@@ -170,7 +128,7 @@ const ToggleCardCity = () => {
                     <td>
                       {editingCity === city.id ? (
                         <button
-                          className="card11 me-2"
+                          className="btn me-2"
                           onClick={handleSaveEdit}
                         >
                           Save
@@ -178,13 +136,7 @@ const ToggleCardCity = () => {
                       ) : (
                         <button
                           className="card11 me-2"
-                          onClick={() =>
-                            handleEditCity(
-                              city.id,
-                              city.CityCode,
-                              city.CityName
-                            )
-                          }
+                          onClick={() => handleEditCity(city.id, city.CityName)}
                         >
                           <FaEdit />
                         </button>
