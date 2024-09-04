@@ -20,7 +20,6 @@ const VenderList = () => {
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
   };
-
   useEffect(() => {
     if (sideNavOpen) {
       document.body.classList.add("side-nav-open");
@@ -28,6 +27,13 @@ const VenderList = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+
+
+
+
+
+
 
   const fetchData = async () => {
     try {
@@ -44,9 +50,10 @@ const VenderList = () => {
 
   const handleSearch = () => {
     const lowerCaseName = searchName.toLowerCase();
-    const filtered = data.filter(item => 
-      (searchType ? item.Type === searchType : true) && 
-      (searchName ? item.Name.toLowerCase().includes(lowerCaseName) : true)
+    const filtered = data.filter(
+      (item) =>
+        (searchType ? item.Type === searchType : true) &&
+        (searchName ? item.Name.toLowerCase().includes(lowerCaseName) : true)
     );
     setFilteredData(filtered);
     setShowData(true); // Show the data in the table after search
@@ -56,7 +63,7 @@ const VenderList = () => {
     // setSearchType("");
     setSearchName("");
     setFilteredData(data); // Show all data when "View All" is clicked
-    setShowData(true); 
+    setShowData(true);
   };
 
   return (
@@ -166,7 +173,7 @@ const VenderList = () => {
                                       Type
                                     </th>
                                     <th className="blue-th" scope="col">
-                                      Code
+                                      Code No.
                                     </th>
                                     <th className="blue-th" scope="col">
                                       Name
@@ -181,16 +188,16 @@ const VenderList = () => {
                                       Vendor Code
                                     </th>
                                     <th className="blue-th" scope="col">
-                                      Payment team
+                                      Payment term
                                     </th>
                                     <th className="blue-th" scope="col">
-                                      Is Reg
+                                      Gst Type
                                     </th>
                                     <th className="blue-th" scope="col">
                                       GST No.
                                     </th>
                                     <th className="blue-th" scope="col">
-                                      GST Code
+                                      GST Tax Code
                                     </th>
                                     <th className="blue-th" scope="col">
                                       Auth
@@ -223,8 +230,9 @@ const VenderList = () => {
                                       <td>{item.Email_Id}</td>
                                       <td>{item.Vendor_Code}</td>
                                       <td>{item.Payment_Term}</td>
-                                      <td>{item.Active}</td>
+                                      
                                       <td>{item.GST_No}</td>
+<td>{item.GST_No2}</td>
                                       <td>{item.GST_Tax_Code}</td>
                                       <td>{item.Auth}</td>
                                       <td>{item.User}</td>
@@ -246,7 +254,9 @@ const VenderList = () => {
                       </div>
                     </div>
                   )}
-                <div className="vender-bottom">
+                  
+
+                  <div className="vender-bottom">
                     <div className="row" style={{ color: "blue" }}>
                       <div className="col-md-12 text-start">
                         <div className="row mb-3 text-start">

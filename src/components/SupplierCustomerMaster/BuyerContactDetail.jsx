@@ -4,11 +4,13 @@ import "react-toastify/dist/ReactToastify.css";
 import {
   fetchBuyerContactDetails,
   addBuyerContactDetail,
+  updateBuyerContactDetail,
   deleteBuyerContactDetail,
 } from "../../Service/Api";
 
 const BuyerContactDetail = () => {
   const [formData, setFormData] = useState({
+    id: null,
     Person_Name: "",
     Contact_No: "",
     Email: "",
@@ -18,6 +20,7 @@ const BuyerContactDetail = () => {
   });
 
   const [buyerContacts, setBuyerContacts] = useState([]);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const loadBuyerContacts = async () => {
@@ -32,6 +35,21 @@ const BuyerContactDetail = () => {
     loadBuyerContacts();
   }, []);
 
+  const validateForm = () => {
+    const newErrors = {};
+    const phoneRegex = /^[0-9]{10}$/; // Adjust the regex as needed
+
+    if (!formData.Person_Name) newErrors.Person_Name = "Person name is required";
+    if (!formData.Contact_No || !phoneRegex.test(formData.Contact_No)) newErrors.Contact_No = "Valid contact number is required";
+    if (!formData.Email || !/\S+@\S+\.\S+/.test(formData.Email)) newErrors.Email = "Valid email is required";
+    if (!formData.Department) newErrors.Department = "Department is required";
+    if (!formData.Designation) newErrors.Designation = "Designation is required";
+    if (!formData.Birth_Date) newErrors.Birth_Date = "Birth date is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
@@ -40,24 +58,20 @@ const BuyerContactDetail = () => {
   };
 
   const handleAddBuyerContact = async () => {
-    // Simple validation
-    if (
-      !formData.Person_Name ||
-      !formData.Contact_No ||
-      !formData.Email ||
-      !formData.Department ||
-      !formData.Designation ||
-      !formData.Birth_Date
-    ) {
-      toast.error("All fields are required!");
-      return;
-    }
+    if (!validateForm()) return;
 
     try {
-      await addBuyerContactDetail(formData);
-      const updatedBuyerContacts = await fetchBuyerContactDetails(); // Refresh the list
+      if (formData.id) {
+        await updateBuyerContactDetail(formData.id, formData);
+        toast.success("Buyer contact detail updated successfully!");
+      } else {
+        await addBuyerContactDetail(formData);
+        toast.success("Buyer contact detail added successfully!");
+      }
+      const updatedBuyerContacts = await fetchBuyerContactDetails();
       setBuyerContacts(updatedBuyerContacts);
       setFormData({
+        id: null,
         Person_Name: "",
         Contact_No: "",
         Email: "",
@@ -65,16 +79,19 @@ const BuyerContactDetail = () => {
         Designation: "",
         Birth_Date: "",
       });
-      toast.success("Buyer contact detail added successfully!");
     } catch (error) {
-      toast.error("Error adding buyer contact detail!");
+      toast.error("Error saving buyer contact detail!");
     }
+  };
+
+  const handleEditBuyerContact = (contact) => {
+    setFormData(contact);
   };
 
   const handleDeleteBuyerContact = async (id) => {
     try {
       await deleteBuyerContactDetail(id);
-      const updatedBuyerContacts = await fetchBuyerContactDetails(); // Refresh the list
+      const updatedBuyerContacts = await fetchBuyerContactDetails();
       setBuyerContacts(updatedBuyerContacts);
       toast.success("Buyer contact detail deleted successfully!");
     } catch (error) {
@@ -82,20 +99,9 @@ const BuyerContactDetail = () => {
     }
   };
 
-  //   const handleSave = () => {
-  //     toast.success("Data saved successfully!");
-  //   };
-
-  //   const handleClear = () => {
-  //     setFormData({
-  //       Person_Name: "",
-  //       Contact_No: "",
-  //       Email: "",
-  //       Department: "",
-  //       Designation: "",
-  //       Birth_Date: "",
-  //     });
-  //   };
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
 
   return (
     <div className="Buyer">
@@ -146,6 +152,11 @@ const BuyerContactDetail = () => {
                           className="form-control"
                           placeholder="Enter name"
                         />
+                        {errors.Person_Name && (
+                          <small className="text-danger">
+                            {capitalizeFirstLetter(errors.Person_Name)}
+                          </small>
+                        )}
                       </td>
                       <td>
                         <input
@@ -156,6 +167,11 @@ const BuyerContactDetail = () => {
                           className="form-control"
                           placeholder="Enter contact"
                         />
+                        {errors.Contact_No && (
+                          <small className="text-danger">
+                            {capitalizeFirstLetter(errors.Contact_No)}
+                          </small>
+                        )}
                       </td>
                       <td>
                         <input
@@ -166,6 +182,11 @@ const BuyerContactDetail = () => {
                           className="form-control"
                           placeholder="Enter email"
                         />
+                        {errors.Email && (
+                          <small className="text-danger">
+                            {capitalizeFirstLetter(errors.Email)}
+                          </small>
+                        )}
                       </td>
                       <td>
                         <input
@@ -176,6 +197,11 @@ const BuyerContactDetail = () => {
                           className="form-control"
                           placeholder="Enter department"
                         />
+                        {errors.Department && (
+                          <small className="text-danger">
+                            {capitalizeFirstLetter(errors.Department)}
+                          </small>
+                        )}
                       </td>
                       <td>
                         <input
@@ -186,6 +212,11 @@ const BuyerContactDetail = () => {
                           className="form-control"
                           placeholder="Enter designation"
                         />
+                        {errors.Designation && (
+                          <small className="text-danger">
+                            {capitalizeFirstLetter(errors.Designation)}
+                          </small>
+                        )}
                       </td>
                       <td>
                         <input
@@ -195,13 +226,22 @@ const BuyerContactDetail = () => {
                           onChange={handleInputChange}
                           className="form-control"
                         />
+                        {errors.Birth_Date && (
+                          <small className="text-danger">
+                            {capitalizeFirstLetter(errors.Birth_Date)}
+                          </small>
+                        )}
                       </td>
                       <td>
                         <button
                           className="bankbtn"
                           onClick={handleAddBuyerContact}
                         >
-                          <i className="fas fa-plus"></i> Add
+                          {formData.id ? (
+                            <><i className="fas fa-save"></i> Save</>
+                          ) : (
+                            <><i className="fas fa-plus"></i> Add</>
+                          )}
                         </button>
                       </td>
                     </tr>
@@ -253,10 +293,16 @@ const BuyerContactDetail = () => {
                         <td>{contact.Birth_Date}</td>
                         <td>
                           <button
-                            className="buyerbtn2"
+                            className="bankbtn"
+                            onClick={() => handleEditBuyerContact(contact)}
+                          >
+                            <i className="fas fa-edit"></i> 
+                          </button>
+                          <button
+                            className="bankbtn"
                             onClick={() => handleDeleteBuyerContact(contact.id)}
                           >
-                            <i className="fas fa-trash-alt"></i>
+                            <i className="fas fa-trash"></i> 
                           </button>
                         </td>
                       </tr>
@@ -267,16 +313,6 @@ const BuyerContactDetail = () => {
             </div>
           </div>
         </div>
-        {/* <div className="row text-end">
-          <div className="col-md-12">
-            <button className="subGernalbtn1" onClick={handleSave}>
-              SAVE
-            </button>
-            <button className="subGernalbtn1" onClick={handleClear}>
-              CLEAR
-            </button>
-          </div>
-        </div> */}
       </div>
       <ToastContainer />
     </div>

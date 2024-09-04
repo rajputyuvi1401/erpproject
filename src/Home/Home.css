@@ -1,82 +1,78 @@
 * {
   box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
+
 .home-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(241, 242, 244);
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
+
 .home-form {
-  justify-content: center;
   background-color: white;
-  margin-top: 15%;
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  border-radius: 5px;
-  height: 90%;
+  max-width: 400px;
+  text-align: center;
 }
+
 .form1 {
   text-align: start;
-  padding: 10px;
-  margin: 10px;
-  margin-top: 30px;
-}
-.logo {
-  margin-top: 40px;
-  width: 20%;
-  height: 20%;
-}
-.home-form p {
   margin-top: 20px;
-  color: gray;
 }
+
+.home-form h6 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.home-form p {
+  margin-top: 10px;
+  color: gray;
+  font-size: 0.9rem;
+}
+
 .home-form button {
   background-color: blueviolet;
   color: white;
   text-align: center;
-  width: 90%;
+  width: 100%;
   padding: 10px;
   border-radius: 20px;
+  border: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
+
 .home-form button:hover {
-  background-color: blueviolet;
-  color: white;
-}
-.home-bottom {
-  text-decoration: none;
-  margin-top: 0px;
-  color: gray;
+  background-color: darkviolet;
 }
 
-.social-media-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px; /* Space between icons */
-  margin: 20px 0;
-  margin-top: 20px;
-}
-
-.social-media-icon {
-  color: #333;
-  font-size: 1.5rem; /* Adjust size as needed */
-  transition: color 0.3s;
-}
-
-.social-media-icon:hover {
-  color: #0073e6; /* Adjust hover color as needed */
-}
 .outer {
   margin-top: 20px;
   color: rgb(88, 88, 88);
 }
-.outer-link {
-  color: white;
-  text-decoration: none;
-}
+
 @media screen and (max-width: 768px) {
+  .home-form {
+    padding: 20px;
+    margin-top: 10%;
+  }
+
   .home-login {
-    height: auto; /* Change height to auto on smaller screens */
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .home-form {
+    padding: 15px;
   }
 }

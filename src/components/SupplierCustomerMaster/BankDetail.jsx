@@ -5,7 +5,11 @@ import {
   fetchBankDetails,
   addBankDetail,
   deleteBankDetail,
+  updateBankDetail,
 } from "../../Service/Api.jsx";
+
+// Helper function to capitalize the first letter of a string
+const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const BankDetails = () => {
   const [formData, setFormData] = useState({
@@ -18,9 +22,9 @@ const BankDetails = () => {
 
   const [bankDetails, setBankDetails] = useState([]);
   const [errors, setErrors] = useState({});
+  const [editingId, setEditingId] = useState(null);
 
   useEffect(() => {
-    
     const loadBankDetails = async () => {
       try {
         const data = await fetchBankDetails();
@@ -40,47 +44,79 @@ const BankDetails = () => {
     });
     setErrors({ ...errors, [e.target.name]: "" });
   };
-  const validateIFSC = () => {
-    const ifscRegex = /^[A-Z]{4}0[A-Z0-9]{6}$/;
-    if (!ifscRegex.test(formData.IFSC_Code)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        IFSC_Code: "Invalid IFSC Code. It should be in the format ABCD0123456.",
-      }));
-      return false;
+
+  const validateForm = () => {
+    let valid = true;
+    const newErrors = {};
+
+    if (!formData.Account_Holder_name) {
+      newErrors.Account_Holder_name = "Account Holder Name is required.";
+      valid = false;
     }
-    return true;
-  };
-  const validateBankAccount = () => {
-    const bankAccountRegex = /^\d{9,18}$/;
-    if (!bankAccountRegex.test(formData.Bank_Account)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        Bank_Account: "Invalid account number. It should be 9 to 18 digits long.",
-      }));
-      return false;
+    if (!formData.Bank_Name) {
+      newErrors.Bank_Name = "Bank Name is required.";
+      valid = false;
     }
-    return true;
+    if (!formData.Branch_Name) {
+      newErrors.Branch_Name = "Branch Name is required.";
+      valid = false;
+    }
+    if (!formData.Bank_Account) {
+      newErrors.Bank_Account = "Bank Account Number is required.";
+      valid = false;
+    } else if (!/^\d{9,18}$/.test(formData.Bank_Account)) {
+      newErrors.Bank_Account = "Invalid account number. It should be 9 to 18 digits long.";
+      valid = false;
+    }
+    if (!formData.IFSC_Code) {
+      newErrors.IFSC_Code = "IFSC Code is required.";
+      valid = false;
+    } else if (!/^[A-Z]{4}0[A-Z0-9]{6}$/.test(formData.IFSC_Code)) {
+      newErrors.IFSC_Code = "Invalid IFSC Code. It should be in the format ABCD0123456.";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
   };
 
+  const handleAddOrUpdateBankDetail = async () => {
+    if (validateForm()) {
+      try {
+        if (editingId) {
+          // Update existing bank detail
+          await updateBankDetail(editingId, formData);
+          toast.success("Bank detail updated successfully!");
+        } else {
+          // Add new bank detail
+          await addBankDetail(formData);
+          toast.success("Bank detail added successfully!");
+        }
+        const updatedBankDetails = await fetchBankDetails(); // Refresh the list
+        setBankDetails(updatedBankDetails);
+        setFormData({
+          Account_Holder_name: "",
+          Bank_Name: "",
+          Branch_Name: "",
+          Bank_Account: "",
+          IFSC_Code: "",
+        });
+        setEditingId(null);
+      } catch (error) {
+        toast.error("Error saving bank detail!");
+      }
+    }
+  };
 
-  const handleAddBankDetail = async () => {
-    if (validateIFSC()) {
-      // Proceed with form submission
-      console.log("Form submitted successfully");
-    }
-    if (validateBankAccount()) {
-      // Proceed with form submission
-      console.log("Form submitted successfully");
-    }
-    try {
-      await addBankDetail(formData);
-      const updatedBankDetails = await fetchBankDetails(); // Refresh the list
-      setBankDetails(updatedBankDetails);
-      toast.success("Bank detail added successfully!");
-    } catch (error) {
-      toast.error("Error adding bank detail!");
-    }
+  const handleEditBankDetail = (detail) => {
+    setFormData({
+      Account_Holder_name: detail.Account_Holder_name,
+      Bank_Name: detail.Bank_Name,
+      Branch_Name: detail.Branch_Name,
+      Bank_Account: detail.Bank_Account,
+      IFSC_Code: detail.IFSC_Code,
+    });
+    setEditingId(detail.id);
   };
 
   const handleDeleteBankDetail = async (id) => {
@@ -94,9 +130,6 @@ const BankDetails = () => {
     }
   };
 
-  //   const handleSave = () => {
-  //     toast.success("Data saved successfully!");
-  //   };
 
   return (
     <div className="Bankdetail">
@@ -132,6 +165,7 @@ const BankDetails = () => {
                           className="form-control"
                           placeholder="Enter name"
                         />
+                        {errors.Account_Holder_name && <div className="text-danger">{capitalizeFirstLetter(errors.Account_Holder_name)}</div>}
                       </td>
                       <td>
                         <input
@@ -142,6 +176,7 @@ const BankDetails = () => {
                           className="form-control"
                           placeholder="Enter bank name"
                         />
+                        {errors.Bank_Name && <div className="text-danger">{capitalizeFirstLetter(errors.Bank_Name)}</div>}
                       </td>
                       <td>
                         <input
@@ -152,6 +187,7 @@ const BankDetails = () => {
                           className="form-control"
                           placeholder="Enter branch name"
                         />
+                        {errors.Branch_Name && <div className="text-danger">{capitalizeFirstLetter(errors.Branch_Name)}</div>}
                       </td>
                       <td>
                         <input
@@ -162,6 +198,7 @@ const BankDetails = () => {
                           className="form-control"
                           placeholder="Enter account number"
                         />
+                        {errors.Bank_Account && <div className="text-danger">{capitalizeFirstLetter(errors.Bank_Account)}</div>}
                       </td>
                       <td>
                         <input
@@ -172,13 +209,14 @@ const BankDetails = () => {
                           className="form-control"
                           placeholder="Enter IFSC code"
                         />
+                        {errors.IFSC_Code && <div className="text-danger">{capitalizeFirstLetter(errors.IFSC_Code)}</div>}
                       </td>
                       <td>
                         <button
                           className="bankbtn"
-                          onClick={handleAddBankDetail}
+                          onClick={handleAddOrUpdateBankDetail}
                         >
-                          <i className="fas fa-plus"></i> Add
+                          <i className="fas fa-plus"></i> {editingId ? "Update" : "Add"}
                         </button>
                       </td>
                     </tr>
@@ -219,6 +257,12 @@ const BankDetails = () => {
                           >
                             <i className="fas fa-trash-alt"></i>
                           </button>
+                          <button
+                            className="bankbtn2"
+                            onClick={() => handleEditBankDetail(detail)}
+                          >
+                            <i className="fas fa-edit"></i>
+                          </button>
                         </td>
                       </tr>
                     ))}
@@ -228,19 +272,6 @@ const BankDetails = () => {
             </div>
           </div>
         </div>
-
-        {/* <div className="row text-end">
-          <div className="col-md-12">
-            <button className="subGernalbtn1" onClick={handleSave}>SAVE</button>
-            <button className="subGernalbtn1" onClick={() => setFormData({
-              Account_Holder_name: '',
-              Bank_Name: '',
-              Branch_Name: '',
-              Bank_Account: '',
-              IFSC_Code: '',
-            })}>CLEAR</button>
-          </div>
-        </div> */}
       </div>
       <ToastContainer />
     </div>

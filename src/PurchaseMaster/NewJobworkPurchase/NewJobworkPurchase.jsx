@@ -52,13 +52,7 @@ const NewJobworkPurchase = () => {
                             
                           </select>
                         </div>
-                        <div className="col-md-1">
-                          <label></label>
-                          <select className="form-control">
-                            <option value="">SHARP</option>
-                            
-                          </select>
-                        </div>
+                        
                         <div className="col-md-1">
                           <label>Series:</label>
                           <select className="form-control">

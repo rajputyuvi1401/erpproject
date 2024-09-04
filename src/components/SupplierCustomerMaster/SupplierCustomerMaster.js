@@ -23,8 +23,8 @@ import {
   // fetchRegions,
   // fetchStates,
 } from "../../Service/Api.jsx";
-import { fetchStatesAndUTs } from "../../Service/Api.jsx";
-import { fetchStateByCode } from "../../Service/Api.jsx";
+
+
 import ToggleCard1 from "./ToggleCard1.jsx";
 import ToggleCardCity from "./ToggleCardCity.jsx";
 import ToggleCardCountry from "./ToggleCardCountry.jsx";
@@ -39,6 +39,10 @@ import { Link } from "react-router-dom";
 
 import { fetchCurrencyCodes } from "../../Service/Api.jsx";
 import { fetchTypeCode } from "../../Service/Api.jsx";
+import { fetchStateData ,fetchStateDetails } from "../../Service/Api.jsx";
+
+
+
 const SupplierCustomerMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -64,9 +68,7 @@ const SupplierCustomerMaster = () => {
   const [currencyCodes, setCurrencyCodes] = useState([]);
   const [countries, setCountries] = useState([]);
   const [paymentTerms, setPaymentTerms] = useState([]);
-
-  const [statesAndUTs, setStatesAndUTs] = useState([]);
-
+  const [states, setStates] = useState([]);
   const toggleCard = () => {
     setIsCardOpen(!isCardOpen);
   };
@@ -129,7 +131,7 @@ const SupplierCustomerMaster = () => {
     Type: "",
     Name: "",
     Address_Line_1: "",
-   
+
     Region: "",
     PAN_Type: "",
     PAN_NO: "",
@@ -178,14 +180,12 @@ const SupplierCustomerMaster = () => {
     EORI_No: "",
     Montly_Purchase: "",
     Discount_Per: "",
+    LastThreeDigits: ''
   };
 
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
-  
-
-
-
+  const [showGSTNo2, setShowGSTNo2] = useState(false);
 
   const validate = () => {
     const newErrors = {};
@@ -263,30 +263,26 @@ const SupplierCustomerMaster = () => {
       ...prevFormData,
       [name]: type === "checkbox" ? checked : value,
     }));
-    if (name === "Type") {
-      const typeData = await fetchTypeCode(value);
-      if (typeData && typeData.length > 0) {
-        const lastCode = typeData[typeData.length - 1].code; // Get the last saved code
-        const newCode = generateNextCode(lastCode); // Generate the next code
-        setFormData((prevData) => ({
-          ...prevData,
-          Code_No: newCode, // Assuming you want the first code
-        }));
-      } else {
-        setFormData((prevData) => ({
-          ...prevData,
-          Code_No: "", // Reset code if no data is found
-        }));
-      }
-   
+
+
+    if (name === 'GST_No') {
+      setShowGSTNo2(value === 'Registered');
+    }
   };
-};
-const generateNextCode = (lastCode) => {
-  const prefix = lastCode.match(/[A-Za-z]+/)[0]; // Extract the alphabetical prefix (e.g., "S" from "S0001")
-  const number = parseInt(lastCode.match(/\d+/)[0], 10); // Extract the numeric part (e.g., 1 from "S0001")
-  const newNumber = (number + 1).toString().padStart(4, "0"); // Increment and pad with zeros to ensure 4 digits
-  return `${prefix}${newNumber}`; // Combine prefix and new number to get the next code (e.g., "S0002")
-};
+
+  const handleChangeType = async (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+
+    if (name === "Type") {
+      const fetchedCode = await fetchTypeCode(value);
+      if (fetchedCode && fetchedCode.code) {
+        setFormData((prevData) => ({ ...prevData, Code_No: fetchedCode.code }));
+      } else {
+        console.error("Fetched code not found in response");
+      }
+    }
+  };
 
   const validatePAN = (pan) => {
     const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
@@ -309,7 +305,7 @@ const generateNextCode = (lastCode) => {
       newErrors.PAN_Type = "PAN type is required";
     }
     if (!formData.Type || !formData.Code_No) {
-      setErrors({ Type: 'Type is required', Code_No: 'Code No is required' });
+      setErrors({ Type: "Type is required", Code_No: "Code No is required" });
       return;
     }
 
@@ -319,11 +315,9 @@ const generateNextCode = (lastCode) => {
 
         console.log("API Response:", response);
         if (response.status === 201) {
-          
           console.log("Form submitted successfully:", response.data);
           toast.success("Form submitted successfully!");
           setFormData(initialFormData);
-          
         } else {
           console.error("Failed to submit form:", response);
           toast.error("Failed to submit form.");
@@ -349,19 +343,7 @@ const generateNextCode = (lastCode) => {
     setFormData(initialFormData);
   };
 
-  // card
-  // useEffect(() => {
-
-  //  fetchCategoriesAndSet();
-  // }, []);
-  // const fetchCategoriesAndSet = async () => {
-  //   try {
-  //     const data = await fetchCategories();
-  //     setCategories(data);
-  //   } catch (error) {
-  //     toast.error("Failed to fetch categories");
-  //   }
-  // };
+  
 
   // sector
   useEffect(() => {
@@ -402,6 +384,7 @@ const generateNextCode = (lastCode) => {
       toast.error("Failed to fetch QMS Codes");
     }
   };
+
   // Cities
   useEffect(() => {
     fetchCityAndSet();
@@ -414,6 +397,7 @@ const generateNextCode = (lastCode) => {
       toast.error("Failed to fetch cities");
     }
   };
+
   // currencies
   useEffect(() => {
     const loadCurrencyCodes = async () => {
@@ -423,6 +407,7 @@ const generateNextCode = (lastCode) => {
 
     loadCurrencyCodes();
   }, []);
+
   // Country
   useEffect(() => {
     const loadCountries = async () => {
@@ -457,74 +442,49 @@ const generateNextCode = (lastCode) => {
       console.error("Failed to fetch payment terms:", error);
     }
   };
+// State
 
-  // state
-
-  useEffect(() => {
-    const loadStatesAndUTs = async () => {
-      const data = await fetchStatesAndUTs();
-      setStatesAndUTs(data);
-    };
-
-    loadStatesAndUTs();
-  }, []);
-
-  // State Code
-
-  const [stateName, setStateName] = useState("");
-  useEffect(() => {
-    const loadStateName = async () => {
-      if (formData.State_Code.length >= 2) {
-        // Trigger search for valid codes
-        const state = await fetchStateByCode(formData.State_Code);
-        if (state) {
-          setStateName(state.name);
-          const gstPrefix = state.gstPrefix || ""; // Adjust this if you have a specific format for the GST number
-          setFormData((prevFormData) => ({
-            ...prevFormData,
-            GST_No2: `${gstPrefix}${formData.State_Code}`,
-          }));
-        } else {
-          setStateName("");
-          setFormData((prevFormData) => ({
-            ...prevFormData,
-            GST_No2: "",
-          }));
-        }
-      } else {
-        setStateName("");
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          GST_No2: "",
-        }));
-      }
-    };
-
-    loadStateName();
-  }, [formData.State_Code]);
-
-  const handleStateCodeChange = (e) => {
-    const { value } = e.target;
-    setFormData({
-      ...formData,
-      State_Code: value,
-    });
-
-    // Optional: Add validation for state code
-    if (!value) {
-      setErrors({
-        ...errors,
-        State_Code: "State code is required",
-      });
-    } else {
-      setErrors({
-        ...errors,
-        State_Code: "",
-      });
+useEffect(() => {
+  const loadStates = async () => {
+    try {
+      const data = await fetchStateData();
+      setStates(data);
+    } catch (error) {
+      // Handle error appropriately
     }
   };
 
-  const handleRefresh = () => {
+  loadStates();
+}, []);
+
+useEffect(() => {
+  const loadStateDetails = async () => {
+    if (formData.Region) {
+      try {
+        const details = await fetchStateDetails(formData.Region);
+        setFormData((prevData) => ({
+          ...prevData,
+          State_Code: details.code,
+          GST_Tax_Code: details.gst_code,
+          PAN_NO: details.pan_no || '', 
+        }));
+        setCities(details.cities); // Ensure cities is an array of objects
+      } catch (error) {
+        // Handle error appropriately
+      }
+    }
+  };
+
+  loadStateDetails();
+}, [formData.Region]);
+
+// Gst No
+
+
+
+
+
+  function handleRefresh() {
     fetchSectorsAndSet();
 
     fetchQMSCodesAndSet();
@@ -534,7 +494,7 @@ const generateNextCode = (lastCode) => {
     // fetchCountryAndSet();
     fetchCityAndSet();
     // fetchCategoriesAndSet();
-  };
+  }
 
   // Type supplier
 
@@ -671,7 +631,7 @@ const generateNextCode = (lastCode) => {
                                                 name="Type"
                                                 className="form-select"
                                                 value={formData.Type}
-                                                onChange={handleChange}
+                                                onChange={handleChangeType}
                                               >
                                                 <option value="" disabled>
                                                   Select ..
@@ -740,79 +700,64 @@ const generateNextCode = (lastCode) => {
                                               )}
                                             </div>
                                           </div>
-
-                                          {/* Address Line 1 */}
+                                          {/* Payment Term */}
                                           <div className="row mb-3">
                                             <label
-                                              htmlFor="Address_Line_1"
+                                              htmlFor="Payment_Term"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Address :{" "}
+                                              Payment Term:{" "}
                                               <span className="text-danger">
                                                 *
                                               </span>
                                             </label>
-                                            <div className="col-sm-8">
-                                              <textarea
-                                                type="text"
-                                                className="form-control"
-                                                id="Address_Line_1"
-                                                name="Address_Line_1"
-                                                value={formData.Address_Line_1}
-                                                onChange={handleChange}
-                                                placeholder="Address"
-                                              ></textarea>
-                                              {errors.Address_Line_1 && (
-                                                <small className="text-danger">
-                                                  {errors.Address_Line_1}
-                                                </small>
-                                              )}
-                                            </div>
-                                          </div>
-
-                                          {/* Region */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="Region"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              State:{" "}
-                                              <span className="text-danger">
-                                                *
-                                              </span>
-                                            </label>
-                                            <div className="col-sm-8">
+                                            <div className="col-sm-5">
                                               <select
-                                                id="Region"
-                                                name="Region"
+                                                id="Payment_Term"
+                                                name="Payment_Term"
                                                 className="form-select"
-                                                value={formData.Region}
+                                                value={formData.Payment_Term}
                                                 onChange={handleChange}
                                               >
-                                                <option value="" disabled>
+                                                <option value="">
                                                   Select ..
                                                 </option>
-                                                {statesAndUTs.map((state) => (
+
+                                                {paymentTerms.map((term) => (
                                                   <option
-                                                    key={state.code}
-                                                    value={state.code}
+                                                    key={term.id}
+                                                    value={term.id}
                                                   >
-                                                    {state.name}
+                                                    {term.Days}
                                                   </option>
                                                 ))}
                                               </select>
-                                              {errors.Region && (
-                                                <small className="text-danger">
-                                                  {errors.Region}
-                                                </small>
-                                              )}
+                                            </div>
+                                            <div className="col-sm-2">
+                                              <button
+                                                className="btn"
+                                                type="button"
+                                                onClick={toggleCardPayment}
+                                              >
+                                                Add
+                                              </button>
+                                            </div>
+                                            <div className="col-sm-1">
+                                              <button
+                                                className="btn"
+                                                type="button"
+                                                onClick={handleRefresh}
+                                                style={{ fontSize: "10px" }}
+                                              >
+                                                <CachedIcon />
+                                              </button>
                                             </div>
                                           </div>
 
                                           {/* PAN No. */}
                                           <div className="row mb-3">
                                             <label
-                                              className="col-sm-3 col-form-label"
+                                              className="col-sm-4 col-form-label"
                                               htmlFor="PAN_No"
                                             >
                                               Pan No.{" "}
@@ -821,7 +766,7 @@ const generateNextCode = (lastCode) => {
                                               </span>
                                             </label>
 
-                                            <div className="col-sm-3">
+                                            <div className="col-sm-8">
                                               <input
                                                 type="text"
                                                 className="form-control"
@@ -838,13 +783,19 @@ const generateNextCode = (lastCode) => {
                                                 </small>
                                               )}
                                             </div>
+                                          </div>
+                                          {/* PAN type */}
+                                          <div className="row mb-3">
                                             <label
                                               htmlFor="PAN_Type"
-                                              className="col-sm-3 col-form-label"
+                                              className="col-sm-4 col-form-label"
                                             >
                                               Pan Type:
+                                              <span className="text-danger">
+                                                *
+                                              </span>
                                             </label>
-                                            <div className="col-sm-3">
+                                            <div className="col-sm-8">
                                               <select
                                                 id="PAN_Type"
                                                 name="PAN_Type"
@@ -855,14 +806,16 @@ const generateNextCode = (lastCode) => {
                                                 <option value="" disabled>
                                                   Select ..
                                                 </option>
-                                                <option value="FG">
+                                                <option value="Company">
                                                   Company
                                                 </option>
-                                                <option value="RM">Form</option>
-                                                <option value="FG1">
+                                                <option value="Form">
+                                                  Form
+                                                </option>
+                                                <option value="Indivisual">
                                                   Indivisual
                                                 </option>
-                                                <option value="RM1">
+                                                <option value="Trust">
                                                   Trust
                                                 </option>
                                               </select>
@@ -873,92 +826,128 @@ const generateNextCode = (lastCode) => {
                                               )}
                                             </div>
                                           </div>
-
-                                          {/* State Code */}
-                                          <div className="row mb-3">
+                                           {/* Currency */}
+                                           <div className="row mb-3">
                                             <label
-                                              htmlFor="State_Code"
+                                              htmlFor="Currency"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              State Code:{" "}
-                                              <span className="text-danger">
-                                                *
-                                              </span>
+                                              Currency:
+                                            </label>
+                                            <div className="col-sm-8">
+                                              <select
+                                                id="Currency"
+                                                name="Currency"
+                                                className="form-select"
+                                                value={formData.Currency}
+                                                onChange={handleChange}
+                                              >
+                                                <option value="">
+                                                  Select ..
+                                                </option>
+                                                {currencyCodes.map(
+                                                  (currency) => (
+                                                    <option
+                                                      key={currency.code}
+                                                      value={currency.code}
+                                                    >
+                                                      {currency.code}
+                                                    </option>
+                                                  )
+                                                )}
+                                              </select>
+                                            </div>
+                                          </div>
+                                          {/* TDS Rate */}
+                                          <div className="row mb-3">
+                                            <div className="form-check col-sm-4">
+                                              <input
+                                                className="form-check-input"
+                                                type="checkbox"
+                                                id="TDS_Rate"
+                                                name="TDS_Rate"
+                                                checked={
+                                                  formData.TDS_Rate || false
+                                                }
+                                                onChange={handleChange}
+                                              />
+                                              <label
+                                                className="form-check-label"
+                                                htmlFor="TDS_Rate"
+                                              >
+                                                TDS Rate:
+                                              </label>
+                                            </div>
+                                            <div className="col-sm-8">
+                                              <input
+                                                type="text"
+                                                className="form-control"
+                                                id="TDS_Rate"
+                                                name="TDS_Rate"
+                                                value={formData.TDS_Rate}
+                                                onChange={handleChange}
+                                              />
+                                              {/* {errors.TDS_Rate && (
+                                                <small className="text-danger">
+                                                  {errors.TDS_Rate}
+                                                </small>
+                                              )} */}
+                                            </div>
+                                          </div>
+
+                                                {/* Invoice Type */}
+                                                <div className="row mb-3">
+                                            <label
+                                              htmlFor="Invoice_Type"
+                                              className="col-sm-4 col-form-label"
+                                            >
+                                              Invoice Type:
+                                            </label>
+                                            <div className="col-sm-5">
+                                              <select
+                                                id="Invoice_Type"
+                                                name="Invoice_Type"
+                                                className="form-select"
+                                                value={formData.Invoice_Type}
+                                                onChange={handleChange}
+                                              >
+                                                <option value="">
+                                                  Select ..
+                                                </option>
+                                                <option value="FG">
+                                                  Gernal
+                                                </option>
+                                                <option value="RM">
+                                                  Export
+                                                </option>
+                                              </select>
+                                            </div>
+                                          </div>
+
+                                          {/* CIN No */}
+                                          <div className="row mb-3">
+                                            <label
+                                              htmlFor="CIN_No"
+                                              className="col-sm-4 col-form-label"
+                                            >
+                                              CIN No:
                                             </label>
                                             <div className="col-sm-8">
                                               <input
                                                 type="text"
-                                                id="State_Code"
-                                                name="State_Code"
                                                 className="form-control"
-                                                value={`${formData.State_Code}${
-                                                  stateName
-                                                    ? ` - ${stateName}`
-                                                    : ""
-                                                }`}
-                                                onChange={handleStateCodeChange}
-                                                placeholder="Enter State Code"
-                                              />
-                                              {errors.State_Code && (
-                                                <small className="text-danger">
-                                                  {errors.State_Code}
-                                                </small>
-                                              )}
-                                            </div>
-
-                                            <div className="col-sm-0">
-                                              {/* <input
-          type="text"
-          id="State_Name"
-          name="State_Name"
-          className="form-control"
-          value={stateName}
-          readOnly
-        /> */}
-                                            </div>
-                                          </div>
-
-                                          {/* GST Tax Code */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="GST_Tax_Code"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              GST Tax Code:{" "}
-                                              <span className="text-danger">
-                                                *
-                                              </span>
-                                            </label>
-                                            <div className="col-sm-5">
-                                              <select
-                                                id="GST_Tax_Code"
-                                                name="GST_Tax_Code"
-                                                className="form-select"
-                                                value={formData.GST_Tax_Code}
+                                                id="CIN_No"
+                                                name="CIN_No"
+                                                value={formData.CIN_No}
                                                 onChange={handleChange}
-                                              >
-                                                <option value="" disabled>
-                                                  Select ..
-                                                </option>
-                                                <option value="CGST + SGST">
-                                                  CGST + SGST
-                                                </option>
-                                                <option value="IGST">
-                                                  IGST
-                                                </option>
-                                                <option value="UTGST">
-                                                  UTGST
-                                                </option>
-                                                <option value="NA">NA</option>
-                                              </select>
-                                              {errors.GST_Tax_Code && (
+                                              />
+                                              {/* {errors.CIN_No && (
                                                 <small className="text-danger">
-                                                  {errors.GST_Tax_Code}
+                                                  {errors.CIN_No}
                                                 </small>
-                                              )}
+                                              )} */}
                                             </div>
                                           </div>
-
                                           {/* Optional Details */}
                                           <div className="row mb-3">
                                             <p
@@ -1150,37 +1139,12 @@ const generateNextCode = (lastCode) => {
                                             </div>
                                           </div>
 
-                                          {/* LUT No */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="LUT_No"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              LUT No:
-                                            </label>
-                                            <div className="col-sm-8">
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                                id="LUT_No"
-                                                name="LUT_No"
-                                                value={formData.LUT_No}
-                                                onChange={handleChange}
-                                              />
-                                              {/* {errors.LUT_No && (
-                                                <small className="text-danger">
-                                                  {errors.LUT_No}
-                                                </small>
-                                              )} */}
-                                            </div>
-                                          </div>
+                                         
                                         </div>
                                         <div
                                           className="col-md-4"
                                           style={{ padding: "10px" }}
                                         >
-                                        
-
                                           <div className="row mb-3">
                                             <label
                                               htmlFor="Code_No"
@@ -1206,59 +1170,6 @@ const generateNextCode = (lastCode) => {
                                                   {errors.Code_No}
                                                 </small>
                                               )}
-                                            </div>
-                                          </div>
-
-                                          {/* Payment Term */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="Payment_Term"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              Payment Term:  <span className="text-danger">
-                                                *
-                                              </span>
-                                            </label>
-                                            <div className="col-sm-5">
-                                              <select
-                                                id="Payment_Term"
-                                                name="Payment_Term"
-                                                className="form-select"
-                                                value={formData.Payment_Term}
-                                                onChange={handleChange}
-                                              >
-                                                <option value="">
-                                                  Select ..
-                                                </option>
-
-                                                {paymentTerms.map((term) => (
-                                                  <option
-                                                    key={term.id}
-                                                    value={term.id}
-                                                  >
-                                                    {term.Days}
-                                                  </option>
-                                                ))}
-                                              </select>
-                                            </div>
-                                            <div className="col-sm-2">
-                                              <button
-                                                className="btn"
-                                                type="button"
-                                                onClick={toggleCardPayment}
-                                              >
-                                                Add
-                                              </button>
-                                            </div>
-                                            <div className="col-sm-1">
-                                              <button
-                                                className="btn"
-                                                type="button"
-                                                onClick={handleRefresh}
-                                                style={{ fontSize: "10px" }}
-                                              >
-                                                <CachedIcon />
-                                              </button>
                                             </div>
                                           </div>
 
@@ -1294,42 +1205,175 @@ const generateNextCode = (lastCode) => {
                                               </select>
                                             </div>
                                           </div>
+                                         
 
-                                          {/* Currency */}
+                                          {/* Region */}
                                           <div className="row mb-3">
                                             <label
-                                              htmlFor="Currency"
+                                              htmlFor="Region"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Currency:
+                                              State:{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
                                             </label>
                                             <div className="col-sm-8">
                                               <select
-                                                id="Currency"
-                                                name="Currency"
+                                                id="Region"
+                                                name="Region"
                                                 className="form-select"
-                                                value={formData.Currency}
+                                                value={formData.Region}
+                                                onChange={handleChange}
+                                              >
+                                                <option value="" disabled>
+                                                  Select ..
+                                                </option>
+                                                {states.map((state) => (
+              <option key={state.code} value={state.name}>
+                {state.name}
+              </option>
+            ))}
+                                              </select>
+                                              {errors.Region && (
+                                                <small className="text-danger">
+                                                  {errors.Region}
+                                                </small>
+                                              )}
+                                            </div>
+                                          </div>
+                                          {/* State Code */}
+                                          <div className="row mb-3">
+                                            <label
+                                              htmlFor="State_Code"
+                                              className="col-sm-4 col-form-label"
+                                            >
+                                              State Code:{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
+                                            </label>
+                                            <div className="col-sm-8">
+                                              <input
+                                                type="text"
+                                                id="State_Code"
+                                                name="State_Code"
+                                                className="form-control"
+                                                value={formData.State_Code}
+                                                onChange={handleChange}
+                                                placeholder="Enter State Code"
+                                              />
+                                              {errors.State_Code && (
+                                                <small className="text-danger">
+                                                  {errors.State_Code}
+                                                </small>
+                                              )}
+                                            </div>
+
+                                        
+                                          </div>
+
+                                          {/* GST Tax Code */}
+                                          <div className="row mb-3">
+                                            <label
+                                              htmlFor="GST_Tax_Code"
+                                              className="col-sm-4 col-form-label"
+                                            >
+                                              GST Tax Code:{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
+                                            </label>
+                                            <div className="col-sm-8">
+                                              <select
+                                                id="GST_Tax_Code"
+                                                name="GST_Tax_Code"
+                                                className="form-select"
+                                                value={formData.GST_Tax_Code}
+                                                onChange={handleChange}
+                                              >
+                                                <option value="" disabled>
+                                                  Select ..
+                                                </option>
+                                                <option value="CGST + SGST">
+                                                  CGST + SGST
+                                                </option>
+                                                <option value="IGST">
+                                                  IGST
+                                                </option>
+                                                <option value="UTGST">
+                                                  UTGST
+                                                </option>
+                                                <option value="NA">NA</option>
+                                              </select>
+                                              {errors.GST_Tax_Code && (
+                                                <small className="text-danger">
+                                                  {errors.GST_Tax_Code}
+                                                </small>
+                                              )}
+                                            </div>
+                                          </div>
+
+                                           {/* City */}
+                                           <div className="row mb-3">
+                                            <label
+                                              htmlFor="City"
+                                              className="col-sm-4 col-form-label"
+                                            >
+                                              City:
+                                            </label>
+                                            <div className="col-sm-8">
+                                              <select
+                                                id="City"
+                                                name="City"
+                                                className="form-select"
+                                                value={formData.City}
                                                 onChange={handleChange}
                                               >
                                                 <option value="">
                                                   Select ..
                                                 </option>
-                                                {currencyCodes.map(
-                                                  (currency) => (
-                                                    <option
-                                                      key={currency.code}
-                                                      value={currency.code}
-                                                    >
-                                                      {currency.code}
-                                                    </option>
-                                                  )
-                                                )}
+                                                {cities.map((city, index) => (
+              <option key={index} value={city.CityName || city}>
+                {city.CityName || city}
+              </option>
+            ))}
                                               </select>
+                                            </div>
+                                            
+                                          </div>
+
+                                          {/* Address Line 1 */}
+                                          <div className="row mb-3">
+                                            <label
+                                              htmlFor="Address_Line_1"
+                                              className="col-sm-4 col-form-label"
+                                            >
+                                              Address :{" "}
+                                              <span className="text-danger">
+                                                *
+                                              </span>
+                                            </label>
+                                            <div className="col-sm-8">
+                                              <textarea
+                                                type="text"
+                                                className="form-control"
+                                                id="Address_Line_1"
+                                                name="Address_Line_1"
+                                                value={formData.Address_Line_1}
+                                                onChange={handleChange}
+                                                placeholder="Address"
+                                              ></textarea>
+                                              {errors.Address_Line_1 && (
+                                                <small className="text-danger">
+                                                  {errors.Address_Line_1}
+                                                </small>
+                                              )}
                                             </div>
                                           </div>
 
-                                          {/* Pin Code */}
-                                          <div className="row mb-3">
+  {/* Pin Code */}
+  <div className="row mb-3">
                                             <label
                                               htmlFor="Pin_Code"
                                               className="col-sm-4 col-form-label"
@@ -1355,216 +1399,57 @@ const generateNextCode = (lastCode) => {
                                               )}
                                             </div>
                                           </div>
+                                         
 
-                                          {/* City */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="City"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              City:
-                                            </label>
-                                            <div className="col-sm-5">
-                                              <select
-                                                id="City"
-                                                name="City"
-                                                className="form-select"
-                                                value={formData.City}
-                                                onChange={handleChange}
-                                              >
-                                                <option value="">
-                                                  Select ..
-                                                </option>
-                                                {cities.map((city) => (
-                                                  <option
-                                                    key={city.id}
-                                                    value={city.CityName}
-                                                  >
-                                                    {city.CityName}
-                                                  </option>
-                                                ))}
-                                              </select>
-                                            </div>
-                                            <div className="col-sm-2">
-                                              <button
-                                                className="btn"
-                                                type="button"
-                                                onClick={toggleCardCity}
-                                              >
-                                                New
-                                              </button>
-                                            </div>
-                                            <div className="col-sm-1">
-                                              <button
-                                                className="btn"
-                                                type="button"
-                                                onClick={handleRefresh}
-                                                style={{ fontSize: "10px" }}
-                                              >
-                                                <CachedIcon />
-                                              </button>
-                                            </div>
-                                          </div>
+                                        
 
-                                          {/* TDS Rate */}
-                                          <div className="row mb-3">
-                                            <div className="form-check col-sm-4">
-                                              <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="TDS_Rate"
-                                                name="TDS_Rate"
-                                                checked={
-                                                  formData.TDS_Rate || false
-                                                }
-                                                onChange={handleChange}
-                                              />
-                                              <label
-                                                className="form-check-label"
-                                                htmlFor="TDS_Rate"
-                                              >
-                                                TDS Rate:
-                                              </label>
-                                            </div>
-                                            <div className="col-sm-8">
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                                id="TDS_Rate"
-                                                name="TDS_Rate"
-                                                value={formData.TDS_Rate}
-                                                onChange={handleChange}
-                                              />
-                                              {/* {errors.TDS_Rate && (
-                                                <small className="text-danger">
-                                                  {errors.TDS_Rate}
-                                                </small>
-                                              )} */}
-                                            </div>
-                                          </div>
+              {/* GST Type */}
+      <div className="row mb-3">
+        <label htmlFor="GST_No" className="col-sm-4 col-form-label">
+          GST Type:{" "}
+          <span className="text-danger">*</span>
+        </label>
+        <div className="col-sm-5">
+          <select
+            id="GST_No"
+            name="GST_No"
+            className="form-select"
+            value={formData.GST_No}
+            onChange={handleChange}
+          >
+            <option value="">Select ..</option>
+            <option value="Registered">Registered</option>
+            <option value="Unregistered">Unregistered</option>
+          </select>
+        </div>
+      </div>
 
-                                          {/* GST Type */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="GST_No"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              GST Type:  <span className="text-danger">
-                                                *
-                                              </span>
-                                            </label>
-                                            <div className="col-sm-5">
-                                              <select
-                                                id="GST_No"
-                                                name="GST_No"
-                                                className="form-select"
-                                                value={formData.GST_No}
-                                                onChange={handleChange}
-                                              >
-                                                <option value="">
-                                                  Select ..
-                                                </option>
+      {/* GST No */}
+      {showGSTNo2 && (
+        <div className="row mb-3">
+          <div className="form-check col-sm-4">
+            <label className="form-check-label" htmlFor="GST_No2">
+              GST No:{" "}
+              <span className="text-danger">*</span>
+            </label>
+          </div>
+          <div className="col-sm-8">
+            <input
+               type="text"
+               className="form-control"
+               id="GST_No2"
+               name="GST_No2"
+               value={formData.GST_No2} // Show only the last 3 characters for input
+            onChange={handleChange}
+           
+            />
+            {errors.GST_No2 && <small className="text-danger">{errors.GST_No2}</small>}
+          </div>
+        </div>
+      )}
+                                          
 
-                                                <option value="Registered">
-                                                  Registered
-                                                </option>
-                                                <option value="Unregistered">
-                                                  Unregistered
-                                                </option>
-                                              </select>
-                                            </div>
-                                          </div>
-
-                                          {/* GST No */}
-                                          {formData.GST_No === "Registered" && (
-                                            <div className="row mb-3">
-                                              <div className="form-check col-sm-4">
-                                                <label
-                                                  className="form-check-label"
-                                                  htmlFor="GST_No2"
-                                                >
-                                                  GST No:{" "}
-                                                  <span className="text-danger">
-                                                    *
-                                                  </span>
-                                                </label>
-                                              </div>
-                                              <div className="col-sm-8">
-                                                <input
-                                                  type="text"
-                                                  className="form-control"
-                                                  id="GST_No2"
-                                                  name="GST_No2"
-                                                  value={formData.GST_No2}
-                                                  onChange={(e) =>
-                                                    setFormData({
-                                                      ...formData,
-                                                      GST_No2: e.target.value,
-                                                    })
-                                                  }
-                                                />
-                                                {errors.GST_No2 && (
-                                                  <small className="text-danger">
-                                                    {errors.GST_No2}
-                                                  </small>
-                                                )}
-                                              </div>
-                                            </div>
-                                          )}
-
-                                          {/* Invoice Type */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="Invoice_Type"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              Invoice Type:
-                                            </label>
-                                            <div className="col-sm-5">
-                                              <select
-                                                id="Invoice_Type"
-                                                name="Invoice_Type"
-                                                className="form-select"
-                                                value={formData.Invoice_Type}
-                                                onChange={handleChange}
-                                              >
-                                                <option value="">
-                                                  Select ..
-                                                </option>
-                                                <option value="FG">
-                                                  Gernal
-                                                </option>
-                                                <option value="RM">
-                                                  Export
-                                                </option>
-                                              </select>
-                                            </div>
-                                          </div>
-
-                                          {/* CIN No */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="CIN_No"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              CIN No:
-                                            </label>
-                                            <div className="col-sm-8">
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                                id="CIN_No"
-                                                name="CIN_No"
-                                                value={formData.CIN_No}
-                                                onChange={handleChange}
-                                              />
-                                              {/* {errors.CIN_No && (
-                                                <small className="text-danger">
-                                                  {errors.CIN_No}
-                                                </small>
-                                              )} */}
-                                            </div>
-                                          </div>
+                                    
 
                                           {/* Website */}
                                           <div className="row mb-3">
@@ -1690,6 +1575,30 @@ const generateNextCode = (lastCode) => {
                                               {/* {errors.VAT_TIN && (
                                                 <small className="text-danger">
                                                   {errors.VAT_TIN}
+                                                </small>
+                                              )} */}
+                                            </div>
+                                          </div>
+                                           {/* LUT No */}
+                                           <div className="row mb-3">
+                                            <label
+                                              htmlFor="LUT_No"
+                                              className="col-sm-4 col-form-label"
+                                            >
+                                              LUT No:
+                                            </label>
+                                            <div className="col-sm-8">
+                                              <input
+                                                type="text"
+                                                className="form-control"
+                                                id="LUT_No"
+                                                name="LUT_No"
+                                                value={formData.LUT_No}
+                                                onChange={handleChange}
+                                              />
+                                              {/* {errors.LUT_No && (
+                                                <small className="text-danger">
+                                                  {errors.LUT_No}
                                                 </small>
                                               )} */}
                                             </div>
@@ -1992,7 +1901,7 @@ const generateNextCode = (lastCode) => {
                                             >
                                               ISO:
                                             </label>
-                                            <div className="col-sm-2">
+                                            <div className="col-sm-8">
                                               <select
                                                 id="ISO"
                                                 name="ISO"
@@ -2007,13 +1916,15 @@ const generateNextCode = (lastCode) => {
                                                 <option value="RM">No</option>
                                               </select>
                                             </div>
+                                          </div>
+                                          <div className="row mb-3">
                                             <label
                                               htmlFor="QMSC_Code"
-                                              className="col-sm-1 col-form-label"
+                                              className="col-sm-4 col-form-label"
                                             >
                                               QMSC Code:
                                             </label>
-                                            <div className="col-sm-2">
+                                            <div className="col-sm-5">
                                               <select
                                                 id="QMSC_Code"
                                                 name="QMSC_Code"
@@ -2072,7 +1983,7 @@ const generateNextCode = (lastCode) => {
                                               Active:
                                             </label>
 
-                                            <div className="col-md-3">
+                                            <div className="col-md-8">
                                               <select
                                                 id="Active"
                                                 name="Active"
@@ -2092,14 +2003,15 @@ const generateNextCode = (lastCode) => {
                                                 </small>
                                               )} */}
                                             </div>
-
+                                          </div>
+                                          <div className="row mb-3">
                                             <label
                                               htmlFor="QMSC_Date"
-                                              className="col-sm-2 col-form-label"
+                                              className="col-sm-4 col-form-label"
                                             >
                                               QMSC Date:
                                             </label>
-                                            <div className="col-sm-3">
+                                            <div className="col-sm-8">
                                               <input
                                                 type="date"
                                                 className="form-control"

@@ -154,6 +154,8 @@ import StockTransaction from "./StoreMaster/StockTransaction/StockTransaction.js
 import ReportStore from "./StoreMaster/Report/Report.jsx";
 import StockReport from "./StoreMaster/StockReport/StorckReport.jsx"; 
 
+import InwardChallanList from "./StoreMaster/SubconGRN/InwardChallanList/InwardChallanList.jsx";
+
 function App() {
   return (
     <div className="App">
@@ -325,6 +327,10 @@ function App() {
 
         <Route path="Report-Store" element={<ReportStore/>} />
         <Route path="Stock-Report" element={<StockReport/>} />
+
+
+        {/* Inward Challan List */}
+        <Route path="Inward-challan-list" element={<InwardChallanList/>}/>
       </Routes>
     </div>
   );

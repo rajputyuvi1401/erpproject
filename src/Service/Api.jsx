@@ -11,6 +11,30 @@ const CUT_WISE_URL = `${BASE_URL}Cut_Wise/`;
 const UPLOAD_URL = `${BASE_URL}upload/`;
 
 // Home
+// const BASE_URL1 = "http://13.201.136.34:8000";
+const BASE_URL1 = "api";
+
+export async function postRequest(endpoint, data) {
+  try {
+    const response = await fetch(`${BASE_URL1}${endpoint}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      return { error: errorData };
+    }
+
+    const responseData = await response.json();
+    return { data: responseData };
+  } catch (error) {
+    return { error: error.message };
+  }
+}
 
 
 // GST Master
@@ -183,6 +207,15 @@ export const addBankDetail = async (formData) => {
   }
 };
 
+export const updateBankDetail = async (id, formData) => {
+  try {
+    await axios.put(`${BASE_URL}Bank_Details/${id}/`, formData);
+  } catch (error) {
+    console.error("Error updating bank detail:", error);
+    throw error;
+  }
+};
+
 export const deleteBankDetail = async (id) => {
   try {
     await axios.delete(`${BASE_URL}Bank_Details/${id}`);
@@ -209,6 +242,15 @@ export const addBuyerContactDetail = async (formData) => {
     await axios.post(`${BASE_URL}Buyer_Contact/`, formData);
   } catch (error) {
     console.error("Error adding buyer contact detail:", error);
+    throw error;
+  }
+};
+
+export const updateBuyerContactDetail = async (id, formData) => {
+  try {
+    await axios.put(`${BASE_URL}Buyer_Contact/${id}/`, formData);  // Note the trailing slash
+  } catch (error) {
+    console.error("Error updating buyer contact detail:", error);
     throw error;
   }
 };
@@ -2218,36 +2260,6 @@ export const fetchCountries = async (searchTerm = '') => {
   }
 };
 
-// Supplier sttae code
-export const fetchStatesAndUTs = async () => {
-  try {
-    const response = await fetch(`${BASE_URL}states-uts/`);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return await response.json();
-  } catch (error) {
-    console.error('Error fetching states and UTs:', error);
-    return [];
-  }
-};
-
-// Service/Api.jsx
-
-export const fetchStateByCode = async (code) => {
-  try {
-    const response = await fetch(`${BASE_URL}states-uts/?search=${code}`);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const data = await response.json();
-    return data.length > 0 ? data[0] : null; // Assuming the API returns an array
-  } catch (error) {
-    console.error('Error fetching state by code:', error);
-    return null;
-  }
-};
-
 // Supplier Currency
 export const fetchCurrencyCodes = async () => {
   try {
@@ -2263,9 +2275,12 @@ export const fetchCurrencyCodes = async () => {
   }
 };
 
+// Supplier Type
+
 export const fetchTypeCode = async (type) => {
   try {
     let endpoint = "";
+    let payload = { name: type }; 
     switch (type) {
       case "Customer":
         endpoint = "SupplierTypeCode/customers/";
@@ -2282,10 +2297,19 @@ export const fetchTypeCode = async (type) => {
       default:
         return null;
     }
-
-    const response = await fetch(`${BASE_URL}${endpoint}`);
-    const data = await response.json();
-    return data;
+    
+      const response = await fetch(`${BASE_URL}${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to save BOM item group");
+      }
+      return response.json();
+   
   } catch (error) {
     console.error("Error fetching data:", error);
     return null;
@@ -2328,3 +2352,28 @@ const fetchData = async (query) => {
 };
 
 export { fetchData };
+
+
+// State 
+export const fetchStateData = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}get-state-data/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching state data:", error);
+    throw error;
+  }
+};
+
+// Services/Api.jsx
+export const fetchStateDetails = async (stateName) => {
+  try {
+    const response = await axios.get(`${BASE_URL}get-state-data/`, {
+      params: { state: stateName },
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching details for state ${stateName}:`, error);
+    throw error;
+  }
+};

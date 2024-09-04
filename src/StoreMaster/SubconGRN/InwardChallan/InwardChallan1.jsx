@@ -5,6 +5,7 @@ import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import "./InwardChallan1.css";
 import CachedIcon from "@mui/icons-material/Cached";
+import { Link } from "react-router-dom";
 
 const InwardChallan1 = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -54,9 +55,7 @@ const InwardChallan1 = () => {
                         <div className="col-md-2">
                           <select id="sharpSelect" className="form-select">
                             <option selected>Sharp</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
+                           
                           </select>
                         </div>
 
@@ -91,15 +90,15 @@ const InwardChallan1 = () => {
                     <div className="col-md-4 text-end">
                       <div className="row justify-content-end">
                         <div className="col-md-6 d-flex align-items-center">
-                          <button className="pobtn">Inward Challan List</button>
+                          <Link className="pobtn" to={"/Inward-challan-list"}>Inward Challan List</Link>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="StoreSubcon-main">
-                  <div className="container-fluid">
-                    <div className="row">
+                  <div className="container-fluid ">
+                    <div className="row mt-4">
                       <div className="col-md-6">
                         <div className="row">
                           <div className="col-md-4">Gate Entry No:</div>
@@ -124,7 +123,7 @@ const InwardChallan1 = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="row">
+                    <div className="row mt-4">
                       <div className="col-md-6">
                         <div className="row">
                           <div className="col-md-4">Supplier Name:</div>
@@ -132,14 +131,14 @@ const InwardChallan1 = () => {
                             <input />
                           </div>
                           <div className="col-md-2">
-                            <button type="button">Search</button>
+                            <button type="button" className="btn">Search</button>
                           </div>
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className="row">
+                        <div className="row text-start">
                           <div className="col-md-4">Outward Challan:</div>
-                          <div className="col-md-6">
+                          <div className="col-md-4">
                             <select id="routingSelect" className="form-select">
                               <option selected>Select</option>
                               <option value="">
@@ -154,21 +153,23 @@ const InwardChallan1 = () => {
                             </select>
                           </div>
                           <div className="col-md-2">
-                            <button type="button">Search</button>
-                            <button type="button">Cancel</button>
+                            <button type="button" className="btn">Search</button>
+                            </div>
+                            <div className="col-md-1">
+                            <button type="button" className="btn">Cancel</button>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="row">
+                    <div className="row mt-4 ">
                       <div className="col-md-6">
-                        <div className="row">
+                        <div className="row ">
                           <div className="col-md-4">Item Name:</div>
                           <div className="col-md-6">
                             <input />
                           </div>
                           <div className="col-md-2">
-                            <button type="button">Add</button>
+                            <button type="button" className="btn">Add</button>
                           </div>
                         </div>
                       </div>
@@ -176,7 +177,7 @@ const InwardChallan1 = () => {
                   </div>
 
                   <div className="StoreSubconstatus">
-                    <div className="container mt-4">
+                    <div className="container mt-4 text-start">
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>
@@ -477,7 +478,7 @@ const InwardChallan1 = () => {
                         <div className="StoreSubconstatus1">
 
                             <div className="row ">
-                              <div className="col-md-8">
+                              <div className="col-md-8 mt-4">
                                 <div className="table-responsive">
                                   <table className="table table-bordered">
                                     <thead>

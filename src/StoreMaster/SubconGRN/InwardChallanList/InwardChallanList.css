@@ -1,0 +1,67 @@
+/* General Styles */
+.NewStoreInwardList {
+    background-color: white;
+    height: auto;
+  }
+  
+  .InwardList-header {
+    margin-top: 20px;
+    background-color: aliceblue;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+ 
+  .InwardList-main{
+    background-color: aliceblue;
+    padding: 10px;
+    margin-top: 80px;
+    height: auto;
+  }  
+  .pobtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+  
+  .pobtn:hover {
+    background-color: #0056b3;
+  }
+  
+  .table-responsive {
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .InwardList-header .row {
+      flex-direction: column;
+    }
+  
+    .InwardList-header .col-md-6,
+    .InwardList-header .col-md-4 {
+      text-align: left;
+      margin-top: 10px;
+    }
+  
+    .InwardList-header .header-title {
+      text-align: center;
+    }
+  
+    .pobtn {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .InwardList-main .row {
+      flex-direction: column;
+    }
+  
+    .InwardList-main .col-12 {
+      margin-bottom: 10px;
+    }
+  }
+  

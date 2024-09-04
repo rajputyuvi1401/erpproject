@@ -112,24 +112,18 @@ const NewPurchaseOrder = () => {
                           <label>PO Type:</label>
                           <select className="form-control">
                             <option value="">CLOSE</option>
-                            <option value="option1">Open</option>
+                            <option value="option1">OPEN</option>
                             
                           </select>
                         </div>
-                        <div className="col-md-1">
-                          <label></label>
-                          <select className="form-control">
-                            <option value="">SHARP</option>
-                            {/* <option value="option1">SHARP</option> */}
-                            
-                          </select>
-                        </div>
+                        
                         <div className="col-md-1">
                           <label>Series:</label>
                           <select className="form-control">
                             <option value="">RM</option>
                             <option value="option1">CONSUMABLE</option>
                             <option value="option2">ASSET</option>
+                            <option value="option2">SERVICE</option>
                           </select>
                         </div>
                         <div className="col-md-1">
