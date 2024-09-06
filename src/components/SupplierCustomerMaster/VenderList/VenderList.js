@@ -16,6 +16,9 @@ const VenderList = () => {
   const [searchType, setSearchType] = useState("");
   const [searchName, setSearchName] = useState("");
   const [showData, setShowData] = useState(false); // State to control data display
+  const [currentPage, setCurrentPage] = useState(1); // State for current page
+  const [recordsPerPage] = useState(10); // Number of records per page
+
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
@@ -27,11 +30,6 @@ const VenderList = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
-
-
-
-
-
 
 
 
@@ -57,6 +55,7 @@ const VenderList = () => {
     );
     setFilteredData(filtered);
     setShowData(true); // Show the data in the table after search
+    setCurrentPage(1);
   };
 
   const handleViewAll = () => {
@@ -64,7 +63,20 @@ const VenderList = () => {
     setSearchName("");
     setFilteredData(data); // Show all data when "View All" is clicked
     setShowData(true);
+    setCurrentPage(1);
+    
   };
+
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = filteredData.slice(indexOfFirstRecord, indexOfLastRecord);
+
+  // Pagination controls
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(filteredData.length / recordsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
 
   return (
     <div className="VenderList">
@@ -220,7 +232,8 @@ const VenderList = () => {
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  {filteredData.map((item, index) => (
+                                {currentRecords.map((item, index) => (
+                                  
                                     <tr key={index}>
                                       <td>{index + 1}</td>
                                       <td>{item.Type}</td>
@@ -246,8 +259,46 @@ const VenderList = () => {
                                       <td>View</td>
                                     </tr>
                                   ))}
+                                
                                 </tbody>
                               </table>
+                               {/* Pagination Controls */}
+                               <nav className="text-end">
+                                <ul className="pagination">
+                                  <li className="page-item">
+                                    <button
+                                      className="page-link"
+                                      onClick={() => setCurrentPage(currentPage - 1)}
+                                      disabled={currentPage === 1}
+                                    >
+                                      Previous
+                                    </button>
+                                  </li>
+                                  {pageNumbers.map((number) => (
+                                    <li
+                                      key={number}
+                                      className={`page-item ${currentPage === number ? "active" : ""}`}
+                                    >
+                                      <button
+                                        className="page-link"
+                                        onClick={() => setCurrentPage(number)}
+                                      >
+                                        {number}
+                                      </button>
+                                    </li>
+                                  ))}
+                                  <li className="page-item">
+                                    <button
+                                      className="page-link"
+                                      onClick={() => setCurrentPage(currentPage + 1)}
+                                      disabled={currentPage === pageNumbers.length}
+                                    >
+                                      Next
+                                    </button>
+                                  </li>
+                                </ul>
+                              </nav>
+                               
                             </div>
                           </div>
                         </div>

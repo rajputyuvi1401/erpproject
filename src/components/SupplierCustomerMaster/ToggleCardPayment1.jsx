@@ -17,6 +17,10 @@ const ToggleCardPayment1 = () => {
   const [editingTerm, setEditingTerm] = useState(null);
   const [editDays, setEditDays] = useState("");
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10); // Number of records per page
+
   useEffect(() => {
     const getPaymentTerms = async () => {
       try {
@@ -49,7 +53,7 @@ const ToggleCardPayment1 = () => {
       toast.error("Failed to add payment term");
     }
   };
-  
+
   const handleEditPaymentTerm = (id, days) => {
     setEditingTerm(id);
     setEditDays(days);
@@ -85,6 +89,16 @@ const ToggleCardPayment1 = () => {
       toast.error("Failed to delete payment term");
     }
   };
+
+  // Pagination logic
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = paymentTerms.slice(indexOfFirstRecord, indexOfLastRecord);
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(paymentTerms.length / recordsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div className="container">
@@ -128,9 +142,9 @@ const ToggleCardPayment1 = () => {
                 </tr>
               </thead>
               <tbody>
-                {paymentTerms.map((pt, index) => (
+                {currentRecords.map((pt, index) => (
                   <tr key={pt.id}>
-                    <td>{index + 1}</td>
+                    <td>{indexOfFirstRecord + index + 1}</td>
                     <td>
                       {editingTerm === pt.id ? (
                         <input
@@ -180,6 +194,42 @@ const ToggleCardPayment1 = () => {
                 ))}
               </tbody>
             </table>
+            {/* Pagination Controls */}
+            <nav className="text-end">
+              <ul className="pagination">
+                <li className="page-item">
+                  <button
+                    className="page-link"
+                    onClick={() => setCurrentPage(currentPage - 1)}
+                    disabled={currentPage === 1}
+                  >
+                    Previous
+                  </button>
+                </li>
+                {pageNumbers.map((number) => (
+                  <li
+                    key={number}
+                    className={`page-item ${currentPage === number ? "active" : ""}`}
+                  >
+                    <button
+                      className="page-link"
+                      onClick={() => setCurrentPage(number)}
+                    >
+                      {number}
+                    </button>
+                  </li>
+                ))}
+                <li className="page-item">
+                  <button
+                    className="page-link"
+                    onClick={() => setCurrentPage(currentPage + 1)}
+                    disabled={currentPage === pageNumbers.length}
+                  >
+                    Next
+                  </button>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>

@@ -92,7 +92,7 @@ const LogoImage = ({ formData, onFormDataChange, onSubmit }) => {
                       <img
                         src={imagePreviews.login_logo}
                         alt="ERP Login Page"
-                        style={{ width: "20px", height: "20px" }}
+                        style={{ width: "30px", height: "30px" }}
                       />
                     )}
                   </div>
@@ -118,7 +118,7 @@ const LogoImage = ({ formData, onFormDataChange, onSubmit }) => {
                       <img
                         src={imagePreviews.home_logo}
                         alt="ERP Home Page Header"
-                        style={{ width: "20px", height: "20px" }}
+                        style={{ width: "30px", height: "30px" }}
                       />
                     )}
                   </div>
@@ -146,7 +146,7 @@ const LogoImage = ({ formData, onFormDataChange, onSubmit }) => {
                       <img
                         src={imagePreviews.company_logo}
                         alt="Company Logo"
-                        style={{ width: "20px", height: "20px" }}
+                        style={{ width: "30px", height: "30px" }}
                       />
                     )}
                   </div>
@@ -171,7 +171,7 @@ const LogoImage = ({ formData, onFormDataChange, onSubmit }) => {
                       <img
                         src={imagePreviews.Tuv_logo}
                         alt="TUV Logo"
-                        style={{ width: "20px", height: "20px" }}
+                        style={{ width: "30px", height: "30px" }}
                       />
                     )}
                   </div>

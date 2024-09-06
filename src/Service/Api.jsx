@@ -2377,3 +2377,15 @@ export const fetchStateDetails = async (stateName) => {
     throw error;
   }
 };
+
+
+// unit code
+export const getUnitCode = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}UnitCodeHardCoded/`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching unit codes:', error);
+    throw error;
+  }
+};

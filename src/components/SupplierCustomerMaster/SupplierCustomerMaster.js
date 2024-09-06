@@ -206,7 +206,7 @@ const SupplierCustomerMaster = () => {
       "Pin_Code",
       "GST_No2",
 
-      "Vendor_Code",
+      
       // Add other required fields here
     ];
     requiredFields.forEach((field) => {
@@ -267,6 +267,15 @@ const SupplierCustomerMaster = () => {
 
     if (name === 'GST_No') {
       setShowGSTNo2(value === 'Registered');
+    }
+
+    if (name === "GST_No2" && value.length >= 3) {
+      const lastThreeDigits = value.slice(-3);
+      const updatedGST_No2 = `${formData.State_Code}${formData.PAN_NO}${lastThreeDigits}`;
+      setFormData({
+        ...formData,
+        GST_No2: updatedGST_No2,
+      });
     }
   };
 
@@ -1765,9 +1774,7 @@ useEffect(() => {
                                               className="col-sm-4 col-form-label"
                                             >
                                               Vendor Code:{" "}
-                                              <span className="text-danger">
-                                                *
-                                              </span>
+                                              
                                             </label>
                                             <div className="col-sm-8">
                                               <input

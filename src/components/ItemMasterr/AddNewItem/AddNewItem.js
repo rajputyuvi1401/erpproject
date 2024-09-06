@@ -7,7 +7,7 @@ import SideNav from "../../../SideNav/SideNav";
 import CachedIcon from "@mui/icons-material/Cached";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { fetchMainGroupData } from "../../../Service/Api.jsx";
+import { fetchMainGroupData ,getUnitCode} from "../../../Service/Api.jsx";
 
 
 const AddNewItem = () => {
@@ -18,6 +18,8 @@ const AddNewItem = () => {
     setSideNavOpen(!sideNavOpen);
   };
 
+  const [unitCodes, setUnitCodes] = useState([]);
+  const [selectedUnit, setSelectedUnit] = useState('');
   const [mainGroups, setMainGroups] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState("");
   const navigate = useNavigate();
@@ -55,6 +57,26 @@ const AddNewItem = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+
+
+  useEffect(() => {
+    const fetchUnitCodes = async () => {
+      try {
+        const data = await getUnitCode();
+        setUnitCodes(data);
+      } catch (error) {
+        console.error('Error fetching unit codes:', error);
+      }
+    };
+
+    fetchUnitCodes();
+  }, []);
+
+  const handleSelectChange = (e) => {
+    setSelectedUnit(e.target.value);
+  };
+
 
   return (
     <div className="AddNewItemPage">
@@ -228,25 +250,23 @@ const AddNewItem = () => {
                                           </div>
                                         </div>
                                         <div className="row mb-3">
-                                          <label
-                                            htmlFor="inputEmail3"
-                                            className="col-sm-4 col-form-label"
-                                          >
-                                            Unit Code:
-                                          </label>
-                                          <div className="col-sm-5">
-                                            <select
-                                              id="inputState"
-                                              className="form-select"
-                                            >
-                                              <option selected>
-                                                Select ..
-                                              </option>
-                                              <option>PCS</option>
-                                              <option>KGS</option>
-                                              <option>BOX</option>
-                                              <option>LTR</option>
-                                            </select>
+                                        <label htmlFor="unitCode" className="col-sm-4 col-form-label">
+        Unit Code:
+      </label>
+      <div className="col-sm-5">
+        <select
+          id="unitCode"
+          className="form-select"
+          value={selectedUnit}
+          onChange={handleSelectChange}
+        >
+          <option value="">Select ..</option>
+          {unitCodes.map((unit, index) => (
+            <option key={index} value={unit.name}>
+              {unit.name}
+            </option>
+          ))}
+        </select>
                                           </div>
                                           <div className="col-sm-2">
                                             <button className="btn">New</button>

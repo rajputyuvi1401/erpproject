@@ -9,7 +9,7 @@ import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-import { fetchCountries } from '../../Service/Api.jsx';
+import { fetchCountries ,fetchStateData, fetchStateDetails} from '../../Service/Api.jsx';
 const BusinessPartner = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -19,6 +19,10 @@ const BusinessPartner = () => {
 
 
   const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
+
+
   useEffect(() => {
     const loadCountries = async () => {
       try {
@@ -42,12 +46,45 @@ const BusinessPartner = () => {
   };
 
 
+  // state 
+  useEffect(() => {
+    const loadStateData = async () => {
+      try {
+        const stateData = await fetchStateData();
+        setStates(stateData); // Assuming the API returns an array of states
+      } catch (error) {
+        console.error("Error fetching state data:", error);
+      }
+    };
+
+    loadStateData();
+  }, []);
+
+  // Handle state change
+  const handleStateChange = async (e) => {
+    const selectedState = e.target.value;
+    setFormData({ ...formData, state: selectedState });
+
+    try {
+      const stateDetails = await fetchStateDetails(selectedState);
+      setFormData({
+        ...formData,
+        state: selectedState,
+        state_code: stateDetails.code,
+        gst_code: stateDetails.gst_code,
+        city: "", // Reset city when state changes
+      });
+      setCities(stateDetails.cities || []);
+    } catch (error) {
+      console.error(`Error fetching details for state ${selectedState}:`, error);
+    }
+  };
+
   const [formData, setFormData] = useState({
     cust_supp_name: "",
     add_code: "",
     partner_name: "",
-    address: "",
-   
+    address: "",  
     city: "",
     pin_code: "",
     email: "",
@@ -73,6 +110,21 @@ const BusinessPartner = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
     setErrors({ ...errors, [e.target.id]: "" });
+    const { name, value } = e.target;
+
+    // Update the form data
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+    if (name === "GST_No" && value.length >= 3) {
+      const lastThreeDigits = value.slice(-3);
+      const updatedGST_No = `${formData.state_code}${formData.pan_no}${lastThreeDigits}`;
+      setFormData({
+        ...formData,
+        gst_no: updatedGST_No,
+      });
+    }
   };
 
   const handleClear = () => {
@@ -81,7 +133,7 @@ const BusinessPartner = () => {
       add_code: "",
       partner_name: "",
       address: "",
-     
+      state:"",
       city: "",
       pin_code: "",
       email: "",
@@ -203,7 +255,7 @@ const BusinessPartner = () => {
                                 htmlFor="cust_supp_name"
                                 className="col-sm-3 col-form-label"
                               >
-                                Cust / Supp Name:
+                                Cust / Supp Name:<span className="text-danger">*</span>
                               </label>
                               <div className="col-sm-6">
                                 <input
@@ -231,7 +283,7 @@ const BusinessPartner = () => {
                                 htmlFor="add_code"
                                 className="col-sm-3 col-form-label"
                               >
-                                Add Code:
+                                Add Code:<span className="text-danger">*</span>
                               </label>
                               <div className="col-sm-8">
                                 <input
@@ -253,7 +305,7 @@ const BusinessPartner = () => {
                                 htmlFor="partner_name"
                                 className="col-sm-3 col-form-label"
                               >
-                                Partner Name:
+                                Partner Name:<span className="text-danger">*</span>
                               </label>
                               <div className="col-sm-8">
                                 <input
@@ -270,76 +322,8 @@ const BusinessPartner = () => {
                                 )}
                               </div>
                             </div>
-                            <div className="row mb-5">
-                              <label
-                                htmlFor="address"
-                                className="col-sm-3 col-form-label"
-                              >
-                                Address:
-                              </label>
-                              <div className="col-sm-8">
-                                <input
-                                  type="text"
-                                  placeholder="Address"
-                                  className="form-control"
-                                  id="address"
-                                  value={formData.address}
-                                  onChange={handleChange}
-                                />
-                                {errors.address && (
-                                  <div className="text-danger">
-                                    {errors.address1}
-                                  </div>
-                                )}
-                                <br />
-                               
-                              </div>
-                            </div>
-                            <div className="row mb-3">
-                              <label
-                                htmlFor="city"
-                                className="col-sm-3 col-form-label"
-                              >
-                                City:
-                              </label>
-                              <div className="col-sm-8">
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  id="city"
-                                  placeholder="City"
-                                  value={formData.city}
-                                  onChange={handleChange}
-                                />
-                                {/* {errors.city && (
-                                  <div className="text-danger">
-                                    {errors.city}
-                                  </div>
-                                )} */}
-                              </div>
-                            </div>
-                            <div className="row mb-3">
-                              <label
-                                htmlFor="pin_code"
-                                className="col-sm-3 col-form-label"
-                              >
-                                Pin Code:
-                              </label>
-                              <div className="col-sm-8">
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  id="pin_code"
-                                  value={formData.pin_code}
-                                  onChange={handleChange}
-                                />
-                                {/* {errors.pin_code && (
-                                  <div className="text-danger">
-                                    {errors.pin_code}
-                                  </div>
-                                )} */}
-                              </div>
-                            </div>
+                        
+                         
                             <div className="row mb-3">
                               <label
                                 htmlFor="email"
@@ -362,8 +346,6 @@ const BusinessPartner = () => {
                                 )} */}
                               </div>
                             </div>
-                          </div>
-                          <div className="col-md-6">
                             <div className="row mb-3">
                               <label
                                 htmlFor="contact_no"
@@ -386,130 +368,7 @@ const BusinessPartner = () => {
                                 )} */}
                               </div>
                             </div>
-                            <div className="row mb-3">
-                              <label
-                                htmlFor="state_code"
-                                className="col-sm-3 col-form-label"
-                              >
-                                State Code:
-                              </label>
-                              <div className="col-sm-8">
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  id="state_code"
-                                  value={formData.state_code}
-                                  onChange={handleChange}
-                                />
-                                {/* {errors.state_code && (
-                                  <div className="text-danger">
-                                    {errors.state_code}
-                                  </div>
-                                )} */}
-                              </div>
-                            </div>
-                            <div className="row mb-3">
-                              <label
-                                htmlFor="country"
-                                className="col-sm-3 col-form-label"
-                              >
-                                Country:
-                              </label>
-                              <div className="col-sm-8">
-                                <select
-                                  className="form-select"
-                                  id="country"
-                                  name="country"
-                                  value={formData.country}
-                                  onChange={handleDropdownChange}
-                                >
-                                  <option value="">Select</option>
-                                  {countries.map((country, index) => (
-            <option key={index} value={country.name}>
-              {country.name}
-            </option>
-          ))}
-                                </select>
-                                {/* {errors.country && (
-                                  <div className="text-danger">
-                                    {errors.country}
-                                  </div>
-                                )} */}
-                              </div>
-                              
-                            </div>
-                            <div className="row mb-3">
-                              <label
-                                htmlFor="gst_no"
-                                className="col-sm-3 col-form-label"
-                              >
-                                GST No:
-                              </label>
-                              <div className="col-sm-8">
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  id="gst_no"
-                                  placeholder="12ABCDE1234Z1X"
-                                  value={formData.gst_no}
-                                  onChange={handleChange}
-                                />
-                                {/* {errors.gst_no && (
-                                  <div className="text-danger">
-                                    {errors.gst_no}
-                                  </div>
-                                )} */}
-                              </div>
-                            </div>
-                            <div className="row mb-3">
-                              <label
-                                htmlFor="gst_code"
-                                className="col-sm-3 col-form-label"
-                              >
-                                GST Code:
-                              </label>
-                              <div className="col-sm-8">
-                                <select
-                                  className="form-select"
-                                  id="gst_code"
-                                  value={formData.gst_code}
-                                  onChange={handleChange}
-                                >
-                                  <option value="">Select</option>
-                                  <option value="1">CGST + SGST</option>
-                                  <option value="2">IGST</option>
-                                  <option value="3">UTGST</option>
-                                  <option value="4">NA</option>
-                                </select>
-                                {/* {errors.gst_code && (
-                                  <div className="text-danger">
-                                    {errors.gst_code}
-                                  </div>
-                                )} */}
-                              </div>
-                            </div>
-                            <div className="row mb-3">
-                              <label
-                                htmlFor="pan_no"
-                                className="col-sm-3 col-form-label"
-                              >
-                                PAN No:
-                              </label>
-                              <div className="col-sm-8">
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  id="pan_no"
-                                  value={formData.pan_no}
-                                  onChange={handleChange}
-                                />
-                                {/* {errors.pan_no && (
-                                  <div className="text-danger">
-                                    {errors.pan_no}
-                                  </div>
-                                )} */}
-                              </div>
-                            </div>
+                        
                             <div className="row mb-3">
                               <label
                                 htmlFor="distance"
@@ -580,6 +439,252 @@ const BusinessPartner = () => {
                                 )} */}
                               </div>
                               </div>
+                          </div>
+                          <div className="col-md-6">
+                           
+                          
+                            <div className="row mb-3">
+                              <label
+                                htmlFor="country"
+                                className="col-sm-3 col-form-label"
+                              >
+                                Country:
+                              </label>
+                              <div className="col-sm-8">
+                                <select
+                                  className="form-select"
+                                  id="country"
+                                  name="country"
+                                  value={formData.country}
+                                  onChange={handleDropdownChange}
+                                >
+                                  <option value="">Select</option>
+                                  {countries.map((country, index) => (
+            <option key={index} value={country.name}>
+              {country.name}
+            </option>
+          ))}
+                                </select>
+                                {/* {errors.country && (
+                                  <div className="text-danger">
+                                    {errors.country}
+                                  </div>
+                                )} */}
+                              </div>
+                              
+                            </div>
+                            <div className="row mb-3">
+                              <label
+                                htmlFor="state"
+                                className="col-sm-3 col-form-label"
+                              >
+                                State:
+                              </label>
+                              <div className="col-sm-8">
+                              <select
+                      className="form-select"
+                      id="state"
+                      value={formData.state}
+                      onChange={handleStateChange}
+                    >
+                      <option value="">Select State</option>
+                      {states.map((state) => (
+                        <option key={state.name} value={state.name}>
+                          {state.name}
+                        </option>
+                      ))}
+                    </select>
+                                {errors.state && (
+                                  <div className="text-danger">
+                                    {errors.state}
+                                  </div>
+                                )}
+                              
+                               
+                              </div>
+                            </div>
+                            <div className="row mb-3">
+                              <label
+                                htmlFor="state_code"
+                                className="col-sm-3 col-form-label"
+                              >
+                                State Code:
+                              </label>
+                              <div className="col-sm-8">
+                              <input
+                      type="text"
+                      className="form-control"
+                      id="state_code"
+                      name="state_code"
+                      value={formData.state_code}
+                      readOnly
+                    />
+                                {/* {errors.state_code && (
+                                  <div className="text-danger">
+                                    {errors.state_code}
+                                  </div>
+                                )} */}
+                              </div>
+                            </div>
+                            <div className="row mb-3">
+                              <label
+                                htmlFor="gst_code"
+                                className="col-sm-3 col-form-label"
+                              >
+                                GST Code:
+                              </label>
+                              <div className="col-sm-8">
+                              <select
+                                                id="gst_code"
+                                                name="gst_code"
+                                                className="form-select"
+                                                value={formData.gst_code}
+                                                onChange={handleChange}
+                                              >
+                                                <option value="" disabled>
+                                                  Select ..
+                                                </option>
+                                                <option value="CGST + SGST">
+                                                  CGST + SGST
+                                                </option>
+                                                <option value="IGST">
+                                                  IGST
+                                                </option>
+                                                <option value="UTGST">
+                                                  UTGST
+                                                </option>
+                                                <option value="NA">NA</option>
+                                              </select>
+                                {/* {errors.gst_code && (
+                                  <div className="text-danger">
+                                    {errors.gst_code}
+                                  </div>
+                                )} */}
+                              </div>
+                            </div>
+                           
+                            <div className="row mb-3">
+                              <label
+                                htmlFor="city"
+                                className="col-sm-3 col-form-label"
+                              >
+                                City:
+                              </label>
+                              <div className="col-sm-8">
+                              <select
+                      className="form-select"
+                      id="city"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                    >
+                      <option value="">Select City</option>
+                      {cities.map((city, index) => (
+                        <option key={index} value={city}>
+                          {city}
+                        </option>
+                      ))}
+                    </select>
+                                {/* {errors.city && (
+                                  <div className="text-danger">
+                                    {errors.city}
+                                  </div>
+                                )} */}
+                              </div>
+                            </div>
+                            <div className="row mb-3">
+                              <label
+                                htmlFor="address"
+                                className="col-sm-3 col-form-label"
+                              >
+                                Address:
+                              </label>
+                              <div className="col-sm-8">
+                                <input
+                                  type="text"
+                                  placeholder="Address"
+                                  className="form-control"
+                                  id="address"
+                                  value={formData.address}
+                                  onChange={handleChange}
+                                />
+                                {errors.address && (
+                                  <div className="text-danger">
+                                    {errors.address1}
+                                  </div>
+                                )}
+                              
+                               
+                              </div>
+                            </div>
+                            <div className="row mb-3">
+                              <label
+                                htmlFor="gst_no"
+                                className="col-sm-3 col-form-label"
+                              >
+                                GST No:
+                              </label>
+                              <div className="col-sm-8">
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="gst_no"
+                                  placeholder="12ABCDE1234Z1X"
+                                  value={formData.gst_no}
+                                  onChange={handleChange}
+                                />
+                                {/* {errors.gst_no && (
+                                  <div className="text-danger">
+                                    {errors.gst_no}
+                                  </div>
+                                )} */}
+                              </div>
+                            </div>
+                            <div className="row mb-3">
+                              <label
+                                htmlFor="pin_code"
+                                className="col-sm-3 col-form-label"
+                              >
+                                Pin Code:
+                              </label>
+                              <div className="col-sm-8">
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="pin_code"
+                                  value={formData.pin_code}
+                                  onChange={handleChange}
+                                />
+                                {/* {errors.pin_code && (
+                                  <div className="text-danger">
+                                    {errors.pin_code}
+                                  </div>
+                                )} */}
+                              </div>
+                            </div>
+                            <div className="row mb-3">
+                              <label
+                                htmlFor="pan_no"
+                                className="col-sm-3 col-form-label"
+                              >
+                                PAN No:
+                              </label>
+                              <div className="col-sm-8">
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="pan_no"
+                                  value={formData.pan_no}
+                                  onChange={handleChange}
+                                />
+                                {/* {errors.pan_no && (
+                                  <div className="text-danger">
+                                    {errors.pan_no}
+                                  </div>
+                                )} */}
+                              </div>
+                            </div>
+                          
                               <div className="row mb-3 text-end">
                               <div className="col-sm-10">
                                 <button type="submit" className="btn-ty">

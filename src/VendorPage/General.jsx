@@ -1,13 +1,56 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import "./VendorPage.css";
-
+import axios from "axios";
+import { fetchStateData ,fetchStateDetails,fetchCountries } from "../Service/Api";
 const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
   const [errors, setErrors] = useState({});
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [countries, setCountries] = useState([]);
 
-  const handleChange = (e) => {
+
+  const handleChange =  async(e) => {
     const { name, value } = e.target;
     onFormDataChange({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: !value });
+    let error = "";
+
+    // Real-time validation
+    switch (name) {
+      case "email":
+        if (!/\S+@\S+\.\S+/.test(value)) {
+          error = "Invalid email format";
+        } else {
+          try {
+            const response = await axios.post("http://13.201.136.34:8000/vendor/register/", { email: value });
+            if (response.data.exists) {
+              error = "Email is already registered";
+            }
+          } catch (err) {
+            console.error("Error checking email", err);
+          }
+        }
+        break;
+      case "password2":
+        if (value !== formData.password) {
+          error = "Passwords do not match";
+        }
+        break;
+      case "contact_no":
+        if (!/^\+?\d{10,15}$/.test(value)) {
+          error = "Invalid contact number";
+        }
+        break;
+      case "website":
+        if (!/^https?:\/\/[^\s$.?#].[^\s]*$/.test(value)) {
+          error = "Invalid website URL";
+        }
+        break;
+      default:
+        error = !value ? "This field is required" : "";
+        break;
+    }
+
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
   };
 
   const validateForm = () => {
@@ -18,18 +61,20 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
       "website",
       "email",
       "password",
+      "password2",
       "contact_no",
       "footer_message",
       "director_name",
-      "msme_no",
+     
       "address",
       "pin_code",
       "city",
+      "country",
       "state",
-      "password2",
-      "district_code",
+     
+      
       "state_no_numeric",
-      "state_code_alpha",
+     
     ];
 
     requiredFields.forEach((field) => {
@@ -37,6 +82,10 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
         newErrors[field] = "This field is required";
       }
     });
+
+    if (formData.password !== formData.password2) {
+      newErrors.password2 = "Passwords do not match";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -54,6 +103,67 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
     e.preventDefault();
     // Perform form submission logic here
   };
+
+
+
+
+  useEffect(() => {
+    // Fetch state data when the component mounts
+    const loadStateData = async () => {
+      try {
+        const data = await fetchStateData();
+        setStates(data);  // Assuming the response is an array of states
+      } catch (error) {
+        console.error("Error loading state data:", error);
+      }
+    };
+
+    loadStateData();
+  }, []);
+  const handleStateChange = async (e) => {
+    const selectedState = e.target.value;
+    onFormDataChange({ ...formData, state: selectedState });
+
+    try {
+      const stateData = await fetchStateDetails(selectedState);
+      
+      if (stateData) {
+        // Update state code and cities
+        onFormDataChange({
+          ...formData,
+          state: selectedState,
+          state_no_numeric: stateData.code,
+          city: "",  // Reset the city field
+        });
+        setCities(stateData.cities || []);
+      }
+    } catch (error) {
+      console.error(`Error fetching details for state ${selectedState}:`, error);
+    }
+  };
+
+  const handleCityChange = (e) => {
+    const selectedCity = e.target.value;
+    onFormDataChange({ ...formData, city: selectedCity });
+  };
+
+
+  // Country
+
+  useEffect(() => {
+    // Fetch country data when the component mounts
+    const loadCountries = async () => {
+      try {
+        const data = await fetchCountries();
+        setCountries(data);  // Assuming the response is an array of countries
+      } catch (error) {
+        console.error("Error loading country data:", error);
+      }
+    };
+
+    loadCountries();
+  }, []);
+
 
   return (
     <div className="VendorGeneral">
@@ -164,6 +274,25 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                   </div>
                 </div>
                 <div className="row mb-3">
+                <label htmlFor="password2" className="col-sm-4 col-form-label">
+                  Confirm Password
+                </label>
+                <div className="col-sm-8">
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password2"
+                    name="password2"
+                    value={formData.password2}
+                    onChange={handleChange}
+                    placeholder="*********"
+                  />
+                  {errors.password2 && (
+                    <div className="text-danger">{errors.password2}</div>
+                  )}
+                </div>
+              </div>
+                <div className="row mb-3">
                   <label
                     htmlFor="contact_no"
                     className="col-sm-4 col-form-label"
@@ -208,47 +337,134 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                     )}
                   </div>
                 </div>
-                <div className="row mb-3">
-                  <label
-                    htmlFor="director_name"
-                    className="col-sm-4 col-form-label"
-                  >
-                    Director Name
-                  </label>
-                  <div className="col-sm-8">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="director_name"
-                      name="director_name"
-                      value={formData.director_name}
-                      onChange={handleChange}
-                      placeholder="Mr. John Doe"
-                    />
-                    {errors.director_name && (
-                      <div className="text-danger">{errors.director_name}</div>
-                    )}
-                  </div>
-                </div>
+               
               </div>
             </div>
             <div className="col-md-6">
+              
+            
               <div className="row mb-3">
-                <label htmlFor="msme_no" className="col-sm-4 col-form-label">
-                  MSME Number
+                <label htmlFor="pin_code" className="col-sm-4 col-form-label">
+                  Pin Code
                 </label>
                 <div className="col-sm-8">
                   <input
                     type="text"
                     className="form-control"
-                    id="msme_no"
-                    name="msme_no"
-                    value={formData.msme_no}
+                    id="pin_code"
+                    name="pin_code"
+                    value={formData.pin_code}
                     onChange={handleChange}
-                    placeholder="MSME123456"
+                    placeholder="110001"
                   />
-                  {errors.msme_no && (
-                    <div className="text-danger">{errors.msme_no}</div>
+                  {errors.pin_code && (
+                    <div className="text-danger">{errors.pin_code}</div>
+                  )}
+                </div>
+              </div>
+             
+              <div className="row mb-3">
+                <label
+                  htmlFor="country"
+                  className="col-sm-4 col-form-label"
+                >
+                  Country
+                </label>
+                <div className="col-sm-8">
+                  <select
+                      className="form-control"
+                      id="country"
+                      name="country"
+                      value={formData.country}
+                      onChange={handleChange}
+                      placeholder="Select Country"
+                    >
+                      <option value="" disabled>Select Country</option>
+                      {countries.map((country, index) => (
+                        <option key={index} value={country.name}>
+                          {country.name}
+                        </option>
+                      ))}
+                    </select>
+                  {errors.country && (
+                    <div className="text-danger">{errors.country}</div>
+                  )}
+                </div>
+              </div>
+              <div className="row mb-3">
+                <label htmlFor="state" className="col-sm-4 col-form-label">
+                  State
+                </label>
+                <div className="col-sm-8">
+                  
+                   <select
+                      className="form-control"
+                      id="state"
+                      name="state"
+                      value={formData.state}
+                      onChange={handleStateChange}
+                      placeholder="Select State"
+                    >
+                      <option value="" disabled>Select State</option>
+                      {states.map((state, index) => (
+                        <option key={index} value={state.name}>
+                          {state.name}
+                        </option>
+                      ))}
+                    </select>
+
+                  {errors.state && (
+                    <div className="text-danger">{errors.state}</div>
+                  )}
+                </div>
+              </div>
+              
+           
+              <div className="row mb-3">
+                <label
+                  htmlFor="state_no_numeric"
+                  className="col-sm-4 col-form-label"
+                >
+                  State code
+                </label>
+                <div className="col-sm-8">
+                  <input
+                    type="text"
+                      className="form-control"
+                      id="state_no_numeric"
+                      name="state_no_numeric"
+                      value={formData.state_no_numeric}
+                      onChange={handleChange}
+                      placeholder="State Code"
+                      readOnly
+                  />
+                  {errors.state_no_numeric && (
+                    <div className="text-danger">{errors.state_no_numeric}</div>
+                  )}
+                </div>
+              </div>
+              <div className="row mb-3">
+                <label htmlFor="city" className="col-sm-4 col-form-label">
+                  City
+                </label>
+                <div className="col-sm-8">
+                <select
+                      className="form-control"
+                      id="city"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleCityChange}
+                      placeholder="Select City"
+                    >
+                      <option value="" disabled>Select City</option>
+                      {cities.map((city, index) => (
+                        <option key={index} value={city}>
+                          {city}
+                        </option>
+                      ))}
+                    </select>
+                  {errors.city && (
+                    <div className="text-danger">{errors.city}</div>
                   )}
                 </div>
               </div>
@@ -271,148 +487,29 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                   )}
                 </div>
               </div>
-              <div className="row mb-3">
-                <label htmlFor="pin_code" className="col-sm-4 col-form-label">
-                  Pin Code
-                </label>
-                <div className="col-sm-8">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="pin_code"
-                    name="pin_code"
-                    value={formData.pin_code}
-                    onChange={handleChange}
-                    placeholder="110001"
-                  />
-                  {errors.pin_code && (
-                    <div className="text-danger">{errors.pin_code}</div>
-                  )}
+                <div className="row mb-3">
+                  <label
+                    htmlFor="director_name"
+                    className="col-sm-4 col-form-label"
+                  >
+                    Director Name
+                  </label>
+                  <div className="col-sm-8">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="director_name"
+                      name="director_name"
+                      value={formData.director_name}
+                      onChange={handleChange}
+                      placeholder="Mr. John Doe"
+                    />
+                    {errors.director_name && (
+                      <div className="text-danger">{errors.director_name}</div>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className="row mb-3">
-                <label htmlFor="city" className="col-sm-4 col-form-label">
-                  City
-                </label>
-                <div className="col-sm-8">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="city"
-                    name="city"
-                    value={formData.city}
-                    onChange={handleChange}
-                    placeholder="New Delhi"
-                  />
-                  {errors.city && (
-                    <div className="text-danger">{errors.city}</div>
-                  )}
-                </div>
-              </div>
-              <div className="row mb-3">
-                <label htmlFor="state" className="col-sm-4 col-form-label">
-                  State
-                </label>
-                <div className="col-sm-8">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="state"
-                    name="state"
-                    value={formData.state}
-                    onChange={handleChange}
-                    placeholder="Delhi"
-                  />
-                  {errors.state && (
-                    <div className="text-danger">{errors.state}</div>
-                  )}
-                </div>
-              </div>
-              <div className="row mb-3">
-                <label htmlFor="password2" className="col-sm-4 col-form-label">
-                  Confirm Password
-                </label>
-                <div className="col-sm-8">
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password2"
-                    name="password2"
-                    value={formData.password2}
-                    onChange={handleChange}
-                    placeholder="*********"
-                  />
-                  {errors.password2 && (
-                    <div className="text-danger">{errors.password2}</div>
-                  )}
-                </div>
-              </div>
-              <div className="row mb-3">
-                <label
-                  htmlFor="district_code"
-                  className="col-sm-4 col-form-label"
-                >
-                  District Code
-                </label>
-                <div className="col-sm-8">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="district_code"
-                    name="district_code"
-                    value={formData.district_code}
-                    onChange={handleChange}
-                    placeholder="DL"
-                  />
-                  {errors.district_code && (
-                    <div className="text-danger">{errors.district_code}</div>
-                  )}
-                </div>
-              </div>
-              <div className="row mb-3">
-                <label
-                  htmlFor="state_no_numeric"
-                  className="col-sm-4 col-form-label"
-                >
-                  State Number (Numeric)
-                </label>
-                <div className="col-sm-8">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="state_no_numeric"
-                    name="state_no_numeric"
-                    value={formData.state_no_numeric}
-                    onChange={handleChange}
-                    placeholder="07"
-                  />
-                  {errors.state_no_numeric && (
-                    <div className="text-danger">{errors.state_no_numeric}</div>
-                  )}
-                </div>
-              </div>
-              <div className="row mb-3">
-                <label
-                  htmlFor="state_code_alpha"
-                  className="col-sm-4 col-form-label"
-                >
-                  State Code (Alpha)
-                </label>
-                <div className="col-sm-8">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="state_code_alpha"
-                    name="state_code_alpha"
-                    value={formData.state_code_alpha}
-                    onChange={handleChange}
-                    placeholder="DL"
-                  />
-                  {errors.state_code_alpha && (
-                    <div className="text-danger">{errors.state_code_alpha}</div>
-                  )}
-                </div>
-              </div>
+            
               <div className="row mb-3">
                 <div className="col-md-12 text-end">
                   <button

@@ -30,8 +30,13 @@ const ItemMaster = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [itemData, setItemData] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; // Set the number of items per page
+
+
 
   const handleSearch = async () => {
+
     try {
       const data = await fetchData(searchQuery);
       setItemData(data);
@@ -50,6 +55,18 @@ const ItemMaster = () => {
       console.error("Error fetching all items:", error);
     }
   };
+
+  const currentItems = itemData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const totalPages = Math.ceil(totalRecords / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
 
   return (
     <div className="itemaa">
@@ -178,7 +195,7 @@ const ItemMaster = () => {
                               </tr>
                             </thead>
                             <tbody>
-                              {itemData.map((item) => (
+                              {currentItems.map((item) => (
                                 <tr key={item.id}>
                                   <td>{item.id}</td>
                                   <td>{item.SE_Item}</td>
@@ -219,6 +236,30 @@ const ItemMaster = () => {
                       </div>
                   
                   </div>
+                  <div className="pagination-container">
+  <div className="row">
+    <div className="col-md-12 text-end">
+      <nav aria-label="Page navigation">
+        <ul className="pagination">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <li
+              key={index + 1}
+              className={`page-item ${currentPage === index + 1 ? "active" : ""}`}
+            >
+              <button
+                className="page-link"
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
                 </div>
               </main>
             </div>

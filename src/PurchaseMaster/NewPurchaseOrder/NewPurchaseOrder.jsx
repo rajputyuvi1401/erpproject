@@ -10,7 +10,7 @@ import ItemOther from "./ItemOther/ItemOther.jsx";
 import Schedule from "./Schedule/Schedule.jsx";
 import Ship from "./Ship/Ship.jsx";
 import Poinfo from "./POInfo/Poinfo.jsx";
-import { fetchSupplierData } from '../../Service/PurchaseApi.jsx';
+import { fetchSupplierData } from "../../Service/PurchaseApi.jsx";
 const NewPurchaseOrder = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -26,65 +26,33 @@ const NewPurchaseOrder = () => {
     }
   }, [sideNavOpen]);
 
-
-  const [supplierData, setSupplierData] = useState([]);
-  const [selectedSupplier, setSelectedSupplier] = useState('');
-  const [selectedCode, setSelectedCode] = useState('');
+  const [selectedSupplier, setSelectedSupplier] = useState("");
+  const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const data = await fetchSupplierData();
-        setSupplierData(data);
-      } catch (error) {
-        console.error("Error fetching initial data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handleSupplierChange = async (e) => {
     const supplierName = e.target.value;
     setSelectedSupplier(supplierName);
 
-    if (supplierName) {
-      try {
-        const data = await fetchSupplierData(supplierName);
-        if (data.length > 0) {
-          setSelectedCode(data[0].Code_No); // Assume the first result is the correct one
-        } else {
-          setSelectedCode('');
-        }
-      } catch (error) {
-        console.error("Error fetching supplier code:", error);
-      }
-    } else {
-      setSelectedCode('');
+    if (supplierName.trim() === "") {
+      setCode("");
+      return;
     }
-  };
 
-  const handleCodeChange = async (e) => {
-    const code = e.target.value;
-    setSelectedCode(code);
-
-    if (code) {
-      try {
-        const data = await fetchSupplierData(code);
-        if (data.length > 0) {
-          setSelectedSupplier(data[0].Name); // Assume the first result is the correct one
-        } else {
-          setSelectedSupplier('');
-        }
-      } catch (error) {
-        console.error("Error fetching supplier name:", error);
+    setLoading(true);
+    try {
+      const suppliers = await fetchSupplierData(supplierName);
+      if (suppliers.length > 0) {
+        const supplier = suppliers[0]; // Assuming the first match is the correct one
+        setCode(supplier.Code_No);
+      } else {
+        setCode("");
       }
-    } else {
-      setSelectedSupplier('');
+    } catch (error) {
+      console.error("Error fetching supplier data:", error);
+      setCode("");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -113,10 +81,9 @@ const NewPurchaseOrder = () => {
                           <select className="form-control">
                             <option value="">CLOSE</option>
                             <option value="option1">OPEN</option>
-                            
                           </select>
                         </div>
-                        
+
                         <div className="col-md-1">
                           <label>Series:</label>
                           <select className="form-control">
@@ -130,36 +97,30 @@ const NewPurchaseOrder = () => {
                           <label>Indent No:</label>
                           <input type="text" className="form-control" />
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <label>Supplier:</label>
                           <input
-              type="text"
-              className="form-control"
-              value={selectedSupplier}
-              onChange={handleSupplierChange}
-              disabled={loading}
-            />
+                            type="text"
+                            className="form-control"
+                            value={selectedSupplier}
+                            onChange={handleSupplierChange}
+                            disabled={loading}
+                          />
                         </div>
                         <div className="col-md-1">
-                        <button className="btn  mt-4" onClick={() => {}}>
-            Select
-          </button>
+                          <button className="btn  mt-4" onClick={() => {}}>
+                            Select
+                          </button>
                         </div>
                         <div className="col-md-1">
                           <label>Code:</label>
-                          <select
-              className="form-control"
-              value={selectedCode}
-              onChange={handleCodeChange}
-              disabled={loading}
-            >
-              <option value="">Select Code</option>
-              {supplierData.map((supplier) => (
-                <option key={supplier.id} value={supplier.Code_No}>
-                  {supplier.Code_No}
-                </option>
-              ))}
-            </select>
+                          <input
+                            type="text"
+                            className="form-control"
+                            value={code}
+                            onChange={(e) => setCode(e.target.value)}
+                            disabled={loading}
+                          />
                         </div>
                         <div className="col-md-1 text-start mt-4">
                           <i
@@ -326,7 +287,7 @@ const NewPurchaseOrder = () => {
                           aria-labelledby="pills-PO-Info-tab"
                           tabindex="0"
                         >
-                          <Poinfo/>
+                          <Poinfo />
                         </div>
                       </div>
                     </div>

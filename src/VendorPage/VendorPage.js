@@ -26,14 +26,15 @@ const VendorPage = () => {
     contact_no: "",
     footer_message: "",
     director_name: "",
-    msme_no: "",
+    
     address: "",
     pin_code: "",
     city: "",
+    country:"",
     state: "",
-    district_code: "",
+   
     state_no_numeric: "",
-    state_code_alpha: "",
+    
     VAT_TIN: "",
     CST_TIN: "",
     C_Excise_Range: "",
@@ -54,9 +55,6 @@ const VendorPage = () => {
     CIN_NO: "",
     Import_Export_Date: "",
     ARN_Date: "",
-    LUT_NO: "",
-    LUT_Date: "",
-
     login_logo: null,
     home_logo: null,
     company_logo: null,

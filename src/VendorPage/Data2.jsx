@@ -12,10 +12,11 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
       "email",
       "company_name",
       "short_name",
-      "msme_no",
+     
       "password",
       "password2",
       "city",
+      "country",
       "address",
       "website",
       "contact_no",
@@ -23,9 +24,9 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
       "director_name",
       "pin_code",
       "state",
-      "district_code",
+     
       "state_no_numeric",
-      "state_code_alpha",
+      
       "VAT_TIN",
       "CST_TIN",
       "C_Excise_Range",
@@ -43,7 +44,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
       "ECC_No",
       "PAN_No",
       "CIN_NO",
-      "LUT_NO",
+     
     ];
 
     requiredFields.forEach((field) => {
@@ -206,21 +207,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
                     )}
                   </div>
                 </div>
-                <div className="row mb-3">
-                  <label className="col-sm-4 col-form-label">ARN No:</label>
-                  <div className="col-sm-8">
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="ARN_No"
-                      value={formData.ARN_No || ""}
-                      onChange={handleChange}
-                    />
-                    {errors.ARN_No && (
-                      <div className="text-danger">{errors.ARN_No}</div>
-                    )}
-                  </div>
-                </div>
+             
                 <div className="row mb-3">
                   <label className="col-sm-4 col-form-label">
                     Export House No:
@@ -242,7 +229,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
                 </div>
                 <div className="row mb-3">
                   <label className="col-sm-4 col-form-label">
-                    Udyog Aadhar No:
+                    Udyog Aadhar No/MSME No:
                   </label>
                   <div className="col-sm-8">
                     <input
@@ -420,32 +407,17 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label className="col-sm-4 col-form-label">LUT NO:</label>
+                  <label className="col-sm-4 col-form-label">ARN No:</label>
                   <div className="col-sm-8">
                     <input
                       type="text"
                       className="form-control"
-                      name="LUT_NO"
-                      value={formData.LUT_NO || ""}
+                      name="ARN_No"
+                      value={formData.ARN_No || ""}
                       onChange={handleChange}
                     />
-                    {errors.LUT_NO && (
-                      <div className="text-danger">{errors.LUT_NO}</div>
-                    )}
-                  </div>
-                </div>
-                <div className="row mb-3">
-                  <label className="col-sm-4 col-form-label">LUT Date:</label>
-                  <div className="col-sm-8">
-                    <input
-                      type="date"
-                      className="form-control"
-                      name="LUT_Date"
-                      value={formData.LUT_Date || ""}
-                      onChange={handleChange}
-                    />
-                    {errors.LUT_Date && (
-                      <div className="text-danger">{errors.LUT_Date}</div>
+                    {errors.ARN_No && (
+                      <div className="text-danger">{errors.ARN_No}</div>
                     )}
                   </div>
                 </div>
