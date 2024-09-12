@@ -90,7 +90,7 @@ const BusinessPartner = () => {
     email: "",
     contact_no: "",
     state_code: "",
-    country: "",
+    country: "India",
     gst_no: "",
     gst_code: "",
     pan_no: "",
@@ -290,6 +290,7 @@ const BusinessPartner = () => {
                                   type="text"
                                   className="form-control"
                                   id="add_code"
+                                  name="add_code"
                                   value={formData.add_code}
                                   onChange={handleChange}
                                 />
@@ -312,6 +313,7 @@ const BusinessPartner = () => {
                                   type="text"
                                   className="form-control"
                                   id="partner_name"
+                                  name="partner_name"
                                   value={formData.partner_name}
                                   onChange={handleChange}
                                 />
@@ -336,6 +338,7 @@ const BusinessPartner = () => {
                                   type="email"
                                   className="form-control"
                                   id="email"
+                                  name="email"
                                   value={formData.email}
                                   onChange={handleChange}
                                 />
@@ -358,6 +361,7 @@ const BusinessPartner = () => {
                                   type="text"
                                   className="form-control"
                                   id="contact_no"
+                                  name="contact_no"
                                   value={formData.contact_no}
                                   onChange={handleChange}
                                 />
@@ -381,9 +385,11 @@ const BusinessPartner = () => {
                                   type="text"
                                   className="form-control"
                                   id="distance"
+                                  name="distance"
                                   value={formData.distance}
                                   onChange={handleChange}
                                 />
+                                 
                                 {/* {errors.distance && (
                                   <div className="text-danger">
                                     {errors.distance}
@@ -403,12 +409,36 @@ const BusinessPartner = () => {
                                   type="text"
                                   className="form-control"
                                   id="cin_no"
+                                  name="cin_no"
                                   value={formData.cin_no}
                                   onChange={handleChange}
                                 />
                                 {/* {errors.cin_no && (
                                   <div className="text-danger">
                                     {errors.cin_no}
+                                  </div>
+                                )} */}
+                              </div>
+                            </div>
+                            <div className="row mb-3">
+                              <label
+                                htmlFor="pan_no"
+                                className="col-sm-3 col-form-label"
+                              >
+                                PAN No:
+                              </label>
+                              <div className="col-sm-8">
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="pan_no"
+                                  name="pan_no"
+                                  value={formData.pan_no}
+                                  onChange={handleChange}
+                                />
+                                {/* {errors.pan_no && (
+                                  <div className="text-danger">
+                                    {errors.pan_no}
                                   </div>
                                 )} */}
                               </div>
@@ -424,6 +454,7 @@ const BusinessPartner = () => {
                                 <select
                                   className="form-select"
                                   id="invoice_type"
+                                  name="invoice_type"
                                   value={formData.invoice_type}
                                   onChange={handleChange}
                                 >
@@ -455,6 +486,7 @@ const BusinessPartner = () => {
                                   className="form-select"
                                   id="country"
                                   name="country"
+                                  
                                   value={formData.country}
                                   onChange={handleDropdownChange}
                                 >
@@ -605,6 +637,7 @@ const BusinessPartner = () => {
                                   placeholder="Address"
                                   className="form-control"
                                   id="address"
+                                  name="address"
                                   value={formData.address}
                                   onChange={handleChange}
                                 />
@@ -629,6 +662,7 @@ const BusinessPartner = () => {
                                   type="text"
                                   className="form-control"
                                   id="gst_no"
+                                  name="gst_no"
                                   placeholder="12ABCDE1234Z1X"
                                   value={formData.gst_no}
                                   onChange={handleChange}
@@ -652,6 +686,7 @@ const BusinessPartner = () => {
                                   type="text"
                                   className="form-control"
                                   id="pin_code"
+                                  name="pin_code"
                                   value={formData.pin_code}
                                   onChange={handleChange}
                                 />
@@ -662,28 +697,7 @@ const BusinessPartner = () => {
                                 )} */}
                               </div>
                             </div>
-                            <div className="row mb-3">
-                              <label
-                                htmlFor="pan_no"
-                                className="col-sm-3 col-form-label"
-                              >
-                                PAN No:
-                              </label>
-                              <div className="col-sm-8">
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  id="pan_no"
-                                  value={formData.pan_no}
-                                  onChange={handleChange}
-                                />
-                                {/* {errors.pan_no && (
-                                  <div className="text-danger">
-                                    {errors.pan_no}
-                                  </div>
-                                )} */}
-                              </div>
-                            </div>
+                           
                           
                               <div className="row mb-3 text-end">
                               <div className="col-sm-10">

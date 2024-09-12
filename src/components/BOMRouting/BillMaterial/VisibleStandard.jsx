@@ -117,243 +117,274 @@ const VisibleStandard = () => {
   };
 
   return (
-    <div>
-      <div className="card-body">
-        <ToastContainer/>
+    <div className="container">
+      <div className="card-body mb-4">
+        <ToastContainer />
         <div className="row mb-3">
           <div className="col-md-2 text-start">
             <label className="form-label">Std Routing No:</label>
           </div>
           <div className="col-md-4 text-start">
-            <select className="form-select">
-              <option>ALL</option>
-              <option></option>
+            <select
+              className="form-select"
+              name="Std_Routing_No"
+              value={formData.Std_Routing_No}
+              onChange={handleInputChange}
+            >
+              <option value="">ALL</option>
+              <option value="Value1">Value1</option>
+              <option value="Value2">Value2</option>
             </select>
+            {errors.Std_Routing_No && (
+              <span className="text-danger">{errors.Std_Routing_No}</span>
+            )}
           </div>
           <div className="col-md-6 text-end">
-            <button className="Standardbtn">Copy Routing Sheet</button>
+            <button className="Standardbtn me-2">Copy Routing Sheet</button>
             <button className="Standardbtn">Export To Excel</button>
           </div>
         </div>
         <form onSubmit={handleSave}>
-        <div className="row mb-3 text-start">
-          <div className="col-md-6">
-            <div className="row">
-              <div className="col-md-4">
-                <label htmlFor="">STD Routing No<span className="text-danger">*</span></label>
-              </div>
-              <div className="col-md-8">
-                <input
-                  type="text"
-                  name="Std_Routing_No"
-                  value={formData.Std_Routing_No}
-                  onChange={handleInputChange}
-                  className="form-control"
-                />
-                {errors.Std_Routing_No && <span className="text-danger">{errors.Std_Routing_No}</span>}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-4">
-                <label htmlFor="">Op No</label>
-              </div>
-              <div className="col-md-8">
-                <input
-                  type="text"
-                  name="Op_No"
-                  value={formData.Op_No}
-                  onChange={handleInputChange}
-                  className="form-control"
-                />
-                {errors.Op_No && <span className="text-danger">{errors.Op_No}</span>}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-4">
-                <label htmlFor="">Op Name</label>
-              </div>
-              <div className="col-md-8">
-              <select className="form-select">
-              <option>Select</option>
-              <option value="ASSEMLY">ASSEMLY</option>
-              <option value={"BENDING"}>BENDING</option>
-              <option value="BLACK PLATING">BLACK PLATING</option>
-              <option value={"BLOCKDISING"}>BLOCKDISING</option>
-              <option value="CED COATING">CED COATING</option>
-              <option value={"CHAKING"}>CHAKING</option>
-              <option value="CHAMPFER 1X45">CHAMPFER 1X45</option>
-              <option value={"CNC1"}>CNC1</option>
-              <option value="COLD FORGING">COLD FORGING</option>
-              <option value={"CROSS HOLE"}>CROSS HOLE</option>
-            </select>
-                {errors.Op_Name && <span className="text-danger">{errors.Op_Name}</span>}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-4">
-                <label htmlFor="">Ass Prod</label>
-              </div>
-              <div className="col-md-8">
-                <input
-                  type="text"
-                  name="Ass_Prod"
-                  value={formData.Ass_Prod}
-                  onChange={handleInputChange}
-                  className="form-control"
-                />
-                {errors.Ass_Prod && <span className="text-danger">{errors.Ass_Prod}</span>}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-4">
-                <label htmlFor="">Part Code</label>
-              </div>
-              <div className="col-md-8">
-                <input
-                  type="text"
-                  name="Part_Code"
-                  value={formData.Part_Code}
-                  onChange={handleInputChange}
-                  className="form-control"
-                />
-                {errors.Part_Code && <span className="text-danger">{errors.Part_Code}</span>}
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="row">
-              <div className="col-md-4">
-                <label htmlFor="">Part Type</label>
-              </div>
-              <div className="col-md-8">
-              <select className="form-select">
-              <option>Select</option>
-              <option value="RM">RM</option>
-              <option value={"COM"}>COM</option>
-              <option value={"BOM"}>BOM</option>
-              </select>
-                {errors.Part_Type && <span className="text-danger">{errors.Part_Type}</span>}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-4">
-                <label htmlFor="">WIP WT</label>
-              </div>
-              <div className="col-md-8">
-              <select className="form-select">
-              <option>Select</option>
-              <option value="CUT_WT">CUT_WT</option>
-              <option value={"FINISH_WT"}>FINISH_WT</option>
-              <option value={"GROSS_WT"}>GROSS_WT</option>
-              </select>
-                {errors.Wip_Wt && <span className="text-danger">{errors.Wip_Wt}</span>}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-4">
-                <label htmlFor="">Op Type</label>
-              </div>
-              <div className="col-md-8">
-                <input
-                  type="text"
-                  name="Op_Type"
-                  value={formData.Op_Type}
-                  onChange={handleInputChange}
-                  className="form-control"
-                />
-                {errors.Op_Type && <span className="text-danger">{errors.Op_Type}</span>}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-4">
-                <label htmlFor="">QC</label>
-              </div>
-              <div className="col-md-8">
-                <input
-                  type="text"
-                  name="QC"
-                  value={formData.QC}
-                  onChange={handleInputChange}
-                  className="form-control"
-                />
-                {errors.QC && <span className="text-danger">{errors.QC}</span>}
-              </div>
-            </div>
-          </div>
-          <div className="col-md-12 text-end">
-            <button
-              type="submit"
-              className="StandardButton"
-              style={{ marginTop: "24px" }}
-            >
-              {isEditing ? "Update" : "Save"}
-            </button>
-          </div>
-        </div>
-      </form>
-        <div className="row">
-          <div className="col-md-12 text-start">
-            <div className="table-responsive">
-              <table className="table table-bordered">
-                <thead>
-                  <tr>
-                    
-                    <th>Std Routing No</th>
-                    <th>Op No</th>
-                    <th>Op Name</th>
-                    <th>Part Type</th>
-                    <th>WIP WT</th>
-                    <th>Op Type</th>
-                    <th>QC</th>
-                    <th>Ass Prod</th>
-                    <th>Part Code</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.length > 0 ? (
-                    data.map((item) => (
-                      <tr key={item.id}>
-                        <td>{item.Std_Routing_No}</td>
-                        <td>{item.Op_No}</td>
-                        <td>{item.Op_Name}</td>
-                        <td>{item.Part_Type}</td>
-                        <td>{item.Wip_Wt}</td>
-                        <td>{item.Op_Type}</td>
-                        <td>{item.QC}</td>
-                        <td>{item.Ass_Prod}</td>
-                        <td>{item.Part_Code}</td>
-                        <td>
-                          <FaEdit
-                            className="text-primary mx-2"
-                            style={{ cursor: "pointer" }}
-                            onClick={() => handleEdit(item)}
-                          />
-                        </td>
-                        <td>
-                          <FaTrash
-                            className="text-danger mx-2"
-                            style={{ cursor: "pointer" }}
-                            onClick={() => handleDelete(item.id)}
-                          />
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan="11" className="text-center">
-                        No Records Found
-                      </td>
-                    </tr>
+          <div className="row mb-4 text-start">
+            <div className="col-md-6">
+              {/* <div className="row mb-3">
+                <div className="col-md-4">
+                  <label>
+                    STD Routing No<span className="text-danger">*</span>
+                  </label>
+                </div>
+                <div className="col-md-8">
+                  <input
+                    type="text"
+                    name="Std_Routing_No"
+                    value={formData.Std_Routing_No}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                  {errors.Std_Routing_No && (
+                    <span className="text-danger">{errors.Std_Routing_No}</span>
                   )}
-                </tbody>
-              </table>
+                </div>
+              </div> */}
+              <div className="row mb-3">
+                <div className="col-md-4">
+                  <label>Op No</label>
+                </div>
+                <div className="col-md-8">
+                  <input
+                    type="text"
+                    name="Op_No"
+                    value={formData.Op_No}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                  {errors.Op_No && (
+                    <span className="text-danger">{errors.Op_No}</span>
+                  )}
+                </div>
+              </div>
+              <div className="row mb-3">
+                <div className="col-md-4">
+                  <label>Op Name</label>
+                </div>
+                <div className="col-md-8">
+                  <select
+                    className="form-select"
+                    name="Op_Name"
+                    value={formData.Op_Name}
+                    onChange={handleInputChange}
+                  >
+                    <option value="">Select</option>
+                    <option value="ASSEMLY">ASSEMLY</option>
+                    <option value="BENDING">BENDING</option>
+                    <option value="BLACK PLATING">BLACK PLATING</option>
+                    <option value="BLOCKDISING">BLOCKDISING</option>
+                    <option value="CED COATING">CED COATING</option>
+                    <option value="CHAKING">CHAKING</option>
+                    <option value="CHAMPFER 1X45">CHAMPFER 1X45</option>
+                    <option value="CNC1">CNC1</option>
+                    <option value="COLD FORGING">COLD FORGING</option>
+                    <option value="CROSS HOLE">CROSS HOLE</option>
+                  </select>
+                  {errors.Op_Name && (
+                    <span className="text-danger">{errors.Op_Name}</span>
+                  )}
+                </div>
+              </div>
+              <div className="row mb-3">
+                <div className="col-md-4">
+                  <label>Ass Prod</label>
+                </div>
+                <div className="col-md-8">
+                  <input
+                    type="text"
+                    name="Ass_Prod"
+                    value={formData.Ass_Prod}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                  {errors.Ass_Prod && (
+                    <span className="text-danger">{errors.Ass_Prod}</span>
+                  )}
+                </div>
+              </div>
+              <div className="row mb-3">
+                <div className="col-md-4">
+                  <label>Part Code</label>
+                </div>
+                <div className="col-md-8">
+                  <input
+                    type="text"
+                    name="Part_Code"
+                    value={formData.Part_Code}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                  {errors.Part_Code && (
+                    <span className="text-danger">{errors.Part_Code}</span>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="row mb-3">
+                <div className="col-md-4">
+                  <label>Part Type</label>
+                </div>
+                <div className="col-md-8">
+                  <select
+                    className="form-select"
+                    name="Part_Type"
+                    value={formData.Part_Type}
+                    onChange={handleInputChange}
+                  >
+                    <option value="">Select</option>
+                    <option value="RM">RM</option>
+                    <option value="WIP">WIP</option>
+                    <option value="SFG">SFG</option>
+                    <option value="FG">FG</option>
+                  </select>
+                  {errors.Part_Type && (
+                    <span className="text-danger">{errors.Part_Type}</span>
+                  )}
+                </div>
+              </div>
+              <div className="row mb-3">
+                <div className="col-md-4">
+                  <label>WIP Wt</label>
+                </div>
+                <div className="col-md-8">
+                  <input
+                    type="text"
+                    name="Wip_Wt"
+                    value={formData.Wip_Wt}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                  {errors.Wip_Wt && (
+                    <span className="text-danger">{errors.Wip_Wt}</span>
+                  )}
+                </div>
+              </div>
+              <div className="row mb-3">
+                <div className="col-md-4">
+                  <label>Op Type</label>
+                </div>
+                <div className="col-md-8">
+                  <select
+                    className="form-select"
+                    name="Op_Type"
+                    value={formData.Op_Type}
+                    onChange={handleInputChange}
+                  >
+                    <option value="">Select</option>
+                    <option value="Setup">Setup</option>
+                    <option value="Production">Production</option>
+                  </select>
+                  {errors.Op_Type && (
+                    <span className="text-danger">{errors.Op_Type}</span>
+                  )}
+                </div>
+              </div>
+              <div className="row mb-3">
+                <div className="col-md-4">
+                  <label>QC</label>
+                </div>
+                <div className="col-md-8">
+                  <select
+                    className="form-select"
+                    name="QC"
+                    value={formData.QC}
+                    onChange={handleInputChange}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  {errors.QC && (
+                    <span className="text-danger">{errors.QC}</span>
+                  )}
+                </div>
+              </div>
+              <div className="row mt-3">
+                <div className="col-md-8 offset-md-4">
+                  <button type="submit" className="Standardbtn">
+                    {isEditing ? "Update" : "Save"}
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
-      <ToastContainer />
+
+      <div className="card-body py-3">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Std Routing No</th>
+              <th>Op No</th>
+              <th>Op Name</th>
+              <th>Part Type</th>
+              <th>Wip Wt</th>
+              <th>Op Type</th>
+              <th>QC</th>
+              <th>Ass Prod</th>
+              <th>Part Code</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item) => (
+              <tr key={item.id}>
+                <td>{item.Std_Routing_No}</td>
+                <td>{item.Op_No}</td>
+                <td>{item.Op_Name}</td>
+                <td>{item.Part_Type}</td>
+                <td>{item.Wip_Wt}</td>
+                <td>{item.Op_Type}</td>
+                <td>{item.QC}</td>
+                <td>{item.Ass_Prod}</td>
+                <td>{item.Part_Code}</td>
+                <td>
+                  <button
+                    onClick={() => handleEdit(item)}
+                    className="btn btn-primary btn-sm me-2"
+                  >
+                    <FaEdit />
+                  </button>
+                  <button
+                    onClick={() => handleDelete(item.id)}
+                    className="btn btn-danger btn-sm"
+                  >
+                    <FaTrash />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

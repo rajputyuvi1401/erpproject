@@ -21,7 +21,7 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
           error = "Invalid email format";
         } else {
           try {
-            const response = await axios.post("http://13.201.136.34:8000/vendor/register/", { email: value });
+            const response = await axios.post("api/vendor/register/", { email: value });
             if (response.data.exists) {
               error = "Email is already registered";
             }
@@ -315,35 +315,6 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label
-                    htmlFor="footer_message"
-                    className="col-sm-4 col-form-label"
-                  >
-                    Footer Message
-                  </label>
-                  <div className="col-sm-8">
-                    <textarea
-                      className="form-control"
-                      id="footer_message"
-                      name="footer_message"
-                      value={formData.footer_message}
-                      onChange={handleChange}
-                      placeholder="Welcome to Sharp Engineers"
-                    >
-                      {" "}
-                    </textarea>
-                    {errors.footer_message && (
-                      <div className="text-danger">{errors.footer_message}</div>
-                    )}
-                  </div>
-                </div>
-               
-              </div>
-            </div>
-            <div className="col-md-6">
-              
-            
-              <div className="row mb-3">
                 <label htmlFor="pin_code" className="col-sm-4 col-form-label">
                   Pin Code
                 </label>
@@ -363,6 +334,14 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                 </div>
               </div>
              
+            
+               
+              </div>
+            </div>
+            <div className="col-md-6">
+              
+            
+              
               <div className="row mb-3">
                 <label
                   htmlFor="country"
@@ -506,6 +485,29 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                     />
                     {errors.director_name && (
                       <div className="text-danger">{errors.director_name}</div>
+                    )}
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label
+                    htmlFor="footer_message"
+                    className="col-sm-4 col-form-label"
+                  >
+                    Footer Message
+                  </label>
+                  <div className="col-sm-8">
+                    <textarea
+                      className="form-control"
+                      id="footer_message"
+                      name="footer_message"
+                      value={formData.footer_message}
+                      onChange={handleChange}
+                      placeholder="Welcome to Sharp Engineers"
+                    >
+                      {" "}
+                    </textarea>
+                    {errors.footer_message && (
+                      <div className="text-danger">{errors.footer_message}</div>
                     )}
                   </div>
                 </div>

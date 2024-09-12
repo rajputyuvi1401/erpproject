@@ -96,7 +96,7 @@ const Technical = () => {
   return (
     <div className="technical">
       <ToastContainer />
-      <div className="container">
+      <div className="container-fluid">
         <div className="row mb-3">
           <div className="col-md-2">
             <p style={{ color: "blue" }}>Technical Specification</p>

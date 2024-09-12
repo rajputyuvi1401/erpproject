@@ -175,7 +175,7 @@ const Data2 = () => {
   return (
     <div className="data-2">
       <ToastContainer />
-      <div className="container">
+      <div className="container-fluid">
         <form>
           <div className="row">
             <div className="col-md-4">
@@ -465,7 +465,7 @@ const Data2 = () => {
                   >
                     Sales Conversion Factor:
                   </label>
-                  <div className="col-sm-4">
+                  <div className="col-sm-3">
                     <input
                       type="text"
                       className="form-control"
@@ -481,7 +481,7 @@ const Data2 = () => {
                       </div>
                     )}
                   </div>
-                  <div className="col-sm-3">
+                  <div className="col-sm-4">
                     <select
                       id="Sales_Conversion_Factor"
                       type="text"
@@ -528,7 +528,7 @@ const Data2 = () => {
                     GRN Conversion Factor:
                   </label>
 
-                  <div className="col-sm-4">
+                  <div className="col-sm-3">
                     <input
                       type="text"
                       className="form-control"
@@ -544,7 +544,7 @@ const Data2 = () => {
                       </div>
                     )}
                   </div>
-                  <div className="col-sm-3">
+                  <div className="col-sm-4">
                     <select
                       id="GRN_Conversion_Factor"
                       type="text"

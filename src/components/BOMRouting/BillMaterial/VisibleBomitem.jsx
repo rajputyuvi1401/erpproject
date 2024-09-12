@@ -127,8 +127,8 @@ const VisibleBomitem = () => {
                 onChange={handleInputChange2}
               >
                 <option value="">Select Option</option>
-                <option></option>
-                <option></option>
+                <option value="Option1">Option 1</option>
+                <option value="Option2">Option 2</option>
               </select>
               {errors.Bom_Item_Group && (
                 <div className="invalid-feedback">{errors.Bom_Item_Group}</div>

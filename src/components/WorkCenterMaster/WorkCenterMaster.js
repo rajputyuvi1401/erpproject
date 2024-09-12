@@ -123,32 +123,36 @@ const WorkCenterMaster = () => {
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
+    console.log(`Field ${id} changed to ${value}`);
   };
-
+  
   const validate = () => {
     let valid = true;
     let errors = {};
-
+  
     if (!formData.Category) {
       valid = false;
       errors.Category = "This field is required";
     }
-
-
+  
     setErrors(errors);
+    console.log("Validation result:", valid ? "Valid" : "Invalid", errors);
     return valid;
   };
-
+  
   const handleSave = async (e) => {
-    e.preventDefault();
-
-    if (!validate()) return;
-
+    e.preventDefault(); // Prevent default form submission
+    console.log("Form submitted");
+  
+    if (!validate()) {
+      console.log("Form validation failed");
+      return;
+    }
+  
     try {
       const response = await saveWorkCenter(formData);
       console.log("Saved Data:", response); // Log the response data to the console
-     
-      toast.success("Work Center saved successfully");
+      toast.success("Work Center saved successfully"); // Show success toast
     } catch (error) {
       console.log(
         "Error:",
@@ -156,9 +160,11 @@ const WorkCenterMaster = () => {
       ); // Log the error to the console
       toast.error(
         error.response?.data?.message || "Failed to save Work Center"
-      ); // Show error toaster notification
+      ); // Show error toast
     }
   };
+  
+  
 
   const handleClear = () => {
     setFormData({
@@ -317,6 +323,7 @@ const WorkCenterMaster = () => {
                                   <select
                                     className="form-select mb-3"
                                     id="Plant"
+                                    name="Plant"
                                     value={formData.Plant}
                                     onChange={handleChange}
                                   >
@@ -350,8 +357,9 @@ const WorkCenterMaster = () => {
                                       id="Category"
                                       value={formData.Category}
                                       onChange={handleChange}
+                                      name="Category"
                                     >
-                                      <option value="">Select</option>
+                                      <option value="select">Select</option>
                                       <option value="Production">Production</option>
                                       <option value="Gernal">Gernal</option>
                                     </select>
@@ -374,6 +382,7 @@ const WorkCenterMaster = () => {
                                       type="text"
                                       className="form-control mb-3"
                                       id="WorkCenterCode"
+                                      name="WorkCenterCode"
                                       value={formData.WorkCenterCode}
                                       onChange={handleChange}
                                     />
@@ -396,6 +405,7 @@ const WorkCenterMaster = () => {
                                       type="text"
                                       className="form-control mb-3"
                                       id="WorkCenterName"
+                                      name="WorkCenterName"
                                       value={formData.WorkCenterName}
                                       onChange={handleChange}
                                     />
@@ -416,6 +426,7 @@ const WorkCenterMaster = () => {
                                   <div className="col-sm-7">
                                     <select
                                       id="WorkCenterType"
+                                      name="WorkCenterType"
                                       className="form-select"
                                       value={formData.WorkCenterType}
                                       onChange={handleChange}
@@ -489,7 +500,7 @@ const WorkCenterMaster = () => {
                                             Work Center Type
                                           </p>
                                           <label
-                                            htmlFor="inputType"
+                                            htmlFor="enterType"
                                             className="col-sm-4 col-form-label text-start"
                                           >
                                             Enter Type
@@ -498,7 +509,8 @@ const WorkCenterMaster = () => {
                                             <input
                                               type="text"
                                               className="form-control"
-                                              id="inputType"
+                                              id="enterType"
+                                              name="enterType"
                                               value={enterType}
                                               onChange={handleChange1}
                                             />
@@ -588,6 +600,7 @@ const WorkCenterMaster = () => {
                                         type="text"
                                         className="form-control"
                                         id="Mhr_Rate"
+                                        name="Mhr_Rate"
                                         value={formData.Mhr_Rate}
                                         onChange={handleChange}
                                       />
@@ -610,6 +623,7 @@ const WorkCenterMaster = () => {
                                         type="text"
                                         className="form-control"
                                         id="Electricity"
+                                        name="Electricity"
                                         value={formData.Electricity}
                                         onChange={handleChange}
                                       />
@@ -632,6 +646,7 @@ const WorkCenterMaster = () => {
                                         type="text"
                                         className="form-control"
                                         id="PPM_SPM"
+                                        name="PPM_SPM"
                                         value={formData.PPM_SPM}
                                         onChange={handleChange}
                                       />
@@ -654,6 +669,7 @@ const WorkCenterMaster = () => {
                                         type="text"
                                         className="form-control"
                                         id="PPM"
+                                        name="PPM"
                                         value={formData.PPM}
                                         onChange={handleChange}
                                       />
@@ -678,6 +694,7 @@ const WorkCenterMaster = () => {
                                         type="text"
                                         className="form-control"
                                         id="BatchQty"
+                                        name="BatchQty"
                                         value={formData.BatchQty}
                                         onChange={handleChange}
                                       />
@@ -703,6 +720,7 @@ const WorkCenterMaster = () => {
                                         type="text"
                                         className="form-control"
                                         id="Oil"
+                                        name="Oil"
                                         value={formData.Oil}
                                         onChange={handleChange}
                                       />
@@ -725,6 +743,7 @@ const WorkCenterMaster = () => {
                                         type="text"
                                         className="form-control"
                                         id="Proud_Hours"
+                                        name="Proud_Hours"
                                         value={formData.Proud_Hours}
                                         onChange={handleChange}
                                       />
@@ -747,6 +766,7 @@ const WorkCenterMaster = () => {
                                         type="text"
                                         className="form-control"
                                         id="Daily_Running_Hr"
+                                        name="Daily_Running_Hr"
                                         value={formData.Daily_Running_Hr}
                                         onChange={handleChange}
                                       />
@@ -771,14 +791,15 @@ const WorkCenterMaster = () => {
                                     <select
                                       id="Operator"
                                       className="form-select"
+                                      name="Operator"
                                       value={formData.Operator}
                                       onChange={handleChange}
                                     >
                                       <option value="">Select</option>
-                                      <option value="">BHUSHAN</option>{" "}
-                                      <option value="">ANITA BAI</option>{" "}
-                                      <option value="">PRANAY</option>{" "}
-                                      <option value="">RANJAN</option>
+                                      <option value="BHUSHAN">BHUSHAN</option>{" "}
+                                      <option value="ANITA BAI">ANITA BAI</option>{" "}
+                                      <option value="PRANAY">PRANAY</option>{" "}
+                                      <option value="RANJAN">RANJAN</option>
                                     </select>
                                   </div>
                                 </div>
@@ -787,7 +808,7 @@ const WorkCenterMaster = () => {
                                 <div className="col-md-12">
                                   <button
                                     style={{ margin: "5px" }}
-                                    type="button"
+                                    type="submit"
                                     className="btn"
                                   >
                                     Save

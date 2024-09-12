@@ -7,19 +7,17 @@ import SideNav from "../../../SideNav/SideNav";
 import CachedIcon from "@mui/icons-material/Cached";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { fetchMainGroupData ,getUnitCode} from "../../../Service/Api.jsx";
-
+import { fetchMainGroupData, getUnitCode } from "../../../Service/Api.jsx";
 
 const AddNewItem = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
-  
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
   };
 
   const [unitCodes, setUnitCodes] = useState([]);
-  const [selectedUnit, setSelectedUnit] = useState('');
+  const [selectedUnit, setSelectedUnit] = useState("");
   const [mainGroups, setMainGroups] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState("");
   const navigate = useNavigate();
@@ -48,8 +46,6 @@ const AddNewItem = () => {
     }
   };
 
-  
-
   useEffect(() => {
     if (sideNavOpen) {
       document.body.classList.add("side-nav-open");
@@ -58,15 +54,13 @@ const AddNewItem = () => {
     }
   }, [sideNavOpen]);
 
-
-
   useEffect(() => {
     const fetchUnitCodes = async () => {
       try {
         const data = await getUnitCode();
         setUnitCodes(data);
       } catch (error) {
-        console.error('Error fetching unit codes:', error);
+        console.error("Error fetching unit codes:", error);
       }
     };
 
@@ -76,7 +70,6 @@ const AddNewItem = () => {
   const handleSelectChange = (e) => {
     setSelectedUnit(e.target.value);
   };
-
 
   return (
     <div className="AddNewItemPage">
@@ -95,7 +88,7 @@ const AddNewItem = () => {
                   <div className="top-but2">
                     <div className="row align-items-center">
                       <div className="col-md-2 mt-4 text-start">
-                        <p style={{color:"blue"}}>Item List</p>
+                        <p style={{ color: "blue" }}>Item List</p>
                       </div>
                       <div className="col-md-10 text-end">
                         <div className="d-flex align-items-center justify-content-end">
@@ -107,14 +100,16 @@ const AddNewItem = () => {
                           <button className="btn-uper me-2">
                             Section Group Master
                           </button>
-                          <Link to={"/item-master"} className="btn-uper" >Item List</Link>
+                          <Link to={"/item-master"} className="btn-uper">
+                            Item List
+                          </Link>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className="AddNewMain">
-                    <div className="container">
+                    <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
                           <ul
@@ -202,25 +197,35 @@ const AddNewItem = () => {
                                   <div className="row text-start">
                                     <div className="col-md-4">
                                       <div className="row">
-                                      <div className="row mb-3">
-      <label htmlFor="mainGroup" className="col-sm-4 col-form-label">
-        Main Group:
-      </label>
-      <div className="col-sm-5">
-        <select
-          id="mainGroup"
-          className="form-select"
-          onChange={handleDropdownChange}
-          value={selectedGroup}
-        >
-          <option style={{ color: "black" }}>Select ..</option>
-          {mainGroups.map((group) => (
-            <option key={group.id} value={group.name}>
-              {group.name}
-            </option>
-          ))}
-        </select>
-      </div>
+                                        <div className="row mb-3">
+                                          <label
+                                            htmlFor="mainGroup"
+                                            className="col-sm-4 col-form-label"
+                                          >
+                                            Main Group:
+                                          </label>
+                                          <div className="col-sm-5">
+                                            <select
+                                              id="mainGroup"
+                                              className="form-select"
+                                              onChange={handleDropdownChange}
+                                              value={selectedGroup}
+                                            >
+                                              <option
+                                                style={{ color: "black" }}
+                                              >
+                                                Select ..
+                                              </option>
+                                              {mainGroups.map((group) => (
+                                                <option
+                                                  key={group.id}
+                                                  value={group.name}
+                                                >
+                                                  {group.name}
+                                                </option>
+                                              ))}
+                                            </select>
+                                          </div>
                                           <div className="col-sm-2">
                                             <button className="btn">New</button>
                                           </div>
@@ -238,7 +243,7 @@ const AddNewItem = () => {
                                             htmlFor="inputEmail3"
                                             className="col-sm-5 col-form-label"
                                           >
-                                          Part No:
+                                            Part No:
                                           </label>
                                           <div className="col-sm-7">
                                             <input
@@ -250,23 +255,31 @@ const AddNewItem = () => {
                                           </div>
                                         </div>
                                         <div className="row mb-3">
-                                        <label htmlFor="unitCode" className="col-sm-4 col-form-label">
-        Unit Code:
-      </label>
-      <div className="col-sm-5">
-        <select
-          id="unitCode"
-          className="form-select"
-          value={selectedUnit}
-          onChange={handleSelectChange}
-        >
-          <option value="">Select ..</option>
-          {unitCodes.map((unit, index) => (
-            <option key={index} value={unit.name}>
-              {unit.name}
-            </option>
-          ))}
-        </select>
+                                          <label
+                                            htmlFor="unitCode"
+                                            className="col-sm-4 col-form-label"
+                                          >
+                                            Unit Code:
+                                          </label>
+                                          <div className="col-sm-5">
+                                            <select
+                                              id="unitCode"
+                                              className="form-select"
+                                              value={selectedUnit}
+                                              onChange={handleSelectChange}
+                                            >
+                                              <option value="">
+                                                Select ..
+                                              </option>
+                                              {unitCodes.map((unit, index) => (
+                                                <option
+                                                  key={index}
+                                                  value={unit.name}
+                                                >
+                                                  {unit.name}
+                                                </option>
+                                              ))}
+                                            </select>
                                           </div>
                                           <div className="col-sm-2">
                                             <button className="btn">New</button>

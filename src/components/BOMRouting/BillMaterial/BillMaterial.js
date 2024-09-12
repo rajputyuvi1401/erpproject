@@ -220,6 +220,24 @@ const BillMaterial = () => {
     }
   };
 
+  const handleClear1 = () => {
+    setFormData({
+      Std_Otp: "",
+      Operation_Name: "",
+      Prefix: "",
+      Mhr_Rate: "",
+      BomQc: "",
+      ProductionDept: "",
+      MachineType: "",
+      Production_Cycle_Time: "",
+      Stop_Mc_Booking: "",
+      Per_Day_Prod_Qty: "",
+    });
+    setErrors({});
+    setIsEditing(false);
+    setEditId(null);
+  };
+  
   const fetchOperations = async () => {
     try {
       const response = await getOperations();
@@ -476,10 +494,10 @@ const BillMaterial = () => {
                             <div className="row mb-3 text-start">
                               <div className="col-md-6">
                                 <div className="row">
-                                  <div className="col-md-4">
+                                  <div className="col-md-4 mt-3">
                                     <label>Std. OP No.</label>
                                   </div>
-                                  <div className="col-md-8">
+                                  <div className="col-md-8 mt-4">
                                     <input
                                       type="text"
                                       name="Std_Otp"
@@ -497,10 +515,10 @@ const BillMaterial = () => {
                                   </div>
                                 </div>
                                 <div className="row">
-                                  <div className="col-md-4">
+                                  <div className="col-md-4 mt-3">
                                     <label>Operation Name</label>
                                   </div>
-                                  <div className="col-md-8">
+                                  <div className="col-md-8 mt-4">
                                     <input
                                       type="text"
                                       name="Operation_Name"
@@ -520,10 +538,10 @@ const BillMaterial = () => {
                                   </div>
                                 </div>
                                 <div className="row">
-                                  <div className="col-md-4">
+                                  <div className="col-md-4 mt-3">
                                     <label>Prefix</label>
                                   </div>
-                                  <div className="col-md-8">
+                                  <div className="col-md-8 mt-4">
                                     <input
                                       type="text"
                                       name="Prefix"
@@ -541,10 +559,10 @@ const BillMaterial = () => {
                                   </div>
                                 </div>
                                 <div className="row">
-                                  <div className="col-md-4">
+                                  <div className="col-md-4 mt-3">
                                     <label>MHR Rate</label>
                                   </div>
-                                  <div className="col-md-8">
+                                  <div className="col-md-8 mt-4">
                                     <input
                                       type="text"
                                       name="Mhr_Rate"
@@ -562,10 +580,10 @@ const BillMaterial = () => {
                                   </div>
                                 </div>
                                 <div className="row">
-                                  <div className="col-md-4">
+                                  <div className="col-md-4 mt-3">
                                     <label>BOM QC</label>
                                   </div>
-                                  <div className="col-md-8">
+                                  <div className="col-md-8 mt-4">
                                     <select
                                       name="BomQc"
                                       value={formData.BomQc}
@@ -588,10 +606,10 @@ const BillMaterial = () => {
                               </div>
                               <div className="col-md-6">
                                 <div className="row">
-                                  <div className="col-md-4">
+                                  <div className="col-md-4 mt-3">
                                     <label>Production Dept</label>
                                   </div>
-                                  <div className="col-md-8">
+                                  <div className="col-md-8 mt-4">
                                     <select
                                       name="ProductionDept"
                                       value={formData.ProductionDept}
@@ -603,7 +621,7 @@ const BillMaterial = () => {
                                       }`}
                                     >
                                       <option value="">Select</option>
-                                      <option value="">Sharp</option>
+                                      <option value="Sharp">Sharp</option>
                                     </select>
                                     {errors.ProductionDept && (
                                       <div className="invalid-feedback">
@@ -613,10 +631,10 @@ const BillMaterial = () => {
                                   </div>
                                 </div>
                                 <div className="row">
-                                  <div className="col-md-4">
+                                  <div className="col-md-4 mt-3">
                                     <label>Machine Type</label>
                                   </div>
-                                  <div className="col-md-8">
+                                  <div className="col-md-8 mt-4">
                                     <select
                                       name="MachineType"
                                       value={formData.MachineType}
@@ -626,18 +644,18 @@ const BillMaterial = () => {
                                       }`}
                                     >
                                       <option value="">Select</option>
-                                      <option value="">CENTERLESS</option>
-                                      <option value="">CNC</option>
-                                      <option value="">DRILLING</option>
-                                      <option value="">GRINDER</option>
-                                      <option value="">INDUCTION</option>
-                                      <option value="">LATHE</option>
-                                      <option value="">MANUAL</option>
-                                      <option value="">MILLING</option>
-                                      <option value="">PRESS</option>
-                                      <option value="">SECOND OPERATION</option>
-                                      <option value="">SPM</option>
-                                      <option value="">TAPPING</option>
+                                      <option value="CENTERLESS">CENTERLESS</option>
+                                      <option value="CNC">CNC</option>
+                                      <option value="DRILLING">DRILLING</option>
+                                      <option value="GRINDER">GRINDER</option>
+                                      <option value="INDUCTION">INDUCTION</option>
+                                      <option value="LATHE">LATHE</option>
+                                      <option value="MANUAL">MANUAL</option>
+                                      <option value="MILLING">MILLING</option>
+                                      <option value="PRESS">PRESS</option>
+                                      <option value="SECOND OPERATION">SECOND OPERATION</option>
+                                      <option value="SPM">SPM</option>
+                                      <option value="TAPPING">TAPPING</option>
                                     </select>
                                     {errors.MachineType && (
                                       <div className="invalid-feedback">
@@ -647,10 +665,10 @@ const BillMaterial = () => {
                                   </div>
                                 </div>
                                 <div className="row">
-                                  <div className="col-md-4">
+                                  <div className="col-md-4 mt-3">
                                     <label>Production Cycle Time</label>
                                   </div>
-                                  <div className="col-md-8">
+                                  <div className="col-md-8 mt-4">
                                     <input
                                       type="text"
                                       name="Production_Cycle_Time"
@@ -670,10 +688,10 @@ const BillMaterial = () => {
                                   </div>
                                 </div>
                                 <div className="row">
-                                  <div className="col-md-4">
+                                  <div className="col-md-4 mt-3">
                                     <label>Stop M/C Booking</label>
                                   </div>
-                                  <div className="col-md-8">
+                                  <div className="col-md-8 mt-4">
                                     <input
                                       type="text"
                                       name="Stop_Mc_Booking"
@@ -693,10 +711,10 @@ const BillMaterial = () => {
                                   </div>
                                 </div>
                                 <div className="row">
-                                  <div className="col-md-4">
+                                  <div className="col-md-4 mt-3">
                                     <label>Per Day Prod Qty</label>
                                   </div>
-                                  <div className="col-md-8">
+                                  <div className="col-md-8 mt-4">
                                     <input
                                       type="text"
                                       name="Per_Day_Prod_Qty"
@@ -724,6 +742,14 @@ const BillMaterial = () => {
                                 >
                                   {isEditing ? "Update" : "Save"}
                                 </button>
+                                <button
+        type="button"
+        className="bomButton"
+        style={{ marginTop: "24px", marginLeft: "10px" }}
+        onClick={handleClear1}
+      >
+        Clear
+      </button>
                               </div>
                             </div>
                           </form>

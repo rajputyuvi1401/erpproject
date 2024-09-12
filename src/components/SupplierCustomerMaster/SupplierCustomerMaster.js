@@ -599,21 +599,8 @@ useEffect(() => {
                               tabIndex="0"
                             >
                               <div className="Suppliergernal">
-                                <div className="container-fluid">
-                                  <div className="row">
-                                    <div className="col-md-12">
-                                      <p
-                                        className="mandatory  text-start"
-                                        style={{
-                                          marginTop: "10px",
-                                          color: "grey",
-                                          marginBottom: "50px",
-                                        }}
-                                      >
-                                        Mandatory Fields
-                                      </p>
-                                    </div>
-                                  </div>
+                             
+                                  
                                   <div className="container-fluid">
                                     <form
                                       onSubmit={handleSubmit}
@@ -957,19 +944,7 @@ useEffect(() => {
                                               )} */}
                                             </div>
                                           </div>
-                                          {/* Optional Details */}
-                                          <div className="row mb-3">
-                                            <p
-                                              className="mandatory text-start"
-                                              style={{
-                                                marginTop: "10px",
-                                                color: "grey",
-                                                marginBottom: "10px",
-                                              }}
-                                            >
-                                              Optional Details
-                                            </p>
-                                          </div>
+                                         
 
                                           {/* Email Id */}
                                           <div className="row mb-3">
@@ -2198,7 +2173,7 @@ useEffect(() => {
                                       </div>
                                     </form>
                                   </div>
-                                </div>
+                              
                               </div>
                               {isCardOpen && (
                                 <div className="card card-custom">

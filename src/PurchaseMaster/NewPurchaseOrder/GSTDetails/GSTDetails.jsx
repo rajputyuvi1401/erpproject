@@ -33,8 +33,8 @@ const GSTDetails = () => {
               <td><input type="text" className="form-control" /></td>
               <td><input type="text" className="form-control" /></td>
               <td><input type="text" className="form-control" /></td>
-              <td><input type="number" className="form-control" /></td>
-              <td><input type="number" className="form-control" /></td>
+              <td><input type="text" className="form-control" /></td>
+              <td><input type="text" className="form-control" /></td>
               <td><input type="text" className="form-control" readOnly /></td>
               <td>
                 <div>Disc:</div>
@@ -43,7 +43,7 @@ const GSTDetails = () => {
               <td><input type="text" className="form-control" /></td>
               <td><input type="text" className="form-control" /></td>
               <td>
-                <input type="number" className="form-control" />
+                <input type="text" className="form-control" />
                 <div>Amt:</div>
               </td>
               <td><input type="text" className="form-control" /></td>

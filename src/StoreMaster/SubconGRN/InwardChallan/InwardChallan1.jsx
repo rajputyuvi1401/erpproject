@@ -97,6 +97,7 @@ const InwardChallan1 = () => {
                   </div>
                 </div>
                 <div className="StoreSubcon-main">
+                  <div className="storesubcon-background">
                   <div className="container-fluid ">
                     <div className="row mt-4">
                       <div className="col-md-6">
@@ -661,6 +662,7 @@ const InwardChallan1 = () => {
                        
                       </div>
                     </div>
+                  </div>
                   </div>
                 </div>
               </main>

@@ -39,7 +39,7 @@ import {
   getItemSections,
   getItemGroups,
 } from "../../../Service/Api.jsx";
-import { fetchMainGroupData ,getUnitCode } from "../../../Service/Api.jsx";
+import { fetchMainGroupData, getUnitCode } from "../../../Service/Api.jsx";
 
 const ItemMasterGernal = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -411,14 +411,12 @@ const ItemMasterGernal = () => {
         const data = await getUnitCode();
         setUnitCodes(data);
       } catch (error) {
-        console.error('Error fetching unit codes:', error);
+        console.error("Error fetching unit codes:", error);
       }
     };
 
     fetchUnitCodes();
   }, []);
-
- 
 
   // Store Location
   const [storelocation, setStoreLocation] = useState([]);
@@ -556,7 +554,7 @@ const ItemMasterGernal = () => {
                     </div>
                   </div>
                   <div className="itemmastergernal">
-                    <div className="container">
+                    <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
                           <ul
@@ -629,21 +627,12 @@ const ItemMasterGernal = () => {
                               aria-labelledby="pills-home-tab"
                               tabIndex="0"
                             >
-                              <div className="container">
+                              <div className="container-fluid">
                                 <div className="gerneral">
-                                  <div className="container">
+                                  <div className="container-fluid">
                                     <form>
                                       <div className="row">
-                                        <p
-                                          className="mandatory  text-start"
-                                          style={{
-                                            marginTop: "10px",
-                                            color: "grey",
-                                            marginBottom: "50px",
-                                          }}
-                                        >
-                                          Mandatory Fields
-                                        </p>
+                                       
                                         <div className="col-md-4">
                                           <div className="row text-start">
                                             <div className="row mb-3">
@@ -752,27 +741,33 @@ const ItemMasterGernal = () => {
                                                 </span>
                                               </label>
                                               <div className="col-md-7">
-                                               <select
-          id="Unit_Code"
-          name="Unit_Code"
-          className="form-select"
-          value={formData.Unit_Code}
-          onChange={handleInputChange}
-        >
-          <option value="">Select ..</option>
-          {unitCodes.map((unit, index) => (
-            <option key={index} value={unit.name}>
-              {unit.name}
-            </option>
-          ))}
-        </select>
+                                                <select
+                                                  id="Unit_Code"
+                                                  name="Unit_Code"
+                                                  className="form-select"
+                                                  value={formData.Unit_Code}
+                                                  onChange={handleInputChange}
+                                                >
+                                                  <option value="">
+                                                    Select ..
+                                                  </option>
+                                                  {unitCodes.map(
+                                                    (unit, index) => (
+                                                      <option
+                                                        key={index}
+                                                        value={unit.name}
+                                                      >
+                                                        {unit.name}
+                                                      </option>
+                                                    )
+                                                  )}
+                                                </select>
                                                 {errors.Unit_Code && (
                                                   <div className="text-danger">
                                                     {errors.Unit_Code}
                                                   </div>
                                                 )}
                                               </div>
-                                              
                                             </div>
 
                                             {/* <div className="row mb-3">
@@ -916,15 +911,7 @@ const ItemMasterGernal = () => {
                                                 )} */}
                                               </div>
                                             </div>
-                                            <p
-                                              className="mandatory  text-start"
-                                              style={{
-                                                marginTop: "30px",
-                                                color: "grey",
-                                              }}
-                                            >
-                                              Optional Fields
-                                            </p>
+                                           
                                             <div className="row mb-3">
                                               <label
                                                 htmlFor="Revision_No"
@@ -956,7 +943,7 @@ const ItemMasterGernal = () => {
                                               >
                                                 Item Size:
                                               </label>
-                                              <div className="col-sm-4">
+                                              <div className="col-sm-3">
                                                 <input
                                                   type="text"
                                                   id="Item_Size"
@@ -972,7 +959,7 @@ const ItemMasterGernal = () => {
                                                   </div>
                                                 )} */}
                                               </div>
-                                              <div className="col-sm-3">
+                                              <div className="col-sm-4">
                                                 <select
                                                   id="Item_Size"
                                                   className="form-select"

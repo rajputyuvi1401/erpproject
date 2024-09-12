@@ -127,6 +127,7 @@ import SupplierWiseList from "./PurchaseMaster/Report/SupplierWiseList1/Supplier
 
 // Gate Inward Entry
 import GateInwardEntry from "./StoreMaster/GateInwardEntry/GateInwardEntry.jsx";
+import NewGateInward from "./StoreMaster/GateInwardEntry/NewGateInward/NewGateInward.jsx";
 
 import PendingAsnList from "./StoreMaster/PendingASNList/PendingAsnList.jsx";
 
@@ -307,9 +308,10 @@ function App() {
         <Route path="purchase-report" element={<PurchaseReport/>} />
 
 
-{/* ///////////////////////////////////////Stor//////////////////////////////////////// */}
+{/* ///////////////////////////////////////Store//////////////////////////////////////// */}
 
         <Route path="Gate-Inward-Entry" element={<GateInwardEntry/>}/>
+        <Route path="New-Gate-Entry" element={<NewGateInward/>}/>
 
         <Route path="Pending-Asn-List" element={<PendingAsnList/>} />
         <Route path="New-Mrn" element={<NewMrn/>} />

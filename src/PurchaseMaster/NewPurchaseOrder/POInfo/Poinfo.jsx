@@ -49,7 +49,7 @@ const Poinfo = () => {
     GstTaxes: "",
   });
 
-  // const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -60,19 +60,19 @@ const Poinfo = () => {
     e.preventDefault();
 
     // Basic validation
-    // let validationErrors = {};
-    // for (const [key, value] of Object.entries(formData)) {
-    //   if (!value.trim()) {
-    //     validationErrors[key] = "This field is required";
-    //   }
-    // }
+    let validationErrors = {};
+    for (const [key, value] of Object.entries(formData)) {
+      if (!value.trim()) {
+        validationErrors[key] = "This field is required";
+      }
+    }
 
-    // if (Object.keys(validationErrors).length > 0) {
-    //   setErrors(validationErrors);
-    //   return;
-    // }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
 
-    // setErrors({}); // Clear errors if validation passes
+    setErrors({}); // Clear errors if validation passes
 
     try {
       await createPOInfo(formData);
@@ -118,9 +118,8 @@ const Poinfo = () => {
       PoValidity_WarrantyTerm: "",
       GstTaxes: "",
     });
-    // setErrors({});
+    setErrors({});
   };
-
   return (
     <div className="Poinfo">
       <ToastContainer />
@@ -145,7 +144,7 @@ const Poinfo = () => {
                         value={formData.PoNo}
                         onChange={handleChange}
                       />
-                        {/* {errors.PoNo && <div className="invalid-feedback">{errors.PoNo}</div>} */}
+                         {errors.PoNo && <div className="invalid-feedback">{errors.PoNo}</div>}
                     </div>
                   </div>
                 </div>
@@ -166,8 +165,10 @@ const Poinfo = () => {
                         value={formData.EnquiryNo}
                         onChange={handleChange}
                       />
+                      {errors.EnquiryNo && <div className="invalid-feedback">{errors.EnquiryNo}</div>}
                     </div>
                   </div>
+                  
                 </div>
 
                 <div className="row text-start">
@@ -186,6 +187,7 @@ const Poinfo = () => {
                         value={formData.QuotNo}
                         onChange={handleChange}
                       />
+                      {errors.QuotNo && <div className="invalid-feedback">{errors.QuotNo}</div>}
                     </div>
                   </div>
                 </div>
@@ -206,6 +208,7 @@ const Poinfo = () => {
                         value={formData.PaymentTerms}
                         onChange={handleChange}
                       />
+                      {errors.PaymentTerms && <div className="invalid-feedback">{errors.PaymentTerms}</div>}
                     </div>
                   </div>
                 </div>
@@ -225,6 +228,7 @@ const Poinfo = () => {
                         value={formData.DeliveryDate}
                         onChange={handleChange}
                       />
+                      {errors.DeliveryDate && <div className="invalid-feedback">{errors.DeliveryDate}</div>}
                     </div>
                   </div>
                 </div>
@@ -245,6 +249,7 @@ const Poinfo = () => {
                         value={formData.AMC_PO}
                         onChange={handleChange}
                       />
+                      {errors.AMC_PO && <div className="invalid-feedback">{errors.AMC_PO}</div>}
                     </div>
                   </div>
                 </div>
@@ -265,6 +270,7 @@ const Poinfo = () => {
                         value={formData.ModeOfShipment}
                         onChange={handleChange}
                       />
+                      {errors.ModeOfShipment && <div className="invalid-feedback">{errors.ModeOfShipment}</div>}
                     </div>
                   </div>
                 </div>
@@ -285,6 +291,7 @@ const Poinfo = () => {
                         value={formData.PreparedBy}
                         onChange={handleChange}
                       />
+                      {errors.PreparedBy && <div className="invalid-feedback">{errors.PreparedBy}</div>}
                     </div>
                   </div>
                 </div>
@@ -308,6 +315,7 @@ const Poinfo = () => {
                         value={formData.PoDate}
                         onChange={handleChange}
                       />
+                      {errors.PoDate && <div className="invalid-feedback">{errors.PoDate}</div>}
                     </div>
                   </div>
                 </div>
@@ -330,6 +338,7 @@ const Poinfo = () => {
                         value={formData.EnquiryDate}
                         onChange={handleChange}
                       />
+                      {errors.EnquiryDate && <div className="invalid-feedback">{errors.EnquiryDate}</div>}
                     </div>
                   </div>
                 </div>
@@ -352,6 +361,7 @@ const Poinfo = () => {
                         value={formData.QuotDate}
                         onChange={handleChange}
                       />
+                      {errors.QuotDate && <div className="invalid-feedback">{errors.QuotDate}</div>}
                     </div>
                   </div>
                 </div>
@@ -377,6 +387,7 @@ const Poinfo = () => {
                         value={formData.PaymentRemark}
                         onChange={handleChange}
                       />
+                      {errors.PaymentRemark && <div className="invalid-feedback">{errors.PaymentRemark}</div>}
                     </div>
                   </div>
                 </div>
@@ -402,6 +413,7 @@ const Poinfo = () => {
                         value={formData.DeliveryType}
                         onChange={handleChange}
                       />
+                      {errors.DeliveryType && <div className="invalid-feedback">{errors.DeliveryType}</div>}
                     </div>
                   </div>
                 </div>
@@ -427,6 +439,7 @@ const Poinfo = () => {
                         value={formData.DeliveryNote}
                         onChange={handleChange}
                       />
+                      {errors.DeliveryNote && <div className="invalid-feedback">{errors.DeliveryNote}</div>}
                     </div>
                   </div>
                 </div>
@@ -452,6 +465,7 @@ const Poinfo = () => {
                         value={formData.IndentNo}
                         onChange={handleChange}
                       />
+                      {errors.IndentNo && <div className="invalid-feedback">{errors.IndentNo}</div>}
                     </div>
                   </div>
                 </div>
@@ -474,6 +488,7 @@ const Poinfo = () => {
                         value={formData.ApprovedBy}
                         onChange={handleChange}
                       />
+                      {errors.ApprovedBy && <div className="invalid-feedback">{errors.ApprovedBy}</div>}
                     </div>
                   </div>
                 </div>
@@ -497,6 +512,7 @@ const Poinfo = () => {
                         value={formData.Time}
                         onChange={handleChange}
                       />
+                      {errors.Time && <div className="invalid-feedback">{errors.Time}</div>}
                     </div>
                   </div>
                 </div>
@@ -519,6 +535,7 @@ const Poinfo = () => {
                         value={formData.PoFor}
                         onChange={handleChange}
                       />
+                      {errors.PoFor && <div className="invalid-feedback">{errors.PoFor}</div>}
                     </div>
                   </div>
                 </div>
@@ -541,6 +558,7 @@ const Poinfo = () => {
                         value={formData.Freight}
                         onChange={handleChange}
                       />
+                      {errors.Freight && <div className="invalid-feedback">{errors.Freight}</div>}
                     </div>
                   </div>
                   <div className="col-md-1">
@@ -581,6 +599,7 @@ const Poinfo = () => {
                         value={formData.PoRateType}
                         onChange={handleChange}
                       />
+                      {errors.PoRateType && <div className="invalid-feedback">{errors.PoRateType}</div>}
                     </div>
                   </div>
                 </div>
@@ -606,6 +625,7 @@ const Poinfo = () => {
                         value={formData.ContactPerson}
                         onChange={handleChange}
                       />
+                      {errors.ContactPerson && <div className="invalid-feedback">{errors.ContactPerson}</div>}
                     </div>
                   </div>
                 </div>
@@ -631,6 +651,7 @@ const Poinfo = () => {
                         value={formData.PoValidityDate}
                         onChange={handleChange}
                       />
+                      {errors.PoValidityDate && <div className="invalid-feedback">{errors.PoValidityDate}</div>}
                     </div>
                   </div>
                 </div>
@@ -656,6 +677,7 @@ const Poinfo = () => {
                         value={formData.PoEffectiveDate}
                         onChange={handleChange}
                       />
+                      {errors.PoEffectiveDate && <div className="invalid-feedback">{errors.PoEffectiveDate}</div>}
                     </div>
                   </div>
                 </div>
@@ -681,6 +703,7 @@ const Poinfo = () => {
                         value={formData.TransportName}
                         onChange={handleChange}
                       />
+                      {errors.TransportName && <div className="invalid-feedback">{errors.TransportName}</div>}
                     </div>
                   </div>
                 </div>
@@ -699,6 +722,7 @@ const Poinfo = () => {
                   value={formData.PoNote}
                   onChange={handleChange}
                 ></textarea>
+                {errors.PoNote && <div className="invalid-feedback">{errors.PoNote}</div>}
               </div>
 
               <div className="col-md-4 mb-3">
@@ -713,49 +737,53 @@ const Poinfo = () => {
                   value={formData.InspectionTerms}
                   onChange={handleChange}
                 ></textarea>
+                {errors.InspectionTerms && <div className="invalid-feedback">{errors.InspectionTerms}</div>}
               </div>
 
               <div className="col-md-4 mb-3">
-                <label htmlFor="POValidity" className="form-label">
+                <label htmlFor="PoValidity_WarrantyTerm" className="form-label">
                   PO Validity/Warranty Terms
                 </label>
                 <textarea
-                  id="POValidity"
+                  id="PoValidity_WarrantyTerm"
                   className="form-control"
                   rows="3"
                   placeholder="Enter PO Validity"
-                  value={formData.PoValidity}
+                  value={formData.PoValidity_WarrantyTerm}
                   onChange={handleChange}
                 ></textarea>
+                {errors.PoValidity_WarrantyTerm && <div className="invalid-feedback">{errors.PoValidity_WarrantyTerm}</div>}
               </div>
             </div>
             <div className="row text-start">
               <div className="col-md-6 mb-3">
-                <label htmlFor="SpecificationDocuments" className="form-label">
+                <label htmlFor="PoSpecification" className="form-label">
                   PO Specification/Schedule/Documents Required/Transit Insurance
                 </label>
                 <textarea
-                  id="SpecificationDocuments"
+                  id="PoSpecification"
                   className="form-control"
                   rows="3"
                   placeholder="Enter Specification/Schedule/Documents Required/Transit Insurance"
-                  value={formData.SpecificationDocuments}
+                  value={formData.PoSpecification}
                   onChange={handleChange}
                 ></textarea>
+                {errors.PoSpecification && <div className="invalid-feedback">{errors.PoSpecification}</div>}
               </div>
 
               <div className="col-md-4 mb-3">
-                <label htmlFor="PFChangesNote" className="form-label">
+                <label htmlFor="PF_Charges" className="form-label">
                   P&F Changes Note
                 </label>
                 <textarea
-                  id="PFChangesNote"
+                  id="PF_Charges"
                   className="form-control"
                   rows="3"
                   placeholder="Enter P&F Changes Note"
-                  value={formData.PFChangesNote}
+                  value={formData.PF_Charges}
                   onChange={handleChange}
                 ></textarea>
+                {errors.PF_Charges && <div className="invalid-feedback">{errors.PF_Charges}</div>}
               </div>
 
               <div className="col-md-3 mb-3">
@@ -770,6 +798,7 @@ const Poinfo = () => {
                   value={formData.GstTaxes}
                   onChange={handleChange}
                 ></textarea>
+                {errors.GstTaxes && <div className="invalid-feedback">{errors.GstTaxes}</div>}
               </div>
             </div>
             <div className="row text-end">

@@ -30,7 +30,7 @@ const VendorPage = () => {
     address: "",
     pin_code: "",
     city: "",
-    country:"",
+    country:"India",
     state: "",
    
     state_no_numeric: "",

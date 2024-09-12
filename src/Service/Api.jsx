@@ -2389,3 +2389,24 @@ export const getUnitCode = async () => {
     throw error;
   }
 };
+
+
+
+export const getNextCode = async (type) => {
+  try {
+    const response = await axios.get(`${BASE_URL}SupplierType/entity/${type}/`);
+    return response.data.next_code;
+  } catch (error) {
+    throw new Error('Error fetching next code');
+  }
+};
+
+export const saveData = async (data) => {
+  try {
+    const response = await axios.post(`${BASE_URL}SupplierType/entity/`, data);
+    return response.data;
+  } catch (error) {
+    throw new Error('Error saving data');
+  }
+};
+

@@ -39,7 +39,7 @@ const Npd = () => {
 
   return (
     <div className="Npd123">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-md-5">
             <div className="row mb-3">
