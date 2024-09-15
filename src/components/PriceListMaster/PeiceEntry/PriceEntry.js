@@ -388,7 +388,7 @@ const PriceEntry = () => {
                           </td>
                           <td>
                             <input
-                              type="text"
+                              type="date"
                               name="Weff_Date"
                               value={formData.Weff_Date}
                               onChange={handleInputChange}

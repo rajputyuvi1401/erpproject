@@ -36,7 +36,8 @@ body.no-scroll {
   margin: 5px;
 }
 .Itemmastergernalpage .btn:hover {
-  background-color: rgba(235, 233, 233, 0.685);
+  background-color: rgba(202, 201, 201, 0.685);
+  color: black;
   border: none;
 }
 .top-but3 {
@@ -579,6 +580,10 @@ body.no-scroll {
 .btn {
   background-color: rgba(235, 233, 233, 0.685);
   margin-left: -20px;
+}
+.btn:hover{
+  background-color: black;
+  color: white;
 }
 
 /* gernal */

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo-light.png";
+// import logo from "../assets/logo-light.png";
 import { Dropdown } from "react-bootstrap";
 import { FaHome, FaInfoCircle, FaServicestack } from "react-icons/fa";
 import "./SideNav.css";
@@ -21,9 +21,8 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
         </button>
         <ul>
           <li>
-            <Link to="/">
-              <img className="logo-light" src={logo} alt="logo" />
-            </Link>
+          <h6 className="logo-light">Produlink</h6>
+           
           </li>
           <li>
             <Link to="/mainpage">
@@ -249,9 +248,8 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     Quoto Comparison Statement
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="/Quoto-Comparison-Pending">
-                  Quoto Comparison Statement Pending
+                    Quoto Comparison Statement Pending
                   </Dropdown.Item>
-                 
                 </Dropdown.Menu>
               </Dropdown>
               <Dropdown.Divider />
@@ -302,11 +300,11 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                 Gate Inward Entry
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="/Pending-Asn-List">
-                Pending ASN List 
+                Pending ASN List
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="/New-Mrn">
                 New MRN
-              </Dropdown.Item>    
+              </Dropdown.Item>
               <Dropdown.Item as={Link} to="/Purchase-Grn">
                 Purchase GRN
               </Dropdown.Item>
@@ -325,7 +323,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   <Dropdown.Item as={Link} to="/Vendor-Scrap-Inward">
                     Vendor Scrap Inward
                   </Dropdown.Item>
-                 
                 </Dropdown.Menu>
               </Dropdown>
               <Dropdown.Divider />
@@ -350,7 +347,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   <Dropdown.Item as={Link} to="/">
                     Vendor Scrap Inward
                   </Dropdown.Item>
-                 
                 </Dropdown.Menu>
               </Dropdown>
               <Dropdown.Divider />
@@ -378,7 +374,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   <Dropdown.Item as={Link} to="/">
                     Vendor Scrap Inward
                   </Dropdown.Item>
-                 
                 </Dropdown.Menu>
               </Dropdown>
               <Dropdown.Divider />
@@ -402,7 +397,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Divider />
             </Dropdown.Menu>
           </li>
-
         </ul>
       </div>
     </div>

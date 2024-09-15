@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import NavBar from "../../NavBar/NavBar.js";
-import SideNav from "../../SideNav/SideNav.js";
+import NavBar from "../../../NavBar/NavBar.js";
+import SideNav from "../../../SideNav/SideNav.js";
 import { Link } from "react-router-dom";
-import "./PendingAsnList.css";
-const PendingAsnList = () => {
+import "./PDL.css";
+const PDL = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
   const toggleSideNav = () => {
@@ -20,58 +20,57 @@ const PendingAsnList = () => {
     }
   }, [sideNavOpen]);
 
-
   return (
-       <div className="NewStoreArnList">
+    <div className="NewStorePDLList">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
             <div className="Main-NavBar">
               <NavBar toggleSideNav={toggleSideNav} />
-              <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
+              <SideNav
+                sideNavOpen={sideNavOpen}
+                toggleSideNav={toggleSideNav}
+              />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ArnList-header">
+                <div className="PDLList-header">
                   <div className="row flex-nowrap align-items-center">
                     <div className="col-md-3">
-                      <h5 className="header-title text-start">
-                        ASN List
-                      </h5>
+                      <h5 className="header-title text-start">PDL List</h5>
                     </div>
+                    
 
                     <div className="col-md-9 text-end">
                       <div className="row justify-content-end">
-                        <div className="col-md-8 d-flex align-items-end">
-                          <Link className="pobtn" to="/PDL-List">PDI List</Link>
-                         
-                          <Link className="pobtn" to="/Vendor-Bill-List">Bill List</Link>
-                         
-                          <Link className="pobtn">Export To Excel</Link>
-                        
-                          <Link className="pobtn">Short Qty Report</Link>
+                        <div className="col-md-6 d-flex align-items-end">
+                          <div className="form-check">
+                            <input
+                              type="checkbox"
+                              className="form-check-input"
+                              id="companyCheckbox"
+                            />
+                            <label
+                              className="form-check-label"
+                              htmlFor="companyCheckbox"
+                            >
+                              With Company Header
+                            </label>
+                          </div>
 
-                          <Link className="pobtn" to="/Vendor-Asn-List">ASN Modify Logs</Link>
+                          <Link className="pobtn">Export Excel</Link>
 
-                          <Link className="pobtn" to="/ASN-Report">ASN Report</Link>
+                          <Link className="pobtn" to="/Pending-Asn-List">
+                            Pending ASN List
+                          </Link>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="ArnList-main">
+                <div className="PDLList-main">
                   <div className="container-fluid">
                     <div className="row mt-4">
                       <div className="col-md-12">
                         <form className="row g-3 text-start">
-
-                           {/* Plant */}
-                           <div className="col-md-1 col-sm-6">
-                            <label className="form-label">Plant</label>
-                            <select className="form-select">
-                              <option value="">SHARP</option>
-                              {/* Add more options here */}
-                            </select>
-                          </div>
-
                           {/* From Date */}
                           <div className="col-md-1 col-sm-6">
                             <label className="form-label">From Date</label>
@@ -84,10 +83,6 @@ const PendingAsnList = () => {
                             <input type="date" className="form-control" />
                           </div>
 
-                         
-                          
-
-                          {/* Supplier Name */}
                           <div className="col-md-2 col-sm-6">
                             <label className="form-label">Vendor Name</label>
                             <input
@@ -97,7 +92,6 @@ const PendingAsnList = () => {
                             />
                           </div>
 
-                          {/* Item Name */}
                           <div className="col-md-2 col-sm-6">
                             <label className="form-label">Challan Number</label>
                             <input
@@ -109,12 +103,11 @@ const PendingAsnList = () => {
 
                           {/* Gate Entry No. */}
                           <div className="col-md-2 col-sm-6">
-                            <label className="form-label">In-Bound No.</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Enter Gate Entry No."
-                            />
+                            <label className="form-label">Status</label>
+                            <select className="form-select">
+                              <option value="">ALL</option>
+                              <option value="Pending">Pending</option>
+                            </select>
                           </div>
 
                           {/* Search Button */}
@@ -122,20 +115,13 @@ const PendingAsnList = () => {
                             <button type="submit" className="pobtn w-100">
                               Search
                             </button>
-                           
-                          </div>
-                          <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                           
-                            <button type="submit" className="pobtn w-100">
-                              View ALl
-                            </button>
                           </div>
                         </form>
                       </div>
                     </div>
                   </div>
 
-                  <div className="StoreArnList">
+                  <div className="StorePDLList">
                     <div className="container-fluid mt-4 text-start">
                       <div className="table-responsive">
                         <table className="table table-bordered">
@@ -144,9 +130,7 @@ const PendingAsnList = () => {
                               <th>No Data Found!!</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            {/* Table rows will go here */}
-                          </tbody>
+                          <tbody>{/* Table rows will go here */}</tbody>
                         </table>
                       </div>
                     </div>
@@ -166,7 +150,7 @@ const PendingAsnList = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PendingAsnList
+export default PDL;

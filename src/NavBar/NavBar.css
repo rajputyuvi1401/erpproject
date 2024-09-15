@@ -27,7 +27,10 @@
 }
 
 .navbar-logo {
-  height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  margin: 0;
 }
 
 .navbar-menu {

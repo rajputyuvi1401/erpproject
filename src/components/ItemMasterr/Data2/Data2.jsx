@@ -1022,11 +1022,11 @@ const Data2 = () => {
                       onChange={handleChange}
                     >
                       <option value="">Common Square</option>
-                      <option value="1">AYUSH</option>
+                      <option value="1">Ayush</option>
                       <option value="2">Production</option>
                       <option value="3">Purchase</option>
-                      <option value="4">QUALITY</option>
-                      <option value="5">SHAKAMBARI</option>
+                      <option value="4">Quality</option>
+                      <option value="5">Shakambari</option>
                       <option value="6">Store</option>
                     </select>
                     {errors.Department && (

@@ -261,6 +261,7 @@ const BusinessPartner = () => {
                                 <input
                                   type="text"
                                   placeholder="Please enter name"
+                                  name="cust_supp_name"
                                   className="form-control"
                                   id="cust_supp_name"
                                   value={formData.cust_supp_name}

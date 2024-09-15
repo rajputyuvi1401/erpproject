@@ -22,6 +22,15 @@
     padding: 10px 10px;
     margin: 10px 10px;
 }
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  display: block;
+  color: #dc3545;
+}
+
 
 /* Adjust layout for small screens */
 @media (max-width: 767px) {

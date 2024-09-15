@@ -1,0 +1,129 @@
+/* General Styles */
+.NewStoreASN-Report {
+    background-color: white;
+    height: auto;
+  }
+  
+  .ASN-Report-header {
+    margin-top: 20px;
+    background-color: aliceblue;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ASN-Report-main {
+    background-color: aliceblue;
+    padding: 10px;
+    margin-top: 80px;
+    height: auto;
+  }
+  
+  .StoreASN-Report {
+    background-color: aliceblue;
+    padding: 10px;
+    height: auto;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table {
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  .table th,
+  .table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+  }
+  
+  .pobtn {
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    margin: 5px;
+  }
+  
+  .pobtn:hover {
+    background-color: #0056b3;
+  }
+  
+  .header-title {
+    font-size: 1.25rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .header-title {
+      text-align: center;
+    }
+  
+    .ASN-Report-header .col-md-9,
+    .ASN-Report-header .col-md-3 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  
+    .ASN-Report-header .row {
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .d-flex {
+      display: block !important;
+      text-align: center;
+    }
+  
+    .align-items-end {
+      justify-content: center !important;
+    }
+  
+    .form-check {
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .ASN-Report-main .form-label {
+      font-size: 0.875rem;
+    }
+  
+    .ASN-Report-main .form-control,
+    .ASN-Report-main .form-select {
+      font-size: 0.875rem;
+    }
+  
+    .ASN-Report-main .btn {
+      font-size: 0.875rem;
+    }
+  
+    .table th,
+    .table td {
+      padding: 8px;
+      font-size: 0.875rem;
+    }
+  
+    .pobtn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .align-items-end {
+      display: block !important;
+      margin-bottom: 10px;
+    }
+  
+    .header-title {
+      font-size: 1rem;
+    }
+  }
+  

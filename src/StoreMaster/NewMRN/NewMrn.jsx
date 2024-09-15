@@ -3,9 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
-import CachedIcon from "@mui/icons-material/Cached";
 import { Link } from "react-router-dom";
 import "./NewMrn.css";
+import { FaEdit, FaTrash } from "react-icons/fa";
+import { saveNewMrn, fetchMrnData, editMrnData, deleteMrnData  } from "../../Service/StoreApi.jsx";
+import { toast, ToastContainer } from "react-toastify"; // Make sure to install react-toastify
+import "react-toastify/dist/ReactToastify.css";
 const NewMrn = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -20,20 +23,121 @@ const NewMrn = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+  const [showModal, setShowModal] = useState(false);
+  const [showModal1, setShowModal1] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
+
+  const handleModalClose = () => setShowModal(false);
+  const handleModalOpen = () => setShowModal(true);
+
+  const handleModalClose1 = () => setShowModal1(false);
+  const handleModalOpen1 = () => setShowModal1(true);
+
+  const handleModalClose2 = () => setShowModal2(false);
+  const handleModalOpen2 = () => setShowModal2(true);
+
+  // table 1
+  const [formData, setFormData] = useState({
+    ItemCode: "",
+    Description: "",
+    Qty: "",
+    Unit: "",
+    Type: "",
+    Machine: "",
+    Employee: "",
+    Dept: "",
+    Remark: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [mrnData, setMrnData] = useState([]);
+  const [editingId, setEditingId] = useState(null);
 
 
-  const [isCardVisible, setIsCardVisible] = useState(false);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  // Function to toggle card visibility
-  const handleButtonClick = () => {
-    setIsCardVisible(!isCardVisible);
+  const fetchData = async () => {
+    try {
+      const data = await fetchMrnData();
+      setMrnData(data);
+    } catch (error) {
+      toast.error('Failed to fetch data.');
+    }
   };
-  const handleClose = () => {
-    setIsCardVisible(false);
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
+const validateForm = () => {
+    const newErrors = {};
+    for (const [key, value] of Object.entries(formData)) {
+      if (!value) {
+        newErrors[key] = 'This field is required.';
+      }
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      try {
+        if (editingId) {
+          // Edit existing item
+          await editMrnData(editingId, formData);
+          toast.success('Data updated successfully!');
+        } else {
+          // Save new item
+          await saveNewMrn(formData);
+          toast.success('Data saved successfully!');
+        }
+        fetchData(); // Refresh data after saving
+        setFormData({
+          ItemCode: '',
+          Description: '',
+          Qty: '',
+          Unit: '',
+          Type: '',
+          Machine: '',
+          Employee: '',
+          Dept: '',
+          Remark: '',
+        });
+        setEditingId(null); // Reset editing state
+      } catch (error) {
+        toast.error('Failed to save data.');
+      }
+    }
+  };
+
+  const handleEdit = (item) => {
+    setFormData(item);
+    setEditingId(item.id);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteMrnData(id);
+      toast.success('Data deleted successfully!');
+      fetchData(); // Refresh data after deletion
+    } catch (error) {
+      toast.error('Failed to delete data.');
+    }
+  };
+  
   return (
     <div className="NewStoreNewgrn">
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -46,11 +150,16 @@ const NewMrn = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Newgrn-header">
                   <div className="row flex-nowrap align-items-center">
-                    <div className="col-md-2">
-                      <h5 className="header-title text-start">New GRN</h5>
+                    <div className="col-md-1">
+                      <h5 className="header-title text-start">New MRN</h5>
                     </div>
-                    <div className="col-md-6 mt-4">
+                    <div className="col-md-9 mt-4">
                       <div className="row mb-3">
+                        <div className="col-md-1">
+                          <label htmlFor="seriesSelect" className="form-label">
+                            Plant:
+                          </label>
+                        </div>
                         <div className="col-md-2">
                           <select id="sharpSelect" className="form-select">
                             <option selected>Sharp</option>
@@ -73,6 +182,11 @@ const NewMrn = () => {
                           </select>
                         </div>
 
+                        <div className="col-md-1">
+                          <label htmlFor="seriesSelect" className="form-label">
+                            MRN No:
+                          </label>
+                        </div>
                         {/* Input Field */}
                         <div className="col-md-2">
                           <input
@@ -82,792 +196,517 @@ const NewMrn = () => {
                             placeholder="Enter value"
                           />
                         </div>
-                        <div className="col-md-2 d-flex align-items-center">
+                        <div className="col-md-1 d-flex align-items-center">
                           <input type="checkbox" id="poGrnCheckbox" />
                           <label htmlFor="poGrnCheckbox" className="ms-1">
-                            PO GRN
+                            Gernal
                           </label>
                         </div>
-                        <div className="col-md-3 d-flex align-items-center">
+                        <div className="col-md-2 d-flex align-items-center">
                           <input type="checkbox" id="directGrnCheckbox" />
                           <label htmlFor="directGrnCheckbox" className="ms-1">
-                            Direct GRN
+                            Work Order
                           </label>
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-4 text-end">
+                    <div className="col-md-2 text-end">
                       <div className="row justify-content-end">
                         <div className="col-md-6 d-flex align-items-center">
-                          <Link className="pobtn">Grn List</Link>
+                          <Link className="pobtn" to="/Tool-MRN">
+                            Tool MRN
+                          </Link>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="Newgrn-main">
-                  
-                    <div className="container-fluid text-start">
-                      <div className="row mt-4">
-                        <div className="col-md-6">
-                          <div className="row">
-                            <div className="col-md-4">Gate Entry No:</div>
-                            <div className="col-md-6">
-                              <select
-                                id="routingSelect"
-                                className="form-select"
-                              >
-                                <option selected>Select</option>
-                                <option value="">
-                                  GE242503626|Supplier/Vendor : SANKET
-                                  ENGINEERING
-                                </option>
-                                <option value="">
-                                  GE242504231|Supplier/Vendor : SHRIPAD STEELS
-                                </option>
-                                <option value="">
-                                  GE242503626|Supplier/Vendor : SHREE CHITAMANI
-                                  HEAT TREATERS
-                                </option>
-                              </select>
+                  <div className="container-fluid text-start">
+                    <div className="row mt-4">
+                      <div className="Col-md-12">
+                        <div className="container-fluid">
+                          <form className="row" onSubmit={handleSubmit}>
+                            <div className="table-responsive">
+                              <table className="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th>Item Code View stock</th>
+                                    <th>Description</th>
+                                    <th>Qty</th>
+                                    <th>Unit</th>
+                                    <th>Type</th>
+                                    <th>Machine</th>
+                                    <th>Employee</th>
+                                    <th>Dept.</th>
+                                    <th>Remark</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td data-label="Item Code View stock">
+                                      <div className="d-flex">
+                                        <input
+                                          type="text"
+                                          name="ItemCode"
+                                          className={`form-control ${
+                                            errors.ItemCode ? "is-invalid" : ""
+                                          }`}
+                                          value={formData.ItemCode}
+                                          onChange={handleChange}
+                                        />
+                                        <button className="pobtn">
+                                          Search
+                                        </button>
+                                      </div>
+                                      {errors.ItemCode && (
+                                        <div className="invalid-feedback">
+                                          {errors.ItemCode}
+                                        </div>
+                                      )}
+                                    </td>
+                                    <td data-label="Description">
+                                      <textarea
+                                        name="Description"
+                                        className={`form-control ${
+                                          errors.Description ? "is-invalid" : ""
+                                        }`}
+                                        value={formData.Description}
+                                        onChange={handleChange}
+                                        rows="1"
+                                      ></textarea>
+                                      {errors.Description && (
+                                        <div className="invalid-feedback">
+                                          {errors.Description}
+                                        </div>
+                                      )}
+                                    </td>
+                                    <td data-label="Qty">
+                                      <input
+                                        type="text"
+                                        name="Qty"
+                                        className={`form-control ${
+                                          errors.Qty ? "is-invalid" : ""
+                                        }`}
+                                        value={formData.Qty}
+                                        onChange={handleChange}
+                                      />
+                                      {errors.Qty && (
+                                        <div className="invalid-feedback">
+                                          {errors.Qty}
+                                        </div>
+                                      )}
+                                    </td>
+                                    <td data-label="Unit">
+                                      <input
+                                        type="text"
+                                        name="Unit"
+                                        className={`form-control ${
+                                          errors.Unit ? "is-invalid" : ""
+                                        }`}
+                                        value={formData.Unit}
+                                        onChange={handleChange}
+                                      />
+                                      {errors.Unit && (
+                                        <div className="invalid-feedback">
+                                          {errors.Unit}
+                                        </div>
+                                      )}
+                                    </td>
+                                    <td data-label="Type">
+                                      <select
+                                        name="Type"
+                                        className={`form-select ${
+                                          errors.Type ? "is-invalid" : ""
+                                        }`}
+                                        value={formData.Type}
+                                        onChange={handleChange}
+                                      >
+                                        <option>Select</option>
+                                        <option value="Critical">
+                                          Critical
+                                        </option>
+                                        <option value="Regular">Regular</option>
+                                      </select>
+                                      {errors.Type && (
+                                        <div className="invalid-feedback">
+                                          {errors.Type}
+                                        </div>
+                                      )}
+                                    </td>
+                                    <td data-label="Machine">
+                                      <select
+                                        name="Machine"
+                                        className={`form-select ${
+                                          errors.Machine ? "is-invalid" : ""
+                                        }`}
+                                        value={formData.Machine}
+                                        onChange={handleChange}
+                                      >
+                                        <option>Select</option>
+                                        <option value="L4">L4 | LATHE 4</option>
+                                        <option value="L5">L5 | LATHE 5</option>
+                                        <option value="L6">L6 | LATHE 6</option>
+                                        <option value="L7">L7 | LATHE 7</option>
+                                      </select>
+                                      {errors.Machine && (
+                                        <div className="invalid-feedback">
+                                          {errors.Machine}
+                                        </div>
+                                      )}
+                                    </td>
+                                    <td data-label="Employee">
+                                      <input
+                                        type="text"
+                                        name="Employee"
+                                        className={`form-control ${
+                                          errors.Employee ? "is-invalid" : ""
+                                        }`}
+                                        value={formData.Employee}
+                                        onChange={handleChange}
+                                      />
+                                      {errors.Employee && (
+                                        <div className="invalid-feedback">
+                                          {errors.Employee}
+                                        </div>
+                                      )}
+                                    </td>
+                                    <td data-label="Dept.">
+                                      <select
+                                        name="Dept"
+                                        className={`form-select ${
+                                          errors.Dept ? "is-invalid" : ""
+                                        }`}
+                                        value={formData.Dept}
+                                        onChange={handleChange}
+                                      >
+                                        <option>Select</option>
+                                        <option value="AYUSH">AYUSH</option>
+                                        <option value="PRODUCTION">
+                                          PRODUCTION
+                                        </option>
+                                        <option value="PURCHASE">
+                                          PURCHASE
+                                        </option>
+                                        <option value="QUALITY">QUALITY</option>
+                                        <option value="STORE">STORE</option>
+                                        <option value="SHAKAMBARI">
+                                          SHAKAMBARI
+                                        </option>
+                                      </select>
+                                      {errors.Dept && (
+                                        <div className="invalid-feedback">
+                                          {errors.Dept}
+                                        </div>
+                                      )}
+                                    </td>
+                                    <td data-label="Remark">
+                                      <textarea
+                                        name="Remark"
+                                        className={`form-control ${
+                                          errors.Remark ? "is-invalid" : ""
+                                        }`}
+                                        value={formData.Remark}
+                                        onChange={handleChange}
+                                      ></textarea>
+                                      {errors.Remark && (
+                                        <div className="invalid-feedback">
+                                          {errors.Remark}
+                                        </div>
+                                      )}
+                                    </td>
+                                    <td data-label="Action">
+                                    <button type="submit" className="pobtn">{editingId ? 'Update' : 'Add'}</button>
+                                    </td>
+                                  </tr>
+                                  {/* Add more rows as needed */}
+                                </tbody>
+                              </table>
                             </div>
-                            <div className="col-md-2">
-                              <CachedIcon />
-                            </div>
-                          </div>
+                          </form>
                         </div>
                       </div>
-                      <div className="row mt-4">
-                        <div className="col-md-6">
-                          <div className="row">
-                            <div className="col-md-4">Select Supplier:</div>
-                            <div className="col-md-6">
-                              <input />
-                            </div>
-                            <div className="col-md-2">
-                              <button type="button" className="pobtn">
-                                Search
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-md-6">
-                          <div className="row text-start">
-                            <div className="col-md-4">Select Po:</div>
-                            <div className="col-md-4">
-                              <select
-                                id="routingSelect"
-                                className="form-select"
-                              >
-                                <option selected>Select</option>
-                                <option value="">
-                                  242503626| SANKET ENGINEERING
-                                </option>
-                                <option value="">
-                                  242504231| SHRIPAD STEELS
-                                </option>
-                                <option value="">
-                                  242503626| SHREE CHITAMANI HEAT TREATERS
-                                </option>
-                              </select>
-                            </div>
-                            <div className="col-md-2">
-                              <button type="button" className="btn">
-                                Add All Item
-                              </button>
-                            </div>
-                            <div className="col-md-1">
-                              <button type="button" className="btn">
-                                Cancel
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row mt-4 ">
-                        <div className="col-md-6">
-                          <div className="row ">
-                            <div className="col-md-4">Search Item:</div>
-                            <div className="col-md-6">
-                              <input />
-                            </div>
-                            <div className="col-md-2">
-                              <button type="button" className="btn">
-                                Add
-                              </button>
-                            </div>
-                         
-                      
-                          </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="row ">
-                              <div className="col-md-8">
-                                <button type="button" className="btn" onClick={handleButtonClick}>
-                                  Pending Release PO item
+                    </div>
+                  </div>
+
+                  <div className="Newgrntable">
+                    <div className="container-fluid mt-4 text-start">
+                      <div className="table-responsive">
+                        <table className="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Sr no.</th>
+                              <th>Item No</th>
+
+                              <th>Description</th>
+                              <th>unit</th>
+                              <th>Qty</th>
+                              <th>
+                                Type{" "}
+                                <button
+                                  className="newbtn"
+                                  onClick={handleModalOpen}
+                                >
+                                  Add
                                 </button>
-                              </div>
-                            </div>
-                            </div>
-                      </div>
-                    </div>
+                              </th>
+                              <th>
+                                Machine{" "}
+                                <button
+                                  className="newbtn"
+                                  onClick={handleModalOpen1}
+                                >
+                                  Add
+                                </button>
+                              </th>
+                              <th>
+                                Employee{" "}
+                                <button
+                                  className="newbtn"
+                                  onClick={handleModalOpen2}
+                                >
+                                  See All
+                                </button>
+                              </th>
+                              <th>Dept</th>
+                              <th>Remark</th>
 
-                    <div className="Newgrntable">
-                      <div className="container-fluid mt-4 text-start">
-                        <div className="table-responsive">
-                          <table className="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Sr no.</th>
-                                <th>PO No</th>
-                                <th>Date</th>
-                                <th>Item No | Code</th>
-                                <th>Description</th>
-                                <th>Rate</th>
-                                <th>PO Qty</th>
-                                <th>Bal. Qty</th>
-                                <th>Challan Qty</th>
-                                <th>GRN Qty</th>
-                                <th>Short/Excess Qty</th>
-                                <th>Unit Code</th>
-                                <th>Total</th>
-                                <th>Heat No.</th>
-                                <th>MFg Date</th>
-                                <th>Hc</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr></tr>
-                            </tbody>
-                          </table>
-                        </div>
+                              <th>Edit</th>
+                              <th>Delete</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          {mrnData.map((item, index) => (
+                    <tr key={item.id}>
+                      <td>{index + 1}</td>
+                      <td>{item.ItemCode}</td>
+                      <td>{item.Description}</td>
+                      <td>{item.Unit}</td>
+                      <td>{item.Qty}</td>
+                      <td>{item.Type}</td>
+                      <td>{item.Machine}</td>
+                      <td>{item.Employee}</td>
+                      <td>{item.Dept}</td>
+                      <td>{item.Remark}</td>
+                             
+                              <td>
+                                <FaEdit className="text-primary" onClick={() => handleEdit(item)}  />
+                              </td>
+                              <td>
+                                <FaTrash className="text-danger" onClick={() => handleDelete(item.id)} />
+                              </td>
+                            </tr>
+                          ))}
+                          </tbody>
+                        </table>
                       </div>
+                      {/* Models */}
                     </div>
-
                     <div
-                      className="Newgrn122Footer"
-                      style={{ marginTop: "100px" }}
+                      className={`modal fade ${
+                        showModal ? "show d-block" : ""
+                      }`}
+                      tabIndex="-1"
+                      role="dialog"
                     >
-                      <ul
-                        className="nav nav-pills mb-3"
-                        id="pills-tab"
-                        role="tablist"
-                      >
-                        <li className="nav-item" role="presentation">
-                          <button
-                            className="nav-link active"
-                            id="pills-Gernal-Detail-tab"
-                            data-bs-toggle="pill"
-                            data-bs-target="#pills-Gernal-Detail"
-                            type="button"
-                            role="tab"
-                            aria-controls="pills-Gernal-Detail"
-                            aria-selected="true"
-                          >
-                            Gernal Detail
-                          </button>
-                        </li>
-                        <li className="nav-item" role="presentation">
-                          <button
-                            className="nav-link"
-                            id="pills-GST-Details-tab"
-                            data-bs-toggle="pill"
-                            data-bs-target="#pills-GST-Details"
-                            type="button"
-                            role="tab"
-                            aria-controls="pills-GST-Details"
-                            aria-selected="false"
-                          >
-                            GST Details
-                          </button>
-                        </li>
-                        <li className="nav-item" role="presentation">
-                          <button
-                            className="nav-link"
-                            id="pills-Ref-Doc/Tc-Details-tab"
-                            data-bs-toggle="pill"
-                            data-bs-target="#pills-Ref-Doc/Tc-Details"
-                            type="button"
-                            role="tab"
-                            aria-controls="pills-Ref-Doc/Tc-Details"
-                            aria-selected="false"
-                          >
-                            Ref Doc/TC Details
-                          </button>
-                        </li>
-                      </ul>
-                      <div className="tab-content" id="pills-tabContent">
-                        <div
-                          className="tab-pane fade show active"
-                          id="pills-Gernal-Detail"
-                          role="tabpanel"
-                          aria-labelledby="pills-Gernal-Detail-tab"
-                          tabindex="0"
-                        >
-                          <div className="StoreNewgrn1 text-start">
+                      <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h5 className="modal-title">Search</h5>
+                            <button
+                              type="button"
+                              className="btn-close"
+                              onClick={handleModalClose}
+                            >
+                              X
+                            </button>
+                          </div>
+                          <div className="modal-body">
                             <div className="container-fluid">
-                              <div className="row">
-                                <div className="col-md-4 text-start">
-                                  <div className="container mt-4">
-                                    <div className="table-responsive">
-                                      <table className="table table-bordered">
-                                        <tbody>
-                                          {/* First Column Group */}
-                                          <tr>
-                                            <th className="col-md-4">
-                                              GRN No:
-                                            </th>
-                                            <td>
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>GRN Date:</th>
-                                            <td>
-                                              <input
-                                                type="date"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>GRN Time:</th>
-                                            <td>
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>Challan No:</th>
-                                            <td>
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>Challan Date:</th>
-                                            <td>
-                                              <input
-                                                type="date"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>Invoice No:</th>
-                                            <td>
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th className="col-md-4">
-                                              Invoice Date:
-                                            </th>
-                                            <td>
-                                              <input
-                                                type="date"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
+                              <div className="row mb-3">
+                                <div className="col-md-6">
+                                  <label className="form-label">
+                                    Select Employee:
+                                  </label>
                                 </div>
-                                <div className="col-md-4 text-start">
-                                  {/* Second Column Group */}
-                                  <div className="container mt-4">
-                                    <div className="table-responsive text-start">
-                                      <table className="table table-bordered">
-                                        <tbody>
-                                          <tr>
-                                            <th>E Way Bill No:</th>
-                                            <td>
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>E Way Bill Date:</th>
-                                            <td>
-                                              <input
-                                                type="date"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>Vehical No:</th>
-                                            <td>
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>LR No:</th>
-                                            <td>
-                                              <input
-                                                type="date"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>Transporter:</th>
-                                            <td>
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>Prepared By:</th>
-                                            <td>
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>Checked By:</th>
-                                            <td>
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
+                                <div className="col-md-6">
+                                  <input type="text" className="form-control" />
                                 </div>
-                                <div className="col-md-4 text-start">
-                                  {/* Third Column Group */}
-                                  <div className="container mt-4">
-                                    <div className="table-responsive">
-                                      <table className="table table-bordered">
-                                        <tbody>
-                                          <tr>
-                                            <th>TC No:</th>
-                                            <td>
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>TC Date:</th>
-                                            <td>
-                                              <input
-                                                type="date"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>QC Check:</th>
-                                            <td>
-                                              <div className="row">
-                                                <div className="col-md-2 d-flex align-items-center">
-                                                  <input
-                                                    type="checkbox"
-                                                    id="QuantityCheckbox"
-                                                  />
-                                                  <label
-                                                    htmlFor="QuantityCheckbox"
-                                                    className="ms-1"
-                                                  >
-                                                    Quantity
-                                                  </label>
-                                                </div>
-                                                <div className="col-md-2 d-flex align-items-center">
-                                                  <input
-                                                    type="checkbox"
-                                                    id="QualityCheckbox"
-                                                  />
-                                                  <label
-                                                    htmlFor="QualityCheckbox"
-                                                    className="ms-1"
-                                                  >
-                                                    Quality
-                                                  </label>
-                                                </div>
-                                              </div>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th className="col-md-4">
-                                              Delivery in Time:
-                                            </th>
-                                            <td>
-                                              <div className="row">
-                                                <div className="col-md-2 d-flex align-items-center">
-                                                  <input
-                                                    type="checkbox"
-                                                    id="YesCheckbox"
-                                                  />
-                                                  <label
-                                                    htmlFor="YesCheckbox"
-                                                    className="ms-1"
-                                                  >
-                                                    Quantity
-                                                  </label>
-                                                </div>
-                                                <div className="col-md-2 d-flex align-items-center">
-                                                  <input
-                                                    type="checkbox"
-                                                    id="NoCheckbox"
-                                                  />
-                                                  <label
-                                                    htmlFor="NoCheckbox"
-                                                    className="ms-1"
-                                                  >
-                                                    Quality
-                                                  </label>
-                                                </div>
-                                              </div>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>Remark:</th>
-                                            <td>
-                                              <textarea className="form-control"></textarea>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th>Payment Term Days:</th>
-                                            <td>
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                              />
-                                            </td>
-                                          </tr>
+                              </div>
+                            </div>
+                          </div>
 
-                                          <tr>
-                                            <td
-                                              colspan="2"
-                                              className="text-start"
-                                            >
-                                              <button className="btn">
-                                                Save GRN
-                                              </button>
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
+                          <div className="modal-footer">
+                            <button type="button" className="newbtn1">
+                              See ALL
+                            </button>
+                            <button
+                              type="button"
+                              className="newbtn1"
+                              onClick={handleModalClose}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className={`modal fade ${
+                        showModal1 ? "show d-block" : ""
+                      }`}
+                      tabIndex="-1"
+                      role="dialog"
+                    >
+                      <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h5 className="modal-title">Add Type</h5>
+                            <button
+                              type="button"
+                              className="btn-close"
+                              onClick={handleModalClose1}
+                            >
+                              X
+                            </button>
+                          </div>
+                          <div className="modal-body">
+                            <div className="container-fluid">
+                              <div className="row mb-3">
+                                <div className="col-md-6">
+                                  <label className="form-label">
+                                    Select Employee:
+                                  </label>
+                                </div>
+                                <div className="col-md-6">
+                                  <input type="text" className="form-control" />
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div
-                          className="tab-pane fade"
-                          id="pills-GST-Details"
-                          role="tabpanel"
-                          aria-labelledby="pills-GST-Details-tab"
-                          tabindex="0"
-                        >
-                          <div className="StoreNewgrn2">
-                            <div className="row ">
-                              <div className="col-md-8">
-                                <div className="table-responsive">
-                                  <table className="table table-bordered">
-                                    <thead>
-                                      <tr>
-                                        <th>Sr</th>
-                                        <th>Item Code</th>
-                                        <th>HSN</th>
-                                        <th>PO Rate</th>
-                                        <th>Disc Rate</th>
-                                        <th>Qty</th>
-                                        <th>Discount</th>
-                                        <th>Pack Amt</th>
-                                        <th>TransAmt</th>
-                                        <th>Tool Amort</th>
-                                        <th>Ass Value</th>
-                                        <th>CGST</th>
-                                        <th>SGST</th>
-                                        <th>IGST</th>
-                                        <th>VAT</th>
-                                        <th>CESS</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>{/* Data rows will go here */}</tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                              <div className="col-md-4">
-                              
-                                  <div className="row">
-                                    <div className="col-md-6 text-start">
-                                      {/* Second Column Group */}
-                                      <div className="container">
-                                      <div className="table-responsive">
-                                      <table className="table table-bordered">
-                                            <tbody>
-                                              <tr>
-                                                <th>TDC Assessable Value:</th>
-                                                <td>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th className="col-md-4">
-                                                  (TDC) Pack & Fwrd Charge:
-                                                </th>
-                                                <td>
-                                                  <input
-                                                    type="date"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th>TransPort Charges:</th>
-                                                <td>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th>Insurance:</th>
-                                                <td>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th>Instailation Charges:</th>
-                                                <td>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th>Other Charges:</th>
-                                                <td>
-                                                  <input
-                                                    type="date"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th>TDS:</th>
-                                                <td>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="col-md-6 text-start">
-                                      {/* Third Column Group */}
-                                      <div className="container mt-4">
-                                        <div className="table-responsive">
-                                          <table className="table table-bordered">
-                                            <tbody>
-                                              <tr>
-                                                <th>CGST:00.00%</th>
-                                                <td>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th className="col-md-4">
-                                                  SGST:00.00%
-                                                </th>
-                                                <td>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th>IGST:00.00%:</th>
-                                                <td>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th>VAT Amt:</th>
-                                                <td>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th>Cess Amt:</th>
-                                                <td>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th>TCS: :</th>
-                                                <td>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th>GR. Total:</th>
-                                                <td>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                  />
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <td
-                                                  colspan="2"
-                                                  className="text-start"
-                                                >
-                                                  <button className="btn">
-                                                    DocTCUpload
-                                                  </button>
-                                                </td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                              
-                              </div>
-                            </div>
+                          <div className="modal-footer">
+                            <button
+                              type="button"
+                              className="newbtn1"
+                              onClick={handleModalClose1}
+                            >
+                              Close
+                            </button>
+                            <button type="button" className="newbtn1">
+                              Save changes
+                            </button>
                           </div>
                         </div>
-                        <div
-                          className="tab-pane fade"
-                          id="pills-Ref-Doc/Tc-Details"
-                          role="tabpanel"
-                          aria-labelledby="pills-Ref-Doc/Tc-Details-tab"
-                          tabindex="0"
-                        >
-                          <div className="StoreNewgrn3">
-                            <div className="row ">
-                              <div className="col-md-8 mt-4">
-                                <div className="table-responsive">
-                                  <table className="table table-bordered">
-                                    <thead>
-                                      <tr>
-                                        <th>Sr</th>
-                                        <th>Item Code</th>
-                                        <th>Item Desc</th>
-                                        <th>Mill/TC Name</th>
-                                        <th>Mill/TC No</th>
-                                        <th>Mill/TC Date</th>
-                                        <th>Location</th>
-                                       
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>{/* Data rows will go here */}</tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                              
-                            </div>
-                            <div className="row">
-                              <div className="col-md-12 text-end">
-                               <button className="pobtn" type="button">Doc/Tc Upload</button>
-                              </div>
-                            </div>
+                      </div>
+                    </div>
+                    <div
+                      className={`modal fade ${
+                        showModal2 ? "show d-block" : ""
+                      }`}
+                      tabIndex="-1"
+                      role="dialog"
+                    >
+                      <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h5 className="modal-title">Add Type</h5>
+                            <button
+                              type="button"
+                              className="btn-close"
+                              onClick={handleModalClose2}
+                            >
+                              X
+                            </button>
+                          </div>
+                          <div className="modal-body">
+                            {/* Content of the modal */}
+                            <p>Type form fields here.</p>
+                          </div>
+                          <div className="modal-footer">
+                            <button
+                              type="button"
+                              className="newbtn1"
+                              onClick={handleModalClose2}
+                            >
+                              Close
+                            </button>
+                            <button type="button" className="newbtn1">
+                              Save changes
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-             
-              </main>
-              {isCardVisible && (
-        <div className="storenewmrn-overlay">
-           <div className="costtype2-overlay">
-                      <div className="new-card">
-                        <div className="row">
-                          <div className="col-md-10 text-start">
-                            <h5 className="card-title">Pending for Release PO Item List</h5>
-                          </div>
-                          <div className="col-md-2 text-end">
-                            <button
-                              className="btn"
-                              onClick={handleClose}
-                            >
-                              X
-                            </button>
+
+                  <div className="NewgrnFooter">
+                    <div className="container-fluid">
+                      <div className="row justify-content-end align-items-center mb-3">
+                        <div className="col-md-1 text-end">
+                          <label className="form-label">Remarks:</label>
+                        </div>
+                        <div className="col-md-3">
+                          <textarea
+                            cols="3"
+                            className="form-control"
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div className="row g-3">
+                        <div className="col-md-2">
+                          <div className="row align-items-center">
+                            <div className="col-4 col-md-4 text-end">
+                              <label>MRN No:</label>
+                            </div>
+                            <div className="col-4 col-md-4">
+                              <input className="form-control mb-2" />
+                            </div>
+                            <div className="col-4 col-md-4">
+                              <input className="form-control" />
+                            </div>
                           </div>
                         </div>
-                        <div className="card-body">
-                        
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>No Data Found !!</th>
-                        </tr>
-                      </thead>
-                    </table>
+                        <div className="col-md-2">
+                          <div className="row align-items-center">
+                            <div className="col-md-4 col-md-4 text-end">
+                              <label>MRN Date:</label>
+                            </div>
+                            <div className="col-8 col-md-8">
+                              <input type="date" className="form-control" />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-md-2">
+                          <div className="row align-items-center">
+                            <div className="col-4 col-md-4 text-end">
+                              <label>MRN Time:</label>
+                            </div>
+                            <div className="col-8 col-md-8">
+                              <input type="text" className="form-control" />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-md-2">
+                          <div className="row align-items-center">
+                            <div className="col-4 col-md-4 text-end">
+                              <label>Project:</label>
+                            </div>
+                            <div className="col-8 col-md-8">
+                              <select className="form-select">
+                                <option>Select</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-md-2 d-flex justify-content-end align-items-center">
+                          <button className="btn w-100">Save MRN</button>
                         </div>
                       </div>
                     </div>
-      </div>
-      )}
+                  </div>
+                </div>
+              </main>
             </div>
           </div>
         </div>

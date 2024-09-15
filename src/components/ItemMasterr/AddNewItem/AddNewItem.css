@@ -141,6 +141,10 @@ body.no-scroll {
 .btn {
   background-color: rgba(235, 233, 233, 0.685);
   margin-left: -20px;
+  color: black;
+}
+.btn:hover{
+  background-color: black;
 }
 
 @media (max-width: 576px) {
@@ -164,7 +168,8 @@ body.no-scroll {
   border: none;
 }
 .AddNewItemPage .btn:hover {
-  background-color: rgba(235, 233, 233, 0.685);
+  background-color: rgb(206, 205, 205);
+  color: black;
   border: none;
 }
 .bjkd {

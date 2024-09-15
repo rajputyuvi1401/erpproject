@@ -40,7 +40,7 @@ const GateInwardEntry = () => {
 
                     <div className="col-md-9 text-end">
                       <div className="row justify-content-end">
-                        <div className="col-md-8 d-flex align-items-end">
+                        <div className="col-md-9 d-flex align-items-end">
                           <Link className="pobtn" to={'/New-Gate-Entry'}>New Gate Entry</Link>
                          
                           <Link className="pobtn">Gate Inward Material Reg</Link>
@@ -84,7 +84,17 @@ const GateInwardEntry = () => {
                             <label className="form-label">Type</label>
                             <select className="form-select">
                               <option value="">Select Type</option>
-                              {/* Add more options here */}
+                              <option value="PurchaseGRN">Purchase GRN</option>
+                              <option value="ScheduleGRN">Schedule GRN</option>
+                              <option value="ImportGRN">Import GRN</option>
+                              <option value="57F4GRN">57F4 GRN</option>
+                              <option value="jobworkGRN">jobwork GRN</option>
+                              <option value="DC GRN">DC GRN</option>
+                              <option value="InterStoreInvoice">Inter Store Invoice</option>
+                              <option value="InterStoreChallan">Inter Store Challan</option>
+                              <option value="Sales Return">Sales Return</option>
+                              <option value="DirectGRN">Direct GRN</option>
+                              <option value="General/Document/Courier">General/Document/Courier</option>
                             </select>
                           </div>
 
@@ -93,7 +103,7 @@ const GateInwardEntry = () => {
                             <label className="form-label">Status</label>
                             <select className="form-select">
                               <option value="">Select Status</option>
-                              {/* Add more options here */}
+                              <option value="Pending">Pending</option>
                             </select>
                           </div>
 

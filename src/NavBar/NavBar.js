@@ -6,7 +6,7 @@ import BedtimeIcon from "@mui/icons-material/Bedtime";
 import GridViewIcon from "@mui/icons-material/GridView";
 import SettingsIcon from "@mui/icons-material/Settings";
 import NotificationAddIcon from "@mui/icons-material/NotificationAdd";
-import logo from "../assets/logo-dark.png";
+// import logo from "../assets/logo-dark.png";
 import us from "../assets/us.jpg";
 import user from "../assets/user-1.jpg";
 
@@ -22,9 +22,10 @@ const NavBar = ({ toggleSideNav }) => {
           <button className="navbar-toggle" onClick={toggleSideNav}>
             ☰
           </button>
-          <Link to="/">
-            <img className="navbar-logo" src={logo} alt="logo" />
-          </Link>
+          {/* <Link to="/">
+            <img  src={logo} alt="logo" />
+          </Link> */}
+          <h6 className="navbar-logo">Produlink</h6>
         </div>
         <div className="navbar-menu">
           <div className="navbar-dropdown">

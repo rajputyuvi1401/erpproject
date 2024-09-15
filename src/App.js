@@ -130,10 +130,15 @@ import GateInwardEntry from "./StoreMaster/GateInwardEntry/GateInwardEntry.jsx";
 import NewGateInward from "./StoreMaster/GateInwardEntry/NewGateInward/NewGateInward.jsx";
 
 import PendingAsnList from "./StoreMaster/PendingASNList/PendingAsnList.jsx";
-
+import PDL from "./StoreMaster/PendingASNList/PDL/PDL.jsx";
+import VendorBillList from "./StoreMaster/PendingASNList/VendorBillList/VendorBillList.jsx";
+import VendorASN from "./StoreMaster/PendingASNList/VendorASN/VendorASN.jsx";
+import ASNReport from "./StoreMaster/PendingASNList/ASNReport/ASNReport.jsx";
 import NewMrn from "./StoreMaster/NewMRN/NewMrn.jsx";
+import ToolMrn from "./StoreMaster/NewMRN/ToolMrn/ToolMrn.jsx";
 
 import PurchaseGrn from "./StoreMaster/PurchseGRN/PurchaseGrn.jsx";
+import GrnList from "./StoreMaster/PurchseGRN/GRNList/GrnList.jsx";
 
 // Subcon Grn
 
@@ -314,8 +319,16 @@ function App() {
         <Route path="New-Gate-Entry" element={<NewGateInward/>}/>
 
         <Route path="Pending-Asn-List" element={<PendingAsnList/>} />
+        <Route path="PDL-List" element={<PDL/>}/>
+        <Route path="Vendor-Bill-List" element={<VendorBillList/>}/>
+        <Route path="Vendor-Asn-List" element={<VendorASN/>}/>
+        <Route path="ASN-Report" element={<ASNReport/>}/>
+
         <Route path="New-Mrn" element={<NewMrn/>} />
+        <Route path="Tool-MRN" element={<ToolMrn/>}/>
+
         <Route path="Purchase-Grn" element={<PurchaseGrn/>} />
+        <Route path="Grn-List" element={<GrnList/>}/>
         <Route path="Inward-challan" element={<InwardChallan1/>} />
         <Route path="Jobwork-Inward-Challan" element={<JobworkInwardChallan/>} />
         <Route path="Vendor-Scrap-Inward" element={<VendorScrapInward/>} />
