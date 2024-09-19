@@ -150,13 +150,32 @@ import SubconGrn from "./StoreMaster/SubconGRN/SubconGrn.jsx";
 
 
 import MaterialIssueChallan from "./StoreMaster/MaterialIssueChallan/MaterialIssueChallan.jsx";
+import WorkOrderMaterial from "./StoreMaster/MaterialIssueChallan/WorkOrderMaterial/WorkOrderMaterial.jsx";
+import MaterialIssue from "./StoreMaster/MaterialIssueChallan/MaterialIssue/MaterialIssue.jsx";
+import WorkIssueRepost from "./StoreMaster/MaterialIssueChallan/MaterialIssue/WorkIssueRepost.jsx";
+
 import MaterialIssueGernal from "./StoreMaster/MaterialIssueGernal/MaterialIssueGernal.jsx";
 
 import DeliveryChallan from "./StoreMaster/DeliveryChallan/DeliveryChallan.jsx";
 import Dcgrn from "./StoreMaster/DCGRN/Dcgrn.jsx";
 
 import StoreNewindent from "./StoreMaster/Newindent/Newindent.jsx";
+
 import StockTransaction from "./StoreMaster/StockTransaction/StockTransaction.jsx";
+import OpeningStock from "./StoreMaster/StockTransaction/OpeningStock/OpeningStock.jsx";
+import FGMovement from "./StoreMaster/StockTransaction/FGMovement/FGMovement.jsx";
+
+import AddNewFGMovent from "./StoreMaster/StockTransaction/FGMovement/AddNewFGMovement/AddNewFGMovent.jsx";
+import FGTOFGMovement from "./StoreMaster/StockTransaction/FGMovement/FGTOFGMovement/FGTOFGMovement.jsx";
+import FGToFGStock from "./StoreMaster/StockTransaction/FGMovement/FGTOFGStock/FGToFGStock.jsx";
+import ScrapMovement from "./StoreMaster/StockTransaction/FGMovement/ScrapMovement/ScrapMovement.jsx";
+import RMStockTransaction from "./StoreMaster/StockTransaction/RMStockTransaction/RMStockTransaction.jsx";
+import ScrapToFg from "./StoreMaster/StockTransaction/FGMovement/ScrapMovement/ScrapToFg/ScrapToFg.jsx";
+
+import RMToTransaction from "./StoreMaster/StockTransaction/RMStockTransaction/RmToRmTransaction/RMToTransaction.jsx";
+import RMTOtherGroup from "./StoreMaster/StockTransaction/RMStockTransaction/RMTOtherGroup/RMTOtherGroup.jsx";
+
+
 import ReportStore from "./StoreMaster/Report/Report.jsx";
 import StockReport from "./StoreMaster/StockReport/StorckReport.jsx"; 
 
@@ -333,12 +352,34 @@ function App() {
         <Route path="Jobwork-Inward-Challan" element={<JobworkInwardChallan/>} />
         <Route path="Vendor-Scrap-Inward" element={<VendorScrapInward/>} />
         <Route path="Subcon-Grn" element={<SubconGrn/>} />
+
+
         <Route path="Material-Issue-Challan" element={<MaterialIssueChallan/>} />
+        <Route path="Work-Order-Material" element={<WorkOrderMaterial/>}/>
+        <Route path="Material-Issue" element={<MaterialIssue/>} />
+        <Route path="Work-Issue-Report" element={<WorkIssueRepost/>}/>
+
+
         <Route path="Material-Issue-Gernal" element={<MaterialIssueGernal/>} />
+
+
         <Route path="Delivery-Challan" element={<DeliveryChallan/>} />
         <Route path="Dcgrn" element={<Dcgrn/>} />
         <Route path="Store-New-indent" element={<StoreNewindent/>} />
+
+
         <Route path="Stock-Transaction" element={<StockTransaction/>} />
+        <Route path="Opening-Stock" element={<OpeningStock/>}/>
+        <Route path="RM-Stock-Transaction" element={<RMStockTransaction/>}/>
+        <Route path="FG-Movement" element={<FGMovement/>}/>
+        <Route path="AddNewFGMovent" element={<AddNewFGMovent/>}/>
+        <Route path="FGToFGStock" element={<FGToFGStock/>} />
+        <Route path="FGTOFGMovement" element={<FGTOFGMovement/>}/>
+        <Route path="ScrapMovement" element={<ScrapMovement/>} />
+        <Route path="ScrapToFg" element={<ScrapToFg/>} />
+        <Route path="RMToTransaction" element={<RMToTransaction/>}/>
+        <Route path="RMTOtherGroup" element={<RMTOtherGroup/>}/>
+
 
         <Route path="Report-Store" element={<ReportStore/>} />
         <Route path="Stock-Report" element={<StockReport/>} />

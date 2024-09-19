@@ -64,8 +64,8 @@ const PendingPo = () => {
                   </div>
                 </div>
                 <div className="Pendingpurchase">
-                  <div className="container mt-4">
-                    <div className="container mt-4">
+                  <div className="container-fluid mt-4">
+
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>
@@ -150,7 +150,7 @@ const PendingPo = () => {
                         </table>
                       </div>
                     </div>
-                  </div>
+             
                 </div>
               </main>
             </div>

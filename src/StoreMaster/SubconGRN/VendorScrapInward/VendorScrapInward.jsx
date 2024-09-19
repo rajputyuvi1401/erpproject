@@ -18,7 +18,7 @@ const VendorScrapInward = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
-    
+
   return (
     <div className="NewStoreVendorScrap">
       <div className="container-fluid">
@@ -31,7 +31,7 @@ const VendorScrapInward = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="VendorScrap-header">
+                <div className="VendorScrap-header">
                   <div className="row flex-nowrap align-items-center">
                     <div className="col-md-3 col-6">
                       <h5 className="header-title text-start">
@@ -39,12 +39,12 @@ const VendorScrapInward = () => {
                       </h5>
                     </div>
                     <div className="col-md-2 col-6">
-                      <input className="form-control"/>
+                      <input className="form-control" />
                     </div>
                   </div>
                 </div>
                 <div className="VendorScrap-main">
-                <div className="container-fluid text-start">
+                  <div className="container-fluid text-start">
                     <div className="row mt-4">
                       <div className="col-md-6">
                         <div className="row ">
@@ -53,14 +53,14 @@ const VendorScrapInward = () => {
                             <input className="form-control" />
                           </div>
                           <div className="col-md-2 col-12 mt-2 mt-md-0">
-                            <button type="button" className="btn">Search</button>
+                            <button type="button" className="btn">
+                              Search
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-
-                 
 
                   <div
                     className="StoreSubconFooter"
@@ -85,7 +85,6 @@ const VendorScrapInward = () => {
                           Gernal Detail
                         </button>
                       </li>
-                    
                     </ul>
                     <div className="tab-content" id="pills-tabContent">
                       <div
@@ -106,7 +105,7 @@ const VendorScrapInward = () => {
                                         {/* First Column Group */}
                                         <tr>
                                           <th className="col-md-4">
-                                            Inward F4 No:
+                                            Inward No:
                                           </th>
                                           <td>
                                             <input
@@ -151,7 +150,6 @@ const VendorScrapInward = () => {
                                             />
                                           </td>
                                         </tr>
-                                        
                                       </tbody>
                                     </table>
                                   </div>
@@ -163,7 +161,7 @@ const VendorScrapInward = () => {
                                   <div className="table-responsive text-start">
                                     <table className="table table-bordered">
                                       <tbody>
-                                      <tr>
+                                        <tr>
                                           <th>GIN No:</th>
                                           <td>
                                             <input
@@ -210,7 +208,6 @@ const VendorScrapInward = () => {
                                             />
                                           </td>
                                         </tr>
-                                        
                                       </tbody>
                                     </table>
                                   </div>
@@ -231,7 +228,7 @@ const VendorScrapInward = () => {
                                             ></textarea>
                                           </td>
                                         </tr>
-                                        
+
                                         <tr>
                                           <th>Lr No:</th>
                                           <td>
@@ -241,7 +238,18 @@ const VendorScrapInward = () => {
                                             />
                                           </td>
                                         </tr>
-                                     
+
+                                        
+                                        <tr>
+                                          <th>Transporter:</th>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="form-control"
+                                            />
+                                          </td>
+                                        </tr>
+
                                         <tr>
                                           <th>Remark:</th>
                                           <td>
@@ -251,36 +259,44 @@ const VendorScrapInward = () => {
                                             />
                                           </td>
                                         </tr>
-                                        
+
                                         <tr>
-  <th className="col-md-4">Delivery in Time:</th>
-  <td>
-    <div className="form-check form-check-inline">
-      <input
-        className="form-check-input"
-        type="checkbox"
-        id="deliveryYes"
-        name="deliveryInTime"
-        value="yes"
-      />
-      <label className="form-check-label" htmlFor="deliveryYes">
-        Yes
-      </label>
-    </div>
-    <div className="form-check form-check-inline">
-      <input
-        className="form-check-input"
-        type="checkbox"
-        id="deliveryNo"
-        name="deliveryInTime"
-        value="no"
-      />
-      <label className="form-check-label" htmlFor="deliveryNo">
-        No
-      </label>
-    </div>
-  </td>
-</tr>
+                                          <th className="col-md-4">
+                                            Delivery in Time:
+                                          </th>
+                                          <td>
+                                            <div className="form-check form-check-inline">
+                                              <input
+                                                className="form-check-input"
+                                                type="checkbox"
+                                                id="deliveryYes"
+                                                name="deliveryInTime"
+                                                value="yes"
+                                              />
+                                              <label
+                                                className="form-check-label"
+                                                htmlFor="deliveryYes"
+                                              >
+                                                Yes
+                                              </label>
+                                            </div>
+                                            <div className="form-check form-check-inline">
+                                              <input
+                                                className="form-check-input"
+                                                type="checkbox"
+                                                id="deliveryNo"
+                                                name="deliveryInTime"
+                                                value="no"
+                                              />
+                                              <label
+                                                className="form-check-label"
+                                                htmlFor="deliveryNo"
+                                              >
+                                                No
+                                              </label>
+                                            </div>
+                                          </td>
+                                        </tr>
 
                                         <tr>
                                           <td
@@ -301,7 +317,6 @@ const VendorScrapInward = () => {
                           </div>
                         </div>
                       </div>
-                     
                     </div>
                   </div>
                 </div>
@@ -311,7 +326,7 @@ const VendorScrapInward = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default VendorScrapInward
+export default VendorScrapInward;

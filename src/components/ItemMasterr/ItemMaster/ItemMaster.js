@@ -160,13 +160,13 @@ const ItemMaster = () => {
                       </div>
                       <div className="col-md-2 text-end">
                         <button
-                          className="ser-btn btn-primary me-2"
+                          className="ser-btn m-2"
                           onClick={handleSearch}
                         >
                           Search
                         </button>
                         <button
-                          className="ser-btn btn-secondary"
+                          className="ser-btn"
                           onClick={handleViewAll}
                         >
                           All Items

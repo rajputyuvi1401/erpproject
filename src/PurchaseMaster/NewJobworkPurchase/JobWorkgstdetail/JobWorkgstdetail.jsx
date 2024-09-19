@@ -33,9 +33,9 @@ const JobWorkgstdetail = () => {
                 <td><input type="text" className="form-control" /></td>
                 <td><input type="text" className="form-control" /></td>
                 <td><input type="text" className="form-control" /></td>
-                <td><input type="number" className="form-control" /></td>
-                <td><input type="number" className="form-control" /></td>
-                <td><input type="text" className="form-control" readOnly /></td>
+                <td><input type="text" className="form-control" /></td>
+                <td><input type="text" className="form-control" /></td>
+                <td><input type="text" className="form-control" /></td>
                 <td>
                   <div>Disc:</div>
                   <div>Amt:</div>
@@ -43,16 +43,16 @@ const JobWorkgstdetail = () => {
                 <td><input type="text" className="form-control" /></td>
                 <td><input type="text" className="form-control" /></td>
                 <td>
-                  <input type="number" className="form-control" />
+                  <input type="text" className="form-control" />
                   <div>Amt:</div>
                 </td>
+             <td><input type="text" className="form-control" /></td>
+             <td><input type="text" className="form-control" /></td>
                 <td><input type="text" className="form-control" /></td>
                 <td><input type="text" className="form-control" /></td>
                 <td><input type="text" className="form-control" /></td>
                 <td><input type="text" className="form-control" /></td>
-                <td><input type="text" className="form-control" /></td>
-                <td><input type="text" className="form-control" /></td>
-                <td><input type="text" className="form-control" readOnly /></td>
+                <td><input type="text" className="form-control"/></td>
               </tr>
             </tbody>
           </table>
@@ -68,9 +68,9 @@ const JobWorkgstdetail = () => {
           
           <tr>
             <td>TDC Assable Value:</td>
-            <td><input type="text" className="form-control" value="00.00" /></td>
+            <td><input type="text" className="form-control"  /></td>
             <td>CGST:</td>
-            <td><input type="text" className="form-control" value="00.00" /></td>
+            <td><input type="text" className="form-control"  /></td>
           </tr>
           
           <tr>
@@ -78,9 +78,9 @@ const JobWorkgstdetail = () => {
               {/* <input type="checkbox" id="packForward" /> */}
               <label htmlFor="packForward">Pack. & Fwrd. Charges:</label>
             </td>
-            <td><input type="text" className="form-control" value="00.00" /></td>
+            <td><input type="text" className="form-control"  /></td>
             <td>SGST:</td>
-            <td><input type="text" className="form-control" value="00.00" /></td>
+            <td><input type="text" className="form-control"  /></td>
           </tr>
           
           <tr>
@@ -88,9 +88,9 @@ const JobWorkgstdetail = () => {
               {/* <input type="checkbox" id="transportCharges" /> */}
               <label htmlFor="transportCharges">Transport Charges:</label>
             </td>
-            <td><input type="text" className="form-control" value="00.00" /></td>
+            <td><input type="text" className="form-control"  /></td>
             <td>IGST:</td>
-            <td><input type="text" className="form-control" value="00.00" /></td>
+            <td><input type="text" className="form-control"  /></td>
           </tr>
           
           <tr>
@@ -98,9 +98,9 @@ const JobWorkgstdetail = () => {
               {/* <input type="checkbox" id="insurance" /> */}
               <label htmlFor="insurance">Insurance:</label>
             </td>
-            <td><input type="text" className="form-control" value="00.00" /></td>
+            <td><input type="text" className="form-control"  /></td>
             <td>VAT:</td>
-            <td><input type="text" className="form-control" value="00.00" /></td>
+            <td><input type="text" className="form-control"  /></td>
           </tr>
           
           <tr>
@@ -108,9 +108,9 @@ const JobWorkgstdetail = () => {
               {/* <input type="checkbox" id="installationCharges" /> */}
               <label htmlFor="installationCharges">Installation Charges:</label>
             </td>
-            <td><input type="text" className="form-control" value="00.00" /></td>
+            <td><input type="text" className="form-control"  /></td>
             <td>CESS:</td>
-            <td><input type="text" className="form-control" value="00.00" /></td>
+            <td><input type="text" className="form-control"  /></td>
           </tr>
         </tbody>
       </table>

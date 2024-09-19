@@ -1,52 +1,69 @@
 .scheduleline {
-    padding: 15px 15px;
-    background-color: white;
-    margin: 10px 10px;
+  padding: 15px;
+  background-color: white;
+  margin: 10px;
+}
+
+/* Table Layout */
+.scheduleline .table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+/* Table Head and Body Cell Styling */
+.scheduleline .table th,
+.scheduleline .table td {
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #dee2e6;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Form Control inside Table Cells */
+.scheduleline .table .form-control {
+  width: 100%;
+  font-size: 0.875rem; /* Slightly smaller font for better fit */
+  padding: 0.375rem 0.75rem;
+  box-sizing: border-box;
+}
+
+/* Ensure the table is scrollable on small screens */
+.scheduleline .table-responsive {
+  overflow-x: auto;
+}
+
+/* Right Aligned Text */
+.scheduleline .text-right {
+  text-align: right;
+}
+
+/* Adjustments for Tablet Devices */
+@media (max-width: 768px) {
+  .scheduleline .table th,
+  .scheduleline .table td {
+    padding: 6px;
   }
   
-  .scheduleline .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .scheduleline .table th, .table td {
-    text-align: center;
-    padding: 8px;
-    border: 1px solid #dee2e6;
-  }
-  
+  /* Reduce padding on input fields for smaller screens */
   .scheduleline .table .form-control {
-    width: 100%;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem; /* Slightly reduce font size */
   }
-  .table .form-control {
-    width: 100%;
-    padding: 0.5rem;
-    box-sizing: border-box;
+}
+
+/* Adjustments for Mobile Devices */
+@media (max-width: 576px) {
+  .scheduleline .table th,
+  .scheduleline .table td {
+    font-size: 12px;
+    padding: 4px;
   }
-  
-  /* Adjust font size and padding */
-  .table .form-control {
-    font-size: 0.875rem; /* Slightly smaller font for better fit */
-    padding: 0.375rem 0.75rem;
+
+  /* Further reduce padding and font size for inputs on mobile */
+  .scheduleline .table .form-control {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.75rem;
   }
-  .scheduleline .table-responsive {
-    overflow-x: auto;
-  }
-  
-  .scheduleline .text-right {
-    text-align: right;
-  }
-  
-  @media (max-width: 768px) {
-    .scheduleline  .table th, .table td {
-      padding: 4px;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .scheduleline .table th, .table td {
-      font-size: 12px;
-      padding: 2px;
-    }
-  }
-  
+}

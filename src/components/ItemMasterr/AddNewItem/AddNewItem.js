@@ -183,16 +183,7 @@ const AddNewItem = () => {
                               tabIndex="0"
                             >
                               <div className="addnewitemmmmm">
-                                <p
-                                  className="mandatory  text-start"
-                                  style={{
-                                    marginTop: "10px",
-                                    color: "grey",
-                                    marginBottom: "50px",
-                                  }}
-                                >
-                                  Mandatory Fields
-                                </p>
+                               
                                 <div className="container">
                                   <div className="row text-start">
                                     <div className="col-md-4">
@@ -223,7 +214,9 @@ const AddNewItem = () => {
                                                 >
                                                   {group.name}
                                                 </option>
+
                                               ))}
+                                              
                                             </select>
                                           </div>
                                           <div className="col-sm-2">
@@ -359,8 +352,14 @@ const AddNewItem = () => {
                                               <option selected>
                                                 Select ..
                                               </option>
-                                              <option>STORE</option>
-                                              <option>MAINTENANCE</option>
+                                              <option value="Store">STORE</option>
+                                              <option value="Maintenace">MAINTENANCE</option>
+                                              <option value="FG">Fg</option>
+                                              <option value="SFG">SFG</option>
+                                              <option value="RAW Material">RAW Material</option>
+                                              <option value="Consumerable">Consumerable</option>
+
+
                                             </select>
                                           </div>
                                           <div className="col-sm-2">
@@ -398,12 +397,7 @@ const AddNewItem = () => {
                                     </div>
                                   </div>
                                 </div>
-                                <p
-                                  className="mandatory  text-start"
-                                  style={{ marginTop: "100px", color: "grey" }}
-                                >
-                                  Optional Fields
-                                </p>
+                               
                               </div>
                             </div>
                             <div

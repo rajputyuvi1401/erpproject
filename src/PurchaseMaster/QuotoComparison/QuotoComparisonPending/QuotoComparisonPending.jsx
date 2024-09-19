@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
-
+import "./QuotoComparisonPending.css"
 const QuotoComparisonPending = () => {
     const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -90,7 +90,7 @@ const QuotoComparisonPending = () => {
                       tabindex="0"
                     >
                       <div className="PurchaseReportstatus">
-                        <div className="container mt-4">
+                        <div className="container-fluid mt-4">
                           <div className="table-responsive">
                             <table className="table table-bordered">
                               <thead>
@@ -133,7 +133,7 @@ const QuotoComparisonPending = () => {
                           </div>
                         </div>
                         <div className="Purchaseordertable">
-                          <div className="container mt-4">
+                          <div className="container-fluid mt-4">
                             <div className="table-responsive">
                               <table className="table table-bordered">
                                 <thead>
@@ -162,7 +162,7 @@ const QuotoComparisonPending = () => {
                       tabindex="0"
                     >
                       <div className="PurchaseReportstatus1">
-                        <div className="container mt-4">
+                        <div className="container-fluid mt-4">
                           <div className="row align-items-start">
                             <div className="col-md-3 d-flex align-items-start">
                               <input
@@ -192,7 +192,7 @@ const QuotoComparisonPending = () => {
                         </div>
 
                         <div className="Purchaseordertable">
-                          <div className="container mt-4">
+                          <div className="container-fluid mt-4">
                             <div className="table-responsive">
                               <table className="table table-bordered">
                                 <thead>

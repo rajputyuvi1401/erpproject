@@ -51,7 +51,7 @@ const Rfo = () => {
                 </div>
               </div>
               <div className="RFO-main">
-                <div className="container mt-4">
+                <div className="container-fluid mt-4">
                   <div className="table-responsive">
                     <table className="table table-bordered">
                       <thead>
@@ -104,7 +104,7 @@ const Rfo = () => {
                   </div>
                 </div>
                 <div className="RFOtable">
-                  <div className="container mt-4">
+                  <div className="container-fluid mt-4">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>

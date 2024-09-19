@@ -53,7 +53,7 @@ const PurchseOderList = () => {
                 </div>
               </div>
               <div className="PurchaseorderList">
-                <div className="container mt-4">
+                <div className="container-fluid mt-4">
                   <div className="table-responsive">
                     <table className="table table-bordered">
                       <thead>
@@ -147,7 +147,7 @@ const PurchseOderList = () => {
                   </div>
                 </div>
                 <div className="Purchaseordertable">
-                  <div className="container mt-4">
+                  <div className="container-fluid mt-4">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>

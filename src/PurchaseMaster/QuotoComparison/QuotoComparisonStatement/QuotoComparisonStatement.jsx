@@ -196,7 +196,7 @@ const QuotoComparisonStatement = () => {
                       tabindex="0"
                     >
                       <div className="QuoteStatementstatus">
-                        <div className="container mt-4">
+                        <div className="container-fluid mt-4">
                           <form>
                             <div className="row text-start">
                               <div className="col-md-4">
@@ -527,7 +527,7 @@ const QuotoComparisonStatement = () => {
                           </form>
                         </div>
                         <div className="Purchaseordertable">
-                          <div className="container mt-4">
+                          <div className="container-fluid mt-4">
                             <div className="table-responsive">
                             <table className="table table-bordered">
               <thead>
@@ -606,7 +606,7 @@ const QuotoComparisonStatement = () => {
                       tabindex="0"
                     >
                       <div className="QuoteStatementstatus1">
-                        <div className="container mt-4">
+                        <div className="container-fluid mt-4">
                           <div className="row align-items-start">
                             <div className="col-md-2 d-flex align-items-start">
                               <label
@@ -631,7 +631,7 @@ const QuotoComparisonStatement = () => {
                         </div>
 
                         <div className="Purchaseordertable">
-                          <div className="container mt-4">
+                          <div className="container-fluid mt-4">
                             <div className="table-responsive">
                               <table className="table table-bordered">
                                 <thead>

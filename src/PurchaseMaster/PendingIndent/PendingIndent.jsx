@@ -53,8 +53,8 @@ const PendingIndent = () => {
                   </div>
                 </div>
                 <div className="Pendingindent">
-                  <div className="container mt-4">
-                    <div className="container mt-4">
+                  <div className="container-fluid mt-4">
+                   
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>
@@ -156,7 +156,7 @@ const PendingIndent = () => {
                           </tbody>
                         </table>
                       </div>
-                    </div>
+               
                   </div>
                 </div>
               </main>

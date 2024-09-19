@@ -1,0 +1,97 @@
+/* General Styles */
+.NewStoreWorkOrderMaterial {
+    background-color: white;
+    height: auto;
+  }
+  
+  .WorkOrderMaterial-header {
+    margin-top: 20px;
+    background-color: aliceblue;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .WorkOrderMaterial-main {
+    background-color: aliceblue;
+    padding: 10px;
+    margin-top: 80px;
+    height: auto;
+  }
+  
+  .StoreWorkOrderMaterial {
+    background-color: aliceblue;
+    padding: 10px;
+    height: auto;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table {
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  .table th,
+  .table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+  }
+  
+  .pobtn {
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    margin: 5px;
+  }
+  
+  .pobtn:hover {
+    background-color: #0056b3;
+  }
+  
+  .header-title {
+    font-size: 1.25rem;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .header-title {
+      font-size: 1rem;
+    }
+  
+    .col-md-1, .col-md-2, .col-md-6 {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .pobtn {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .col-md-1, .col-md-2 {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .pobtn {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .table th, .table td {
+      font-size: 0.875rem;
+      padding: 6px;
+    }
+  }
+  

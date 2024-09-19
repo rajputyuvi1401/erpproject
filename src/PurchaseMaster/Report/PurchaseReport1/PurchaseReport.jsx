@@ -90,7 +90,7 @@ const PurchaseReport = () => {
                       tabindex="0"
                     >
                       <div className="PurchaseReportstatus">
-                        <div className="container mt-4">
+                        <div className="container-fluid mt-4">
                           <div className="table-responsive">
                             <table className="table table-bordered">
                               <thead>
@@ -133,7 +133,7 @@ const PurchaseReport = () => {
                           </div>
                         </div>
                         <div className="Purchaseordertable">
-                          <div className="container mt-4">
+                          <div className="container-fluid mt-4">
                             <div className="table-responsive">
                               <table className="table table-bordered">
                                 <thead>
@@ -162,7 +162,7 @@ const PurchaseReport = () => {
                       tabindex="0"
                     >
                       <div className="PurchaseReportstatus1">
-                        <div className="container mt-4">
+                        <div className="container-fluid mt-4">
                           <div className="row align-items-start">
                             <div className="col-md-3 d-flex align-items-start">
                               <input
@@ -192,7 +192,7 @@ const PurchaseReport = () => {
                         </div>
 
                         <div className="Purchaseordertable">
-                          <div className="container mt-4">
+                          <div className="container-fluid mt-4">
                             <div className="table-responsive">
                               <table className="table table-bordered">
                                 <thead>

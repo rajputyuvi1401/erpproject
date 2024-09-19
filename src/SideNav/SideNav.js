@@ -248,7 +248,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     Quoto Comparison Statement
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="/Quoto-Comparison-Pending">
-                    Quoto Comparison Statement Pending
+                    Quoto Comparison Pending
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -338,14 +338,17 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   Stock Transaction
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/Opening-Stock">
+                    Opening Stock
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/FG-Movement">
+                    FG Movement
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/RM-Stock-Transaction">
+                    RM Stock Transaction
+                  </Dropdown.Item>
                   <Dropdown.Item as={Link} to="/Stock-Transaction">
-                    57F4 Inward Challan
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                    Jobwork Inward Challan
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                    Vendor Scrap Inward
+                    Stock Transfer
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

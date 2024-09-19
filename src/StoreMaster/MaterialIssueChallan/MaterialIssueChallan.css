@@ -1,0 +1,201 @@
+/* General Styles */
+.NewStoreNewMaterialIssue {
+    background-color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header Styles */
+  .NewMaterialIssue-header {
+    margin-top: 20px;
+    background-color: aliceblue;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Main Content Styles */
+  .NewMaterialIssue-main {
+    background-color: aliceblue;
+    padding: 15px;
+    margin-top: 20px; /* Adjusted to be closer to the header */
+  }
+  
+  /* Table Styles */
+  .NewMaterialIssuetable {
+    background-color: aliceblue;
+    padding: 15px;
+    margin-top: 20px;
+  }
+  
+  .NewMaterialIssuetable .table-bordered {
+    border: 1px solid #ddd;
+  }
+  
+  .NewMaterialIssuetable .table-bordered th, 
+  .NewMaterialIssuetable .table-bordered td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .NewMaterialIssuetable .table thead th {
+    background-color: #3e7fc0bc;
+    font-weight: bold;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .NewMaterialIssue-header, .NewMaterialIssue-main, .NewMaterialIssuetable {
+      padding: 10px;
+    }
+  
+    .NewMaterialIssuetable .table thead th, 
+    .NewMaterialIssuetable .table-bordered th, 
+    .NewMaterialIssuetable .table-bordered td {
+      font-size: 0.875rem; /* Smaller text on smaller screens */
+    }
+  
+    .d-flex {
+      flex-direction: column; /* Stack flex items on smaller screens */
+    }
+  
+    .d-flex.align-items-center {
+      flex-direction: column; /* Stack items vertically */
+      align-items: flex-start; /* Align items to the start */
+    }
+  
+    .form-select, .form-control, .btn {
+      width: 100%; /* Full-width form elements on smaller screens */
+      margin-bottom: 10px; /* Spacing between form elements */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .header-title {
+      font-size: 1rem; /* Adjust header font size for small screens */
+    }
+  
+    .col-md-1, .col-md-2, .col-md-6 {
+      width: 100%; /* Full width columns on very small screens */
+      margin-bottom: 10px; /* Spacing between columns */
+    }
+  
+    .pobtn, .newbtn {
+      width: 100%; /* Full width buttons on small screens */
+      margin-top: 10px; /* Spacing between buttons */
+    }
+  }
+  
+  /* Modal Overlay */
+  .modal.show {
+    display: block;
+    background: rgba(0, 0, 0, 0.5); /* Overlay background */
+  }
+  
+  .modal-dialog {
+    margin: 1.75rem auto; /* Center modal */
+  }
+  
+  .modal-content {
+    border-radius: 0.3rem; /* Rounded corners */
+    margin-top: auto; /* Adjust margin-top for better vertical alignment */
+  }
+  
+  .modal-header .btn-close {
+    padding: 0.5rem; /* Adjust close button padding */
+  }
+  
+  /* Button Styles */
+  .newbtn, .newbtn1 {
+    background-color: #582ae4a9; /* Primary color */
+    color: #ffffff; /* Text color */
+    border: 1px solid #582ae4a9; /* Border color matching button */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .newbtn:hover, .newbtn1:hover {
+    background-color: #3e21a6; /* Darker shade on hover */
+    border-color: #3e21a6; /* Darker border shade */
+    color: #ffffff; /* Maintain text color */
+  }
+  
+  /* General Styles */
+.NewgrnFooter {
+    
+    padding: 20px;
+    border-radius: 8px;
+    
+  }
+  
+  /* Labels and Input Elements */
+  label {
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+  
+  textarea, 
+  input,
+  select {
+    font-size: 0.875rem;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  /* Buttons */
+  .btn {
+    padding: 10px 15px;
+    font-size: 0.875rem;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border: none;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border: none;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    label {
+      font-size: 0.75rem;
+    }
+  
+    .form-control,
+    .form-select {
+      font-size: 0.75rem;
+    }
+  
+    .btn {
+      padding: 8px 12px;
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    label {
+      font-size: 0.675rem;
+    }
+  
+    .form-control,
+    .form-select {
+      font-size: 0.675rem;
+    }
+  
+    .btn {
+      padding: 6px 10px;
+      font-size: 0.675rem;
+    }
+  }
+  
+  

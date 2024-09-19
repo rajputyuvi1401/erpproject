@@ -232,7 +232,7 @@ const Newindent = () => {
                                         </td>
                                         <td>
                                           <input
-                                            type="number"
+                                            type="text"
                                             className="form-control"
                                           />
                                         </td>

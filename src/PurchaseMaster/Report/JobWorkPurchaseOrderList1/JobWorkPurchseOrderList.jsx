@@ -49,7 +49,7 @@ const JobWorkPurchseOrderList = () => {
                 </div>
               </div>
               <div className="JobWorkPurchse-main">
-                <div className="container mt-4">
+                <div className="container-fluid mt-4">
                   <div className="table-responsive">
                     <table className="table table-bordered">
                       <thead>
@@ -148,7 +148,7 @@ const JobWorkPurchseOrderList = () => {
                   </div>
                 </div>
                 <div className="JobWorkOrdertable">
-                  <div className="container mt-4">
+                  <div className="container-fluid mt-4">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>

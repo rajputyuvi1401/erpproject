@@ -39,7 +39,7 @@ const PurchaseMrn = () => {
                   </div>
                 </div>
                 <div className="Purchasemrn">
-                  <div className="container mt-4">
+                  <div className="container-fluid mt-4">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>

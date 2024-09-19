@@ -55,7 +55,7 @@ const PurchseOrderStatus = () => {
                   </div>
                 </div>
                 <div className="Purchaseorderstatus">
-                  <div className="container mt-4">
+                  <div className="container-fluid mt-4">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>
@@ -159,6 +159,7 @@ const PurchseOrderStatus = () => {
                               />
                               <label
                                 htmlFor="snowBalQty"
+                                type="text"
                                 className="form-control"
                               >
                                 Snow Bal Qty Only
@@ -173,7 +174,7 @@ const PurchseOrderStatus = () => {
                     </div>
                   </div>
                   <div className="Purchaseordertable">
-                    <div className="container mt-4">
+                    <div className="container-fluid mt-4">
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>

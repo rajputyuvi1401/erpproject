@@ -48,23 +48,23 @@ const JobWorkschedule = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td><input type='text' className='form-control' /></td>
-                    <td><input type='text' className='form-control' /></td>
-                    <td><input type='text' className='form-control' /></td>
-                    <td><input type='text' className='form-control' /></td>
-                    <td><input type='date' className='form-control' /></td>
-                    <td><input type='text' className='form-control' /></td>
-                    <td><input type='date' className='form-control' /></td>
-                    <td><input type='text' className='form-control' /></td>
-                    <td><input type='date' className='form-control' /></td>
-                    <td><input type='text' className='form-control' /></td>
-                    <td><input type='date' className='form-control' /></td>
-                    <td><input type='text' className='form-control' /></td>
-                    <td><input type='date' className='form-control' /></td>
-                    <td><input type='text' className='form-control' /></td>
-                    <td><input type='date' className='form-control' /></td>
-                    <td><input type='text' className='form-control' /></td>
-                  </tr>
+                  <td>1</td>
+                      <td><input type='text' className='form-control' placeholder='Item Code' /></td>
+                      <td><input type='text' className='form-control' placeholder='Description' /></td>
+                      <td><input type='text' className='form-control' placeholder='Total Qty' /></td>
+                      <td><input type='date' className='form-control' /></td>
+                      <td><input type='text' className='form-control' placeholder='Qty 1' /></td>
+                      <td><input type='date' className='form-control' /></td>
+                      <td><input type='text' className='form-control' placeholder='Qty 2' /></td>
+                      <td><input type='date' className='form-control' /></td>
+                      <td><input type='text' className='form-control' placeholder='Qty 3' /></td>
+                      <td><input type='date' className='form-control' /></td>
+                      <td><input type='text' className='form-control' placeholder='Qty 4' /></td>
+                      <td><input type='date' className='form-control' /></td>
+                      <td><input type='text' className='form-control' placeholder='Qty 5' /></td>
+                      <td><input type='date' className='form-control' /></td>
+                      <td><input type='text' className='form-control' placeholder='Qty 6' /></td>
+                    </tr>
                   
                 </tbody>
               </table>
