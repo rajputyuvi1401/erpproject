@@ -158,8 +158,10 @@ import MaterialIssueGernal from "./StoreMaster/MaterialIssueGernal/MaterialIssue
 
 import DeliveryChallan from "./StoreMaster/DeliveryChallan/DeliveryChallan.jsx";
 import Dcgrn from "./StoreMaster/DCGRN/Dcgrn.jsx";
+import Dcgrnlist from "./StoreMaster/DCGRN/DcgrnLsit/Dcgrnlist.jsx";
 
 import StoreNewindent from "./StoreMaster/Newindent/Newindent.jsx";
+import IndentList from "./StoreMaster/Newindent/IndentList/IndentList.jsx";
 
 import StockTransaction from "./StoreMaster/StockTransaction/StockTransaction.jsx";
 import OpeningStock from "./StoreMaster/StockTransaction/OpeningStock/OpeningStock.jsx";
@@ -174,6 +176,8 @@ import ScrapToFg from "./StoreMaster/StockTransaction/FGMovement/ScrapMovement/S
 
 import RMToTransaction from "./StoreMaster/StockTransaction/RMStockTransaction/RmToRmTransaction/RMToTransaction.jsx";
 import RMTOtherGroup from "./StoreMaster/StockTransaction/RMStockTransaction/RMTOtherGroup/RMTOtherGroup.jsx";
+import ShopFloor from "./StoreMaster/StockTransaction/ShopFloor/ShopFloor.jsx";
+import ShopFloorStock from "./StoreMaster/StockTransaction/ShopFloorStock/ShopFloorStock.jsx";
 
 
 import ReportStore from "./StoreMaster/Report/Report.jsx";
@@ -365,7 +369,10 @@ function App() {
 
         <Route path="Delivery-Challan" element={<DeliveryChallan/>} />
         <Route path="Dcgrn" element={<Dcgrn/>} />
+        <Route path="Dcgrnlist" element={<Dcgrnlist/>}/>
+        
         <Route path="Store-New-indent" element={<StoreNewindent/>} />
+        <Route path="IndentList" element={<IndentList/>} />
 
 
         <Route path="Stock-Transaction" element={<StockTransaction/>} />
@@ -379,6 +386,8 @@ function App() {
         <Route path="ScrapToFg" element={<ScrapToFg/>} />
         <Route path="RMToTransaction" element={<RMToTransaction/>}/>
         <Route path="RMTOtherGroup" element={<RMTOtherGroup/>}/>
+        <Route path="ShopFloor" element={<ShopFloor/>}/>
+        <Route path="ShopFloorStock" element={<ShopFloorStock/>}/>
 
 
         <Route path="Report-Store" element={<ReportStore/>} />

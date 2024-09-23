@@ -4,22 +4,23 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
 import { Link } from "react-router-dom";
-import "./Report.css";
+import "./MrnList.css";
 
-const Report = () => {
-  const [sideNavOpen, setSideNavOpen] = useState(false);
+const MRNList = () => {
 
-  const toggleSideNav = () => {
-    setSideNavOpen((prevState) => !prevState);
-  };
+    const [sideNavOpen, setSideNavOpen] = useState(false);
 
-  useEffect(() => {
-    if (sideNavOpen) {
-      document.body.classList.add("side-nav-open");
-    } else {
-      document.body.classList.remove("side-nav-open");
-    }
-  }, [sideNavOpen]);
+    const toggleSideNav = () => {
+      setSideNavOpen((prevState) => !prevState);
+    };
+  
+    useEffect(() => {
+      if (sideNavOpen) {
+        document.body.classList.add("side-nav-open");
+      } else {
+        document.body.classList.remove("side-nav-open");
+      }
+    }, [sideNavOpen]);
 
   return (
     <div className="NewStoreGateInward">
@@ -28,25 +29,24 @@ const Report = () => {
           <div className="col-md-12">
             <div className="Main-NavBar">
               <NavBar toggleSideNav={toggleSideNav} />
-              <SideNav
-                sideNavOpen={sideNavOpen}
-                toggleSideNav={toggleSideNav}
-              />
+              <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="GateInward-header">
                   <div className="row flex-nowrap align-items-center">
                     <div className="col-md-3">
                       <h5 className="header-title text-start">
-                        Purchase GRN List
+                        MRN List
                       </h5>
                     </div>
 
                     <div className="col-md-9 text-end">
                       <div className="row justify-content-end">
                         <div className="col-md-9 d-flex align-items-end">
-                          <Link className="pobtn">GRN Report</Link>
-
-                          <Link className="pobtn">GRN Query</Link>
+                        
+                         
+                          <Link className="pobtn">Export Excel</Link>
+                        
+                          <Link className="pobtn">MRN - Query</Link>
                         </div>
                       </div>
                     </div>
@@ -78,9 +78,30 @@ const Report = () => {
                             </select>
                           </div>
 
+                          {/* Series */}
+                          <div className="col-md-1 col-sm-6">
+                            <label className="form-label">Series</label>
+                            <select className="form-select">
+                              <option value="">Select Series</option>
+                              <option value="PurchaseGRN">Purchase GRN</option>
+                              <option value="ScheduleGRN">Schedule GRN</option>
+                              <option value="ImportGRN">Import GRN</option>
+                              <option value="57F4GRN">57F4 GRN</option>
+                              <option value="jobworkGRN">jobwork GRN</option>
+                              <option value="DC GRN">DC GRN</option>
+                              <option value="InterStoreInvoice">Inter Store Invoice</option>
+                              <option value="InterStoreChallan">Inter Store Challan</option>
+                              <option value="Sales Return">Sales Return</option>
+                              <option value="DirectGRN">Direct GRN</option>
+                              <option value="General/Document/Courier">General/Document/Courier</option>
+                            </select>
+                          </div>
+
+                        
+
                           {/* Supplier Name */}
                           <div className="col-md-2 col-sm-6">
-                            <label className="form-label">Supplier Name</label>
+                            <label className="form-label">Item Code</label>
                             <input
                               type="text"
                               className="form-control"
@@ -90,7 +111,7 @@ const Report = () => {
 
                           {/* Item Name */}
                           <div className="col-md-2 col-sm-6">
-                            <label className="form-label">Item Name</label>
+                            <label className="form-label">MRN No</label>
                             <input
                               type="text"
                               className="form-control"
@@ -98,33 +119,13 @@ const Report = () => {
                             />
                           </div>
 
-
-                          <div className="col-md-1 col-sm-6">
-                            <label className="form-label">Main Group</label>
+                         {/* Plant */}
+                         <div className="col-md-1 col-sm-6">
+                            <label className="form-label">Issue Status</label>
                             <select className="form-select">
-                              <option value="">ALL</option>
+                              <option value="">SHARP</option>
                               {/* Add more options here */}
                             </select>
-                          </div>
-
-                          {/* Gate Entry No. */}
-                          <div className="col-md-2 col-sm-6">
-                            <label className="form-label">GRN No.</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Enter Gate Entry No."
-                            />
-                          </div>
-
-                          {/* Gate Entry No. */}
-                          <div className="col-md-2 col-sm-6">
-                            <label className="form-label">PO No.</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Enter Gate Entry No."
-                            />
                           </div>
 
                           {/* Search Button */}
@@ -147,27 +148,25 @@ const Report = () => {
                               <th>Sr no.</th>
                               <th>Year</th>
                               <th>Plant</th>
-                              <th>GRN No</th>
-                              <th>GRN Date</th>
-                              <th>Entry Date</th>
-                              <th>Challan No</th>
-                              <th>Challan Date</th>
-                              <th>Invoice No</th>
-                              <th>Invoice Date</th>
-                              <th>Supplier Name</th>
-                              <th>PO No</th>                           
+                              <th>MRN No</th>
+                              <th>MRN Date</th>
+                              
+                              <th>Item Details</th>
+                              
+                              <th>Work Order No</th>
                               <th>User</th>
                               <th>Info</th>
-                              <th>Doc</th>
-                              <th>Qc</th>
-                              <th>Bill</th>
-                              <th>Email</th>
-                              <th>Delete</th>
+                              <th>Auth 1</th>
                               <th>Edit</th>
+                           
+                              <th>Delete</th>
                               <th>View</th>
+                              <th>Close</th>
                             </tr>
                           </thead>
-                          <tbody></tbody>
+                          <tbody>
+                            {/* Table rows will go here */}
+                          </tbody>
                         </table>
                       </div>
                     </div>
@@ -179,7 +178,7 @@ const Report = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Report;
+export default MRNList

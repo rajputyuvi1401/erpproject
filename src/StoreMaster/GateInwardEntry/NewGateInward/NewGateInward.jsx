@@ -40,6 +40,7 @@ const NewGateInward = () => {
     ChallanDate: '',
     Select: '',
     InVoiceNo: '',
+    Invoicedate:"",
     EWayBillNo: '',
     EWayBillDate: '',
     ContactPerson: '',
@@ -58,7 +59,7 @@ const validate = () => {
   const newErrors = {};
   const requiredFields = [
       'Plant', 'Series', 'Type', 'Supp_Cust', 'GE_No', 'GE_Date', 'GE_Time',
-      'ChallanNo', 'ChallanDate', 'Select', 'InVoiceNo', 'EWayBillNo', 
+      'ChallanNo', 'ChallanDate', 'Select', 'InVoiceNo','Invoicedate', 'EWayBillNo', 
       'EWayBillDate', 'ContactPerson', 'VehicleNo', 'LrNo', 'Transporter', 
       'Remark'
   ];
@@ -336,12 +337,12 @@ const getErrorText1 = (field) => errors[field] ? <div className="invalid-feedbac
                                     />
                                     {getErrorText('Supp_Cust')}
                                   </div>
-                                  <div className="col-md-2">
+                                  <div className="col-md-3">
                                     <button type="button" className="pobtn">
                                       Search
                                     </button>
                                   </div>
-                                  <div className="col-md-2">
+                                  <div className="col-md-1">
                                     <button type="button" className="pobtn">
                                       Cancel
                                     </button>
@@ -485,23 +486,24 @@ const getErrorText1 = (field) => errors[field] ? <div className="invalid-feedbac
                                   </div>
                                 </div>
 
-                                {/* <div className="row mb-3">
+                                <div className="row mb-3">
                                   <div className="col-md-4">
-                                    <label htmlFor="invoiceDate">
+                                    <label htmlFor="Invoicedate">
                                       Invoice Date:
                                     </label>
                                   </div>
                                   <div className="col-md-8">
                                     <input
                                       type="date"
-                                      id="invoiceDate"
-                                      name="invoiceDate"
-                                       className={getErrorClass('Plant')}
-                                       value={formData.Plant}
+                                      id="Invoicedate"
+                                      name="Invoicedate"
+                                       className={getErrorClass('Invoicedate')}
+                                       value={formData.Invoicedate}
                                     onChange={handleChange}
                                     />
+                                    {getErrorText('Invoicedate')}
                                   </div>
-                                </div> */}
+                                </div>
 
                                 <div className="row mb-3">
                                   <div className="col-md-4">

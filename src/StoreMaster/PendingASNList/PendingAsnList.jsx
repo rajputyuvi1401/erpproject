@@ -20,38 +20,46 @@ const PendingAsnList = () => {
     }
   }, [sideNavOpen]);
 
-
   return (
-       <div className="NewStoreArnList">
+    <div className="NewStoreArnList">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
             <div className="Main-NavBar">
               <NavBar toggleSideNav={toggleSideNav} />
-              <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
+              <SideNav
+                sideNavOpen={sideNavOpen}
+                toggleSideNav={toggleSideNav}
+              />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="ArnList-header">
                   <div className="row flex-nowrap align-items-center">
-                    <div className="col-md-3">
-                      <h5 className="header-title text-start">
-                        ASN List
-                      </h5>
+                    <div className="col-md-2">
+                      <h5 className="header-title text-start">ASN List</h5>
                     </div>
 
-                    <div className="col-md-9 text-end">
+                    <div className="col-md-10 text-end">
                       <div className="row justify-content-end">
                         <div className="col-md-8 d-flex align-items-end">
-                          <Link className="pobtn" to="/PDL-List">PDI List</Link>
-                         
-                          <Link className="pobtn" to="/Vendor-Bill-List">Bill List</Link>
-                         
+                          <Link className="pobtn" to="/PDL-List">
+                            PDI List
+                          </Link>
+
+                          <Link className="pobtn" to="/Vendor-Bill-List">
+                            Bill List
+                          </Link>
+
                           <Link className="pobtn">Export To Excel</Link>
-                        
+
                           <Link className="pobtn">Short Qty Report</Link>
 
-                          <Link className="pobtn" to="/Vendor-Asn-List">ASN Modify Logs</Link>
+                          <Link className="pobtn" to="/Vendor-Asn-List">
+                            ASN Modify Logs
+                          </Link>
 
-                          <Link className="pobtn" to="/ASN-Report">ASN Report</Link>
+                          <Link className="pobtn" to="/ASN-Report">
+                            ASN Report
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -62,9 +70,8 @@ const PendingAsnList = () => {
                     <div className="row mt-4">
                       <div className="col-md-12">
                         <form className="row g-3 text-start">
-
-                           {/* Plant */}
-                           <div className="col-md-1 col-sm-6">
+                          {/* Plant */}
+                          <div className="col-md-1 col-sm-6">
                             <label className="form-label">Plant</label>
                             <select className="form-select">
                               <option value="">SHARP</option>
@@ -83,9 +90,6 @@ const PendingAsnList = () => {
                             <label className="form-label">To Date</label>
                             <input type="date" className="form-control" />
                           </div>
-
-                         
-                          
 
                           {/* Supplier Name */}
                           <div className="col-md-2 col-sm-6">
@@ -122,10 +126,8 @@ const PendingAsnList = () => {
                             <button type="submit" className="pobtn w-100">
                               Search
                             </button>
-                           
                           </div>
                           <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                           
                             <button type="submit" className="pobtn w-100">
                               View ALl
                             </button>
@@ -144,9 +146,7 @@ const PendingAsnList = () => {
                               <th>No Data Found!!</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            {/* Table rows will go here */}
-                          </tbody>
+                          <tbody>{/* Table rows will go here */}</tbody>
                         </table>
                       </div>
                     </div>
@@ -166,7 +166,7 @@ const PendingAsnList = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PendingAsnList
+export default PendingAsnList;

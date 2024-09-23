@@ -275,15 +275,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="#">
                 Import
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/#">
-                .
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/#">
-                .
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/#">
-                .
-              </Dropdown.Item>
+             
             </Dropdown.Menu>
           </li>
 
@@ -369,13 +361,31 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item as={Link} to="/Report-Store">
-                    Inward Challan
+                    GRN List
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                    Jobwork Inward Challan
+                  <Dropdown.Item as={Link} to="#/">
+                    MRN List
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                    Vendor Scrap Inward
+                  <Dropdown.Item as={Link} to="#/">
+                    Inward 57F4 Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Material Issue Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Gernal Material Issue Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Delivery Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    DC GRN List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Indent List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Indent Status
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -387,13 +397,31 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item as={Link} to="/Stock-Report">
-                    57F4 Inward Challan
+                    WIP Stock Report
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                    Jobwork Inward Challan
+                  <Dropdown.Item as={Link} to="#/">
+                    RM Stock Report
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                    Vendor Scrap Inward
+                  <Dropdown.Item as={Link} to="#/">
+                    Consumable Stock Report
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/Stock-Report">
+                      FG Stock Report
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Customer Stock
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                   Scrap Stock
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                      Tray Bin Stock Report
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Itemwise Stock Report
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                   Monthly Consumption Report
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
