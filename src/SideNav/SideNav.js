@@ -428,6 +428,130 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Divider />
             </Dropdown.Menu>
           </li>
+
+          <li className="dropdown-container">
+            <div
+              className="dropdown-toggle"
+              onClick={() => handleDropdownToggle("production")}
+            >
+              <FaServicestack />
+              <span>Production</span>
+            </div>
+            <Dropdown.Menu show={openDropdown === "production"}>
+              <Dropdown.Item as={Link} to="/WorkOrderEntry">
+                Work Order Entry
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/WorkOrderList">
+                Work Order List
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/">
+                Production Plan List 
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/">
+                Production Entry
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/">
+                Production Entry Ass.
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/">
+                Production Report
+              </Dropdown.Item>
+
+
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Rework Production
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="#/">
+                    57F4 Inward Challan
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Jobwork Inward Challan
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Vendor Scrap Inward
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Divider />
+
+              
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Scrap Production
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="#/">
+                    57F4 Inward Challan
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Jobwork Inward Challan
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Vendor Scrap Inward
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Divider />
+
+              <Dropdown.Item as={Link} to="#/">
+                Material Idle Time
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/">
+                Breakdown Time Entry
+              </Dropdown.Item>
+
+
+            
+              <Dropdown.Item as={Link} to="#/">
+                 Breakdown Time Report
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="#/">
+                Contractor Payment
+              </Dropdown.Item>
+             
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Report
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="#/Report-Store">
+                    GRN List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    MRN List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Inward 57F4 Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Material Issue Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Gernal Material Issue Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Delivery Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    DC GRN List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Indent List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Indent Status
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Divider />
+            
+            </Dropdown.Menu>
+          </li>
         </ul>
       </div>
     </div>

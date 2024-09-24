@@ -245,13 +245,7 @@ const DeliveryChallan = () => {
                                   placeholder="Enter GRN Qty"
                                 />
                               </td>
-                              <td>
-                                <input
-                                  type="text"
-                                  className="form-control p-2"
-                                  placeholder="Material Rate"
-                                />
-                              </td>
+                              
                               <td>
                                 <input
                                   type="text"
@@ -340,6 +334,7 @@ const DeliveryChallan = () => {
                                                 className="form-control"
                                                 name="InwardDate"
                                               />
+                                              
                                             </td>
                                           </tr>
                                           <tr>

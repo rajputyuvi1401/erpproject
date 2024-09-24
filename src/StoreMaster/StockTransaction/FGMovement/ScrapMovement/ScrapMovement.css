@@ -50,18 +50,18 @@
     border-color: #2c1a80;
 }
 
-.table-responsive {
+.ScrapMovementtable .table-responsive {
     overflow-x: auto;
 }
 
-.table {
+.ScrapMovementtable .table {
     width: 100%;
     border-collapse: collapse;
 }
 
 
 
-.table td {
+.ScrapMovementtable .table td {
     vertical-align: middle;
 }
 .btn{
@@ -94,11 +94,11 @@
         padding: 15px;
     }
 
-    .table-responsive {
+    .ScrapMovementtable .table-responsive {
         margin-top: 15px;
     }
 
-    .table th, .table td {
+    .ScrapMovementtable  .table th, .table td {
         font-size: 0.875rem;
         padding: 8px;
     }
@@ -116,7 +116,7 @@
         padding: 6px 10px;
     }
 
-    .table th, .table td {
+    .ScrapMovementtable  .table th, .table td {
         font-size: 0.75rem;
         padding: 6px;
     }

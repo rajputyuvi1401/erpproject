@@ -24,18 +24,18 @@
     height: auto;
 }
 
-.table-responsive {
+.StoreArnList .table-responsive {
     overflow-x: auto;
 }
 
-.table {
+.StoreArnList .table {
     margin-top: 20px;
     border-collapse: separate;
     border-spacing: 0;
 }
 
-.table th,
-.table td {
+.StoreArnList .table th,
+.StoreArnList .table td {
     text-align: center;
     vertical-align: middle;
     padding: 12px;

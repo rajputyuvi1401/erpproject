@@ -26,19 +26,19 @@
     border-radius: 5px;
 }
 
-.table-responsive {
+.StoreMaterialIssueee .table-responsive {
     overflow-x: auto;
 }
 
-.table {
+.StoreMaterialIssueee .table {
     margin-top: 20px;
     border-collapse: separate;
     border-spacing: 0;
     width: 100%; /* Ensure table takes up full width */
 }
 
-.table th,
-.table td {
+.StoreMaterialIssueee .table th,
+.StoreMaterialIssueee .table td {
     text-align: center;
     vertical-align: middle;
     padding: 12px;
@@ -118,7 +118,7 @@
         padding: 5px;
     }
 
-    .table th, .table td {
+    .StoreMaterialIssueee .table th, .table td {
         padding: 6px;
         font-size: 0.75rem;
     }

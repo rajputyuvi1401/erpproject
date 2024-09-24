@@ -24,18 +24,18 @@
     height: auto;
   }
   
-  .table-responsive {
+  .StoreWorkOrderMaterial .table-responsive {
     overflow-x: auto;
   }
   
-  .table {
+  .StoreWorkOrderMaterial .table {
     margin-top: 20px;
     border-collapse: separate;
     border-spacing: 0;
   }
   
-  .table th,
-  .table td {
+  .StoreWorkOrderMaterial .table th,
+  .StoreWorkOrderMaterial .table td {
     text-align: center;
     vertical-align: middle;
     padding: 12px;
@@ -89,7 +89,7 @@
       margin-top: 10px;
     }
   
-    .table th, .table td {
+    .StoreWorkOrderMaterial .table th, .table td {
       font-size: 0.875rem;
       padding: 6px;
     }

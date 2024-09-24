@@ -24,18 +24,18 @@
     height: auto;
   }
   
-  .table-responsive {
+  .StoreASN-Report .table-responsive {
     overflow-x: auto;
   }
   
-  .table {
+ .StoreASN-Report .table {
     margin-top: 20px;
     border-collapse: separate;
     border-spacing: 0;
   }
   
-  .table th,
-  .table td {
+ .StoreASN-Report .table th,
+ .StoreASN-Report .table td {
     text-align: center;
     vertical-align: middle;
     padding: 12px;

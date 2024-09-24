@@ -30,7 +30,7 @@
     background-color: #0056b3;
   }
   
-  textarea {
+  .ShopFloorStock-main  textarea {
     width: 100%;
     min-height: 100px;
   }

@@ -50,23 +50,24 @@
     border-color: #2c1a80;
 }
 
-.table-responsive {
+.FGMovementtable .table-responsive {
     overflow-x: auto;
 }
 
-.table {
+.FGMovementtable .table {
     width: 100%;
     border-collapse: collapse;
 }
 
 
 
-.table td {
+.FGMovementtable .table td {
     vertical-align: middle;
 }
-.btn{
+.FGMovementtable .btn{
     padding: 5px;
     margin-left: 10px;
+    
 }
 
 /* Responsive Styles */
@@ -94,11 +95,11 @@
         padding: 15px;
     }
 
-    .table-responsive {
+   .FGMovementtable .table-responsive {
         margin-top: 15px;
     }
 
-    .table th, .table td {
+   .FGMovementtable .table th, .table td {
         font-size: 0.875rem;
         padding: 8px;
     }
@@ -116,7 +117,7 @@
         padding: 6px 10px;
     }
 
-    .table th, .table td {
+ .FGMovementtable   .table th, .table td {
         font-size: 0.75rem;
         padding: 6px;
     }

@@ -26,12 +26,12 @@
     font-weight: bold;
   }
   
-  .form-group {
+  .scrapMoventStock-main .form-group {
     display: flex;
     align-items: center;
   }
   
-  input, select, textarea {
+  .scrapMoventStock-main input, select, textarea {
     width: 100%;
   }
   
@@ -40,18 +40,18 @@
       font-size: 18px;
     }
   
-    .form-group {
+    .scrapMoventStock-main   .form-group {
       flex-direction: column;
       align-items: flex-start;
     }
   
-    .col-form-label {
+    .scrapMoventStock-main   .col-form-label {
       width: 100%;
     }
   }
   
   @media (min-width: 768px) {
-    .col-form-label {
+    .scrapMoventStock-main .col-form-label {
       text-align: right;
     }
   }

@@ -73,7 +73,7 @@ function Home() {
                   </div>
                 </div>
                 <div className="mb-3">
-                  <button type="submit" className="btn btn-primary w-100">
+                  <button type="submit" className="homebtn w-100">
                     Log In
                   </button>
                 </div>

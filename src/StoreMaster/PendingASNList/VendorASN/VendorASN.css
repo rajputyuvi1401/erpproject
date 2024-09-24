@@ -24,18 +24,18 @@
     height: auto;
   }
   
-  .table-responsive {
+  .StoreVendor-ASN-List  .table-responsive {
     overflow-x: auto;
   }
   
-  .table {
+  .StoreVendor-ASN-List .table {
     margin-top: 20px;
     border-collapse: separate;
     border-spacing: 0;
   }
   
-  .table th,
-  .table td {
+  .StoreVendor-ASN-List .table th,
+  .StoreVendor-ASN-List .table td {
     text-align: center;
     vertical-align: middle;
     padding: 12px;
@@ -106,8 +106,8 @@
       font-size: 0.875rem;
     }
   
-    .table th,
-    .table td {
+    .StoreVendor-ASN-List   .table th,
+    .StoreVendor-ASN-List   .table td {
       padding: 8px;
       font-size: 0.875rem;
     }

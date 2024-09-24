@@ -185,6 +185,15 @@ import StockReport from "./StoreMaster/StockReport/StorckReport.jsx";
 
 import InwardChallanList from "./StoreMaster/SubconGRN/InwardChallanList/InwardChallanList.jsx";
 
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Production
+import WorkOrderEntry from "./ProductionMaster/WorkOrderEntry/WorkOrderEntry.jsx";
+import WorkOrderList from "./ProductionMaster/WorkOrderList/WorkOrderList.jsx";
+
+
+
+
+
 function App() {
   return (
     <div className="App">
@@ -396,6 +405,16 @@ function App() {
 
         {/* Inward Challan List */}
         <Route path="Inward-challan-list" element={<InwardChallanList/>}/>
+
+
+
+
+
+
+
+        {/* /////////////////////////////////////Purchase////////////////////////////////////// */}
+        <Route path="WorkOrderEntry" element={<WorkOrderEntry/>} />
+        <Route path="WorkOrderLsit" element={<WorkOrderList/>}/>
       </Routes>
     </div>
   );

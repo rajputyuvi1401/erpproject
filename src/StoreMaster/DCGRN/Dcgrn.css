@@ -17,14 +17,9 @@
     margin-top: 80px;
     height: auto;
   }
-  .Dcgrn-background{
-    background-color: white;
-    padding: 10px 10px;
-    margin: 20px 20px;
-    height: auto;
-  }
+  
  .Dcgrnstatus{
-    
+    text-align: start;
     padding: 10px;
     height: auto;
  }
@@ -40,9 +35,9 @@
   
   .Dcgrnstatus .table th,
   .Dcgrnstatus .table td {
-    text-align: center;
+    text-align: start;
     vertical-align: middle;
-    padding: 12px;
+    padding: 8px;
   }
   
   .pobtn {
@@ -118,19 +113,8 @@
   margin-top: 15px;
 }
 
-/* General Styles */
-.container-fluid {
-  padding: 20px;
-  background-color: #f8f9fa;
-}
 
-label {
-  font-weight: bold;
-}
 
-input[type="checkbox"] + label {
-  margin-left: 10px;
-}
 
 
 

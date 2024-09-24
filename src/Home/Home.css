@@ -39,19 +39,19 @@
   font-size: 0.9rem;
 }
 
-.home-form button {
+.home-form .homebtn {
   background-color: blueviolet;
   color: white;
   text-align: center;
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   border-radius: 20px;
   border: none;
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
-.home-form button:hover {
+.home-form .homebtn:hover {
   background-color: darkviolet;
 }
 

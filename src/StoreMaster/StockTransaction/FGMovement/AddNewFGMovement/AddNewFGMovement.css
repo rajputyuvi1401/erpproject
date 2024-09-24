@@ -37,7 +37,7 @@
 }
 
 /* Form Inputs */
-input, select, textarea {
+.FgMoventAdd-main input, select, textarea {
     width: 100%;
     padding: 5px;
     margin: 5px 0;
@@ -54,11 +54,11 @@ input, select, textarea {
         font-size: 18px;
     }
 
-    .row {
+ .FgMoventAdd-main   .row {
         margin-bottom: 10px;
     }
 
-    .col-md-4, .col-md-8 {
+  .FgMoventAdd-main  .col-md-4, .col-md-8 {
         width: 100%;
         margin-bottom: 10px;
     }
