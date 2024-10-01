@@ -5,6 +5,15 @@ import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import "./DeliveryChallan.css";
+import {
+  addDeliveryChallan,
+  getDeliveryChallans,
+  updateDeliveryChallan,
+  deleteDeliveryChallan,
+} from "../../Service/StoreApi.jsx";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { saveChallanData } from "../../Service/StoreApi.jsx";
 
 const DeliveryChallan = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -21,8 +30,171 @@ const DeliveryChallan = () => {
     }
   }, [sideNavOpen]);
 
+  const [challans, setChallans] = useState([]);
+  const [formData, setFormData] = useState({
+    SelectItem: "",
+    Store: "",
+    ItemCode: "",
+    HSNCode: "",
+    Description: "",
+    Purpose: "",
+    Unit: "",
+    Rate: "",
+    Qty: "",
+  });
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId, setEditId] = useState(null);
+
+  useEffect(() => {
+    loadChallans();
+  }, []);
+
+  // Load delivery challan data
+  const loadChallans = async () => {
+    const result = await getDeliveryChallans();
+    setChallans(result.data);
+  };
+
+  // Handle input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Validation
+    if (
+      !formData.SelectItem ||
+      !formData.Store ||
+      !formData.ItemCode ||
+      !formData.Description ||
+      !formData.Purpose ||
+      !formData.Unit ||
+      !formData.Rate ||
+      !formData.Qty
+    ) {
+      toast.error("All fields are required!");
+      return;
+    }
+
+    if (isEditing) {
+      await updateDeliveryChallan(editId, formData);
+      toast.success("Challan updated successfully!");
+      setIsEditing(false);
+      setEditId(null);
+    } else {
+      await addDeliveryChallan(formData);
+      toast.success("Challan added successfully!");
+    }
+
+    // Clear form
+    setFormData({
+      SelectItem: "",
+      Store: "",
+      ItemCode: "",
+      HSNCode: "",
+      Description: "",
+      Purpose: "",
+      Unit: "",
+      Rate: "",
+      Qty: "",
+    });
+
+    loadChallans();
+  };
+
+  // Handle edit action
+  const handleEdit = (challan) => {
+    setFormData(challan);
+    setIsEditing(true);
+    setEditId(challan.id);
+  };
+
+  // Handle delete action
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this challan?")) {
+      await deleteDeliveryChallan(id);
+      toast.success("Challan deleted successfully!");
+      loadChallans();
+    }
+  };
+
+  // Second save
+  const [formData1, setFormData1] = useState({
+    VehicleNo: "",
+    Contractor: "",
+    ChallanDate: "",
+    Transport: "",
+    EWayBillNo: "",
+    PoNo: "",
+    Ref_Person: "",
+    LrNo: "",
+    PoDate: "",
+    Department: "",
+    AssessableValue: "",
+    CGST: "",
+    SGST: "",
+    IGST: "",
+    GrandTotal: "",
+    Remark: "",
+  });
+
+  const handleChange1 = (e) => {
+    setFormData1({
+      ...formData1,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit1 = async (e) => {
+    e.preventDefault();
+
+    // Form validation
+    let hasError = false; // Track if there's any error
+    for (const key in formData1) {
+      if (!formData1[key]) {
+        toast.error(`${key} is required`);
+        hasError = true; // Set error flag if a field is empty
+      }
+    }
+
+    if (hasError) {
+      return; // Exit if any field is empty
+    }
+
+    try {
+      const response = await saveChallanData(formData1);
+      toast.success("Challan saved successfully");
+      console.log("Response:", response);
+
+      // Clear the form data after successful submission
+      setFormData1({
+        VehicleNo: "",
+        Contractor: "",
+        ChallanDate: "",
+        Transport: "",
+        EWayBillNo: "",
+        PoNo: "",
+        Ref_Person: "",
+        LrNo: "",
+        PoDate: "",
+        Department: "",
+        AssessableValue: "",
+        CGST: "",
+        SGST: "",
+        IGST: "",
+        GrandTotal: "",
+        Remark: "",
+      });
+    } catch (error) {
+      toast.error("Error saving challan");
+      console.error("Error:", error);
+    }
+  };
   return (
     <div className="NewStoreDeliverychallan">
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -128,68 +300,113 @@ const DeliveryChallan = () => {
                       <div className="row">
                         <div className="col-md-12">
                           <div className="table-responsive">
-                            <table className="table table-bordered">
-                              <thead>
-                                <tr>
-                                  <th>Select Item: </th>
-                                  <th>Store</th>
-                                  <th>Item Code</th>
-                                  <th>Description</th>
-                                  <th>Purpose</th>
-                                  <th>Unit</th>
-                                  <th>Rate</th>
-                                  <th>Qty</th>
-                                  <th>Action</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <div className="d-flex">
+                            <form onSubmit={handleSubmit}>
+                              <table className="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th>Select Item: </th>
+                                    <th>Store</th>
+                                    <th>Item Code</th>
+                                    <th>HSN Code</th>
+                                    <th>Description</th>
+                                    <th>Purpose</th>
+                                    <th>Unit</th>
+                                    <th>Rate</th>
+                                    <th>Qty</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <input
+                                        type="text"
+                                        name="SelectItem"
+                                        className="form-control"
+                                        value={formData.SelectItem}
+                                        onChange={handleChange}
+                                      />
+                                    </td>
+                                    <td>
+                                      <input
+                                        type="text"
+                                        name="Store"
+                                        className="form-control"
+                                        value={formData.Store}
+                                        onChange={handleChange}
+                                      />
+                                    </td>
+                                    <td>
                                       <input
                                         type="text"
                                         name="ItemCode"
                                         className="form-control"
+                                        value={formData.ItemCode}
+                                        onChange={handleChange}
                                       />
-                                      <button className="pobtn">Search</button>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div className="d-flex">
-                                      <select className="form-select">
-                                        <option></option>
-                                      </select>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div className="d-flex">
-                                      <input className="form-control" />
-                                      <span>HSN Code</span>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <textarea className="form-control"></textarea>
-                                  </td>
-                                  <td>
-                                    <textarea className="form-control"></textarea>
-                                  </td>
-                                  <td>
-                                    <input />
-                                  </td>
-                                  <td>
-                                    <input />
-                                  </td>
-                                  <td>
-                                    <input />
-                                  </td>
-                                  <td>
-                                    <button type="submit" className="pobtn">
-                                      ADD
-                                    </button>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
+                                    </td>
+                                    <td>
+                                      <input
+                                        type="text"
+                                        name="HSNCode"
+                                        className="form-control"
+                                        value={formData.HSNCode}
+                                        onChange={handleChange}
+                                      />
+                                    </td>
+                                    <td>
+                                      <textarea
+                                        name="Description"
+                                        className="form-control"
+                                        value={formData.Description}
+                                        onChange={handleChange}
+                                      ></textarea>
+                                    </td>
+                                    <td>
+                                      <input
+                                        type="text"
+                                        name="Purpose"
+                                        className="form-control"
+                                        value={formData.Purpose}
+                                        onChange={handleChange}
+                                      />
+                                    </td>
+                                    <td>
+                                      <input
+                                        type="text"
+                                        name="Unit"
+                                        className="form-control"
+                                        value={formData.Unit}
+                                        onChange={handleChange}
+                                      />
+                                    </td>
+                                    <td>
+                                      <input
+                                        type="text"
+                                        name="Rate"
+                                        className="form-control"
+                                        value={formData.Rate}
+                                        onChange={handleChange}
+                                      />
+                                    </td>
+                                    <td>
+                                      <input
+                                        type="text"
+                                        name="Qty"
+                                        className="form-control"
+                                        value={formData.Qty}
+                                        onChange={handleChange}
+                                      />
+                                    </td>
+                                    <td>
+                                      <button type="submit" className="pobtn">
+                                        {isEditing ? "Update" : "Add"}
+                                      </button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </form>
                           </div>
                         </div>
                       </div>
@@ -205,6 +422,7 @@ const DeliveryChallan = () => {
                               <th>Sr no.</th>
                               <th>Item No.</th>
                               <th>Item Code</th>
+                              <th>HSN Code</th>
                               <th>Description</th>
                               <th>Purpose</th>
                               <th>Unit</th>
@@ -215,66 +433,33 @@ const DeliveryChallan = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  className="form-control p-2"
-                                  placeholder="Enter Item Code"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="text"
-                                  className="form-control p-2"
-                                  placeholder="Enter Operation"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="text"
-                                  className="form-control p-2"
-                                  placeholder="Enter Challan Qty"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="text"
-                                  className="form-control p-2"
-                                  placeholder="Enter GRN Qty"
-                                />
-                              </td>
-                              
-                              <td>
-                                <input
-                                  type="text"
-                                  className="form-control p-2"
-                                  placeholder="Heat No"
-                                />
-                              </td>
-                              <td>
-                                <input
-                                  type="text"
-                                  className="form-control p-2"
-                                  placeholder="Cust. Heat No"
-                                />
-                              </td>
-
-                              <td>
-                                <input
-                                  type="text"
-                                  className="form-control p-2"
-                                  placeholder="HC"
-                                />
-                              </td>
-                              <td>
-                                <FaEdit />
-                              </td>
-                              <td>
-                                <FaTrash />
-                              </td>
-                            </tr>
+                            {challans.map((challan, index) => (
+                              <tr key={challan.id}>
+                                <td>{index + 1}</td>
+                                <td>{challan.SelectItem}</td>
+                                <td>{challan.ItemCode}</td>
+                                <td>{challan.HSNCode}</td>
+                                <td>{challan.Description}</td>
+                                <td>{challan.Purpose}</td>
+                                <td>{challan.Unit}</td>
+                                <td>{challan.Rate}</td>
+                                <td>{challan.Qty}</td>
+                                <td>
+                                  <FaEdit
+                                    className="text-primary"
+                                    onClick={() => handleEdit(challan)}
+                                    style={{ cursor: "pointer" }}
+                                  />
+                                </td>
+                                <td>
+                                  <FaTrash
+                                    className="text-danger"
+                                    onClick={() => handleDelete(challan.id)}
+                                    style={{ cursor: "pointer" }}
+                                  />
+                                </td>
+                              </tr>
+                            ))}
                           </tbody>
                         </table>
                       </div>
@@ -289,9 +474,7 @@ const DeliveryChallan = () => {
                       className="nav nav-pills mb-3"
                       id="pills-tab"
                       role="tablist"
-                    >
-                     
-                    </ul>
+                    ></ul>
                     <div className="tab-content" id="pills-tabContent">
                       <div
                         className="tab-pane fade show active"
@@ -302,7 +485,7 @@ const DeliveryChallan = () => {
                       >
                         <div className="StoreDeliverychallan text-start">
                           <div className="container-fluid">
-                            <form>
+                            <form onSubmit={handleSubmit1}>
                               <div className="row">
                                 <div className="col-md-4 text-start">
                                   <div className="container-fluid">
@@ -317,24 +500,24 @@ const DeliveryChallan = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="InwardF4No"
-                                              />
-                                               <input
-                                                type="text"
-                                                className="form-control"
-                                                name="InwardF4No"
+                                                name="ChallanNo"
+                                                value={formData1.ChallanNo}
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
                                           <tr>
                                             <th>Vehicle No:</th>
                                             <td>
-                                              <input
-                                                type="date"
+                                            <input
+                                                type="text"
                                                 className="form-control"
-                                                name="InwardDate"
+                                                name="VehicleNo"
+                                                value={formData1.VehicleNo}
+                                                onChange={handleChange1}
+                                                required
                                               />
-                                              
                                             </td>
                                           </tr>
                                           <tr>
@@ -343,7 +526,10 @@ const DeliveryChallan = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="InwardTime"
+                                                name="Contractor"
+                                                value={formData1.Contractor}
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
@@ -354,6 +540,9 @@ const DeliveryChallan = () => {
                                                 type="date"
                                                 className="form-control"
                                                 name="ChallanDate"
+                                                value={formData1.ChallanDate}
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
@@ -363,7 +552,10 @@ const DeliveryChallan = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="ChallanDate"
+                                                name="Transport"
+                                                value={formData1.Transport}
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
@@ -373,7 +565,10 @@ const DeliveryChallan = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="ChallanNo"
+                                                name="EWayBillNo"
+                                                value={formData1.EWayBillNo}
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
@@ -384,7 +579,7 @@ const DeliveryChallan = () => {
                                 </div>
                                 <div className="col-md-4 text-start">
                                   {/* Second Column Group */}
-                                  <div className="container mt-4">
+                                  <div className="container">
                                     <div className="table-responsive text-start">
                                       <table className="table table-bordered">
                                         <tbody>
@@ -394,7 +589,10 @@ const DeliveryChallan = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="SubVendor"
+                                                name="PoNo"
+                                                value={formData1.PoNo}
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
@@ -404,7 +602,10 @@ const DeliveryChallan = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="DcNo"
+                                                name="Ref_Person"
+                                                value={formData1.Ref_Person}
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
@@ -414,7 +615,10 @@ const DeliveryChallan = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="DcDate"
+                                                name="LrNo"
+                                                value={formData1.LrNo}
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
@@ -422,18 +626,26 @@ const DeliveryChallan = () => {
                                             <th>PO Date:</th>
                                             <td>
                                               <input
-                                                type="text"
+                                                type="date"
                                                 className="form-control"
-                                                name="EWayBillQty"
+                                                name="PoDate"
+                                                value={formData1.PoDate}
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
                                           <tr>
                                             <th>Department:</th>
                                             <td>
-                                              <selct>
-                                                <option>select</option>
-                                              </selct>
+                                              <input
+                                                type="text"
+                                                className="form-control"
+                                                name="Department"
+                                                value={formData1.Department}
+                                                onChange={handleChange1}
+                                                required
+                                              />
                                             </td>
                                           </tr>
                                           <tr>
@@ -442,7 +654,12 @@ const DeliveryChallan = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="VehicleNo"
+                                                name="AssessableValue"
+                                                value={
+                                                  formData1.AssessableValue
+                                                }
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
@@ -453,7 +670,7 @@ const DeliveryChallan = () => {
                                 </div>
                                 <div className="col-md-4 text-start">
                                   {/* Third Column Group */}
-                                  <div className="container mt-4">
+                                  <div className="container">
                                     <div className="table-responsive">
                                       <table className="table table-bordered">
                                         <tbody>
@@ -463,7 +680,10 @@ const DeliveryChallan = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="LrNo"
+                                                name="CGST"
+                                                value={formData1.CGST}
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
@@ -473,7 +693,10 @@ const DeliveryChallan = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="Transporter"
+                                                name="SGST"
+                                                value={formData1.SGST}
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
@@ -483,7 +706,9 @@ const DeliveryChallan = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="PreparedBy"
+                                                name="IGST"
+                                                value={formData1.IGST}
+                                                onChange={handleChange1}
                                               />
                                             </td>
                                           </tr>
@@ -493,7 +718,10 @@ const DeliveryChallan = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="CheckedBy"
+                                                name="GrandTotal"
+                                                value={formData1.GrandTotal}
+                                                onChange={handleChange1}
+                                                required
                                               />
                                             </td>
                                           </tr>
@@ -502,10 +730,12 @@ const DeliveryChallan = () => {
                                             <th>Remark:</th>
                                             <td>
                                               <textarea
-                                                type="text"
                                                 className="form-control"
                                                 name="Remark"
+                                                value={formData1.Remark}
+                                                onChange={handleChange1}
                                                 rows="2"
+                                                required
                                               ></textarea>
                                             </td>
                                           </tr>

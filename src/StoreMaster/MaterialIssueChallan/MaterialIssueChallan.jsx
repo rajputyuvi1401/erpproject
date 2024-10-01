@@ -7,6 +7,13 @@ import { Link } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import "./MaterialIssueChallan.css";
+import {
+  getMaterials,
+  addMaterial,
+  updateMaterial,
+  deleteMaterial,
+} from "../../Service/StoreApi.jsx";
+import { toast, ToastContainer } from "react-toastify";
 const MaterialIssueChallan = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -36,8 +43,99 @@ const MaterialIssueChallan = () => {
   const handleModalClose2 = () => setShowModal2(false);
   const handleModalOpen2 = () => setShowModal2(true);
 
+  //
+  const [materials, setMaterials] = useState([]);
+  const [formData, setFormData] = useState({
+    Item: "",
+    ItemDescription: "",
+    AvailableStock: "",
+    Machine: "",
+    StoreName: "",
+    Qty: "",
+    Unit: "Pcs",
+    Remark: "",
+    MrnNo: "",
+    Employee: "",
+  });
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId, setEditId] = useState(null);
+
+  // Fetch the list of materials on component mount
+  useEffect(() => {
+    loadMaterials();
+  }, []);
+
+  const loadMaterials = async () => {
+    const data = await getMaterials();
+    setMaterials(data);
+  };
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Handle form submission for adding/updating materials
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validation
+    if (
+      !formData.Item ||
+      !formData.Qty ||
+      !formData.Machine ||
+      !formData.MrnNo ||
+      !formData.Employee
+    ) {
+      toast.error("All fields are required!");
+      return;
+    }
+
+    if (isEditing) {
+      await updateMaterial(editId, formData);
+      toast.success("Material updated successfully!");
+      setIsEditing(false);
+      setEditId(null);
+    } else {
+      await addMaterial(formData);
+      toast.success("Material added successfully!");
+    }
+
+    setFormData({
+      Item: "",
+      ItemDescription: "",
+      AvailableStock: "",
+      Machine: "",
+      StoreName: "",
+      Qty: "",
+      Unit: "Pcs",
+      Remark: "",
+      MrnNo: "",
+      Employee: "",
+    });
+    loadMaterials();
+  };
+
+  // Handle edit button click
+  const handleEdit = (material) => {
+    setFormData(material);
+    setIsEditing(true);
+    setEditId(material.id);
+  };
+
+  // Handle delete button click
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      await deleteMaterial(id);
+      toast.success("Material deleted successfully!");
+      loadMaterials();
+    }
+  };
+
   return (
     <div className="NewStoreNewMaterialIssue">
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -83,7 +181,7 @@ const MaterialIssueChallan = () => {
                           <Link className="pobtn" to="/Work-Order-Material">
                             WorkOrder Material Issue Report
                           </Link>
-                         
+
                           <Link className="pobtn" to="/Material-Issue">
                             Material Issue WorkOrder Only
                           </Link>
@@ -127,98 +225,136 @@ const MaterialIssueChallan = () => {
                     <div className="row mt-4">
                       <div className="col-md-12">
                         <div className="table-responsive">
-                          <table className="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Item :</th>
-                                <th>Item Description</th>
-                                <th>Available Stock</th>
-                                <th>Machine</th>
-                                <th>Store Name</th>
-                                <th>Qty / Unit</th>
-                                <th>Remark</th>
-                                <th>MRN No.</th>
-                                <th>Employee</th>
-                                <th>Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <div className="d-flex">
+                          <form onSubmit={handleSubmit}>
+                            <table className="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>Item</th>
+                                  <th>Item Description</th>
+                                  <th>Available Stock</th>
+                                  <th>Machine</th>
+                                  <th>Store Name</th>
+                                  <th>Qty / Unit</th>
+                                  <th>Remark</th>
+                                  <th>MRN No.</th>
+                                  <th>Employee</th>
+                                  <th>Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>
                                     <input
                                       type="text"
-                                      name="ItemCode"
+                                      name="Item"
+                                      value={formData.Item}
+                                      onChange={handleChange}
                                       className="form-control"
                                     />
                                     <button className="pobtn ms-2">
                                       Search
                                     </button>
-                                  </div>
-                                </td>
-                                <td>
-                                  <textarea
-                                    name="Description"
-                                    rows="1"
-                                    className="form-control"
-                                  ></textarea>
-                                </td>
-                                <td>
-                                  <input
-                                    type="text"
-                                    name="Available Stock"
-                                    className="form-control"
-                                  />
-                                </td>
-                                <td>
-                                  <select
-                                    name="Machine"
-                                    className="form-select"
-                                  >
-                                    <option>Select</option>
-                                    <option value="Critical">Critical</option>
-                                    <option value="Regular">Regular</option>
-                                  </select>
-                                </td>
-                                <td>
-                                  <input type="text" className="form-control" />
-                                </td>
-                                <td>
-                                  <input
-                                    type="text"
-                                    name="Qty/Unit"
-                                    className="form-control"
-                                  />
-                                  <select className="form-select mt-2">
-                                    <option>Select</option>
-                                    <option value="Critical">Critical</option>
-                                  </select>
-                                </td>
-                                <td>
-                                  <textarea
-                                    name="Remark"
-                                    className="form-control"
-                                  ></textarea>
-                                </td>
-                                <td>
-                                  <input type="text" className="form-control" />
-                                </td>
-                                <td>
-                                  <input type="text" className="form-control" />
-                                  <select className="form-select mt-2">
-                                    <option>Select</option>
-                                    <option value="Critical">Critical</option>
-                                  </select>
-                                </td>
-                                <td>
-                                  <button type="submit" className="pobtn">
-                                    Add
-                                  </button>
-                                </td>
-                              </tr>
-                              {/* Add more rows as needed */}
-                            </tbody>
-                          </table>
+                                  </td>
+                                  <td>
+                                    <textarea
+                                      name="ItemDescription"
+                                      value={formData.ItemDescription}
+                                      onChange={handleChange}
+                                      rows="1"
+                                      className="form-control"
+                                    ></textarea>
+                                  </td>
+                                  <td>
+                                    <input
+                                      type="text"
+                                      name="AvailableStock"
+                                      value={formData.AvailableStock}
+                                      onChange={handleChange}
+                                      className="form-control"
+                                    />
+                                  </td>
+                                  <td>
+                                    <select
+                                      name="Machine"
+                                      value={formData.Machine}
+                                      onChange={handleChange}
+                                      className="form-select"
+                                    >
+                                      <option value="">Select</option>
+                                      <option value="Drilling Machine">
+                                        Drilling Machine
+                                      </option>
+                                      <option value="Other Machine">
+                                        Other Machine
+                                      </option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input
+                                      type="text"
+                                      name="StoreName"
+                                      value={formData.StoreName}
+                                      onChange={handleChange}
+                                      className="form-control"
+                                    />
+                                  </td>
+                                  <td>
+                                    <input
+                                      type="text"
+                                      name="Qty"
+                                      value={formData.Qty}
+                                      onChange={handleChange}
+                                      className="form-control"
+                                    />
+                                    <select
+                                      name="Unit"
+                                      value={formData.Unit}
+                                      onChange={handleChange}
+                                      className="form-select mt-2"
+                                    >
+                                      <option value="Pcs">Pcs</option>
+                                      <option value="Kg">Kg</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <textarea
+                                      name="Remark"
+                                      value={formData.Remark}
+                                      onChange={handleChange}
+                                      className="form-control"
+                                    ></textarea>
+                                  </td>
+                                  <td>
+                                    <input
+                                      type="text"
+                                      name="MrnNo"
+                                      value={formData.MrnNo}
+                                      onChange={handleChange}
+                                      className="form-control"
+                                    />
+                                  </td>
+                                  <td>
+                                    <input
+                                      type="text"
+                                      name="Employee"
+                                      value={formData.Employee}
+                                      onChange={handleChange}
+                                      className="form-control"
+                                    />
+                                    <select className="form-select mt-2">
+                                      <option>Select</option>
+                                      <option value="Critical">Critical</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <button type="submit" className="pobtn">
+                                      {isEditing ? "Update" : "Add"}
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </form>
                         </div>
                       </div>
                     </div>
@@ -280,25 +416,38 @@ const MaterialIssueChallan = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                            {materials.map((material, index) => (
+                              <tr key={material.id}>
+                                <td>{index + 1}</td>
+                                <td>{material.ItemDescription}</td>
 
-                              <td>
-                                <FaEdit className="text-primary" />
-                              </td>
-                              <td>
-                                <FaTrash className="text-danger" />
-                              </td>
-                            </tr>
+                                <td></td>
+                                <td></td>
+                                <td>{material.StoreName}</td>
+                                <td>
+                                  {material.Qty} | {material.Unit}
+                                </td>
+                                <td>{material.Machine}</td>
+                                <td></td>
+                                <td>{material.MrnNo}</td>
+                                <td>{material.Employee}</td>
+
+                                <td>
+                                  <FaEdit
+                                    className="text-primary"
+                                    onClick={() => handleEdit(material)}
+                                    style={{ cursor: "pointer" }}
+                                  />
+                                </td>
+                                <td>
+                                  <FaTrash
+                                    className="text-danger"
+                                    onClick={() => handleDelete(material.id)}
+                                    style={{ cursor: "pointer" }}
+                                  />
+                                </td>
+                              </tr>
+                            ))}
                           </tbody>
                         </table>
                       </div>
@@ -442,101 +591,110 @@ const MaterialIssueChallan = () => {
                   </div>
 
                   <div className="NewgrnFooter">
-  <div className="container-fluid">
-    {/* Remarks Section */}
-    <div className="row justify-content-end align-items-center mb-3">
-      <div className="col-md-1 text-end">
-        <label className="form-label">Remarks:</label>
-      </div>
-      <div className="col-md-3">
-        <textarea
-          cols="3"
-          className="form-control"
-          placeholder="Enter remarks here..."
-        ></textarea>
-      </div>
-    </div>
+                    <div className="container-fluid">
+                      {/* Remarks Section */}
+                      <div className="row justify-content-end align-items-center mb-3">
+                        <div className="col-md-1 text-end">
+                          <label className="form-label">Remarks:</label>
+                        </div>
+                        <div className="col-md-3">
+                          <textarea
+                            cols="3"
+                            className="form-control"
+                            placeholder="Enter remarks here..."
+                          ></textarea>
+                        </div>
+                      </div>
 
-    {/* Input Fields */}
-    <div className="row g-3">
-      {/* M Issue No */}
-      <div className="col-md-2">
-        <div className="row align-items-center">
-          <div className="col-4 col-md-4 text-end">
-            <label>M Issue No:</label>
-          </div>
-          <div className="col-4 col-md-4">
-            <input className="form-control mb-2" placeholder="No" />
-          </div>
-          <div className="col-4 col-md-4">
-            <input className="form-control" placeholder="Details" />
-          </div>
-        </div>
-      </div>
+                      {/* Input Fields */}
+                      <div className="row g-3">
+                        {/* M Issue No */}
+                        <div className="col-md-2">
+                          <div className="row align-items-center">
+                            <div className="col-4 col-md-4 text-end">
+                              <label>M Issue No:</label>
+                            </div>
+                            <div className="col-4 col-md-4">
+                              <input
+                                className="form-control mb-2"
+                                placeholder="No"
+                              />
+                            </div>
+                            <div className="col-4 col-md-4">
+                              <input
+                                className="form-control"
+                                placeholder="Details"
+                              />
+                            </div>
+                          </div>
+                        </div>
 
-      {/* M Issue Date */}
-      <div className="col-md-2">
-        <div className="row align-items-center">
-          <div className="col-4 text-end">
-            <label>M Issue Date:</label>
-          </div>
-          <div className="col-8">
-            <input type="date" className="form-control" />
-          </div>
-        </div>
-      </div>
+                        {/* M Issue Date */}
+                        <div className="col-md-2">
+                          <div className="row align-items-center">
+                            <div className="col-4 text-end">
+                              <label>M Issue Date:</label>
+                            </div>
+                            <div className="col-8">
+                              <input type="date" className="form-control" />
+                            </div>
+                          </div>
+                        </div>
 
-      {/* M Issue Time */}
-      <div className="col-md-2">
-        <div className="row align-items-center">
-          <div className="col-4 text-end">
-            <label>M Issue Time:</label>
-          </div>
-          <div className="col-8">
-            <input type="text" className="form-control" placeholder="Time" />
-          </div>
-        </div>
-      </div>
+                        {/* M Issue Time */}
+                        <div className="col-md-2">
+                          <div className="row align-items-center">
+                            <div className="col-4 text-end">
+                              <label>M Issue Time:</label>
+                            </div>
+                            <div className="col-8">
+                              <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Time"
+                              />
+                            </div>
+                          </div>
+                        </div>
 
-      {/* Project */}
-      <div className="col-md-1">
-        <div className="row align-items-center">
-          <div className="col-4 text-end">
-            <label>Project:</label>
-          </div>
-          <div className="col-8">
-            <select className="form-select">
-              <option>Select</option>
-            </select>
-          </div>
-        </div>
-      </div>
+                        {/* Project */}
+                        <div className="col-md-1">
+                          <div className="row align-items-center">
+                            <div className="col-4 text-end">
+                              <label>Project:</label>
+                            </div>
+                            <div className="col-8">
+                              <select className="form-select">
+                                <option>Select</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
 
-      {/* Contractor */}
-      <div className="col-md-2">
-        <div className="row align-items-center">
-          <div className="col-4 text-end">
-            <label>Contractor:</label>
-          </div>
-          <div className="col-8">
-            <select className="form-select">
-              <option>Select</option>
-            </select>
-          </div>
-        </div>
-      </div>
+                        {/* Contractor */}
+                        <div className="col-md-2">
+                          <div className="row align-items-center">
+                            <div className="col-4 text-end">
+                              <label>Contractor:</label>
+                            </div>
+                            <div className="col-8">
+                              <select className="form-select">
+                                <option>Select</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
 
-      {/* Save & Clear Buttons */}
-      <div className="col-md-2 d-flex justify-content-end align-items-center">
-        <button className="btn w-100">Save Challan</button>
-      </div>
-      <div className="col-md-1 d-flex justify-content-end align-items-center">
-        <button className="btn w-100">Clear</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+                        {/* Save & Clear Buttons */}
+                        <div className="col-md-2 d-flex justify-content-end align-items-center">
+                          <button className="btn w-100">Save Challan</button>
+                        </div>
+                        <div className="col-md-1 d-flex justify-content-end align-items-center">
+                          <button className="btn w-100">Clear</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </main>
             </div>

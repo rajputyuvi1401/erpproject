@@ -265,18 +265,41 @@ export const deleteBuyerContactDetail = async (id) => {
 };
 
 // Supplier Customer
-export const saveSupplierCustomerData = async (data) => {
+export const getNextNumber = async (type) => {
+  try{
+  const response = await fetch(`${BASE_URL}items/?type=${type}`);
+  const data = await response.json();
+    
+  if (data && data.next_number) {
+    return data.next_number;  // Return next_number if found
+  } else {
+    return "";  // Return empty string if no next_number found
+  }
+} catch (error) {
+  console.error("Error fetching next number:", error);
+  return "";  // Return empty string in case of error
+}
+};
+
+// Function to save form data
+export const SuplliersaveData = async (data) => {
   try {
-    const response = await axios.post(`${BASE_URL}Supplier_Customer/`, data);
-    return response;
-  } catch (error) {
-    console.error("API call error:", {
-      message: error.message,
-      response: error.response?.data,
-      status: error.response?.status,
-      config: error.config,
+    const response = await fetch(`${BASE_URL}items/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
-    throw error;
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok " + response.statusText);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    return false;  // Return false in case of error
   }
 };
 
@@ -2275,46 +2298,7 @@ export const fetchCurrencyCodes = async () => {
   }
 };
 
-// Supplier Type
 
-export const fetchTypeCode = async (type) => {
-  try {
-    let endpoint = "";
-    let payload = { name: type }; 
-    switch (type) {
-      case "Customer":
-        endpoint = "SupplierTypeCode/customers/";
-        break;
-      case "Supplier":
-        endpoint = "SupplierTypeCode/suppliers/";
-        break;
-      case "JobWork":
-        endpoint = "SupplierTypeCode/jobwork/";
-        break;
-      case "CSJW":
-        endpoint = "SupplierTypeCode/csjw/";
-        break;
-      default:
-        return null;
-    }
-    
-      const response = await fetch(`${BASE_URL}${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-      if (!response.ok) {
-        throw new Error("Failed to save BOM item group");
-      }
-      return response.json();
-   
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return null;
-  }
-};
 
 
 // item master main group

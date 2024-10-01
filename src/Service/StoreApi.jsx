@@ -155,3 +155,172 @@ export const saveJob_WorkChallan = async (data) => {
       throw error;
     }
   };
+
+
+  // Subcron Vendor
+
+  export const saveVendorScrap = async (data) => {
+    try {
+      const response = await axios.post(`${Base_Url}VendorScrap/`, data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      // Check for errors (axios throws an error for non-2xx status codes)
+      return response.data; // axios automatically parses JSON
+    } catch (error) {
+      console.error('Error:', error.response ? error.response.data : error.message);
+      throw error; // Rethrow the error to be caught by the calling function
+    }
+  };
+
+
+  // Material Challan
+  export const getMaterials = async () => {
+    const response = await fetch(`${Base_Url}MaterialIssue/`);
+    return await response.json();
+  };
+  
+  export const addMaterial = async (material) => {
+    const response = await fetch(`${Base_Url}MaterialIssue/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(material),
+    });
+    return await response.json();
+  };
+  
+  export const updateMaterial = async (id, material) => {
+    const response = await fetch(`${Base_Url}MaterialIssue/${id}/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(material),
+    });
+    return await response.json();
+  };
+  
+  export const deleteMaterial = async (id) => {
+    await fetch(`${Base_Url}MaterialIssue/${id}/`, {
+      method: "DELETE",
+    });
+  };
+
+
+  // Material Gernal
+  export const getMaterialGernal = async () => {
+    const response = await fetch(`${Base_Url}Material_Issue_General/`);
+    return await response.json();
+  };
+  
+  export const addMaterialGernal = async (material) => {
+    const response = await fetch(`${Base_Url}Material_Issue_General/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(material),
+    });
+    return await response.json();
+  };
+  
+  export const updateMaterialGernal = async (id, material) => {
+    const response = await fetch(`${Base_Url}Material_Issue_General/${id}/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(material),
+    });
+    return await response.json();
+  };
+  
+  export const deleteMaterialGernal = async (id) => {
+    await fetch(`${Base_Url}Material_Issue_General/${id}/`, {
+      method: "DELETE",
+    });
+  };
+
+// Delivery Challan
+export const addDeliveryChallan = async (data) => {
+  return await axios.post(`${Base_Url}DeliveryChallan/`, data);
+};
+
+export const getDeliveryChallans = async () => {
+  return await axios.get(`${Base_Url}DeliveryChallan/`);
+};
+
+export const updateDeliveryChallan = async (id, data) => {
+  return await axios.put(`${Base_Url}DeliveryChallan/${id}/`, data);
+};
+
+export const deleteDeliveryChallan = async (id) => {
+  return await axios.delete(`${Base_Url}DeliveryChallan/${id}/`);
+};
+
+
+export const saveChallanData = async (data) => {
+  try {
+    const response = await axios.post(`${Base_Url}SecondDeliveryChallann/`, data);
+    return response.data;
+  } catch (error) {
+    console.error('Error saving challan data:', error);
+    throw error;
+  }
+};
+
+
+
+// Function to save GRN Data
+export const saveGRNData = async (data) => {
+  try {
+    const response = await axios.post(`${Base_Url}DC_GRN/`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    // Throw the error to be caught in the form component
+    throw error.response ? error.response.data : new Error("An error occurred");
+  }
+};
+
+// New Indent
+
+export const saveIndent = async (data, id) => {
+  if (id) {
+    return await axios.put(`${Base_Url}NewIndent/${id}/`, data);
+  } else {
+    return await axios.post(`${Base_Url}NewIndent/`, data);
+  }
+};
+
+export const getIndentData = async () => {
+  return await axios.get(`${Base_Url}NewIndent/`);
+};
+
+export const deleteIndent = async (id) => {
+  return await axios.delete(`${Base_Url}NewIndent/${id}/`);
+};
+
+// NewIndent
+export const indentsaveData = async (data) => {
+  const response = await fetch(`${Base_Url}SecondNew/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  
+  if (!response.ok) {
+    throw new Error("Failed to save data");
+  }
+
+  return response.json();
+};

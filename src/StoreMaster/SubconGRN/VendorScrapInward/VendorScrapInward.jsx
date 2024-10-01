@@ -4,6 +4,10 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import "./VendorScrapInward.css";
+import { saveVendorScrap } from "../../../Service/StoreApi.jsx"; // Import your API service
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const VendorScrapInward = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -19,8 +23,71 @@ const VendorScrapInward = () => {
     }
   }, [sideNavOpen]);
 
+  const [formData, setFormData] = useState({
+    InWardNo: "",
+    InWardDate: "",
+    InWardTime: "",
+    ChallanNo: "",
+    ChallonDate: "",
+    GIN_No: "",
+    InvoiceNo: "",
+    InvoiceDate: "",
+    PreparedBy: "",
+    CheckedBy: "",
+    VehicleNo: "",
+    LrNo: "",
+    Transporter: "",
+    Remark: "",
+    DeliveryInTime: false, // Initially set to false
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleDeliveryChange = (e) => {
+    setFormData({
+      ...formData,
+      DeliveryInTime: e.target.value === "yes", // Set true for "yes", false for "no"
+    });
+  };
+
+  const handleSubmit = async () => {
+    try {
+      await saveVendorScrap(formData);
+      toast.success("Data saved successfully!");
+      console.log(formData, "data saved");
+      setFormData({
+        InWardNo: "",
+        InWardDate: "",
+        InWardTime: "",
+        ChallanNo: "",
+        ChallonDate: "",
+        GIN_No: "",
+        InvoiceNo: "",
+        InvoiceDate: "",
+        PreparedBy: "",
+        CheckedBy: "",
+        VehicleNo: "",
+        LrNo: "",
+        Transporter: "",
+        Remark: "",
+        DeliveryInTime: false, // Reset to false
+      });
+    } catch (error) {
+      toast.error("Failed to save data!");
+      console.error("Error:", error);
+    }
+  };
+
+
   return (
     <div className="NewStoreVendorScrap">
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -97,20 +164,20 @@ const VendorScrapInward = () => {
                         <div className="StoreSubconstatus text-start">
                           <div className="container-fluid">
                             <div className="row">
+                              {/* First Column Group */}
                               <div className="col-md-4 text-start">
                                 <div className="container mt-4">
                                   <div className="table-responsive">
                                     <table className="table table-bordered">
                                       <tbody>
-                                        {/* First Column Group */}
                                         <tr>
-                                          <th className="col-md-4">
-                                            Inward No:
-                                          </th>
+                                          <th>Inward No:</th>
                                           <td>
                                             <input
                                               type="text"
+                                              name="InWardNo"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
@@ -119,7 +186,9 @@ const VendorScrapInward = () => {
                                           <td>
                                             <input
                                               type="date"
+                                              name="InWardDate"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
@@ -128,7 +197,9 @@ const VendorScrapInward = () => {
                                           <td>
                                             <input
                                               type="text"
+                                              name="InWardTime"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
@@ -137,7 +208,9 @@ const VendorScrapInward = () => {
                                           <td>
                                             <input
                                               type="text"
+                                              name="ChallanNo"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
@@ -146,7 +219,9 @@ const VendorScrapInward = () => {
                                           <td>
                                             <input
                                               type="date"
+                                              name="ChallonDate"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
@@ -155,8 +230,9 @@ const VendorScrapInward = () => {
                                   </div>
                                 </div>
                               </div>
+
+                              {/* Second Column Group */}
                               <div className="col-md-4 text-start">
-                                {/* Second Column Group */}
                                 <div className="container mt-4">
                                   <div className="table-responsive text-start">
                                     <table className="table table-bordered">
@@ -166,7 +242,9 @@ const VendorScrapInward = () => {
                                           <td>
                                             <input
                                               type="text"
+                                              name="GIN_No"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
@@ -175,18 +253,20 @@ const VendorScrapInward = () => {
                                           <td>
                                             <input
                                               type="text"
+                                              name="InvoiceNo"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
                                         <tr>
-                                          <th className="col-md-4">
-                                            Invoice Date:
-                                          </th>
+                                          <th>Invoice Date:</th>
                                           <td>
                                             <input
                                               type="date"
+                                              name="InvoiceDate"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
@@ -195,7 +275,9 @@ const VendorScrapInward = () => {
                                           <td>
                                             <input
                                               type="text"
+                                              name="PreparedBy"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
@@ -204,7 +286,9 @@ const VendorScrapInward = () => {
                                           <td>
                                             <input
                                               type="text"
+                                              name="CheckedBy"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
@@ -213,8 +297,9 @@ const VendorScrapInward = () => {
                                   </div>
                                 </div>
                               </div>
+
+                              {/* Third Column Group */}
                               <div className="col-md-4 text-start">
-                                {/* Third Column Group */}
                                 <div className="container mt-4">
                                   <div className="table-responsive">
                                     <table className="table table-bordered">
@@ -222,88 +307,92 @@ const VendorScrapInward = () => {
                                         <tr>
                                           <th>Vehical No:</th>
                                           <td>
-                                            <textarea
+                                            <input
+                                              type="text"
+                                              name="VehicleNo"
                                               className="form-control"
-                                              rows="2"
-                                            ></textarea>
+                                              onChange={handleInputChange}
+                                            />
                                           </td>
                                         </tr>
-
                                         <tr>
                                           <th>Lr No:</th>
                                           <td>
                                             <input
                                               type="text"
+                                              name="LrNo"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
-
-                                        
                                         <tr>
                                           <th>Transporter:</th>
                                           <td>
                                             <input
                                               type="text"
+                                              name="Transporter"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
-
                                         <tr>
                                           <th>Remark:</th>
                                           <td>
                                             <input
                                               type="text"
+                                              name="Remark"
                                               className="form-control"
+                                              onChange={handleInputChange}
                                             />
                                           </td>
                                         </tr>
-
                                         <tr>
-                                          <th className="col-md-4">
-                                            Delivery in Time:
-                                          </th>
-                                          <td>
-                                            <div className="form-check form-check-inline">
-                                              <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="deliveryYes"
-                                                name="deliveryInTime"
-                                                value="yes"
-                                              />
-                                              <label
-                                                className="form-check-label"
-                                                htmlFor="deliveryYes"
-                                              >
-                                                Yes
-                                              </label>
-                                            </div>
-                                            <div className="form-check form-check-inline">
-                                              <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="deliveryNo"
-                                                name="deliveryInTime"
-                                                value="no"
-                                              />
-                                              <label
-                                                className="form-check-label"
-                                                htmlFor="deliveryNo"
-                                              >
-                                                No
-                                              </label>
-                                            </div>
-                                          </td>
-                                        </tr>
-
+                  <th className="col-md-4">Delivery in Time:</th>
+                  <td>
+                    <div className="form-check form-check-inline">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id="deliveryYes"
+                        name="DeliveryInTime"
+                        value="yes"
+                        checked={formData.DeliveryInTime === true}
+                        onChange={handleDeliveryChange}
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="deliveryYes"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id="deliveryNo"
+                        name="DeliveryInTime"
+                        value="no"
+                        checked={formData.DeliveryInTime === false}
+                        onChange={handleDeliveryChange}
+                      />
+                      <label className="form-check-label" htmlFor="deliveryNo">
+                        No
+                      </label>
+                    </div>
+                  </td>
+                </tr>
                                         <tr>
                                           <td
-                                            colspan="2"
+                                            colSpan="2"
                                             className="text-center"
                                           >
-                                            <button className="btn">
+                                            <button
+                                              className="btn"
+                                              onClick={handleSubmit}
+                                            >
                                               Save Challan
                                             </button>
                                           </td>

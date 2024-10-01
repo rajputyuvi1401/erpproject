@@ -7,6 +7,10 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./Dcgrn.css";
 import Cached from "@mui/icons-material/Cached.js";
+import { saveGRNData } from "../../Service/StoreApi.jsx";
+import { toast, ToastContainer } from "react-toastify"; // Make sure to install react-toastify
+import "react-toastify/dist/ReactToastify.css";
+
 const Dcgrn = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -22,8 +26,81 @@ const Dcgrn = () => {
     }
   }, [sideNavOpen]);
 
+  const [formData, setFormData] = useState({
+    GrnNo: "",
+    GrnDate: "",
+    GrnTime: "",
+    ChallanNo: "",
+    ChallanDate: "",
+    InvoiceNo: "",
+    InvoiceDate: "",
+    VehicleNo: "",
+    LrNo: "",
+    Transporter: "",
+    PreparedBy: "",
+    CheckedBy: "",
+    Remark: "",
+    DeliveryInTime: false, // Optional
+    QcCheck: false, // Optional
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Form validation
+    let hasError = false;
+    for (const key in formData) {
+      if (!formData[key] && key !== "DeliveryInTime" && key !== "QcCheck") {
+        toast.error(`${key} is required`);
+        hasError = true;
+      }
+    }
+
+    if (hasError) {
+      return; // Stop submission if there are validation errors
+    }
+
+    try {
+      const response = await saveGRNData(formData); // API call to save data
+      toast.success("GRN saved successfully");
+      console.log("Response:", response);
+
+      // Clear form data after successful submission
+      setFormData({
+        GrnNo: "",
+        GrnDate: "",
+        GrnTime: "",
+        ChallanNo: "",
+        ChallanDate: "",
+        InvoiceNo: "",
+        InvoiceDate: "",
+        VehicleNo: "",
+        LrNo: "",
+        Transporter: "",
+        PreparedBy: "",
+        CheckedBy: "",
+        Remark: "",
+        DeliveryInTime: false, // Optional
+        QcCheck: false, // Optional
+      });
+    } catch (error) {
+      toast.error("Error saving GRN");
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div className="NewStoreDcgrn">
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -55,95 +132,132 @@ const Dcgrn = () => {
                     <div className="col-md-2 text-end">
                       <div className="row justify-content-end">
                         <div className="col-md-8 d-flex align-items-end">
-                          <Link className="pobtn" to="/Dcgrnlist">DC-GM-LIST</Link>
+                          <Link className="pobtn" to="/Dcgrnlist">
+                            DC-GM-LIST
+                          </Link>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="Dcgrn-main">
-                <div className="container-fluid text-start">
-  {/* First Row */}
-  <div className="row align-items-center mb-3">
-    <div className="col-md-1">
-      <label>Type:</label>
-    </div>
-    <div className="col-md-3">
-      <div className="form-check form-check-inline">
-        <input type="checkbox" id="dc-grn" name="dc-grn" className="form-check-input" />
-        <label htmlFor="dc-grn" className="form-check-label ms-1">DC GRN</label>
-      </div>
-      <div className="form-check form-check-inline">
-        <input type="checkbox" id="direct-grn" name="direct-grn" className="form-check-input" />
-        <label htmlFor="direct-grn" className="form-check-label ms-1">Direct GRN</label>
-      </div>
-    </div>
-    <div className="col-md-2">
-      <label>Gate Entry No:</label>
-    </div>
-    <div className="col-md-1">
-      <select className="form-select">
-        <option value="All">All</option>
-      </select>
-    </div>
-    <div className="col-md-1">
-      <button type="button" className="btn">
-        <Cached />
-      </button>
-    </div>
-    <div className="col-md-1">
-      <label>Series:</label>
-    </div>
-    <div className="col-md-1">
-      <select className="form-select">
-        <option value="A">A</option>
-        <option value="B">B</option>
-      </select>
-    </div>
-  </div>
+                  <div className="container-fluid text-start">
+                    {/* First Row */}
+                    <div className="row align-items-center mb-3">
+                      <div className="col-md-1">
+                        <label>Type:</label>
+                      </div>
+                      <div className="col-md-3">
+                        <div className="form-check form-check-inline">
+                          <input
+                            type="checkbox"
+                            id="dc-grn"
+                            name="dc-grn"
+                            className="form-check-input"
+                          />
+                          <label
+                            htmlFor="dc-grn"
+                            className="form-check-label ms-1"
+                          >
+                            DC GRN
+                          </label>
+                        </div>
+                        <div className="form-check form-check-inline">
+                          <input
+                            type="checkbox"
+                            id="direct-grn"
+                            name="direct-grn"
+                            className="form-check-input"
+                          />
+                          <label
+                            htmlFor="direct-grn"
+                            className="form-check-label ms-1"
+                          >
+                            Direct GRN
+                          </label>
+                        </div>
+                      </div>
+                      <div className="col-md-2">
+                        <label>Gate Entry No:</label>
+                      </div>
+                      <div className="col-md-1">
+                        <select className="form-select">
+                          <option value="All">All</option>
+                        </select>
+                      </div>
+                      <div className="col-md-1">
+                        <button type="button" className="btn">
+                          <Cached />
+                        </button>
+                      </div>
+                      <div className="col-md-1">
+                        <label>Series:</label>
+                      </div>
+                      <div className="col-md-1">
+                        <select className="form-select">
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                        </select>
+                      </div>
+                    </div>
 
-  {/* Second Row */}
-  <div className="row align-items-center mb-3">
-    <div className="col-md-2">
-      <label>Select Supp/Cust:</label>
-    </div>
-    <div className="col-md-2">
-      <input type="text" className="form-control" placeholder="Enter Supp/Cust" />
-    </div>
-    <div className="col-md-1">
-      <button type="button" className="pobtn">Search</button>
-    </div>
-    <div className="col-md-1">
-      <label>Select DC:</label>
-    </div>
-    <div className="col-md-2">
-      <select className="form-select">
-        <option value="1">DC 1</option>
-        <option value="2">DC 2</option>
-      </select>
-    </div>
-    <div className="col-md-1">
-      <button type="button" className="pobtn">Cancel</button>
-    </div>
-  </div>
+                    {/* Second Row */}
+                    <div className="row align-items-center mb-3">
+                      <div className="col-md-2">
+                        <label>Select Supp/Cust:</label>
+                      </div>
+                      <div className="col-md-2">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter Supp/Cust"
+                        />
+                      </div>
+                      <div className="col-md-1">
+                        <button type="button" className="pobtn">
+                          Search
+                        </button>
+                      </div>
+                      <div className="col-md-1">
+                        <label>Select DC:</label>
+                      </div>
+                      <div className="col-md-2">
+                        <select className="form-select">
+                          <option value="1">DC 1</option>
+                          <option value="2">DC 2</option>
+                        </select>
+                      </div>
+                      <div className="col-md-1">
+                        <button type="button" className="pobtn">
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
 
-  {/* Third Row */}
-  <div className="row align-items-center">
-    <div className="col-md-2">
-      <label>Select Item:</label>
-    </div>
-    <div className="col-md-2">
-      <input type="text" className="form-control" placeholder="Enter Item" />
-    </div>
-    <div className="col-md-1">
-      <button type="button" className="btn">Add</button>
-    </div>
-    <div className="col-md-3">
-      <button type="button" className="btn">Pending Release DC Item</button>
-    </div>
-  </div>
-</div>
-
+                    {/* Third Row */}
+                    <div className="row align-items-center">
+                      <div className="col-md-2">
+                        <label>Select Item:</label>
+                      </div>
+                      <div className="col-md-2">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter Item"
+                        />
+                      </div>
+                      <div className="col-md-1">
+                        <button type="button" className="btn">
+                          Add
+                        </button>
+                      </div>
+                      <div className="col-md-3">
+                        <button type="button" className="btn">
+                          Pending Release DC Item
+                        </button>
+                      </div>
+                    </div>
+                  </div>
 
                   <div className="Dcgrnstatus">
                     <div className="container-fluid  text-start">
@@ -308,7 +422,7 @@ const Dcgrn = () => {
                       >
                         <div className="StoreDcgrn text-start">
                           <div className="container-fluid">
-                            <form>
+                            <form onSubmit={handleSubmit}>
                               <div className="row">
                                 <div className="col-md-4 text-start">
                                   <div className="container-fluid">
@@ -321,16 +435,19 @@ const Dcgrn = () => {
                                             </th>
                                             <td>
                                               <div className="d-flex">
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                                name="InwardF4No"
-                                              />
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                                name="InwardF4No"
-                                              />
+                                                <input
+                                                  type="text"
+                                                  className="form-control"
+                                                  name="GrnNo"
+                                                  value={formData.GrnNo}
+                                                  onChange={handleChange}
+                                                  placeholder="GRN No"
+                                                />
+                                                {/* <input
+                                                  type="text"
+                                                  className="form-control"
+                                                  name="InwardF4No"
+                                                /> */}
                                               </div>
                                             </td>
                                           </tr>
@@ -340,7 +457,9 @@ const Dcgrn = () => {
                                               <input
                                                 type="date"
                                                 className="form-control"
-                                                name="InwardDate"
+                                                name="GrnDate"
+                                                value={formData.GrnDate}
+                                                onChange={handleChange}
                                               />
                                             </td>
                                           </tr>
@@ -348,9 +467,11 @@ const Dcgrn = () => {
                                             <th>GRN Time:</th>
                                             <td>
                                               <input
-                                                type="text"
+                                                type="time"
                                                 className="form-control"
-                                                name="InwardTime"
+                                                name="GrnTime"
+                                                value={formData.GrnTime}
+                                                onChange={handleChange}
                                               />
                                             </td>
                                           </tr>
@@ -360,7 +481,10 @@ const Dcgrn = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="ChallanDate"
+                                                name="ChallanNo"
+                                                value={formData.ChallanNo}
+                                                onChange={handleChange}
+                                                placeholder="Challan No"
                                               />
                                             </td>
                                           </tr>
@@ -371,6 +495,8 @@ const Dcgrn = () => {
                                                 type="date"
                                                 className="form-control"
                                                 name="ChallanDate"
+                                                value={formData.ChallanDate}
+                                                onChange={handleChange}
                                               />
                                             </td>
                                           </tr>
@@ -381,17 +507,46 @@ const Dcgrn = () => {
                                 </div>
                                 <div className="col-md-4 text-start">
                                   {/* Second Column Group */}
-                                  <div className="container mt-4">
+                                  <div className="container">
                                     <div className="table-responsive text-start">
                                       <table className="table table-bordered">
                                         <tbody>
+                                          <tr>
+                                            <th>Invoice No:</th>
+                                            <td>
+                                              <input
+                                                type="text"
+                                                className="form-control"
+                                                name="InvoiceNo"
+                                                value={formData.InvoiceNo}
+                                                onChange={handleChange}
+                                                placeholder="Vehicle No"
+                                              />
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <th>Invoice Date:</th>
+                                            <td>
+                                              <input
+                                                type="date"
+                                                className="form-control"
+                                                name="InvoiceDate"
+                                                value={formData.InvoiceDate}
+                                                onChange={handleChange}
+                                                placeholder="Invoice Date"
+                                              />
+                                            </td>
+                                          </tr>
                                           <tr>
                                             <th>Vehicle No:</th>
                                             <td>
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="SubVendor"
+                                                name="VehicleNo"
+                                                value={formData.VehicleNo}
+                                                onChange={handleChange}
+                                                placeholder="Vehicle No"
                                               />
                                             </td>
                                           </tr>
@@ -401,7 +556,10 @@ const Dcgrn = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="DcNo"
+                                                name="LrNo"
+                                                value={formData.LrNo}
+                                                onChange={handleChange}
+                                                placeholder="LR No"
                                               />
                                             </td>
                                           </tr>
@@ -413,7 +571,10 @@ const Dcgrn = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="DcDate"
+                                                name="Transporter"
+                                                value={formData.Transporter}
+                                                onChange={handleChange}
+                                                placeholder="Transporter"
                                               />
                                             </td>
                                           </tr>
@@ -423,18 +584,10 @@ const Dcgrn = () => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                name="EWayBillQty"
-                                              />
-                                            </td>
-                                          </tr>
-
-                                          <tr>
-                                            <th>Checked By /Approved By:</th>
-                                            <td>
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                                name="VehicleNo"
+                                                name="PreparedBy"
+                                                value={formData.PreparedBy}
+                                                onChange={handleChange}
+                                                placeholder="Prepared By"
                                               />
                                             </td>
                                           </tr>
@@ -445,18 +598,32 @@ const Dcgrn = () => {
                                 </div>
                                 <div className="col-md-4 text-start">
                                   {/* Third Column Group */}
-                                  <div className="container mt-4">
+                                  <div className="container">
                                     <div className="table-responsive">
                                       <table className="table table-bordered">
                                         <tbody>
                                           <tr>
+                                            <th>Checked By /Approved By:</th>
+                                            <td>
+                                              <input
+                                                type="text"
+                                                className="form-control"
+                                                name="CheckedBy"
+                                                value={formData.CheckedBy}
+                                                onChange={handleChange}
+                                                placeholder="Checked By"
+                                              />
+                                            </td>
+                                          </tr>
+                                          <tr>
                                             <th>Remark:</th>
                                             <td>
                                               <textarea
-                                                type="text"
                                                 className="form-control"
                                                 name="Remark"
-                                                rows="2"
+                                                value={formData.Remark}
+                                                onChange={handleChange}
+                                                placeholder="Remark"
                                               ></textarea>
                                             </td>
                                           </tr>
@@ -464,20 +631,35 @@ const Dcgrn = () => {
                                             <th>Delivery In Time:</th>
                                             <td>
                                             <div className="col-md-2">
-                                              <input
-                                                type="checkbox"
-                                                name="DeliveryInTime"
-                                              />
-                                              Yes
-                                              <input
-                                                type="checkbox"
-                                                name="DeliveryInTime"
-                                              />
-                                              No
+                                                <input
+                                                  type="radio"
+                                                  name="DeliveryInTime"
+                                                  value="Yes"
+                                                  checked={
+                                                    formData.DeliveryInTime ===
+                                                    "Yes"
+                                                  }
+                                                  onChange={handleChange}
+                                                />
+                                                Yes
+                                              
+                                              
+                                                <input
+                                                  type="radio"
+                                                  name="DeliveryInTime"
+                                                  value="No"
+                                                  checked={
+                                                    formData.DeliveryInTime ===
+                                                    "No"
+                                                  }
+                                                  onChange={handleChange}
+                                                />
+                                                No
                                               </div>
                                             </td>
                                           </tr>
-                                          <tr>
+
+                                          {/* <tr>
                                             <th>Total Amt:</th>
                                             <td>
                                               <input
@@ -486,24 +668,39 @@ const Dcgrn = () => {
                                                 name="VehicleNo"
                                               />
                                             </td>
-                                          </tr>
+                                          </tr> */}
                                           <tr>
                                             <th>QC Check:</th>
                                             <td>
-                                            <div className="col-md-2">
-                                              <input
-                                                type="checkbox"
-                                                name="DeliveryInTime"
-                                              />
-                                              Quantity
-                                              <input
-                                                type="checkbox"
-                                                name="DeliveryInTime"
-                                              />
-                                              Quality
+                                              <div className="col-md-2">
+                                              
+                                                <input
+                                                  type="radio"
+                                                  name="QcCheck"
+                                                  value="Yes"
+                                                  checked={
+                                                    formData.QcCheck === "Yes"
+                                                  }
+                                                  onChange={handleChange}
+                                                />
+                                                Quantity
+                                              
+                                             
+                                                <input
+                                                  type="radio"
+                                                  name="QcCheck"
+                                                  value="No"
+                                                  checked={
+                                                    formData.QcCheck === "No"
+                                                  }
+                                                  onChange={handleChange}
+                                                />
+                                                Quality
+                                             
                                               </div>
                                             </td>
                                           </tr>
+
                                           <tr>
                                             <td
                                               colspan="2"

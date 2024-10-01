@@ -414,7 +414,10 @@ function App() {
 
         {/* /////////////////////////////////////Purchase////////////////////////////////////// */}
         <Route path="WorkOrderEntry" element={<WorkOrderEntry/>} />
-        <Route path="WorkOrderLsit" element={<WorkOrderList/>}/>
+        <Route path="WorkOrderList" element={<WorkOrderList/>}/>
+
+
+
       </Routes>
     </div>
   );

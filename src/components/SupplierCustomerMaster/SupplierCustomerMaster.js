@@ -11,7 +11,7 @@ import BuyerContactDetail from "./BuyerContactDetail";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
-  saveSupplierCustomerData,
+  getNextNumber,SuplliersaveData,
   // fetchCategories,
   fetchSectors,
   fetchGroups,
@@ -36,9 +36,7 @@ import ToggleCardStateCode1 from "./ToggleCardStateCode1";
 import ToggleCardSector from "./ToggleCardSector.jsx";
 import ToggleCardQMSCode from "./ToggleCardQMSCode.jsx";
 import { Link } from "react-router-dom";
-
 import { fetchCurrencyCodes } from "../../Service/Api.jsx";
-import { fetchTypeCode } from "../../Service/Api.jsx";
 import { fetchStateData ,fetchStateDetails } from "../../Service/Api.jsx";
 
 
@@ -128,7 +126,7 @@ const SupplierCustomerMaster = () => {
   };
 
   const initialFormData = {
-    Type: "",
+    type: "",
     Name: "",
     Address_Line_1: "",
 
@@ -143,9 +141,9 @@ const SupplierCustomerMaster = () => {
     Insurance_Policy_No: "",
     Subcon_Challan: "",
     GL: "",
-    Code_No: "",
+    number: "",
     Payment_Term: "",
-    Country: "",
+    Country: "INDIA",
     Currency: "",
     Pin_Code: "",
     City: "",
@@ -155,7 +153,7 @@ const SupplierCustomerMaster = () => {
     Invoice_Type: "",
     CIN_No: "",
     Website: "",
-    Mobile_NO: "",
+   
     Incoterms: "",
     Insurance_Policy_Expiry_Date: "",
     VAT_TIN: "",
@@ -192,16 +190,15 @@ const SupplierCustomerMaster = () => {
 
     // List of fields that are required
     const requiredFields = [
-      "Type",
+      "type",
       "Name",
       "Address_Line_1",
-
       "Region",
       "PAN_Type",
       "PAN_NO",
       "State_Code",
       "GST_Tax_Code",
-      "Code_No",
+      "number",
       "Payment_Term",
       "Pin_Code",
       "GST_No2",
@@ -278,20 +275,18 @@ const SupplierCustomerMaster = () => {
       });
     }
   };
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const nextNumber = await getNextNumber(formData.type);
+      setFormData((prevData) => ({
+        ...prevData,
+        number: nextNumber,  // Automatically update the 'number' field with next_number
+      }));
+    };
+    fetchData();
+  }, [formData.type]);
 
-  const handleChangeType = async (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-
-    if (name === "Type") {
-      const fetchedCode = await fetchTypeCode(value);
-      if (fetchedCode && fetchedCode.code) {
-        setFormData((prevData) => ({ ...prevData, Code_No: fetchedCode.code }));
-      } else {
-        console.error("Fetched code not found in response");
-      }
-    }
-  };
 
   const validatePAN = (pan) => {
     const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
@@ -313,40 +308,34 @@ const SupplierCustomerMaster = () => {
     if (!formData.PAN_Type) {
       newErrors.PAN_Type = "PAN type is required";
     }
-    if (!formData.Type || !formData.Code_No) {
-      setErrors({ Type: "Type is required", Code_No: "Code No is required" });
+    if (!formData.type || !formData.number) {
+      setErrors({ type: "Type is required", number: "Code No is required" });
       return;
     }
 
     if (validate()) {
       try {
-        const response = await saveSupplierCustomerData(formData);
+        const response = await SuplliersaveData(formData);
 
         console.log("API Response:", response);
-        if (response.status === 201) {
-          console.log("Form submitted successfully:", response.data);
-          toast.success("Form submitted successfully!");
-          setFormData(initialFormData);
-        } else {
-          console.error("Failed to submit form:", response);
-          toast.error("Failed to submit form.");
-        }
-      } catch (error) {
-        console.error("Error Details:", {
-          message: error.message,
-          response: error.response?.data,
-          status: error.response?.status,
-          config: error.config,
-        });
-        toast.error(
-          `Error occurred: ${error.response?.data?.message || error.message}`
-        );
-      }
-    } else {
-      console.log("Validation errors:", errors);
-    }
-  };
+        console.log("Response Status:", response.status);
 
+      // Handle different success statuses
+      if (response.status === 201 || response.status === 200) {
+        toast.success("Form submitted successfully!");
+        setFormData(initialFormData); // Clear form on success
+      } else {
+        console.error("Failed to submit form:", response);
+        toast.error("Failed to submit form.");
+      }
+    } catch (error) {
+      console.error("Error Details:", error);
+      toast.error(`Error occurred: ${error.message}`);
+    }
+  } else {
+    console.log("Validation errors:", errors);
+  }
+};
   const handleClear = () => {
     console.log("clear");
     setFormData(initialFormData);
@@ -602,8 +591,7 @@ useEffect(() => {
                              
                                   
                                   <div className="container-fluid">
-                                    <form
-                                      onSubmit={handleSubmit}
+                                  <form onSubmit={handleSubmit}
                                       autoComplete="off"
                                     >
                                       <div className="row text-start">
@@ -613,21 +601,21 @@ useEffect(() => {
                                         >
                                           <div className="row mb-3">
                                             <label
-                                              htmlFor="Type"
+                                              htmlFor="type"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              Type:{" "}
+                                              type:{" "}
                                               <span className="text-danger">
                                                 *
                                               </span>
                                             </label>
                                             <div className="col-sm-8">
                                               <select
-                                                id="Type"
-                                                name="Type"
+                                                id="type"
+                                                name="type"
                                                 className="form-select"
-                                                value={formData.Type}
-                                                onChange={handleChangeType}
+                                                value={formData.type}
+                                                onChange={handleChange}
                                               >
                                                 <option value="" disabled>
                                                   Select ..
@@ -639,16 +627,16 @@ useEffect(() => {
                                                 <option value="Supplier">
                                                   Supplier
                                                 </option>
-                                                <option value="JobWork">
+                                                <option value="Job Work">
                                                   Job Work
                                                 </option>
-                                                <option value="CSJW">
+                                                <option value="WCSJW">
                                                   C/S/JW
                                                 </option>
                                               </select>
-                                              {errors.Type && (
+                                              {errors.type && (
                                                 <small className="text-danger">
-                                                  {errors.Type}
+                                                  {errors.type}
                                                 </small>
                                               )}
                                             </div>
@@ -1131,7 +1119,7 @@ useEffect(() => {
                                         >
                                           <div className="row mb-3">
                                             <label
-                                              htmlFor="Code_No"
+                                              htmlFor="number"
                                               className="col-sm-4 col-form-label"
                                             >
                                               Code No:{" "}
@@ -1143,15 +1131,15 @@ useEffect(() => {
                                               <input
                                                 type="text"
                                                 className="form-control"
-                                                id="Code_No"
-                                                name="Code_No"
-                                                value={formData.Code_No}
+                                                id="number"
+                                                name="number"
+                                                value={formData.number}
                                                 onChange={handleChange}
                                                 readOnly
                                               />
-                                              {errors.Code_No && (
+                                              {errors.number && (
                                                 <small className="text-danger">
-                                                  {errors.Code_No}
+                                                  {errors.number}
                                                 </small>
                                               )}
                                             </div>
@@ -1460,30 +1448,7 @@ useEffect(() => {
                                             </div>
                                           </div>
 
-                                          {/* Mobile No */}
-                                          <div className="row mb-3">
-                                            <label
-                                              htmlFor="Mobile_No"
-                                              className="col-sm-4 col-form-label"
-                                            >
-                                              Mobile No:
-                                            </label>
-                                            <div className="col-sm-8">
-                                              <input
-                                                type="text"
-                                                className="form-control"
-                                                id="Mobile_NO"
-                                                name="Mobile_NO"
-                                                value={formData.Mobile_NO}
-                                                onChange={handleChange}
-                                              />
-                                              {/* {errors.Mobile_NO && (
-                                                <small className="text-danger">
-                                                  {errors.Mobile_NO}
-                                                </small>
-                                              )} */}
-                                            </div>
-                                          </div>
+                                   
 
                                           {/* Incoterms */}
                                           <div className="row mb-3">
@@ -2158,7 +2123,7 @@ useEffect(() => {
 
                                       <div className="row text-end">
                                         <div className="col-md-12">
-                                          <button className="subGernalbtn1">
+                                          <button type="submit" className="subGernalbtn1">
                                             SAVE
                                           </button>
 

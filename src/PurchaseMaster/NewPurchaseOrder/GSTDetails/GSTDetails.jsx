@@ -49,7 +49,7 @@ const GSTDetails = () => {
               <td><input type="text" className="form-control" /></td>
               <td><input type="text" className="form-control" /></td>
               <td><input type="text" className="form-control" /></td>
-              <td><input type="text" className="form-control" /></td>
+              <td><input type="text m-2" className="form-control" /></td>
               <td><input type="text" className="form-control" /></td>
               <td><input type="text" className="form-control" /></td>
               <td><input type="text" className="form-control"  /></td>

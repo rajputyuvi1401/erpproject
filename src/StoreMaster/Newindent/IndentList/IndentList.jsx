@@ -40,7 +40,7 @@ const IndentList = () => {
 
                     <div className="col-md-9 text-end">
                       <div className="row justify-content-end">
-                        <div className="col-md-9 d-flex align-items-end">
+                        <div className="col-md-4 d-flex align-items-end">
                           <Link className="pobtn">Indent Status Report</Link>
 
                           <Link className="pobtn">Export Excel</Link>
