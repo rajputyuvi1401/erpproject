@@ -306,7 +306,7 @@ export const SuplliersaveData = async (data) => {
 // Supplier Vendor List
 export const getSupplierCustomerData = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}Supplier_Customer/`);
+    const response = await axios.get(`${BASE_URL}items/details/`);
     return response.data;
   } catch (error) {
     console.error("API call error:", {
@@ -1132,38 +1132,19 @@ export const saveItemMasterData = async (data) => {
 
 export const saveItemMaster = async (data) => {
   try {
-    const response = await fetch(`${BASE_URL}Item_Master_Genral_Page/`, {
+    const response = await fetch(`${BASE_URL}AddItems/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-
     if (!response.ok) {
-      const errorData = await response.json();
-
-      console.error("Error occurred while saving data:", {
-        status: response.status,
-        statusText: response.statusText,
-        data: errorData,
-      });
-
-      throw new Error(`Error ${response.status}: ${response.statusText}`);
+      throw new Error("Failed to save data");
     }
-
     return await response.json();
   } catch (error) {
-    console.error("Error occurred while saving data:", {
-      message: error.message,
-    });
-
-    if (error.response && error.response.data) {
-      console.log("Error Details:", error.response.data);
-    } else {
-      console.log("An unexpected error occurred:", error.message);
-    }
-
+    console.error(error);
     throw error;
   }
 };
@@ -1367,7 +1348,7 @@ export const savePriceList = async (data) => {
 // Item card Main Group
 export const saveMainGroup = async (data) => {
   try {
-    const response = await fetch(`${BASE_URL}MainGroup/`, {
+    const response = await fetch(`${BASE_URL}AddMainGroup/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -1384,7 +1365,7 @@ export const saveMainGroup = async (data) => {
 
 export const getMainGroups = async () => {
   try {
-    const response = await fetch(`${BASE_URL}MainGroup/`);
+    const response = await fetch(`${BASE_URL}AddMainGroup/`);
     if (!response.ok) throw new Error("Failed to fetch data");
     return await response.json();
   } catch (error) {
@@ -1395,7 +1376,7 @@ export const getMainGroups = async () => {
 
 export const deleteMainGroup = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}MainGroup/${id}/`, {
+    const response = await fetch(`${BASE_URL}AddMainGroup/${id}/`, {
       method: "DELETE",
     });
     if (!response.ok) throw new Error("Failed to delete data");
@@ -1789,7 +1770,7 @@ export const deleteItemSection = async (id) => {
 // item group
 export const saveItemGroup = async (data) => {
   try {
-    const response = await fetch(`${BASE_URL}Item_Group/`, {
+    const response = await fetch(`${BASE_URL}AddItemGroup/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -1806,7 +1787,7 @@ export const saveItemGroup = async (data) => {
 
 export const updateItemGroup = async (id, data) => {
   try {
-    const response = await fetch(`${BASE_URL}Item_Group/${id}/`, {
+    const response = await fetch(`${BASE_URL}AddItemGroup/${id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -1823,7 +1804,7 @@ export const updateItemGroup = async (id, data) => {
 
 export const getItemGroups = async () => {
   try {
-    const response = await fetch(`${BASE_URL}Item_Group/`);
+    const response = await fetch(`${BASE_URL}AddItemGroup/`);
     if (!response.ok) throw new Error("Failed to fetch data");
     return await response.json();
   } catch (error) {
@@ -1834,7 +1815,7 @@ export const getItemGroups = async () => {
 
 export const deleteItemGroup = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}Item_Group/${id}/`, {
+    const response = await fetch(`${BASE_URL}AddItemGroup/${id}/`, {
       method: "DELETE",
     });
     if (!response.ok) throw new Error("Failed to delete data");

@@ -135,8 +135,9 @@ const ItemMasterGernal = () => {
 
   // Gernal data
   const [formData, setFormData] = useState({
-    Main_Group: "",
-    SE_Item: "",
+    main_group: "",
+    item_group: "",
+    part_no: "",
     Unit_Code: "",
     // TDC: "",
     Part_Code: "",
@@ -147,7 +148,6 @@ const ItemMasterGernal = () => {
     Heat_Treatment: "",
     Color_Code: "",
     Min_Rate: "",
-
     Length: "",
     Shape: "",
     Rate_Remark: "",
@@ -206,11 +206,11 @@ const ItemMasterGernal = () => {
   const validateForm = () => {
     const newErrors = {};
     const requiredFields = [
-      "Main_Group",
-      "SE_Item",
+      "main_group",
+      "part_no",
       "Unit_Code",
       "Part_Code",
-      "Item_Group",
+      "item_group",
       "Name_Description",
       "Store_Location",
       "SAC_Code",
@@ -242,12 +242,12 @@ const ItemMasterGernal = () => {
     }));
 
     // Automatically update Part No based on selected Main Group
-    if (name === "Main_Group") {
+    if (name === "main_group") {
       const selectedGroup = mainGroups.find((group) => group.name === value);
       if (selectedGroup) {
         setFormData((prevData) => ({
           ...prevData,
-          SE_Item: selectedGroup.code, // Update the Part No field with corresponding code
+          part_no: selectedGroup.code, // Update the Part No field with corresponding code
         }));
       }
     }
@@ -279,10 +279,9 @@ const ItemMasterGernal = () => {
 
   const handleClear = () => {
     setFormData({
-      Main_Group: "",
-      SE_Item: "",
+      main_group: "",
+      part_no: "",
       Unit_Code: "",
-      // TDC: "",
       Part_Code: "",
       Cut_Weight_kg: "",
       Rate: "",
@@ -291,13 +290,12 @@ const ItemMasterGernal = () => {
       Heat_Treatment: "",
       Color_Code: "",
       Min_Rate: "",
-
       Length: "",
       Shape: "",
       Rate_Remark: "",
       Metal_Type: "",
       Specific_Gravity: "",
-      Item_Group: "",
+      item_group: "",
       Name_Description: "",
       Store_Location: "",
       Route: "",
@@ -309,13 +307,11 @@ const ItemMasterGernal = () => {
       Hardness: "",
       Male: "",
       Max_Rate: "",
-
       Thickness: "",
       Diameter: "",
       Other_Desce: "",
       Metal: "",
       Finish: "",
-
       Subgroup: "",
       HSN_SAC_Code: "",
       Gross_Weight: "",
@@ -506,14 +502,16 @@ const ItemMasterGernal = () => {
   // item Group
   const [itemGroups, setItemGroups] = useState([]);
   useEffect(() => {
-    fetchitemGroups();
+    fetchItemGroups(); // Fetch item groups when component loads
   }, []);
-  const fetchitemGroups = async () => {
+
+  // Fetch item groups from the API
+  const fetchItemGroups = async () => {
     try {
-      const response = await getItemGroups();
-      setItemGroups(response);
+      const response = await getItemGroups(); // Fetch from API
+      setItemGroups(response); // Store in state
     } catch (error) {
-      console.error("Error fetching metal types:", error);
+      console.error("Error fetching item groups:", error);
     }
   };
 
@@ -632,12 +630,11 @@ const ItemMasterGernal = () => {
                                   <div className="container-fluid">
                                     <form>
                                       <div className="row">
-                                       
                                         <div className="col-md-4">
                                           <div className="row text-start">
                                             <div className="row mb-3">
                                               <label
-                                                htmlFor="Main_Group"
+                                                htmlFor="main_group"
                                                 className="col-sm-5 col-form-label"
                                               >
                                                 Main Group:{" "}
@@ -647,10 +644,10 @@ const ItemMasterGernal = () => {
                                               </label>
                                               <div className="col-sm-4">
                                                 <select
-                                                  name="Main_Group"
-                                                  id="Main_Group"
+                                                  name="main_group"
+                                                  id="main_group"
                                                   className="form-select"
-                                                  value={formData.Main_Group}
+                                                  value={formData.main_group}
                                                   onChange={handleInputChange}
                                                 >
                                                   <option
@@ -659,17 +656,7 @@ const ItemMasterGernal = () => {
                                                   >
                                                     Select ..
                                                   </option>
-                                                  {MainGroup.map((Main) => (
-                                                    <option
-                                                      key={Main.id}
-                                                      value={
-                                                        Main.Sub_Group_Name
-                                                      }
-                                                    >
-                                                      {Main.Sub_Group_Name}
-                                                    </option>
-                                                  ))}
-                                                  {mainGroups.map((main) => (
+                                                  {MainGroup.map((main) => (
                                                     <option
                                                       key={main.id}
                                                       value={main.name}
@@ -678,9 +665,9 @@ const ItemMasterGernal = () => {
                                                     </option>
                                                   ))}
                                                 </select>
-                                                {errors.Main_Group && (
+                                                {errors.main_group && (
                                                   <div className="text-danger">
-                                                    {errors.Main_Group}
+                                                    {errors.main_group}
                                                   </div>
                                                 )}
                                               </div>
@@ -705,7 +692,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                             <div className="row mb-3">
                                               <label
-                                                for="SE_Item"
+                                                for="part_no"
                                                 className="col-sm-5 col-form-label"
                                               >
                                                 Part No:{" "}
@@ -717,15 +704,15 @@ const ItemMasterGernal = () => {
                                                 <input
                                                   type="text"
                                                   className="form-control"
-                                                  id="SE_Item"
-                                                  name="SE_Item"
-                                                  value={formData.SE_Item}
+                                                  id="part_no"
+                                                  name="part_no"
+                                                  value={formData.part_no}
                                                   onChange={handleInputChange}
                                                   style={{ width: "115%" }}
                                                 />
-                                                {errors.SE_Item && (
+                                                {errors.part_no && (
                                                   <div className="text-danger">
-                                                    {errors.SE_Item}
+                                                    {errors.part_no}
                                                   </div>
                                                 )}
                                               </div>
@@ -911,7 +898,7 @@ const ItemMasterGernal = () => {
                                                 )} */}
                                               </div>
                                             </div>
-                                           
+
                                             <div className="row mb-3">
                                               <label
                                                 htmlFor="Revision_No"
@@ -1218,7 +1205,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                             <div className="row mb-3">
                                               <label
-                                                htmlFor="Item_Group"
+                                                htmlFor="item_group"
                                                 className="col-sm-5 col-form-label"
                                               >
                                                 Item Group:
@@ -1228,10 +1215,10 @@ const ItemMasterGernal = () => {
                                               </label>
                                               <div className="col-sm-4">
                                                 <select
-                                                  id="Item_Group"
-                                                  name="Item_Group"
+                                                  id="item_group"
+                                                  name="item_group"
                                                   className="form-select"
-                                                  value={formData.Item_Group}
+                                                  value={formData.item_group}
                                                   onChange={handleInputChange}
                                                 >
                                                   <option
@@ -1241,44 +1228,14 @@ const ItemMasterGernal = () => {
                                                     Select ..
                                                   </option>
                                                   {itemGroups.map((group) => (
-                                                    <option
-                                                      key={group.id}
-                                                      value={group.GroupName}
-                                                    >
-                                                      {group.GroupName}
-                                                    </option>
-                                                  ))}
-                                                  <option>END PIECE</option>
-                                                  <option>MACHINNING</option>
-                                                  <option>BELTS</option>
-                                                  <option>BEARING</option>
-                                                  <option>
-                                                    COLLETS & HOLDERS
-                                                  </option>
-                                                  <option>CAMS</option>
-                                                  <option>CUTTING TOOL</option>
-                                                  <option>
-                                                    ELECTRICAL PARTS
-                                                  </option>
-                                                  <option>FORMING TOOLS</option>
-                                                  <option>
-                                                    GAUGES &INSTUMENTS
-                                                  </option>
-                                                  <option>GENRAL</option>
-                                                  <option>HOLDERS</option>
-                                                  <option>INSERTS</option>
-                                                  <option>MACHINE SPARE</option>
-                                                  <option>
-                                                    OIL & LUBRICANTS
-                                                  </option>
-                                                  <option>PACKING</option>
-                                                  <option>SERVICES</option>
-                                                  <option>STATIONARY</option>
-                                                  <option>TOOLING SPARE</option>
-                                                </select>
-                                                {errors.Item_Group && (
+            <option key={group.id} value={group.name}>
+              {group.name}
+            </option>
+          ))}
+        </select>
+                                                {errors.item_group && (
                                                   <div className="text-danger">
-                                                    {errors.Item_Group}
+                                                    {errors.item_group}
                                                   </div>
                                                 )}
                                               </div>

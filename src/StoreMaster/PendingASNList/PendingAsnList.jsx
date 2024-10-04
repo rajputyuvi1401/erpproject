@@ -129,7 +129,7 @@ const PendingAsnList = () => {
                           </div>
                           <div className="col-md-1 col-sm-6 mt-1 align-self-end">
                             <button type="submit" className="pobtn w-100">
-                              View ALl
+                              View All
                             </button>
                           </div>
                         </form>

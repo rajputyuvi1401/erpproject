@@ -262,8 +262,17 @@ const VenderList = () => {
                                 
                                 </tbody>
                               </table>
-                               {/* Pagination Controls */}
-                               <nav className="text-end">
+                           
+                               
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  
+    {/* Pagination Controls */}
+    <nav className="text-end">
                                 <ul className="pagination">
                                   <li className="page-item">
                                     <button
@@ -298,15 +307,6 @@ const VenderList = () => {
                                   </li>
                                 </ul>
                               </nav>
-                               
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  
-
                   <div className="vender-bottom">
                     <div className="row" style={{ color: "blue" }}>
                       <div className="col-md-12 text-start">

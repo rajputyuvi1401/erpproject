@@ -10,142 +10,102 @@ import {
 
 const NewCardMainGroup = () => {
   const [formData, setFormData] = useState({
-    Prefix: "",
-    Sub_Group_Code: "",
-    Sub_Group_Name: "",
-    Inventory: "",
+    name: "", // Initialize formData with "name" field
   });
-
   const [errors, setErrors] = useState({});
   const [MainGroup, setMainGroup] = useState([]);
 
   useEffect(() => {
-    fetchMainGroups();
+    fetchMainGroups(); // Fetch main groups on component load
   }, []);
 
+  // Validate form before submitting
   const validateForm = () => {
-    const newErrors = {};
-    Object.keys(formData).forEach((key) => {
-      if (!formData[key]) {
-        newErrors[key] = "This field is required.";
-      }
-    });
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    let isValid = true;
+    let errors = {};
+
+    if (!formData.name || formData.name.trim() === "") {
+      errors.name = "Name is required";
+      isValid = false;
+    }
+
+    setErrors(errors);
+    return isValid;
   };
 
+  // Handle input changes
   const handleInputChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value, // Dynamically set formData values
     });
   };
 
+  // Handle save (create/update) main group
   const handleSave = async (e) => {
     e.preventDefault();
+
+    // Validate form before submitting
     if (!validateForm()) {
       return;
     }
+
     try {
-      await saveMainGroup(formData);
-      toast.success("Data saved successfully!");
-      fetchMainGroups(); // Refresh data
-      setFormData({
-        Prefix: "",
-        Sub_Group_Code: "",
-        Sub_Group_Name: "",
-        Inventory: "",
-      });
+      await saveMainGroup(formData); // Call the API to save main group
+      toast.success("Main Group saved successfully!");
+
+      setFormData({ name: "" }); // Clear form after saving
+      fetchMainGroups(); // Refresh the list
     } catch (error) {
-      toast.error("Failed to save data.");
-      console.error("Error saving data:", error);
+      console.error("Error saving main group:", error);
+      toast.error("Failed to save Main Group.");
     }
   };
 
+  // Fetch main groups from API
   const fetchMainGroups = async () => {
     try {
-      const response = await getMainGroups();
-      setMainGroup(response);
+      const response = await getMainGroups(); // Get data from API
+      setMainGroup(response); // Set main group data in state
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching main groups:", error);
     }
   };
 
+  // Handle delete main group
   const handleDelete = async (id) => {
     try {
-      await deleteMainGroup(id);
-      toast.success("Data deleted successfully!");
-      fetchMainGroups(); // Refresh data
+      await deleteMainGroup(id); // Delete main group by ID
+      toast.success("Main Group deleted successfully!");
+
+      fetchMainGroups(); // Refresh the list after deletion
     } catch (error) {
-      toast.error("Failed to delete data.");
-      console.error("Error deleting data:", error);
+      console.error("Error deleting main group:", error);
+      toast.error("Failed to delete Main Group.");
     }
   };
 
   return (
     <div className="container">
+      {/* Main Group Form */}
       <form onSubmit={handleSave}>
         <div className="row">
           <div className="col-md-2 mt-4">
-            <label htmlFor="Prefix">Prefix</label>
+            <label htmlFor="name">Name :</label>
             <input
               type="text"
-              id="Prefix"
-              name="Prefix"
-              value={formData.Prefix}
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleInputChange}
-              className={`form-control ${errors.Prefix ? "is-invalid" : ""}`}
+              className={`form-control ${errors.name ? "is-invalid" : ""}`}
             />
-            {errors.Prefix && (
-              <div className="invalid-feedback">{errors.Prefix}</div>
+            {errors.name && (
+              <div className="invalid-feedback">{errors.name}</div>
             )}
           </div>
-          <div className="col-md-3">
-            <label htmlFor="Sub_Group_Code">Sub Group Code</label>
-            <input
-              type="text"
-              id="Sub_Group_Code"
-              name="Sub_Group_Code"
-              value={formData.Sub_Group_Code}
-              onChange={handleInputChange}
-              className={`form-control ${
-                errors.Sub_Group_Code ? "is-invalid" : ""
-              }`}
-            />
-            {errors.Sub_Group_Code && (
-              <div className="invalid-feedback">{errors.Sub_Group_Code}</div>
-            )}
-          </div>
-          <div className="col-md-3">
-            <label htmlFor="Sub_Group_Name">Sub Group Name</label>
-            <input
-              type="text"
-              id="Sub_Group_Name"
-              name="Sub_Group_Name"
-              value={formData.Sub_Group_Name}
-              onChange={handleInputChange}
-              className={`form-control ${
-                errors.Sub_Group_Name ? "is-invalid" : ""
-              }`}
-            />
-            {errors.Sub_Group_Name && (
-              <div className="invalid-feedback">{errors.Sub_Group_Name}</div>
-            )}
-          </div>
-          <div className="col-md-2 mt-4">
-            <label htmlFor="Inventory">Inventory</label>
-            <input
-              type="text"
-              id="Inventory"
-              name="Inventory"
-              value={formData.Inventory}
-              onChange={handleInputChange}
-              className={`form-control ${errors.Inventory ? "is-invalid" : ""}`}
-            />
-            {errors.Inventory && (
-              <div className="invalid-feedback">{errors.Inventory}</div>
-            )}
-          </div>
+
           <div className="col-md-2 mt-4">
             <button type="submit" className="btn mt-4">
               Save
@@ -154,27 +114,23 @@ const NewCardMainGroup = () => {
         </div>
       </form>
 
+      {/* Main Group Table */}
       <table className="table mt-4">
         <thead>
           <tr>
-            <th>Prefix</th>
-            <th>Sub Group Code</th>
-            <th>Sub Group Name</th>
-            <th>Inventory</th>
+            <th>Name</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {MainGroup.map((item) => (
             <tr key={item.id}>
-              <td>{item.Prefix}</td>
-              <td>{item.Sub_Group_Code}</td>
-              <td>{item.Sub_Group_Name}</td>
-              <td>{item.Inventory}</td>
+              <td>{item.name}</td>
               <td>
                 <FaEdit
                   className="text-primary mx-2"
                   style={{ cursor: "pointer" }}
+                  // Implement edit functionality if needed
                 />
                 <FaTrash
                   className="text-danger mx-2"

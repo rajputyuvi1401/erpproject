@@ -11,7 +11,8 @@ import BuyerContactDetail from "./BuyerContactDetail";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
-  getNextNumber,SuplliersaveData,
+  SuplliersaveData,
+  getNextNumber,
   // fetchCategories,
   fetchSectors,
   fetchGroups,
@@ -129,7 +130,6 @@ const SupplierCustomerMaster = () => {
     type: "",
     Name: "",
     Address_Line_1: "",
-
     Region: "",
     PAN_Type: "",
     PAN_NO: "",
@@ -143,7 +143,7 @@ const SupplierCustomerMaster = () => {
     GL: "",
     number: "",
     Payment_Term: "",
-    Country: "INDIA",
+    Country: "",
     Currency: "",
     Pin_Code: "",
     City: "",
@@ -192,8 +192,8 @@ const SupplierCustomerMaster = () => {
     const requiredFields = [
       "type",
       "Name",
-      "Address_Line_1",
-      "Region",
+      "Address_Line_1", 
+    "Region",
       "PAN_Type",
       "PAN_NO",
       "State_Code",
@@ -275,17 +275,20 @@ const SupplierCustomerMaster = () => {
       });
     }
   };
-  
+
   useEffect(() => {
     const fetchData = async () => {
-      const nextNumber = await getNextNumber(formData.type);
-      setFormData((prevData) => ({
-        ...prevData,
-        number: nextNumber,  // Automatically update the 'number' field with next_number
-      }));
+      if (formData.type) {  // Ensure 'type' is not empty
+        const nextNumber = await getNextNumber(formData.type);
+        setFormData((prevData) => ({
+          ...prevData,
+          number: nextNumber,  // Automatically update the 'number' field with next_number
+        }));
+      }
     };
     fetchData();
   }, [formData.type]);
+
 
 
   const validatePAN = (pan) => {
@@ -316,26 +319,24 @@ const SupplierCustomerMaster = () => {
     if (validate()) {
       try {
         const response = await SuplliersaveData(formData);
-
-        console.log("API Response:", response);
-        console.log("Response Status:", response.status);
-
-      // Handle different success statuses
-      if (response.status === 201 || response.status === 200) {
-        toast.success("Form submitted successfully!");
-        setFormData(initialFormData); // Clear form on success
-      } else {
-        console.error("Failed to submit form:", response);
-        toast.error("Failed to submit form.");
+  
+        if (response.status === false) {
+          console.error("Failed to submit form:", response.message);
+          toast.error(`Failed to submit form: ${response.message}`);
+        } else {
+          console.log("Form submitted successfully:", response);
+          toast.success("Form submitted successfully!");
+          setFormData(initialFormData);  // Reset form
+        }
+      } catch (error) {
+        console.error("Unexpected error occurred during submission:", error.message);
+        toast.error(`Unexpected error occurred: ${error.message}`);
       }
-    } catch (error) {
-      console.error("Error Details:", error);
-      toast.error(`Error occurred: ${error.message}`);
+    } else {
+      console.log("Validation errors:", errors);
     }
-  } else {
-    console.log("Validation errors:", errors);
-  }
-};
+  };
+
   const handleClear = () => {
     console.log("clear");
     setFormData(initialFormData);
@@ -591,7 +592,8 @@ useEffect(() => {
                              
                                   
                                   <div className="container-fluid">
-                                  <form onSubmit={handleSubmit}
+                                    <form
+                                      onSubmit={handleSubmit}
                                       autoComplete="off"
                                     >
                                       <div className="row text-start">
@@ -604,7 +606,7 @@ useEffect(() => {
                                               htmlFor="type"
                                               className="col-sm-4 col-form-label"
                                             >
-                                              type:{" "}
+                                              Type:{" "}
                                               <span className="text-danger">
                                                 *
                                               </span>
