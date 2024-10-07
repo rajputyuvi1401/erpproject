@@ -1139,12 +1139,31 @@ export const saveItemMaster = async (data) => {
       },
       body: JSON.stringify(data),
     });
+
     if (!response.ok) {
-      throw new Error("Failed to save data");
+      const errorData = await response.json();
+
+      console.error("Error occurred while saving data:", {
+        status: response.status,
+        statusText: response.statusText,
+        data: errorData,
+      });
+
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
     }
+
     return await response.json();
   } catch (error) {
-    console.error(error);
+    console.error("Error occurred while saving data:", {
+      message: error.message,
+    });
+
+    if (error.response && error.response.data) {
+      console.log("Error Details:", error.response.data);
+    } else {
+      console.log("An unexpected error occurred:", error.message);
+    }
+
     throw error;
   }
 };
@@ -1386,6 +1405,86 @@ export const deleteMainGroup = async (id) => {
     throw error;
   }
 };
+
+// item group
+export const saveItemGroup = async (data) => {
+  try {
+    const response = await fetch(`${BASE_URL}AddItemGroup/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error("Failed to save data");
+    return await response.json();
+  } catch (error) {
+    console.error("Error occurred while saving data:", error);
+    throw error;
+  }
+};
+
+export const updateItemGroup = async (id, data) => {
+  try {
+    const response = await fetch(`${BASE_URL}AddItemGroup/${id}/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error("Failed to update data");
+    return await response.json();
+  } catch (error) {
+    console.error("Error occurred while updating data:", error);
+    throw error;
+  }
+};
+
+export const getItemGroups = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}AddItemGroup/`);
+    if (!response.ok) throw new Error("Failed to fetch data");
+    return await response.json();
+  } catch (error) {
+    console.error("Error occurred while fetching data:", error);
+    throw error;
+  }
+};
+
+export const deleteItemGroup = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}AddItemGroup/${id}/`, {
+      method: "DELETE",
+    });
+    if (!response.ok) throw new Error("Failed to delete data");
+    return await response.json();
+  } catch (error) {
+    console.error("Error occurred while deleting data:", error);
+    throw error;
+  }
+};
+
+
+// Part No
+export const fetchNextPartNo =  async (main_group, item_group) => {
+  try {
+    const response = await fetch(
+      `http://13.201.136.34:8000/All_Masters/AddItems/next-part-no/?main_group=${main_group}&item_group=${item_group}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch next part number");
+    }
+    const data = await response.json();
+    return data.next_part_no;
+  } catch (error) {
+    console.error("Error fetching next part number:", error);
+    throw error;
+  }
+};
+
+
+
 
 // Unit Code
 export const saveUnitCode = async (data) => {
@@ -1767,64 +1866,6 @@ export const deleteItemSection = async (id) => {
   }
 };
 
-// item group
-export const saveItemGroup = async (data) => {
-  try {
-    const response = await fetch(`${BASE_URL}AddItemGroup/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    if (!response.ok) throw new Error("Failed to save data");
-    return await response.json();
-  } catch (error) {
-    console.error("Error occurred while saving data:", error);
-    throw error;
-  }
-};
-
-export const updateItemGroup = async (id, data) => {
-  try {
-    const response = await fetch(`${BASE_URL}AddItemGroup/${id}/`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    if (!response.ok) throw new Error("Failed to update data");
-    return await response.json();
-  } catch (error) {
-    console.error("Error occurred while updating data:", error);
-    throw error;
-  }
-};
-
-export const getItemGroups = async () => {
-  try {
-    const response = await fetch(`${BASE_URL}AddItemGroup/`);
-    if (!response.ok) throw new Error("Failed to fetch data");
-    return await response.json();
-  } catch (error) {
-    console.error("Error occurred while fetching data:", error);
-    throw error;
-  }
-};
-
-export const deleteItemGroup = async (id) => {
-  try {
-    const response = await fetch(`${BASE_URL}AddItemGroup/${id}/`, {
-      method: "DELETE",
-    });
-    if (!response.ok) throw new Error("Failed to delete data");
-    return await response.json();
-  } catch (error) {
-    console.error("Error occurred while deleting data:", error);
-    throw error;
-  }
-};
 
 // Grade
 export const saveGrade = async (data) => {
@@ -2240,7 +2281,7 @@ export const searchRegionByCode = async (code) => {
 // Vendor List
 export const getSupplierList = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}Supplier_List/`);
+    const response = await axios.get(`${BASE_URL}items/details/`);
     return response.data;
   } catch (error) {
     console.error('Error fetching supplier list:', error);

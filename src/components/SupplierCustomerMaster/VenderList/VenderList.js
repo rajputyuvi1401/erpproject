@@ -11,14 +11,13 @@ import { getSupplierList } from "../../../Service/Api.jsx"; // Import the getSup
 
 const VenderList = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
-  const [data, setData] = useState([]);
+  const [supplierCustomerData, setSupplierCustomerData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchType, setSearchType] = useState("");
-  const [searchName, setSearchName] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [showData, setShowData] = useState(false); // State to control data display
   const [currentPage, setCurrentPage] = useState(1); // State for current page
   const [recordsPerPage] = useState(10); // Number of records per page
-
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
@@ -31,51 +30,48 @@ const VenderList = () => {
     }
   }, [sideNavOpen]);
 
-
-
-  const fetchData = async () => {
-    try {
-      const supplierList = await getSupplierList(); // Fetch data using the API function
-      setData(supplierList);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getSupplierList();
+        setSupplierCustomerData(data);
+        setFilteredData(data); // Initially show all data
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
     fetchData();
   }, []);
 
   const handleSearch = () => {
-    const lowerCaseName = searchName.toLowerCase();
-    const filtered = data.filter(
-      (item) =>
-        (searchType ? item.Type === searchType : true) &&
-        (searchName ? item.Name.toLowerCase().includes(lowerCaseName) : true)
-    );
+    const filtered = supplierCustomerData.filter((item) => {
+      const matchesType = searchType ? item.type === searchType : true;
+      const matchesQuery = searchQuery
+        ? item.Name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+          item.number.toLowerCase().includes(searchQuery.toLowerCase())
+        : true;
+      return matchesType && matchesQuery;
+    });
     setFilteredData(filtered);
-    setShowData(true); // Show the data in the table after search
     setCurrentPage(1);
+    setShowData(true);
   };
 
   const handleViewAll = () => {
-    // setSearchType("");
-    setSearchName("");
-    setFilteredData(data); // Show all data when "View All" is clicked
+    setFilteredData(supplierCustomerData);
+    setSearchType("");
+    setSearchQuery("");
     setShowData(true);
-    setCurrentPage(1);
-    
   };
 
-  const indexOfLastRecord = currentPage * recordsPerPage;
+
+   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = filteredData.slice(indexOfFirstRecord, indexOfLastRecord);
+  const totalPages = Math.ceil(filteredData.length / recordsPerPage);
+  const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
-  // Pagination controls
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(filteredData.length / recordsPerPage); i++) {
-    pageNumbers.push(i);
-  }
 
 
   return (
@@ -132,7 +128,7 @@ const VenderList = () => {
                               <option value="Customer">Customer</option>
                               <option value="Supplier">Supplier</option>
                               <option value="Job Work">Job Work</option>
-                              <option value="C/S/JW">C/S/JW</option>
+                              <option value="WCSJW">CSJW</option>
                             </select>
                           </div>
                           <label
@@ -142,14 +138,15 @@ const VenderList = () => {
                             Search Name
                           </label>
                           <div className="col-sm-3">
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="SearchName"
-                              placeholder="Please enter name"
-                              value={searchName}
-                              onChange={(e) => setSearchName(e.target.value)}
-                            />
+                          <input
+                type="text"
+                className="form-control"
+                id="SearchQuery"
+                placeholder="Search by name or number"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+
                           </div>
                           <div className="col-sm-4">
                             <button
@@ -232,20 +229,19 @@ const VenderList = () => {
                                   </tr>
                                 </thead>
                                 <tbody>
-                                {currentRecords.map((item, index) => (
-                                  
+                                  {currentRecords.map((item, index) => (
                                     <tr key={index}>
                                       <td>{index + 1}</td>
-                                      <td>{item.Type}</td>
-                                      <td>{item.Code_No}</td>
+                                      <td>{item.type}</td>
+                                      <td>{item.number}</td>
                                       <td>{item.Name}</td>
                                       <td>{item.Contact_No}</td>
                                       <td>{item.Email_Id}</td>
                                       <td>{item.Vendor_Code}</td>
                                       <td>{item.Payment_Term}</td>
-                                      
+
                                       <td>{item.GST_No}</td>
-<td>{item.GST_No2}</td>
+                                      <td>{item.GST_No2}</td>
                                       <td>{item.GST_Tax_Code}</td>
                                       <td>{item.Auth}</td>
                                       <td>{item.User}</td>
@@ -259,54 +255,49 @@ const VenderList = () => {
                                       <td>View</td>
                                     </tr>
                                   ))}
-                                
                                 </tbody>
                               </table>
-                           
-                               
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   )}
-                  
-    {/* Pagination Controls */}
-    <nav className="text-end">
-                                <ul className="pagination">
-                                  <li className="page-item">
-                                    <button
-                                      className="page-link"
-                                      onClick={() => setCurrentPage(currentPage - 1)}
-                                      disabled={currentPage === 1}
-                                    >
-                                      Previous
-                                    </button>
-                                  </li>
-                                  {pageNumbers.map((number) => (
-                                    <li
-                                      key={number}
-                                      className={`page-item ${currentPage === number ? "active" : ""}`}
-                                    >
-                                      <button
-                                        className="page-link"
-                                        onClick={() => setCurrentPage(number)}
-                                      >
-                                        {number}
-                                      </button>
-                                    </li>
-                                  ))}
-                                  <li className="page-item">
-                                    <button
-                                      className="page-link"
-                                      onClick={() => setCurrentPage(currentPage + 1)}
-                                      disabled={currentPage === pageNumbers.length}
-                                    >
-                                      Next
-                                    </button>
-                                  </li>
-                                </ul>
-                              </nav>
+
+                  {/* Pagination Controls */}
+                  <nav className="text-end">
+            <ul className="pagination">
+              <li className="page-item">
+                <button
+                  className="page-link"
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </button>
+              </li>
+              {pageNumbers.map((number) => (
+                <li
+                  key={number}
+                  className={`page-item ${currentPage === number ? "active" : ""}`}
+                >
+                  <button className="page-link" onClick={() => setCurrentPage(number)}>
+                    {number}
+                  </button>
+                </li>
+              ))}
+              <li className="page-item">
+                <button
+                  className="page-link"
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                  disabled={currentPage === pageNumbers.length}
+                >
+                  Next
+                </button>
+              </li>
+            </ul>
+          </nav>
+
                   <div className="vender-bottom">
                     <div className="row" style={{ color: "blue" }}>
                       <div className="col-md-12 text-start">

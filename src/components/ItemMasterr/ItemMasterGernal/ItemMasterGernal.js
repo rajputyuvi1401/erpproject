@@ -39,7 +39,7 @@ import {
   getItemSections,
   getItemGroups,
 } from "../../../Service/Api.jsx";
-import { fetchMainGroupData, getUnitCode } from "../../../Service/Api.jsx";
+import {fetchNextPartNo, getUnitCode } from "../../../Service/Api.jsx";
 
 const ItemMasterGernal = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -136,7 +136,6 @@ const ItemMasterGernal = () => {
   // Gernal data
   const [formData, setFormData] = useState({
     main_group: "",
-    item_group: "",
     part_no: "",
     Unit_Code: "",
     // TDC: "",
@@ -148,12 +147,13 @@ const ItemMasterGernal = () => {
     Heat_Treatment: "",
     Color_Code: "",
     Min_Rate: "",
+
     Length: "",
     Shape: "",
     Rate_Remark: "",
     Metal_Type: "",
     Specific_Gravity: "",
-    Item_Group: "",
+    item_group: "",
     Name_Description: "",
     Store_Location: "",
     Route: "",
@@ -191,17 +191,38 @@ const ItemMasterGernal = () => {
   const [errors, setErrors] = useState({});
   const [mainGroups, setMainGroups] = useState([]);
 
-  // Fetch Main Group Data on Component Mount
+
+
   useEffect(() => {
-    const getMainGroupData = async () => {
-      const data = await fetchMainGroupData();
-      if (data) {
-        setMainGroups(data);
+    const fetchMainGroups = async () => {
+      try {
+        const response = await getMainGroups();
+        console.log("Main Groups:", response); // Check what the response looks like
+        setMainGroups(response);
+      } catch (error) {
+        console.error("Error fetching main groups:", error);
       }
     };
 
-    getMainGroupData();
+    fetchMainGroups();
   }, []);
+
+  // useEffect(() => {
+  //   // Trigger part number fetch if both dropdowns have valid selections
+  //   if (formData.main_group && formData.item_group) {
+  //     fetchNextPartNo(formData.main_group, formData.item_group)
+  //       .then((nextPartNo) => {
+  //         setFormData((prevFormData) => ({
+  //           ...prevFormData,
+  //           part_no: nextPartNo,
+  //         }));
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching next part number:", error);
+  //       });
+  //   }
+  // }, [formData.main_group, formData.item_group]);
+
 
   const validateForm = () => {
     const newErrors = {};
@@ -227,7 +248,7 @@ const ItemMasterGernal = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = async(e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -240,15 +261,22 @@ const ItemMasterGernal = () => {
       ...prevData,
       [name]: value,
     }));
-
-    // Automatically update Part No based on selected Main Group
-    if (name === "main_group") {
-      const selectedGroup = mainGroups.find((group) => group.name === value);
-      if (selectedGroup) {
-        setFormData((prevData) => ({
-          ...prevData,
-          part_no: selectedGroup.code, // Update the Part No field with corresponding code
-        }));
+    if (name === "main_group" || name === "item_group") {
+      const main_group = name === "main_group" ? value : formData.main_group;
+      const item_group = name === "item_group" ? value : formData.item_group;
+  
+      if (main_group && item_group) {
+        try {
+          // Call the function from the Service page to get the next part number
+          const nextPartNo = await fetchNextPartNo(main_group, item_group);
+          // Set the fetched part_no in the state
+          setFormData((prevData) => ({
+            ...prevData,
+            part_no: nextPartNo,
+          }));
+        } catch (error) {
+          console.error("Error fetching part number:", error);
+        }
       }
     }
   };
@@ -266,14 +294,14 @@ const ItemMasterGernal = () => {
     try {
       console.log("Attempting to save data...");
       const result = await saveItemMaster(formData);
-      console.log("Data saved successfully:", result);
       toast.success("Data saved successfully!");
+      console.log("Data saved successfully:", result);
     } catch (error) {
+      toast.error("Failed to save data.");
       console.error("Error occurred while saving data:", {
         message: error.message,
         stack: error.stack,
       });
-      toast.error("Failed to save data.");
     }
   };
 
@@ -282,6 +310,7 @@ const ItemMasterGernal = () => {
       main_group: "",
       part_no: "",
       Unit_Code: "",
+      // TDC: "",
       Part_Code: "",
       Cut_Weight_kg: "",
       Rate: "",
@@ -290,6 +319,7 @@ const ItemMasterGernal = () => {
       Heat_Treatment: "",
       Color_Code: "",
       Min_Rate: "",
+
       Length: "",
       Shape: "",
       Rate_Remark: "",
@@ -307,11 +337,13 @@ const ItemMasterGernal = () => {
       Hardness: "",
       Male: "",
       Max_Rate: "",
+
       Thickness: "",
       Diameter: "",
       Other_Desce: "",
       Metal: "",
       Finish: "",
+
       Subgroup: "",
       HSN_SAC_Code: "",
       Gross_Weight: "",
@@ -471,19 +503,7 @@ const ItemMasterGernal = () => {
     }
   };
 
-  // Main Group
-  const [MainGroup, setMainGroup] = useState([]);
-  useEffect(() => {
-    fetchMainGroup();
-  }, []);
-  const fetchMainGroup = async () => {
-    try {
-      const response = await getMainGroups();
-      setMainGroup(response);
-    } catch (error) {
-      console.error("Error fetching metal types:", error);
-    }
-  };
+ 
 
   // item sector
   const [ItemSection, setItemSection] = useState([]);
@@ -502,16 +522,14 @@ const ItemMasterGernal = () => {
   // item Group
   const [itemGroups, setItemGroups] = useState([]);
   useEffect(() => {
-    fetchItemGroups(); // Fetch item groups when component loads
+    fetchitemGroups();
   }, []);
-
-  // Fetch item groups from the API
-  const fetchItemGroups = async () => {
+  const fetchitemGroups = async () => {
     try {
-      const response = await getItemGroups(); // Fetch from API
-      setItemGroups(response); // Store in state
+      const response = await getItemGroups();
+      setItemGroups(response);
     } catch (error) {
-      console.error("Error fetching item groups:", error);
+      console.error("Error fetching metal types:", error);
     }
   };
 
@@ -656,14 +674,23 @@ const ItemMasterGernal = () => {
                                                   >
                                                     Select ..
                                                   </option>
-                                                  {MainGroup.map((main) => (
+                                                  {mainGroups.map((group) => (
+                                                    <option
+                                                      key={group.id}
+                                                      value={group.name}
+                                                    >
+                                                      {group.name}
+                                                    </option>
+                                                  ))}
+
+                                                  {/* {mainGroups.map((main) => (
                                                     <option
                                                       key={main.id}
                                                       value={main.name}
                                                     >
                                                       {main.name}
                                                     </option>
-                                                  ))}
+                                                  ))} */}
                                                 </select>
                                                 {errors.main_group && (
                                                   <div className="text-danger">
@@ -708,6 +735,7 @@ const ItemMasterGernal = () => {
                                                   name="part_no"
                                                   value={formData.part_no}
                                                   onChange={handleInputChange}
+                                                  readOnly
                                                   style={{ width: "115%" }}
                                                 />
                                                 {errors.part_no && (
@@ -1228,11 +1256,11 @@ const ItemMasterGernal = () => {
                                                     Select ..
                                                   </option>
                                                   {itemGroups.map((group) => (
-            <option key={group.id} value={group.name}>
-              {group.name}
-            </option>
-          ))}
-        </select>
+    <option key={group.id} value={group.name}> {/* Use `group.name` if your API returns it */}
+      {group.name}
+    </option>
+  ))}
+                                                </select>
                                                 {errors.item_group && (
                                                   <div className="text-danger">
                                                     {errors.item_group}

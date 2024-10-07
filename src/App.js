@@ -193,6 +193,13 @@ import WorkOrderList from "./ProductionMaster/WorkOrderList/WorkOrderList.jsx";
 
 
 
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Erp Setting
+import UserConfiguration from "./ERPSetting/UserConfiguration/UserConfiguration.jsx";
+
+import ErpSetting from "./ERPSetting/ErpSetting/ErpSetting.jsx";
+
+
 
 function App() {
   return (
@@ -416,6 +423,13 @@ function App() {
         <Route path="WorkOrderEntry" element={<WorkOrderEntry/>} />
         <Route path="WorkOrderList" element={<WorkOrderList/>}/>
 
+
+
+
+        {/* ///////////////////////////////////Erp Setting////////////////////////////////////// */}
+ 
+        <Route path="UserConfiguration" element={<UserConfiguration/>}/>
+        <Route path="ErpSetting" element={<ErpSetting/>}/> 
 
 
       </Routes>

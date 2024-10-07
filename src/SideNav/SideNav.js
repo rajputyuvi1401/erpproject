@@ -40,10 +40,10 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <span>ERP Setting</span>
             </div>
             <Dropdown.Menu show={openDropdown === "erp"}>
-              <Dropdown.Item as={Link} to="#/user-configuration">
+              <Dropdown.Item as={Link} to="/UserConfiguration">
                 User Configuration
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/erp-configuration">
+              <Dropdown.Item as={Link} to="/ErpSetting">
                 ERP Configuration
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/change-password">
