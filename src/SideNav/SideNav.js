@@ -43,6 +43,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/UserConfiguration">
                 User Configuration
               </Dropdown.Item>
+              
               <Dropdown.Item as={Link} to="/ErpSetting">
                 ERP Configuration
               </Dropdown.Item>

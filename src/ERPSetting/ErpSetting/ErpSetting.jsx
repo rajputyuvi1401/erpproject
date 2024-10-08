@@ -5,6 +5,7 @@ import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
 import "./ErpSetting.css";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ErpSetting = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -39,7 +40,7 @@ const ErpSetting = () => {
                         </h5>
                       </div>
                       <div className="col-md-10 text-end">
-                        <button className="btn ">Add New</button>
+                        <Link to="/UserConfiguration" className="btn ">Add New</Link>
                         <button className="btn ">Disable User List</button>
                         <button className="btn ">Export Excel</button>
                       </div>

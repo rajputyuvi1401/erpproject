@@ -147,15 +147,15 @@ const BomRouting = () => {
                             aria-label="Default select example"
                           >
                             <option selected>ALl</option>
-                            <option value="1">BEARING</option>
-                            <option value="2">BELTS</option>
-                            <option value="3">CAMS</option>
-                            <option value="1">COLLETS & HOLDERS</option>
-                            <option value="2">COMPUTER</option>
-                            <option value="3">CUTTING TOOL</option>
-                            <option value="1">ELECTRICS PARTS</option>
-                            <option value="2">END PIECE</option>
-                            <option value="3">FIXCTURE</option>
+                            <option value="BEARING">BEARING</option>
+                            <option value="BELTS">BELTS</option>
+                            <option value="CAMS">CAMS</option>
+                            <option value="COLLETS & HOLDERS">COLLETS & HOLDERS</option>
+                            <option value="COMPUTER">COMPUTER</option>
+                            <option value="CUTTING TOOL">CUTTING TOOL</option>
+                            <option value="ELECTRICS PARTS">ELECTRICS PARTS</option>
+                            <option value="END PIEC">END PIECE</option>
+                            <option value="FIXCTURE">FIXCTURE</option>
                           </select>
                         </div>
                         <div className="col-md-6">

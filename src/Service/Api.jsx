@@ -1470,7 +1470,7 @@ export const deleteItemGroup = async (id) => {
 export const fetchNextPartNo =  async (main_group, item_group) => {
   try {
     const response = await fetch(
-      `http://13.201.136.34:8000/All_Masters/AddItems/next-part-no/?main_group=${main_group}&item_group=${item_group}`
+      `${BASE_URL}AddItems/next-part-no/?main_group=${main_group}&item_group=${item_group}`
     );
     if (!response.ok) {
       throw new Error("Failed to fetch next part number");
@@ -2358,6 +2358,16 @@ const fetchData = async (query) => {
 };
 
 export { fetchData };
+
+export const fetchItems = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}AddItems/`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching items:', error);
+    throw error;
+  }
+};
 
 
 // State 

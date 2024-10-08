@@ -305,8 +305,16 @@ const AddNewItem = () => {
                                               <option selected>
                                                 Select ..
                                               </option>
-                                              <option>FA</option>
-                                              <option>FA</option>
+                                              <option selected>ALl</option>
+                                              <option value="BEARING">BEARING</option>
+                            <option value="BELTS">BELTS</option>
+                            <option value="CAMS">CAMS</option>
+                            <option value="COLLETS & HOLDERS">COLLETS & HOLDERS</option>
+                            <option value="COMPUTER">COMPUTER</option>
+                            <option value="CUTTING TOOL">CUTTING TOOL</option>
+                            <option value="ELECTRICS PARTS">ELECTRICS PARTS</option>
+                            <option value="END PIEC">END PIECE</option>
+                            <option value="FIXCTURE">FIXCTURE</option>
                                             </select>
                                           </div>
                                           <div className="col-sm-2">
