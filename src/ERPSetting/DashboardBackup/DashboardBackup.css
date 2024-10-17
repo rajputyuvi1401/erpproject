@@ -1,0 +1,56 @@
+.DashboardBackup {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.DashboardBackup .main-container {
+    display: flex;
+    flex: 1;
+}
+
+.DashboardBackup .main-content {
+    flex: 1;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.DashboardBackup .main-content.shifted {
+    margin-left: 250px; /* Adjust based on the width of your SideNav */
+}
+
+.DashboardBackup .header-title {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.DashboardBackup .backup-table {
+    margin-top: 20px;
+}
+
+.DashboardBackup .table th, .table td {
+    text-align: start;
+}
+
+.DashboardBackup  .download-link, .delete-link {
+    margin-right: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.DashboardBackup .download-link:hover, .delete-link:hover {
+    text-decoration: underline;
+}
+
+.DashboardBackup footer {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: start;
+}
+
+@media (max-width: 768px) {
+ .DashboardBackup   .main-content {
+        margin-left: 0;
+    }
+}

@@ -21,14 +21,16 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
         </button>
         <ul>
           <li>
-          <h6 className="logo-light">Produlink</h6>
-           
+            <h6 className="logo-light">Produlink</h6>
           </li>
           <li>
             <Link to="/mainpage">
               <FaHome />
               Vendors
             </Link>
+            <Dropdown.Item as={Link} to="/ErpSetting">
+              User Management
+            </Dropdown.Item>
           </li>
 
           <li className="dropdown-container">
@@ -40,66 +42,129 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <span>ERP Setting</span>
             </div>
             <Dropdown.Menu show={openDropdown === "erp"}>
-              <Dropdown.Item as={Link} to="/UserConfiguration">
-                User Configuration
-              </Dropdown.Item>
-              
-              <Dropdown.Item as={Link} to="/ErpSetting">
-                ERP Configuration
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/change-password">
-                Change Password
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/login-history">
-                Login History
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/delete-management">
-                Delete Management
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/dashboard-backup">
-                Dashboard Backup
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/delete-record">
-                Delete Record
-              </Dropdown.Item>
-              <Dropdown.Divider />
+             
               <Dropdown>
                 <Dropdown.Toggle as="div" className="dropdown-item">
-                  Dashboard Permission
+                User Configuration
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="#/select-module">
-                    Select Module
+                  <Dropdown.Item as={Link} to="/ErpSetting">
+                    User Management
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/master">
-                    Master
+                  <Dropdown.Item as={Link} to="/User-Permit">
+                    User Permission
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/purchase">
-                    Purchase
+                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                    Dashboard Permission
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/store">
-                    Store
+                  <Dropdown.Item as={Link} to="#/customer-item-wise">
+                    Back Dated Entry Setting
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/quality">
-                    Quality
+                  <Dropdown.Item as={Link} to="#">
+                    User Wise Series
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/planning">
-                    Planning
+                  <Dropdown.Item as={Link} to="#">
+                    Userwiise Prod. Operation
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/production">
-                    Production
+                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                    Userwise Auth. Setting
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/gst-sales">
-                    GST Sales
+                  <Dropdown.Item as={Link} to="#/customer-item-wise">
+                    User Plant
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/maintenance">
-                    Maintenance
+                  <Dropdown.Item as={Link} to="#">
+                    Plant Wise Series
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/accounts">
-                    Accounts
+                  <Dropdown.Item as={Link} to="#">
+                    Alert Settting
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                    User Wise Permission
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
+
+          
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                ERP Configuration
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                <Dropdown.Item as={Link} to="#">
+                    Company
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Company / Plant Setup
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                    Web. config File
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/customer-item-wise">
+                   Financial Year
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Financial Month Master
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Schedule Month Master
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                    Weekly Off / Holiday
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/customer-item-wise">
+                    Setting
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Doc. Series /Group
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/UserPermission">
+                    Parameter Setting
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Doc. Print Format
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                    Doc. No Editable
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                    Qc ISO Format
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/customer-item-wise">
+                    Round Of Setting
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Customer / Supplier
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Item Master Setup
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Email / SMS
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                    Email Setup
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                    Email Template
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Item as={Link} to="/change-password">
+                Change Password
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/login-history">
+                Login History
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/delete-management">
+                Dealer Management
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/dashboard-backup">
+                Dashboard Backup
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/delete-record">
+                Delete Record
+              </Dropdown.Item>
+             
             </Dropdown.Menu>
           </li>
 
@@ -276,7 +341,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="#">
                 Import
               </Dropdown.Item>
-             
             </Dropdown.Menu>
           </li>
 
@@ -407,22 +471,22 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     Consumable Stock Report
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="#/Stock-Report">
-                      FG Stock Report
+                    FG Stock Report
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="#/">
                     Customer Stock
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="#/">
-                   Scrap Stock
+                    Scrap Stock
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="#/">
-                      Tray Bin Stock Report
+                    Tray Bin Stock Report
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="#/">
                     Itemwise Stock Report
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="#/">
-                   Monthly Consumption Report
+                    Monthly Consumption Report
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -446,7 +510,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                 Work Order List
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/">
-                Production Plan List 
+                Production Plan List
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/">
                 Production Entry
@@ -457,7 +521,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="#/">
                 Production Report
               </Dropdown.Item>
-
 
               <Dropdown.Divider />
               <Dropdown>
@@ -478,7 +541,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               </Dropdown>
               <Dropdown.Divider />
 
-              
               <Dropdown.Divider />
               <Dropdown>
                 <Dropdown.Toggle as="div" className="dropdown-item">
@@ -505,15 +567,13 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                 Breakdown Time Entry
               </Dropdown.Item>
 
-
-            
               <Dropdown.Item as={Link} to="#/">
-                 Breakdown Time Report
+                Breakdown Time Report
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="#/">
                 Contractor Payment
               </Dropdown.Item>
-             
+
               <Dropdown.Divider />
               <Dropdown>
                 <Dropdown.Toggle as="div" className="dropdown-item">
@@ -550,7 +610,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                 </Dropdown.Menu>
               </Dropdown>
               <Dropdown.Divider />
-            
             </Dropdown.Menu>
           </li>
         </ul>

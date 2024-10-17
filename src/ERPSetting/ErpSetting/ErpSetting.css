@@ -3,14 +3,7 @@
     padding: 1rem;
   }
   
-  .main-content {
-    padding: 20px;
-    transition: margin-left 0.3s ease;
-  }
-  
-  .shifted {
-    margin-left: 250px; /* Adjust based on the size of your SideNav */
-  }
+
   
   /* User Management Section */
   .WorkOrderEntry-header {

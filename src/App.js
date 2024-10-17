@@ -90,7 +90,6 @@ import MasterReport from "./components/MasterReport/MasterReport";
 
 ////////////////////////////////Purchase//////////////////////////////////////////////////////
 
-
 // new indent
 import Newindent from "./PurchaseMaster/Newindent/Newindent";
 
@@ -148,7 +147,6 @@ import VendorScrapInward from "./StoreMaster/SubconGRN/VendorScrapInward/VendorS
 
 import SubconGrn from "./StoreMaster/SubconGRN/SubconGrn.jsx";
 
-
 import MaterialIssueChallan from "./StoreMaster/MaterialIssueChallan/MaterialIssueChallan.jsx";
 import WorkOrderMaterial from "./StoreMaster/MaterialIssueChallan/WorkOrderMaterial/WorkOrderMaterial.jsx";
 import MaterialIssue from "./StoreMaster/MaterialIssueChallan/MaterialIssue/MaterialIssue.jsx";
@@ -179,9 +177,8 @@ import RMTOtherGroup from "./StoreMaster/StockTransaction/RMStockTransaction/RMT
 import ShopFloor from "./StoreMaster/StockTransaction/ShopFloor/ShopFloor.jsx";
 import ShopFloorStock from "./StoreMaster/StockTransaction/ShopFloorStock/ShopFloorStock.jsx";
 
-
 import ReportStore from "./StoreMaster/Report/Report.jsx";
-import StockReport from "./StoreMaster/StockReport/StorckReport.jsx"; 
+import StockReport from "./StoreMaster/StockReport/StorckReport.jsx";
 
 import InwardChallanList from "./StoreMaster/SubconGRN/InwardChallanList/InwardChallanList.jsx";
 
@@ -190,15 +187,30 @@ import InwardChallanList from "./StoreMaster/SubconGRN/InwardChallanList/InwardC
 import WorkOrderEntry from "./ProductionMaster/WorkOrderEntry/WorkOrderEntry.jsx";
 import WorkOrderList from "./ProductionMaster/WorkOrderList/WorkOrderList.jsx";
 
-
-
-
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Erp Setting
 import UserConfiguration from "./ERPSetting/UserConfiguration/UserConfiguration.jsx";
+import DisableUserList from "./ERPSetting/UserConfiguration/DisableUserList/DisableUserList.jsx";
 
 import ErpSetting from "./ERPSetting/ErpSetting/ErpSetting.jsx";
 
+import UserPermission from "./ERPSetting/UserPermission/UserPermission.jsx";
+import UserPermit from "./ERPSetting/UserConfiguration/UserPermit/UserPermit.jsx";
+import ChangePassword from "./ERPSetting/ChangePassword/ChangePassword.jsx";
+
+import LoginHistory from "./ERPSetting/LoginHistoryReport/LoginHistory.jsx";
+
+import DeleteMangement from "./ERPSetting/DeleteMangement/DeleteMangement.jsx";
+import OrderList from "./ERPSetting/DeleteMangement/OrderList.jsx";
+import ViewStock from "./ERPSetting/DeleteMangement/ViewStock.jsx";
+import USerList from "./ERPSetting/DeleteMangement/USerList.jsx";
+
+
+import DashboardBackup from "./ERPSetting/DashboardBackup/DashboardBackup.jsx";
+
+import DeleteRecord from "./ERPSetting/DeleteRecord/DeleteRecord.jsx";
+import ItemDelete from "./ERPSetting/DeleteRecord/ItemDelete/ItemDelete.jsx";
+import DeleteReport from "./ERPSetting/DeleteRecord/DeleteReport/DeleteReport.jsx";
 
 
 function App() {
@@ -220,7 +232,7 @@ function App() {
         <Route path="/item-master" element={<ItemMaster />} />
         <Route path="/add-new-item" element={<AddNewItem />} />
         <Route path="/item-master-gernal" element={<ItemMasterGernal />} />
-        <Route path="/item-master-query" element={<ItemMasterQuery/>}/>
+        <Route path="/item-master-query" element={<ItemMasterQuery />} />
 
         {/* Work Center Master */}
         <Route path="/Work-center-master" element={<WorkCenterMaster />} />
@@ -322,116 +334,133 @@ function App() {
         <Route path="/new-purchase-order" element={<NewPurchaseOrder />} />
 
         {/* New Jobwork */}
-        <Route path="/new-jobwork-order" element={<NewJobworkPurchase/>}/>
+        <Route path="/new-jobwork-order" element={<NewJobworkPurchase />} />
 
         {/* New Pending Po */}
-        <Route path="/pendingpo" element={<PendingPo/>}/>
+        <Route path="/pendingpo" element={<PendingPo />} />
 
         {/* New Pending Indent */}
-        <Route path="/pendingindent" element={<PendingIndent/>}/>
+        <Route path="/pendingindent" element={<PendingIndent />} />
 
         {/* New Purchse MRN */}
-        <Route path="/Purchse-Mrn" element={<PurchaseMrn/>}/>
+        <Route path="/Purchse-Mrn" element={<PurchaseMrn />} />
 
         {/* New Purchse Order Status */}
-        <Route path="/Purchse-order-status" element={<PurchseOrderStatus/>}/>
-
+        <Route path="/Purchse-order-status" element={<PurchseOrderStatus />} />
 
         {/* Quoto Comparision */}
-        <Route path="/Rfo" element={<Rfo/>} />
-        <Route path="/Quoto-Comparison-Statement" element={<QuotoComparisonStatement/>} />
-        <Route path="/Quoto-Comparison-Pending" element={<QuotoComparisonPending/>} />
+        <Route path="/Rfo" element={<Rfo />} />
+        <Route
+          path="/Quoto-Comparison-Statement"
+          element={<QuotoComparisonStatement />}
+        />
+        <Route
+          path="/Quoto-Comparison-Pending"
+          element={<QuotoComparisonPending />}
+        />
 
         {/* Purchase Report */}
-        <Route path="purchase-order-list" element={<PurchseOderList/>}/>
+        <Route path="purchase-order-list" element={<PurchseOderList />} />
 
-        <Route path="jobwork-purchase-order-list" element={<JobWorkPurchseOrderList/>}/>
+        <Route
+          path="jobwork-purchase-order-list"
+          element={<JobWorkPurchseOrderList />}
+        />
 
-        <Route path="supplier-wise-list" element={<SupplierWiseList/>}/>
+        <Route path="supplier-wise-list" element={<SupplierWiseList />} />
 
-        <Route path="purchase-report" element={<PurchaseReport/>} />
+        <Route path="purchase-report" element={<PurchaseReport />} />
 
+        {/* ///////////////////////////////////////Store//////////////////////////////////////// */}
 
-{/* ///////////////////////////////////////Store//////////////////////////////////////// */}
+        <Route path="Gate-Inward-Entry" element={<GateInwardEntry />} />
+        <Route path="New-Gate-Entry" element={<NewGateInward />} />
 
-        <Route path="Gate-Inward-Entry" element={<GateInwardEntry/>}/>
-        <Route path="New-Gate-Entry" element={<NewGateInward/>}/>
+        <Route path="Pending-Asn-List" element={<PendingAsnList />} />
+        <Route path="PDL-List" element={<PDL />} />
+        <Route path="Vendor-Bill-List" element={<VendorBillList />} />
+        <Route path="Vendor-Asn-List" element={<VendorASN />} />
+        <Route path="ASN-Report" element={<ASNReport />} />
 
-        <Route path="Pending-Asn-List" element={<PendingAsnList/>} />
-        <Route path="PDL-List" element={<PDL/>}/>
-        <Route path="Vendor-Bill-List" element={<VendorBillList/>}/>
-        <Route path="Vendor-Asn-List" element={<VendorASN/>}/>
-        <Route path="ASN-Report" element={<ASNReport/>}/>
+        <Route path="New-Mrn" element={<NewMrn />} />
+        <Route path="Tool-MRN" element={<ToolMrn />} />
 
-        <Route path="New-Mrn" element={<NewMrn/>} />
-        <Route path="Tool-MRN" element={<ToolMrn/>}/>
+        <Route path="Purchase-Grn" element={<PurchaseGrn />} />
+        <Route path="Grn-List" element={<GrnList />} />
+        <Route path="Inward-challan" element={<InwardChallan1 />} />
+        <Route
+          path="Jobwork-Inward-Challan"
+          element={<JobworkInwardChallan />}
+        />
+        <Route path="Vendor-Scrap-Inward" element={<VendorScrapInward />} />
+        <Route path="Subcon-Grn" element={<SubconGrn />} />
 
-        <Route path="Purchase-Grn" element={<PurchaseGrn/>} />
-        <Route path="Grn-List" element={<GrnList/>}/>
-        <Route path="Inward-challan" element={<InwardChallan1/>} />
-        <Route path="Jobwork-Inward-Challan" element={<JobworkInwardChallan/>} />
-        <Route path="Vendor-Scrap-Inward" element={<VendorScrapInward/>} />
-        <Route path="Subcon-Grn" element={<SubconGrn/>} />
+        <Route
+          path="Material-Issue-Challan"
+          element={<MaterialIssueChallan />}
+        />
+        <Route path="Work-Order-Material" element={<WorkOrderMaterial />} />
+        <Route path="Material-Issue" element={<MaterialIssue />} />
+        <Route path="Work-Issue-Report" element={<WorkIssueRepost />} />
 
+        <Route path="Material-Issue-Gernal" element={<MaterialIssueGernal />} />
 
-        <Route path="Material-Issue-Challan" element={<MaterialIssueChallan/>} />
-        <Route path="Work-Order-Material" element={<WorkOrderMaterial/>}/>
-        <Route path="Material-Issue" element={<MaterialIssue/>} />
-        <Route path="Work-Issue-Report" element={<WorkIssueRepost/>}/>
+        <Route path="Delivery-Challan" element={<DeliveryChallan />} />
+        <Route path="Dcgrn" element={<Dcgrn />} />
+        <Route path="Dcgrnlist" element={<Dcgrnlist />} />
 
+        <Route path="Store-New-indent" element={<StoreNewindent />} />
+        <Route path="IndentList" element={<IndentList />} />
 
-        <Route path="Material-Issue-Gernal" element={<MaterialIssueGernal/>} />
+        <Route path="Stock-Transaction" element={<StockTransaction />} />
+        <Route path="Opening-Stock" element={<OpeningStock />} />
+        <Route path="RM-Stock-Transaction" element={<RMStockTransaction />} />
+        <Route path="FG-Movement" element={<FGMovement />} />
+        <Route path="AddNewFGMovent" element={<AddNewFGMovent />} />
+        <Route path="FGToFGStock" element={<FGToFGStock />} />
+        <Route path="FGTOFGMovement" element={<FGTOFGMovement />} />
+        <Route path="ScrapMovement" element={<ScrapMovement />} />
+        <Route path="ScrapToFg" element={<ScrapToFg />} />
+        <Route path="RMToTransaction" element={<RMToTransaction />} />
+        <Route path="RMTOtherGroup" element={<RMTOtherGroup />} />
+        <Route path="ShopFloor" element={<ShopFloor />} />
+        <Route path="ShopFloorStock" element={<ShopFloorStock />} />
 
-
-        <Route path="Delivery-Challan" element={<DeliveryChallan/>} />
-        <Route path="Dcgrn" element={<Dcgrn/>} />
-        <Route path="Dcgrnlist" element={<Dcgrnlist/>}/>
-        
-        <Route path="Store-New-indent" element={<StoreNewindent/>} />
-        <Route path="IndentList" element={<IndentList/>} />
-
-
-        <Route path="Stock-Transaction" element={<StockTransaction/>} />
-        <Route path="Opening-Stock" element={<OpeningStock/>}/>
-        <Route path="RM-Stock-Transaction" element={<RMStockTransaction/>}/>
-        <Route path="FG-Movement" element={<FGMovement/>}/>
-        <Route path="AddNewFGMovent" element={<AddNewFGMovent/>}/>
-        <Route path="FGToFGStock" element={<FGToFGStock/>} />
-        <Route path="FGTOFGMovement" element={<FGTOFGMovement/>}/>
-        <Route path="ScrapMovement" element={<ScrapMovement/>} />
-        <Route path="ScrapToFg" element={<ScrapToFg/>} />
-        <Route path="RMToTransaction" element={<RMToTransaction/>}/>
-        <Route path="RMTOtherGroup" element={<RMTOtherGroup/>}/>
-        <Route path="ShopFloor" element={<ShopFloor/>}/>
-        <Route path="ShopFloorStock" element={<ShopFloorStock/>}/>
-
-
-        <Route path="Report-Store" element={<ReportStore/>} />
-        <Route path="Stock-Report" element={<StockReport/>} />
-
+        <Route path="Report-Store" element={<ReportStore />} />
+        <Route path="Stock-Report" element={<StockReport />} />
 
         {/* Inward Challan List */}
-        <Route path="Inward-challan-list" element={<InwardChallanList/>}/>
-
-
-
-
-
-
+        <Route path="Inward-challan-list" element={<InwardChallanList />} />
 
         {/* /////////////////////////////////////Purchase////////////////////////////////////// */}
-        <Route path="WorkOrderEntry" element={<WorkOrderEntry/>} />
-        <Route path="WorkOrderList" element={<WorkOrderList/>}/>
-
-
-
+        <Route path="WorkOrderEntry" element={<WorkOrderEntry />} />
+        <Route path="WorkOrderList" element={<WorkOrderList />} />
 
         {/* ///////////////////////////////////Erp Setting////////////////////////////////////// */}
- 
-        <Route path="UserConfiguration" element={<UserConfiguration/>}/>
-        <Route path="ErpSetting" element={<ErpSetting/>}/> 
+
+        <Route path="UserConfiguration" element={<UserConfiguration />} />
+        <Route path="ErpSetting" element={<ErpSetting />} />
+        <Route path="DisableUserList" element={<DisableUserList/>} />
+        <Route path="UserPermission" element={<UserPermission />} />
+        <Route path="/User-Permit" element={<UserPermit/>} />
+
+        <Route path="change-password" element={<ChangePassword/>} />
+
+        <Route path="login-history" element={<LoginHistory/>} />
+
+        <Route path="delete-management" element={<DeleteMangement/>} />
+
+        <Route path="dashboard-backup" element={<DashboardBackup/>} />
 
 
+        <Route path="delete-record" element={<DeleteRecord/>} />
+        <Route path="/order-list" element={<OrderList />} />
+                    <Route path="/view-stack" element={<ViewStock />} />
+                    <Route path="/user-List" element={<USerList/>} />
+                    <Route path="/Item-delete" element={<ItemDelete/>} />
+                    <Route path="/delete-report" element={<DeleteReport/>} />
+
+                    
       </Routes>
     </div>
   );

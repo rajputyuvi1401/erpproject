@@ -1,0 +1,62 @@
+.UserPermit {
+    margin-top: 20px;
+  }
+  
+  .permit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .permit-body {
+    margin-top: 20px;
+  }
+  
+  select.form-control {
+    width: 100%;
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  .table thead {
+    background-color: #f8f9fa;
+  }
+  
+  @media (max-width: 768px) {
+    .permit-header h5 {
+      font-size: 1.2rem;
+    }
+  
+    .main-content.shifted {
+      margin-left: 0;
+    }
+  
+    .permit-body .row {
+      flex-direction: column;
+    }
+  
+    .permit-body .col-md-6,
+    .permit-body .col-md-4,
+    .permit-body .col-md-8 {
+      width: 100%;
+    }
+  
+    .btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .main-content.shifted {
+      margin-left: 200px;
+    }
+  
+    .permit-body .row .col-md-4,
+    .permit-body .row .col-md-8 {
+      width: 100%;
+    }
+  }
+  

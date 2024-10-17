@@ -161,6 +161,7 @@ const ItemMaster = () => {
                 id="mainGroup"
                 value={mainGroup}
                 onChange={(e) => setMainGroup(e.target.value)}>
+                  <option selected>ALL</option>
                           {mainGroups.map((group) => (
                             <option key={group.id} value={group.name}>
                               {group.name}
@@ -177,15 +178,15 @@ const ItemMaster = () => {
                 value={itemGroup}
                 onChange={(e) => setItemGroup(e.target.value)}>
                           <option selected>ALL</option>
-                          <option value="1">BEARING</option>
-                          <option value="2">BELTS</option>
-                          <option value="3">CAMS</option>
-                          <option value="1">COLLETS & HOLDERS</option>
-                          <option value="2">COMPUTER</option>
-                          <option value="3">CUTTING TOOL</option>
-                          <option value="1">ELECTRICS PARTS</option>
-                          <option value="2">END PIECE</option>
-                          <option value="3">FIXCTURE</option>
+                          <option value="BEARING">BEARING</option>
+                          <option value="BELTS">BELTS</option>
+                          <option value="CAMS">CAMS</option>
+                          <option value="COLLETS">COLLETS & HOLDERS</option>
+                          <option value="COMPUTER">COMPUTER</option>
+                          <option value="CUTTING">CUTTING TOOL</option>
+                          <option value="ELECTRICS">ELECTRICS PARTS</option>
+                          <option value="END PIECE">END PIECE</option>
+                          <option value="FIXCTURE">FIXCTURE</option>
                         </select>
                       </div>
                       <div className="col-md-1">

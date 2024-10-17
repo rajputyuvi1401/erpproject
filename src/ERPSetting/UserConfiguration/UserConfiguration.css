@@ -13,7 +13,6 @@
   }
   
   .user-container {
-    max-width: 32rem;
     margin: 0 auto;
     background-color: white;
     padding: 1rem;
@@ -24,7 +23,7 @@
   .user-container .form-title {
     font-size: 1.5rem;
     font-weight: bold;
-    text-align: center;
+    text-align: start;
     margin-bottom: 1.5rem;
   }
   

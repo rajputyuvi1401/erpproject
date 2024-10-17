@@ -41,7 +41,7 @@ const ErpSetting = () => {
                       </div>
                       <div className="col-md-10 text-end">
                         <Link to="/UserConfiguration" className="btn ">Add New</Link>
-                        <button className="btn ">Disable User List</button>
+                        <Link  to="/DisableUserList" className="btn ">Disable User List</Link>
                         <button className="btn ">Export Excel</button>
                       </div>
                     </div>
@@ -81,6 +81,7 @@ const ErpSetting = () => {
                     </div>
                   </div>
 
+<div className="table-responsive">
                   <table className="table table-bordered table-hover user-list-table">
                     <thead>
                       <tr>
@@ -127,6 +128,7 @@ const ErpSetting = () => {
                       {/* Add more rows as needed */}
                     </tbody>
                   </table>
+                  </div>
                 </div>
               </main>
             </div>

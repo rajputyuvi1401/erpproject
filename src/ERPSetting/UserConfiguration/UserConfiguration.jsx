@@ -59,10 +59,10 @@ const UserConfiguration = () => {
                   <form onSubmit={handleSubmit}>
                     {/* Plant Selection */}
                     <div className="row mb-3">
-                      <div className="col-md-4 text-start">
+                      <div className="col-md-1 text-start">
                         <label htmlFor="plant" className="form-label">Plant:</label>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-3">
                         <select
                           id="plant"
                           name="plant"
@@ -78,10 +78,10 @@ const UserConfiguration = () => {
 
                     {/* Department Selection */}
                     <div className="row mb-3">
-                      <div className="col-md-4 text-start">
+                      <div className="col-md-1 text-start">
                         <label htmlFor="department" className="form-label">Department:</label>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-3">
                         <select
                           id="department"
                           name="department"
@@ -99,10 +99,10 @@ const UserConfiguration = () => {
 
                     {/* Full Name Input */}
                     <div className="row mb-3">
-                      <div className="col-md-4 text-start">
+                      <div className="col-md-1 text-start">
                         <label htmlFor="fullName" className="form-label">Full Name:</label>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-3">
                         <input
                           type="text"
                           id="fullName"
@@ -116,10 +116,10 @@ const UserConfiguration = () => {
 
                     {/* Username Input */}
                     <div className="row mb-3">
-                      <div className="col-md-4 text-start">
+                      <div className="col-md-1 text-start">
                         <label htmlFor="username" className="form-label">Username:</label>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-3">
                         <input
                           type="text"
                           id="username"
@@ -133,10 +133,10 @@ const UserConfiguration = () => {
 
                     {/* Password Input */}
                     <div className="row mb-3">
-                      <div className="col-md-4 text-start">
+                      <div className="col-md-1 text-start">
                         <label htmlFor="password" className="form-label">Password:</label>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-3">
                         <input
                           type="password"
                           id="password"
@@ -150,10 +150,10 @@ const UserConfiguration = () => {
 
                     {/* Email Id Input */}
                     <div className="row mb-3">
-                      <div className="col-md-4 text-start">
+                      <div className="col-md-1 text-start">
                         <label htmlFor="emailId" className="form-label">Email Id:</label>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-3">
                         <input
                           type="email"
                           id="emailId"
@@ -167,10 +167,10 @@ const UserConfiguration = () => {
 
                     {/* Mobile No Input */}
                     <div className="row mb-3">
-                      <div className="col-md-4 text-start">
+                      <div className="col-md-1 text-start">
                         <label htmlFor="mobileNo" className="form-label">Mobile No:</label>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-3">
                         <input
                           type="tel"
                           id="mobileNo"
@@ -184,10 +184,10 @@ const UserConfiguration = () => {
 
                     {/* CR Selection */}
                     <div className="row mb-3">
-                      <div className="col-md-4 text-start">
+                      <div className="col-md-1 text-start">
                         <label htmlFor="cr" className="form-label">CR:</label>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-3">
                         <select
                           id="cr"
                           name="cr"
@@ -203,7 +203,7 @@ const UserConfiguration = () => {
 
                     {/* Save Button */}
                     <div className="row mb-3">
-                      <div className="col-md-12 text-end">
+                      <div className="col-md-7 text-end">
                         <button type="submit" className="btn btn-primary submit-button">
                           Save
                         </button>
