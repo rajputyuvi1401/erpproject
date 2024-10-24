@@ -1,62 +1,121 @@
+/* UserPermit.css */
+
 .UserPermit {
-    margin-top: 20px;
+    padding: 20px; /* Add padding to the main container */
   }
   
-  .permit-header {
+  .UserPermit .Main-NavBar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin-left: -20px; /* Ensure that the navbar and sidenav are flex items */
   }
   
-  .permit-body {
-    margin-top: 20px;
+  .UserPermit .main-content {
+    padding: 20px; /* General padding for main content area */
+    transition: margin-left 0.3s; /* Smooth transition for the shifting content */
   }
   
-  select.form-control {
-    width: 100%;
+  .UserPermit .main-content.shifted {
+    margin-left: 250px; /* Adjust the main content position when sideNav is open */
   }
   
-  .table {
-    margin-top: 20px;
+  .UserPermit  .permit-header {
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px; /* Rounded corners for the header */
   }
   
-  .table thead {
-    background-color: #f8f9fa;
+  .UserPermit .header-title {
+    font-weight: 600; /* Slightly bolder font for the header title */
+    font-size: 1.5rem; /* Larger font size */
+    margin: 0; /* Remove default margin */
   }
   
-  @media (max-width: 768px) {
-    .permit-header h5 {
-      font-size: 1.2rem;
-    }
+  .UserPermit .permit-body {
+    margin-top: 20px; /* Space above the body */
+  }
   
+  .UserPermit .permit-body label {
+    font-weight: 500; /* Medium weight for labels */
+  }
+  
+  .UserPermit .btn {
+    border-radius: 5px; /* Rounded corners for buttons */
+    padding: 10px 15px; /* Padding for buttons */
+    transition: background-color 0.3s; /* Transition effect for hover */
+  }
+  
+  .UserPermit .btn-primary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  .UserPermit .btn-secondary:hover {
+    background-color: #0056b3; /* Adjust secondary hover color */
+  }
+  
+  .UserPermit .btn-success:hover {
+    background-color: #3c763d; /* Adjust success hover color */
+  }
+  
+  .UserPermit .btn-info:hover {
+    background-color: #31708f; /* Adjust info hover color */
+  }
+  
+  .UserPermit .btn-warning:hover {
+    background-color: #856404; /* Adjust warning hover color */
+  }
+  
+  .UserPermit .permit-main {
+    margin-top: 20px; /* Space above the module selection area */
+  }
+  
+  .module-list {
+    list-style-type: none; /* Remove default list styles */
+    padding-left: 0; /* Remove padding */
+  }
+  
+  .module-list li {
+    margin: 10px 0; /* Space between list items */
+  }
+  
+  .module-list input {
+    margin-right: 10px; /* Space between checkbox and label */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 767px) {
     .main-content.shifted {
-      margin-left: 0;
+      margin-left: 0; /* Remove left margin on small screens */
     }
   
-    .permit-body .row {
-      flex-direction: column;
+    .permit-header {
+      text-align: center; /* Center header text on small screens */
     }
   
-    .permit-body .col-md-6,
-    .permit-body .col-md-4,
-    .permit-body .col-md-8 {
-      width: 100%;
+    .permit-body {
+      display: flex;
+      flex-direction: column; /* Stack inputs vertically */
+      align-items: stretch; /* Stretch to fill container */
+    }
+  
+    .permit-body .col-md-2, .permit-body .col-md-3 {
+      width: 100%; /* Full width for small screens */
+      margin-bottom: 10px; /* Margin between stacked inputs */
     }
   
     .btn {
-      width: 100%;
-      margin-bottom: 10px;
+      width: 100%; /* Full width for buttons on small screens */
+      margin-bottom: 10px; /* Space below the button */
+    }
+  
+    .module-list {
+      padding-left: 20px; /* Add padding for module list on small screens */
     }
   }
   
-  @media (min-width: 768px) {
-    .main-content.shifted {
-      margin-left: 200px;
-    }
-  
-    .permit-body .row .col-md-4,
-    .permit-body .row .col-md-8 {
-      width: 100%;
+  @media (min-width: 768px) and (max-width: 991px) {
+    .main-content {
+      padding: 15px; /* Adjust padding for medium screens */
     }
   }
   

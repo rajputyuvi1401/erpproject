@@ -9,12 +9,12 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
 
     // List of required fields
     const requiredFields = [
-      "email",
+      "email_id",
       "company_name",
       "short_name",
      
       "password",
-      "password2",
+    
       "city",
       "country",
       "address",
