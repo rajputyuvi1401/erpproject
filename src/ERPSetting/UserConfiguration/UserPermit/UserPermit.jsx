@@ -62,6 +62,9 @@ const UserPermit = () => {
                   </div>
                   <div className="permit-main">
                     <h4>Select Module</h4>
+                    <ul>
+                    
+                    </ul>
                     </div>
                 </div>
               </main>

@@ -6,14 +6,14 @@ import "./Home.css";
 import { postRequest } from "../Service/Api.jsx"; // Importing the API service
 
 function Home() {
-  const [email, setEmail] = useState("");
+  const [email_id, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // Initialize useNavigate hook
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const data = { email, password };
+    const data = { email_id, password };
 
     try {
       const response = await postRequest("/Erp_admin/api/auth/login/", data); // Using the postRequest function
@@ -52,7 +52,7 @@ function Home() {
                       type="email"
                       className="form-control"
                       id="emailInput"
-                      value={email}
+                      value={email_id}
                       onChange={(e) => setEmail(e.target.value)}
                       required
                     />

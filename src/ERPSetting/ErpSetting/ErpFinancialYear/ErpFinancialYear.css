@@ -1,0 +1,118 @@
+.ErpFinancialyear{
+        margin-top: 20px;
+      }
+    .financial-header {
+        background-color: #f8f9fa; /* Light background for header */
+        border-bottom: 1px solid #dee2e6; /* Border for header */
+        padding: 10px 15px; /* Padding around header */
+        border-radius: 5px;
+    }
+    
+    .ErpFinancialyear  .header-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 0;
+    }
+    
+      
+      .financial-table .table-responsive {
+        overflow-x: auto;
+      }
+      
+      .financial-table .plant-table .table {
+        width: 100%;
+      }
+      
+      .ErpFinancialyear .main-content {
+        transition: margin-left 0.3s ease;
+      }
+      
+      /* When the side nav is open, shift the content */
+      .ErpFinancialyear .main-content.shifted {
+        margin-left: 250px; /* Adjust based on side nav width */
+      }
+      
+      /* Styling for the table select dropdown */
+      .ErpFinancialyear .table select {
+        width: 100%;
+        padding: 5px;
+        border-radius: 4px;
+      }
+      .yearbtn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .yearbtn:hover {
+        background-color: #0056b3;
+    }
+      /* Responsive Styling for Tablets and Mobile Devices */
+      @media (max-width: 991px) {
+        .ErpFinancialyear .main-content {
+          margin-left: 0;
+        }
+      
+        .ErpFinancialyear .prod-header {
+          text-align: center;
+        }
+      
+        .ErpFinancialyear .prod-header .col-md-4 {
+          margin-bottom: 10px;
+        }
+      
+        /* Make the table responsive */
+        .ErpFinancialyear .table-responsive {
+          overflow-x: auto;
+        }
+      
+        .ErpFinancialyear .table thead th {
+          font-size: 0.85rem;
+        }
+      
+        .ErpFinancialyear .table tbody td {
+          font-size: 0.9rem;
+        }
+      
+        .ErpFinancialyear .table select {
+          width: 100%;
+        }
+      }
+      
+      /* Mobile specific adjustments */
+      @media (max-width: 576px) {
+        .ErpFinancialyear .prod-header {
+          text-align: center;
+        }
+      
+        .ErpFinancialyear .prod-header .col-md-4 {
+          margin-bottom: 10px;
+        }
+      
+        .ErpFinancialyear .table thead th {
+          font-size: 0.75rem;
+        }
+      
+        .ErpFinancialyear .table tbody td {
+          font-size: 0.8rem;
+        }
+      
+        .ErpFinancialyear .table select {
+          width: 100%;
+        }
+      
+        .ErpFinancialyear .plant-table .table th,
+        .plant-table .table td {
+          white-space: nowrap;
+        }
+      
+        .ErpFinancialyear .table-responsive {
+          overflow-x: auto;
+        }
+      }
+      

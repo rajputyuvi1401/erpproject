@@ -54,31 +54,31 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   <Dropdown.Item as={Link} to="/User-Permit">
                     User Permission
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                  <Dropdown.Item as={Link} to="/DashboardPermission">
                     Dashboard Permission
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/customer-item-wise">
+                  <Dropdown.Item as={Link} to="/BackDated">
                     Back Dated Entry Setting
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="/User-Wise-Series">
                     User Wise Series
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="/UserwiseProduction">
                     Userwiise Prod. Operation
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                  <Dropdown.Item as={Link} to="/USerwiseAuth">
                     Userwise Auth. Setting
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/customer-item-wise">
+                  <Dropdown.Item as={Link} to="/User-plant">
                     User Plant
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="/Plantwiseseries">
                     Plant Wise Series
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="/AlertSetting">
                     Alert Settting
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                  <Dropdown.Item as={Link} to="/Userwisepermission">
                     User Wise Permission
                   </Dropdown.Item>
                 </Dropdown.Menu>
@@ -90,61 +90,61 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                 ERP Configuration
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="#">
                     Company
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="/Companysetup">
                     Company / Plant Setup
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                  <Dropdown.Item as={Link} to="/WebconfigFile">
                     Web. config File
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/customer-item-wise">
+                  <Dropdown.Item as={Link} to="/ErpFinancialYear">
                    Financial Year
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="/FinancialMonth">
                     Financial Month Master
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="/ScheduleMonth">
                     Schedule Month Master
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                  <Dropdown.Item as={Link} to="/Weekoff">
                     Weekly Off / Holiday
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/customer-item-wise">
+                  <Dropdown.Item as={Link} to="/Settingerp">
                     Setting
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="/Docseriesgroup">
                     Doc. Series /Group
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="/UserPermission">
                     Parameter Setting
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="/DocprintFormat">
                     Doc. Print Format
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                  <Dropdown.Item as={Link} to="/Docnoeditable">
                     Doc. No Editable
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                  <Dropdown.Item as={Link} to="/Qcisoformat">
                     Qc ISO Format
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/customer-item-wise">
+                  <Dropdown.Item as={Link} to="/Roundofsetting">
                     Round Of Setting
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="/Customersupplier">
                     Customer / Supplier
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="/Itemmastersetup">
                     Item Master Setup
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#">
+                  <Dropdown.Item as={Link} to="/Emailsms">
                     Email / SMS
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                  <Dropdown.Item as={Link} to="/Emailsetup">
                     Email Setup
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/item-cross-reference">
+                  <Dropdown.Item as={Link} to="/Emailtemplate">
                     Email Template
                   </Dropdown.Item>
                 </Dropdown.Menu>

@@ -196,15 +196,17 @@ import ErpSetting from "./ERPSetting/ErpSetting/ErpSetting.jsx";
 
 import UserPermission from "./ERPSetting/UserPermission/UserPermission.jsx";
 import UserPermit from "./ERPSetting/UserConfiguration/UserPermit/UserPermit.jsx";
+import DashboardPermission from "./ERPSetting/UserConfiguration/DashboardPermission/DashboardPermission.jsx";
+import BackDated from "./ERPSetting/UserConfiguration/BackDated/BackDated.jsx";
+import UserWiseSeries from "./ERPSetting/UserConfiguration/UserWiseSeries/UserWiseSeries.jsx";
 import ChangePassword from "./ERPSetting/ChangePassword/ChangePassword.jsx";
-
+import UserwiseProduction from "./ERPSetting/UserConfiguration/UserwiseProduction/UserwiseProduction.jsx";
 import LoginHistory from "./ERPSetting/LoginHistoryReport/LoginHistory.jsx";
-
+import USerwiseAuth from "./ERPSetting/UserConfiguration/UserwiseAuth/USerwiseAuth.jsx";
 import DeleteMangement from "./ERPSetting/DeleteMangement/DeleteMangement.jsx";
 import OrderList from "./ERPSetting/DeleteMangement/OrderList.jsx";
 import ViewStock from "./ERPSetting/DeleteMangement/ViewStock.jsx";
 import USerList from "./ERPSetting/DeleteMangement/USerList.jsx";
-
 
 import DashboardBackup from "./ERPSetting/DashboardBackup/DashboardBackup.jsx";
 
@@ -212,6 +214,49 @@ import DeleteRecord from "./ERPSetting/DeleteRecord/DeleteRecord.jsx";
 import ItemDelete from "./ERPSetting/DeleteRecord/ItemDelete/ItemDelete.jsx";
 import DeleteReport from "./ERPSetting/DeleteRecord/DeleteReport/DeleteReport.jsx";
 
+import Userplant from "./ERPSetting/UserConfiguration/UserPlant/Userplant.jsx";
+
+import Plantwiseseries from "./ERPSetting/UserConfiguration/PlantwiseSeries/Plantwiseseries.jsx";
+
+import AlertSetting from "./ERPSetting/UserConfiguration/AlertSetting/AlertSetting.jsx";
+
+import Userwisepermission from "./ERPSetting/UserConfiguration/Userwisepermissiom/Userwisepermission.jsx";
+
+import Companysetup from "./ERPSetting/ErpSetting/Companysetup/Companysetup.jsx";
+
+import ErpWebConfig from "./ERPSetting/ErpSetting/ErpWebconfig/ErpWebConfig.jsx";
+
+import ErpFinancialYear from "./ERPSetting/ErpSetting/ErpFinancialYear/ErpFinancialYear.jsx";
+
+import FinancialMonth from "./ERPSetting/ErpSetting/FinancialMonth/FinancialMonth.jsx";
+
+import ScheduleMonth from "./ERPSetting/ErpSetting/SeheduleMonth/ScheduleMonth.jsx";
+
+import Weekoff from "./ERPSetting/ErpSetting/Weeklyoff/Weekoff.jsx";
+
+import Settingerp from "./ERPSetting/ErpSetting/Setting/Settingerp.jsx";
+
+import Docseriesgroup from "./ERPSetting/ErpSetting/Docseriesgroup/Docseriesgroup.jsx";
+
+import DocprintFormat from "./ERPSetting/ErpSetting/Docprintformat/DocprintFormat.jsx";
+
+import Docnoeditable from "./ERPSetting/ErpSetting/DocNoEditable/Docnoeditable.jsx";
+
+import Qcisoformat from "./ERPSetting/ErpSetting/Qcisoformat/Qcisoformat.jsx";
+
+import Roundofsetting from "./ERPSetting/ErpSetting/Roundofsetting/Roundofsetting.jsx";
+
+import Customersupplier from "./ERPSetting/ErpSetting/Customersupplier/Customersupplier.jsx";
+
+import Itemmastersetup from "./ERPSetting/ErpSetting/ItemMasterSetup/Itemmastersetup.jsx";
+
+import Emailsms from "./ERPSetting/ErpSetting/Emailsms/Emailsms.jsx";
+
+import Emailsetup from "./ERPSetting/ErpSetting/Emailsetup/Emailsetup.jsx";
+
+import Emailtemplate from "./ERPSetting/ErpSetting/Emailtemplate/Emailtemplate.jsx";
+
+import DocumentStart from "./ERPSetting/ErpSetting/ErpFinancialYear/DocumentStartNo/DocumentStart.jsx";
 
 function App() {
   return (
@@ -220,27 +265,19 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/mainpage" element={<VendorPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
-
         {/* Master */}
-
         <Route path="/masterState" element={<MasterState />} />
         <Route path="/masterCustomer" element={<MasterCustomers />} />
         <Route path="/customerState" element={<CustomerState />} />
-
         {/* Item Master */}
-
         <Route path="/item-master" element={<ItemMaster />} />
         <Route path="/add-new-item" element={<AddNewItem />} />
         <Route path="/item-master-gernal" element={<ItemMasterGernal />} />
         <Route path="/item-master-query" element={<ItemMasterQuery />} />
-
         {/* Work Center Master */}
         <Route path="/Work-center-master" element={<WorkCenterMaster />} />
-
         {/* business-partner */}
-
         <Route path="/business-partner" element={<BusinessPartner />} />
-
         {/* Item Master Dropdown */}
         <Route path="/Customer-Item-Wise" element={<CustomerItemWise />} />
         <Route
@@ -248,35 +285,24 @@ function App() {
           element={<CustomerSupplierLink />}
         />
         <Route path="/Item-Cross-Reference" element={<ItemCrossReference />} />
-
         {/* Gst Master */}
         <Route path="/gst-rate-master" element={<GstMaster />} />
-
         {/* Gst Master Customer Item */}
-
         <Route path="/Customer-Item-Wise-Gst" element={<CustomerItemGst />} />
-
         {/* Task Master */}
         <Route path="/task-master" element={<TaskMaster />} />
-
         {/* Cutwise */}
-
         <Route path="/Cut-wise" element={<Cutwise />} />
-
         {/* Supplier Customer Master */}
         <Route
           path="/Supplier-Customer-Master"
           element={<SupplierCustomerMaster />}
         />
-
         {/* Vender List */}
         <Route path="/vender-list" element={<VenderListSupplier />} />
-
         {/* BomRouting */}
-
         <Route path="/bom-routing" element={<BomRouting />} />
         <Route path="/bill-material" element={<BillMaterial />} />
-
         {/* Operator-Supervisor */}
         <Route
           path="/operator-supervisor-master"
@@ -284,70 +310,50 @@ function App() {
         />
         <Route path="/Supervisor" element={<Supervisor />} />
         <Route path="/Department-Head" element={<DepartmentHead />} />
-
         {/* Contractor Master */}
         <Route path="/contractor-master" element={<ContractorMaster />} />
         <Route path="/Addcontractor-master" element={<AddContractorMAster />} />
-
         {/* Shift Master */}
         <Route path="/shift-master" element={<ShiftMaster />} />
-
         {/* Unit Conversion */}
         <Route path="/unit-conversion" element={<UnitConversion />} />
-
         {/* Price List Master */}
         <Route path="/price-list-master" element={<PriceListMaster />} />
         <Route path="/price-entry-master" element={<PriceEntry />} />
-
         {/* cycle time master */}
         <Route path="/cycle-time-master" element={<CycleTime />} />
         <Route path="/add-cycle-time" element={<AddCycleTime />} />
-
         {/* CommodityMaster */}
         <Route path="/commodity-master" element={<CommodityMaster />} />
-
         {/* cost center master */}
         <Route path="/cost-center-master" element={<CostCenterMaster />} />
-
         {/* Work center Schedule */}
         <Route path="/work-center-schedule" element={<WorkCenterSchedule />} />
-
         {/* Project Management */}
         <Route path="/project-management" element={<ProjectManagement />} />
         <Route
           path="/project-inventory-status"
           element={<ProjectInventory />}
         />
-
         {/* Document Management */}
         <Route path="/document-management" element={<DocumentManagement />} />
-
         {/* Master Report */}
         <Route path="/master-report" element={<MasterReport />} />
-
         {/* ////////////////////////////////Purchase////////////////////////////////////////////////////////////// */}
-
         {/* New indent */}
         <Route path="/new-indent" element={<Newindent />} />
-
         {/* New Purchase Order */}
         <Route path="/new-purchase-order" element={<NewPurchaseOrder />} />
-
         {/* New Jobwork */}
         <Route path="/new-jobwork-order" element={<NewJobworkPurchase />} />
-
         {/* New Pending Po */}
         <Route path="/pendingpo" element={<PendingPo />} />
-
         {/* New Pending Indent */}
         <Route path="/pendingindent" element={<PendingIndent />} />
-
         {/* New Purchse MRN */}
         <Route path="/Purchse-Mrn" element={<PurchaseMrn />} />
-
         {/* New Purchse Order Status */}
         <Route path="/Purchse-order-status" element={<PurchseOrderStatus />} />
-
         {/* Quoto Comparision */}
         <Route path="/Rfo" element={<Rfo />} />
         <Route
@@ -358,33 +364,24 @@ function App() {
           path="/Quoto-Comparison-Pending"
           element={<QuotoComparisonPending />}
         />
-
         {/* Purchase Report */}
         <Route path="purchase-order-list" element={<PurchseOderList />} />
-
         <Route
           path="jobwork-purchase-order-list"
           element={<JobWorkPurchseOrderList />}
         />
-
         <Route path="supplier-wise-list" element={<SupplierWiseList />} />
-
         <Route path="purchase-report" element={<PurchaseReport />} />
-
         {/* ///////////////////////////////////////Store//////////////////////////////////////// */}
-
         <Route path="Gate-Inward-Entry" element={<GateInwardEntry />} />
         <Route path="New-Gate-Entry" element={<NewGateInward />} />
-
         <Route path="Pending-Asn-List" element={<PendingAsnList />} />
         <Route path="PDL-List" element={<PDL />} />
         <Route path="Vendor-Bill-List" element={<VendorBillList />} />
         <Route path="Vendor-Asn-List" element={<VendorASN />} />
         <Route path="ASN-Report" element={<ASNReport />} />
-
         <Route path="New-Mrn" element={<NewMrn />} />
         <Route path="Tool-MRN" element={<ToolMrn />} />
-
         <Route path="Purchase-Grn" element={<PurchaseGrn />} />
         <Route path="Grn-List" element={<GrnList />} />
         <Route path="Inward-challan" element={<InwardChallan1 />} />
@@ -394,7 +391,6 @@ function App() {
         />
         <Route path="Vendor-Scrap-Inward" element={<VendorScrapInward />} />
         <Route path="Subcon-Grn" element={<SubconGrn />} />
-
         <Route
           path="Material-Issue-Challan"
           element={<MaterialIssueChallan />}
@@ -402,16 +398,12 @@ function App() {
         <Route path="Work-Order-Material" element={<WorkOrderMaterial />} />
         <Route path="Material-Issue" element={<MaterialIssue />} />
         <Route path="Work-Issue-Report" element={<WorkIssueRepost />} />
-
         <Route path="Material-Issue-Gernal" element={<MaterialIssueGernal />} />
-
         <Route path="Delivery-Challan" element={<DeliveryChallan />} />
         <Route path="Dcgrn" element={<Dcgrn />} />
         <Route path="Dcgrnlist" element={<Dcgrnlist />} />
-
         <Route path="Store-New-indent" element={<StoreNewindent />} />
         <Route path="IndentList" element={<IndentList />} />
-
         <Route path="Stock-Transaction" element={<StockTransaction />} />
         <Route path="Opening-Stock" element={<OpeningStock />} />
         <Route path="RM-Stock-Transaction" element={<RMStockTransaction />} />
@@ -425,42 +417,61 @@ function App() {
         <Route path="RMTOtherGroup" element={<RMTOtherGroup />} />
         <Route path="ShopFloor" element={<ShopFloor />} />
         <Route path="ShopFloorStock" element={<ShopFloorStock />} />
-
         <Route path="Report-Store" element={<ReportStore />} />
         <Route path="Stock-Report" element={<StockReport />} />
-
         {/* Inward Challan List */}
         <Route path="Inward-challan-list" element={<InwardChallanList />} />
-
         {/* /////////////////////////////////////Purchase////////////////////////////////////// */}
         <Route path="WorkOrderEntry" element={<WorkOrderEntry />} />
         <Route path="WorkOrderList" element={<WorkOrderList />} />
-
         {/* ///////////////////////////////////Erp Setting////////////////////////////////////// */}
-
         <Route path="UserConfiguration" element={<UserConfiguration />} />
         <Route path="ErpSetting" element={<ErpSetting />} />
-        <Route path="DisableUserList" element={<DisableUserList/>} />
+        <Route path="DisableUserList" element={<DisableUserList />} />
         <Route path="UserPermission" element={<UserPermission />} />
-        <Route path="/User-Permit" element={<UserPermit/>} />
-
-        <Route path="change-password" element={<ChangePassword/>} />
-
-        <Route path="login-history" element={<LoginHistory/>} />
-
-        <Route path="delete-management" element={<DeleteMangement/>} />
-
-        <Route path="dashboard-backup" element={<DashboardBackup/>} />
-
-
-        <Route path="delete-record" element={<DeleteRecord/>} />
+        <Route path="/User-Permit" element={<UserPermit />} />
+        <Route path="change-password" element={<ChangePassword />} />
+        <Route path="login-history" element={<LoginHistory />} />
+        <Route path="delete-management" element={<DeleteMangement />} />
+        <Route path="dashboard-backup" element={<DashboardBackup />} />
+        <Route path="delete-record" element={<DeleteRecord />} />
         <Route path="/order-list" element={<OrderList />} />
-                    <Route path="/view-stack" element={<ViewStock />} />
-                    <Route path="/user-List" element={<USerList/>} />
-                    <Route path="/Item-delete" element={<ItemDelete/>} />
-                    <Route path="/delete-report" element={<DeleteReport/>} />
+        <Route path="/view-stack" element={<ViewStock />} />
+        <Route path="/user-List" element={<USerList />} />
+        <Route path="/Item-delete" element={<ItemDelete />} />
+        <Route path="/delete-report" element={<DeleteReport />} />
+        <Route path="/DashboardPermission" element={<DashboardPermission />} />
+        <Route path="/BackDated" element={<BackDated />} />
+        <Route path="/User-Wise-Series" element={<UserWiseSeries />} />
+        <Route path="/UserwiseProduction" element={<UserwiseProduction />} />
+        <Route path="/USerwiseAuth" element={<USerwiseAuth />} />
+        <Route path="/User-plant" element={<Userplant />} />
+        <Route path="/Plantwiseseries" element={<Plantwiseseries />} />
+        <Route path="/AlertSetting" element={<AlertSetting />} />
+        <Route path="/Userwisepermission" element={<Userwisepermission />} />
 
-                    
+
+
+
+        <Route path="/Companysetup" element={<Companysetup />} />
+        <Route path="/WebconfigFile" element={<ErpWebConfig />} />{" "}
+        <Route path="/ErpFinancialYear" element={<ErpFinancialYear />} />{" "}
+        <Route path="/FinancialMonth" element={<FinancialMonth />} />{" "}
+        <Route path="/ScheduleMonth" element={<ScheduleMonth />} />{" "}
+        <Route path="/Weekoff" element={<Weekoff />} />{" "}
+        <Route path="/Settingerp" element={<Settingerp />} />{" "}
+        <Route path="/Docseriesgroup" element={<Docseriesgroup />} />{" "}
+        <Route path="/DocprintFormat" element={<DocprintFormat />} />{" "}
+        <Route path="/Docnoeditable" element={<Docnoeditable />} />{" "}
+        <Route path="/Qcisoformat" element={<Qcisoformat />} />{" "}
+        <Route path="/Roundofsetting" element={<Roundofsetting />} />{" "}
+        <Route path="/Customersupplier" element={<Customersupplier />} />{" "}
+        <Route path="/Itemmastersetup" element={<Itemmastersetup />} />{" "}
+        <Route path="/Emailsms" element={<Emailsms />} />{" "}
+        <Route path="/Emailsetup" element={<Emailsetup />} />
+        <Route path="/Emailtemplate" element={<Emailtemplate />} />
+
+        <Route path="/Document-start" element={<DocumentStart />} />
       </Routes>
     </div>
   );

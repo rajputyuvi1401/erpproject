@@ -1,0 +1,67 @@
+/* General Layout for CompanySetup */
+.CompanySetup {
+    padding-top: 20px;
+  }
+  
+  .main-content {
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+  }
+  
+  .shifted {
+    margin-left: 250px; /* Adjust based on side nav width */
+  }
+  
+  /* Tabs Styling */
+  .nav-tabs {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .nav-tabs .nav-item {
+    margin-bottom: -1px;
+  }
+  
+  .nav-tabs .nav-link {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    margin-right: 5px;
+    padding: 10px;
+  }
+  
+  .nav-tabs .nav-link.active {
+    background-color: #e9ecef;
+    border-bottom: 2px solid #007bff;
+    color: #007bff;
+  }
+  
+  .tab-content {
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+  }
+  
+  /* Form Styling */
+  .form {
+    margin-top: 20px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  /* Add custom styles */
+@media (max-width: 768px) {
+    label {
+      font-size: 14px;
+    }
+    .form-control {
+      font-size: 14px;
+    }
+    .companybtn {
+      font-size: 16px;
+    }
+  }
+  
