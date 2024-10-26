@@ -57,5 +57,8 @@
   "description": "��#\u0000 \u0000t\u0000a\u0000s\u0000k\u00001\u0000\r\u0000 \u0000",
   "main": "index.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
 }
