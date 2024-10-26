@@ -1,0 +1,82 @@
+.ScheduleMonthMaster {
+    margin-top: 20px;
+  }
+  
+  .Schedule-header {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    border-bottom: 2px solid #dee2e6;
+  }
+  
+  .header-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .Schedule-Main {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .Schedule-Main .form-control {
+    margin-top: 5px;
+  }
+  
+  .Schedule-table {
+    margin-top: 20px;
+  }
+  
+  .table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+  }
+  
+  .main-content {
+    transition: margin-left 0.3s ease;
+  }
+  
+  .main-content.shifted {
+    margin-left: 250px; /* Adjust to match side nav width */
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 991px) {
+    .main-content {
+      margin-left: 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .Schedule-Main .col-md-2 {
+      margin-bottom: 15px;
+    }
+    
+    .table th, .table td {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .table th, .table td {
+      font-size: 0.8rem;
+    }
+  
+    .btn-primary {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  

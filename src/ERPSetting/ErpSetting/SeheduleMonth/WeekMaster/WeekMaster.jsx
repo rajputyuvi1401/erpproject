@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import NavBar from "../../../NavBar/NavBar.js";
-import SideNav from "../../../SideNav/SideNav.js";
-import './ScheduleMonth.css';
-import { Link } from "react-router-dom";
+import NavBar from "../../../../NavBar/NavBar.js";
+import SideNav from "../../../../SideNav/SideNav.js";
+import './WeekMaster.css';
 
-const ScheduleMonth = () => {
+const WeekMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
   const toggleSideNav = () => {
@@ -22,7 +21,7 @@ const ScheduleMonth = () => {
   }, [sideNavOpen]);
 
   return (
-    <div className="ScheduleMonthMaster">
+    <div className="WeekMaster">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -30,60 +29,54 @@ const ScheduleMonth = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ScheduleMonth mt-2">
-                  <div className="Schedule-header mb-4 text-start">
+                <div className="Week mt-2">
+                  <div className="Week-header mb-4 text-start">
                     <div className="row align-items-center">
-                      <div className="col-md-4">
-                        <h5 className="header-title">Schedule Month Master</h5>
-                      </div>
-                      <div className="col-md-8 text-end">
-                      <Link type="button" className="btn" to="/WeekMaster">Week Master</Link>
+                      <div className="col-md-6 col-sm-12">
+                        <h5 className="header-title">Schedule Week Master</h5>
                       </div>
                     </div>
                   </div>
-                  <div className="Schedule-Main">
+                  
+                  <div className="Week-Main">
                     <div className="container-fluid">
-                      <div className="row text-start">
-                        <div className="col-md-2">
-                          <label>Month Name</label>
-                          <input type="text" className="form-control"/>
+                      <div className="row g-3 text-start">
+                        <div className="col-md-2 col-sm-6">
+                          <label>Select Month</label>
+                          <select className="form-control">
+                            <option>Select</option>
+                            <option value="Sep">Sep</option>
+                          </select>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 col-sm-6">
+                          <label>WK No</label>
+                          <input type="text" className="form-control" placeholder="Enter Week No" />
+                        </div>
+                        <div className="col-md-2 col-sm-6">
                           <label>From Date</label>
-                          <input type="date" className="form-control"/>
+                          <input type="date" className="form-control" />
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 col-sm-6">
                           <label>To Date</label>
-                          <input type="date" className="form-control"/>
+                          <input type="date" className="form-control" />
                         </div>
-                        <div className="col-md-2">
-                          <label>Month No</label>
-                          <input type="text" className="form-control"/>
-                        </div>
-                        <div className="col-md-2">
-                          <label>Year No</label>
-                          <input type="text" className="form-control"/>
-                        </div>
-                        <div className="col-md-2">
-                         <button type="button" className="btn btn-primary mt-4">Add</button>
+                        <div className="col-md-2 col-sm-12 d-flex align-items-end">
+                          <button type="button" className="btn btn-primary w-100">Save</button>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="Schedule-table mt-4">
+                  <div className="Week-table mt-4">
                     <div className="table-responsive">
                       <table className="table table-bordered table-hover">
                         <thead className="table-dark">
                           <tr>
                             <th>Sr.</th>
-                            <th>Month Name</th>
+                            <th>Month</th>
+                            <th>Work No</th>
                             <th>From Date</th>
                             <th>To Date</th>
-                            <th>Month No</th>
-                            <th>Year No</th>
-                            <th>W Days</th>
-                            <th>User</th>
                             <th>Edit</th>
                             <th>Delete</th>
                           </tr>
@@ -104,4 +97,4 @@ const ScheduleMonth = () => {
   );
 };
 
-export default ScheduleMonth;
+export default WeekMaster;

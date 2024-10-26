@@ -258,6 +258,18 @@ import Emailtemplate from "./ERPSetting/ErpSetting/Emailtemplate/Emailtemplate.j
 
 import DocumentStart from "./ERPSetting/ErpSetting/ErpFinancialYear/DocumentStartNo/DocumentStart.jsx";
 
+import AddQuater from "./ERPSetting/ErpSetting/FinancialMonth/AddQuater/AddQuater.jsx";
+
+import WeekMaster from "./ERPSetting/ErpSetting/SeheduleMonth/WeekMaster/WeekMaster.jsx";
+
+import MasterData from "./ERPSetting/ErpSetting/Docseriesgroup/MasterData/MasterData.jsx";
+
+import PurchaseErp from "./ERPSetting/ErpSetting/Docseriesgroup/PurchaseOrder/PurchaseErp.jsx";
+
+import PurchaseERPGRN from "./ERPSetting/ErpSetting/Docseriesgroup/PurchaseERPGRN/PurchaseERPGRN.jsx";
+
+import OutwardInward from "./ERPSetting/ErpSetting/Docseriesgroup/OutwardInward/OutwardInward.jsx";
+
 function App() {
   return (
     <div className="App">
@@ -472,6 +484,15 @@ function App() {
         <Route path="/Emailtemplate" element={<Emailtemplate />} />
 
         <Route path="/Document-start" element={<DocumentStart />} />
+
+        <Route path="/AddQuater" element={<AddQuater/>} />
+
+        <Route path="/WeekMaster" element={<WeekMaster/>} />
+        <Route path="/MasterData" element={<MasterData/>} />
+        <Route path="/PurchaseErp" element={<PurchaseErp/>} />
+        <Route path="/PurchaseERPGRN" element={<PurchaseERPGRN/>} />
+        <Route path="/OutwardInward" element={<OutwardInward/>} />
+
       </Routes>
     </div>
   );

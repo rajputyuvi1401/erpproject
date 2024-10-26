@@ -6,6 +6,7 @@ import SideNav from "../../../SideNav/SideNav.js";
 import './FinancialMonth.css';
 
 import { FaEdit,FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const FinancialMonth = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -38,8 +39,9 @@ const FinancialMonth = () => {
                         <h5 className="header-title">Month Master</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn">Add Quarter</button>
-                        <button type="button" className="btn">Company Info</button>
+                        <Link type="button" className="btn" to='/AddQuater'>Add Quarter</Link>
+                        <Link type="button" className="btn" to='/Companysetup'>Company Info</Link>
+
                       </div>
                     </div>
                   </div>

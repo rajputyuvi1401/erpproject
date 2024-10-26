@@ -111,7 +111,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   <Dropdown.Item as={Link} to="/Weekoff">
                     Weekly Off / Holiday
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Settingerp">
+                  <Dropdown.Item as={Link} to="#/Settingerp">
                     Setting
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="/Docseriesgroup">

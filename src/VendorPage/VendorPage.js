@@ -20,9 +20,9 @@ const VendorPage = () => {
     company_name: "",
     short_name: "",
     website: "",
-    email_id: "",
+    email: "",
     password: "",
-   
+    password1:"",
     contact_no: "",
     footer_message: "",
     director_name: "",

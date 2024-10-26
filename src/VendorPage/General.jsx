@@ -41,9 +41,19 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
           error = "Invalid website URL";
         }
         break;
-      default:
-        error = !value ? "This field is required" : "";
-        break;
+     
+
+        case "password":
+          case "password1":
+            // Check if password and confirm password match
+            if (formData.password !== formData.password1) {
+              error = "Passwords do not match";
+            }
+            break;
+    
+          default:
+            error = !value ? "This field is required" : "";
+            break;
     }
 
     setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
@@ -55,9 +65,9 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
       "company_name",
       "short_name",
       "website",
-      "email-id",
+      "email",
       "password",
-      
+      "password1",
       "contact_no",
       "footer_message",
       "director_name",
@@ -79,7 +89,12 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
       }
     });
 
+
   
+
+     if (formData.password !== formData.password1) {
+      newErrors.password1 = "Passwords do not match";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -230,21 +245,21 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label htmlFor="email_id" className="col-sm-4 col-form-label">
+                  <label htmlFor="email" className="col-sm-4 col-form-label">
                     Email Id
                   </label>
                   <div className="col-sm-8">
                     <input
-                      type="email_id"
+                      type="email"
                       className="form-control"
-                      id="email_id"
-                      name="email_id"
-                      value={formData.email_id}
+                      id="email"
+                      name="email"
+                      value={formData.email}
                       onChange={handleChange}
                       placeholder="contact@sharp-engineers.com"
                     />
-                    {errors.email_id && (
-                      <div className="text-danger">{errors.email_id}</div>
+                    {errors.email && (
+                      <div className="text-danger">{errors.email}</div>
                     )}
                   </div>
                 </div>
@@ -264,6 +279,25 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                     />
                     {errors.password && (
                       <div className="text-danger">{errors.password}</div>
+                    )}
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label htmlFor="password1" className="col-sm-4 col-form-label">
+                    Confirm Password
+                  </label>
+                  <div className="col-sm-8">
+                    <input
+                      type="password1"
+                      className="form-control"
+                      id="password1"
+                      name="password1"
+                      value={formData.password1}
+                      onChange={handleChange}
+                      placeholder="*********"
+                    />
+                    {errors.password1 && (
+                      <div className="text-danger">{errors.password1}</div>
                     )}
                   </div>
                 </div>
