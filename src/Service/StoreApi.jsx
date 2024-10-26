@@ -1,6 +1,6 @@
 import axios from 'axios';
-const Base_Url = "http://13.201.136.34:8000/Store/";
-// const Base_Url = "api/Store/";
+// const Base_Url = "http://13.201.136.34:8000/Store/";
+const Base_Url = "api/Store/";
 export const saveGateEntry = async (data) => {
     try {
         const response = await fetch(`${Base_Url}GeneralDetails/`, {
