@@ -257,6 +257,7 @@ import Emailsetup from "./ERPSetting/ErpSetting/Emailsetup/Emailsetup.jsx";
 import Emailtemplate from "./ERPSetting/ErpSetting/Emailtemplate/Emailtemplate.jsx";
 
 import DocumentStart from "./ERPSetting/ErpSetting/ErpFinancialYear/DocumentStartNo/DocumentStart.jsx";
+<<<<<<< HEAD
 
 import AddQuater from "./ERPSetting/ErpSetting/FinancialMonth/AddQuater/AddQuater.jsx";
 
@@ -269,6 +270,8 @@ import PurchaseErp from "./ERPSetting/ErpSetting/Docseriesgroup/PurchaseOrder/Pu
 import PurchaseERPGRN from "./ERPSetting/ErpSetting/Docseriesgroup/PurchaseERPGRN/PurchaseERPGRN.jsx";
 
 import OutwardInward from "./ERPSetting/ErpSetting/Docseriesgroup/OutwardInward/OutwardInward.jsx";
+=======
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
 
 function App() {
   return (
@@ -461,6 +464,7 @@ function App() {
         <Route path="/Plantwiseseries" element={<Plantwiseseries />} />
         <Route path="/AlertSetting" element={<AlertSetting />} />
         <Route path="/Userwisepermission" element={<Userwisepermission />} />
+<<<<<<< HEAD
 
 
 
@@ -493,6 +497,31 @@ function App() {
         <Route path="/PurchaseERPGRN" element={<PurchaseERPGRN/>} />
         <Route path="/OutwardInward" element={<OutwardInward/>} />
 
+=======
+
+
+
+
+        <Route path="/Companysetup" element={<Companysetup />} />
+        <Route path="/WebconfigFile" element={<ErpWebConfig />} />{" "}
+        <Route path="/ErpFinancialYear" element={<ErpFinancialYear />} />{" "}
+        <Route path="/FinancialMonth" element={<FinancialMonth />} />{" "}
+        <Route path="/ScheduleMonth" element={<ScheduleMonth />} />{" "}
+        <Route path="/Weekoff" element={<Weekoff />} />{" "}
+        <Route path="/Settingerp" element={<Settingerp />} />{" "}
+        <Route path="/Docseriesgroup" element={<Docseriesgroup />} />{" "}
+        <Route path="/DocprintFormat" element={<DocprintFormat />} />{" "}
+        <Route path="/Docnoeditable" element={<Docnoeditable />} />{" "}
+        <Route path="/Qcisoformat" element={<Qcisoformat />} />{" "}
+        <Route path="/Roundofsetting" element={<Roundofsetting />} />{" "}
+        <Route path="/Customersupplier" element={<Customersupplier />} />{" "}
+        <Route path="/Itemmastersetup" element={<Itemmastersetup />} />{" "}
+        <Route path="/Emailsms" element={<Emailsms />} />{" "}
+        <Route path="/Emailsetup" element={<Emailsetup />} />
+        <Route path="/Emailtemplate" element={<Emailtemplate />} />
+
+        <Route path="/Document-start" element={<DocumentStart />} />
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
       </Routes>
     </div>
   );

@@ -4,7 +4,10 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import './ScheduleMonth.css';
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
+=======
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
 
 const ScheduleMonth = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -20,9 +23,14 @@ const ScheduleMonth = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+<<<<<<< HEAD
 
   return (
     <div className="ScheduleMonthMaster">
+=======
+  return (
+    <div className="Userplant">
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -30,6 +38,7 @@ const ScheduleMonth = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
+<<<<<<< HEAD
                 <div className="ScheduleMonth mt-2">
                   <div className="Schedule-header mb-4 text-start">
                     <div className="row align-items-center">
@@ -67,16 +76,28 @@ const ScheduleMonth = () => {
                         <div className="col-md-2">
                          <button type="button" className="btn btn-primary mt-4">Add</button>
                         </div>
+=======
+                <div className="userAuth mt-5">
+                  <div className="prod-header mb-4 text-start">
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">User Plant</h5>
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
                       </div>
                     </div>
                   </div>
 
+<<<<<<< HEAD
                   <div className="Schedule-table mt-4">
+=======
+                  <div className="plant-table mt-3">
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
                     <div className="table-responsive">
                       <table className="table table-bordered table-hover">
                         <thead className="table-dark">
                           <tr>
                             <th>Sr.</th>
+<<<<<<< HEAD
                             <th>Month Name</th>
                             <th>From Date</th>
                             <th>To Date</th>
@@ -90,6 +111,25 @@ const ScheduleMonth = () => {
                         </thead>
                         <tbody>
                           {/* Dynamic rows will go here */}
+=======
+                            <th>Module Name</th>
+                            <th>Value</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {/* Example row, replace with dynamic data */}
+                          <tr>
+                            <td>1</td>
+                            <td>Plant 1</td>
+                            <td>
+                              <select className="form-select">
+                                <option>User_Plant</option>
+                                <option>All</option>
+                              </select>
+                            </td>
+                          </tr>
+                          {/* Add more rows dynamically */}
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
                         </tbody>
                       </table>
                     </div>
@@ -101,7 +141,14 @@ const ScheduleMonth = () => {
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   );
 };
 
 export default ScheduleMonth;
+=======
+  )
+}
+
+export default ScheduleMonth
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9

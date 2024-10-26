@@ -65,9 +65,13 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
       "company_name",
       "short_name",
       "website",
-      "email",
+      "email-id",
       "password",
+<<<<<<< HEAD
       "password1",
+=======
+      
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
       "contact_no",
       "footer_message",
       "director_name",
@@ -89,12 +93,16 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
       }
     });
 
+<<<<<<< HEAD
 
   
 
      if (formData.password !== formData.password1) {
       newErrors.password1 = "Passwords do not match";
     }
+=======
+  
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -245,21 +253,21 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label htmlFor="email" className="col-sm-4 col-form-label">
+                  <label htmlFor="email_id" className="col-sm-4 col-form-label">
                     Email Id
                   </label>
                   <div className="col-sm-8">
                     <input
-                      type="email"
+                      type="email_id"
                       className="form-control"
-                      id="email"
-                      name="email"
-                      value={formData.email}
+                      id="email_id"
+                      name="email_id"
+                      value={formData.email_id}
                       onChange={handleChange}
                       placeholder="contact@sharp-engineers.com"
                     />
-                    {errors.email && (
-                      <div className="text-danger">{errors.email}</div>
+                    {errors.email_id && (
+                      <div className="text-danger">{errors.email_id}</div>
                     )}
                   </div>
                 </div>
@@ -282,6 +290,7 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                     )}
                   </div>
                 </div>
+<<<<<<< HEAD
                 <div className="row mb-3">
                   <label htmlFor="password1" className="col-sm-4 col-form-label">
                     Confirm Password
@@ -301,6 +310,8 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                     )}
                   </div>
                 </div>
+=======
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
                 
                 <div className="row mb-3">
                   <label

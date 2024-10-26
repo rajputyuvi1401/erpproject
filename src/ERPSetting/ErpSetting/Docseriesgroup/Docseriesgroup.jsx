@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -107,3 +108,16 @@ const Docseriesgroup = () => {
 };
 
 export default Docseriesgroup;
+=======
+import React from 'react'
+
+const Docseriesgroup = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default Docseriesgroup
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9

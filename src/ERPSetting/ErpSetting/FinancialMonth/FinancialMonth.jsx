@@ -4,9 +4,14 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import './FinancialMonth.css';
+<<<<<<< HEAD
 
 import { FaEdit,FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+=======
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
 
 const FinancialMonth = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -39,9 +44,14 @@ const FinancialMonth = () => {
                         <h5 className="header-title">Month Master</h5>
                       </div>
                       <div className="col-md-8 text-end">
+<<<<<<< HEAD
                         <Link type="button" className="btn" to='/AddQuater'>Add Quarter</Link>
                         <Link type="button" className="btn" to='/Companysetup'>Company Info</Link>
 
+=======
+                        <button type="button" className="btn">Add Quarter</button>
+                        <button type="button" className="btn">Company Info</button>
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
                       </div>
                     </div>
                   </div>
@@ -75,12 +85,20 @@ const FinancialMonth = () => {
                           <td>100</td>
                           <td>
                             <button className="btn btn-link">
+<<<<<<< HEAD
                               <FaEdit/>
+=======
+                              <FontAwesomeIcon icon={faEdit} />
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
                             </button>
                           </td>
                           <td>
                             <button className="btn btn-link text-danger">
+<<<<<<< HEAD
                              <FaTrash/>
+=======
+                              <FontAwesomeIcon icon={faTrash} />
+>>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
                             </button>
                           </td>
                         </tr>
