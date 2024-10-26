@@ -256,8 +256,7 @@ import Emailsetup from "./ERPSetting/ErpSetting/Emailsetup/Emailsetup.jsx";
 
 import Emailtemplate from "./ERPSetting/ErpSetting/Emailtemplate/Emailtemplate.jsx";
 
-import DocumentStart from "./ERPSetting/ErpSetting/ErpFinancialYear/DocumentStartNo/DocumentStart.jsx";
-<<<<<<< HEAD
+
 
 import AddQuater from "./ERPSetting/ErpSetting/FinancialMonth/AddQuater/AddQuater.jsx";
 
@@ -270,8 +269,7 @@ import PurchaseErp from "./ERPSetting/ErpSetting/Docseriesgroup/PurchaseOrder/Pu
 import PurchaseERPGRN from "./ERPSetting/ErpSetting/Docseriesgroup/PurchaseERPGRN/PurchaseERPGRN.jsx";
 
 import OutwardInward from "./ERPSetting/ErpSetting/Docseriesgroup/OutwardInward/OutwardInward.jsx";
-=======
->>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
+
 
 function App() {
   return (
@@ -464,7 +462,7 @@ function App() {
         <Route path="/Plantwiseseries" element={<Plantwiseseries />} />
         <Route path="/AlertSetting" element={<AlertSetting />} />
         <Route path="/Userwisepermission" element={<Userwisepermission />} />
-<<<<<<< HEAD
+
 
 
 
@@ -487,7 +485,7 @@ function App() {
         <Route path="/Emailsetup" element={<Emailsetup />} />
         <Route path="/Emailtemplate" element={<Emailtemplate />} />
 
-        <Route path="/Document-start" element={<DocumentStart />} />
+
 
         <Route path="/AddQuater" element={<AddQuater/>} />
 
@@ -497,7 +495,7 @@ function App() {
         <Route path="/PurchaseERPGRN" element={<PurchaseERPGRN/>} />
         <Route path="/OutwardInward" element={<OutwardInward/>} />
 
-=======
+
 
 
 
@@ -520,8 +518,8 @@ function App() {
         <Route path="/Emailsetup" element={<Emailsetup />} />
         <Route path="/Emailtemplate" element={<Emailtemplate />} />
 
-        <Route path="/Document-start" element={<DocumentStart />} />
->>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
+      
+
       </Routes>
     </div>
   );

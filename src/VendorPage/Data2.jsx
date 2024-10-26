@@ -14,11 +14,9 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
       "short_name",
      
       "password",
-<<<<<<< HEAD
+
       "password1",
-=======
-    
->>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
+
       "city",
       "country",
       "address",

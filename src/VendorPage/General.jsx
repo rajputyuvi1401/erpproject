@@ -67,11 +67,9 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
       "website",
       "email-id",
       "password",
-<<<<<<< HEAD
+
       "password1",
-=======
-      
->>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
+
       "contact_no",
       "footer_message",
       "director_name",
@@ -93,16 +91,16 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
       }
     });
 
-<<<<<<< HEAD
+
 
   
 
      if (formData.password !== formData.password1) {
       newErrors.password1 = "Passwords do not match";
     }
-=======
+
   
->>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
+
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -290,7 +288,7 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                     )}
                   </div>
                 </div>
-<<<<<<< HEAD
+
                 <div className="row mb-3">
                   <label htmlFor="password1" className="col-sm-4 col-form-label">
                     Confirm Password
@@ -310,8 +308,7 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                     )}
                   </div>
                 </div>
-=======
->>>>>>> 574a3e98363c5956f7e937dbce101d13f6f626a9
+
                 
                 <div className="row mb-3">
                   <label

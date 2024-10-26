@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Docseriesgroup = () => {
+const DocumentStart = () => {
   return (
     <div>
       
@@ -8,6 +8,4 @@ const Docseriesgroup = () => {
   )
 }
 
-export default Docseriesgroup
-
-
+export default DocumentStart
