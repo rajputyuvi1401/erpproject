@@ -60,7 +60,7 @@ const WeekMaster = () => {
                           <label>To Date</label>
                           <input type="date" className="form-control" />
                         </div>
-                        <div className="col-md-2 col-sm-12 d-flex align-items-end">
+                        <div className="col-md-2 col-sm-12 mt-5">
                           <button type="button" className="btn btn-primary w-100">Save</button>
                         </div>
                       </div>

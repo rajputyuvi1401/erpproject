@@ -4,6 +4,9 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
 import "./UserConfiguration.css";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+
 
 const UserConfiguration = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -21,7 +24,7 @@ const UserConfiguration = () => {
   }, [sideNavOpen]);
 
   const [formData, setFormData] = useState({
-    plant: "SHARP",
+    plant: "Sharp",
     department: "",
     fullName: "",
     username: "",
@@ -39,14 +42,42 @@ const UserConfiguration = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Add your form submission logic here
+
+    // Prepare API data
+    const apiData = {
+      username: formData.username,
+      email: formData.emailId,
+      password: formData.password,
+      PlantName: formData.plant,
+      Department: formData.department,
+      FullName: formData.fullName,
+      MobileNo: formData.mobileNo,
+    };
+
+    console.log("Form Data:", apiData); // Log data to console
+
+    try {
+      // API Call
+      const response = await axios.post("http://13.201.136.34:8000/Settings/api/register/", apiData);
+
+      if (response.status === 200 || response.status === 201) {
+        toast.success("User registered successfully!");
+        console.log("API Response:", response.data);
+      } else {
+        toast.error("Failed to register user. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred while registering the user.");
+    }
   };
+
 
   return (
     <div className="User">
+      <ToastContainer/>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">

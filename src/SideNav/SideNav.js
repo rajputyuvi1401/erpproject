@@ -42,10 +42,9 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <span>ERP Setting</span>
             </div>
             <Dropdown.Menu show={openDropdown === "erp"}>
-             
               <Dropdown>
                 <Dropdown.Toggle as="div" className="dropdown-item">
-                User Configuration
+                  User Configuration
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item as={Link} to="/ErpSetting">
@@ -84,14 +83,13 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                 </Dropdown.Menu>
               </Dropdown>
 
-          
               <Dropdown>
                 <Dropdown.Toggle as="div" className="dropdown-item">
-                ERP Configuration
+                  ERP Configuration
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item as={Link} to="#">
-                    Company
+                    <strong>Company</strong>
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="/Companysetup">
                     Company / Plant Setup
@@ -100,7 +98,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     Web. config File
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="/ErpFinancialYear">
-                   Financial Year
+                    Financial Year
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="/FinancialMonth">
                     Financial Month Master
@@ -112,11 +110,8 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     Weekly Off / Holiday
                   </Dropdown.Item>
 
-                 
-
-                  <Dropdown.Item as={Link} to="/Settingerp">
-
-                    Setting
+                  <Dropdown.Item as={Link} to="#/Settingerp">
+                    <strong>Setting</strong>
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="/Docseriesgroup">
                     Doc. Series /Group
@@ -142,13 +137,13 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   <Dropdown.Item as={Link} to="/Itemmastersetup">
                     Item Master Setup
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Emailsms">
-                    Email / SMS
+                  <Dropdown.Item as={Link} to="#/Emailsms">
+                    <strong>Email / SMS</strong>
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="/Emailsetup">
                     Email Setup
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Emailtemplate">
+                  <Dropdown.Item as={Link} to="#/Emailtemplate">
                     Email Template
                   </Dropdown.Item>
                 </Dropdown.Menu>
@@ -168,7 +163,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/delete-record">
                 Delete Record
               </Dropdown.Item>
-             
             </Dropdown.Menu>
           </li>
 
@@ -513,33 +507,33 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Item as={Link} to="/WorkOrderList">
                 Work Order List
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/">
+              <Dropdown.Item as={Link} to="/ProductionPlanList">
                 Production Plan List
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/">
+              <Dropdown.Item as={Link} to="/ProductionEntry">
                 Production Entry
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/">
+              <Dropdown.Item as={Link} to="/ProductionEntryAss">
                 Production Entry Ass.
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/">
+              <Dropdown.Item as={Link} to="/ProductionReport">
                 Production Report
               </Dropdown.Item>
 
               <Dropdown.Divider />
               <Dropdown>
                 <Dropdown.Toggle as="div" className="dropdown-item">
-                  Rework Production
+                  <strong>Rework Production</strong>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="#/">
-                    57F4 Inward Challan
+                  <Dropdown.Item as={Link} to="/ReworkProduction">
+                    Rework Production Entry2
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Jobwork Inward Challan
+                  <Dropdown.Item as={Link} to="/ReworkProductionEntry">
+                    Rework Production Entry
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Vendor Scrap Inward
+                  <Dropdown.Item as={Link} to="/ReworkProductionReport">
+                    Rework Production Report
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -548,33 +542,36 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               <Dropdown.Divider />
               <Dropdown>
                 <Dropdown.Toggle as="div" className="dropdown-item">
-                  Scrap Production
+                  <strong>Scrap Production</strong>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="#/">
-                    57F4 Inward Challan
+                  <Dropdown.Item as={Link} to="/ScrapRejection">
+                    Scrap/Rejection Entry
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Jobwork Inward Challan
+                  <Dropdown.Item as={Link} to="/ScrapRejectionReport">
+                    Scrap/Rejection Report
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Vendor Scrap Inward
+                  <Dropdown.Item as={Link} to="/ScrapRejectionEntry">
+                    FG Scrap/Rejection Entry
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/FGScrapRejectionReport">
+                    FG Scrap/Rejection Report
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
               <Dropdown.Divider />
 
-              <Dropdown.Item as={Link} to="#/">
+              <Dropdown.Item as={Link} to="/MachineIdleTime">
                 Material Idle Time
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/">
+              <Dropdown.Item as={Link} to="/BreakdownTimeEntry">
                 Breakdown Time Entry
               </Dropdown.Item>
 
-              <Dropdown.Item as={Link} to="#/">
+              <Dropdown.Item as={Link} to="/BreakdownTimeReport">
                 Breakdown Time Report
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="#/">
+              <Dropdown.Item as={Link} to="/ContractorReport">
                 Contractor Payment
               </Dropdown.Item>
 
@@ -584,7 +581,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   Report
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="#/Report-Store">
+                  <Dropdown.Item as={Link} to="/ProReport">
                     GRN List
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="#/">

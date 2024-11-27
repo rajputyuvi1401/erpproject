@@ -59,28 +59,18 @@ const PurchaseERPGRN = () => {
                   <div className="GRNSeries-Main mb-4 text-start">
                     <div className="row text-start">
                       <div className="col-md-12">
-                        <button className="btn btn-light">Series Master</button>
-                        <Link to="/MasterData" className="btn btn-light">
-                          Master Data
-                        </Link>
-                        <Link to="/PurchaseErp" className="btn btn-light">
-                          Purchase Order
-                        </Link>
-                        <Link to="/PurchaseERPGRN" className="btn btn-light">
-                          Purchase GRN
-                        </Link>
-                        <Link to="/OutwardInward" className="btn btn-light">
-                          57F4 Outward / Inward
-                        </Link>
-                        <Link className="btn btn-light">GST Sales</Link>
-                        <Link className="btn btn-light">GST Sales Return</Link>
-                        <Link className="btn btn-light">Debit Credit Note</Link>
-                        <button className="btn btn-light">
-                          Delivery Challan
-                        </button>
-                        <button className="btn btn-light">Account</button>
-                        <button className="btn btn-light">Production</button>
-                        <button className="btn btn-light">Quotation</button>
+                      <Link to='/Docseriesgroup' className="btn btn-light">Series Master</Link> 
+                      <Link to='/MasterData' className="btn btn-light">Master Data</Link>
+                      <Link to='/PurchaseErp' className="btn btn-light">Purchase Order</Link>
+                      <Link to='/PurchaseERPGRN' className="btn btn-light">Purchase GRN</Link>
+                      <Link to='/OutwardInward' className="btn btn-light">57F4 Outward / Inward</Link>
+                      <Link to='/GSTsales' className="btn btn-light">GST Sales</Link>
+                      <Link to='/GstsalesReturn' className="btn btn-light">GST Sales Return</Link>
+                      <Link to='/DebitcreditNote' className="btn btn-light">Debit Credit Note</Link>
+                      <Link to='/Docddelivery' className="btn btn-light">Delivery Challan</Link>
+                      <Link to='/DocAccount' className="btn btn-light">Account</Link>
+                      <Link to='/DocProduction' className="btn btn-light">Production</Link>
+                      <Link to='/Quotation' className="btn btn-light">Quotation</Link>
                       </div>
                     </div>
                   </div>

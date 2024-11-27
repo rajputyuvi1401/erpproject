@@ -2,7 +2,7 @@
     font-family: Arial, sans-serif;
   }
   
-  .header-title {
+  .WeeklyOff  .header-title {
     font-weight: bold;
     font-size: 1.25rem;
   }
@@ -19,15 +19,15 @@
     text-align: start;
   }
   
-  .form-check {
+  .WeeklyOff .form-check {
     margin-bottom: 10px;
   }
   
-  .Holiday-table .table {
+  .WeeklyOff  .Holiday-table .table {
     margin-top: 20px;
   }
   
-  .table-responsive {
+  .WeeklyOff .table-responsive {
     overflow-x: auto;
   }
   

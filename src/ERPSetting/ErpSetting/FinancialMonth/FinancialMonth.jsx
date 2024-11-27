@@ -46,7 +46,7 @@ const FinancialMonth = () => {
                       <div className="col-md-8 text-end">
 
                         <Link type="button" className="btn" to='/AddQuater'>Add Quarter</Link>
-                        <Link type="button" className="btn" to='/Document-startNo'>Add Quarter</Link>
+                        
 
                         <Link type="button" className="btn" to='/Companysetup'>Company Info</Link>
 
