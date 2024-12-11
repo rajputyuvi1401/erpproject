@@ -37,17 +37,17 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
           </li>
           )}
 
-          {permissions && permissions.ERPSetting && (
-            <li className="dropdown-container">
-              <div className="dropdown-toggle" onClick={() => handleDropdownToggle("erp")}>
-                <FaInfoCircle />
-                <span>ERP Setting</span>
-              </div>
-              <Dropdown.Menu show={openDropdown === "erp"}>
-                {/* Add more items dynamically if user has permissions */}
-                {permissions.ERPSetting.includes("User Configuration") && (
-                  <Dropdown>
-                  <Dropdown.Toggle as="div" className="dropdown-item">
+          <li className="dropdown-container">
+            <div
+              className="dropdown-toggle"
+              onClick={() => handleDropdownToggle("erp")}
+            >
+              <FaInfoCircle />
+              <span>ERP Setting</span>
+            </div>
+            <Dropdown.Menu show={openDropdown === "erp"}>
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
                   User Configuration
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
@@ -85,12 +85,9 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     User Wise Permission
                   </Dropdown.Item>
                 </Dropdown.Menu>
-                  </Dropdown>
-                )}
-              
-                {/* Add more items dynamically if user has permissions */}
-                {permissions.ERPSetting.includes("ERP Configuration") && (
-                <Dropdown>
+              </Dropdown>
+
+              <Dropdown>
                 <Dropdown.Toggle as="div" className="dropdown-item">
                   ERP Configuration
                 </Dropdown.Toggle>
@@ -155,36 +152,23 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-                )}
-              {permissions.ERPSetting.includes("Change Password") && (
-                  <Dropdown.Item as={Link} to="/change-password">
-                    Change Password
-                  </Dropdown.Item>
-                )}
-                {permissions.ERPSetting.includes("Login History") && (
-                  <Dropdown.Item as={Link} to="/login-history">
-                    Login History
-                  </Dropdown.Item>
-                )}
-                {permissions.ERPSetting.includes("Dealer Management") && (
-                  <Dropdown.Item as={Link} to="/delete-management">
-                    Dealer Management
-                  </Dropdown.Item>
-                )}
-                {permissions.ERPSetting.includes("Dashboard Backup") && (
-                  <Dropdown.Item as={Link} to="/dashboard-backup">
-                    Dashboard Backup
-                  </Dropdown.Item>
-                )}
-                {permissions.ERPSetting.includes("Delete Record") && (
-                  <Dropdown.Item as={Link} to="/delete-record">
-                    Delete Record
-                  </Dropdown.Item>
-                )}
-              </Dropdown.Menu>
-            </li>
-          )}
-          {/* Add other permissions-based menu items here */}
+              <Dropdown.Item as={Link} to="/change-password">
+                Change Password
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/login-history">
+                Login History
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/delete-management">
+                Dealer Management
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/dashboard-backup">
+                Dashboard Backup
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/delete-record">
+                Delete Record
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </li>
 
           {permissions?.All_Masters && (
             <li className="dropdown-container">
@@ -659,156 +643,127 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             </li>
           )}
 
-          {/* Production Dropdown */}
-          {permissions?.Production && (
-            <li className="dropdown-container">
-              <div
-                className="dropdown-toggle"
-                onClick={() => handleDropdownToggle("production")}
-              >
-                <FaServicestack />
-                <span>Production</span>
-              </div>
-              <Dropdown.Menu show={openDropdown === "production"}>
-                {permissions.Production.includes("Work Order Entry") && (
-                  <Dropdown.Item as={Link} to="/WorkOrderEntry">
-                    Work Order Entry
-                  </Dropdown.Item>
-                )}
-                {permissions.Production.includes("Work Order List") && (
-                  <Dropdown.Item as={Link} to="/WorkOrderList">
-                    Work Order List
-                  </Dropdown.Item>
-                )}
-                {permissions.Production.includes("Production Plan List") && (
-                  <Dropdown.Item as={Link} to="/ProductionPlanList">
-                    Production Plan List
-                  </Dropdown.Item>
-                )}
-                {permissions.Production.includes("Production Entry") && (
-                  <Dropdown.Item as={Link} to="/ProductionEntry">
-                    Production Entry
-                  </Dropdown.Item>
-                )}
-                {permissions.Production.includes("Production Entry Ass.") && (
-                  <Dropdown.Item as={Link} to="/ProductionEntryAss">
-                    Production Entry Ass.
-                  </Dropdown.Item>
-                )}
-                {permissions.Production.includes("Production Report") && (
-                  <Dropdown.Item as={Link} to="/ProductionReport">
-                    Production Report
-                  </Dropdown.Item>
-                )}
-                {permissions.Production.includes("Rework Production") && (
-                  <Dropdown>
-                    <Dropdown.Toggle as="div" className="dropdown-item">
-                      <strong>Rework Production</strong>
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      {permissions.Production.includes("Rework Production Entry2") && (
-                        <Dropdown.Item as={Link} to="/ReworkProduction">
-                          Rework Production Entry2
-                        </Dropdown.Item>
-                      )}
-                      {permissions.Production.includes("Rework Production Entry") && (
-                        <Dropdown.Item as={Link} to="/ReworkProductionEntry">
-                          Rework Production Entry
-                        </Dropdown.Item>
-                      )}
-                      {permissions.Production.includes("Rework Production Report") && (
-                        <Dropdown.Item as={Link} to="/ReworkProductionReport">
-                          Rework Production Report
-                        </Dropdown.Item>
-                      )}
-                    </Dropdown.Menu>
-                  </Dropdown>
-                )}
-                {permissions.Production.includes("Scrap Production") && (
-                  <Dropdown>
-                    <Dropdown.Toggle as="div" className="dropdown-item">
-                      <strong>Scrap Production</strong>
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      {permissions.Production.includes("Scrap/Rejection Entry") && (
-                        <Dropdown.Item as={Link} to="/ScrapRejection">
-                          Scrap/Rejection Entry
-                        </Dropdown.Item>
-                      )}
-                      {permissions.Production.includes("Scrap/Rejection Report") && (
-                        <Dropdown.Item as={Link} to="/ScrapRejectionReport">
-                          Scrap/Rejection Report
-                        </Dropdown.Item>
-                      )}
-                      {permissions.Production.includes("FG Scrap/Rejection Entry") && (
-                        <Dropdown.Item as={Link} to="/ScrapRejectionEntry">
-                          FG Scrap/Rejection Entry
-                        </Dropdown.Item>
-                      )}
-                       {permissions.Production.includes("FG Scrap/Rejection Report") && (
-                        <Dropdown.Item as={Link} to="/ScrapRejectionEntry">
-                          FG Scrap/Rejection Report
-                        </Dropdown.Item>
-                      )}
-                    </Dropdown.Menu>
-                  </Dropdown>
-                )}
-                {permissions.Production.includes("Material Idle Time") && (
-                  <Dropdown.Item as={Link} to="/MachineIdleTime">
-                    Material Idle Time
-                  </Dropdown.Item>
-                )}
-                {permissions.Production.includes("Breakdown Time Entry") && (
-                  <Dropdown.Item as={Link} to="/BreakdownTimeEntry">
-                    Breakdown Time Entry
-                  </Dropdown.Item>
-                )}
-                {permissions.Production.includes("Breakdown Time Report") && (
-                  <Dropdown.Item as={Link} to="/BreakdownTimeReport">
-                    Breakdown Time Report
-                  </Dropdown.Item>
-                )}
-                {permissions.Production.includes("Contractor Payment") && (
-                  <Dropdown.Item as={Link} to="/ContractorReport">
-                    Contractor Payment
-                  </Dropdown.Item>
-                )}
-                {permissions.Production.includes("Report") && (
-                  <Dropdown>
-                    <Dropdown.Toggle as="div" className="dropdown-item">
-                      <strong>Report</strong>
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      {permissions.Production.includes("Rejection Report") && (
-                        <Dropdown.Item as={Link} to="/ProReport">
-                          Rejection Report
-                        </Dropdown.Item>
-                      )}
-                      {permissions.Production.includes("Rework Report") && (
-                        <Dropdown.Item as={Link} to="/ReworkReport">
-                          Rework Report
-                        </Dropdown.Item>
-                      )}
-                       <Dropdown.Item as={Link} to="/MachineDefaultIdle">
-                    Default Idle Time Report 
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/BreakdownAnalysis">
-                    Breakdown Analysis Report
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/CycleTime1">
-                    Cycle Time Report 
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/OperatorReport">
-                    Operator Performance Report
-                  </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                )}
-              </Dropdown.Menu>
-            </li>
-          )}
+          <li className="dropdown-container">
+            <div
+              className="dropdown-toggle"
+              onClick={() => handleDropdownToggle("production")}
+            >
+              <FaServicestack />
+              <span>Production</span>
+            </div>
+            <Dropdown.Menu show={openDropdown === "production"}>
+              <Dropdown.Item as={Link} to="/WorkOrderEntry">
+                Work Order Entry
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/WorkOrderList">
+                Work Order List
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/ProductionPlanList">
+                Production Plan List
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/ProductionEntry">
+                Production Entry
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/ProductionEntryAss">
+                Production Entry Ass.
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/ProductionReport">
+                Production Report
+              </Dropdown.Item>
 
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  <strong>Rework Production</strong>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/ReworkProduction">
+                    Rework Production Entry2
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/ReworkProductionEntry">
+                    Rework Production Entry
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/ReworkProductionReport">
+                    Rework Production Report
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Divider />
 
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  <strong>Scrap Production</strong>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/ScrapRejection">
+                    Scrap/Rejection Entry
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/ScrapRejectionReport">
+                    Scrap/Rejection Report
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/ScrapRejectionEntry">
+                    FG Scrap/Rejection Entry
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/FGScrapRejectionReport">
+                    FG Scrap/Rejection Report
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Divider />
+
+              <Dropdown.Item as={Link} to="/MachineIdleTime">
+                Material Idle Time
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/BreakdownTimeEntry">
+                Breakdown Time Entry
+              </Dropdown.Item>
+
+              <Dropdown.Item as={Link} to="/BreakdownTimeReport">
+                Breakdown Time Report
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/ContractorReport">
+                Contractor Payment
+              </Dropdown.Item>
+
+              <Dropdown.Divider />
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Report
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/ProReport">
+                    GRN List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    MRN List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Inward 57F4 Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Material Issue Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Gernal Material Issue Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Delivery Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    DC GRN List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Indent List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#/">
+                    Indent Status
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown.Divider />
+            </Dropdown.Menu>
+          </li>
         </ul>
       </div>
     </div>

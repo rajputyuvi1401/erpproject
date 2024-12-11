@@ -6,7 +6,7 @@ import Dashboard from "./Dashboard/Dashboard";
 // import Home from "./Home/Home";
 // import MainPage from "./MainPage/MainPage";
 import VendorPage from "./VendorPage/VendorPage";
-
+import Login from "./Login/Login.jsx"
 // Masters
 import MasterState from "./components/Master/MasterState";
 import MasterCustomers from "./components/Master1/MasterCustomers";
@@ -302,15 +302,6 @@ import ContractorReport from "./ProductionMaster/ContractorReport/ContractorRepo
 import ContractirList from "./ProductionMaster/ContractorReport/ContractorList/ContractirList.jsx";
 
 import ProReport from "./ProductionMaster/Report/ProReport.jsx";
-import BreakdownAnalysis from "./ProductionMaster/Report/BreakdownAnalysis/BreakdownAnalysis.jsx";
-import CycleTime1 from "./ProductionMaster/Report/CycleTime/CycleTime.jsx";
-import MachineDefaultBook from "./ProductionMaster/Report/MachineDefaultIdle/MachineDefaultBook.jsx";
-import MachineDefaultIdle from "./ProductionMaster/Report/MachineDefaultIdle/MachineDefaultIdle.jsx";
-import OperatorReport from "./ProductionMaster/Report/OperatorReport/OperatorReport.jsx";
-import ReworkReport from "./ProductionMaster/Report/ReworkReport/ReworkReport.jsx";
-
-
-import Login from "./Login/Login.jsx";
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function App() {
@@ -587,12 +578,6 @@ function App() {
         <Route path="/ContractirList" element={<ContractirList />} />
 
         <Route path="/ProReport" element={<ProReport />} />
-        <Route path="/BreakdownAnalysis" element={<BreakdownAnalysis />} />
-        <Route path="/CycleTime1" element={<CycleTime1 />} />
-        <Route path="/OperatorReport" element={<OperatorReport />} />
-        <Route path="/MachineDefaultBook" element={<MachineDefaultBook />} />
-        <Route path="/MachineDefaultIdle" element={<MachineDefaultIdle />} />
-        <Route path="/ReworkReport" element={<ReworkReport />} />
       </Routes>
     </div>
   );

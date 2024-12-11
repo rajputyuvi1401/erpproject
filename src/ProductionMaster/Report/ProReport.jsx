@@ -3,8 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
-import "./ProReport.css";
-// import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 const ProReport = () => {
     const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -37,26 +36,19 @@ const ProReport = () => {
                 <div className="PRoWorkorderList-header mb-4 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-4">
-                      <h5 className="header-title">Material Defect - Rejection Report</h5>
+                      <h5 className="header-title">Work Order List</h5>
                     </div>
                     <div className="col-md-8 text-end">
                       <button type="button" className="btn" to="/AddQuater">
-                        Export To Excel
+                        Work Order Report
                       </button>
-                      <button type="button" className="btn" to="#/">
-                        Print Format
-                      </button>
-                      <button type="button" className="btn" to="#/">
-                        Print Format 2
-                      </button>
-                      <button type="button" className="btn" to="#/">
-                        Machine Wise Defect Report
-                      </button>
-                      <button type="button" className="btn" to="#/">
-                        Rejection Report - OP Wise
-                      </button>
-                      <button type="button" className="btn" to="#/">
-                        Rejection Report - Quary
+
+                      <button
+                        type="button"
+                        className="btn"
+                        to="/Companysetup"
+                      >
+                        Work Order - Query
                       </button>
                     </div>
                   </div>
@@ -65,14 +57,6 @@ const ProReport = () => {
                 <div className="PRoWorkorderList-Main">
                   <div className="container-fluid">
                     <div className="row g-3 text-start">
-                        {/* Plant */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
-                        <label>Plant:</label>
-                        <select className="form-select">
-                          <option>Select All</option>
-                        </select>
-                      </div>
-
                       {/* From Date */}
                       <div className="col-sm-6 col-md-2 col-lg-1">
                         <label>From:</label>
@@ -85,53 +69,73 @@ const ProReport = () => {
                         <input type="date" className="form-control" />
                       </div>
 
-                      {/* Months Wise */}
+                      {/* Plant */}
                       <div className="col-sm-6 col-md-2 col-lg-1">
-                        <label>Months Wise :</label>
+                        <label>Plant:</label>
                         <select className="form-select">
-                          <option>Select All</option>
-                          <option>Select All</option>
-                          <option>Select All</option>
                           <option>Select All</option>
                         </select>
                       </div>
 
-                      {/* Operator Wise */}
+                      {/* Status */}
                       <div className="col-sm-6 col-md-2 col-lg-1">
-                        <label>Operator Wise:</label>
-                        <input type="text" className="form-control"/>
-                      </div>
-
-                      {/* Reason Wise */}
-                      <div className="col-sm-6 col-md-2 col-lg-1">
-                        <label>Reason Wise:</label>
+                        <label>Status:</label>
                         <select className="form-select">
-                          <option>Select All</option>
-                          <option>Select All</option>
                           <option>Select All</option>
                         </select>
                       </div>
 
-                      {/* Item Wise */}
+                      {/* Type */}
                       <div className="col-sm-6 col-md-2 col-lg-1">
-                        <label>Item Wise:</label>
+                        <label>Type:</label>
+                        <select className="form-select">
+                          <option>Select All</option>
+                        </select>
+                      </div>
+
+                      {/* Series */}
+                      <div className="col-sm-6 col-md-2 col-lg-1">
+                        <label>Series:</label>
+                        <select className="form-select">
+                          <option>Select All</option>
+                        </select>
+                      </div>
+
+                      {/* Auth */}
+                      <div className="col-sm-6 col-md-2 col-lg-1">
+                        <label>Auth:</label>
+                        <select className="form-select">
+                          <option>Select All</option>
+                        </select>
+                      </div>
+
+                      {/* Customer Name */}
+                      <div className="col-sm-6 col-md-1 col-lg-1">
+                        <label>Customer Name:</label>
                         <input type="text" className="form-control" />
                       </div>
 
-                      {/* Machine Wise */}
+                      {/* Item Name */}
                       <div className="col-sm-6 col-md-1 col-lg-1">
-                        <label>Machine Wise :</label>
-                        <select className="form-select">
-                          <option>Select All</option>
-                          <option>Select All</option>
-                          <option>Select All</option>
-                        </select>
+                        <label>Item Name:</label>
+                        <input type="text" className="form-control" />
+                      </div>
+
+                      {/* Wo No */}
+                      <div className="col-sm-6 col-md-1 col-lg-1">
+                        <label>Wo No:</label>
+                        <input type="text" className="form-control" />
                       </div>
 
                       <div className="col-sm-2 col-md-2 col-lg-1 mt-4">
-                      <button type="button" className="btn btn-primary w-100" >
+                        <label></label>
+                      <button
+                          type="button"
+                          className="btn btn-primary w-100"
+                        >
                           Search
-                      </button>   
+                        </button>
+                        
                       </div>
 
                    
@@ -141,48 +145,60 @@ const ProReport = () => {
                 </div>
 
                 <div className="table-responsive">
-                <table className="table table-striped table-bordered ">
-      <thead>
-        <tr className="clr"> 
-          <th>Sr</th>
-          <th>Date </th>
-          <th>Part Name</th>
-          <th>M/C No</th>
-          <th>CP No</th>
-          <th>Shift</th>
-          <th>Operator Name</th>
-          <th>Supervisor Name</th>
-          <th>Pord Qty </th>
-          <th>Rej. Qty</th>
-          <th>Rej. %</th>
-          <th>Rej. Reason</th>
-          <th>Slip No</th>
-          <th>Type</th>
-          <th>Remark</th>
-        </tr>
-      </thead>
-
-      <tbody>
-          {/* Example row, you can map rows here */}
-          <tr>
-            <td>1</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-    </table>
+                  <table className="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Sr.</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Plant</th>
+                        <th scope="col">WO No</th>
+                        <th scope="col">Wo Date</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Item Code | Description</th>
+                        <th scope="col">SO/Mo No</th>
+                        <th scope="col">Cust Po No</th>
+                        <th scope="col">WO Status</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Auth</th>
+                        <th scope="col">Mll</th>
+                        <th scope="col">Doc / Del / Edit</th>
+                        <th scope="col">View</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {/* Example data row */}
+                      <tr>
+                        <td>1</td>
+                        <td>January</td>
+                        <td>01/01/2024</td>
+                        <td>31/01/2024</td>
+                        <td>1</td>
+                        <td>2024</td>
+                        <td>1</td>
+                        <td>January</td>
+                        <td>01/01/2024</td>
+                        <td>31/01/2024</td>
+                        <td>1</td>
+                        <td>2024</td>
+                        <td>2024</td>
+                        <td>2024</td>
+                        <td>2024</td>
+                        <td>
+                          <button className="btn btn-link">
+                            <FaEdit />
+                          </button>
+                        </td>
+                        <td>
+                          <button className="btn btn-link text-danger">
+                            <FaTrash />
+                          </button>
+                        </td>
+                      </tr>
+                      {/* More rows can be added here */}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </main>
