@@ -7,13 +7,6 @@ import "./Companysetup.css";
 
 const Companysetup = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("general");
-  const [activeTab1, setActiveTab1] = useState("data");
-  const [activeTab2, setActiveTab2] = useState("logo");
-  const [activeTab3, setActiveTab3] = useState("einvoice");
-
-
-
 
   const toggleSideNav = () => {
     setSideNavOpen((prevState) => !prevState);
@@ -27,21 +20,45 @@ const Companysetup = () => {
     }
   }, [sideNavOpen]);
 
+  const [activeTab, setActiveTab] = useState("general");
+  const [formData, setFormData] = useState({
+    companyName: "SHARP ENGINEERS",
+    shortName: "SE",
+    msmeNo: "MH04P0022406",
+    address1: "A-31 MIDC WALUJ 431136",
+    address2: "A-31 MIDC WALUJ 431136",
+    website: "sharp-engineers.com",
+    pinCode: "431136",
+    emailId: "contact@sharp-engineers.com",
+    city: "AURANGABAD",
+    contactNo: "8888826579",
+    state: "MAHARASHTRA",
+    footerMessage: "Property of Sharp Engineers",
+    stateNumeric: "27",
+    stateCodeAlpha: "MH",
+    directorName: "Umesh Khandelwal",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="CompanySetup">
       <div className="container-fluid">
-        <div className="row">
+        <div className="row text-start">
           <div className="col-md-12">
             <div className="Main-NavBar">
               <NavBar toggleSideNav={toggleSideNav} />
-              <SideNav
-                sideNavOpen={sideNavOpen}
-                toggleSideNav={toggleSideNav}
-              />
+              <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Company mt-5">
                   <div className="company-header mb-4 text-start">
-                    <div className="row align-items-start">
+                    <div className="row align-items-start mt-2">
                       <div className="col-md-2">
                         <h1 className="header-title">Company Setup</h1>
                       </div>
@@ -51,361 +68,452 @@ const Companysetup = () => {
                         </p>
                       </div>
                       <div className="col-md-6 text-end">
-                        <button type="button" className="companybtn">
+                        <button type="button" className="btn">
                           General Setting
                         </button>
                       </div>
                     </div>
                   </div>
-                  {/* Tabs Section */}
+                </div>
+                
+                <div className="tabs">
+                  <button
+                    className={`tab ${activeTab === "general" ? "active" : ""}`}
+                    onClick={() => setActiveTab("general")}
+                  >
+                    General
+                  </button>
+                  <button
+                    className={`tab ${activeTab === "data2" ? "active" : ""}`}
+                    onClick={() => setActiveTab("data2")}
+                  >
+                    Data-2
+                  </button>
+                  <button
+                    className={`tab ${activeTab === "logo" ? "active" : ""}`}
+                    onClick={() => setActiveTab("logo")}
+                  >
+                    Logo/Images
+                  </button>
+                  <button
+                    className={`tab ${activeTab === "einvoice" ? "active" : ""}`}
+                    onClick={() => setActiveTab("einvoice")}
+                  >
+                    E-Invoice
+                  </button>
+                </div>
 
-                  <div className="tabs-container">
-                    <ul className="nav nav-tabs">
-                      <li className="nav-item">
-                        <button
-                          className={`nav-link ${
-                            activeTab === "general" ? "active" : ""
-                          }`}
-                          onClick={() => setActiveTab("general")}
-                        >
-                          General
-                        </button>
-                      </li>
-                      <li className="nav-item">
-                        <button
-                          className={`nav-link ${
-                            activeTab1 === "data2" ? "active" : ""
-                          }`}
-                          onClick={() => setActiveTab1("data2")}
-                        >
-                          Data-2
-                        </button>
-                      </li>
-                      <li className="nav-item">
-                        <button
-                          className={`nav-link ${
-                            activeTab2 === "logo" ? "active" : ""
-                          }`}
-                          onClick={() => setActiveTab2("logo")}
-                        >
-                          Logo / Images
-                        </button>
-                      </li>
-                      <li className="nav-item">
-                        <button
-                          className={`nav-link ${
-                            activeTab3 === "einvoice" ? "active" : ""
-                          }`}
-                          onClick={() => setActiveTab3("einvoice")}
-                        >
-                          E-Invoice
-                        </button>
-                      </li>
-                    </ul>
-
-                    {/* Tab Content */}
-                    <div className="tab-content">
-                      {activeTab === "general" && (
-                        <div className="tab-pane active">
-                          <div className="container-fluid">
-                            <div className="row text-start">
-                              <div className="col-md-4 col-12">
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="companyName">
-                                      Company Name
-                                    </label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <input
-                                      id="companyName"
-                                      className="form-control"
-                                      defaultValue="SHARP ENGINEERS"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="shortName">
-                                      Short Name
-                                    </label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <input
-                                      id="shortName"
-                                      className="form-control"
-                                      defaultValue="SE"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="msmeNo">MSME No</label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <input
-                                      id="msmeNo"
-                                      className="form-control"
-                                      defaultValue="MH04P0022406"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="address">Address</label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <textarea
-                                      id="address"
-                                      className="form-control"
-                                      defaultValue="A-31 MIDC WALUJ 431136"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="website">Website</label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <input
-                                      id="website"
-                                      className="form-control"
-                                      defaultValue="sharp-engineers.com"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-md-4 col-12">
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="pinCode">Pin Code</label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <input
-                                      id="pinCode"
-                                      className="form-control"
-                                      defaultValue="431136"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="email">Email Id</label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <input
-                                      id="email"
-                                      className="form-control"
-                                      defaultValue="contact@sharp-engineers.com"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="city">City</label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <input
-                                      id="city"
-                                      className="form-control"
-                                      defaultValue="AURANGABAD"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="contactNo">
-                                      Contact No
-                                    </label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <input
-                                      id="contactNo"
-                                      className="form-control"
-                                      defaultValue="8888826579"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="state">State</label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <input
-                                      id="state"
-                                      className="form-control"
-                                      defaultValue="MAHARASHTRA"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-md-4 col-12">
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="footerMessage">
-                                      Footer Message
-                                    </label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <textarea
-                                      id="footerMessage"
-                                      className="form-control"
-                                      defaultValue="Property of Sharp Engineers"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="State No Numeric">
-                                    State No Numeric
-                                    </label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                  <input
-                                      id="directorName"
-                                      className="form-control"
-                                      defaultValue="Umesh Khandelwal"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="State Code Alpha">
-                                    State Code Alpha
-                                    </label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                  <input
-                                      id="directorName"
-                                      className="form-control"
-                                      defaultValue="Umesh Khandelwal"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="directorName">
-                                      Director Name
-                                    </label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <input
-                                      id="directorName"
-                                      className="form-control"
-                                      defaultValue="Umesh Khandelwal"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-4 col-12">
-                                    <label htmlFor="directorSign">
-                                      Director Sign
-                                    </label>
-                                  </div>
-                                  <div className="col-md-8 col-12">
-                                    <input
-                                      id="directorSign"
-                                      className="form-control"
-                                      type="file"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="row mb-3">
-                                  <div className="col-md-8 offset-md-4 col-12">
-                                    <button
-                                      type="button"
-                                      className="companybtn btn btn-primary w-100"
-                                    >
-                                      Update Setup
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                      {activeTab === "data2" && (
-                        <div className="tab-pane">
-                           <h3>Data-2 Information</h3>
-            <form className="form-grid">
-              <label>
-                VAT TIN: <input type="text" />
-              </label>
-              <label>
-                VAT TIN Date: <input type="date" />
-              </label>
-              <label>
-                CST TIN: <input type="text" />
-              </label>
-              <label>
-                CST TIN Date: <input type="date" />
-              </label>
-              <label>
-                C. Excise Range: <input type="text" />
-              </label>
-              <label>
-                Commissionerate: <input type="text" />
-              </label>
-              <label>
-                C. Excise Reg No: <input type="text" />
-              </label>
-              <label>
-                ECC No: <input type="text" />
-              </label>
-              <label>
-                P.L.A. No: <input type="text" />
-              </label>
-              <label>
-                GST No: <input type="text" />
-              </label>
-              <label>
-                PAN No: <input type="text" />
-              </label>
-              <label>
-                CIN No: <input type="text" />
-              </label>
-              <label>
-                Import/Export Code: <input type="text" />
-              </label>
-              <label>
-                ARN Date: <input type="date" />
-              </label>
-              <label>
-                Export House No: <input type="text" />
-              </label>
-              <label>
-                ARN No: <input type="text" />
-              </label>
-              <label>
-                LUT No: <input type="text" />
-              </label>
-              <label>
-                LUT Date: <input type="date" />
-              </label>
-            </form>
-                        </div>
-                      )}
-                      {activeTab === "logo" && (
-                        <div className="tab-pane">
-                          <h3>Upload Logo / Images</h3>
-                          <p>
-                            This section will allow uploading logos and images.
-                          </p>
-                        </div>
-                      )}
-                      {activeTab === "einvoice" && (
-                        <div className="tab-pane">
-                          <h3>E-Invoice Settings</h3>
-                          <p>
-                            This section will contain E-Invoice related
-                            settings.
-                          </p>
-                        </div>
-                      )}
+                {activeTab === "general" && (
+                <div className="form-container">
+                <div className="form-row">
+                  <div className="form-column">
+                    <div className="form-group">
+                      <label>Company Name:</label>
+                      <div className="input-group">
+                        <input
+                          type="text"
+                          name="companyName"
+                          value={formData.companyName}
+                          onChange={handleInputChange}
+                        />
+                        <input
+                          type="text"
+                          name="shortName"
+                          value={formData.shortName}
+                          placeholder="Short Name"
+                          className="short-name"
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    </div>
+        
+                    <div className="form-group">
+                      <label>Address:</label>
+                      <textarea
+                        name="address1"
+                        value={formData.address1}
+                        onChange={handleInputChange}
+                      />
+                      <small className="helper-text">* Print on Invoice / Rs./ Delivery Challan</small>
+                    </div>
+        
+                    <div className="form-group">
+                      <label>Website:</label>
+                      <input
+                        type="text"
+                        name="website"
+                        value={formData.website}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+        
+                    <div className="form-group">
+                      <label>Email Id:</label>
+                      <input
+                        type="email"
+                        name="emailId"
+                        value={formData.emailId}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+        
+                    <div className="form-group">
+                      <label>Contact No:</label>
+                      <input
+                        type="text"
+                        name="contactNo"
+                        value={formData.contactNo}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+        
+                    <div className="form-group">
+                      <label>Footer Message:</label>
+                      <textarea
+                        name="footerMessage"
+                        value={formData.footerMessage}
+                        onChange={handleInputChange}
+                      />
+                      <small className="helper-text">* Print Document Footer Message</small>
+                    </div>
+        
+                    <div className="form-group">
+                      <label>Director Name:</label>
+                      <div className="input-group">
+                        <input
+                          type="text"
+                          name="directorName"
+                          value={formData.directorName}
+                          onChange={handleInputChange}
+                        />
+                        <div className="signature-placeholder">Director Sign</div>
+                      </div>
                     </div>
                   </div>
-                </div>
+        
+                  <div className="form-column">
+                    <div className="form-group">
+                      <label>MSME No:</label>
+                      <input
+                        type="text"
+                        name="msmeNo"
+                        value={formData.msmeNo}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+        
+                    <div className="form-group">
+                      <label>Address:</label>
+                      <textarea
+                        name="address2"
+                        value={formData.address2}
+                        onChange={handleInputChange}
+                      />
+                      <small className="helper-text">* Print on Purchase Order</small>
+                    </div>
+        
+                    <div className="form-group">
+                      <label>Pin Code:</label>
+                      <input
+                        type="text"
+                        name="pinCode"
+                        value={formData.pinCode}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+        
+                    <div className="form-group">
+                      <label>City:</label>
+                      <input
+                        type="text"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+        
+                    <div className="form-group">
+                      <label>State:</label>
+                      <input
+                        type="text"
+                        name="state"
+                        value={formData.state}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+        
+                    <div className="form-group">
+                      <label>State No Numeric:</label>
+                      <div className="input-group">
+                        <input
+                          type="text"
+                          name="stateNumeric"
+                          value={formData.stateNumeric}
+                          onChange={handleInputChange}
+                        />
+                        <span className="helper-text">eg : 27</span>
+                      </div>
+                    </div>
+        
+                    <div className="form-group">
+                      <label>State Code Alpha:</label>
+                      <div className="input-group">
+                        <input
+                          type="text"
+                          name="stateCodeAlpha"
+                          value={formData.stateCodeAlpha}
+                          onChange={handleInputChange}
+                        />
+                        <span className="helper-text">eg : MH</span>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+                )}
+
+                {activeTab === "data2" && (
+                   <div className="company-setup-data2">
+                   <div className="form-container">
+                     <div className="form-row">
+                       <div className="form-column">
+                         <div className="form-group">
+                           <label>VAT TIN:</label>
+                           <input
+                             type="text"
+                             name="vatTin"
+                             value={formData.vatTin}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>CST TIN:</label>
+                           <input
+                             type="text"
+                             name="cstTin"
+                             value={formData.cstTin}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>C. Excise Range:</label>
+                           <textarea
+                             name="exciseRange"
+                             value={formData.exciseRange}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>Commissionerate:</label>
+                           <input
+                             type="text"
+                             name="commissionerate"
+                             value={formData.commissionerate}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>C Excise Reg No:</label>
+                           <input
+                             type="text"
+                             name="exciseRegNo"
+                             value={formData.exciseRegNo}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>P.L.A No:</label>
+                           <input
+                             type="text"
+                             name="plaNo"
+                             value={formData.plaNo}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>Service Tax No:</label>
+                           <input
+                             type="text"
+                             name="serviceTaxNo"
+                             value={formData.serviceTaxNo}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>Import/Export Code:</label>
+                           <input
+                             type="text"
+                             name="importExportCode"
+                             value={formData.importExportCode}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>ARN No:</label>
+                           <input
+                             type="text"
+                             name="arnNo"
+                             value={formData.arnNo}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>Export House No:</label>
+                           <input
+                             type="text"
+                             name="exportHouseNo"
+                             value={formData.exportHouseNo}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>Udyog Aadhar No:</label>
+                           <input
+                             type="text"
+                             name="udyogAadharNo"
+                             value={formData.udyogAadharNo}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+                       </div>
+             
+                       <div className="form-column">
+                         <div className="form-group">
+                           <label>Vat Tin Date:</label>
+                           <input
+                             type="text"
+                             name="vatTinDate"
+                             value={formData.vatTinDate}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>Cst Tin Date:</label>
+                           <input
+                             type="text"
+                             name="cstTinDate"
+                             value={formData.cstTinDate}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>Subject to:</label>
+                           <input
+                             type="text"
+                             name="subjectTo"
+                             value={formData.subjectTo}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>Division:</label>
+                           <input
+                             type="text"
+                             name="division"
+                             value={formData.division}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>GST No:</label>
+                           <input
+                             type="text"
+                             name="gstNo"
+                             value={formData.gstNo}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>ECC No:</label>
+                           <input
+                             type="text"
+                             name="eccNo"
+                             value={formData.eccNo}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>PAN No:</label>
+                           <input
+                             type="text"
+                             name="panNo"
+                             value={formData.panNo}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>CIN NO:</label>
+                           <input
+                             type="text"
+                             name="cinNo"
+                             value={formData.cinNo}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>Import/Export Date:</label>
+                           <input
+                             type="text"
+                             name="importExportDate"
+                             value={formData.importExportDate}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>ARN Date:</label>
+                           <input
+                             type="text"
+                             name="arnDate"
+                             value={formData.arnDate}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>LUT No:</label>
+                           <input
+                             type="text"
+                             name="lutNo"
+                             value={formData.lutNo}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+             
+                         <div className="form-group">
+                           <label>LUT Date:</label>
+                           <input
+                             type="text"
+                             name="lutDate"
+                             value={formData.lutDate}
+                             onChange={handleInputChange}
+                           />
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                )}
+                {activeTab === "logo" && <p>Logo/Images content here...</p>}
+                {activeTab === "einvoice" && <p>E-Invoice content here...</p>}
               </main>
             </div>
           </div>

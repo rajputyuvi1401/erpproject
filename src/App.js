@@ -1,9 +1,9 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes,Navigate } from "react-router-dom";
 import "./App.css";
 
 import Dashboard from "./Dashboard/Dashboard";
-import Home from "./Home/Home";
+// import Home from "./Home/Home";
 // import MainPage from "./MainPage/MainPage";
 import VendorPage from "./VendorPage/VendorPage";
 
@@ -183,11 +183,7 @@ import StockReport from "./StoreMaster/StockReport/StorckReport.jsx";
 import InwardChallanList from "./StoreMaster/SubconGRN/InwardChallanList/InwardChallanList.jsx";
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Production
-import WorkOrderEntry from "./ProductionMaster/WorkOrderEntry/WorkOrderEntry.jsx";
-import WorkOrderList from "./ProductionMaster/WorkOrderList/WorkOrderList.jsx";
 
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Erp Setting
 import UserConfiguration from "./ERPSetting/UserConfiguration/UserConfiguration.jsx";
 import DisableUserList from "./ERPSetting/UserConfiguration/DisableUserList/DisableUserList.jsx";
@@ -228,6 +224,8 @@ import ErpWebConfig from "./ERPSetting/ErpSetting/ErpWebconfig/ErpWebConfig.jsx"
 
 import ErpFinancialYear from "./ERPSetting/ErpSetting/ErpFinancialYear/ErpFinancialYear.jsx";
 
+import DocumentStart from "./ERPSetting/ErpSetting/ErpFinancialYear/DocumentStart/DocumentStart.jsx";
+
 import FinancialMonth from "./ERPSetting/ErpSetting/FinancialMonth/FinancialMonth.jsx";
 
 import ScheduleMonth from "./ERPSetting/ErpSetting/SeheduleMonth/ScheduleMonth.jsx";
@@ -256,8 +254,6 @@ import Emailsetup from "./ERPSetting/ErpSetting/Emailsetup/Emailsetup.jsx";
 
 import Emailtemplate from "./ERPSetting/ErpSetting/Emailtemplate/Emailtemplate.jsx";
 
-
-
 import AddQuater from "./ERPSetting/ErpSetting/FinancialMonth/AddQuater/AddQuater.jsx";
 
 import WeekMaster from "./ERPSetting/ErpSetting/SeheduleMonth/WeekMaster/WeekMaster.jsx";
@@ -270,12 +266,59 @@ import PurchaseERPGRN from "./ERPSetting/ErpSetting/Docseriesgroup/PurchaseERPGR
 
 import OutwardInward from "./ERPSetting/ErpSetting/Docseriesgroup/OutwardInward/OutwardInward.jsx";
 
+import DebitcreditNote from "./ERPSetting/ErpSetting/Docseriesgroup/Debitcredit/DebitcreditNote.jsx";
+
+import DocAccount from "./ERPSetting/ErpSetting/Docseriesgroup/DocAccount/DocAccount.jsx";
+import Docddelivery from "./ERPSetting/ErpSetting/Docseriesgroup/Docdelivery/Docddelivery.jsx";
+import DocProduction from "./ERPSetting/ErpSetting/Docseriesgroup/DocProduction/DocProduction.jsx";
+import GSTsales from "./ERPSetting/ErpSetting/Docseriesgroup/GSTSales/GSTsales.jsx";
+import GstsalesReturn from "./ERPSetting/ErpSetting/Docseriesgroup/GStsalesReturn/GstsalesReturn.jsx";
+import Quotation from "./ERPSetting/ErpSetting/Docseriesgroup/Quotation/Quotation.jsx";
+import DocCompanySetting from "./ERPSetting/ErpSetting/Docprintformat/CompanySetting/DocCompanySetting.jsx";
+import ViewItemMaster from "./ERPSetting/ErpSetting/ItemMasterSetup/ViewItemMaster/ViewItemMaster.jsx";
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Production
+import WorkOrderEntry from "./ProductionMaster/WorkOrderEntry/WorkOrderEntry.jsx";
+import WorkOrderList from "./ProductionMaster/WorkOrderList/WorkOrderList.jsx";
+import ProductionEntryAss from "./ProductionMaster/ProductionEntryAss/ProductionEntryAss.jsx";
+import ProductionPlanList from "./ProductionMaster/ProductionPlanList/ProductionPlanList.jsx";
+import ProductionEntry from "./ProductionMaster/ProductionEntry/ProductionEntry.jsx";
+import ProductionReport from "./ProductionMaster/ProductionReport/ProductionReport.jsx";
+import ReworkProduction from "./ProductionMaster/ReworkProduction/ReworkProduction.jsx";
+import ReworkProductionEntry from "./ProductionMaster/ReworkProduction/ReworkProductionEntry/ReworkProductionEntry.jsx";
+import ReworkProductionReport from "./ProductionMaster/ReworkProduction/ReworkProductionReport/ReworkProductionReport.jsx";
+import ScrapRejection from "./ProductionMaster/ScrapRejection/ScrapRejection.jsx";
+import ScrapRejectionReport from "./ProductionMaster/ScrapRejection/ScrapRejectionReport/ScrapRejectionReport.jsx";
+import ScrapRejectionEntry from "./ProductionMaster/ScrapRejection/ScrapRejectionEntry/ScrapRejectionEntry.jsx";
+import FGScrapRejectionReport from "./ProductionMaster/ScrapRejection/FGScrapRejectionReport/FGScrapRejectionReport.jsx";
+
+import MachineIdleTime from "./ProductionMaster/MachineIdleTime/MachineIdleTime.jsx";
+import NewIdleMaster from "./ProductionMaster/MachineIdleTime/NewIdleMaster/NewIdleMaster.jsx";
+import BreakdownTimeEntry from "./ProductionMaster/BreakdownTimeEntry/BreakdownTimeEntry.jsx";
+import BreakdownTimeReport from "./ProductionMaster/BreakdownTimeReport/BreakdownTimeReport.jsx";
+import ContractorReport from "./ProductionMaster/ContractorReport/ContractorReport.jsx";
+import ContractirList from "./ProductionMaster/ContractorReport/ContractorList/ContractirList.jsx";
+
+import ProReport from "./ProductionMaster/Report/ProReport.jsx";
+import BreakdownAnalysis from "./ProductionMaster/Report/BreakdownAnalysis/BreakdownAnalysis.jsx";
+import CycleTime1 from "./ProductionMaster/Report/CycleTime/CycleTime.jsx";
+import MachineDefaultBook from "./ProductionMaster/Report/MachineDefaultIdle/MachineDefaultBook.jsx";
+import MachineDefaultIdle from "./ProductionMaster/Report/MachineDefaultIdle/MachineDefaultIdle.jsx";
+import OperatorReport from "./ProductionMaster/Report/OperatorReport/OperatorReport.jsx";
+import ReworkReport from "./ProductionMaster/Report/ReworkReport/ReworkReport.jsx";
+
+
+import Login from "./Login/Login.jsx";
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<Login />} />
         <Route path="/mainpage" element={<VendorPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         {/* Master */}
@@ -434,11 +477,10 @@ function App() {
         <Route path="Stock-Report" element={<StockReport />} />
         {/* Inward Challan List */}
         <Route path="Inward-challan-list" element={<InwardChallanList />} />
-        {/* /////////////////////////////////////Purchase////////////////////////////////////// */}
-        <Route path="WorkOrderEntry" element={<WorkOrderEntry />} />
-        <Route path="WorkOrderList" element={<WorkOrderList />} />
         {/* ///////////////////////////////////Erp Setting////////////////////////////////////// */}
         <Route path="UserConfiguration" element={<UserConfiguration />} />
+        <Route path="/" element={<Navigate replace to="/UserConfiguration" />} />
+       
         <Route path="ErpSetting" element={<ErpSetting />} />
         <Route path="DisableUserList" element={<DisableUserList />} />
         <Route path="UserPermission" element={<UserPermission />} />
@@ -462,11 +504,6 @@ function App() {
         <Route path="/Plantwiseseries" element={<Plantwiseseries />} />
         <Route path="/AlertSetting" element={<AlertSetting />} />
         <Route path="/Userwisepermission" element={<Userwisepermission />} />
-
-
-
-
-
         <Route path="/Companysetup" element={<Companysetup />} />
         <Route path="/WebconfigFile" element={<ErpWebConfig />} />{" "}
         <Route path="/ErpFinancialYear" element={<ErpFinancialYear />} />{" "}
@@ -484,25 +521,16 @@ function App() {
         <Route path="/Emailsms" element={<Emailsms />} />{" "}
         <Route path="/Emailsetup" element={<Emailsetup />} />
         <Route path="/Emailtemplate" element={<Emailtemplate />} />
-
-
-
-        <Route path="/AddQuater" element={<AddQuater/>} />
-
-        <Route path="/WeekMaster" element={<WeekMaster/>} />
-        <Route path="/MasterData" element={<MasterData/>} />
-        <Route path="/PurchaseErp" element={<PurchaseErp/>} />
-        <Route path="/PurchaseERPGRN" element={<PurchaseERPGRN/>} />
-        <Route path="/OutwardInward" element={<OutwardInward/>} />
-
-
-
-
-
-
+        <Route path="/AddQuater" element={<AddQuater />} />
+        <Route path="/WeekMaster" element={<WeekMaster />} />
+        <Route path="/MasterData" element={<MasterData />} />
+        <Route path="/PurchaseErp" element={<PurchaseErp />} />
+        <Route path="/PurchaseERPGRN" element={<PurchaseERPGRN />} />
+        <Route path="/OutwardInward" element={<OutwardInward />} />
         <Route path="/Companysetup" element={<Companysetup />} />
         <Route path="/WebconfigFile" element={<ErpWebConfig />} />{" "}
         <Route path="/ErpFinancialYear" element={<ErpFinancialYear />} />{" "}
+        <Route path="/Document-start" element={<DocumentStart />} />{" "}
         <Route path="/FinancialMonth" element={<FinancialMonth />} />{" "}
         <Route path="/ScheduleMonth" element={<ScheduleMonth />} />{" "}
         <Route path="/Weekoff" element={<Weekoff />} />{" "}
@@ -517,9 +545,54 @@ function App() {
         <Route path="/Emailsms" element={<Emailsms />} />{" "}
         <Route path="/Emailsetup" element={<Emailsetup />} />
         <Route path="/Emailtemplate" element={<Emailtemplate />} />
+        <Route path="/Quotation" element={<Quotation />} />
+        <Route path="/DebitcreditNote" element={<DebitcreditNote />} />
+        <Route path="/DocAccount" element={<DocAccount />} />
+        <Route path="/Docddelivery" element={<Docddelivery />} />
+        <Route path="/DocProduction" element={<DocProduction />} />
+        <Route path="/GSTsales" element={<GSTsales />} />
+        <Route path="/GstsalesReturn" element={<GstsalesReturn />} />
+        <Route path="/DocCompanySetting" element={<DocCompanySetting />} />
+        <Route path="/ViewItemMaster" element={<ViewItemMaster />} />
+        {/* /////////////////////////////////////Purchase////////////////////////////////////// */}
+        <Route path="/WorkOrderEntry" element={<WorkOrderEntry />} />
+        <Route path="/WorkOrderList" element={<WorkOrderList />} />
+        <Route path="/ProductionEntry" element={<ProductionEntry />} />
+        <Route path="/ProductionEntryAss" element={<ProductionEntryAss />} />
+        <Route path="/ProductionPlanList" element={<ProductionPlanList />} />
+        <Route path="/ProductionReport" element={<ProductionReport />} />
+        <Route path="/MachineIdleTime" element={<MachineIdleTime />} />
+        <Route path="/NewIdleMaster" element={<NewIdleMaster />} />
 
-      
 
+        <Route path="/ReworkProduction" element={<ReworkProduction />} />
+        <Route
+          path="/ReworkProductionEntry"
+          element={<ReworkProductionEntry />}
+        />
+        <Route
+          path="/ReworkProductionReport"
+          element={<ReworkProductionReport />}
+        />
+        <Route path="/ScrapRejection" element={<ScrapRejection />} />
+        <Route path="/ScrapRejectionReport" element={<ScrapRejectionReport />} />
+        <Route path="/ScrapRejectionEntry" element={<ScrapRejectionEntry />} />
+        <Route path="/FGScrapRejectionReport" element={<FGScrapRejectionReport />} />
+
+
+
+        <Route path="/BreakdownTimeEntry" element={<BreakdownTimeEntry />} />
+        <Route path="/BreakdownTimeReport" element={<BreakdownTimeReport />} />
+        <Route path="/ContractorReport" element={<ContractorReport />} />
+        <Route path="/ContractirList" element={<ContractirList />} />
+
+        <Route path="/ProReport" element={<ProReport />} />
+        <Route path="/BreakdownAnalysis" element={<BreakdownAnalysis />} />
+        <Route path="/CycleTime1" element={<CycleTime1 />} />
+        <Route path="/OperatorReport" element={<OperatorReport />} />
+        <Route path="/MachineDefaultBook" element={<MachineDefaultBook />} />
+        <Route path="/MachineDefaultIdle" element={<MachineDefaultIdle />} />
+        <Route path="/ReworkReport" element={<ReworkReport />} />
       </Routes>
     </div>
   );

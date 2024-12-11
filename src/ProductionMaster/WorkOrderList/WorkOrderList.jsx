@@ -3,10 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import "./WorkOrderList.css";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-import { getNextNumber, SuplliersaveData } from "../../Service/Api.jsx";
+import { Link } from "react-router-dom";
+
 const WorkOrderList = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -22,177 +22,186 @@ const WorkOrderList = () => {
     }
   }, [sideNavOpen]);
 
- 
-  const initialFormData = {
-    type: "",
-    Name: "",
-    Address_Line_1: "",
-    Region: "",
-    PAN_Type: "",
-    PAN_NO: "",
-    State_Code: "",
-    GST_Tax_Code: "",
-    Email_Id: "",
-    Contact_No: "",
-    TCS: "",
-    Insurance_Policy_No: "",
-    Subcon_Challan: "",
-    GL: "",
-    number: "",
-    Payment_Term: "",
-    Country: "",
-    Currency: "",
-    Pin_Code: "",
-    City: "",
-    TDS_Rate: "",
-    GST_No: "",
-    GST_No2: "",
-    Invoice_Type: "",
-    CIN_No: "",
-    Website: "",
-    Incoterms: "",
-    Insurance_Policy_Expiry_Date: "",
-    VAT_TIN: "",
-    Montly_Sale: "",
-    Sector: "",
-    Group: "",
-    Distance: "",
-    Vendor_Code: "",
-    Legal_Name_GST: "",
-    Cust_Short_Name: "",
-    MSME_Type: "",
-    MSME_No: "",
-    LUT_No: "",
-    ISO: "",
-    QMSC_Date: "",
-    QMSC_Code: "",
-    Active: "",
-    Std_Packing: "",
-    Old_ERP_Code: "",
-    Delivery_Lead_Time: "",
-    EORI_No: "",
-    Montly_Purchase: "",
-    Discount_Per: "",
-  };
-
-  const [formData, setFormData] = useState(initialFormData);
-
-  // Function to handle form input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  // Trigger the fetch when the type changes
- // Trigger the fetch when the type changes
-useEffect(() => {
-  const fetchData = async () => {
-    if (formData.type) {  // Ensure 'type' is not empty
-      const nextNumber = await getNextNumber(formData.type);
-      setFormData((prevData) => ({
-        ...prevData,
-        number: nextNumber,  // Automatically update the 'number' field with next_number
-      }));
-    }
-  };
-  fetchData();
-}, [formData.type]);
-
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const success = await SuplliersaveData(formData);
-    
-    if (success) {
-      // Show success toast message
-      toast.success("Data saved successfully!");
-
-      // Clear form data after submission
-      setFormData(initialFormData);
-    } else {
-      toast.error("Failed to save data. Please try again.");
-    }
-  };
-
   return (
-   <div className="ProductionWorkOrderEntry">
-    <ToastContainer/>
+    <div className="PRoWorkorderListMaster">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
             <div className="Main-NavBar">
               <NavBar toggleSideNav={toggleSideNav} />
-              <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
+              <SideNav
+                sideNavOpen={sideNavOpen}
+                toggleSideNav={toggleSideNav}
+              />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                {/* Header Section */}
-                <div className="WorkOrderEntry-header mb-4">
-                  <div className="row align-items-center">
-                    <div className="col-md-2">
-                      <h5 className="header-title text-start">New Work Order</h5>
-                    </div>
-                    <div className="col-md-8">
-                      <div className="row align-items-center">
-                        <label htmlFor="seriesSelect" className="col-md-3 form-label">Plant:</label>
-                        <div className="col-md-2">
-                          <select id="seriesSelect" className="form-select">
-                            <option>Sharp</option>
-                          </select>
-                        </div>
+                <div className="PRoWorkorderList mt-5">
+                  <div className="PRoWorkorderList-header mb-4 text-start">
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">Work Order List</h5>
+                      </div>
+                      <div className="col-md-8 text-end">
+                        <Link type="button" className="btn" to="/AddQuater">
+                          Work Order Report
+                        </Link>
+
+                        <Link
+                          type="button"
+                          className="btn"
+                          to="/Companysetup"
+                        >
+                          Work Order - Query
+                        </Link>
                       </div>
                     </div>
-                    <div className="col-md-2 text-end">
-                      <button className="produtionbtn">WorkOrder List</button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Form Section */}
-                <div className="WorkOrderEntry-main">
-                  <div className="row text-start">
-                    <div className="container">
-                    <form onSubmit={handleSubmit}>
-                        {Object.keys(formData).map((key) => (
-                          <div className="form-group mb-3" key={key}>
-                            <label htmlFor={key}>{key.replace(/_/g, ' ')}</label>
-                            {key === 'type' ? (
-                              <select
-                                id={key}
-                                name={key}
-                                value={formData[key]}
-                                onChange={handleChange}
-                                className="form-control"
-                              >
-                                <option value="">Select</option>
-                                <option value="Customer">Customer</option>
-                                <option value="Supplier">Supplier</option>
-                                <option value="Job Work">Job Work</option>
-                                <option value="WCSJW">CSJW</option>
-                              </select>
-                            ) : (
-                              <input
-                                type="text"
-                                id={key}
-                                name={key}
-                                value={formData[key]}
-                                onChange={handleChange}
-                                className="form-control"
-                                placeholder={`Enter ${key.replace(/_/g, ' ')}`}
-                              />
-                            )}
-                          </div>
-                        ))}
-                        <button type="submit" className="btn btn-primary mt-3">Submit</button>
-                      </form>
-                    </div>
                   </div>
 
-                 
+                  <div className="PRoWorkorderList-Main">
+                    <div className="container-fluid">
+                      <div className="row g-3 text-start">
+                        {/* From Date */}
+                        <div className="col-sm-6 col-md-2 col-lg-1">
+                          <label>From:</label>
+                          <input type="date" className="form-control" />
+                        </div>
 
-                 
+                        {/* To Date */}
+                        <div className="col-sm-6 col-md-2 col-lg-1">
+                          <label>To Date:</label>
+                          <input type="date" className="form-control" />
+                        </div>
+
+                        {/* Plant */}
+                        <div className="col-sm-6 col-md-2 col-lg-1">
+                          <label>Plant:</label>
+                          <select className="form-select">
+                            <option>Select All</option>
+                          </select>
+                        </div>
+
+                        {/* Status */}
+                        <div className="col-sm-6 col-md-2 col-lg-1">
+                          <label>Status:</label>
+                          <select className="form-select">
+                            <option>Select All</option>
+                          </select>
+                        </div>
+
+                        {/* Type */}
+                        <div className="col-sm-6 col-md-2 col-lg-1">
+                          <label>Type:</label>
+                          <select className="form-select">
+                            <option>Select All</option>
+                          </select>
+                        </div>
+
+                        {/* Series */}
+                        <div className="col-sm-6 col-md-2 col-lg-1">
+                          <label>Series:</label>
+                          <select className="form-select">
+                            <option>Select All</option>
+                          </select>
+                        </div>
+
+                        {/* Auth */}
+                        <div className="col-sm-6 col-md-2 col-lg-1">
+                          <label>Auth:</label>
+                          <select className="form-select">
+                            <option>Select All</option>
+                          </select>
+                        </div>
+
+                        {/* Customer Name */}
+                        <div className="col-sm-6 col-md-1 col-lg-1">
+                          <label>Customer Name:</label>
+                          <input type="text" className="form-control" />
+                        </div>
+
+                        {/* Item Name */}
+                        <div className="col-sm-6 col-md-1 col-lg-1">
+                          <label>Item Name:</label>
+                          <input type="text" className="form-control" />
+                        </div>
+
+                        {/* Wo No */}
+                        <div className="col-sm-6 col-md-1 col-lg-1">
+                          <label>Wo No:</label>
+                          <input type="text" className="form-control" />
+                        </div>
+
+                        <div className="col-sm-2 col-md-2 col-lg-1 mt-4">
+                          <label></label>
+                        <button
+                            type="button"
+                            className="btn btn-primary w-100"
+                          >
+                            Search
+                          </button>
+                          
+                        </div>
+
+                     
+                       
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="table-responsive">
+                    <table className="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">Sr.</th>
+                          <th scope="col">Year</th>
+                          <th scope="col">Plant</th>
+                          <th scope="col">WO No</th>
+                          <th scope="col">Wo Date</th>
+                          <th scope="col">Code</th>
+                          <th scope="col">Customer Name</th>
+                          <th scope="col">Item Code | Description</th>
+                          <th scope="col">SO/Mo No</th>
+                          <th scope="col">Cust Po No</th>
+                          <th scope="col">WO Status</th>
+                          <th scope="col">User</th>
+                          <th scope="col">Auth</th>
+                          <th scope="col">Mll</th>
+                          <th scope="col">Doc / Del / Edit</th>
+                          <th scope="col">View</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {/* Example data row */}
+                        <tr>
+                          <td>1</td>
+                          <td>January</td>
+                          <td>01/01/2024</td>
+                          <td>31/01/2024</td>
+                          <td>1</td>
+                          <td>2024</td>
+                          <td>1</td>
+                          <td>January</td>
+                          <td>01/01/2024</td>
+                          <td>31/01/2024</td>
+                          <td>1</td>
+                          <td>2024</td>
+                          <td>2024</td>
+                          <td>2024</td>
+                          <td>2024</td>
+                          <td>
+                            <button className="btn btn-link">
+                              <FaEdit />
+                            </button>
+                          </td>
+                          <td>
+                            <button className="btn btn-link text-danger">
+                              <FaTrash />
+                            </button>
+                          </td>
+                        </tr>
+                        {/* More rows can be added here */}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </main>
             </div>
@@ -200,7 +209,7 @@ useEffect(() => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default WorkOrderList
+export default WorkOrderList;

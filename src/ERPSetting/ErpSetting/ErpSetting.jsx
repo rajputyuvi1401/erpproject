@@ -4,8 +4,9 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
 import "./ErpSetting.css";
-import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { getUsers ,updateUser, deleteUser } from "../../Service/Erpsetting.jsx";
 
 const ErpSetting = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -21,6 +22,56 @@ const ErpSetting = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [editingUser, setEditingUser] = useState(null);
+  const [editData, setEditData] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getUsers();
+        setUsers(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to load users:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleEdit = (user) => {
+    setEditingUser(user.id);
+    setEditData(user);
+  };
+
+  const handleSave = async () => {
+    try {
+      const updatedUser = await updateUser(editingUser, editData);
+      setUsers(users.map((user) => (user.id === editingUser ? updatedUser : user)));
+      setEditingUser(null);
+    } catch (error) {
+      console.error("Failed to update user:", error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this user?")) {
+      try {
+        await deleteUser(id);
+        setUsers(users.filter((user) => user.id !== id));
+      } catch (error) {
+        console.error("Failed to delete user:", error);
+      }
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="erpsetting">
@@ -81,54 +132,82 @@ const ErpSetting = () => {
                     </div>
                   </div>
 
-<div className="table-responsive">
-                  <table className="table table-bordered table-hover user-list-table">
-                    <thead>
-                      <tr>
-                        <th>Sr.</th>
-                        <th>Add Locn</th>
-                        <th>Plant</th>
-                        <th>Department</th>
-                        <th>Full Name</th>
-                        <th>User Name</th>
-                        <th>Designation</th>
-                        <th>User Password</th>
-                        <th>Email ID</th>
-                        <th>Mobile No</th>
-                        <th>CR</th>
-                        <th>Edit</th>
-                        <th>Action</th>
-                        <th>Sign</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>SHARP</td>
-                        <td>Admin</td>
-                        <td>ADMIN</td>
-                        <td>admin</td>
-                        <td>admin</td>
-                        <td>
-                          <input type="password" value="password" className="form-control form-control-sm" />
-                          <button className="btn btn-sm btn-outline-secondary"><FaEye/></button>
-                        </td>
-                        <td>admin@example.com</td>
-                        <td>9552556659</td>
-                        <td>N</td>
-                        <td>
-                          <button className="btn btn-sm"><FaEdit/></button>
-                        </td>
-                        <td>
-                          <button className="btn btn-sm"><FaTrash/></button>
-                        </td>
-                        <td>No Sign</td>
-                      </tr>
-                      {/* Add more rows as needed */}
-                    </tbody>
-                  </table>
-                  </div>
+                  <div className="table-responsive">
+      <table className="table table-bordered table-hover user-list-table">
+        <thead>
+          <tr>
+            <th>Sr.</th>
+            <th>Plant</th>
+            <th>Department</th>
+            <th>Full Name</th>
+            <th>User Name</th>
+            <th>Email ID</th>
+            <th>Mobile No</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user, index) => (
+            <tr key={user.id}>
+              <td>{index + 1}</td>
+              <td>
+                {editingUser === user.id ? (
+                  <input
+                    type="text"
+                    value={editData.PlantName}
+                    onChange={(e) =>
+                      setEditData({ ...editData, PlantName: e.target.value })
+                    }
+                  />
+                ) : (
+                  user.PlantName
+                )}
+              </td>
+              <td>
+                {editingUser === user.id ? (
+                  <input
+                    type="text"
+                    value={editData.Department}
+                    onChange={(e) =>
+                      setEditData({ ...editData, Department: e.target.value })
+                    }
+                  />
+                ) : (
+                  user.Department
+                )}
+              </td>
+              <td>{user.FullName}</td>
+              <td>{user.username}</td>
+              <td>{user.email}</td>
+              <td>{user.MobileNo}</td>
+              <td>
+                {editingUser === user.id ? (
+                  <button className="btn btn-sm btn-success" onClick={handleSave}>
+                    Save
+                  </button>
+                ) : (
+                  <button
+                    className="btn"
+                    onClick={() => handleEdit(user)}
+                  >
+                    <FaEdit />
+                  </button>
+                )}
+              </td>
+              <td>
+                <button
+                  className="btn"
+                  onClick={() => handleDelete(user.id)}
+                >
+                  <FaTrash />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
                 </div>
               </main>
             </div>

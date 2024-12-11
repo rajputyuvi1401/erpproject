@@ -4,9 +4,21 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
 import "./UserConfiguration.css";
+import { registerUser } from "../../Service/Erpsetting.jsx"; // Importing the registerUser function
+import { toast, ToastContainer } from "react-toastify";
 
 const UserConfiguration = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    plant: "SHARP",
+    department: "",
+    fullName: "",
+    username: "",
+    password: "",
+    emailId: "",
+    mobileNo: "",
+    cr: "N",
+  });
 
   const toggleSideNav = () => {
     setSideNavOpen((prevState) => !prevState);
@@ -20,17 +32,6 @@ const UserConfiguration = () => {
     }
   }, [sideNavOpen]);
 
-  const [formData, setFormData] = useState({
-    plant: "SHARP",
-    department: "",
-    fullName: "",
-    username: "",
-    password: "",
-    emailId: "",
-    mobileNo: "",
-    cr: "N",
-  });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -39,14 +40,48 @@ const UserConfiguration = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Add your form submission logic here
+
+    const newUser = {
+      username: formData.username,
+      email: formData.emailId,
+      password: formData.password,
+      PlantName: formData.plant,
+      Department: formData.department,
+      FullName: formData.fullName,
+      MobileNo: formData.mobileNo,
+    };
+
+    try {
+      // Call the registerUser function from erpsetting service
+      const response = await registerUser(newUser);
+
+      // Display success message
+      console.log(response);
+      
+      toast.success("User successfully created!");
+
+      // Optionally reset the form data
+      setFormData({
+        plant: "SHARP",
+        department: "",
+        fullName: "",
+        username: "",
+        password: "",
+        emailId: "",
+        mobileNo: "",
+        cr: "N",
+      });
+    } catch (error) {
+      // Display error message
+      toast.error("Error creating user, please try again.");
+    }
   };
 
   return (
     <div className="User">
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -71,7 +106,6 @@ const UserConfiguration = () => {
                           className="form-select"
                         >
                           <option value="SHARP">SHARP</option>
-                          {/* Add more options as needed */}
                         </select>
                       </div>
                     </div>
@@ -92,7 +126,6 @@ const UserConfiguration = () => {
                           <option value="">Select</option>
                           <option value="HR">HR</option>
                           <option value="IT">IT</option>
-                          {/* Add more options as needed */}
                         </select>
                       </div>
                     </div>
