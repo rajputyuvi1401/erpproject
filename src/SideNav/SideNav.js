@@ -13,8 +13,6 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
-  
-
   return (
     <div className={`blueside-Nav ${sideNavOpen ? "open" : ""}`}>
       <div className={`side-nav ${sideNavOpen ? "open" : ""}`}>
@@ -29,146 +27,164 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
 
           {permissions && permissions.VendorsUserManagement && (
             <li>
-            <Link to="/mainpage">
-              <FaHome />
-              Vendors
-            </Link>
-            
-          </li>
+              <Link to="/mainpage">
+                <FaHome />
+                Vendors
+              </Link>
+            </li>
           )}
 
-          <li className="dropdown-container">
-            <div
-              className="dropdown-toggle"
-              onClick={() => handleDropdownToggle("erp")}
-            >
-              <FaInfoCircle />
-              <span>ERP Setting</span>
-            </div>
-            <Dropdown.Menu show={openDropdown === "erp"}>
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  User Configuration
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/ErpSetting">
-                    User Management
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/User-Permit">
-                    User Permission
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/DashboardPermission">
-                    Dashboard Permission
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/BackDated">
-                    Back Dated Entry Setting
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/User-Wise-Series">
-                    User Wise Series
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/UserwiseProduction">
-                    Userwiise Prod. Operation
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/USerwiseAuth">
-                    Userwise Auth. Setting
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/User-plant">
-                    User Plant
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Plantwiseseries">
-                    Plant Wise Series
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/AlertSetting">
-                    Alert Settting
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Userwisepermission">
-                    User Wise Permission
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+          {permissions && permissions.ERPSetting && (
+            <li className="dropdown-container">
+              <div
+                className="dropdown-toggle"
+                onClick={() => handleDropdownToggle("erp")}
+              >
+                <FaInfoCircle />
+                <span>ERP Setting</span>
+              </div>
+              <Dropdown.Menu show={openDropdown === "erp"}>
+                {/* Add more items dynamically if user has permissions */}
+                {permissions.ERPSetting.includes("User Configuration") && (
+                  <Dropdown>
+                    <Dropdown.Toggle as="div" className="dropdown-item">
+                      User Configuration
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item as={Link} to="/ErpSetting">
+                        User Management
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/User-Permit">
+                        User Permission
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/DashboardPermission">
+                        Dashboard Permission
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/BackDated">
+                        Back Dated Entry Setting
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/User-Wise-Series">
+                        User Wise Series
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/UserwiseProduction">
+                        Userwiise Prod. Operation
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/USerwiseAuth">
+                        Userwise Auth. Setting
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/User-plant">
+                        User Plant
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/Plantwiseseries">
+                        Plant Wise Series
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/AlertSetting">
+                        Alert Settting
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/Userwisepermission">
+                        User Wise Permission
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                )}
 
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  ERP Configuration
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="#">
-                    <strong>Company</strong>
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Companysetup">
-                    Company / Plant Setup
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/WebconfigFile">
-                    Web. config File
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/ErpFinancialYear">
-                    Financial Year
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/FinancialMonth">
-                    Financial Month Master
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/ScheduleMonth">
-                    Schedule Month Master
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Weekoff">
-                    Weekly Off / Holiday
-                  </Dropdown.Item>
+                {/* Add more items dynamically if user has permissions */}
+                {permissions.ERPSetting.includes("ERP Configuration") && (
+                  <Dropdown>
+                    <Dropdown.Toggle as="div" className="dropdown-item">
+                      ERP Configuration
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item as={Link} to="#">
+                        <strong>Company</strong>
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/Companysetup">
+                        Company / Plant Setup
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/WebconfigFile">
+                        Web. config File
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/ErpFinancialYear">
+                        Financial Year
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/FinancialMonth">
+                        Financial Month Master
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/ScheduleMonth">
+                        Schedule Month Master
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/Weekoff">
+                        Weekly Off / Holiday
+                      </Dropdown.Item>
 
-                  <Dropdown.Item as={Link} to="#/Settingerp">
-                    <strong>Setting</strong>
+                      <Dropdown.Item as={Link} to="#/Settingerp">
+                        <strong>Setting</strong>
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/Docseriesgroup">
+                        Doc. Series /Group
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/UserPermission">
+                        Parameter Setting
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/DocprintFormat">
+                        Doc. Print Format
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/Docnoeditable">
+                        Doc. No Editable
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/Qcisoformat">
+                        Qc ISO Format
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/Roundofsetting">
+                        Round Of Setting
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/Customersupplier">
+                        Customer / Supplier
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/Itemmastersetup">
+                        Item Master Setup
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="#/Emailsms">
+                        <strong>Email / SMS</strong>
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/Emailsetup">
+                        Email Setup
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="#/Emailtemplate">
+                        Email Template
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                )}
+                {permissions.ERPSetting.includes("Change Password") && (
+                  <Dropdown.Item as={Link} to="/change-password">
+                    Change Password
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Docseriesgroup">
-                    Doc. Series /Group
+                )}
+                {permissions.ERPSetting.includes("Login History") && (
+                  <Dropdown.Item as={Link} to="/login-history">
+                    Login History
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/UserPermission">
-                    Parameter Setting
+                )}
+                {permissions.ERPSetting.includes("Dealer Management") && (
+                  <Dropdown.Item as={Link} to="/delete-management">
+                    Dealer Management
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/DocprintFormat">
-                    Doc. Print Format
+                )}
+                {permissions.ERPSetting.includes("Dashboard Backup") && (
+                  <Dropdown.Item as={Link} to="/dashboard-backup">
+                    Dashboard Backup
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Docnoeditable">
-                    Doc. No Editable
+                )}
+                {permissions.ERPSetting.includes("Delete Record") && (
+                  <Dropdown.Item as={Link} to="/delete-record">
+                    Delete Record
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Qcisoformat">
-                    Qc ISO Format
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Roundofsetting">
-                    Round Of Setting
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Customersupplier">
-                    Customer / Supplier
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Itemmastersetup">
-                    Item Master Setup
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/Emailsms">
-                    <strong>Email / SMS</strong>
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/Emailsetup">
-                    Email Setup
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/Emailtemplate">
-                    Email Template
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <Dropdown.Item as={Link} to="/change-password">
-                Change Password
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/login-history">
-                Login History
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/delete-management">
-                Dealer Management
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/dashboard-backup">
-                Dashboard Backup
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/delete-record">
-                Delete Record
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </li>
+                )}
+              </Dropdown.Menu>
+            </li>
+          )}
+          {/* Add other permissions-based menu items here */}
 
           {permissions?.All_Masters && (
             <li className="dropdown-container">
@@ -186,7 +202,9 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     Supplier Customer Master
                   </Dropdown.Item>
                 )}
-                {permissions.All_Masters.includes("Business Partner Address") && (
+                {permissions.All_Masters.includes(
+                  "Business Partner Address"
+                ) && (
                   <Dropdown.Item as={Link} to="/business-partner">
                     Business Partner Address
                   </Dropdown.Item>
@@ -202,12 +220,19 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                       Cross Reference
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      {permissions.All_Masters.includes("Customer / Supplier Item Link") && (
-                        <Dropdown.Item as={Link} to="/customer-supplier-item-link">
+                      {permissions.All_Masters.includes(
+                        "Customer / Supplier Item Link"
+                      ) && (
+                        <Dropdown.Item
+                          as={Link}
+                          to="/customer-supplier-item-link"
+                        >
                           Customer / Supplier Item Link
                         </Dropdown.Item>
                       )}
-                      {permissions.All_Masters.includes("Item Cross Reference") && (
+                      {permissions.All_Masters.includes(
+                        "Item Cross Reference"
+                      ) && (
                         <Dropdown.Item as={Link} to="/item-cross-reference">
                           Item Cross Reference
                         </Dropdown.Item>
@@ -240,7 +265,9 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     Cycle Time Master
                   </Dropdown.Item>
                 )}
-                {permissions.All_Masters.includes("Operator and Supervisor Master") && (
+                {permissions.All_Masters.includes(
+                  "Operator and Supervisor Master"
+                ) && (
                   <Dropdown.Item as={Link} to="/operator-supervisor-master">
                     Operator and Supervisor Master
                   </Dropdown.Item>
@@ -271,7 +298,9 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                       Price List
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      {permissions.All_Masters.includes("Price List Master") && (
+                      {permissions.All_Masters.includes(
+                        "Price List Master"
+                      ) && (
                         <Dropdown.Item as={Link} to="/price-list-master">
                           Price List Master
                         </Dropdown.Item>
@@ -323,7 +352,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             </li>
           )}
 
-{permissions?.Purchase && (
+          {permissions?.Purchase && (
             <li className="dropdown-container">
               <div
                 className="dropdown-toggle"
@@ -343,7 +372,9 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     New Purchase Order
                   </Dropdown.Item>
                 )}
-                {permissions.Purchase.includes("New Jobwork Purchase Order") && (
+                {permissions.Purchase.includes(
+                  "New Jobwork Purchase Order"
+                ) && (
                   <Dropdown.Item as={Link} to="/new-jobwork-order">
                     New Jobwork Purchase Order
                   </Dropdown.Item>
@@ -380,12 +411,19 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                           RFO
                         </Dropdown.Item>
                       )}
-                      {permissions.Purchase.includes("Quoto Comparison Statement") && (
-                        <Dropdown.Item as={Link} to="/Quoto-Comparison-Statement">
+                      {permissions.Purchase.includes(
+                        "Quoto Comparison Statement"
+                      ) && (
+                        <Dropdown.Item
+                          as={Link}
+                          to="/Quoto-Comparison-Statement"
+                        >
                           Quoto Comparison Statement
                         </Dropdown.Item>
                       )}
-                      {permissions.Purchase.includes("Quoto Comparison Pending") && (
+                      {permissions.Purchase.includes(
+                        "Quoto Comparison Pending"
+                      ) && (
                         <Dropdown.Item as={Link} to="/Quoto-Comparison-Pending">
                           Quoto Comparison Pending
                         </Dropdown.Item>
@@ -405,17 +443,26 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                           Purchase Order List
                         </Dropdown.Item>
                       )}
-                      {permissions.Purchase.includes("Jobwork Purchase Order List") && (
-                        <Dropdown.Item as={Link} to="/jobwork-purchase-order-list">
+                      {permissions.Purchase.includes(
+                        "Jobwork Purchase Order List"
+                      ) && (
+                        <Dropdown.Item
+                          as={Link}
+                          to="/jobwork-purchase-order-list"
+                        >
                           Jobwork Purchase Order List
                         </Dropdown.Item>
                       )}
-                      {permissions.Purchase.includes("Supplier Wise Item Purchase List") && (
+                      {permissions.Purchase.includes(
+                        "Supplier Wise Item Purchase List"
+                      ) && (
                         <Dropdown.Item as={Link} to="/supplier-wise-list">
                           Supplier Wise Item Purchase List
                         </Dropdown.Item>
                       )}
-                      {permissions.Purchase.includes("Purchase Report (Cost Center Wise)") && (
+                      {permissions.Purchase.includes(
+                        "Purchase Report (Cost Center Wise)"
+                      ) && (
                         <Dropdown.Item as={Link} to="/purchase-report">
                           Purchase Report (Cost Center Wise)
                         </Dropdown.Item>
@@ -432,8 +479,8 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             </li>
           )}
 
-           {/* Store Dropdown */}
-           {permissions?.Store && (
+          {/* Store Dropdown */}
+          {permissions?.Store && (
             <li className="dropdown-container">
               <div
                 className="dropdown-toggle"
@@ -536,15 +583,15 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     DC GRN
                   </Dropdown.Item>
                 )}
-                 {permissions.Store.includes("New Indent") && (
+                {permissions.Store.includes("New Indent") && (
                   <Dropdown.Item as={Link} to="/Store-New-indent">
-                  New Indent
-                </Dropdown.Item>
+                    New Indent
+                  </Dropdown.Item>
                 )}
-                  {permissions.Store.includes("Stock Report") && (
+                {permissions.Store.includes("Stock Report") && (
                   <Dropdown>
                     <Dropdown.Toggle as="div" className="dropdown-item">
-                     Report
+                      Report
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                       {permissions.Store.includes("GRN List") && (
@@ -557,37 +604,43 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                           MRN List
                         </Dropdown.Item>
                       )}
-                      {permissions.Store.includes("Inward 57F4 Challan List") && (
+                      {permissions.Store.includes(
+                        "Inward 57F4 Challan List"
+                      ) && (
                         <Dropdown.Item as={Link} to="#/">
                           Inward 57F4 Challan List
                         </Dropdown.Item>
                       )}
-                      {permissions.Store.includes("Material Issue Challan List") && (
+                      {permissions.Store.includes(
+                        "Material Issue Challan List"
+                      ) && (
                         <Dropdown.Item as={Link} to="#/Stock-Report">
                           Material Issue Challan List
                         </Dropdown.Item>
                       )}
-                       {permissions.Store.includes("Gernal Material Issue Challan List") && (
+                      {permissions.Store.includes(
+                        "Gernal Material Issue Challan List"
+                      ) && (
                         <Dropdown.Item as={Link} to="#/Stock-Report">
                           Gernal Material Issue Challan List
                         </Dropdown.Item>
                       )}
-                       {permissions.Store.includes("Delivery Challan List") && (
+                      {permissions.Store.includes("Delivery Challan List") && (
                         <Dropdown.Item as={Link} to="#/Stock-Report">
                           Delivery Challan List
                         </Dropdown.Item>
                       )}
-                       {permissions.Store.includes("DC GRN List") && (
+                      {permissions.Store.includes("DC GRN List") && (
                         <Dropdown.Item as={Link} to="#/Stock-Report">
                           DC GRN List
                         </Dropdown.Item>
                       )}
-                       {permissions.Store.includes("Indent List") && (
+                      {permissions.Store.includes("Indent List") && (
                         <Dropdown.Item as={Link} to="#/Stock-Report">
                           Indent List
                         </Dropdown.Item>
                       )}
-                       {permissions.Store.includes("Indent Status") && (
+                      {permissions.Store.includes("Indent Status") && (
                         <Dropdown.Item as={Link} to="#/Stock-Report">
                           Indent Status
                         </Dropdown.Item>
@@ -611,7 +664,9 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                           RM Stock Report
                         </Dropdown.Item>
                       )}
-                      {permissions.Store.includes("Consumable Stock Report") && (
+                      {permissions.Store.includes(
+                        "Consumable Stock Report"
+                      ) && (
                         <Dropdown.Item as={Link} to="#/">
                           Consumable Stock Report
                         </Dropdown.Item>
@@ -622,20 +677,20 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                         </Dropdown.Item>
                       )}
                       <Dropdown.Item as={Link} to="#/">
-                    Customer Stock
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Scrap Stock
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Tray Bin Stock Report
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Itemwise Stock Report
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Monthly Consumption Report
-                  </Dropdown.Item>
+                        Customer Stock
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="#/">
+                        Scrap Stock
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="#/">
+                        Tray Bin Stock Report
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="#/">
+                        Itemwise Stock Report
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="#/">
+                        Monthly Consumption Report
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 )}
@@ -643,127 +698,168 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             </li>
           )}
 
-          <li className="dropdown-container">
-            <div
-              className="dropdown-toggle"
-              onClick={() => handleDropdownToggle("production")}
-            >
-              <FaServicestack />
-              <span>Production</span>
-            </div>
-            <Dropdown.Menu show={openDropdown === "production"}>
-              <Dropdown.Item as={Link} to="/WorkOrderEntry">
-                Work Order Entry
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/WorkOrderList">
-                Work Order List
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/ProductionPlanList">
-                Production Plan List
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/ProductionEntry">
-                Production Entry
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/ProductionEntryAss">
-                Production Entry Ass.
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/ProductionReport">
-                Production Report
-              </Dropdown.Item>
-
-              <Dropdown.Divider />
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  <strong>Rework Production</strong>
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/ReworkProduction">
-                    Rework Production Entry2
+          {/* Production Dropdown */}
+          {permissions?.Production && (
+            <li className="dropdown-container">
+              <div
+                className="dropdown-toggle"
+                onClick={() => handleDropdownToggle("production")}
+              >
+                <FaServicestack />
+                <span>Production</span>
+              </div>
+              <Dropdown.Menu show={openDropdown === "production"}>
+                {permissions.Production.includes("Work Order Entry") && (
+                  <Dropdown.Item as={Link} to="/WorkOrderEntry">
+                    Work Order Entry
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/ReworkProductionEntry">
-                    Rework Production Entry
+                )}
+                {permissions.Production.includes("Work Order List") && (
+                  <Dropdown.Item as={Link} to="/WorkOrderList">
+                    Work Order List
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/ReworkProductionReport">
-                    Rework Production Report
+                )}
+                {permissions.Production.includes("Production Plan List") && (
+                  <Dropdown.Item as={Link} to="/ProductionPlanList">
+                    Production Plan List
                   </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <Dropdown.Divider />
-
-              <Dropdown.Divider />
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  <strong>Scrap Production</strong>
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/ScrapRejection">
-                    Scrap/Rejection Entry
+                )}
+                {permissions.Production.includes("Production Entry") && (
+                  <Dropdown.Item as={Link} to="/ProductionEntry">
+                    Production Entry
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/ScrapRejectionReport">
-                    Scrap/Rejection Report
+                )}
+                {permissions.Production.includes("Production Entry Ass.") && (
+                  <Dropdown.Item as={Link} to="/ProductionEntryAss">
+                    Production Entry Ass.
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/ScrapRejectionEntry">
-                    FG Scrap/Rejection Entry
+                )}
+                {permissions.Production.includes("Production Report") && (
+                  <Dropdown.Item as={Link} to="/ProductionReport">
+                    Production Report
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/FGScrapRejectionReport">
-                    FG Scrap/Rejection Report
+                )}
+                {permissions.Production.includes("Rework Production") && (
+                  <Dropdown>
+                    <Dropdown.Toggle as="div" className="dropdown-item">
+                      <strong>Rework Production</strong>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      {permissions.Production.includes(
+                        "Rework Production Entry2"
+                      ) && (
+                        <Dropdown.Item as={Link} to="/ReworkProduction">
+                          Rework Production Entry2
+                        </Dropdown.Item>
+                      )}
+                      {permissions.Production.includes(
+                        "Rework Production Entry"
+                      ) && (
+                        <Dropdown.Item as={Link} to="/ReworkProductionEntry">
+                          Rework Production Entry
+                        </Dropdown.Item>
+                      )}
+                      {permissions.Production.includes(
+                        "Rework Production Report"
+                      ) && (
+                        <Dropdown.Item as={Link} to="/ReworkProductionReport">
+                          Rework Production Report
+                        </Dropdown.Item>
+                      )}
+                    </Dropdown.Menu>
+                  </Dropdown>
+                )}
+                {permissions.Production.includes("Scrap Production") && (
+                  <Dropdown>
+                    <Dropdown.Toggle as="div" className="dropdown-item">
+                      <strong>Scrap Production</strong>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      {permissions.Production.includes(
+                        "Scrap/Rejection Entry"
+                      ) && (
+                        <Dropdown.Item as={Link} to="/ScrapRejection">
+                          Scrap/Rejection Entry
+                        </Dropdown.Item>
+                      )}
+                      {permissions.Production.includes(
+                        "Scrap/Rejection Report"
+                      ) && (
+                        <Dropdown.Item as={Link} to="/ScrapRejectionReport">
+                          Scrap/Rejection Report
+                        </Dropdown.Item>
+                      )}
+                      {permissions.Production.includes(
+                        "FG Scrap/Rejection Entry"
+                      ) && (
+                        <Dropdown.Item as={Link} to="/ScrapRejectionEntry">
+                          FG Scrap/Rejection Entry
+                        </Dropdown.Item>
+                      )}
+                      {permissions.Production.includes(
+                        "FG Scrap/Rejection Report"
+                      ) && (
+                        <Dropdown.Item as={Link} to="/ScrapRejectionEntry">
+                          FG Scrap/Rejection Report
+                        </Dropdown.Item>
+                      )}
+                    </Dropdown.Menu>
+                  </Dropdown>
+                )}
+                {permissions.Production.includes("Material Idle Time") && (
+                  <Dropdown.Item as={Link} to="/MachineIdleTime">
+                    Material Idle Time
                   </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <Dropdown.Divider />
-
-              <Dropdown.Item as={Link} to="/MachineIdleTime">
-                Material Idle Time
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/BreakdownTimeEntry">
-                Breakdown Time Entry
-              </Dropdown.Item>
-
-              <Dropdown.Item as={Link} to="/BreakdownTimeReport">
-                Breakdown Time Report
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/ContractorReport">
-                Contractor Payment
-              </Dropdown.Item>
-
-              <Dropdown.Divider />
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  Report
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/ProReport">
-                    GRN List
+                )}
+                {permissions.Production.includes("Breakdown Time Entry") && (
+                  <Dropdown.Item as={Link} to="/BreakdownTimeEntry">
+                    Breakdown Time Entry
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    MRN List
+                )}
+                {permissions.Production.includes("Breakdown Time Report") && (
+                  <Dropdown.Item as={Link} to="/BreakdownTimeReport">
+                    Breakdown Time Report
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Inward 57F4 Challan List
+                )}
+                {permissions.Production.includes("Contractor Payment") && (
+                  <Dropdown.Item as={Link} to="/ContractorReport">
+                    Contractor Payment
                   </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Material Issue Challan List
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Gernal Material Issue Challan List
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Delivery Challan List
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    DC GRN List
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Indent List
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="#/">
-                    Indent Status
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <Dropdown.Divider />
-            </Dropdown.Menu>
-          </li>
+                )}
+                {permissions.Production.includes("Report") && (
+                  <Dropdown>
+                    <Dropdown.Toggle as="div" className="dropdown-item">
+                      <strong>Report</strong>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      {permissions.Production.includes("Rejection Report") && (
+                        <Dropdown.Item as={Link} to="/ProReport">
+                          Rejection Report
+                        </Dropdown.Item>
+                      )}
+                      {permissions.Production.includes("Rework Report") && (
+                        <Dropdown.Item as={Link} to="/ReworkReport">
+                          Rework Report
+                        </Dropdown.Item>
+                      )}
+                      <Dropdown.Item as={Link} to="/MachineDefaultIdle">
+                        Default Idle Time Report
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/BreakdownAnalysis">
+                        Breakdown Analysis Report
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/CycleTime1">
+                        Cycle Time Report
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/OperatorReport">
+                        Operator Performance Report
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                )}
+              </Dropdown.Menu>
+            </li>
+          )}
         </ul>
       </div>
     </div>
