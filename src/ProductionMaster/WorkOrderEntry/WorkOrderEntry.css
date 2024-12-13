@@ -10,33 +10,33 @@
   border-radius: 5px;
 }
 
-.PRoWorkorderList-header .header-title {
+.WorkOrderEntry-header .header-title {
   font-size: 20px;
   font-weight: bold;
   margin: 0;
 }
 
 /* Form and Inputs */
-.PRoWorkorderList-Main label {
+.WorkOrderEntry-main label {
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 5px;
   margin-top: 5px;
 }
 
-.PRoWorkorderList-Main .form-control {
+.WorkOrderEntry-main .form-control {
   height: 35px;
   padding: 5px 10px;
   border-radius: 4px;
 }
 
-.PRoWorkorderList-Main select {
+.WorkOrderEntry-main select {
   width: 100%;
   padding: 5px;
   border-radius: 4px;
 }
 
-.PRoWorkorderList-Main button {
+.WorkOrderEntry-main button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -45,22 +45,22 @@
   cursor: pointer;
 }
 
-.PRoWorkorderList-Main button:hover {
+.WorkOrderEntry-main button:hover {
   background-color: #0056b3;
 }
 
 /* Table Styling */
-.PRoWorkorderListMaster .table-responsive {
+.WorkOrderEntry-table .table-responsive {
   overflow-x: auto;
   margin-top: 20px;
 }
 
-.PRoWorkorderListMaster .table {
+.WorkOrderEntry-table .table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.PRoWorkorderListMaster .table th, .table td {
+.WorkOrderEntry-table .table th, .table td {
   text-align: center;
   vertical-align: middle;
   padding: 8px;
@@ -68,7 +68,7 @@
 
 
 /* Button for Edit and Delete */
-.PRoWorkorderListMaster .table .btn-link {
+.WorkOrderEntry-table .table .btn-link {
   font-size: 18px;
   color: #007bff;
   padding: 0;
@@ -77,18 +77,18 @@
   cursor: pointer;
 }
 
-.PRoWorkorderListMaster .table .btn-link:hover {
+.WorkOrderEntry-table .table .btn-link:hover {
   color: #0056b3;
 }
 
-.PRoWorkorderListMaster .table .btn-link.text-danger:hover {
+.WorkOrderEntry-table .table .btn-link.text-danger:hover {
   color: #d9534f;
 }
 
 /* Responsive Styling */
 @media (max-width: 991px) {
-  .PRoWorkorderList-Main .col-md-1,
-  .PRoWorkorderList-Main .col-md-2 {
+  .WorkOrderEntry-main .col-md-1,
+  .WorkOrderEntry-main .col-md-2 {
       flex: 0 0 100%;
       max-width: 100%;
       margin-bottom: 10px;
@@ -99,7 +99,7 @@
       font-size: 18px;
   }
 
-  .PRoWorkorderListMaster   .table th, .table td {
+  .WorkOrderEntry-table   .table th, .table td {
       font-size: 14px;
   }
 }
@@ -109,11 +109,11 @@
       font-size: 16px;
   }
 
-  .PRoWorkorderListMaster   .table th, .table td {
+  .WorkOrderEntry-table   .table th, .table td {
       font-size: 12px;
   }
 
-  .PRoWorkorderListMaster  .table-responsive {
+  .WorkOrderEntry-table  .table-responsive {
       overflow-x: scroll;
   }
 }

@@ -6,7 +6,9 @@ import SideNav from "../../../SideNav/SideNav.js";
 import "./ErpFinancialYear.css";
 import { FaFile } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import { createFinancialYear, getFinancialYears } from "../../../Service/Erpsetting.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ErpFinancialYear = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -21,6 +23,53 @@ const ErpFinancialYear = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+  const [financialYears, setFinancialYears] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({
+    FyName: "",
+    From_Date: "",
+    To_Date: "",
+    ShortName: "",
+  });
+
+
+   // Fetch financial years on component mount
+   useEffect(() => {
+    const fetchFinancialYears = async () => {
+      try {
+        const data = await getFinancialYears();
+        setFinancialYears(data);
+      } catch (error) {
+        toast.error("Failed to fetch financial years!");
+      }
+    };
+
+    fetchFinancialYears();
+  }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFormSubmit = async () => {
+    try {
+      const newFinancialYear = await createFinancialYear(formData);
+      setFinancialYears([...financialYears, newFinancialYear]); // Update table
+      toast.success("Financial Year added successfully!");
+      setShowModal(false);
+      setFormData({
+        FyName: "",
+        From_Date: "",
+        To_Date: "",
+        ShortName: "",
+      });
+    } catch (error) {
+      toast.error("Failed to add Financial Year!");
+    }
+  };
+
 
   return (
     <div className="ErpFinancialyear">
@@ -58,33 +107,30 @@ const ErpFinancialYear = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {/* Sample data rows */}
-                          <tr>
-                            <td>1</td>
-                            <td>18-19</td>
-                            <td>01/04/2018</td>
-                            <td>31/03/2019</td>
-                            <td>2018-2019</td>
-                            <td><Link to="/Document-start"><FaFile/></Link></td>
-                            <td><FaFile/></td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>19-20</td>
-                            <td>01/04/2019</td>
-                            <td>31/03/2020</td>
-                            <td>2019-2020</td>
-                            <td><Link to="/Document-start"><FaFile/></Link></td>
-                            <td><FaFile/></td>
-                          </tr>
-                          {/* Add more rows as needed */}
+                          {financialYears.map((year) => (
+                            <tr key={year.id}>
+                              <td>{year.id}</td>
+                              <td>{year.FyName}</td>
+                              <td>{year.From_Date}</td>
+                              <td>{year.To_Date}</td>
+                              <td>{year.ShortName}</td>
+                              <td>
+                                <Link to="/Document-start">
+                                  <FaFile />
+                                </Link>
+                              </td>
+                              <td>
+                                <FaFile />
+                              </td>
+                            </tr>
+                          ))}
                         </tbody>
                       </table>
                     </div>
                   </div>
                   <div className="row text-start mt-5">
                     <div className="col-md-2">
-                      <button type="button" className="yearbtn">
+                      <button type="button" className="yearbtn"  onClick={() => setShowModal(true)}>
                         Create New Year
                       </button>
                     </div>
@@ -95,6 +141,72 @@ const ErpFinancialYear = () => {
           </div>
         </div>
       </div>
+      {/* Modal */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h5>Create New Financial Year</h5>
+            <div className="form-group">
+              <label>Fy Name</label>
+              <input
+                type="text"
+                name="FyName"
+                value={formData.FyName}
+                onChange={handleInputChange}
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label>From Date</label>
+              <input
+                type="date"
+                name="From_Date"
+                value={formData.From_Date}
+                onChange={handleInputChange}
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label>To Date</label>
+              <input
+                type="date"
+                name="To_Date"
+                value={formData.To_Date}
+                onChange={handleInputChange}
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label>Short Name</label>
+              <input
+                type="text"
+                name="ShortName"
+                value={formData.ShortName}
+                onChange={handleInputChange}
+                className="form-control"
+              />
+            </div>
+            <div className="modal-actions mt-3">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleFormSubmit}
+              >
+                Save
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => setShowModal(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <ToastContainer />
     </div>
   );
 };

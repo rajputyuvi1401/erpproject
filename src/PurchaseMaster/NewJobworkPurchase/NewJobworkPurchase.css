@@ -1,15 +1,13 @@
 .NewJobwork {
-    background-color: white;
-    height: auto;
-    padding: 20px;
-    margin: 20px;
+ 
+    margin-top: 20px;
   }
   
   .newjobwork-header {
-    background-color: aliceblue;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: auto;
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;
   }
   
   .header-title {

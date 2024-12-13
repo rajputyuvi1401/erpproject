@@ -17,7 +17,7 @@ const UserConfiguration = () => {
     password: "",
     emailId: "",
     mobileNo: "",
-    cr: "N",
+  
   });
 
   const toggleSideNav = () => {
@@ -216,7 +216,7 @@ const UserConfiguration = () => {
                     </div>
 
                     {/* CR Selection */}
-                    <div className="row mb-3">
+                    {/* <div className="row mb-3">
                       <div className="col-md-1 text-start">
                         <label htmlFor="cr" className="form-label">CR:</label>
                       </div>
@@ -232,7 +232,7 @@ const UserConfiguration = () => {
                           <option value="Y">Y</option>
                         </select>
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* Save Button */}
                     <div className="row mb-3">

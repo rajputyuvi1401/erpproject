@@ -161,24 +161,28 @@ const VendorPage = () => {
                 >
                   <div className="Vendorpage1">
                     <div className="container-fluid">
-                      <div className="top-but">
-                        <div className="row">
-                          <div className="col-md-9 col-12 text-start">
-                            <button className="btnv" type="button">
+                    <div className="Vender-header mb-4 text-start">
+                    <div className="row align-items-center">
+                     
+                      <div className="col-md-8 text-start">
+                      <button className="btn" type="button">
                               Company Setup
                             </button>
-                            <button className="btnv" type="button">
+                            <button className="btn" type="button">
                               Last Updated By Admin
                             </button>
-                            <button className="btnv" type="button">
+                            <button className="btn" type="button">
                               On D1 12/07/2022 2:57 PM
                             </button>
-                          </div>
-                          <div className="col-md-3 col-12 text-md-end text-start mt-3 mt-md-0">
-                            <button className="btnv">General Setting</button>
-                          </div>
-                        </div>
                       </div>
+                     
+                      <div className="col-md-4 col-12 text-end">
+                            <button className="btn">General Setting</button>
+                          </div>
+                     
+                    </div>
+                  </div>
+                  
                     </div>
                     <div className="VendorPageMain">
                       <div className="container-fluid text-start" id="shivi">

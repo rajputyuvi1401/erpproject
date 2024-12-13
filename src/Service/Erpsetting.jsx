@@ -51,11 +51,12 @@ export const registerUser = async (userData) => {
 
 
 // Login API integration
-export const loginUser = async (username, password) => {
+export const loginUser = async (username, password,year) => {
   try {
     const response = await axios.post(`${BASE_URL}api/login/`, {
       username,
       password,
+      year,
     });
 
     // Return the response data
@@ -93,3 +94,26 @@ export const loginUser = async (username, password) => {
     }
   };
   
+
+  // Financial Year
+  // Function to create a new financial year
+export const createFinancialYear = async (financialYearData) => {
+  try {
+    const response = await axios.post(`${BASE_URL}financial_years/`, financialYearData);
+    return response.data; // Return the response data
+  } catch (error) {
+    console.error("Error creating financial year:", error);
+    throw error; // Re-throw the error for the calling component to handle
+  }
+};
+
+// Function to fetch all financial years
+export const getFinancialYears = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}financial_years/`);
+    return response.data; // Return the response data
+  } catch (error) {
+    console.error("Error fetching financial years:", error);
+    throw error; // Re-throw the error for the calling component to handle
+  }
+};

@@ -40,9 +40,10 @@ const NewJobworkPurchase = () => {
                 <div className="NewJobwork">
                   <div className="container-fluid">
                     <div className="newjobwork-header">
-                      <div className="row flex-nowrap text-start">
-                        <div className="col-md-2 mt-4">
-                          <h5 className="header-title">New JW-PO</h5>
+                    <div className="newindent-header mb-4 text-start">
+                          <div className="row align-items-center">
+                            <div className="col-md-4">
+                              <h5 className="header-title">New JW-PO</h5>
                         </div>
                         <div className="col-md-1">
                           <label>PO Type:</label>
@@ -101,6 +102,8 @@ const NewJobworkPurchase = () => {
                           </button>
                         </div>
                       </div>
+                      </div>
+
                     </div>
                     <div className="newjobwork-main">
                       <ul

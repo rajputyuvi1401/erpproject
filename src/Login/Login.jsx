@@ -1,16 +1,32 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./Login.css";
-import { loginUser } from "../Service/Erpsetting.jsx"; 
+import { loginUser ,getFinancialYears} from "../Service/Erpsetting.jsx"; 
 
 const Login = () => {
-    const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [year, setYear] = useState(""); // Selected year
+  const [financialYears, setFinancialYears] = useState([]); // List of financial years
   const navigate = useNavigate(); 
 
+
+  // Fetch financial years on component mount
+  useEffect(() => {
+    const fetchFinancialYears = async () => {
+      try {
+        const data = await getFinancialYears();
+        setFinancialYears(data); // Populate the dropdown
+      } catch (error) {
+        console.error("Error fetching financial years:", error);
+      }
+    };
+
+    fetchFinancialYears();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,10 +34,13 @@ const Login = () => {
 
     try {
       // Call the loginUser function
-      const data = await loginUser(username, password);
+      const data = await loginUser(username, password,year);
 
       if (data.message === "Login successful") {
         // Store permissions and other relevant info
+        localStorage.setItem("username", data.username);
+localStorage.setItem("year", data.year);
+
         localStorage.setItem("permissions", JSON.stringify(data.permissions));
         navigate("/dashboard"); // Redirect to dashboard
       } else {
@@ -48,6 +67,27 @@ const Login = () => {
                 admin panel.
               </p>
               <div className="form1">
+              <div className="mb-3">
+                 <label htmlFor="year" className="form-label">
+                      Year
+                    </label>
+                    <select
+                      className="form-control"
+                      id="year"
+                      value={year}
+                      onChange={(e) => setYear(e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>
+                        Select Year
+                      </option>
+                      {financialYears.map((fy) => (
+                        <option key={fy.id} value={fy.ShortName}>
+                          {fy.ShortName}
+                        </option>
+                      ))}
+                    </select>
+                </div>
                 <div className="mb-3">
                 <label htmlFor="username" className="form-label">
           Username

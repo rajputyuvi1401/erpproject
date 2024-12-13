@@ -109,13 +109,19 @@ const WorkOrderEntry = () => {
                     </div>
                     <div className="col-md-2">
                       <label className="form-label">Select PO:</label>
-                      <input type="text" className="form-control" />
-                    </div>
-                    <div className="col-md-1 mt-4">
-                   
-                  
-                        <button className="btn">Add All Item</button>
+                      <div className="d-flex">
+                        <input type="text" className="form-control" />
+                     
                       </div>
+                    </div>
+                    <div className="col-md-2" style={{marginTop:'30px'}}>
+                     
+                     
+                       
+                        <button className="btn">Add All Item</button>
+                     
+                    </div>
+                    
                     <div className="col-md-2">
                       <label className="form-label">Select Item:</label>
                       <div className="d-flex">
@@ -123,18 +129,11 @@ const WorkOrderEntry = () => {
                         <button className="btn">Add</button>
                       </div>
                     </div>
-                    <div className="col-md-4 d-flex mt-4">
-                      <div className="text-center">
-                        <button className="btn ms-2">
-                          Pending CustPO For WorkOrder
-                        </button>
-                      </div>
-                      <div className="text-center">
-                        <button className="btn ms-2">
-                          Production From Existing Stock
-                        </button>
-                      </div>
-                    </div>
+                    <div className="col-md-4 d-flex mt-4 justify-content-between">
+  <button className="btn ms-2">Pending CustPO For WorkOrder</button>
+  <button className="btn ms-2">Production From Existing Stock</button>
+</div>
+
                   </div>
 
                  
