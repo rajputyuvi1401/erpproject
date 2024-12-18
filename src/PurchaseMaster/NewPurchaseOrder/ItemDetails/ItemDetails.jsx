@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
-import { addItem, getItems, updateItem, deleteItem, fetchItemFields } from "../../../Service/PurchaseApi";
+import {
+  addItem,
+  getItems,
+  updateItem,
+  deleteItem,
+  fetchItemFields,
+} from "../../../Service/PurchaseApi";
 import { toast, ToastContainer } from "react-toastify";
+import { getUnitCode } from "../../../Service/Api";
 
 const ItemDetails = () => {
   const [itemDetails, setItemDetails] = useState([]);
@@ -20,6 +27,8 @@ const ItemDetails = () => {
   const [errors, setErrors] = useState({});
   const [editId, setEditId] = useState(null);
   const [loading, setLoading] = useState(false);
+    const [unitCodes, setUnitCodes] = useState([]);
+  
 
   // Fetch items on component mount
   useEffect(() => {
@@ -38,7 +47,8 @@ const ItemDetails = () => {
   const validateItemDetails = (data) => {
     const errors = {};
     if (!data.Item.trim()) errors.Item = "Item is required.";
-    if (!data.ItemDescription.trim()) errors.ItemDescription = "Item Description is required.";
+    if (!data.ItemDescription.trim())
+      errors.ItemDescription = "Item Description is required.";
     return errors;
   };
 
@@ -151,6 +161,25 @@ const ItemDetails = () => {
     }
   };
 
+    useEffect(() => {
+      const fetchUnitCodes = async () => {
+        try {
+          const data = await getUnitCode();
+          setUnitCodes(data);
+        } catch (error) {
+          console.error("Error fetching unit codes:", error);
+        }
+      };
+  
+      fetchUnitCodes();
+    }, []);
+  
+    const handleSelectChange = (e) => {
+      setFormData({ ...formData, Unit: e.target.value });
+    };
+    
+
+
   return (
     <div className="container-fluid">
       <ToastContainer />
@@ -186,11 +215,17 @@ const ItemDetails = () => {
                         onChange={handleChange}
                       />
                       <span>
-              <button className="btnpurchase" onClick={handleSearch} disabled={loading}>
-                {loading ? "Searching..." : "Search"}
-              </button>
-            </span>
-            {errors.Item && <p className="error-text">{errors.Item}</p>}
+                        <button
+                          className="btnpurchase"
+                          onClick={handleSearch}
+                          disabled={loading}
+                        >
+                          {loading ? "Searching..." : "Search"}
+                        </button>
+                      </span>
+                      {errors.Item && (
+                        <p className="error-text">{errors.Item}</p>
+                      )}
                     </td>
                     <td>
                       <textarea
@@ -200,7 +235,9 @@ const ItemDetails = () => {
                         value={formData.ItemDescription}
                         onChange={handleChange}
                       ></textarea>
-                      {errors.ItemDescription && <p className="error-text">{errors.ItemDescription}</p>}
+                      {errors.ItemDescription && (
+                        <p className="error-text">{errors.ItemDescription}</p>
+                      )}
                     </td>
                     <td>
                       <input
@@ -239,16 +276,20 @@ const ItemDetails = () => {
                       />
                     </td>
                     <td>
-                      <select
-                        name="Unit"
-                        className="form-control"
-                        value={formData.Unit}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select</option>
-                        <option value="unit1">Unit 1</option>
-                        <option value="unit2">Unit 2</option>
-                      </select>
+                    <select
+  id="unitCode"
+  className="form-select"
+  value={formData.Unit}
+  onChange={handleSelectChange} // Use the updated function here
+>
+  <option value="">Select ..</option>
+  {unitCodes.map((unit, index) => (
+    <option key={index} value={unit.name}>
+      {unit.name}
+    </option>
+  ))}
+</select>
+
                     </td>
                     <td>
                       <textarea
@@ -279,9 +320,21 @@ const ItemDetails = () => {
                     </td>
                     <td>
                       {editId ? (
-                        <button className="btnpurchase" type='button' onClick={handleUpdate}>Update</button>
+                        <button
+                          className="btnpurchase"
+                          type="button"
+                          onClick={handleUpdate}
+                        >
+                          Update
+                        </button>
                       ) : (
-                        <button className="btnpurchase" type='button' onClick={handleAdd}>Add</button>
+                        <button
+                          className="btnpurchase"
+                          type="button"
+                          onClick={handleAdd}
+                        >
+                          Add
+                        </button>
                       )}
                     </td>
                   </tr>
@@ -310,8 +363,8 @@ const ItemDetails = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {itemDetails.map((item, index) => (
-                    <tr key={item.id}> {/* Ensure items have a unique id */}
+                {itemDetails.map((item, index) => (
+                    <tr key={item.id}>
                       <td>{index + 1}</td>
                       <td>{item.Item}</td>
                       <td>{item.ItemDescription}</td>

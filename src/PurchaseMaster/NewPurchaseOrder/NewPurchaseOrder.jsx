@@ -138,7 +138,7 @@ const NewPurchaseOrder = () => {
                         </div>
 
                         <div className="col-md-2">
-                          <label>Indent No:</label>
+                          
                           <input
                             type="text"
                             className="form-control"

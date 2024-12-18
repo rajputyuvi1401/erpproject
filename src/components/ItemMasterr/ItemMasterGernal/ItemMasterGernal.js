@@ -25,6 +25,7 @@ import NewCardParentFg from "../ItemGernalCard/NewCardParentFg.jsx";
 import { saveItemMaster } from "../../../Service/Api.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 import {
   getItems,
   // getGrades,
@@ -564,7 +565,9 @@ const ItemMasterGernal = () => {
                           <button className="btn-uper me-2">
                             Section Group Master
                           </button>
-                          <button className="btn-uper">Item List</button>
+                          <Link to={"/item-master"} className="btn-uper">
+                            Item List
+                          </Link>
                         </div>
                       </div>
                     </div>

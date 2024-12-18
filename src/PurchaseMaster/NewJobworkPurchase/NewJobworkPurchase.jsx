@@ -107,7 +107,7 @@ const NewJobworkPurchase = () => {
         </select>
                         </div>
                         <div className="col-md-1">
-                          <label>Indent No:</label>
+                        
                           <input
           type="text"
           className="form-control"

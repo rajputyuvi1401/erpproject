@@ -49,79 +49,116 @@ const Newindent = () => {
                         </div>
                       </div>
                       <div className="newindent2">
-  <div className="container">
-    <div className="row text-start">
-      <div className="col-md-12">
-        <form className="d-flex flex-wrap">
-          <div className="form-group col-md-1">
-            <label htmlFor="sharp" className="form-label">Sharp:</label>
-            <select id="sharp" className="form-control">
-              <option value="">Sharp...</option>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-            </select>
-          </div>
-          <div className="form-group col-md-1">
-            <label htmlFor="series" className="form-label">Series:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="series"
-            />
-          </div>
-          <div className="form-group col-md-1 ">
-            <label htmlFor="purchase" className="form-label">Purchase:</label>
-            <select id="purchase" className="form-control">
-              <option value="">Purchase...</option>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-            </select>
-          </div>
-          <div className="form-group col-md-1 ">
-            <label htmlFor="indentNo" className="form-label">Indent No:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="indentNo"
-            />
-          </div>
-          <div className="form-group col-md-2 ">
-            <label htmlFor="indent" className="form-label">Indent:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="indent"
-            />
-          </div>
-          <div className="form-group col-md-2 ">
-            <label htmlFor="date" className="form-label">Date:</label>
-            <input
-              type="date"
-              className="form-control"
-              id="date"
-            />
-          </div>
-          <div className="form-group col-md-2 ">
-            <label htmlFor="time" className="form-label">Time:</label>
-            <input
-              type="time"
-              className="form-control"
-              id="time"
-            />
-          </div>
-          <div className="form-group col-md-2 ">
-            <label htmlFor="category" className="form-label">Category:</label>
-            <select id="category" className="form-control">
-              <option value="">Office</option>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-            </select>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+                        <div className="container">
+                          <div className="row text-start">
+                            <div className="col-md-12">
+                              <form className="d-flex flex-wrap">
+                                <div className="form-group col-md-1">
+                                  <label htmlFor="sharp" className="form-label">
+                                    Sharp:
+                                  </label>
+                                  <select id="sharp" className="form-control">
+                                    <option value="">Sharp...</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                  </select>
+                                </div>
+                                <div className="form-group col-md-1">
+                                  <label
+                                    htmlFor="series"
+                                    className="form-label"
+                                  >
+                                    Series:
+                                  </label>
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="series"
+                                  />
+                                </div>
+                                <div className="form-group col-md-1 ">
+                                  <label
+                                    htmlFor="purchase"
+                                    className="form-label"
+                                  >
+                                    Purchase:
+                                  </label>
+                                  <select
+                                    id="purchase"
+                                    className="form-control"
+                                  >
+                                    <option value="">Purchase...</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                  </select>
+                                </div>
+                                <div className="form-group col-md-1 ">
+                                  <label
+                                    htmlFor="indentNo"
+                                    className="form-label"
+                                  >
+                                    Indent No:
+                                  </label>
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="indentNo"
+                                  />
+                                </div>
+                                <div className="form-group col-md-2 ">
+                                  <label
+                                    htmlFor="indent"
+                                    className="form-label"
+                                  >
+                                    Indent:
+                                  </label>
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    id="indent"
+                                  />
+                                </div>
+                                <div className="form-group col-md-2 ">
+                                  <label htmlFor="date" className="form-label">
+                                    Date:
+                                  </label>
+                                  <input
+                                    type="date"
+                                    className="form-control"
+                                    id="date"
+                                  />
+                                </div>
+                                <div className="form-group col-md-2 ">
+                                  <label htmlFor="time" className="form-label">
+                                    Time:
+                                  </label>
+                                  <input
+                                    type="time"
+                                    className="form-control"
+                                    id="time"
+                                  />
+                                </div>
+                                <div className="form-group col-md-2 ">
+                                  <label
+                                    htmlFor="category"
+                                    className="form-label"
+                                  >
+                                    Category:
+                                  </label>
+                                  <select
+                                    id="category"
+                                    className="form-control"
+                                  >
+                                    <option value="">Office</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                  </select>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
                       <div className="newindentmain">
                         <div className="container-fluid">

@@ -70,7 +70,7 @@ const PendingPo = () => {
                         <table className="table table-bordered">
                           <thead>
                             <tr>
-                              <th></th>
+                              <th>View All</th>
                               <th>Plant</th>
                               <th>From Date</th>
                               <th>To Date</th>
@@ -92,7 +92,7 @@ const PendingPo = () => {
                                 </label>
                               </th>
                               <th>CR Name</th>
-                              <th></th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>

@@ -5,8 +5,6 @@ import axios from 'axios';
 // Services/PurchaseApi.jsx
 // const BASE_URL = "http://13.201.136.34:8000/Purchase/";
 const BASE_URL = "api/Purchase/";
-
-
 export const addItem = async (data) => {
     try {
         const response = await fetch(`${BASE_URL}ItemDetail/`, {
