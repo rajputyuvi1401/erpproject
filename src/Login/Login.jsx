@@ -9,6 +9,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  
   const [year, setYear] = useState(""); // Selected year
   const [financialYears, setFinancialYears] = useState([]); // List of financial years
   const navigate = useNavigate(); 
@@ -31,27 +32,30 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-
+  
     try {
-      // Call the loginUser function
-      const data = await loginUser(username, password,year);
-
+      // Call the loginUser function with username, password, and selected year
+      const data = await loginUser(username, password, year);
+  
       if (data.message === "Login successful") {
-        // Store permissions and other relevant info
+        // Store the full year and Shortyear in localStorage
         localStorage.setItem("username", data.username);
-localStorage.setItem("year", data.year);
-
+        localStorage.setItem("year", data.year); // Store the full year (e.g., "2024-2025")
+        localStorage.setItem("Shortyear", data.Shortyear); // Store the Shortyear (e.g., "2425")
         localStorage.setItem("permissions", JSON.stringify(data.permissions));
-        navigate("/dashboard"); // Redirect to dashboard
+  
+        // Redirect to dashboard or another page
+        navigate("/dashboard");
       } else {
         alert(data.message || "Login failed");
       }
-    }  catch (error) {
+    } catch (error) {
       alert(error || "An error occurred during login");
     } finally {
       setIsLoading(false);
     }
   };
+  
 
 
   return (

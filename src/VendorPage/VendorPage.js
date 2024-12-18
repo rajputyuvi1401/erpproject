@@ -19,26 +19,19 @@ const VendorPage = () => {
   const [formData, setFormData] = useState({
     company_name: "",
     short_name: "",
-    website: "",
-    email_id: "",
+    email: "",
     password: "",
-
-    password1:"",
-
-   
-
+    password2:"",
+    city: "",
+    country:"India",
+    address: "",
+    website: "",
     contact_no: "",
     footer_message: "",
     director_name: "",
-    
-    address: "",
     pin_code: "",
-    city: "",
-    country:"India",
     state: "",
-   
-    state_no_numeric: "",
-    
+    state_no_numeric: "",  
     VAT_TIN: "",
     CST_TIN: "",
     C_Excise_Range: "",
@@ -51,6 +44,7 @@ const VendorPage = () => {
     Export_House_No: "",
     Udyog_Aadhar_No: "",
     Vat_Tin_Date: "",
+    Cst_Tin_Date:"",
     Subject_To: "",
     Division: "",
     GST_No: "",
@@ -83,8 +77,12 @@ const VendorPage = () => {
   };
 
   const handleNextButtonClick = () => {
+    console.log("Next button clicked");
+    console.log("Active tab before update:", activeTab);
     setActiveTab("data2");
+    console.log("Active tab after update:", "data2");
   };
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -278,12 +276,10 @@ const VendorPage = () => {
                               />
                             </div>
                             <div
-                              className={`tab-pane fade ${
-                                activeTab === "data2" ? "show active" : ""
-                              }`}
-                              id="pills-data2"
-                              role="tabpanel"
-                              aria-labelledby="pills-data2-tab"
+                               className={`tab-pane fade ${activeTab === "data2" ? "show active" : ""}`}
+                               id="pills-data2"
+                               role="tabpanel"
+                               aria-labelledby="pills-data2-tab"
                             >
                               <Data2
                                 formData={formData}

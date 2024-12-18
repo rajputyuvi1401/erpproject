@@ -64,7 +64,7 @@ const UserConfiguration = () => {
 
       // Optionally reset the form data
       setFormData({
-        plant: "SHARP",
+        plant: "",
         department: "",
         fullName: "",
         username: "",
@@ -98,15 +98,15 @@ const UserConfiguration = () => {
                         <label htmlFor="plant" className="form-label">Plant:</label>
                       </div>
                       <div className="col-md-3">
-                        <select
+                      <input
+                          type="text"
                           id="plant"
                           name="plant"
                           value={formData.plant}
                           onChange={handleChange}
-                          className="form-select"
-                        >
-                          <option value="SHARP">SHARP</option>
-                        </select>
+                          className="form-control"
+                        />
+                       
                       </div>
                     </div>
 

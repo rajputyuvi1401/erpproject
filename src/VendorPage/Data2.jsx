@@ -9,13 +9,13 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
 
     // List of required fields
     const requiredFields = [
-      "email_id",
+      "email",
       "company_name",
       "short_name",
      
       "password",
 
-      "password1",
+      "password2",
 
       "city",
       "country",
@@ -40,6 +40,8 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
       "ARN_No",
       "Export_House_No",
       "Udyog_Aadhar_No",
+      "Vat_Tin_Date",
+      "Cst_Tin_Date",
       "Subject_To",
       "Division",
       "GST_No",
@@ -60,11 +62,15 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
   };
 
   const handleNext = () => {
-    console.log("date 2 data successfull");
+    console.log("Form data before validation:", formData);
     if (validateForm()) {
-      handleNextButtonClick1();
+      console.log("Validation passed, proceeding to next step");
+      handleNextButtonClick1(); // Call parent function to move to the next tab
+    } else {
+      console.log("Validation failed:", errors);
     }
   };
+  
 
   return (
     <div className="Vendordata2">

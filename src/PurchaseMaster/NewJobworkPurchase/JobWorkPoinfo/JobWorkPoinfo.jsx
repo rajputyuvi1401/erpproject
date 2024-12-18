@@ -1,23 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./JobWorkPoinfo.css";
 import { FaPlus, FaSync, FaEdit, FaTrash } from "react-icons/fa";
-import { saveJwPoInfo } from "../../../Service/PurchaseApi";
+import { saveJwPoInfo , fetchNextJobWorkNumber } from "../../../Service/PurchaseApi";
 import { toast, ToastContainer } from "react-toastify"; // Importing toaster
 
 const JobWorkPoinfo = () => {
   const [showCard, setShowCard] = useState(false);
-  const handleAddClick = () => {
-    setShowCard(true);
-  };
-
-  const handleRefreshClick = () => {
-    console.log("Data refreshed");
-  };
-
-  const handleCloseCard = () => {
-    setShowCard(false);
-  };
-
   const [formData, setFormData] = useState({
     PoNo: "",
     PaymentTerm: "",
@@ -34,8 +22,41 @@ const JobWorkPoinfo = () => {
     PF_Charges: "",
     PoRateType: "",
   });
-
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  // Fetch Shortyear from localStorage
+  const year = localStorage.getItem("Shortyear");
+
+  // Fetch next_PoNo when the component loads
+  useEffect(() => {
+    const fetchPoNumber = async () => {
+      if (!year) {
+        console.error("Shortyear is not available in localStorage.");
+        return;
+      }
+
+      setLoading(true);
+      try {
+        const response = await fetchNextJobWorkNumber(year);
+        if (response && response.next_PoNo) {
+          setFormData((prev) => ({ ...prev, PoNo: response.next_PoNo })); // Set PoNo
+        } else {
+          console.error("No PoNo received from the API.");
+        }
+      } catch (error) {
+        console.error("Error fetching next job work number:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPoNumber();
+  }, [year]);
+
+  const handleAddClick = () => setShowCard(true);
+  const handleRefreshClick = () => console.log("Data refreshed");
+  const handleCloseCard = () => setShowCard(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -54,25 +75,23 @@ const JobWorkPoinfo = () => {
     if (validate()) {
       saveJwPoInfo(formData)
         .then((response) => {
-          // Check if response contains an id to determine success
-          if (response.id) {
+          if (response && response.id) { // Assuming 'id' is returned on successful save
             toast.success("Data saved successfully!");
-            console.log("Data saved:", response); // Adjust based on actual response
+            console.log("Data saved:", response); // Optional: Log response for debugging
+            clearForm(); // Clear the form after successful submission
           } else {
-            toast.error("Failed to save data.");
-            console.error("Error response:", response);
+            toast.error("Failed to save data. Please try again.");
+            console.error("Error response:", response); // Log error response
           }
-          clearForm();
         })
         .catch((error) => {
-          toast.error("Failed to save data.");
-          console.error("Error saving data:", error);
+          toast.error("An error occurred while saving the data.");
+          console.error("Error saving data:", error); // Log the error for debugging
         });
     } else {
       toast.error("Please fill in all required fields.");
     }
   };
-  
   
 
   const clearForm = () => {
@@ -95,6 +114,7 @@ const JobWorkPoinfo = () => {
     setErrors({});
   };
 
+
   return (
     <div className="jobworkpoinfo">
       <ToastContainer />
@@ -109,7 +129,7 @@ const JobWorkPoinfo = () => {
               </div>
               <div className="col-md-8">
                 <div className="form-group mb-3">
-                  <input
+                <input
                     type="text"
                     id="PoNo"
                     name="PoNo"
@@ -117,6 +137,7 @@ const JobWorkPoinfo = () => {
                     placeholder="Enter PO Number"
                     value={formData.PoNo}
                     onChange={handleChange}
+                    readOnly={loading} // Make it read-only while fetching
                   />
                     {errors.PoNo && <div className="invalid-feedback">{errors.PoNo}</div>}
                 </div>

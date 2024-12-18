@@ -9,7 +9,7 @@ import JobWorkitemdetail from "./JobWorkitemdetail/JobWorkitemdetail.jsx";
 import JobWorkgstdetail from "./JobWorkgstdetail/JobWorkgstdetail.jsx";
 import JobWorkschedule from "./JobWorkschedule/JobWorkschedule.jsx";
 import JobWorkShiptoadd from "./JobWorkShiptoadd/JobWorkShiptoadd.jsx";
-
+import { fetchNextJobWorkNumber } from "../../Service/PurchaseApi.jsx";
 const NewJobworkPurchase = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -24,6 +24,47 @@ const NewJobworkPurchase = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+  const [selectedSeries, setSelectedSeries] = useState("");
+  const [indentNo, setIndentNo] = useState("");
+  const [, setLoading] = useState(false);
+
+  // Fetch Shortyear from localStorage
+  const year = localStorage.getItem("Shortyear");
+
+  // Handle series change
+  const handleSeriesChange = async (e) => {
+    const seriesValue = e.target.value;
+    setSelectedSeries(seriesValue);
+
+    if (seriesValue.trim() === "") {
+      setIndentNo(""); // Clear the indent number if no series is selected
+      return;
+    }
+
+    if (!year) {
+      console.error("Year is not available in localStorage.");
+      setIndentNo(""); // Clear the indent number and notify the user
+      return;
+    }
+
+    setLoading(true);
+    try {
+      // Fetch the next job work number from the API
+      const response = await fetchNextJobWorkNumber(year);
+      if (response && response.next_PoNo) {
+        setIndentNo(response.next_PoNo); // Set the next PoNo as the indent number
+      } else {
+        setIndentNo(""); // Clear if no code is returned
+      }
+    } catch (error) {
+      console.error("Error fetching next job work number:", error);
+      setIndentNo(""); // Clear in case of error
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="NewJobworkMaster">
       <div className="container-fluid">
@@ -39,11 +80,10 @@ const NewJobworkPurchase = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="NewJobwork">
                   <div className="container-fluid">
-                    <div className="newjobwork-header">
-                    <div className="newindent-header mb-4 text-start">
-                          <div className="row align-items-center">
-                            <div className="col-md-4">
-                              <h5 className="header-title">New JW-PO</h5>
+                  <div className="NewJobwork-header mb-4 text-start">
+                    <div className="row align-items-center">
+                      <div className="col-md-2">
+                        <h5 className="header-title">New JW-PO</h5>
                         </div>
                         <div className="col-md-1">
                           <label>PO Type:</label>
@@ -56,14 +96,24 @@ const NewJobworkPurchase = () => {
                         
                         <div className="col-md-1">
                           <label>Series:</label>
-                          <select className="form-control">
-                            <option value="">JOBWORK</option>
-                           
-                          </select>
+                          <select
+          className="form-control"
+          value={selectedSeries}
+          onChange={handleSeriesChange}
+        >
+          <option value="select">select</option>
+          <option value="JOBWORK">JOBWORK</option>
+          {/* Add other series options here if needed */}
+        </select>
                         </div>
                         <div className="col-md-1">
                           <label>Indent No:</label>
-                          <input type="text" className="form-control" />
+                          <input
+          type="text"
+          className="form-control"
+          value={indentNo}
+          readOnly
+        />
                         </div>
                         <div className="col-md-1">
                           <label>Supplier:</label>
@@ -102,8 +152,6 @@ const NewJobworkPurchase = () => {
                           </button>
                         </div>
                       </div>
-                      </div>
-
                     </div>
                     <div className="newjobwork-main">
                       <ul
@@ -113,7 +161,7 @@ const NewJobworkPurchase = () => {
                       >
                         <li className="nav-item" role="presentation">
                           <button
-                            className="nav-link"
+                            className="nav-link active"
                             id="pills-PO-Info-tab-job"
                             data-bs-toggle="pill"
                             data-bs-target="#pills-PO-Info"
@@ -127,7 +175,7 @@ const NewJobworkPurchase = () => {
                         </li>
                         <li className="nav-item" role="presentation">
                           <button
-                            className="nav-link active"
+                            className="nav-link"
                             id="pills-Item-Details-tab-job"
                             data-bs-toggle="pill"
                             data-bs-target="#pills-Item-Details"
@@ -185,7 +233,7 @@ const NewJobworkPurchase = () => {
 
                       <div className="tab-content" id="pills-tabContent">
                         <div
-                          className="tab-pane fade"
+                          className="tab-pane fade show active"
                           id="pills-PO-Info"
                           role="tabpanel"
                           aria-labelledby="pills-PO-Info-tab-job"
@@ -194,7 +242,7 @@ const NewJobworkPurchase = () => {
                           <JobWorkPoinfo />
                         </div>
                         <div
-                          className="tab-pane fade show active"
+                          className="tab-pane fade"
                           id="pills-Item-Details"
                           role="tabpanel"
                           aria-labelledby="pills-Item-Details-tab-job"

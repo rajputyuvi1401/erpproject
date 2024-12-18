@@ -1,16 +1,16 @@
 .NewJobwork {
- 
+   
     margin-top: 20px;
   }
   
-  .newjobwork-header {
+  .NewJobwork-header {
     background-color: #f8f9fa; /* Light background for header */
     border-bottom: 1px solid #dee2e6; /* Border for header */
     padding: 10px 15px; /* Padding around header */
     border-radius: 5px;
   }
   
-  .header-title {
+   .header-title {
     color: blue;
     font-size: 18px; /* Default font size */
   }
@@ -79,9 +79,66 @@
     }
   }
   .newjobwork-main {
-    background-color: aliceblue;
+    background-color: #f8f9fa;
     padding: 10px;
-    margin-top: 80px;
+    margin-top: 20px;
     height: auto;
   }
+  .NewJobwork
+.nav-pills .NewJobwork .nav-link {
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+/* Active tab styling */ .NewJobwork
+.nav-pills .NewJobwork .nav-link.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Responsive tab styling */
+@media (max-width: 576px) {
+  .NewJobwork .nav-pills .NewJobwork .nav-link {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .NewJobwork .nav-pills {
+    display: block;
+    text-align: center;
+  }
+
+  .tab-content {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .NewJobwork .nav-pills .NewJobwork .nav-link {
+    font-size: 15px;
+    padding: 10px 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .NewJobwork .nav-pills .NewJobwork .nav-link {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+.NewJobwork .tab-content {
+  padding: 10px;
+  border: none;
   
+}
+
+.NewJobwork .tab-pane {
+  display: none;
+}
+
+.NewJobwork .tab-pane.show {
+  display: block;
+}

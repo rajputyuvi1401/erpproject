@@ -44,9 +44,9 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
      
 
         case "password":
-          case "password1":
+          case "password2":
             // Check if password and confirm password match
-            if (formData.password !== formData.password1) {
+            if (formData.password !== formData.password2) {
               error = "Passwords do not match";
             }
             break;
@@ -65,22 +65,17 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
       "company_name",
       "short_name",
       "website",
-      "email-id",
+      "email",
       "password",
-
-      "password1",
-
+      "password2",
       "contact_no",
       "footer_message",
-      "director_name",
-     
+      "director_name",   
       "address",
       "pin_code",
       "city",
       "country",
       "state",
-     
-      
       "state_no_numeric",
      
     ];
@@ -95,8 +90,8 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
 
   
 
-     if (formData.password !== formData.password1) {
-      newErrors.password1 = "Passwords do not match";
+     if (formData.password !== formData.password2) {
+      newErrors.password2 = "Passwords do not match";
     }
 
   
@@ -107,12 +102,16 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
   };
 
   const handleNextButtonClick = (e) => {
-    console.log("gernall data successfull");
     e.preventDefault();
+    console.log("Form data before validation:", formData);
     if (validateForm()) {
-      onNextButtonClick();
+      console.log("Validation passed");
+      onNextButtonClick(); // Trigger tab change
+    } else {
+      console.log("Validation failed", errors);
     }
   };
+  
 
   const handleGeneralSubmit = (e) => {
     e.preventDefault();
@@ -135,6 +134,8 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
 
     loadStateData();
   }, []);
+
+  
   const handleStateChange = async (e) => {
     const selectedState = e.target.value;
     onFormDataChange({ ...formData, state: selectedState });
@@ -251,21 +252,21 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label htmlFor="email_id" className="col-sm-4 col-form-label">
+                  <label htmlFor="email" className="col-sm-4 col-form-label">
                     Email Id
                   </label>
                   <div className="col-sm-8">
                     <input
-                      type="email_id"
+                      type="email"
                       className="form-control"
-                      id="email_id"
-                      name="email_id"
-                      value={formData.email_id}
+                      id="email"
+                      name="email"
+                      value={formData.email}
                       onChange={handleChange}
                       placeholder="contact@sharp-engineers.com"
                     />
-                    {errors.email_id && (
-                      <div className="text-danger">{errors.email_id}</div>
+                    {errors.email && (
+                      <div className="text-danger">{errors.email}</div>
                     )}
                   </div>
                 </div>
@@ -290,21 +291,21 @@ const General = ({ formData, onFormDataChange, onNextButtonClick }) => {
                 </div>
 
                 <div className="row mb-3">
-                  <label htmlFor="password1" className="col-sm-4 col-form-label">
+                  <label htmlFor="password2" className="col-sm-4 col-form-label">
                     Confirm Password
                   </label>
                   <div className="col-sm-8">
                     <input
-                      type="password1"
+                      type="password2"
                       className="form-control"
-                      id="password1"
-                      name="password1"
-                      value={formData.password1}
+                      id="password2"
+                      name="password2"
+                      value={formData.password2}
                       onChange={handleChange}
                       placeholder="*********"
                     />
-                    {errors.password1 && (
-                      <div className="text-danger">{errors.password1}</div>
+                    {errors.password2 && (
+                      <div className="text-danger">{errors.password2}</div>
                     )}
                   </div>
                 </div>

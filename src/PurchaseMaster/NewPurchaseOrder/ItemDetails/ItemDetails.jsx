@@ -1,50 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import { FaTrash, FaEdit } from 'react-icons/fa';
-import { addItem, getItems, updateItem, deleteItem ,fetchItemFields} from '../../../Service/PurchaseApi';
-import { toast, ToastContainer } from 'react-toastify';
+import React, { useState, useEffect } from "react";
+import { FaTrash, FaEdit } from "react-icons/fa";
+import { addItem, getItems, updateItem, deleteItem, fetchItemFields } from "../../../Service/PurchaseApi";
+import { toast, ToastContainer } from "react-toastify";
 
 const ItemDetails = () => {
   const [itemDetails, setItemDetails] = useState([]);
   const [formData, setFormData] = useState({
-    Item: '',
-    ItemDescription: '',
-    ItemSize: '',
-    Rate: '',
-    Disc: '',
-    Qty: '',
-    Unit: '',
-    Particular: '',
-    Mill_Name: '',
-    DeliveryDt: '',
+    Item: "",
+    ItemDescription: "",
+    ItemSize: "",
+    Rate: "",
+    Disc: "",
+    Qty: "",
+    Unit: "",
+    Particular: "",
+    Mill_Name: "",
+    DeliveryDt: "",
   });
   const [errors, setErrors] = useState({});
   const [editId, setEditId] = useState(null);
+  const [loading, setLoading] = useState(false);
 
+  // Fetch items on component mount
   useEffect(() => {
     const fetchItems = async () => {
       try {
         const items = await getItems();
         setItemDetails(items);
       } catch (error) {
-        toast.error('Failed to fetch items.');
+        toast.error("Failed to fetch items.");
       }
     };
-
     fetchItems();
   }, []);
 
+  // Validate item details
   const validateItemDetails = (data) => {
     const errors = {};
-    if (!data.Item) errors.Item = 'Item is required';
-    if (!data.ItemDescription) errors.ItemDescription = 'Item Description is required';
-    // Add more validations as needed
+    if (!data.Item.trim()) errors.Item = "Item is required.";
+    if (!data.ItemDescription.trim()) errors.ItemDescription = "Item Description is required.";
     return errors;
   };
 
+  // Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Add new item
   const handleAdd = async () => {
     const validationErrors = validateItemDetails(formData);
     if (Object.keys(validationErrors).length > 0) {
@@ -54,42 +57,34 @@ const ItemDetails = () => {
 
     try {
       await addItem(formData);
-      toast.success('Item added successfully!');
-      setFormData({
-        Item: '',
-        ItemDescription: '',
-        ItemSize: '',
-        Rate: '',
-        Disc: '',
-        Qty: '',
-        Unit: '',
-        Particular: '',
-        Mill_Name: '',
-        DeliveryDt: '',
-      });
+      toast.success("Item added successfully!");
+      resetForm();
       const updatedItems = await getItems();
       setItemDetails(updatedItems);
     } catch (error) {
-      toast.error('Failed to add item.');
+      toast.error("Failed to add item.");
     }
   };
 
+  // Delete item
   const handleDelete = async (id) => {
     try {
       await deleteItem(id);
-      toast.success('Item deleted successfully!');
+      toast.success("Item deleted successfully!");
       const updatedItems = await getItems();
       setItemDetails(updatedItems);
     } catch (error) {
-      toast.error('Failed to delete item.');
+      toast.error("Failed to delete item.");
     }
   };
 
+  // Edit item
   const handleEdit = (item) => {
     setFormData(item);
-    setEditId(item.id); // Ensure you have an `id` property in your item
+    setEditId(item.id);
   };
 
+  // Update item
   const handleUpdate = async () => {
     const validationErrors = validateItemDetails(formData);
     if (Object.keys(validationErrors).length > 0) {
@@ -99,54 +94,60 @@ const ItemDetails = () => {
 
     try {
       await updateItem(editId, formData);
-      toast.success('Item updated successfully!');
-      setFormData({
-        Item: '',
-        ItemDescription: '',
-        ItemSize: '',
-        Rate: '',
-        Disc: '',
-        Qty: '',
-        Unit: '',
-        Particular: '',
-        Mill_Name: '',
-        DeliveryDt: '',
-      });
-      setEditId(null);
+      toast.success("Item updated successfully!");
+      resetForm();
       const updatedItems = await getItems();
       setItemDetails(updatedItems);
     } catch (error) {
-      toast.error('Failed to update item.');
+      toast.error("Failed to update item.");
     }
   };
 
+  // Reset form
+  const resetForm = () => {
+    setFormData({
+      Item: "",
+      ItemDescription: "",
+      ItemSize: "",
+      Rate: "",
+      Disc: "",
+      Qty: "",
+      Unit: "",
+      Particular: "",
+      Mill_Name: "",
+      DeliveryDt: "",
+    });
+    setErrors({});
+    setEditId(null);
+  };
+
+  // Search for item
   const handleSearch = async () => {
-    if (formData.Item) {
-      try {
-        const items = await fetchItemFields(formData.Item);
-        if (items.length > 0) {
-          // Assume the first match is the correct one
-          const item = items[0];
-          setFormData({
-            ...formData,
-            ItemDescription: item.Name_Description,
-            Rate: item.Rate
-          });
-        } else {
-          setFormData({
-            ...formData,
-            ItemDescription: '',
-            Rate: ''
-          });
-        }
-      } catch (error) {
-        console.error("Error fetching item data:", error);
-        setFormData({
-          ...formData,
-          ItemDescription: '',
-          Rate: ''
-        });
+    if (!formData.Item.trim()) {
+      setErrors({ Item: "Please enter a part number or item description." });
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const data = await fetchItemFields(formData.Item);
+      if (data.length > 0) {
+        const item = data[0];
+        setFormData((prevData) => ({
+          ...prevData,
+          Item: item.part_no || "",
+          ItemDescription: item.Name_Description || "",
+          ItemSize: item.Item_Size || "",
+          Rate: item.Rate || "",
+        }));
+        setErrors({});
+      } else {
+        setErrors({ Item: "No matching item found." });
       }
+    } catch (error) {
+      setErrors({ Item: "Error fetching item details." });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -185,8 +186,11 @@ const ItemDetails = () => {
                         onChange={handleChange}
                       />
                       <span>
-                        <button className="btnpurchase" onClick={handleSearch} >Search</button>
-                      </span>
+              <button className="btnpurchase" onClick={handleSearch} disabled={loading}>
+                {loading ? "Searching..." : "Search"}
+              </button>
+            </span>
+            {errors.Item && <p className="error-text">{errors.Item}</p>}
                     </td>
                     <td>
                       <textarea

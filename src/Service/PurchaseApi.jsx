@@ -5,6 +5,8 @@ import axios from 'axios';
 // Services/PurchaseApi.jsx
 // const BASE_URL = "http://13.201.136.34:8000/Purchase/";
 const BASE_URL = "api/Purchase/";
+
+
 export const addItem = async (data) => {
     try {
         const response = await fetch(`${BASE_URL}ItemDetail/`, {
@@ -83,7 +85,7 @@ export const createPOInfo = async (data) => {
 // JobWork Poinfo
 export const saveJwPoInfo = async (data) => {
     try {
-        const response = await fetch(`${BASE_URL}JwPoInfo/`, {
+        const response = await fetch(`${BASE_URL}register_purchase_order/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -228,16 +230,16 @@ export const deleteQuote = async (id) => {
 
 // fetch supplier
 export const fetchSupplierData = async (searchTerm = '') => {
-    try {
-      const response = await axios.get(`${BASE_URL}Fetch_Supplier_Code/`, {
-        params: { search: searchTerm }
-      });
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching supplier data:", error);
-      throw error;
-    }
-  };
+  try {
+    const response = await axios.get(`${BASE_URL}Fetch_Supplier_Code/`, {
+      params: { search: searchTerm }
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching supplier data:", error);
+    throw error;
+  }
+};
 
 
 //   fetch itme 
@@ -253,6 +255,32 @@ export const fetchItemFields = async (searchTerm = '') => {
     }
   };
 
-// Type Customer
 
+
+// Fetch the next code based on the series and year
+export const fetchNextCode = async (series, year) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}get_next_code/`, 
+      { params: { field: series, year: year } }
+    );
+    return response.data; // Return the response data
+  } catch (error) {
+    console.error("Error fetching next code:", error);
+    throw error; // Rethrow the error to handle it in the component
+  }
+};
   
+
+
+export const fetchNextJobWorkNumber = async (shortyear) => {
+  try {
+    const response = await axios.get(`${BASE_URL}get_next_job_work_number/`, {
+      params: { Shortyear: shortyear },
+    });
+    return response.data; // Return the response data containing next_PoNo
+  } catch (error) {
+    console.error("Error fetching next job work number:", error);
+    throw error; // Rethrow the error to handle it in the component
+  }
+};

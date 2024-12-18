@@ -10,9 +10,14 @@ import ItemOther from "./ItemOther/ItemOther.jsx";
 import Schedule from "./Schedule/Schedule.jsx";
 import Ship from "./Ship/Ship.jsx";
 import Poinfo from "./POInfo/Poinfo.jsx";
-import { fetchSupplierData } from "../../Service/PurchaseApi.jsx";
+import { fetchSupplierData , fetchNextCode } from "../../Service/PurchaseApi.jsx";
 const NewPurchaseOrder = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
+  const [selectedSeries, setSelectedSeries] = useState(""); // To store selected series
+  const [indentNo, setIndentNo] = useState(""); // To store the generated indent number
+  const [supplierName, setSupplierName] = useState(""); // State for supplier name input
+  const [supplierCode, setSupplierCode] = useState(""); // State for supplier code input
+  const [loading, setLoading] = useState(false); // State for loading indicator
 
   const toggleSideNav = () => {
     setSideNavOpen((prevState) => !prevState);
@@ -26,31 +31,64 @@ const NewPurchaseOrder = () => {
     }
   }, [sideNavOpen]);
 
-  const [selectedSupplier, setSelectedSupplier] = useState("");
-  const [code, setCode] = useState("");
-  const [loading, setLoading] = useState(false);
+  // Fetching the Shortyear from localStorage with a fallback
+  const handleSeriesChange = async (e) => {
+    const seriesValue = e.target.value;
+    setSelectedSeries(seriesValue);
+  
+    if (seriesValue.trim() === "") {
+      setIndentNo(""); // Clear the indent number if no series is selected
+      return;
+    }
+  
+    const year = localStorage.getItem("Shortyear"); // Fetch Shortyear from localStorage
+  
+    if (!year) {
+      console.error("Year is not available in localStorage.");
+      setIndentNo(""); // Clear the indent number and notify the user
+      return;
+    }
+  
+    setLoading(true);
+    try {
+      // Use the selected series and the year from localStorage in the API request
+      const response = await fetchNextCode(seriesValue, year);
+      if (response && response.next_code) {
+        setIndentNo(response.next_code); // Set the next_code in the indent number field
+      } else {
+        setIndentNo(""); // Clear if no code is returned
+      }
+    } catch (error) {
+      console.error("Error fetching next code:", error);
+      setIndentNo(""); // Clear in case of error
+    } finally {
+      setLoading(false);
+    }
+  };
+  
 
-  const handleSupplierChange = async (e) => {
-    const supplierName = e.target.value;
-    setSelectedSupplier(supplierName);
+  // Handle search and populate the supplier code
 
-    if (supplierName.trim() === "") {
-      setCode("");
+
+  const handleSelectSupplier = async () => {
+    if (!supplierName) {
+      alert("Please enter a supplier name.");
       return;
     }
 
     setLoading(true);
     try {
-      const suppliers = await fetchSupplierData(supplierName);
-      if (suppliers.length > 0) {
-        const supplier = suppliers[0]; // Assuming the first match is the correct one
-        setCode(supplier.Code_No);
+      const data = await fetchSupplierData(supplierName); // Fetch supplier data
+      if (data && data.length > 0) {
+        const supplier = data[0]; // Assuming the first result is the correct one
+        setSupplierCode(supplier.number); // Set the supplier code
       } else {
-        setCode("");
+        alert("Supplier not found.");
+        setSupplierCode(""); // Clear the code if no supplier is found
       }
     } catch (error) {
       console.error("Error fetching supplier data:", error);
-      setCode("");
+      alert("Error fetching supplier data.");
     } finally {
       setLoading(false);
     }
@@ -71,9 +109,9 @@ const NewPurchaseOrder = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="NewPurchse">
                   <div className="container-fluid">
-                    <div className="newpurchase-header">
-                      <div className="row flex-nowrap text-start">
-                        <div className="col-md-2 mt-4">
+                    <div className="NewPurchse-header mb-4 text-start">
+                      <div className="row align-items-center">
+                        <div className="col-md-2">
                           <h5 className="header-title">New Order Purchase</h5>
                         </div>
                         <div className="col-md-1">
@@ -86,30 +124,46 @@ const NewPurchaseOrder = () => {
 
                         <div className="col-md-1">
                           <label>Series:</label>
-                          <select className="form-control">
-                            <option value="">RM</option>
-                            <option value="option1">CONSUMABLE</option>
-                            <option value="option2">ASSET</option>
-                            <option value="option2">SERVICE</option>
+                          <select
+                            className="form-control"
+                            value={selectedSeries}
+                            onChange={handleSeriesChange} // Call the function on series change
+                          >
+                            <option value="select">select</option>
+                            <option value="RM">RM</option>
+                            <option value="CONSUMABLE">CONSUMABLE</option>
+                            <option value="ASSET">ASSET</option>
+                            <option value="SERVICE">SERVICE</option>
                           </select>
                         </div>
-                        <div className="col-md-1">
-                          <label>Indent No:</label>
-                          <input type="text" className="form-control" />
-                        </div>
+
                         <div className="col-md-2">
+                          <label>Indent No:</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            value={indentNo}
+                            readOnly // Make it read-only so the user can't edit it directly
+                          />
+                        </div>
+
+                        <div className="col-md-1">
                           <label>Supplier:</label>
                           <input
                             type="text"
                             className="form-control"
-                            value={selectedSupplier}
-                            onChange={handleSupplierChange}
+                            value={supplierName}
+                            onChange={(e) => setSupplierName(e.target.value)} // Update supplier name
                             disabled={loading}
                           />
                         </div>
                         <div className="col-md-1">
-                          <button className="btn  mt-4" onClick={() => {}}>
-                            Select
+                          <button
+                            className="btn btn-primary mt-4"
+                            onClick={handleSelectSupplier} // Trigger the search when clicked
+                            disabled={loading}
+                          >
+                            {loading ? "Loading..." : "Select"}
                           </button>
                         </div>
                         <div className="col-md-1">
@@ -117,11 +171,11 @@ const NewPurchaseOrder = () => {
                           <input
                             type="text"
                             className="form-control"
-                            value={code}
-                            onChange={(e) => setCode(e.target.value)}
-                            disabled={loading}
+                            value={supplierCode}
+                            disabled // Disable the input field for the code
                           />
                         </div>
+
                         <div className="col-md-1 text-start mt-4">
                           <i
                             style={{ padding: "5px" }}
@@ -133,13 +187,12 @@ const NewPurchaseOrder = () => {
                             className="fas fa-bars"
                           ></i>
                         </div>
+
                         <div className="col-md-1 mt-4">
-                          <button className="btn newpurchase-btn">Clear</button>
+                          <button className="btn">Clear</button>
                         </div>
                         <div className="col-md-1 mt-4">
-                          <button className="btn newpurchase-btn">
-                            PO List
-                          </button>
+                          <button className="btn">PO List</button>
                         </div>
                       </div>
                     </div>
