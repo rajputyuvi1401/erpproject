@@ -43,7 +43,7 @@ const FGToFGStock = () => {
                       <div className="row">
                         <div className="col-md-2 d-flex flex-wrap">
                           <select>
-                            <option>Sharp</option>
+                            <option>Produlink</option>
                           </select>
                         </div>
                       </div>

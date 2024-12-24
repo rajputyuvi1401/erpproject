@@ -57,7 +57,7 @@ const ReworkProductionReport = () => {
                     <div className="row ">
                       <div className="col-md-1">
                         <select>
-                          <option>Sharp</option>
+                          <option>Produlink</option>
                         </select>
                       </div>
                       <div className="col-md-1">
@@ -116,7 +116,7 @@ const ReworkProductionReport = () => {
                         <tr>
                           <td>1</td>
                           <td>24-25</td>
-                          <td>SHARP</td>
+                          <td>Produlink</td>
                           <td>REWPROD242509014</td>
                           <td>20/09/2024</td>
                           <td>520DU00102</td>

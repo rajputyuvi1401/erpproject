@@ -62,13 +62,13 @@ const DocCompanySetting = () => {
                         <label>To Date:</label>
                         <input type="date" className="form-control" placeholder="Module Name" />
                       </div>
-                      <div className="col-md-2">
+                      <div className="col-md-2" style={{marginTop:"-1px"}}>
                         <label>Setting Name</label>
                         <textarea type="text" className="form-control" placeholder="Setting Name" ></textarea>
                       </div>
                      
-                      <div className="col-md-2 mt-4">
-                      <button type="button" className="btn">Search</button>
+                      <div className="col-md-1" style={{marginTop:"31px"}}>
+                      <button type="button" className="btn btn-primary">Search</button>
                       
                       </div>
 

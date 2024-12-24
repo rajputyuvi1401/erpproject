@@ -34,12 +34,12 @@ const DeleteRecord = () => {
         <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
         <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
           <div className="DeleteRecord">
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-md-3">
-                  <h3 className="header-title">Delete / Cancel Document</h3>
+            <div className="DeleteRecord-header mb-4 text-start">
+              <div className="row align-items-center">
+                <div className="col-md-4 mt-1">
+                  <h5 className="header-title">Delete / Cancel Document</h5>
                 </div>
-                <div className="col-md-9 text-end">
+                <div className="col-md-8 text-end">
                   <Link className="Deletbtn" to="/Item-delete">
                     Delete Item
                   </Link>
@@ -48,6 +48,7 @@ const DeleteRecord = () => {
                   </Link>
                 </div>
               </div>
+            </div>
               <div className="row">
                 <div className="tabs">
                   <div className="row">
@@ -226,7 +227,7 @@ const DeleteRecord = () => {
                 </div>
               </div>
             </div>
-          </div>
+          
         </main>
       </div>
     </div>

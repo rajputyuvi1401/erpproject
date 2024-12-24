@@ -91,7 +91,7 @@ const PurchaseERPGRN = () => {
                    
                     <div className="col-md-2">
                       <label htmlFor="moduleSelect" className="col-form-label">Type:</label>
-                      <select id="moduleSelect" className="form-select">
+                      <select id="moduleSelect" className="form-select" style={{marginTop:"-2px"}}>
                         <option>Select</option>
                         <option>Module 1</option>
                         <option>Module 2</option>
@@ -103,7 +103,7 @@ const PurchaseERPGRN = () => {
                     </div>
                     
                     <div className="col-md-1">
-                      <button type="submit" className="btn btn-primary mt-5">
+                      <button type="submit" className="btn btn-primary" style={{marginTop:"38px"}}>
                         Save
                       </button>
                     </div>

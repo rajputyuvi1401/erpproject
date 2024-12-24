@@ -75,23 +75,33 @@ const JobWorkPoinfo = () => {
     if (validate()) {
       saveJwPoInfo(formData)
         .then((response) => {
-          if (response && response.id) { // Assuming 'id' is returned on successful save
+          
+          if (response && response.id) {
+            console.log("response");
+            
             toast.success("Data saved successfully!");
-            console.log("Data saved:", response); // Optional: Log response for debugging
-            clearForm(); // Clear the form after successful submission
+            clearForm();
           } else {
             toast.error("Failed to save data. Please try again.");
-            console.error("Error response:", response); // Log error response
+            console.error("Unexpected API Response:", response);
           }
         })
         .catch((error) => {
-          toast.error("An error occurred while saving the data.");
-          console.error("Error saving data:", error); // Log the error for debugging
+          console.error("Error saving data:", error); // Log full error for debugging
+          if (error.response) {
+            // Display specific error message if available
+            toast.error(
+              error.response.data.message || "An error occurred while saving."
+            );
+          } else {
+            toast.error("An unexpected error occurred.");
+          }
         });
     } else {
       toast.error("Please fill in all required fields.");
     }
   };
+  
   
 
   const clearForm = () => {

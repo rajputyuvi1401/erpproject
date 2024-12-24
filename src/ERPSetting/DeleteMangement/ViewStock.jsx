@@ -38,7 +38,7 @@ const ViewStock = () => {
                   <li><Link to="/user-list">User List</Link></li>
                 </ul>
               </div>
-              <div className="col-lg-10 col-md-9 col-12 content">
+              <div className="col-lg-10 col-md-9 col-12 content mt-5">
                 <div className="order-header mb-4 d-flex justify-content-between align-items-center">
                   <h5 className="header-title">Stock</h5>
                   <button type="button" className="btn export-btn">
@@ -63,14 +63,14 @@ const ViewStock = () => {
                   <div className="col-md-2">
                     <input className="form-control" />
                   </div>
-                  <div className="col-md-2">
-                    <button type="button" className="btn stock-btn">Search</button>
+                  <div className="col-md-2 mt-1">
+                    <button type="button" className="btn btn-primary">Search</button>
                   </div>
                   <div className="col-md-2">
                     <input className="form-control" />
                   </div>
-                  <div className="col-md-2">
-                    <button type="button" className="btn stock-btn">Search</button>
+                  <div className="col-md-2 mt-1">
+                    <button type="button" className="btn btn-primary">Search</button>
                   </div>
                 </div>
                 <table className="table table-bordered table-responsive-sm mt-3">

@@ -422,7 +422,7 @@ const Supervisor = () => {
                         </div>
                         <div className="col-md-2 col-sm-6 text-start">
                           <select id="contractor" className="form-select">
-                            <option value="">SHARP</option>
+                            <option value="">Produlink</option>
                             {/* Add options here */}
                           </select>
                         </div>

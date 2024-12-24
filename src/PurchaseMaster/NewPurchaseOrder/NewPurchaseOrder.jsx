@@ -11,6 +11,7 @@ import Schedule from "./Schedule/Schedule.jsx";
 import Ship from "./Ship/Ship.jsx";
 import Poinfo from "./POInfo/Poinfo.jsx";
 import { fetchSupplierData , fetchNextCode } from "../../Service/PurchaseApi.jsx";
+import { Link } from "react-router-dom";
 const NewPurchaseOrder = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
   const [selectedSeries, setSelectedSeries] = useState(""); // To store selected series
@@ -94,6 +95,7 @@ const NewPurchaseOrder = () => {
     }
   };
 
+
   return (
     <div className="NewPurchaseMaster">
       <div className="container-fluid">
@@ -137,7 +139,7 @@ const NewPurchaseOrder = () => {
                           </select>
                         </div>
 
-                        <div className="col-md-2">
+                        <div className="col-md-2" style={{marginTop:"20px"}}>
                           
                           <input
                             type="text"
@@ -192,7 +194,7 @@ const NewPurchaseOrder = () => {
                           <button className="btn">Clear</button>
                         </div>
                         <div className="col-md-1 mt-4">
-                          <button className="btn">PO List</button>
+                          <Link to="/PoList" className="btn">PO List</Link>
                         </div>
                       </div>
                     </div>

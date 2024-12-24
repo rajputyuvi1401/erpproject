@@ -45,7 +45,7 @@ const WorkCenterMaster = () => {
   const [records] = useState([
     {
       id: 1,
-      plant: "SHARP",
+      plant: "Produlink",
       workCenterCode: "WC001",
       workCenterName: "Main Work Center",
       machineType: "Type A",
@@ -57,7 +57,7 @@ const WorkCenterMaster = () => {
     },
     {
       id: 1,
-      plant: "SHARP",
+      plant: "Produlink",
       workCenterCode: "WC001",
       workCenterName: "Main Work Center",
       machineType: "Type A",
@@ -69,7 +69,7 @@ const WorkCenterMaster = () => {
     },
     {
       id: 1,
-      plant: "SHARP",
+      plant: "Produlink",
       workCenterCode: "WC001",
       workCenterName: "Main Work Center",
       machineType: "Type A",
@@ -81,7 +81,7 @@ const WorkCenterMaster = () => {
     },
     {
       id: 1,
-      plant: "SHARP",
+      plant: "Produlink",
       workCenterCode: "WC001",
       workCenterName: "Main Work Center",
       machineType: "Type A",
@@ -329,7 +329,7 @@ const WorkCenterMaster = () => {
                             className="form-select"
                             aria-label="Default select example"
                           >
-                            <option selected>SHARP</option>
+                            <option selected>Produlink</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>

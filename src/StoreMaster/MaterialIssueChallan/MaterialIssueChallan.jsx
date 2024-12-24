@@ -162,7 +162,7 @@ const MaterialIssueChallan = () => {
                         </div>
                         <div className="col-8 col-sm-3">
                           <select id="sharpSelect" className="form-select">
-                            <option selected>Sharp</option>
+                            <option selected>Produlink</option>
                           </select>
                         </div>
                         <div className="col-12 col-sm-7 mt-2 mt-sm-0">

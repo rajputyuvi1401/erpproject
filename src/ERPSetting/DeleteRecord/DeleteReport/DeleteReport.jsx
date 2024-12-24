@@ -28,14 +28,17 @@ const DeleteReport = () => {
         <div className="Itemmaindelete">
           <div className="container-fluid">
             {/* Title and button */}
-            <div className="row mb-3 align-items-center">
-              <div className="col-md-3 col-sm-12">
-                <h4 className="header-title">Delete History Report</h4>
-              </div>
-              <div className="col-md-9 col-sm-12 text-end">
-                <button type="button" className="dltbtn">
-                  Print Report
-                </button>
+
+            <div className="DeleteRecord-header mb-4 text-start">
+              <div className="row align-items-center">
+                <div className="col-md-4">
+                  <h5 className="header-title">Delete History Report</h5>
+                </div>
+                <div className="col-md-8  text-end">
+                  <button type="button" className="btn">
+                    Print Report
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -51,7 +54,7 @@ const DeleteReport = () => {
               </div>
               <div className="col-lg-2 col-md-6 col-sm-12 mb-2">
                 <label htmlFor="type">Type</label>
-                <select className="form-control" id="type">
+                <select className="form-control" id="type" style={{marginTop:"-1px"}}>
                   <option value="ALL Trn.">ALL Trn.</option>
                   <option value="DELETE_REPROD">DELETE_REPROD</option>
                   <option value="DELETE_InvoiceItem">DELETE_InvoiceItem</option>
@@ -93,9 +96,7 @@ const DeleteReport = () => {
                         <td>FG1117</td>
                         <td>Item details here</td>
                         <td>
-                          <button className="btn">
-                            View
-                          </button>
+                          <button className="btn">View</button>
                         </td>
                       </tr>
                       {/* Add more rows dynamically if necessary */}

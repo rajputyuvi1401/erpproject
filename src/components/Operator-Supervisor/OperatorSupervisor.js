@@ -24,7 +24,7 @@ const OperatorSupervisor = () => {
   const data = [
     {
       id: 1,
-      plant: "sharp",
+      plant: "Produlink",
       code: "001",
       name: "Bapu Gayke",
       type: "Operator",
@@ -35,7 +35,7 @@ const OperatorSupervisor = () => {
     },
     {
       id: 2,
-      plant: "sharp",
+      plant: "Produlink",
       code: "002",
       name: "John Doe",
       type: "Supervisor",
@@ -46,7 +46,7 @@ const OperatorSupervisor = () => {
     },
     {
       id: 3,
-      plant: "sharp",
+      plant: "Produlink",
       code: "003",
       name: "Jane Smith",
       type: "Staff",
@@ -57,7 +57,7 @@ const OperatorSupervisor = () => {
     },
     {
       id: 4,
-      plant: "sharp",
+      plant: "Produlink",
       code: "004",
       name: "Samuel Green",
       type: "Operator",
@@ -68,7 +68,7 @@ const OperatorSupervisor = () => {
     },
     {
       id: 5,
-      plant: "sharp",
+      plant: "Produlink",
       code: "005",
       name: "Emily Brown",
       type: "Supervisor",
@@ -120,9 +120,9 @@ const OperatorSupervisor = () => {
                     <div className="container-fluid">
                       <div className="row gy-3 text-start">
                         <div className="col-md-1 col-6">
-                          <label htmlFor="sharp" className="form-label"></label>
-                          <select id="sharp" className="form-select mb-4">
-                            <option value="">Sharp</option>
+                          <label htmlFor="Produlink" className="form-label"></label>
+                          <select id="Produlink" className="form-select mb-4">
+                            <option value="">Produlink</option>
                             {/* Add options here */}
                           </select>
                         </div>

@@ -38,7 +38,7 @@ const ReworkProductionEntry = () => {
                         <h5 className="header-title">Rework Production</h5>
                       </div>
                       <div className="col-md-1">
-                        <select><option>SHARP</option></select>
+                        <select><option>Produlink</option></select>
                       </div>
                       <div className="col-md-1">
                        <label>Series</label>

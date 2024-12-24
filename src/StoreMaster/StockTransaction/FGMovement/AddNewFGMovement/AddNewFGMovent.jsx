@@ -43,7 +43,7 @@ const AddNewFGMovent = () => {
                       <div className="row justify-content-end">
                         <div className="col-md-2 d-flex flex-wrap justify-content-end">
                           <select>
-                            <option>Sharp</option>
+                            <option>Produlink</option>
                           </select>
                         </div>
                       </div>

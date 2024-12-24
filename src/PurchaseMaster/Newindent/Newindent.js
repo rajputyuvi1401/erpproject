@@ -20,6 +20,21 @@ const Newindent = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+  const [currentDate, setCurrentDate] = useState('');
+  const [currentTime, setCurrentTime] = useState('');
+
+  useEffect(() => {
+    // Get the current date and time
+    const now = new Date();
+    const date = now.toISOString().split('T')[0]; // Get the date in YYYY-MM-DD format
+    const time = now.toTimeString().split(' ')[0].substring(0, 5); // Get the time in HH:MM format
+
+    setCurrentDate(date);
+    setCurrentTime(time);
+  }, []);
+
+
   return (
     <div className="NewindentMaster">
       <div className="container-fluid">
@@ -55,10 +70,10 @@ const Newindent = () => {
                               <form className="d-flex flex-wrap">
                                 <div className="form-group col-md-1">
                                   <label htmlFor="sharp" className="form-label">
-                                    Sharp:
+                                    Produlink:
                                   </label>
                                   <select id="sharp" className="form-control">
-                                    <option value="">Sharp...</option>
+                                    <option value="Produlink">Produlink</option>
                                     <option value="option1">Option 1</option>
                                     <option value="option2">Option 2</option>
                                   </select>
@@ -105,38 +120,30 @@ const Newindent = () => {
                                     id="indentNo"
                                   />
                                 </div>
-                                <div className="form-group col-md-2 ">
-                                  <label
-                                    htmlFor="indent"
-                                    className="form-label"
-                                  >
-                                    Indent:
-                                  </label>
-                                  <input
-                                    type="text"
-                                    className="form-control"
-                                    id="indent"
-                                  />
-                                </div>
+                                
                                 <div className="form-group col-md-2 ">
                                   <label htmlFor="date" className="form-label">
                                     Date:
                                   </label>
-                                  <input
-                                    type="date"
-                                    className="form-control"
-                                    id="date"
-                                  />
+                                   <input
+          type="date"
+          className="form-control"
+          id="date"
+          value={currentDate}
+          onChange={(e) => setCurrentDate(e.target.value)}
+        />
                                 </div>
                                 <div className="form-group col-md-2 ">
                                   <label htmlFor="time" className="form-label">
                                     Time:
                                   </label>
                                   <input
-                                    type="time"
-                                    className="form-control"
-                                    id="time"
-                                  />
+          type="time"
+          className="form-control"
+          id="time"
+          value={currentTime}
+          onChange={(e) => setCurrentTime(e.target.value)}
+        />
                                 </div>
                                 <div className="form-group col-md-2 ">
                                   <label

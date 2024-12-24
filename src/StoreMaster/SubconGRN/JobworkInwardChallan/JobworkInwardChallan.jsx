@@ -122,7 +122,7 @@ const JobworkInwardChallan = () => {
                       <div className="row mb-3">
                         <div className="col-md-1">
                           <select id="sharpSelect" className="form-select">
-                            <option selected>Sharp</option>
+                            <option selected>Produlink</option>
                           </select>
                         </div>
                         <div className="col-md-1">

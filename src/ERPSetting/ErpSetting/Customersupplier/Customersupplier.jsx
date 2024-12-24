@@ -69,7 +69,7 @@ const Customersupplier = ({ form, onSubmit }) => {
                             <div className="col-md-1">
                               <input type="number" className="form-control" />
                             </div>
-                            <label className="col-md-1 form-label">
+                            <label className="col-md-1 form-label mt-2">
                               Action
                             </label>
                             <div className="col-md-2">

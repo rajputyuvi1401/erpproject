@@ -63,7 +63,7 @@ const LoginHistory = () => {
                   </button>
                 </li>
               </ul>
-              <div className="tab-content">
+              <div className="tab-content" style={{border:"none"}}>
                 {activeTab === "lastLogin" && (
                   <div className="tab-pane fade show active">
                               <div className="table-responsive">
@@ -121,6 +121,7 @@ const LoginHistory = () => {
                           value={formData.userType}
                           onChange={handleInputChange}
                           className="form-control"
+                          style={{marginTop:"-1px"}}
                         >
                           <option value="">Select</option>
                           <option value="All">All</option>
@@ -135,9 +136,9 @@ const LoginHistory = () => {
                           <option value="Account">Account</option>
                         </select>
                       </div>
-                      <div className="col-md-2 d-flex align-items-end">
-                        <button className="btn me-2">Search</button>
-                        <button className="btn ">Export To Excel</button>
+                      <div className="col-md-4 d-flex align-items-end">
+                        <button style={{padding:"8px"}} className="btn  me-2">Search</button>
+                        <button style={{padding:"8px"}} className="btn  ">Export To Excel</button>
                       </div>
                     </div>
                     <div className="table-responsive">

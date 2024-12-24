@@ -65,19 +65,17 @@ export const getPOInfo = async () => {
 };
 
 export const createPOInfo = async (data) => {
-    try{
-    const response = await fetch(`${BASE_URL}PO_Info/`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+  try {
+    const response = await axios.post(`${BASE_URL}generate_code/`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
-    return response.json();}
-    catch (error) {
-        console.error('Error adding item:', error);
-        throw error;
-    }
+    return response.data; // Return the response data
+  } catch (error) {
+    console.error('Error adding item:', error);
+    throw error; // Rethrow the error to handle it in the component
+  }
 };
 
 // JobWork Poinfo
@@ -240,6 +238,7 @@ export const fetchSupplierData = async (searchTerm = '') => {
 };
 
 
+
 //   fetch itme 
 export const fetchItemFields = async (searchTerm = '') => {
     try {
@@ -280,5 +279,24 @@ export const fetchNextJobWorkNumber = async (shortyear) => {
   } catch (error) {
     console.error("Error fetching next job work number:", error);
     throw error; // Rethrow the error to handle it in the component
+  }
+};
+
+// Function to fetch the next PO code
+export const getNextPoNumber = async (field, year) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/get_next_code/?field=${field}&year=${year}`);
+    return response.data.next_code;
+  } catch (error) {
+    throw new Error("Error fetching next code: " + error.message);
+  }
+};
+
+export const registerPurchaseOrder = async (payload) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/RegisterPO_All_Series/`, payload);
+    return response.data;
+  } catch (error) {
+    throw new Error("Error saving purchase order: " + error.message);
   }
 };

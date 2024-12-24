@@ -10,7 +10,7 @@ import { toast, ToastContainer } from "react-toastify";
 const UserConfiguration = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
   const [formData, setFormData] = useState({
-    plant: "SHARP",
+    plant: "Produlink",
     department: "",
     fullName: "",
     username: "",

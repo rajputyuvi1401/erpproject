@@ -92,7 +92,7 @@ import MasterReport from "./components/MasterReport/MasterReport";
 
 // new indent
 import Newindent from "./PurchaseMaster/Newindent/Newindent";
-
+import PoList from "./PurchaseMaster/NewPurchaseOrder/PoList/PoList.jsx";
 // New Purchase Order
 import NewPurchaseOrder from "./PurchaseMaster/NewPurchaseOrder/NewPurchaseOrder.jsx";
 
@@ -303,7 +303,7 @@ import ContractirList from "./ProductionMaster/ContractorReport/ContractorList/C
 
 import ProReport from "./ProductionMaster/Report/ProReport.jsx";
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+import JobworkList from "./PurchaseMaster/NewJobworkPurchase/JobworkList/JobworkList.jsx";
 function App() {
   return (
     <div className="App">
@@ -569,8 +569,8 @@ function App() {
         <Route path="/ScrapRejectionReport" element={<ScrapRejectionReport />} />
         <Route path="/ScrapRejectionEntry" element={<ScrapRejectionEntry />} />
         <Route path="/FGScrapRejectionReport" element={<FGScrapRejectionReport />} />
-
-
+<Route path="/PoList" element={<PoList/>} />
+<Route path="/JobworkList" element={<JobworkList/>} />
 
         <Route path="/BreakdownTimeEntry" element={<BreakdownTimeEntry />} />
         <Route path="/BreakdownTimeReport" element={<BreakdownTimeReport />} />

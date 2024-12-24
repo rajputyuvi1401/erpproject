@@ -45,22 +45,9 @@ body {
     text-align: left;
     padding: 10px;
 }
-
-/* Delete Management Component */
-.delete-container .delete-management {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-.delete-container .shifted {
-    margin-left: 15vw;
-}
-
 /* Order List Component */
 .delete-container .order-list {
-    display: flex;
-    flex-direction: column;
+  
     height: 100vh;
 }
 
@@ -75,9 +62,6 @@ body {
     flex-direction: column;
 }
 
-.delete-container .main-content.shifted {
-    margin-left: 15vw;
-}
 
 /* View Stock Component */
 .delete-container .view-stock {
@@ -123,3 +107,16 @@ body {
         display: block;
     }
 }
+
+.order-header {
+    margin-top: 0px;
+  }
+  
+  /* Header Styling */
+  .order-header {
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;
+  }
+  

@@ -27,11 +27,13 @@ const ItemDelete = () => {
       <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
         <div className="Itemmaindelete">
           <div className="container-fluid">
-            <div className="row mb-3">
-              <div className="col-12">
-                <h3 className="header-title">Item List For Delete</h3>
-              </div>
-            </div>
+            <div className="DeleteRecord-header mb-4 text-start">
+              <div className="row align-items-center">
+                <div className="col-md-4 mt-2">
+                  <h5 className="header-title">Item List For Delete</h5>
+                </div>
+             </div>
+             </div>
             <div className="row mb-3 text-start">
               <div className="col-md-1 col-12">
                 <label>Enter No:</label>

@@ -68,7 +68,7 @@ const WorkIssueRepost = () => {
                         <div className="col-md-1 col-sm-6">
                           <label className="form-label">Plant</label>
                           <select className="form-select">
-                            <option value="">SHARP</option>
+                            <option value="">Produlink</option>
                           </select>
                         </div>
 

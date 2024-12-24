@@ -122,7 +122,7 @@ const ErpSetting = () => {
                       <div className="col-md-2">
                         <select id="seriesSelect" className="form-select">
                           <option value="">Select Plant</option>
-                          <option value="sharp">Sharp</option>
+                          <option value="Produlink">Produlink</option>
                           {/* Add more options as needed */}
                         </select>
                       </div>

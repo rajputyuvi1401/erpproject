@@ -172,7 +172,7 @@ const InwardChallan1 = () => {
                         {/* Sharp Select Option */}
                         <div className="col-md-2">
                           <select id="sharpSelect" className="form-select">
-                            <option selected>Sharp</option>
+                            <option selected>Produlink</option>
                           </select>
                         </div>
 

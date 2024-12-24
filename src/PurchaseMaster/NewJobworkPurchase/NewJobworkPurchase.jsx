@@ -9,13 +9,13 @@ import JobWorkitemdetail from "./JobWorkitemdetail/JobWorkitemdetail.jsx";
 import JobWorkgstdetail from "./JobWorkgstdetail/JobWorkgstdetail.jsx";
 import JobWorkschedule from "./JobWorkschedule/JobWorkschedule.jsx";
 import JobWorkShiptoadd from "./JobWorkShiptoadd/JobWorkShiptoadd.jsx";
-import { fetchNextJobWorkNumber } from "../../Service/PurchaseApi.jsx";
+import { fetchNextJobWorkNumber ,fetchSupplierData} from "../../Service/PurchaseApi.jsx";
+import { Link } from "react-router-dom";
 const NewJobworkPurchase = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
-  const toggleSideNav = () => {
-    setSideNavOpen((prevState) => !prevState);
-  };
+  const toggleSideNav = () => setSideNavOpen((prev) => !prev);
+  
 
   useEffect(() => {
     if (sideNavOpen) {
@@ -65,6 +65,34 @@ const NewJobworkPurchase = () => {
     }
   };
 
+ const [supplierName, setSupplierName] = useState(""); // State for supplier name input
+  const [supplierCode, setSupplierCode] = useState(""); // State for supplier code input
+  
+    const handleSelectSupplier = async () => {
+      if (!supplierName) {
+        alert("Please enter a supplier name.");
+        return;
+      }
+  
+      setLoading(true);
+      try {
+        const data = await fetchSupplierData(supplierName); // Fetch supplier data
+        if (data && data.length > 0) {
+          const supplier = data[0]; // Assuming the first result is the correct one
+          setSupplierCode(supplier.number); // Set the supplier code
+        } else {
+          alert("Supplier not found.");
+          setSupplierCode(""); // Clear the code if no supplier is found
+        }
+      } catch (error) {
+        console.error("Error fetching supplier data:", error);
+        alert("Error fetching supplier data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+
   return (
     <div className="NewJobworkMaster">
       <div className="container-fluid">
@@ -101,12 +129,12 @@ const NewJobworkPurchase = () => {
           value={selectedSeries}
           onChange={handleSeriesChange}
         >
-          <option value="select">select</option>
+         <option value="select">Select</option>
           <option value="JOBWORK">JOBWORK</option>
           {/* Add other series options here if needed */}
         </select>
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-2" style={{marginTop:"20px"}}>
                         
                           <input
           type="text"
@@ -117,20 +145,31 @@ const NewJobworkPurchase = () => {
                         </div>
                         <div className="col-md-1">
                           <label>Supplier:</label>
-                          <input type="text" className="form-control" />
+                          <input
+                            type="text"
+                            className="form-control"
+                            value={supplierName}
+                            onChange={(e) => setSupplierName(e.target.value)} // Update supplier name
+                            
+                          />
                         </div>
                         <div className="col-md-1">
-                          <button className="btn newpurchase-btn mt-4">
-                            Select
+                          <button
+                            className="btn btn-primary mt-4"
+                            onClick={handleSelectSupplier} // Trigger the search when clicked
+                           
+                          >
+                            {"Select"}
                           </button>
                         </div>
                         <div className="col-md-1">
-                          <label></label>
-                          <select className="form-control">
-                            <option value="">S0053</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                          </select>
+                          <label>Code:</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            value={supplierCode}
+                            disabled // Disable the input field for the code
+                          />
                         </div>
                         <div className="col-md-1 text-start mt-4">
                           <i
@@ -147,9 +186,9 @@ const NewJobworkPurchase = () => {
                           <button className="btn newpurchase-btn">Clear</button>
                         </div>
                         <div className="col-md-1 mt-4">
-                          <button className="btn newpurchase-btn">
+                          <Link to="/JobworkList" className="btn newpurchase-btn">
                             PO List
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </div>

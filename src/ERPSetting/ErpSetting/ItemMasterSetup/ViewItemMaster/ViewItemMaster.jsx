@@ -118,7 +118,7 @@ const ViewItemMaster = () => {
                   <div className="ItemSetup-header mb-4 text-start">
                     <div className="row align-items-start">
                       <div className="view-header">
-                        <h2>Item Master Setup View</h2>
+                        <h2 className="header-title">Item Master Setup View</h2>
                       </div>
                     </div>
                   </div>

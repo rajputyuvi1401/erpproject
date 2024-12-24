@@ -1,6 +1,6 @@
 /* General container padding and margin adjustments */
 .Itemmaindelete {
-    padding: 20px;
+    padding: 10px;
   }
   
   .Itemmaindelete  .header-title {
@@ -8,7 +8,10 @@
     font-size: 1.5rem;
   }
   
- 
+  .DeleteRecord-header{background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;}
   
   .Itemmaindelete .dltbtn {
     background-color: #007bff;

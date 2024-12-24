@@ -158,7 +158,7 @@ const Weekoff = () => {
                               onChange={handleHolidayInputChange}
                             />
                           </div>
-                          <div className="col-md-2 mt-5">
+                          <div className="col-md-1" style={{marginTop:'35px'}}>
                             <button className="btn btn-primary w-100" onClick={addHoliday}>
                               Add Holiday
                             </button>

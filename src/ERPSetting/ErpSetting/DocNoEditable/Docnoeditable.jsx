@@ -48,7 +48,8 @@ const Docnoeditable = () => {
                           Setting History
                         </Link>
                         <button type="button" className="btn">
-                          Company Info
+                         
+                         Print Company Info
                         </button>
                         <Link type="button" className="btn" to="/Companysetup">
                           Company Info
@@ -69,7 +70,7 @@ const Docnoeditable = () => {
                       </div>
                       <div className="col-md-2">
                         <label>Document No Editable</label>
-                        <select className="form-control">
+                        <select className="form-control" style={{marginTop:"-1px"}} >
                           <option value="">Select Setting</option>
                           <option>Setting 1</option>
                           <option>Setting 2</option>

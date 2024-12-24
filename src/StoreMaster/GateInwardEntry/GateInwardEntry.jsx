@@ -28,26 +28,31 @@ const GateInwardEntry = () => {
           <div className="col-md-12">
             <div className="Main-NavBar">
               <NavBar toggleSideNav={toggleSideNav} />
-              <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
+              <SideNav
+                sideNavOpen={sideNavOpen}
+                toggleSideNav={toggleSideNav}
+              />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="GateInward-header">
-                  <div className="row flex-nowrap align-items-center">
-                    <div className="col-md-3">
-                      <h5 className="header-title text-start">
+                <div className="GateInward-header mb-4 text-start">
+                  <div className="row align-items-center">
+                    <div className="col-md-4">
+                      <h5 className="header-title">
                         Gate Entry Inward Register
                       </h5>
                     </div>
 
                     <div className="col-md-9 text-end">
                       <div className="row justify-content-end">
-                        <div className="col-md-9 d-flex align-items-end">
-                          <Link className="pobtn" to={'/New-Gate-Entry'}>New Gate Entry</Link>
-                         
-                          <Link className="pobtn">Gate Inward Material Reg</Link>
-                         
-                          <Link className="pobtn">Export Excel</Link>
-                        
-                          <Link className="pobtn">Gate Entry Inward - Query</Link>
+                        <div className="col-md-10 d-flex align-items-end">
+                          <Link className="btn" to={"/New-Gate-Entry"}>
+                            New Gate Entry
+                          </Link>
+
+                          <Link className="btn">Gate Inward Material Reg</Link>
+
+                          <Link className="btn">Export Excel</Link>
+
+                          <Link className="btn">Gate Entry Inward - Query</Link>
                         </div>
                       </div>
                     </div>
@@ -74,7 +79,7 @@ const GateInwardEntry = () => {
                           <div className="col-md-1 col-sm-6">
                             <label className="form-label">Plant</label>
                             <select className="form-select">
-                              <option value="">SHARP</option>
+                              <option value="Produlink">Produlink</option>
                               {/* Add more options here */}
                             </select>
                           </div>
@@ -90,11 +95,17 @@ const GateInwardEntry = () => {
                               <option value="57F4GRN">57F4 GRN</option>
                               <option value="jobworkGRN">jobwork GRN</option>
                               <option value="DC GRN">DC GRN</option>
-                              <option value="InterStoreInvoice">Inter Store Invoice</option>
-                              <option value="InterStoreChallan">Inter Store Challan</option>
+                              <option value="InterStoreInvoice">
+                                Inter Store Invoice
+                              </option>
+                              <option value="InterStoreChallan">
+                                Inter Store Challan
+                              </option>
                               <option value="Sales Return">Sales Return</option>
                               <option value="DirectGRN">Direct GRN</option>
-                              <option value="General/Document/Courier">General/Document/Courier</option>
+                              <option value="General/Document/Courier">
+                                General/Document/Courier
+                              </option>
                             </select>
                           </div>
 
@@ -174,9 +185,7 @@ const GateInwardEntry = () => {
                               <th>View</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            {/* Table rows will go here */}
-                          </tbody>
+                          <tbody>{/* Table rows will go here */}</tbody>
                         </table>
                       </div>
                     </div>

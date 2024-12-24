@@ -70,7 +70,7 @@ const ScheduleMonth = () => {
                           <label>Year No</label>
                           <input type="text" className="form-control"/>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-1 mt-1">
                          <button type="button" className="btn btn-primary mt-4">Add</button>
                         </div>
                       </div>

@@ -45,7 +45,7 @@ const DocprintFormat = () => {
                         <Link  type="button" to="/DocCompanySetting"
                           className="btn">Setting History</Link>
                           <button  type="button"
-                          className="btn">Company Info</button>
+                          className="btn">Print Company Info</button>
                         <Link
                           type="button"
                           className="btn"

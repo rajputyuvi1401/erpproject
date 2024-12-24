@@ -84,7 +84,7 @@ const PurchaseErp = () => {
                       <label htmlFor="moduleSelect" className="col-form-label">
                         Purchase Group:
                       </label>
-                      <select id="moduleSelect" className="form-select">
+                      <select id="moduleSelect" className="form-select" style={{marginTop:"-2px"}}>
                         <option>Select</option>
                         <option>Module 1</option>
                         <option>Module 2</option>
@@ -128,7 +128,7 @@ const PurchaseErp = () => {
                       <label htmlFor="moduleSelect" className="col-form-label">
                         Item Group:
                       </label>
-                      <select id="moduleSelect" className="form-select">
+                      <select id="moduleSelect" className="form-select" style={{marginTop:"-2px"}}>
                         <option>Select</option>
                         <option>Module 1</option>
                         <option>Module 2</option>
@@ -138,7 +138,7 @@ const PurchaseErp = () => {
                       <label htmlFor="moduleSelect" className="col-form-label">
                         GST Calculator:
                       </label>
-                      <select id="moduleSelect" className="form-select">
+                      <select id="moduleSelect" className="form-select" style={{marginTop:"-2px"}}>
                         <option>Select</option>
                         <option>Module 1</option>
                         <option>Module 2</option>
@@ -148,14 +148,14 @@ const PurchaseErp = () => {
                       <label htmlFor="moduleSelect" className="col-form-label">
                         Print Setting:
                       </label>
-                      <select id="moduleSelect" className="form-select">
+                      <select id="moduleSelect" className="form-select" style={{marginTop:"-2px"}}>
                         <option>Select</option>
                         <option>Module 1</option>
                         <option>Module 2</option>
                       </select>
                     </div>
                     <div className="col-md-1">
-                      <button type="submit" className="btn btn-primary mt-5">
+                      <button type="submit" className="btn btn-primary" style={{marginTop:"35px"}}>
                         Save
                       </button>
                     </div>

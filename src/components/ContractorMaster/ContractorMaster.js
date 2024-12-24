@@ -68,7 +68,7 @@ const ContractorMaster = () => {
                                 Plant:
                               </label>
                               <select id="plantSelect" className="form-select">
-                                <option value="plant1">SHARP</option>
+                                <option value="Produlink">Produlink</option>
                                 
                               </select>
                             </div>
@@ -127,7 +127,7 @@ const ContractorMaster = () => {
                             <tbody>
                               <tr>
                                 <td>1</td>
-                                <td>Sharp</td>
+                                <td>Produlink</td>
                                 <td>Company</td>
                                 <td>MIDC</td>
                                 <td></td>

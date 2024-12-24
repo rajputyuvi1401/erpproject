@@ -1,19 +1,5 @@
 /* ItemDelete.css */
 
-.ItemDelete {
-    display: flex;
-    flex-direction: column;
-  }
-  
- .main-content {
-    flex: 1;
-    padding: 20px;
-    transition: margin-left 0.3s ease;
-  }
-  
- .shifted {
-    margin-left: 200px; /* Adjust based on your side nav width */
-  }
 
  
   

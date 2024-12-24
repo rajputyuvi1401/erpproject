@@ -64,7 +64,7 @@ const MaterialIssue = () => {
                         </div>
                         <div className="col-md-2">
                           <select id="sharpSelect" className="form-select">
-                            <option selected>Sharp</option>
+                            <option selected>Produlink</option>
                           </select>
                         </div>
 

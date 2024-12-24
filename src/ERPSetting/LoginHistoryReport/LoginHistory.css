@@ -1,11 +1,9 @@
 .LoginHistory {
-    display: flex;
-    flex-direction: column;
+ margin-left: 10px;
   }
   
   .LoginHistory .main-wrapper {
-    display: flex;
-    flex-grow: 1;
+    
     min-height: 100vh;
   }
   
@@ -13,11 +11,10 @@
     flex-grow: 1;
     transition: margin-left 0.3s ease;
     padding: 20px;
+    border: none;
   }
   
-  .LoginHistory .shifted {
-    margin-left: 250px; /* Adjust according to SideNav width */
-  }
+
   
   .LoginHistory .password-header {
     border-bottom: 2px solid #ccc;
@@ -33,6 +30,7 @@
   
   .LoginHistory  .nav-tabs {
     margin-bottom: 15px;
+    border: none;
   }
   
   .LoginHistory .table {

@@ -54,7 +54,7 @@ const BreakdownAnalysis = () =>  { const [sideNavOpen, setSideNavOpen] = useStat
                         <div className="col-sm-6 col-md-2 col-lg-1">
                           <label>Plant :</label>
                           <select className="form-select">
-                            <option>Sharp</option>
+                            <option>Produlink</option>
                             <option>Select All</option>
                             <option>Select All</option>
                             <option>Select All</option>

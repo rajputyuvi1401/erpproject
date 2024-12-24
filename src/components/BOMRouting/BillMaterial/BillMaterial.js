@@ -621,7 +621,7 @@ const BillMaterial = () => {
                                       }`}
                                     >
                                       <option value="">Select</option>
-                                      <option value="Sharp">Sharp</option>
+                                      <option value="Produlink">Produlink</option>
                                     </select>
                                     {errors.ProductionDept && (
                                       <div className="invalid-feedback">

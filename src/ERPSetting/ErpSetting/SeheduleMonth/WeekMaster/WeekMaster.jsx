@@ -29,7 +29,7 @@ const WeekMaster = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Week mt-2">
+                <div className="Week mt-5">
                   <div className="Week-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6 col-sm-12">
@@ -60,7 +60,7 @@ const WeekMaster = () => {
                           <label>To Date</label>
                           <input type="date" className="form-control" />
                         </div>
-                        <div className="col-md-2 col-sm-12 mt-5">
+                        <div className="col-md-1 col-sm-12 mt-5">
                           <button type="button" className="btn btn-primary w-100">Save</button>
                         </div>
                       </div>

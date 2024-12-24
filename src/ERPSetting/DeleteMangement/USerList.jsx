@@ -92,15 +92,16 @@ const UserList = () => {
                       value={formData.plant}
                       onChange={handleInputChange}
                       className="form-control"
+                      style={{marginTop:"1px"}}
                     >
                       <option value="All">ALL</option>
                       <option value="Plant 1">Plant 1</option>
                       <option value="Plant 2">Plant 2</option>
                     </select>
                   </div>
-                  <div className="col-md-2 d-flex align-items-end" style={{marginBottom:"20px"}}>
-                    <button className="btn me-2">Save</button>
-                    <button className="btn">Cancel</button>
+                  <div className="col-md-2 d-flex align-items-end" style={{marginBottom:"17px"}}>
+                    <button className="btn btn-primary me-2">Save</button>
+                    <button className="btn btn-primary">Cancel</button>
                   </div>
                 </div>
 

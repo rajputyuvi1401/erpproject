@@ -113,7 +113,7 @@ const WorkOrderEntry = () => {
                         </label>
                         <div className="col-md-2">
                           <select id="seriesSelect" className="form-select">
-                            <option>Sharp</option>
+                            <option>Produlink</option>
                           </select>
                         </div>
                       </div>

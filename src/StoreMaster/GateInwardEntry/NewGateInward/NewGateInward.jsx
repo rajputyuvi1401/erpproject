@@ -240,7 +240,7 @@ const getErrorText1 = (field) => errors[field] ? <div className="invalid-feedbac
                                     required
                                   >
                                     <option value="">Select Plant</option>
-                                    <option value="sharp">SHARP</option>
+                                    <option value="Produlink">Produlink</option>
                                   </select>
                                   {getErrorText('Plant')}
                                 </div>

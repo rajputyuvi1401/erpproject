@@ -75,7 +75,7 @@ const GstsalesReturn = () => {
                  
                   <div className="row text-start">
                    
-                    <div className="col-md-1">
+                    <div className="col-md-2">
                       <label htmlFor="seriesNo" className="col-form-label">
                         Series No / Code:
                       </label>
@@ -98,7 +98,7 @@ const GstsalesReturn = () => {
                         className="form-control"
                       />
                     </div>
-                    <div className="col-md-1">
+                    <div className="col-md-2">
                       <label htmlFor="seriesPrefix" className="col-form-label">
                         Series Name/Desc
                       </label>
@@ -111,7 +111,7 @@ const GstsalesReturn = () => {
 
                    
                     <div className="col-md-1">
-                      <button type="submit" className="btn btn-primary mt-5">
+                      <button type="submit" className="btn btn-primary" style={{marginTop:"38px"}}>
                         Save
                       </button>
                     </div>

@@ -148,7 +148,7 @@ const Itemmastersetup = () => {
                       <div className="col-md-2">
                         <label>Select Main Group</label>
                       </div>
-                      <div className="col-md-1">
+                      <div className="col-md-1" style={{marginTop:"2px",marginLeft:"-60px"}}>
                         <select>
                           <option value="">Select</option>
                           <option value="group1">Group 1</option>

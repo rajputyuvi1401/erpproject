@@ -58,12 +58,19 @@ const OrderList = () => {
                 </ul>
               </div>
               <div className="col-lg-10 col-md-9 col-12 content">
-                <div className="order-header mb-4 d-flex justify-content-between align-items-center">
-                  <h5 className="header-title">Order List</h5>
-                  <div className="col-md-2">
-                  <button type="button" className="btn">Export To Excel</button>
+                <div className="order mt-5">
+                  <div className="order-header mb-4 text-start">
+                    <div className="row align-items-center">
+                      <div className="col-md-10">
+                        <h5 className="header-title">Order List</h5>
+                      </div>
+                      <div className="col-md-2 text-end">
+                        <button type="button" className="btn">
+                          Export To Excel
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                
                 </div>
                 <div className="row mb-3">
                   <div className="col-md-1 mb-2">
@@ -93,6 +100,7 @@ const OrderList = () => {
                       value={formData.orderStatus}
                       onChange={handleInputChange}
                       className="form-control"
+                      style={{marginTop:'-1px'}}
                     >
                       <option value="">Select</option>
                       <option value="All">All</option>
@@ -108,6 +116,7 @@ const OrderList = () => {
                       value={formData.deliveryStatus}
                       onChange={handleInputChange}
                       className="form-control"
+                      style={{marginTop:'-1px'}}
                     >
                       <option value="">Select</option>
                       <option value="All">All</option>
@@ -136,8 +145,11 @@ const OrderList = () => {
                       className="form-control"
                     />
                   </div>
-                  <div className="col-md-2 d-flex align-items-end " style={{marginBottom:"20px"}}>
-                    <button className="btn">Search</button>
+                  <div
+                    className="col-md-1 d-flex align-items-end "
+                    style={{ marginBottom: "17px" }}
+                  >
+                    <button className="btn btn-primary">Search</button>
                   </div>
                 </div>
 
@@ -162,9 +174,7 @@ const OrderList = () => {
                       <th>View</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    {/* Populate table rows here */}
-                  </tbody>
+                  <tbody>{/* Populate table rows here */}</tbody>
                 </table>
               </div>
             </div>
