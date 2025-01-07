@@ -136,9 +136,9 @@ const LoginHistory = () => {
                           <option value="Account">Account</option>
                         </select>
                       </div>
-                      <div className="col-md-4 d-flex align-items-end">
-                        <button style={{padding:"8px"}} className="btn  me-2">Search</button>
-                        <button style={{padding:"8px"}} className="btn  ">Export To Excel</button>
+                      <div className="col-md-4 d-flex align-items-end mb-1">
+                        <button style={{padding:"6px"}} className="btn  me-2">Search</button>
+                        <button style={{padding:"6px"}} className="btn  ">Export To Excel</button>
                       </div>
                     </div>
                     <div className="table-responsive">

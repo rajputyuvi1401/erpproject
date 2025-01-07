@@ -3,49 +3,28 @@
   margin: 0px;
   padding: 0px;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
 
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-.main-content.shifted {
-  margin-left: 260px;
-}
-
-body.no-scroll {
-  overflow: hidden;
-}
 
 .VenderList {
   width: 100%;
-  background-color: rgb(241, 242, 244);
+  
   height: 100vh;
 }
-.Main {
-  background-color: rgb(241, 242, 244);
-  height: 107vh;
-  width: 100%;
-  text-align: start;
+
+.VenderList2List-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
-.VenderList1 {
-  background-color: white;
-  height: auto;
-  padding: 20px 20px;
-  margin-top: 40px;
+
+.VenderList2List-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
-.VenderList2 {
-  background-color: aliceblue;
-  height: 10vh;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+
+
 
 .venbtn {
   display: inline-block;
@@ -58,10 +37,9 @@ body.no-scroll {
   color: black;
 }
 .VenderListMain {
-  background-color: aliceblue;
+  background-color: white;
   height: auto;
-  padding: 10px;
-  margin-top: 80px;
+ 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .Vendermainbtn {

@@ -155,7 +155,7 @@ const PurchaseErp = () => {
                       </select>
                     </div>
                     <div className="col-md-1">
-                      <button type="submit" className="btn btn-primary" style={{marginTop:"35px"}}>
+                      <button type="submit" className="btn btn-primary" style={{marginTop:"39px"}}>
                         Save
                       </button>
                     </div>

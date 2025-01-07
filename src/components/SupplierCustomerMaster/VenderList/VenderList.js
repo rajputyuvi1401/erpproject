@@ -87,15 +87,15 @@ const VenderList = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="VenderList1">
-                  <div className="VenderList2">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6 text-start">
-                          <h5 style={{ color: "blue" }}>
+                
+                  <div className="VenderList2List-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
+                        <div className="col-md-4">
+                          <h5 className="header-title">
                             Supplier / Customer / Vendor-List
                           </h5>
                         </div>
-                        <div className="col-md-6 text-end">
+                        <div className="col-md-8 text-end">
                           <Link
                             to={"/Supplier-Customer-Master"}
                             className="venbtn"
@@ -108,7 +108,7 @@ const VenderList = () => {
                     </div>
                   </div>
                   <div className="VenderListMain">
-                    <div className="container-fluid">
+                    <div className="container-fluid mt-5">
                       <div className="row text-start">
                         <div className="row mb-3 text-start mt-4">
                           <label
@@ -265,7 +265,7 @@ const VenderList = () => {
                   )}
 
                   {/* Pagination Controls */}
-                  <nav className="text-end">
+                  <nav className="text-end mt-5">
             <ul className="pagination">
               <li className="page-item">
                 <button
@@ -312,7 +312,7 @@ const VenderList = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+              
               </main>
             </div>
           </div>

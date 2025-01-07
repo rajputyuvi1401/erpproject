@@ -860,6 +860,156 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               </Dropdown.Menu>
             </li>
           )}
+
+
+          {/* //////////////////////////////     Sales       /////////////////////////// */}
+          <li className="dropdown-container">
+            <div className="dropdown-toggle" onClick={() => handleDropdownToggle("sales")} >
+              <FaServicestack />
+              <span>Sales</span>
+            </div>
+            <Dropdown.Menu show={openDropdown === "sales"}>
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  E-Invoicing
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/GSTsales1">
+                    GST Sales
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/JobWorkSales">
+                    JobWork Sales
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/DebitNote">
+                    Debit Note
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/CreditNote">
+                    Credit Note
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              
+              <Dropdown.Item as={Link} to="/NewSalesOrder">
+                Customer Sales Order
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/SalesOrderAmendList">
+                Customer Sales Order Amendment
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/SacheduleSalesNew">
+                Schedule Sales Order
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/SalesOrderStatus">
+                Customer Sales Order Status
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/NewInvoice">
+                GST Invoice
+              </Dropdown.Item>
+
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  GST JobWork
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/GSTJobworkInvoice">
+                   GST JobWork Invoice
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/GSTJobworkDCreturn">
+                  GST JobWork DC Return
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <Dropdown.Item as={Link} to="/OutwardChallan">
+                OutWard 57F4 Challan
+              </Dropdown.Item>
+
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Cradit / Dabit Note
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/PurchaseDabitNote">
+                   Purchase Debit Note
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/NewDabitNote">
+                  Sales Rate Diff Debit Note
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                  JobWork Rate Diff Debit Note
+                  </Dropdown.Item>  
+                  <Dropdown.Item as={Link} to="/">
+                    Cradit Note Entry
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <Dropdown.Item as={Link} to="#/">
+                GST Sales Return
+              </Dropdown.Item>
+              
+              
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Material GalePass
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/">
+                  Material GalePass New
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                   Pandding Material GalePass
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                  Material GalePass List
+                  </Dropdown.Item>  
+                </Dropdown.Menu>
+              </Dropdown>
+              
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Report
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/">
+                   Customer Sales Order List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                   Tax Invoice List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                  Tax Invoice List Bajaj
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                   JobWork Invoice List
+                  </Dropdown.Item>  
+                  <Dropdown.Item as={Link} to="/">
+                   JobWork DC List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                   OutWard 57F4 Challan List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/">
+                   Debit Note List
+                   </Dropdown.Item>
+                   <Dropdown.Item as={Link} to="/">
+                   Cradit Note List
+                   </Dropdown.Item>
+                   <Dropdown.Item as={Link} to="/">
+                   GST Sales Return List
+                   </Dropdown.Item>
+                   <Dropdown.Item as={Link} to="/">
+                   RG1 Register
+                   </Dropdown.Item>
+                   <Dropdown.Item as={Link} to="/">
+                   Transport List
+                   </Dropdown.Item>
+
+                </Dropdown.Menu>
+              </Dropdown>
+
+            </Dropdown.Menu>
+            
+          </li>
         </ul>
       </div>
     </div>

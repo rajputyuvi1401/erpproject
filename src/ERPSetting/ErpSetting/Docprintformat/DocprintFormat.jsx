@@ -65,7 +65,7 @@ const DocprintFormat = () => {
                       </div>
                       <div className="col-md-2">
                         <label>Print Format Setting</label>
-                        <select className="form-control">
+                        <select className="form-control" style={{marginTop:"-1px"}}>
                           <option value="">Select Setting</option>
                           <option>Setting 1</option>
                           <option>Setting 2</option>

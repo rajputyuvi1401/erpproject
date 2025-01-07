@@ -304,6 +304,35 @@ import ContractirList from "./ProductionMaster/ContractorReport/ContractorList/C
 import ProReport from "./ProductionMaster/Report/ProReport.jsx";
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import JobworkList from "./PurchaseMaster/NewJobworkPurchase/JobworkList/JobworkList.jsx";
+
+
+
+
+
+/////////////////////////////////////     Sales       ////////////////////////////////////
+import GSTsales1 from "./Sales/EInvoicing/GSTsales/GSTsales1.jsx";
+import JobWorkSales from "./Sales/EInvoicing/JobWorkSales/JobWorkSales.jsx";
+import DebitNote from "./Sales/EInvoicing/DebitNote/DebitNote.jsx";
+import CreditNote from "./Sales/EInvoicing/CreditNote/CreditNote.jsx";
+import NewSalesOrder from "./Sales/CustomerSalesOrder/NewSalesOrder.jsx";
+import OrderLiast from "./Sales/CustomerSalesOrder/OrderLiast/OrderLiast.jsx";
+import SalesOrderAmendList from "./Sales/CustomerSalesOrderAmendment/SalesOrderAmendList/SalesOrderAmendList.jsx";
+import CustPOAmend from "./Sales/CustomerSalesOrderAmendment/SalesOrderAmendList/SOAmendment/CustPOAmend.jsx";
+import SalesOrderItemAdd from "./Sales/CustomerSalesOrderAmendment/SalesOrderAmendList/SalesOrderItemAdd/SalesOrderItemAdd.jsx";
+import SacheduleSalesNew from "./Sales/SacheduleSalesNew/SacheduleSalesNew.jsx";
+import SalesOrderStatus from "./Sales/SalesOrderStatus/SalesOrderStatus.jsx";
+import NewInvoice from "./Sales/GSTInvoice/NewInvoice.jsx";
+import NewinvoiceGST from "./Sales/GSTInvoice/NewinvoiceGST/NewinvoiceGST.jsx";
+import GSTJobworkInvoice from "./Sales/GSTJobwork/GSTJobworkInvoice/GSTJobworkInvoice.jsx";
+import DChallan from "./Sales/GSTJobwork/DC/DChallan.jsx";
+import GSTJobworkDCreturn from "./Sales/GSTJobwork/GSTJobworkDCreturn/GSTJobworkDCreturn.jsx";
+import OutwardChallan from "./Sales/OutwardChallan/OutwardChallan.jsx";
+import PurchaseDabitNote from "./Sales/CraditDabitNote/PurchaseDabitNote/PurchaseDabitNote.jsx";
+import DabitNoteList from "./Sales/CraditDabitNote/PurchaseDabitNote/DabitNoteList/DabitNoteList.jsx";
+// import DN574Fout from "./Sales/CraditDabitNote/PurchaseDabitNote/DN574Fout/DN574Fout.jsx";
+import NewDabitNote from "./Sales/CraditDabitNote/SalesDabitNote/NewDabitNote.jsx";
+
+
 function App() {
   return (
     <div className="App">
@@ -578,7 +607,35 @@ function App() {
         <Route path="/ContractirList" element={<ContractirList />} />
 
         <Route path="/ProReport" element={<ProReport />} />
+
+
+          {/* //////////////////////////////     Sales       /////////////////////////// */}
+      <Route path="GSTsales1" element={<GSTsales1/>} />
+        <Route path="JobWorkSales" element={<JobWorkSales />} />
+        <Route path="DebitNote" element={<DebitNote />} />
+        <Route path="CreditNote" element={<CreditNote />}/>
+        <Route path="NewSalesOrder" element={<NewSalesOrder />} />
+        <Route path="OrderLiast" element={<OrderLiast/>} />
+        <Route path="SalesOrderAmendList" element={<SalesOrderAmendList />} />
+        <Route path="CustPOAmend" element={<CustPOAmend />} />
+        <Route path="SalesOrderItemAdd" element={<SalesOrderItemAdd />} />
+        <Route path="SacheduleSalesNew" element={<SacheduleSalesNew />} />
+        <Route path="SalesOrderStatus" element={<SalesOrderStatus />} />
+        <Route path="NewInvoice" element={<NewInvoice />} />
+        <Route path="NewinvoiceGST" element={<NewinvoiceGST />} />
+        <Route path="GSTJobworkInvoice" element={<GSTJobworkInvoice />} />
+        <Route path="DChallan" element={<DChallan />} />
+        <Route path="GSTJobworkDCreturn" element={<GSTJobworkDCreturn />} />
+        <Route path="OutwardChallan" element={<OutwardChallan />} />
+        <Route path="PurchaseDabitNote" element={<PurchaseDabitNote />} />
+        <Route path="DabitNoteList" element={<DabitNoteList />} />
+        <Route path="NewDabitNote" element={<NewDabitNote />} />
+        {/* <Route path="DN574Fout" element={<DN574Fout />} /> */}
       </Routes>
+
+
+
+    
     </div>
   );
 }

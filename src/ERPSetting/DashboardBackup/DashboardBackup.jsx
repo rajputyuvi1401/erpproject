@@ -33,11 +33,11 @@ const DashboardBackup = () => {
                 <div className="col-md-2">
                   <h5 className="header-title">Database Backup</h5>
                 </div>
-                <div className="col-md-8 mt-3">
+                <div className="col-md-8 mt-2">
                   Folder Path Setting Value:{" "}
                   <strong>D:\MANUAL BACKUP FROM ERP</strong>
                 </div>
-                <div className="col-md-2 text-end mt-3">
+                <div className="col-md-2 text-end mt-2">
                   <button type="button" className="btn">
                     Backup Database
                   </button>

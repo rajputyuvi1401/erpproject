@@ -105,7 +105,7 @@ const Docddelivery = () => {
                       <label htmlFor="moduleSelect" className="col-form-label">
                         GST Calculate
                       </label>
-                      <select id="moduleSelect" className="form-select" style={{marginTop:"-2px"}}>
+                      <select id="moduleSelect" className="form-select" style={{marginTop:"-1px"}}>
                         <option>Select</option>
                         <option>Module 1</option>
                         <option>Module 2</option>
@@ -145,7 +145,7 @@ const Docddelivery = () => {
                     
                     
                     <div className="col-md-1">
-                      <button type="submit" className="btn btn-primary" style={{marginTop:"38px"}}>
+                      <button type="submit" className="btn btn-primary" style={{marginTop:"39px"}}>
                         Save
                       </button>
                     </div>

@@ -511,24 +511,22 @@ useEffect(() => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="SupplierC1">
-                  <div className="SupplierCus">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6 text-start">
-                          <h5 style={{ color: "blue" }}>
+                  
+                  <div className="SupplierCus-header mb-4 text-start">
+                    <div className="row align-items-center">
+                        <div className="col-md-4">
+                        <h5 className="header-title">
                             Supplier / Customer Master
                           </h5>
                         </div>
-                        <div className="col-md-6 text-end">
-                          <Link to={"/Vender-List"} className="SupplierCusbtn">
+                        <div className="col-md-8 text-end">
+                          <Link to={"/Vender-List"} className="btn">
                             Supplier/Customer List
                           </Link>
                         </div>
-                      </div>
                     </div>
                   </div>
-
-                  <div className="Suppliermain">
+                  <div className="Suppliermain mt-5">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
@@ -580,7 +578,7 @@ useEffect(() => {
                               </button>
                             </li>
                           </ul>
-                          <div className="tab-content" id="pills-tabContent">
+                          <div className="tab-content" id="pills-tabContent" style={{border:"none"}}>
                             <div
                               className="tab-pane fade show active"
                               id="pills-home"
@@ -642,23 +640,7 @@ useEffect(() => {
                                                 </small>
                                               )}
                                             </div>
-                                            {/* <div className="col-sm-2">
-                                              <button
-                                                className="btn"
-                                                onClick={() => toggleCard()}
-                                              >
-                                                New
-                                              </button>
-                                            </div>
-                                            <div className="col-sm-1">
-                                              <button
-                                                className="btn"
-                                                onClick={handleRefresh} 
-                                                style={{ fontSize: "10px" }}
-                                              >
-                                                <CachedIcon />
-                                              </button>
-                                            </div> */}
+                                          
                                           </div>
                                           <div className="row mb-3">
                                             <label
@@ -719,7 +701,7 @@ useEffect(() => {
                                                 ))}
                                               </select>
                                             </div>
-                                            <div className="col-sm-2">
+                                            <div className="col-sm-1 mt-2">
                                               <button
                                                 className="btn"
                                                 type="button"
@@ -728,7 +710,7 @@ useEffect(() => {
                                                 Add
                                               </button>
                                             </div>
-                                            <div className="col-sm-1">
+                                            <div className="col-sm-1 mt-2">
                                               <button
                                                 className="btn"
                                                 type="button"
@@ -1613,16 +1595,16 @@ useEffect(() => {
                                                 ))}
                                               </select>
                                             </div>
-                                            <div className="col-sm-2">
+                                            <div className="col-sm-1 mt-2">
                                               <button
-                                                className="btn"
+                                                className="btn ms-1"
                                                 type="button"
                                                 onClick={toggleCardSector}
                                               >
                                                 New
                                               </button>
                                             </div>
-                                            <div className="col-sm-1">
+                                            <div className="col-sm-1 mt-2">
                                               <button
                                                 className="btn"
                                                 type="button"
@@ -1663,9 +1645,9 @@ useEffect(() => {
                                                 ))}
                                               </select>
                                             </div>
-                                            <div className="col-sm-2">
+                                            <div className="col-sm-1 mt">
                                               <button
-                                                className="btn"
+                                                className="btn ms-1"
                                                 type="button"
                                                 onClick={toggleCardGroup}
                                               >
@@ -1900,9 +1882,9 @@ useEffect(() => {
                                                 </small>
                                               )} */}
                                             </div>
-                                            <div className="col-sm-2">
+                                            <div className="col-sm-1">
                                               <button
-                                                className="btn"
+                                                className="btn ms-1"
                                                 type="button"
                                                 onClick={() =>
                                                   toggleCardQMSCCode()
