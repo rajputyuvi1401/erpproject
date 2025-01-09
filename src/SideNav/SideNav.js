@@ -861,8 +861,143 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             </li>
           )}
 
+          {/* //////////////////////////////     Quality       /////////////////////////// */}
+          {/* {permissions?.Quality && ( */}
+          <li className="dropdown-container">
+            <div className="dropdown-toggle" onClick={() => handleDropdownToggle("quality")} >
+              <FaServicestack />
+              <span>Quality .</span>
+            </div>
+            <Dropdown.Menu show={openDropdown === "quality"}>
+              <Dropdown.Item as={Link} to="/QualityPlan">
+                Quality Planning
+              </Dropdown.Item>
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Purchase GRN QC
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/PandingQCList">
+                    Panding QC List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/InwardTestCertificate">
+                    Inward Test Certificate
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Subcon / JobWork GRN QC
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/PaddingQCInward">
+                    Pandding QC Inward
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/InwardQCList">
+                    Inward Inspection List
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                 Inprocess QC
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/InprocessInspection">
+                    Inprocess Inspection
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/InprocessInspectionList">
+                  Inprocess Inspection List
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                 Sales Return QC
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/PaddingSalesQC">
+                  Sales Return QC Pandding List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/SalesQCList">
+                   Sales Return QC List
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
+
+              <Dropdown.Item as={Link} to="#/">
+                Gauges And Instruction Calbration
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/HeatCodeRegister">
+                Heat Code Register
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/TestCertificateList">
+                DTC - Dispatch Test Certificate
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/PDIList">
+                PDI - Pre Dispatch Inspection
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/FirstPieceApporval">
+                First Peice Apporval
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/NewSetupApproval">
+                Set Up Apporval
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/HotInspectionList">
+                Hot Inspection
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/SamplingPlan">
+                Samping Plan
+              </Dropdown.Item>
+
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Customer Complaint
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/CustomerComplaintEntry">
+                  Customer Complaint Entry
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/CustomerComplaintAuth">
+                  Customer Complaint Authorization
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/CustomerComplaintList">
+                  Customer Complaint List
+                  </Dropdown.Item>  
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <Dropdown>
+                <Dropdown.Toggle as="div" className="dropdown-item">
+                  Test Master
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to="/TestReportList">
+                   Test Report
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/TestMasterNew">
+                   Test Master
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/TestMasterList">
+                   Test Master List
+                  </Dropdown.Item>  
+                </Dropdown.Menu>
+              </Dropdown>
+
+            </Dropdown.Menu>
+
+            
+          </li>
+          {/* )} */}
+
 
           {/* //////////////////////////////     Sales       /////////////////////////// */}
+         
+          {/* {permissions?.Sales && ( */}
           <li className="dropdown-container">
             <div className="dropdown-toggle" onClick={() => handleDropdownToggle("sales")} >
               <FaServicestack />
@@ -1010,6 +1145,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             </Dropdown.Menu>
             
           </li>
+          {/* )} */}
         </ul>
       </div>
     </div>
