@@ -98,20 +98,20 @@ const AddContractor = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="AddContractorMaster1">
-                  <div className="AddContractor">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6 text-start">
-                          <h5 style={{ color: "blue" }}>
+                  
+                   <div className="AddContractor-header mb-4 text-start mt-5">
+                     <div className="row align-items-center">
+                        <div className="col-md-4">
+                          <h5 className="header-title">
                             Add New Contractor Master
                           </h5>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="AddContractorMain">
+                  
+                  <div className="AddContractorMain mt-5">
                     <div className="container-fluid">
-                      <div className="row text-start">
+                      <div className="row text-start mt-4">
                         <div className="col-md-6">
                           <div className="row mb-3">
                             <label
@@ -362,13 +362,13 @@ const AddContractor = () => {
                         <div className="row">
                           <div className="col-md-12 text-end">
                             <button
-                              className="AddContractorMainbtn"
+                              className="btn"
                               onClick={handleSubmit}
                             >
                               Save
                             </button>
                             <button
-                              className="AddContractorMainbtn"
+                              className="btn"
                               onClick={handleClear}
                             >
                               Clear

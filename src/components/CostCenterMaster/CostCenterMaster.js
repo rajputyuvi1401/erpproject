@@ -255,7 +255,7 @@ const CostCenterMaster = () => {
                   <div className="CostcenterTable">
                     <div className="container-fluid">
                       <div className="table-responsive">
-                        <table className="table">
+                        <table className="table table-bordered table-striped">
                           <thead className="table-primary">
                             <tr>
                               <th scope="col">Sr.</th>

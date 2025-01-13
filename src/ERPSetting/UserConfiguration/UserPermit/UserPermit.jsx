@@ -11,6 +11,7 @@ import {
 
 const availablePermissions = {
   All_Masters: [
+    "Master",
     "Customer",
     "Business Partner Address",
     "Item Master",
@@ -35,6 +36,7 @@ const availablePermissions = {
     "Master State",
   ],
   Purchase: [
+    "Purchase",
     "New Indent",
     "New Purchase Order",
     "New Jobwork Purchase Order",
@@ -47,6 +49,7 @@ const availablePermissions = {
     "Import",
   ],
   Store: [
+    "Store",
     "Gate Inward Entry",
     "Pending ASN List",
     "New MRN",
@@ -60,6 +63,7 @@ const availablePermissions = {
     "Stock Report",
   ],
   Production: [
+    "Production",
     "Work Order Entry",
     "Work Order List",
     "Production Plan List",
@@ -82,6 +86,77 @@ const availablePermissions = {
     "Dealer Management",
     "Dashboard Backup",
     "Delete Record",
+  ],
+  Quality: [
+    "Quality",
+    "Quality Planning",
+    "Purchase GRN QC",
+    "Pending QC List",
+    "Inward Test Certificate",
+    "Subcon / JobWork GRN QC",
+    "Pending QC Inward",
+    "Inward Inspection List",
+    "Inprocess QC",
+    "Inprocess Inspection",
+    "Inprocess Inspection List",
+    "Sales Return QC",
+    "Sales Return QC Pending List",
+    "Sales Return QC List",
+    "Gauges And Instruction Calibration",
+    "Heat Code Register",
+    "DTC - Dispatch Test Certificate",
+    "PDI - Pre Dispatch Inspection",
+    "First Piece Approval",
+    "Set Up Approval",
+    "Hot Inspection",
+    "Sampling Plan",
+    "Customer Complaint",
+    "Customer Complaint Entry",
+    "Customer Complaint Authorization",
+    "Customer Complaint List",
+    "Test Master",
+    "Test Report",
+    "Test Master",
+    "Test Master List",
+  ],
+  Sales: [
+    "Sales",
+    "E-Invoicing",
+    "GST Sales",
+    "JobWork Sales",
+    "Debit Note",
+    "Credit Note",
+    "Customer Sales Order",
+    "Customer Sales Order Amendment",
+    "Schedule Sales Order",
+    "Customer Sales Order Status",
+    "GST Invoice",
+    "GST JobWork",
+    "GST JobWork Invoice",
+    "GST JobWork DC Return",
+    "OutWard 57F4 Challan",
+    "Credit / Debit Note",
+    "Purchase Debit Note",
+    "Sales Rate Diff Debit Note",
+    "JobWork Rate Diff Debit Note",
+    "Credit Note Entry",
+    "GST Sales Return",
+    "Material GatePass",
+    "Material GatePass New",
+    "Pending Material GatePass",
+    "Material GatePass List",
+    "Report",
+    "Customer Sales Order List",
+    "Tax Invoice List",
+    "Tax Invoice List Bajaj",
+    "JobWork Invoice List",
+    "JobWork DC List",
+    "OutWard 57F4 Challan List",
+    "Debit Note List",
+    "Credit Note List",
+    "GST Sales Return List",
+    "RG1 Register",
+    "Transport List",
   ],
   VendorsUserManagement: ["VendorsUserManagement"],
 };
@@ -271,13 +346,13 @@ const UserPermit = () => {
                     </div>
                   </div>
                   <div className="col-md-6">
-                  <input
-                    type="text"
-                    placeholder="Search permissions..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="search-input"
-                  />
+                    <input
+                      type="text"
+                      placeholder="Search permissions..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="search-input"
+                    />
                   </div>
                   <div className="permissions-container">
                     <div className="modules-list">

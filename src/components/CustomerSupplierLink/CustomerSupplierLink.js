@@ -81,7 +81,7 @@ const CustomerSupplierLink = () => {
   };
 
   return (
-    <div className="Supplier">
+    <div className="Supplier mt-5">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -92,27 +92,27 @@ const CustomerSupplierLink = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Supplierwise">
-                  <div className="Sipplier1">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6 text-start">
-                          <h5 style={{ color: "blue" }}>
+                <div className="Supplierwise1">
+                 
+                   <div className="Sipplier1-header mb-4 text-start">
+                      <div className="row align-items-center">
+                        <div className="col-md-6">
+                        <h5 className="header-title">
                             Customer / Supplier Items Link
                           </h5>
                         </div>
                         <div className="col-md-6 text-end">
-                          <button className="siplier-btn">
+                          <button className="btn">
                             CustomerMaster Item Upload
                           </button>
-                          <button className="siplier-btn">
+                          <button className="btn">
                             Export to Excel
                           </button>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="supplierwise">
+              
+                  <div className="supplier-wise">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
@@ -150,7 +150,7 @@ const CustomerSupplierLink = () => {
                               </button>
                             </li>
                           </ul>
-                          <div className="tab-content" id="pills-tabContent">
+                          <div className="tab-content" id="pills-tabContent" style={{border:"none"}}>
                             <div
                               className="tab-pane fade show active"
                               id="pills-home"

@@ -59,14 +59,17 @@ const CustomerItem = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="cusgst">
-                  <div className="cusgstheader">
-                    <div>
-                      <h5>Customer-Item Wise -GST Rate Excel Upload</h5>
+               
+                  <div className="cusgstheader-header mb-4 text-start mt-3">
+                    <div className="row align-items-center">
+                      <div className="col-md-6">
+                        <h5 className="header-title">Customer-Item Wise -GST Rate Excel Upload</h5>
                     </div>
-                    <div className="text-end">
-                      <button className="custgat-btn">
+                    <div className="col-md-6 text-end">
+                      <button className="btn">
                         Download Excel Template
                       </button>
+                    </div>
                     </div>
                   </div>
                   <div className="cusgstmain">

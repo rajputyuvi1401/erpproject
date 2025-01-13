@@ -34,11 +34,11 @@ const BomRouting = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="BomRouting1">
-                  <div className="BomRoutingheading">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-2 text-start">
-                          <h5 style={{ color: "blue" }}>
+                  
+                  <div className="BomRoutingheading mb-4 text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-2">
+                        <h5 className="header-title">
                             BOM And Routing List
                           </h5>
                         </div>
@@ -113,11 +113,11 @@ const BomRouting = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="BomRoutingMain">
+              
+                  <div className="BomRoutingMain mt-5">
                     <div className="Container-fluid">
                       <div className="row mb-3 text-start">
-                        <div className="col-md-1">
+                        <div className="col-md-1 mt-1">
                           <select
                             className="form-select"
                             aria-label="Default select example"
@@ -128,9 +128,9 @@ const BomRouting = () => {
                             <option value="3">SFG</option>
                           </select>
                         </div>
-                        <div className="col-sm-2">
+                        <div className="col-sm-2 mt-2">
                           <input
-                            type="email"
+                            type="text"
                             className="form-control"
                             id="inputEmail3"
                           />
@@ -143,7 +143,7 @@ const BomRouting = () => {
                         </label>
                         <div className="col-md-2">
                           <select
-                            className="form-select"
+                            className="form-select mt-2"
                             aria-label="Default select example"
                           >
                             <option selected>ALl</option>
@@ -158,25 +158,25 @@ const BomRouting = () => {
                             <option value="FIXCTURE">FIXCTURE</option>
                           </select>
                         </div>
-                        <div className="col-md-6">
-                          <button className="BOMMainbtn">Search</button>
-                          <button className="BOMMainbtn">View All</button>
-                          <button className="BOMMainbtn">
+                        <div className="col-md-6 mt-2">
+                          <button className="btn">Search</button>
+                          <button className="btn">View All</button>
+                          <button className="btn">
                             Export Excel (Routing)
                           </button>
-                          <button className="BOMMainbtn">
+                          <button className="btn">
                             Export Excel (BOM)
                           </button>
-                          <button className="BOMMainbtn">Excel(Routing)</button>
+                          <button className="btn">Excel(Routing)</button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="BomRoutingTable">
+                  <div className="BomRoutingTable mt-5">
                     <div className="row">
                       <div className="col-md-12">
                         <div className="table-responsive">
-                          <table className="table table-bordered">
+                          <table className="table table-bordered table-striped">
                             <thead>
                               <tr>
                                 <th>Sr</th>
@@ -213,7 +213,7 @@ const BomRouting = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="BomRouteBottom">
+                  <div className="BomRouteBottom mt-5">
                     <div className="row">
                       <div className="col-md-6 text-start">
                         <h6 style={{ color: "blue" }}>

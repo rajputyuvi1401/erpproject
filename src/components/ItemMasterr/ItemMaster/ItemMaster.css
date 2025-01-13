@@ -3,66 +3,45 @@
   margin: 0px;
   padding: 0px;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-.main-content.shifted {
-  margin-left: 260px;
-}
-
-body.no-scroll {
-  overflow: hidden;
-}
 
 .masterState {
   width: 100%;
-  background-color: rgb(241, 242, 244);
+  /* background-color: rgb(241, 242, 244); */
   height: 100vh;
 }
 .ItemMasterPage {
   width: 100%;
-  background-color: rgb(241, 242, 244);
+  /* background-color: rgb(241, 242, 244); */
   height: 100vh;
 }
 
 .Main {
-  background-color: rgb(241, 242, 244);
+  /* background-color: rgb(241, 242, 244); */
   height: 100vh;
   width: 100%;
   text-align: start;
 }
 .itemaa {
-  background-color: rgb(241, 242, 244);
+  /* background-color: rgb(241, 242, 244); */
   height: 110vh;
   width: 100%;
   text-align: start;
 }
 .itemaamain {
-  background-color: white;
+  /* background-color: white; */
   height: auto;
-  padding: 20px 20px;
-  margin-top: 50px;
+ 
 }
-.top-but1 {
-  margin-top: 50px;
-  margin: 20px 0;
-  width: 100%;
-  padding: 10px;
-  background-color: aliceblue;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.itemaamain-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-.top-but1 p {
-  color: blue;
+.itemaamain-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
   margin: 0;
 }
 
@@ -77,11 +56,10 @@ body.no-scroll {
 }
 
 .search-row {
-  width: 100%;
-  background-color: aliceblue;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px 10px;
-  margin-top: 50px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 .form-select {
@@ -193,4 +171,12 @@ body.no-scroll {
 .pagination .page-link:hover {
   background-color: #0056b3;
   color: white;
+}
+
+
+.search-table{
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }

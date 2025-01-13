@@ -4,91 +4,39 @@
   padding: 0;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+
+
+
+.Commodity-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
+.Commodity-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 
-.main-content.shifted {
-  margin-left: 260px;
+
+
+
+
+.CommodityMainerty {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-body.no-scroll {
-  overflow: hidden;
-}
-
-.CommodityMaster {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  min-height: 100vh;
-}
-
-.CommodityMaster1 {
-  background-color: white;
-  padding: 20px;
-}
-
-.Commodity {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: aliceblue;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-}
-
-.Commodity h5 {
-  color: blue;
-}
-
-.Commodity .Commoditybtn {
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.Commoditybtn:hover {
-  background-color: #0057b38d;
-  color: white;
-}
-
-.CommodityMain {
-  margin: 20px 0;
-  background-color: aliceblue;
-}
-
-.CommodityMain .centerselect {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
-
-.Commoditymainbtn {
-  display: flex;
-  align-items: center;
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.Commoditymainbtn i {
-  margin-right: 5px;
-}
 
 .CommodityTable {
-  margin-top: 20px;
-  background-color: aliceblue;
-  padding: 20px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 .CommodityTable .table-responsive {

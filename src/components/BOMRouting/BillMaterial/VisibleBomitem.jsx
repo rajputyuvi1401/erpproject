@@ -174,7 +174,7 @@ const VisibleBomitem = () => {
         <div className="row mb-3">
           <div className="col-12">
             <div className="table-responsive">
-              <table className="table table-bordered">
+              <table className="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th>BOM Item Group</th>

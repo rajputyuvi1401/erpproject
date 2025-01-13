@@ -76,7 +76,7 @@ const GstMaster = () => {
     if (!formData.HSN_SAC_Desc) {
       newErrors.HSN_SAC_Desc = "This field is required";
     }
-  
+
     if (!formData.CGST) {
       newErrors.CGST = "This field is required";
     }
@@ -111,7 +111,6 @@ const GstMaster = () => {
         await updateGstMasterRecord(editId, formData);
         setEditId(null);
         toast.success("Record updated successfully");
-
       } else {
         await createGstMasterRecord(formData);
         toast.success("Record created successfully");
@@ -133,7 +132,6 @@ const GstMaster = () => {
       });
       setErrors({});
       fetchRecords();
-      
     } catch (error) {
       console.error(error.message);
       toast.error("Error deleting record");
@@ -158,7 +156,7 @@ const GstMaster = () => {
 
   return (
     <div className="GstMaster">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -169,31 +167,30 @@ const GstMaster = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="GstMaster1">
-                  <div className="GstMasterupper">
-                    <div className="Container-fluid">
-                      <div className="row">
-                        <div className="col-md-4 text-start">
-                          <h5 style={{ color: "blue" }}>GST Rate Master</h5>
-                        </div>
-                        <div className="col-md-8 text-end">
-                          <Link to="/task-master" className="gstbtn">
-                            Tax Code Master
-                          </Link>
-                          <Link to="/Cut-wise" className="gstbtn">
-                            Cust-Wise GST Master
-                          </Link>
-                          <Link to="/Customer-Item-Wise-Gst" className="gstbtn">
-                            Cut-Wise GST Rate - Excel Upload
-                          </Link>
-                          <Link to="/" className="gstbtn">
-                            Export To Excel
-                          </Link>
-                        </div>
+                <div className="GstMaster1 mt-5">
+                  <div className="GstMasterupper-header mb-4 text-start">
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">GST Rate Master</h5>
+                      </div>
+                      <div className="col-md-8 text-end">
+                        <Link to="/task-master" className="btn">
+                          Tax Code Master
+                        </Link>
+                        <Link to="/Cut-wise" className="btn">
+                          Cust-Wise GST Master
+                        </Link>
+                        <Link to="/Customer-Item-Wise-Gst" className="btn">
+                          Cut-Wise GST Rate - Excel Upload
+                        </Link>
+                        <Link to="/" className="btn">
+                          Export To Excel
+                        </Link>
                       </div>
                     </div>
                   </div>
-                  <div className="GstMasterMain">
+
+                  <div className="GstMasterMain mt-5">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
@@ -201,12 +198,14 @@ const GstMaster = () => {
                             <table className="table table-bordered">
                               <thead>
                                 <tr>
-                                  <th>HSN/SAC Code <span className="text-danger">
-                                                *
-                                              </span></th>
-                                  <th>HSN/SAC Desc.<span className="text-danger">
-                                                *
-                                              </span></th>
+                                  <th>
+                                    HSN/SAC Code{" "}
+                                    <span className="text-danger">*</span>
+                                  </th>
+                                  <th>
+                                    HSN/SAC Desc.
+                                    <span className="text-danger">*</span>
+                                  </th>
                                   <th>Domestic</th>
                                   <th>Export</th>
                                   <th>Action</th>
@@ -225,7 +224,11 @@ const GstMaster = () => {
                                       onChange={handleInputChange}
                                       placeholder="Tariff code"
                                     />
-                                     {errors.HSN_SAC_Code && <div className="text-danger">{errors.HSN_SAC_Code}</div>}
+                                    {errors.HSN_SAC_Code && (
+                                      <div className="text-danger">
+                                        {errors.HSN_SAC_Code}
+                                      </div>
+                                    )}
                                   </td>
                                   <td>
                                     <textarea
@@ -234,23 +237,31 @@ const GstMaster = () => {
                                       value={formData.HSN_SAC_Desc}
                                       onChange={handleInputChange}
                                     ></textarea>
-                                     {errors.HSN_SAC_Desc && <div className="text-danger">{errors.HSN_SAC_Desc}</div>}
+                                    {errors.HSN_SAC_Desc && (
+                                      <div className="text-danger">
+                                        {errors.HSN_SAC_Desc}
+                                      </div>
+                                    )}
                                   </td>
                                   <td>
                                     <thead>
                                       <tr>
-                                        <th>CGST (%)<span className="text-danger">
-                                                *
-                                              </span></th>
-                                        <th>SGST (%)<span className="text-danger">
-                                                *
-                                              </span></th>
-                                        <th>IGST (%)<span className="text-danger">
-                                                *
-                                              </span></th>
-                                        <th>UTGST (%)<span className="text-danger">
-                                                *
-                                              </span></th>
+                                        <th>
+                                          CGST (%)
+                                          <span className="text-danger">*</span>
+                                        </th>
+                                        <th>
+                                          SGST (%)
+                                          <span className="text-danger">*</span>
+                                        </th>
+                                        <th>
+                                          IGST (%)
+                                          <span className="text-danger">*</span>
+                                        </th>
+                                        <th>
+                                          UTGST (%)
+                                          <span className="text-danger">*</span>
+                                        </th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -264,7 +275,11 @@ const GstMaster = () => {
                                             onChange={handleInputChange}
                                             placeholder="CGST (%)"
                                           />
-                                           {errors.CGST && <div className="text-danger">{errors.CGST}</div>}
+                                          {errors.CGST && (
+                                            <div className="text-danger">
+                                              {errors.CGST}
+                                            </div>
+                                          )}
                                         </td>
                                         <td>
                                           <input
@@ -275,7 +290,11 @@ const GstMaster = () => {
                                             onChange={handleInputChange}
                                             placeholder="SGST (%)"
                                           />
-                                           {errors.SGST && <div className="text-danger">{errors.SGST}</div>}
+                                          {errors.SGST && (
+                                            <div className="text-danger">
+                                              {errors.SGST}
+                                            </div>
+                                          )}
                                         </td>
                                         <td>
                                           <input
@@ -286,7 +305,11 @@ const GstMaster = () => {
                                             onChange={handleInputChange}
                                             placeholder="IGST (%)"
                                           />
-                                           {errors.IGST && <div className="text-danger">{errors.IGST}</div>}
+                                          {errors.IGST && (
+                                            <div className="text-danger">
+                                              {errors.IGST}
+                                            </div>
+                                          )}
                                         </td>
                                         <td>
                                           <input
@@ -297,7 +320,11 @@ const GstMaster = () => {
                                             onChange={handleInputChange}
                                             placeholder="UTGST (%)"
                                           />
-                                           {errors.UTGST && <div className="text-danger">{errors.UTGST}</div>}
+                                          {errors.UTGST && (
+                                            <div className="text-danger">
+                                              {errors.UTGST}
+                                            </div>
+                                          )}
                                         </td>
                                       </tr>
                                     </tbody>
@@ -305,18 +332,22 @@ const GstMaster = () => {
                                   <td>
                                     <thead>
                                       <tr>
-                                        <th>SGST (%)<span className="text-danger">
-                                                *
-                                              </span></th>
-                                        <th>CGST (%)<span className="text-danger">
-                                                *
-                                              </span></th>
-                                        <th>IGST (%)<span className="text-danger">
-                                                *
-                                              </span></th>
-                                        <th>CESS (%)<span className="text-danger">
-                                                *
-                                              </span></th>
+                                        <th>
+                                          SGST (%)
+                                          <span className="text-danger">*</span>
+                                        </th>
+                                        <th>
+                                          CGST (%)
+                                          <span className="text-danger">*</span>
+                                        </th>
+                                        <th>
+                                          IGST (%)
+                                          <span className="text-danger">*</span>
+                                        </th>
+                                        <th>
+                                          CESS (%)
+                                          <span className="text-danger">*</span>
+                                        </th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -330,7 +361,11 @@ const GstMaster = () => {
                                             onChange={handleInputChange}
                                             placeholder="SGST (%)"
                                           />
-                                          {errors.export_SGST && <div className="text-danger">{errors.export_SGST}</div>}
+                                          {errors.export_SGST && (
+                                            <div className="text-danger">
+                                              {errors.export_SGST}
+                                            </div>
+                                          )}
                                         </td>
                                         <td>
                                           <input
@@ -341,7 +376,11 @@ const GstMaster = () => {
                                             onChange={handleInputChange}
                                             placeholder="CGST (%)"
                                           />
-                                          {errors.export_CGST && <div className="text-danger">{errors.export_CGST}</div>}
+                                          {errors.export_CGST && (
+                                            <div className="text-danger">
+                                              {errors.export_CGST}
+                                            </div>
+                                          )}
                                         </td>
                                         <td>
                                           <input
@@ -352,7 +391,11 @@ const GstMaster = () => {
                                             onChange={handleInputChange}
                                             placeholder="IGST (%)"
                                           />
-                                          {errors.export_IGST && <div className="text-danger">{errors.export_IGST}</div>}
+                                          {errors.export_IGST && (
+                                            <div className="text-danger">
+                                              {errors.export_IGST}
+                                            </div>
+                                          )}
                                         </td>
                                         <td>
                                           <input
@@ -363,7 +406,11 @@ const GstMaster = () => {
                                             onChange={handleInputChange}
                                             placeholder="Cess (%)"
                                           />
-                                          {errors.Cess && <div className="text-danger">{errors.Cess}</div>}
+                                          {errors.Cess && (
+                                            <div className="text-danger">
+                                              {errors.Cess}
+                                            </div>
+                                          )}
                                         </td>
                                       </tr>
                                     </tbody>
@@ -379,33 +426,31 @@ const GstMaster = () => {
                                     <tbody>
                                       <tr>
                                         <td>
-                                        <select
-                                      className="form-control"
-                                      name="Is_Exempt"
-                                      value={formData.Is_Exempt}
-                                      onChange={handleInputChange}
-                                    >
-                                      <option value="yes">Yes</option>
-                                      <option value="no">No</option>
-                                    </select>
+                                          <select
+                                            className="form-control"
+                                            name="Is_Exempt"
+                                            value={formData.Is_Exempt}
+                                            onChange={handleInputChange}
+                                          >
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                          </select>
                                         </td>
                                         <td>
-                                        <select
-                                      className="form-control"
-                                      style={{ width: "75px" }}
-                                      name="Type"
-                                      value={formData.Type}
-                                      onChange={handleInputChange}
-                                    >
-                                      <option value="type1">HSN</option>
-                                      <option value="type2">SAC</option>
-                                    </select>
+                                          <select
+                                            className="form-control"
+                                            style={{ width: "75px" }}
+                                            name="Type"
+                                            value={formData.Type}
+                                            onChange={handleInputChange}
+                                          >
+                                            <option value="type1">HSN</option>
+                                            <option value="type2">SAC</option>
+                                          </select>
                                         </td>
                                       </tr>
                                     </tbody>
-                                   
                                   </td>
-                                 
 
                                   <td>
                                     <button
@@ -454,7 +499,6 @@ const GstMaster = () => {
                                     <tr key={record.id}>
                                       <td>{index + 1}</td>
                                       <td>{record.HSN_SAC_Code}</td>
-                                     
 
                                       <td>{record.HSN_SAC_Desc}</td>
                                       <td>{record.CGST}</td>

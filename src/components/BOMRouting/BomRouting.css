@@ -3,44 +3,21 @@
   margin: 0px;
   padding: 0px;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
 
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-.main-content.shifted {
-  margin-left: 260px;
-}
 
-body.no-scroll {
-  overflow: hidden;
-}
 
-.BomRouting {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  height: 100vh;
-}
-
-.BomRouting1 {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 .BomRoutingheading {
-  background-color: aliceblue;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
+}
+
+.BomRoutingheading .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 
 .BOMRoutingbtn,
@@ -55,10 +32,10 @@ Link {
 }
 
 .BomRoutingMain {
-  background-color: aliceblue;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 .BOMMainbtn {
@@ -70,9 +47,10 @@ Link {
 }
 
 .BomRoutingTable {
-  background-color: aliceblue;
-  padding: 20px;
-  margin-top: 20px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 .table-responsive {

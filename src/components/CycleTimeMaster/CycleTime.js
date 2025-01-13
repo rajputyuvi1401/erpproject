@@ -62,27 +62,27 @@ const CycleTime = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Cycletimermaster">
                   <div className="Cycletime">
-                    <div className="container-fluid">
-                      <div className="row d-flex align-items-center">
-                        <div className="col-md-6 text-start">
-                          <h5>Cycle Time Master</h5>
+                  <div className="Cycletime-header mb-4 text-start mt-5">
+                      <div className="row align-items-center">
+                        <div className="col-md-6">
+                        <h5 className="header-title">Cycle Time Master</h5>
                         </div>
                         <div className="col-md-6 text-md-end text-start mt-2 mt-md-0">
                           <button
-                            className="Cycletimebtn me-2"
+                            className="btn me-2"
                             onClick={handleAddNewCycleTime}
                           >
                             Add New Cycle Time
                           </button>
-                          <button className="Cycletimebtn me-2">Report</button>
-                          <button className="Cycletimebtn">
+                          <button className="btn me-2">Report</button>
+                          <button className="btn">
                             Export Report
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="CycletimeMain">
+                  <div className="CycletimeMain mt-5">
                     <div className="container-fluid">
                       <div className="row text-start centerselect">
                         <div className="col-md-1 col-sm-3 mb-3 mb-sm-0">
@@ -101,20 +101,20 @@ const CycleTime = () => {
                             placeholder=""
                           />
                         </div>
-                        <div className="col-md-1 col-sm-12 text-sm-start text-md-start">
-                          <button className="Cycletimemainbtn">
-                            <i className="bi bi-search"></i> Search
+                        <div className="col-md-1 mt-1 text-md-start">
+                          <button className="btn">
+                             Search
                           </button>
                         </div>
-                        <div className="col-md-3 col-sm-12 text-sm-start text-md-end">
-                          <button className="Cycletimemainbtn">
-                            <i className="bi bi-search"></i> View All
+                        <div className="col-md-1 mt-1  text-md-end">
+                          <button className="btn">
+                             View All
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="CycletimeTable">
+                  <div className="CycletimeTable mt-5">
                     <div className="container-fluid">
                       <div className="table-responsive">
                         <table className="table">
@@ -141,17 +141,17 @@ const CycleTime = () => {
                                 <td>{record.Partcode}</td>
                                 <td>{record.Machinetype}</td>
                                 <td>
-                                  <button className="Cycletimetableww">
+                                  <button className="btn">
                                     <i className="fas fa-trash"></i>
                                   </button>
                                 </td>
                                 <td>
-                                  <button className="Cycletimetableww">
+                                  <button className="btn">
                                     <i className="fas fa-edit"></i>
                                   </button>
                                 </td>
                                 <td>
-                                  <button className="Cycletimetableww">
+                                  <button className="btn">
                                     <i className="fas fa-eye"></i>
                                   </button>
                                 </td>

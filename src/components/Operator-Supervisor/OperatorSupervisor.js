@@ -93,30 +93,30 @@ const OperatorSupervisor = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="OperatorSupervisor1">
-                  <div className="Operator">
-                    <div className="container-fluid">
-                      <div className="row align-items-center">
-                        <div className="col-md-5 col-12 text-start">
-                          <h5 className="text-primary">
+                  <div className="Operator mt-5">
+                  <div className="Operator-header mb-4 text-start">
+                    <div className="row align-items-center">
+                      <div className="col-md-5">
+                        <h5 className="header-title">
                             Operator / Supervisor / Staff
                           </h5>
                         </div>
                         <div className="col-md-7 col-12 text-md-end text-start mt-3 mt-md-0">
-                          <Link to={"/Supervisor"} className="Operatorbtn me-2">
+                          <Link to={"/Supervisor"} className="btn me-2">
                             Add New Operator/Supervisor
                           </Link>
                           <Link
                             to={"/Department-Head"}
-                            className="Operatorbtn me-2"
+                            className="btn me-2"
                           >
                             Department Head
                           </Link>
-                          <Link className="Operatorbtn">Export Report</Link>
+                          <Link className="btn">Export Report</Link>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="OperatorMain">
+                  <div className="OperatorMain mt-5">
                     <div className="container-fluid">
                       <div className="row gy-3 text-start">
                         <div className="col-md-1 col-6">
@@ -198,7 +198,8 @@ const OperatorSupervisor = () => {
                           </select>
                         </div>
                         <div className="col-md-1 col-12">
-                          <button className="operatebtn mt-4 w-100">
+                          
+                          <button className="btn" style={{marginTop:"39px"}}>
                             Search
                           </button>
                         </div>
@@ -206,7 +207,7 @@ const OperatorSupervisor = () => {
                     </div>
                   </div>
 
-                  <div className="Operatortable">
+                  <div className="Operatortable mt-5">
                     <div className="container-fluid">
                       <div className="row gy-3 text-start">
                         <div className="table-responsive">
@@ -266,7 +267,7 @@ const OperatorSupervisor = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="Operatorbottom">
+                  <div className="Operatorbottom mt-5">
                     <div className="row">
                       <div className="col-md-6 text-start">
                         <p style={{ color: "blue" }}>Total Count : 347</p>

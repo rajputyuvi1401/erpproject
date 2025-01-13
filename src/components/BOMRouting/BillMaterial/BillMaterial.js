@@ -290,11 +290,11 @@ const BillMaterial = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="BillMaterial1">
-                  <div className="BillMaterialMain">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-5 text-start">
-                          <h5 style={{ color: "blue" }}>
+                 
+                  <div className="BillMaterialMain mb-4 text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-5">
+                        <h5 className="header-title">
                             Routing & Bill of Material (BOM)
                           </h5>
                         </div>
@@ -330,7 +330,7 @@ const BillMaterial = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+              
                   {cardVisibleProduction && (
                     <div className="ProductionDeptCard">
                       <div className="card">
@@ -411,7 +411,7 @@ const BillMaterial = () => {
                           </form>
                           <div className="row">
                             <div className="col-12">
-                              <table className="table table-bordered">
+                              <table className="table table-bordered table-striped">
                                 <thead>
                                   <tr>
                                     <th scope="col">Sr. No.</th>
@@ -757,7 +757,7 @@ const BillMaterial = () => {
                           <div className="row">
                             <div className="col-md-12">
                               <div className="table-responsive">
-                                <table className="table table-bordered">
+                                <table className="table table-bordered table-striped">
                                   <thead>
                                     <tr>
                                       <th scope="col">Sr. No.</th>

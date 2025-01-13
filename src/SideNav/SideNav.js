@@ -220,23 +220,23 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                       Cross Reference
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      {permissions.All_Masters.includes(
+                      {/* {permissions.All_Masters.includes(
                         "Customer / Supplier Item Link"
-                      ) && (
+                      ) && ( */}
                         <Dropdown.Item
                           as={Link}
                           to="/customer-supplier-item-link"
                         >
-                          Customer / Supplier Item Link
+                           Customer / Supplier Item Link
                         </Dropdown.Item>
-                      )}
-                      {permissions.All_Masters.includes(
+                      {/* )} */}
+                      {/* {permissions.All_Masters.includes(
                         "Item Cross Reference"
-                      ) && (
+                      ) && ( */}
                         <Dropdown.Item as={Link} to="/item-cross-reference">
                           Item Cross Reference
                         </Dropdown.Item>
-                      )}
+                      {/* )} */}
                     </Dropdown.Menu>
                   </Dropdown>
                 )}
@@ -862,7 +862,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
           )}
 
           {/* //////////////////////////////     Quality       /////////////////////////// */}
-          {/* {permissions?.Quality && ( */}
+          {permissions?.Quality && (
           <li className="dropdown-container">
             <div className="dropdown-toggle" onClick={() => handleDropdownToggle("quality")} >
               <FaServicestack />
@@ -992,12 +992,12 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
 
             
           </li>
-          {/* )} */}
+          )}
 
 
           {/* //////////////////////////////     Sales       /////////////////////////// */}
          
-          {/* {permissions?.Sales && ( */}
+          {permissions?.Sales && (
           <li className="dropdown-container">
             <div className="dropdown-toggle" onClick={() => handleDropdownToggle("sales")} >
               <FaServicestack />
@@ -1145,7 +1145,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             </Dropdown.Menu>
             
           </li>
-          {/* )} */}
+          )}
         </ul>
       </div>
     </div>

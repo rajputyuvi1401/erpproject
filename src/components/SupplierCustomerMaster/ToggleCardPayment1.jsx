@@ -11,6 +11,7 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
+
 const ToggleCardPayment1 = () => {
   const [paymentTerms, setPaymentTerms] = useState([]);
   const [days, setDays] = useState("");
@@ -60,11 +61,11 @@ const ToggleCardPayment1 = () => {
   };
 
   const handleSaveEdit = async () => {
-    if (!editDays.trim() || isNaN(editDays) || parseInt(editDays) <= 0 || !Number.isInteger(parseFloat(editDays))) {
+    if (!editDays.trim() || isNaN(editDays) || parseInt(editDays) <= 0) {
       toast.error("Days must be a positive integer");
       return;
     }
-
+  
     try {
       await updatePaymentTerm(editingTerm, parseInt(editDays));
       setPaymentTerms(
@@ -76,9 +77,11 @@ const ToggleCardPayment1 = () => {
       setEditDays("");
       toast.success("Payment term updated successfully");
     } catch (error) {
+      console.error("Error updating payment term:", error); // Log error details
       toast.error("Failed to update payment term");
     }
   };
+  
 
   const handleDeletePaymentTerm = async (id) => {
     try {
@@ -101,7 +104,11 @@ const ToggleCardPayment1 = () => {
   }
 
   return (
+    <div className="card-Payment1">
     <div className="container">
+     
+      <div className="card-body card-scrollable">
+
       <div className="card-body">
         <div className="row text-start mb-3">
           <div className="col-md-3">
@@ -132,7 +139,14 @@ const ToggleCardPayment1 = () => {
         </div>
         <div className="row">
           <div className="col-12">
-            <table className="table table-responsive">
+          <div
+      className="table-responsive"
+      style={{
+        maxHeight: "400px", // Set a fixed height for vertical scrolling
+        overflowY: "auto", // Enable vertical scrolling
+      }}
+    >
+            <table className="table table-responsive" >
               <thead>
                 <tr>
                   <th>Sr. No</th>
@@ -194,6 +208,7 @@ const ToggleCardPayment1 = () => {
                 ))}
               </tbody>
             </table>
+            </div>
             {/* Pagination Controls */}
             <nav className="text-end">
               <ul className="pagination">
@@ -233,7 +248,9 @@ const ToggleCardPayment1 = () => {
           </div>
         </div>
       </div>
+      </div>
       <ToastContainer />
+    </div>
     </div>
   );
 };

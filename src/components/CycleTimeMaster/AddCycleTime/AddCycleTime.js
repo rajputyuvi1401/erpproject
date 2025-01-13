@@ -109,19 +109,19 @@ const AddCycleTime = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="AddCycletimermaster">
                   <div className="AddCycletime">
-                    <div className="container-fluid">
-                      <div className="row d-flex align-items-center">
-                        <div className="col-md-5 text-start">
-                          <h5>Cycle Time Master</h5>
+                  <div className="AddCycletime-header mb-4 text-start mt-5">
+                      <div className="row align-items-center">
+                        <div className="col-md-5">
+                        <h5 className="header-title">Cycle Time Master</h5>
                         </div>
-                        <div className="col-md-4 text-md-end text-start mt-2 mt-md-0">
+                        <div className="col-md-4 text-md-end text-start mt-3 mt-md-0">
                           <p style={{ color: "green" }}>
                             **Note: Please Enter Time in Seconds
                           </p>
                         </div>
                         <div className="col-md-3 text-md-end text-start mt-2 mt-md-0">
                           <button
-                            className="AddCycletimebtn me-2"
+                            className="btn me-2"
                             onClick={handleAddNewCycleTime}
                           >
                             Cycle Time Master List
@@ -130,7 +130,7 @@ const AddCycleTime = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="AddCycletimeMain">
+                  <div className="AddCycletimeMain mt-5">
                     <div className="container-fluid">
                       <div className="row text-start centerselect">
                         <div className="col-md-1 col-sm-3 mb-3 mb-sm-0">
@@ -150,14 +150,14 @@ const AddCycleTime = () => {
                           />
                         </div>
                         <div className="col-md-1 col-sm-12 text-sm-start text-md-start">
-                          <button className="AddCycletimemainbtn">
-                            <i className="bi bi-search"></i> Search
+                          <button className="btn mt-1">
+                           Search
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="AddCycleaside">
+                  <div className="AddCycleaside mt-5">
                     <div className="container-fluid">
                       <form onSubmit={handleSubmit}>
                         <div className="row text-start">
@@ -393,12 +393,12 @@ const AddCycleTime = () => {
                           </div>
                           <div className="row text-end">
                             <div className="col-md-12 col-sm-6">
-                              <button type="submit" className="addbtn me-2">
+                              <button type="submit" className="btn me-2">
                                 Add
                               </button>
                               <button
                                 type="button"
-                                className="addbtn"
+                                className="btn"
                                 onClick={handleClear}
                               >
                                 Clear
@@ -409,7 +409,7 @@ const AddCycleTime = () => {
                       </form>
                     </div>
                   </div>
-                  <div className="AddCycletable">
+                  <div className="AddCycletable mt-5">
                     <div className="container-fluid">
                       <div className="row text-start">
                         <div className="col-md-12">
@@ -424,8 +424,8 @@ const AddCycleTime = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-12 text-end">
-                    <button className="record-bootom">Save</button>
+                  <div className="col-md-12 text-end mt-5">
+                    <button className="btn">Save</button>
                   </div>
                 </div>
               </main>

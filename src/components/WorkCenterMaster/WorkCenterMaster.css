@@ -3,68 +3,22 @@
   margin: 0px;
   padding: 0px;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+
+.workmain-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-.main-content.shifted {
-  margin-left: 260px;
+.workmain-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 
-body.no-scroll {
-  overflow: hidden;
-}
-.main-content {
-  transition: margin-left 0.3s;
-}
 
-.main-content.shifted {
-  margin-left: 250px; /* Adjust based on your sidebar width */
-}
-.work-center {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  height: 100vh;
-}
-.work-center h5 {
-  color: blue;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.workcentermaster {
-  background-color: white;
-  height: auto;
-  padding: 20px 20px;
-}
-.workmain {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: aliceblue;
-  padding: 10px 20px;
-  height: 10vh;
-  margin-bottom: 20px;
-}
-.workmain h5 {
-  color: blue;
-}
-.workmain .btn-work {
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.btn-work:hover {
-  background-color: #0057b38d;
-}
+
 
 .workmain .overlay {
   position: fixed;
@@ -130,15 +84,12 @@ body.no-scroll {
 }
 
 .centerMain {
-  margin-top: 20px 20px;
-  height: auto;
-  background-color: aliceblue;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
-.centerselect {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  /* background-color: #f8f9fa; */
-}
+
 
 .centerselect .btn-workkk {
   display: flex;
@@ -165,11 +116,10 @@ body.no-scroll {
 }
 
 .workTable {
-  margin-top: 20px;
-  height: auto;
-  width: 100%;
-  background-color: aliceblue;
-  padding: 20px 20px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 .workTable .table-responsive {
@@ -182,18 +132,7 @@ body.no-scroll {
   white-space: nowrap;
 }
 
-.workTable .table-primary th {
-  background-color: #007bff;
-  color: white;
-}
 
-.workTable .table th,
-.workTable .table td {
-  vertical-align: middle;
-  text-align: center;
-  padding: 0.75rem;
-  border-top: 1px solid #dee2e6;
-}
 
 .workTable .table .btn-tableww {
   padding: 0.25rem 0.5rem;
@@ -258,23 +197,7 @@ body.no-scroll {
   overflow-x: auto;
 }
 
-.table-bordered th,
-.table-bordered td {
-  border: 1px solid #dee2e6;
-  padding: 8px;
-  text-align: center;
-}
-.btnnmn {
-  border: none;
-  background-color: blue;
-  color: white;
-  padding: 8px;
-  border-radius: 10px;
-}
-.btn-mcah {
-  border: none;
-  padding: 10px;
-}
+
 .card-body-machine {
   max-height: 430px; /* Set a max height for scrollable content */
   overflow-y: auto; /* Enable vertical scrolling */
@@ -282,106 +205,72 @@ body.no-scroll {
 
 /* Work Center  */
 
-.overlay-work {
+/* Overlay styles */
+.overlay-workcenter {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1050;
 }
 
-.card-work {
-  margin-top: -100px;
-  background: white;
+/* Card container */
+.overlay-workcenter .card,.overlay-workcenter  .card-work {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  max-height: 80%; /* Restrict height */
+  overflow-y: auto; /* Enable vertical scrolling */
   padding: 20px;
-  border-radius: 10px;
-  width: 800px;
-  max-width: 90%;
-  z-index: 1001;
+  position: relative;
 }
 
-.card-header-work {
+/* Card header */
+.overlay-workcenter .card-header,.overlay-workcenter  .card-header-work {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
 }
-
-.card-header-work h5 {
+.overlay-workcenter .card-header h5,.overlay-workcenter  .card-header-work h5 {
   margin: 0;
+  color: #333;
+  font-size: 1.25rem;
 }
 
-.card-work .table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.card-work .table-bordered th,
-.card-work .table-bordered td {
-  border: 1px solid #dee2e6;
-  padding: 8px;
-  text-align: center;
-}
-.card-work .btnnmn {
+.btn-close {
+  background: none;
   border: none;
-  background-color: blue;
-  color: white;
-  padding: 8px;
-  border-radius: 10px;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
 }
-.card-work .btn-mcah {
-  border: none;
-  padding: 10px;
+
+.btn-close:hover {
+  color: #000;
 }
-.card-work .card-body-work {
-  max-height: 430px; /* Set a max height for scrollable content */
-  overflow-y: auto; /* Enable vertical scrolling */
-} /* For screens smaller than 768px (tablets and phones) */
-@media (max-width: 767.98px) {
-  .workmain {
-    height: auto;
-  }
-  .workmain .col-md-6.text-start,
-  .workmain .col-md-6.text-md-end {
-    width: 100%;
-    text-align: left !important;
-    margin-top: 10px;
-  }
 
-  .workmain .btn-work {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-  }
+/* Card body */
+.overlay-workcenter .card-body-work {
+  margin-top: 20px;
+}
 
-  /* Adjust other specific elements as needed */
-  .overlay,
-  .overlay-machine,
-  .overlay-work {
-    align-items: flex-start;
-    margin-top: 130px; /* Adjust alignment as per design */
-  }
 
-  .card,
-  .card-machine,
-  .card-work {
-    margin-top: -50px; /* Adjust card margins */
-    width: 90%;
-    max-width: 100%; /* Ensure cards take full width */
-  }
 
-  .card-body,
-  .card-body-machine,
-  .card-body-work {
-    max-height: 300px; /* Reduce max height for smaller screens */
-  }
 
-  .card-work .card-body-work {
-    max-height: 350px; /* Adjust height for card body in card-work */
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+ .overlay-workcenter  .card,.overlay-workcenter  .card-work {
+    width: 90%; /* Adjust width for smaller screens */
   }
 }

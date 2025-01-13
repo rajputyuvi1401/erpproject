@@ -156,19 +156,22 @@ const Cutwise = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Cutwise1">
-                  <div className="cutwiseheader">
-                    <div>
-                      <h5 style={{ color: "blue" }}>
+                 
+                  <div className="cutwiseheader-header mb-4 text-start mt-3">
+                    <div className="row align-items-center">
+                      <div className="col-md-6">
+                        <h5 className="header-title">
                         Supplier/Customer-Item Wise GST(%) Rate Master
                       </h5>
                     </div>
-                    <div className="text-end">
-                      <Link to="/" className="cuthebtn">
+                    <div className="col-md-6 text-end">
+                      <Link to="/" className="btn">
                         Export To Excel
                       </Link>
                     </div>
                   </div>
-                  <div className="cutwisemain">
+                  </div>
+                  <div className="cutwisemain mt-5">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
@@ -347,14 +350,14 @@ const Cutwise = () => {
 
                                   <td>
                                     <button
-                                      className="btn-gst"
+                                      className="btn"
                                       onClick={handleSave}
                                     >
                                       {editMode ? "Update" : "Save"}
                                     </button>
                                     {editMode && (
                                       <button
-                                        className="btn-gst"
+                                        className="btn"
                                         onClick={() => setEditMode(false)}
                                       >
                                         Cancel
@@ -369,7 +372,7 @@ const Cutwise = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="Cutwisetable">
+                  <div className="Cutwisetable mt-5">
                     <div className="container-fluid">
                       <div className="table-responsive">
                         <table className="table table-bordered">

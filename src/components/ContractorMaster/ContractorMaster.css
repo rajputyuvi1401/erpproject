@@ -3,60 +3,27 @@
   margin: 0;
   padding: 0;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
 
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-.main-content.shifted {
-  margin-left: 260px;
-}
 
-body.no-scroll {
-  overflow: hidden;
-}
 
-.ContractorMaster {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  min-height: 100vh;
-}
-
-.ContractorMaster1 {
-  background-color: white;
-  padding: 20px;
-  height: auto;
-}
-
-.Contractor {
-  background-color: aliceblue;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.Contractorbtn {
-  background-color: rgba(235, 233, 233, 0.685);
-  border: none;
-  padding: 10px;
+.Contractor-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
   border-radius: 5px;
-  margin-top: -5px;
-  margin-right: 10px;
-  color: black;
-  text-decoration: none;
-  margin-bottom: 10px;
+}
+
+.Contractor-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 
 .ContractorMain {
-  background-color: aliceblue;
-  padding: 20px;
-  margin-top: 50px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 .ContractorMainbtn {
   background-color: rgba(235, 233, 233, 0.685);
@@ -67,21 +34,15 @@ body.no-scroll {
   margin-right: 10px;
 }
 .Contractortable {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
-  overflow-x: auto;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-.Contractortable .table-responsive {
-  max-height: 400px; /* Adjust height as needed */
-  overflow-y: auto;
-}
 
-.Contractortable .table th,
-.Contractortable .table td {
-  white-space: nowrap;
-}
+
+
 .contractorbtnicon {
   border: none;
 }

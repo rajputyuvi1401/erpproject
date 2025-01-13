@@ -34,19 +34,19 @@ const DepartmentHead = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Department1">
-                  <div className="Departmentupper">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6  text-start">
-                          <h5 style={{ color: "blue" }}>Department Master</h5>
+                 
+                  <div className="Departmentupper-header mb-4 text-start mt-5">
+                     <div className="row align-items-center">
+                        <div className="col-md-6">
+                        <h5 className="header-title">Department Master</h5>
                         </div>
                         <div className="col-md-6  text-end">
-                          <button className="Departmentbtn">
+                          <button className="btn">
                             Export To Excel
                           </button>
                         </div>
                       </div>
-                    </div>
+                   
                   </div>
                   <div className="DepartmentMain">
                     <div className="container-fluid">

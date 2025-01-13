@@ -3,61 +3,33 @@
   margin: 0;
   padding: 0;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+
+/* Header Styling */
+.Shift-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-.main-content.shifted {
-  margin-left: 260px;
-}
-
-body.no-scroll {
-  overflow: hidden;
-}
-
-.ShiftMaster {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  min-height: 100vh;
-}
-
-.ShiftMaster1 {
-  background-color: white;
-  padding: 20px;
-  height: auto;
-}
-
-.Shift {
-  background-color: aliceblue;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.Shift-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 
 .ShiftMain {
-  background-color: aliceblue;
-  padding: 20px;
-  margin-top: 50px;
-}
-.ShiftMainbtn {
-  background-color: rgba(235, 233, 233, 0.685);
-  border: none;
-  padding: 10px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
   border-radius: 5px;
-  margin-top: 30px;
-  margin-right: 10px;
 }
+
 .Shifttable {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
   overflow-x: auto;
 }
 

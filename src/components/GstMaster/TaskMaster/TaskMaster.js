@@ -132,23 +132,25 @@ const TaskMaster = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="taskmaster1">
-                  <div className="taskheader">
-                    <div>
-                      <h5 style={{ color: "blue" }}>Tax Code Master</h5>
+                <div className="taskmaster1 mt-5">
+                <div className="taskheader-header mb-4 text-start">
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">Tax Code Master</h5>
                     </div>
-                    <div className="text-end">
-                      <Link to="/gst-rate-master" className="taskbtn">
+                    <div className="col-md-8 text-end">
+                      <Link to="/gst-rate-master" className="btn">
                         GST Rate Master
                       </Link>
-                      <Link to="/" className="taskbtn">
+                      <Link to="/" className="btn">
                         Export To Excel
                       </Link>
                     </div>
                   </div>
-                  <div className="taskmain">
+                  </div>
+                  <div className="taskmain mt-5">
                     <div className="container-fluid">
-                      <div className="table-responsive">
+                      <div className="table-responsive mt-3">
                         <table className="table table-bordered">
                           <thead>
                             <tr>
@@ -297,7 +299,7 @@ const TaskMaster = () => {
                                       <td>
                                         <button
                                           onClick={() => handleEdit(item)}
-                                          className="sgstbtn"
+                                          className="btn"
                                         >
                                           <i className="fas fa-edit"></i>
                                         </button>
@@ -305,7 +307,7 @@ const TaskMaster = () => {
                                       <td>
                                         <button
                                           onClick={() => handleDelete(item.id)}
-                                          className="sgstbtn"
+                                          className="btn"
                                         >
                                           <i className="fas fa-trash"></i>
                                         </button>

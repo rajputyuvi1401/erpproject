@@ -548,12 +548,12 @@ const ItemMasterGernal = () => {
               />
 
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="axcv">
+                <div className="axcv mt-5">
                   <ToastContainer />
-                  <div className="top-but3">
+                  <div className="top-but3-header mb-4 text-start">
                     <div className="row align-items-center">
-                      <div className="col-md-2 text-start">
-                        <p>Item List</p>
+                      <div className="col-md-2">
+                        <h5 className="header-title">Item List</h5>
                       </div>
                       <div className="col-md-10 text-end">
                         <div className="d-flex align-items-center justify-content-end">
@@ -572,7 +572,7 @@ const ItemMasterGernal = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="itemmastergernal">
+                  <div className="itemmastergernal mt-5">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
@@ -638,7 +638,7 @@ const ItemMasterGernal = () => {
                               </button>
                             </li>
                           </ul>
-                          <div className="tab-content" id="pills-tabContent">
+                          <div className="tab-content" id="pills-tabContent" style={{border:"none"}}>
                             <div
                               className="tab-pane fade show active"
                               id="pills-home"
@@ -2430,40 +2430,74 @@ const ItemMasterGernal = () => {
                               </div>
 
                               {showNewCardMainGroup && (
-                                <div className="new-card-overlay">
-                                  <div className="new-card">
-                                    <div className="card">
-                                      <div className="card-header">
-                                        <div className="row">
-                                          <div className="col-md-6 text-start">
-                                            <h5
-                                              className="card-title text-start"
-                                              style={{ color: "blue" }}
-                                            >
-                                              Item Unit Master
-                                            </h5>
-                                          </div>
-                                          <div className="col-md-6 text-end">
-                                            <button
-                                              className="btn-cl"
-                                              style={{
-                                                margin: "5px",
-                                                color: "gray",
-                                                border: "none",
-                                                padding: "10px",
-                                              }}
-                                              onClick={handleNewCardMainGroup}
-                                            >
-                                              X
-                                            </button>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <NewCardMainGroup />
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
+  <div
+    className="new-card-overlay"
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 1050,
+    }}
+  >
+    <div
+      className="new-card"
+      style={{
+        width: "50%",
+        maxHeight: "80%", // Restrict the height to enable vertical scrolling
+        overflowY: "auto", // Enable vertical scrolling
+        backgroundColor: "#fff",
+        borderRadius: "8px",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+        padding: "20px",
+      }}
+    >
+      <div className="card">
+        <div className="card-header">
+          <div className="row">
+            <div className="col-md-6 text-start">
+              <h5
+                className="card-title text-start"
+                style={{ color: "blue" }}
+              >
+                Item Unit Master
+              </h5>
+            </div>
+            <div className="col-md-6 text-end">
+              <button
+                className="btn-cl"
+                style={{
+                  margin: "5px",
+                  color: "gray",
+                  border: "none",
+                  padding: "10px",
+                }}
+                onClick={handleNewCardMainGroup}
+              >
+                X
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card-body"
+          style={{
+            maxHeight: "calc(80vh - 100px)", // Adjust height for header/footer
+            overflowY: "auto", // Enable scrolling for content
+          }}
+        >
+          <NewCardMainGroup />
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
                               {showNewCardUnit && (
                                 <div className="new-card-overlay">
                                   <div className="new-card">
@@ -2501,7 +2535,7 @@ const ItemMasterGernal = () => {
                               )}
 
                               {showNewCardTdc && (
-                                <div className="TdcCard">
+                                // <div className="TdcCard">
                                   <div className="new-card-overlay">
                                     <div className="new-card">
                                       <div className="card">
@@ -2532,7 +2566,7 @@ const ItemMasterGernal = () => {
                                       </div>
                                     </div>
                                   </div>
-                                </div>
+                                // </div>
                               )}
                               {showNewCardItemgroup && (
                                 <div className="itemgroup">
@@ -2640,7 +2674,7 @@ const ItemMasterGernal = () => {
                               )}
 
                               {showNewCardSector && (
-                                <div className="SectorCard">
+                                // <div className="SectorCard">
                                   <div className="new-card-overlay">
                                     <div className="new-card">
                                       <div className="card">
@@ -2671,7 +2705,7 @@ const ItemMasterGernal = () => {
                                       </div>
                                     </div>
                                   </div>
-                                </div>
+                                // </div>
                               )}
 
                               {showNewCardGrade && (

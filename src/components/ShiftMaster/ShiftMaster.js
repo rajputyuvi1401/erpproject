@@ -113,11 +113,11 @@ const ShiftMaster = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="ShiftMaster1">
-                  <div className="Shift">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6 text-start">
-                          <h5 style={{ color: "blue" }}>Shift Master</h5>
+                
+                  <div className="Shift-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-6">
+                        <h5 className="header-title">Shift Master</h5>
                         </div>
                         <div className="col-md-6 text-end">
                           <p style={{ color: "violet" }}>
@@ -126,8 +126,8 @@ const ShiftMaster = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="ShiftMain">
+               
+                  <div className="ShiftMain mt-5">
                     <div className="container-fluid">
                       <div className="row text-start">
                         <div className="col-md-1">
@@ -308,15 +308,15 @@ const ShiftMaster = () => {
                           </div>
                         </div>
                         <div className="col-md-2">
-                          <div className="mb-3">
+                          <div className="mb-3 mt-4">
                             <button
-                              className="ShiftMainbtn"
+                              className="btn"
                               type="button"
                               onClick={handleSubmit}
                             >
                               Save
                             </button>
-                            <button className="ShiftMainbtn">Cancel</button>
+                            <button className="btn">Cancel</button>
                           </div>
                         </div>
                       </div>

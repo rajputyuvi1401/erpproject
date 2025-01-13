@@ -339,7 +339,7 @@ const VisibleStandard = () => {
       </div>
 
       <div className="card-body py-3">
-        <table className="table">
+        <table className="table table-bordered table-striped">
           <thead>
             <tr>
               <th>Std Routing No</th>

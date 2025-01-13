@@ -141,21 +141,21 @@ const ItemCrossReference = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Crossrefer">
-                  <div className="reference-upper">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6 text-start">
-                          <h5 style={{ color: "blue" }}>
+                 
+                  <div className="reference-upper-header mb-4 text-start mt-4">
+                      <div className="row align-items-center">
+                        <div className="col-md-6">
+                        <h5 className="header-title">
                             Item Cross Reference
                           </h5>
                         </div>
                         <div className="col-md-6 text-end">
-                          <button className="ref-btn">Export To Excel</button>
+                          <button className="btn">Export To Excel</button>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="reference-form">
+            
+                  <div className="reference-form mt-5">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-6">

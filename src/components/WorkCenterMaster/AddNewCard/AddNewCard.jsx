@@ -364,11 +364,11 @@ const AddNewCard = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <div className="col-md-6">
-                  <button className="btn btn-primary" type="submit">
+                <div className="col-md-12">
+                  <button className="btn" type="submit">
                     Save
                   </button>
-                  <button className="btn btn-secondary ms-2" type="button" onClick={handleClear}>
+                  <button className="btn ms-2" type="button" onClick={handleClear}>
                     Clear
                   </button>
                 </div>

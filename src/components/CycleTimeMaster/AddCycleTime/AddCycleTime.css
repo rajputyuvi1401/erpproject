@@ -4,80 +4,29 @@
   padding: 0;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+
+.AddCycletime-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
+.AddCycletime-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 
-.main-content.shifted {
-  margin-left: 260px;
-}
 
-body.no-scroll {
-  overflow: hidden;
-}
-
-.main-content {
-  transition: margin-left 0.3s;
-}
-
-.main-content.shifted {
-  margin-left: 250px;
-}
-
-.AddCycletimecenter {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  min-height: 100vh;
-}
-
-.AddCycletimermaster {
-  background-color: white;
-  padding: 20px;
-}
-
-.AddCycletime {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: aliceblue;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-}
-
-.AddCycletime h5 {
-  color: blue;
-}
-
-.AddCycletime .AddCycletimebtn {
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.AddCycletimebtn:hover {
-  background-color: #0057b38d;
-  color: white;
-}
 
 .AddCycletimeMain {
-  margin-top: 80px;
-  background-color: aliceblue;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-.AddCycletimeMain .centerselect {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
 
 .AddCycletimemainbtn {
   display: flex;
@@ -94,10 +43,10 @@ body.no-scroll {
 }
 
 .AddCycleaside {
-  margin-top: 80px;
-  background-color: aliceblue;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px 20px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 .AddCycleaside .form-label {
@@ -123,8 +72,10 @@ body.no-scroll {
 }
 
 .AddCycletable {
-  margin-top: 40px;
-  padding: 20px 20px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 @media (max-width: 768px) {

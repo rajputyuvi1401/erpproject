@@ -233,19 +233,21 @@ const BusinessPartner = () => {
                 <div className="fullbus">
                   <div className="bussiness1">
                     <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6 text-start">
-                          <h5 style={{ color: "blue" }}>Business Partner</h5>
+                    <div className="bussiness1-header mb-4 text-start">
+                      <div className="row align-items-center">
+                       <div className="col-md-6">
+                        <h5 className="header-title">Business Partner</h5>
                         </div>
                         <div className="col-md-6 text-end">
-                          <button className="btn-bus">
+                          <button className="btn">
                             Customer Supplier List
                           </button>
                         </div>
                       </div>
                     </div>
+                    </div>
                   </div>
-                  <div className="bussiness-main">
+                  <div className="bussiness-main mt-5">
                     <div className="container-fluid">
                       <form onSubmit={handleSubmit} autoComplete="off">
                         <div className="row mt-4">
@@ -729,7 +731,7 @@ const BusinessPartner = () => {
                           </div>
                         )}
                       </form>
-                      <table className="table mt-4">
+                      <table className="table table-bordered table-striped mt-4">
                         <thead>
                           <tr>
                             <th>Code No</th>

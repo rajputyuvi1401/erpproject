@@ -3,32 +3,6 @@
   margin: 0px;
   padding: 0px;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-.main-content.shifted {
-  margin-left: 260px;
-}
-
-body.no-scroll {
-  overflow: hidden;
-}
-
-/* .Main {
-  background-color: rgb(241, 242, 244);
-  height: 107vh;
-  width: 100%;
-  text-align: start;
-} */
 
 .Itemmastergernalpage .btn {
   background-color: rgba(235, 233, 233, 0.685);
@@ -40,19 +14,24 @@ body.no-scroll {
   color: black;
   border: none;
 }
-.top-but3 {
-  margin: 20px 0;
-  padding: 10px;
-  background-color: aliceblue;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ .top-but3-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
+.top-but3-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
 .itemmastergernal {
-  margin: 50px 0;
-  width: 100%;
-  height: 1000vh;
-  padding: 10px;
-  background-color: aliceblue;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
+  
 }
 .top-but3 label {
   margin-right: 10px;
@@ -80,7 +59,7 @@ body.no-scroll {
 .nav-pills .nav-link {
   border: none;
   color: grey; /* Default text color for buttons */
-  background-color: white; /* Default background color for buttons */
+  /* background-color: white; Default background color for buttons */
 }
 .nav-pills .nav-link:hover {
   color: gray;
@@ -113,17 +92,18 @@ body.no-scroll {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
-  margin-top: 20px;
+  z-index: 1050;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .new-card {
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 80%;
-  max-width: 600px;
+  width: 50%;
+  max-height: 80%; /* Restricts the height to enable vertical scrolling */
+  overflow-y: auto; /* Enables vertical scrolling */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px; /* Correct property name */
 }
 
 .card-title {
@@ -133,6 +113,7 @@ body.no-scroll {
 .card-body {
   color: black;
 }
+
 .card-btn {
   background-color: blueviolet;
   color: white;
@@ -142,6 +123,7 @@ body.no-scroll {
   width: 100%;
   margin-bottom: 10px;
 }
+
 .card-btn1 {
   background-color: green;
   color: white;
@@ -151,6 +133,7 @@ body.no-scroll {
   width: 60%;
   margin-right: 5px;
 }
+
 .card-btn2 {
   background-color: red;
   color: white;
@@ -158,6 +141,7 @@ body.no-scroll {
   padding: 8px;
   border-radius: 10px;
 }
+
 .btn-primary,
 .btn-danger {
   cursor: pointer;
@@ -166,6 +150,23 @@ body.no-scroll {
 /* Responsive styles for the table */
 .table {
   width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling for smaller screens */
+  -webkit-overflow-scrolling: touch;
 }
 
 .TdcCard .new-card-overlay {
@@ -177,15 +178,17 @@ body.no-scroll {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Ensure the overlay is on top of other content */
+  z-index: 1050;
+  background-color: rgba(0, 0, 0, 0.5),
 }
 .TdcCard .new-card {
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 80%;
-  max-width: 600px; /* Max width of the card */
+  width: 50%;
+  max-height: 80%; /* Restricts the height to enable vertical scrolling */
+  overflow-y: auto; /* Enables vertical scrolling */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px; /* Correct property name */
 }
 
 .TdcCard .card-title {
@@ -262,20 +265,19 @@ body.no-scroll {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: 1050;
+  background-color: rgba(0, 0, 0, 0.5),
 }
 
 /* Card for item group */
 .itemgroup-card {
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 80%;
-  max-width: 600px;
-  align-items: start;
-  justify-content: start;
+  width: 50%;
+  max-height: 80%; /* Restricts the height to enable vertical scrolling */
+  overflow-y: auto; /* Enables vertical scrolling */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px; /* Correct property name */
 }
 
 .itemgroup p {
@@ -370,17 +372,18 @@ body.no-scroll {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
-  margin-top: 20px;
+  z-index: 1050;
+  background-color: rgba(0, 0, 0, 0.5),
 }
 
 .Store-card {
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 80%;
-  max-width: 600px;
+  width: 50%;
+  max-height: 80%; /* Restricts the height to enable vertical scrolling */
+  overflow-y: auto; /* Enables vertical scrolling */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px; /* Correct property name */
 }
 
 .Store-card .card-title {
@@ -446,15 +449,17 @@ body.no-scroll {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Ensure the overlay is on top of other content */
+  z-index: 1050;
+  background-color: rgba(0, 0, 0, 0.5),
 }
 .RouteCard .new-card {
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 80%;
-  max-width: 600px; /* Max width of the card */
+  width: 50%;
+  max-height: 80%; /* Restricts the height to enable vertical scrolling */
+  overflow-y: auto; /* Enables vertical scrolling */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px; /* Correct property name */
 }
 
 .RouteCard .card-title {
@@ -603,7 +608,7 @@ body.no-scroll {
   padding: 20px 20px;
 }
 .axcv {
-  background-color: white;
+  /* background-color: white; */
   height: auto;
   padding: 20px 20px;
   margin-bottom: 10px;

@@ -4,20 +4,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar";
 import SideNav from "../../../SideNav/SideNav";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { fetchItems } from "../../../Service/Api.jsx";
 import { fetchMainGroupData } from "../../../Service/Api.jsx";
 const ItemMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
   };
 
-  const handleAddNewItemClick = () => {
-    navigate("/add-new-item");
-  };
+  // const handleAddNewItemClick = () => {
+  //   navigate("/add-new-item");
+  // };
 
   useEffect(() => {
     if (sideNavOpen) {
@@ -111,19 +111,22 @@ const ItemMaster = () => {
               />
 
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="itemaamain">
-                  <div className="top-but1">
+                <div className="itemaamain mt-5">
+                <div className="itemaamain-header mb-4 text-start">
                     <div className="row align-items-center">
-                      <div className="col-md-6 col-12 text-start text-md-start text-center">
-                        <p>Item List</p>
+                      <div className="col-md-6">
+                        <h5 className="header-title">Item List</h5>
                       </div>
                       <div className="col-md-6 col-12 text-end text-md-end text-center">
-                        <button
+                        {/* <button
                           className="btn12 me-2"
                           onClick={handleAddNewItemClick}
                         >
                           Add New Item
-                        </button>
+                        </button> */}
+                        <Link to={"/item-master-gernal"} className="btn12">
+                          Add New Item
+                        </Link>
                         <Link to={"/item-master-query"} className="btn12">
                           Item Query
                         </Link>
@@ -131,7 +134,7 @@ const ItemMaster = () => {
                     </div>
                   </div>
 
-                  <div className="search-row">
+                  <div className="search-row mt-5">
                     <div className="row align-items-center">
                       <div className="col-md-1">
                         <input
@@ -214,7 +217,7 @@ const ItemMaster = () => {
                     </div>
                   </div>
 
-                  <div className="search-table">
+                  <div className="search-table mt-5">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="table-responsive">

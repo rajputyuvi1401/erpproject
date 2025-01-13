@@ -502,13 +502,18 @@ export const addPaymentTerm = async (days) => {
 };
 
 
-export const updatePaymentTerm = async (id, code, desc, days) => {
-  const response = await axios.put(`${BASE_URL}Payment_Term/${id}/`, {
-  
-    Days: days,
-  });
-  return response.data;
+export const updatePaymentTerm = async (id, days) => {
+  try {
+    const response = await axios.put(`${BASE_URL}Payment_Term/${id}/`, {
+      Days: days,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating payment term:", error.response);
+    throw error;
+  }
 };
+
 
 export const deletePaymentTerm = async (id) => {
   const response = await axios.delete(`${BASE_URL}Payment_Term/${id}/`);

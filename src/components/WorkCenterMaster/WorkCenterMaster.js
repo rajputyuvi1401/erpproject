@@ -145,33 +145,33 @@ const WorkCenterMaster = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="workcentermaster">
-                  <div className="workmain">
-                    <div className="container-fluid">
-                      <div className="row d-flex align-items-center">
-                        <div className="col-md-6 text-start">
-                          <h5>Work Center Master</h5>
+                  <div className="workmain mt-5">
+                    <div className="workmain-header mb-4 text-start">
+                      <div className="row align-items-center">
+                        <div className="col-md-6">
+                        <h5 className="header-title">Work Center Master</h5>
                         </div>
                         <div className="col-md-6 text-md-end text-start mt-2 mt-md-0">
                           <button
-                            className="btn-work me-2"
+                            className="btn me-2"
                             onClick={handleAddNewClick}
                           >
                             Add New
                           </button>
                           <button
-                            className="btn-work  me-2"
+                            className="btn  me-2"
                             onClick={handleNewButtonWork}
                           >
                             Work Center Type
                           </button>
-                          <button className="btn-work">Export Report</button>
+                          <button className="btn">Export Report</button>
                         </div>
                       </div>
                     </div>
                     {isCardVisible && (
-                      <div className="overlay">
-                        <div className="card">
-                          <div className="card-header">
+                      <div className="overlay-workcenter">
+                        <div className="card-work">
+                          <div className="card-header-work">
                             <h5>Add New Work Center</h5>
                             <button
                               className="btn-close"
@@ -185,134 +185,93 @@ const WorkCenterMaster = () => {
                         </div>
                       </div>
                     )}
-                    {showNewCardWork && (
-                      <div className="overlay-work">
-                        <div className="card-work">
-                          <div className="card-header-work">
-                            <h5 style={{ color: "black" }}>
-                              Machine Group Type
-                            </h5>
-                            <button
-                              className="btn-close"
-                              onClick={handleNewButtonWork}
-                            >
-                              ×
-                            </button>
-                          </div>
-                          <form onSubmit={handleSubmit2}>
-                            <div className="card-body-work">
-                              <h5
-                                style={{
-                                  color: "blue",
-                                  textAlign: "start",
-                                }}
-                              >
-                                Work Center Type
-                              </h5>
-                              <hr />
-                              <div className="row mb-3">
-                                <p style={{ textAlign: "start" }}>
-                                  Work Center Type
-                                </p>
-                                <label
-                                  htmlFor="inputType"
-                                  className="col-sm-2 col-form-label text-start"
-                                >
-                                  Enter Type Group:<span className="text-danger">*</span>
-                                </label>
-                                <div className="col-sm-3">
-                                  <input
-                                    type="text"
-                                    className="form-control"
-                                    id="inputType"
-                                    name="typeGroup"
-                                    value={typeGroup}
-                                    onChange={(e) =>
-                                      setTypeGroup(e.target.value)
-                                    }
-                                    placeholder="Work Center Type"
-                                  />
-                                  {errors.typeGroup && (
-                                    <div className="text-danger">
-                                      {errors.typeGroup}
-                                    </div>
-                                  )}
-                                </div>
-                                <label
-                                  htmlFor="inputType"
-                                  className="col-sm-2 col-form-label text-start"
-                                >
-                                  Prod WT:<span className="text-danger">*</span>
-                                </label>
-                                <div className="col-sm-3">
-                                  <select
-                                    className="form-select"
-                                    id="inputProdWt"
-                                    name="prodWt"
-                                    value={prodWt}
-                                    onChange={(e) => setProdWt(e.target.value)}
-                                  >
-                                    <option value="Master">Master</option>
-                                    <option value="Master_Cut_WT">
-                                      Master_Cut_WT
-                                    </option>
-                                    <option value="Master_Cut">
-                                      Master_Cut
-                                    </option>
-                                  </select>
-                                  {errors.prodWt && (
-                                    <small className="text-danger">
-                                      {errors.prodWt}
-                                    </small>
-                                  )}
-                                </div>
-                                <div className="col-sm-2">
-                                  <button className="btnnmn" type="submit">
-                                    Save
-                                  </button>
-                                </div>
-                              </div>
+                {showNewCardWork && (
+  <div className="overlay-workcenter">
+    <div className="card-work">
+      <div className="card-header-work">
+        <h5 className="title">Machine Group Type</h5>
+        <button className="btn-close" onClick={handleNewButtonWork}>×</button>
+      </div>
+      <form onSubmit={handleSubmit2}>
+        <div className="card-body-work">
+          <h5 className="section-title">Work Center Type</h5>
+          <hr />
+          <div className="row mb-3">
+            <div className="col-md-4">
+              <label className="form-label">Enter Type Group:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="inputType"
+                name="typeGroup"
+                value={typeGroup}
+                onChange={(e) => setTypeGroup(e.target.value)}
+                placeholder="Work Center Type"
+              />
+              {errors.typeGroup && (
+                <div className="text-danger">{errors.typeGroup}</div>
+              )}
+            </div>
+            <div className="col-md-4">
+              <label className="form-label">Prod WT:</label>
+              <select
+                className="form-select"
+                id="inputProdWt"
+                name="prodWt"
+                value={prodWt}
+                onChange={(e) => setProdWt(e.target.value)}
+              >
+                <option value="Master">Master</option>
+                <option value="Master_Cut_WT">Master_Cut_WT</option>
+                <option value="Master_Cut">Master_Cut</option>
+              </select>
+              {errors.prodWt && (
+                <small className="text-danger">{errors.prodWt}</small>
+              )}
+            </div>
+            <div className="col-md-4 mt-5">
+              <button className="btn" type="submit">Save</button>
+            </div>
+          </div>
 
-                              <table className="table table-bordered table-responsive">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Item WT</th>
-                                    <th scope="col">User Group</th>
-                                    <th scope="col">Edit</th>
-                                    <th scope="col">Delete</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>cnc</td>
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Type</th>
+                <th>Item WT</th>
+                <th>User Group</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>cnc</td>
+                <td>0</td>
+                <td>0</td>
+                <td>
+                  <button className="btn">
+                    <i className="fas fa-edit"></i>
+                  </button>
+                </td>
+                <td>
+                  <button className="btn">
+                    <i className="fas fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
 
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>
-                                      <button className="btn-mcah">
-                                        {" "}
-                                        <i className="fas fa-edit"></i>
-                                      </button>
-                                    </td>
-                                    <td>
-                                      <button className="btn-mcah">
-                                        {" "}
-                                        <i className="fas fa-trash"></i>
-                                      </button>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    )}
                   </div>
-                  <div className="centerMain">
+                  <div className="centerMain mt-5">
                     <div className="container-fluid">
                       <div className="row text-start centerselect">
                         <div className="col-md-1 col-sm-3 mb-3 mb-sm-0">
@@ -367,8 +326,8 @@ const WorkCenterMaster = () => {
                             <option value="3">VMC</option>
                           </select>
                         </div>
-                        <div className="col-md-3 col-sm-12 text-sm-start text-md-end">
-                          <button className="btn-workkk">
+                        <div className="col-md-3 col-sm-12 text-sm-start mt-2">
+                          <button className="btn">
                             <i className="bi bi-search"></i> Search
                           </button>
                         </div>
@@ -376,7 +335,7 @@ const WorkCenterMaster = () => {
                     </div>
                   </div>
 
-                  <div className="workTable">
+                  <div className="workTable mt-5">
                     <div className="container-fluid">
                       <div className="table-responsive">
                         <table className="table">

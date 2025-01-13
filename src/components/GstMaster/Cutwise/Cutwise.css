@@ -4,64 +4,22 @@
   padding: 0;
 }
 
-body {
-  font-family: Arial, sans-serif;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-
-.main-content.shifted {
-  margin-left: 260px;
-}
-
-body.no-scroll {
-  overflow: hidden;
-}
-.btn-gst {
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  text-decoration: none;
-  margin: 5px;
-  margin-top: 70px;
-}
-.Cutwise {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
 
 .Cutwise1 {
-  background-color: white;
   padding: 20px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+ 
 }
-.cutwiseheader {
-  background-color: aliceblue;
-  padding: 20px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.cutwiseheader-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
+}
+
+.cutwiseheader-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 
 .cuthebtn {
@@ -73,18 +31,13 @@ body.no-scroll {
   text-decoration: none;
   margin: 5px;
 }
-.Cutwisemain {
-  background-color: aliceblue;
-  flex-grow: 1;
-  padding: 20px;
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.cutwisemain {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
-.Cutwise1 th {
-  background-color: rgba(0, 0, 255, 0.544);
-}
+
 .btnwise {
   margin: 5px;
   border: none;
@@ -103,5 +56,8 @@ body.no-scroll {
   }
 }
 .Cutwisetable {
-  margin-top: 80px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }

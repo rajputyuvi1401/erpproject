@@ -412,11 +412,11 @@ const Supervisor = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Supervisor1">
-                  <div className="Supervisorupper">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-3 col-sm-6 text-start">
-                          <h5 style={{ color: "blue" }}>
+                 
+                  <div className="Supervisorupper-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
+                       <div className="col-md-4">
+                        <h5 className="header-title">
                             Operator / Supervisor / Staff Master
                           </h5>
                         </div>
@@ -427,12 +427,12 @@ const Supervisor = () => {
                           </select>
                         </div>
                       </div>
-                    </div>
                   </div>
-                  <div className="SupervisorMain">
+                
+                  <div className="SupervisorMain mt-5">
                     <div className="container-fluid">
                       <form onSubmit={handleSubmit} autoComplete="off">
-                        <div className="row text-start">
+                        <div className="row text-start mt-5">
                           <div className="col-md-4 col-sm-12">
                             <div className="row mb-3">
                               <label
@@ -949,12 +949,12 @@ const Supervisor = () => {
                         </div>
                         <div className="row">
                           <div className="col-12 text-end">
-                            <button type="submit" className="Supervisorbottom">
+                            <button type="submit" className="btn">
                               SAVE
                             </button>
                             <button
                               type="reset"
-                              className="Supervisorbottom"
+                              className="btn"
                               onClick={handleReset}
                             >
                               CLEAR
@@ -964,152 +964,126 @@ const Supervisor = () => {
                       </form>
                       {/* Add Department Modal/Card */}
                       {showAddDepartment && (
-                        <div className="modal-container">
-                          <div className="card">
-                            <div className="card-header">
-                              <h5 className="card-title">Department Master</h5>
-                              <button
-                                type="button"
-                                className="btn-close"
-                                aria-label="Close"
-                                onClick={toggleAddDepartment}
-                              >
-                                X
-                              </button>
-                            </div>
-                            <div className="card-body">
-                              <div className="container">
-                                <div className="row">
-                                  <div className="col-md-12">
-                                    <p>Department Name</p>
-                                  </div>
-                                </div>
-                                <div className="row text-start">
-                                  <form onSubmit={handleSubmit1}>
-                                    <div className="row mb-3">
-                                      <label
-                                        htmlFor="SelectCategory"
-                                        className="col-sm-2 col-form-label"
-                                      >
-                                        Department:
-                                      </label>
-                                      <div className="col-sm-4">
-                                        <div className="input-group">
-                                          <select
-                                            id="SelectCategory"
-                                            className="form-select"
-                                            value={formData.SelectCategory}
-                                            onChange={handleChange1}
-                                          >
-                                            <option>Select Category</option>
-                                            {companyNames.map((card) => (
-                                              <option
-                                                key={card.id}
-                                                value={card.CategoryName}
-                                              >
-                                                {card.CategoryName}
-                                              </option>
-                                            ))}
-                                            <option>Production</option>
-                                            <option>Maintenance</option>
-                                            <option>Quality</option>
-                                            <option>Logistics</option>
-                                          </select>
-                                          <button
-                                            type="button"
-                                            className="Supbtn"
-                                            onClick={
-                                              toggleAddDepartmentCategory
-                                            }
-                                          >
-                                            New
-                                          </button>
-                                          <button
-                                            type="button"
-                                            className="Supbtn"
-                                          >
-                                            <i className="fas fa-sync"></i>
-                                          </button>
-                                          {errors.SelectCategory && (
-                                            <div className="text-danger">
-                                              {errors.SelectCategory}
-                                            </div>
-                                          )}
-                                        </div>
-                                      </div>
-                                      <label
-                                        htmlFor="EnterDeptName"
-                                        className="col-sm-3 col-form-label"
-                                      >
-                                        Enter Dept Name:
-                                      </label>
-                                      <div className="col-sm-2">
-                                        <input
-                                          type="text"
-                                          className="form-control"
-                                          id="EnterDeptName"
-                                          value={formData.EnterDeptName}
-                                          onChange={handleChange}
-                                        />
-                                        {errors.EnterDeptName && (
-                                          <div className="text-danger">
-                                            {errors.EnterDeptName}
-                                          </div>
-                                        )}
-                                      </div>
-                                      <div className="col-sm-1">
-                                        <button className="adddepbtn">
-                                          Save
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </form>
-                                </div>
-                                <div className="table-responsive">
-                                  <table className="table table-striped">
-                                    <thead>
-                                      <tr>
-                                        <th>Sr. No.</th>
-                                        <th>Category</th>
-                                        <th>Department</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      {departments.map((dep, index) => (
-                                        <tr key={dep.id}>
-                                          <td>{index + 1}</td>
-                                          <td>{dep.SelectCategory}</td>
-                                          <td>{dep.EnterDeptName}</td>
-                                          <td>
-                                            <button
-                                              style={{ border: "none" }}
-                                              onClick={() => handleEdit(dep.id)}
-                                            >
-                                              <i className="fas fa-edit"></i>
-                                            </button>
-                                          </td>
-                                          <td>
-                                            <button
-                                              style={{ border: "none" }}
-                                              onClick={() =>
-                                                handleDelete(dep.id)
-                                              }
-                                            >
-                                              <i className="fas fa-trash-alt"></i>
-                                            </button>
-                                          </td>
-                                        </tr>
-                                      ))}
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
+  <div className="modal-container">
+    <div className="card">
+      <div className="card-header">
+        <h5 className="card-title">Department Master</h5>
+        <button
+          type="button"
+          className="btn"
+          aria-label="Close"
+          onClick={toggleAddDepartment}
+        >
+          ×
+        </button>
+      </div>
+      <div className="card-body">
+        <div className="form-container">
+          <form onSubmit={handleSubmit1}>
+            <div className="row mb-3 text-start">
+              <div className="col-md-6">
+                <label htmlFor="SelectCategory" className="form-label">
+                  Department:
+                </label>
+                <div className="input-group">
+                  <select
+                    id="SelectCategory"
+                    className="form-select"
+                    value={formData.SelectCategory}
+                    onChange={handleChange1}
+                  >
+                    <option>Select Category</option>
+                    {companyNames.map((card) => (
+                      <option key={card.id} value={card.CategoryName}>
+                        {card.CategoryName}
+                      </option>
+                    ))}
+                    <option>Production</option>
+                    <option>Maintenance</option>
+                    <option>Quality</option>
+                    <option>Logistics</option>
+                  </select>
+                  <button
+                    type="button"
+                    className="btn ms-1"
+                    onClick={toggleAddDepartmentCategory}
+                  >
+                    New
+                  </button>
+                  <button type="button" className="btn ms-1">
+                    <i className="fas fa-sync"></i>
+                  </button>
+                </div>
+                {errors.SelectCategory && (
+                  <div className="text-danger">{errors.SelectCategory}</div>
+                )}
+              </div>
+              <div className="col-md-4">
+                <label htmlFor="EnterDeptName" className="form-label">
+                  Enter Dept Name:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="EnterDeptName"
+                  value={formData.EnterDeptName}
+                  onChange={handleChange}
+                />
+                {errors.EnterDeptName && (
+                  <div className="text-danger">{errors.EnterDeptName}</div>
+                )}
+              </div>
+              <div className="col-md-2" style={{marginTop:"39px"}}>
+                <button className="btn" type="submit">
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div className="table-responsive">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>Sr. No.</th>
+                <th>Category</th>
+                <th>Department</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {departments.map((dep, index) => (
+                <tr key={dep.id}>
+                  <td>{index + 1}</td>
+                  <td>{dep.SelectCategory}</td>
+                  <td>{dep.EnterDeptName}</td>
+                  <td>
+                    <button
+                      className="btn-action"
+                      onClick={() => handleEdit(dep.id)}
+                    >
+                      <i className="fas fa-edit"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      className="btn-action"
+                      onClick={() => handleDelete(dep.id)}
+                    >
+                      <i className="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
 
                       {/* Add Department Modal/Card */}
                       {showAddDepartmentCategory && (

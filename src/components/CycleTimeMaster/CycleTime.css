@@ -3,101 +3,34 @@
   margin: 0px;
   padding: 0px;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+
+.Cycletime-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-.main-content.shifted {
-  margin-left: 260px;
+.Cycletime-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 
-body.no-scroll {
-  overflow: hidden;
-}
-.main-content {
-  transition: margin-left 0.3s;
-}
 
-.main-content.shifted {
-  margin-left: 250px; /* Adjust based on your sidebar width */
-}
-.Cycletimecenter {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  min-height: 100vh;
-}
-
-.work-center h5 {
-  color: blue;
-  margin: 10px 0;
-}
-
-.Cycletimermaster {
-  background-color: white;
-  padding: 20px;
-}
-
-.Cycletime {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: aliceblue;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-}
-
-.Cycletime h5 {
-  color: blue;
-}
-
-.Cycletime .Cycletimebtn {
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.Cycletimebtn:hover {
-  background-color: #0057b38d;
-  color: white;
-}
 
 .CycletimeMain {
-  margin: 20px 0;
-  background-color: aliceblue;
-}
-
-.CycletimeMain .centerselect {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
-
-.Cycletimemainbtn {
-  display: flex;
-  align-items: center;
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.Cycletimemainbtn i {
-  margin-right: 5px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 .CycletimeTable {
-  margin-top: 20px;
-  background-color: aliceblue;
-  padding: 20px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 .CycletimeTable .table-responsive {
@@ -105,23 +38,7 @@ body.no-scroll {
   overflow-x: auto;
 }
 
-.CycletimeTable .table {
-  width: 100%;
-  white-space: nowrap;
-}
 
-.CycletimeTable .table-primary th {
-  background-color: #007bff7e;
-  color: white;
-}
-
-.CycletimeTable .table th,
-.CycletimeTable .table td {
-  vertical-align: middle;
-  text-align: center;
-  padding: 0.75rem;
-  border-top: 1px solid #dee2e6;
-}
 
 .CycletimeTable .table .Cycletimetableww {
   padding: 0.25rem 0.5rem;

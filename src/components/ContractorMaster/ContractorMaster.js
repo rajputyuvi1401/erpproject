@@ -35,27 +35,27 @@ const ContractorMaster = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="ContractorMaster1">
-                  <div className="Contractor">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6 col-12 text-start">
-                          <h5 style={{ color: "blue" }}>Contractor Master</h5>
+                  
+                  <div className="Contractor-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-6">
+                        <h5 className="header-title">Contractor Master</h5>
                         </div>
                         <div className="col-md-6 col-12 text-end">
                           <Link
                             to={"/Addcontractor-master"}
-                            className="Contractorbtn me-2 mb-2"
+                            className="btn me-2 mb-2"
                           >
                             Add New Contractor
                           </Link>
-                          <Link className="Contractorbtn mb-2">
+                          <Link className="btn mb-2">
                             Export To Excel
                           </Link>
                         </div>
                       </div>
-                    </div>
+                    
                   </div>
-                  <div className="ContractorMain">
+                  <div className="ContractorMain mt-5">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12 text-start">
@@ -101,11 +101,12 @@ const ContractorMaster = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="Contractortable">
+                  <div className="Contractortable mt-5">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12 text-start">
-                          <table className="table table-striped table-responsive">
+                          <div className="table-striped table-responsive">
+                          <table className="table">
                             <thead>
                               <tr>
                                 <th>Sr. No</th>
@@ -152,6 +153,7 @@ const ContractorMaster = () => {
                               {/* Add more rows as needed */}
                             </tbody>
                           </table>
+                          </div>
                         </div>
                       </div>
                     </div>

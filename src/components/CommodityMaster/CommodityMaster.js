@@ -26,23 +26,24 @@ const CommodityMaster = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="CommodityMaster1">
-                  <div className="Commodity">
-                    <div className="container-fluid">
-                      <div className="row d-flex align-items-center">
-                        <div className="col-md-6 text-start">
-                          <h5>Commodity Master</h5>
-                        </div>
-                        <div className="col-md-6 text-md-end text-start mt-2 mt-md-0">
-                          <button className="Commoditybtn">
+                
+                  <div className="Commodity-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">
+                          Commodity Master</h5>
+                      </div>
+                        <div className="col-md-8 text-md-end text-start mt-2 mt-md-0">
+                          <button className="btn">
                             Export Report
                           </button>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="CommodityMain">
+                 
+                  <div className="CommodityMainerty mt-5">
                     <div className="container-fluid">
-                      <div className="row text-start centerselect">
+                      <div className="row text-start">
                         <div className="col-md-2 col-sm-3 mb-3 mb-sm-0">
                           <label
                             htmlFor="commodityName"
@@ -77,17 +78,17 @@ const CommodityMaster = () => {
                           />
                         </div>
                         <div className="col-md-1 col-sm-12 text-sm-start text-md-start">
-                          <button className="Commoditymainbtn">
-                            <i className="bi bi-search"></i> Save
+                          <button className="btn">
+                            Save
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="CommodityTable">
+                  <div className="CommodityTable mt-5">
                     <div className="container-fluid">
                       <div className="table-responsive">
-                        <table className="table">
+                        <table className="table table-bordered table-striped">
                           <thead className="table-primary">
                             <tr>
                               <th scope="col">No Found Data!!</th>
