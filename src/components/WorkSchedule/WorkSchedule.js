@@ -26,16 +26,15 @@ const WorkSchedule = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Workschedulemaster">
-                  <div className="Workschedule1">
-                    <div className="container-fluid">
-                      <div className="row d-flex align-items-center">
-                        <div className="col-md-6 text-start">
-                          <h5>Work Center Idle Time | Setting</h5>
+                    <div className="Workschedule1-header mb-4 text-start mt-5">
+                      <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">Work Center Idle Time | Setting</h5>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="WorkscheduleMain">
+               
+                  <div className="WorkscheduleMain mt-5">
                     <div className="container-fluid">
                       <div className="row text-start Workscheduleselect">
                         <div className="col-md-1 col-sm-3 mb-3 mb-sm-0">
@@ -95,16 +94,16 @@ const WorkSchedule = () => {
                             <option value="3">VMC</option>
                           </select>
                         </div>
-                        <div className="col-md-3 col-sm-12 text-sm-start text-md-end">
-                          <button className="Workschedulebtn1">
-                            <i className="bi bi-search"></i> Search
+                        <div className="col-md-1 text-sm-start mt-2">
+                          <button className="btn">
+                           Search
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="WorkscheduleTable">
+                  <div className="WorkscheduleTable mt-5">
                     <div className="container-fluid"></div>
                   </div>
                 </div>

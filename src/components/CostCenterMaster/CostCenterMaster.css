@@ -4,92 +4,36 @@
   padding: 0;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+.Costcenter-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
+.Costcenter-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 
-.main-content.shifted {
-  margin-left: 260px;
-}
 
-body.no-scroll {
-  overflow: hidden;
-}
 
-.CostcenterMaster {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  min-height: 100vh;
-}
 
-.CostcenterMaster1 {
-  background-color: white;
-  padding: 20px;
-}
-
-.Costcenter {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: aliceblue;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-}
-
-.Costcenter h5 {
-  color: blue;
-}
-
-.Costcenter .Costcenterbtn {
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.Costcenterbtn:hover {
-  background-color: #0057b38d;
-  color: white;
-}
 
 .CostcenterMain {
-  margin: 20px 0;
-  background-color: aliceblue;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-.CostcenterMain .centerselect {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
-
-.Costcentermainbtn {
-  display: flex;
-  align-items: center;
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.Costcentermainbtn i {
-  margin-right: 5px;
-}
 
 .CostcenterTable {
-  margin-top: 5px;
-  background-color: aliceblue;
-  padding: 5px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 .CostcenterTable .table-responsive {
@@ -102,25 +46,9 @@ body.no-scroll {
   white-space: nowrap;
 }
 
-.CostcenterTable .table-primary th {
-  background-color: #007bff7e;
-  color: white;
-}
 
-.CostcenterTable .table th {
-  text-align: start;
-  vertical-align: middle;
-  padding: 0.75rem;
-  border-top: 1px solid #dee2e6;
-}
 
-.CostcenterTable .table td {
-  height: 10px;
-  vertical-align: middle;
-  text-align: center;
-  padding: 0.75rem;
-  border-top: 1px solid #dee2e6;
-}
+
 
 .CostcenterTable .table .Costcentertableww {
   padding: 0.25rem 0.5rem;

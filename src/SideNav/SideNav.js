@@ -25,7 +25,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             <h6 className="logo-light">Produlink</h6>
           </li>
 
-          {permissions && permissions.VendorsUserManagement && (
+          {permissions && permissions.VendorsUserManagement?.length > 0 && (
             <li>
               <Link to="/mainpage">
                 <FaHome />
@@ -34,7 +34,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             </li>
           )}
 
-          {permissions && permissions.ERPSetting && (
+          {permissions && permissions.ERPSetting?.length > 0 && (
             <li className="dropdown-container">
               <div
                 className="dropdown-toggle"
@@ -186,7 +186,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
           )}
           {/* Add other permissions-based menu items here */}
 
-          {permissions?.All_Masters && (
+          {permissions?.All_Masters?.length > 0 && (
             <li className="dropdown-container">
               <div
                 className="dropdown-toggle"
@@ -197,6 +197,8 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               </div>
               <Dropdown.Menu show={openDropdown === "masters"}>
                 {/* Conditionally render each item based on permissions */}
+
+                
                 {permissions.All_Masters.includes("Customer") && (
                   <Dropdown.Item as={Link} to="/vender-list">
                     Supplier Customer Master
@@ -220,23 +222,23 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                       Cross Reference
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      {/* {permissions.All_Masters.includes(
+                      {permissions.All_Masters.includes(
                         "Customer / Supplier Item Link"
-                      ) && ( */}
+                      ) && (
                         <Dropdown.Item
                           as={Link}
                           to="/customer-supplier-item-link"
                         >
                            Customer / Supplier Item Link
                         </Dropdown.Item>
-                      {/* )} */}
-                      {/* {permissions.All_Masters.includes(
+                       )} 
+                      {permissions.All_Masters.includes(
                         "Item Cross Reference"
-                      ) && ( */}
+                      ) && ( 
                         <Dropdown.Item as={Link} to="/item-cross-reference">
                           Item Cross Reference
                         </Dropdown.Item>
-                      {/* )} */}
+                   )} 
                     </Dropdown.Menu>
                   </Dropdown>
                 )}
@@ -352,15 +354,15 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             </li>
           )}
 
-          {permissions?.Purchase && (
-            <li className="dropdown-container">
-              <div
-                className="dropdown-toggle"
-                onClick={() => handleDropdownToggle("purchase")}
-              >
-                <FaServicestack />
-                <span>Purchase</span>
-              </div>
+{permissions?.Purchase?.length > 0 && (
+  <li className="dropdown-container">
+    <div
+      className="dropdown-toggle"
+      onClick={() => handleDropdownToggle("purchase")}
+    >
+      <FaServicestack />
+      <span>Purchase</span>
+    </div>
               <Dropdown.Menu show={openDropdown === "purchase"}>
                 {permissions.Purchase.includes("New Indent") && (
                   <Dropdown.Item as={Link} to="/new-indent">
@@ -432,7 +434,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   </Dropdown>
                 )}
                 <Dropdown.Divider />
-                {permissions.Purchase.includes("Report") && (
+                {permissions.Purchase.includes("Reports") && (
                   <Dropdown>
                     <Dropdown.Toggle as="div" className="dropdown-item">
                       Report
@@ -480,7 +482,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
           )}
 
           {/* Store Dropdown */}
-          {permissions?.Store && (
+          {permissions?.Store?.length > 0 && (
             <li className="dropdown-container">
               <div
                 className="dropdown-toggle"
@@ -588,7 +590,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     New Indent
                   </Dropdown.Item>
                 )}
-                {permissions.Store.includes("Stock Report") && (
+                {permissions.Store.includes("Store Report") && (
                   <Dropdown>
                     <Dropdown.Toggle as="div" className="dropdown-item">
                       Report
@@ -676,21 +678,28 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                           FG Stock Report
                         </Dropdown.Item>
                       )}
+                      {permissions.Store.includes("Customer Stock") && (
                       <Dropdown.Item as={Link} to="#/">
                         Customer Stock
                       </Dropdown.Item>
+                      )}
+                      {permissions.Store.includes("Scrap Stock") && (
                       <Dropdown.Item as={Link} to="#/">
                         Scrap Stock
-                      </Dropdown.Item>
+                      </Dropdown.Item>)}
+                      {permissions.Store.includes("Tray Bin Stock Report") && (
                       <Dropdown.Item as={Link} to="#/">
                         Tray Bin Stock Report
-                      </Dropdown.Item>
+                      </Dropdown.Item>)}
+                      {permissions.Store.includes("Itemwise Stock Report") && (
                       <Dropdown.Item as={Link} to="#/">
                         Itemwise Stock Report
-                      </Dropdown.Item>
+                      </Dropdown.Item>)}
+                      {permissions.Store.includes("Monthly Consumption Report") && (
+
                       <Dropdown.Item as={Link} to="#/">
                         Monthly Consumption Report
-                      </Dropdown.Item>
+                      </Dropdown.Item>)}
                     </Dropdown.Menu>
                   </Dropdown>
                 )}
@@ -699,7 +708,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
           )}
 
           {/* Production Dropdown */}
-          {permissions?.Production && (
+          {permissions?.Production?.length > 0 && (
             <li className="dropdown-container">
               <div
                 className="dropdown-toggle"
@@ -826,7 +835,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     Contractor Payment
                   </Dropdown.Item>
                 )}
-                {permissions.Production.includes("Report") && (
+                {permissions.Production.includes("P Report") && (
                   <Dropdown>
                     <Dropdown.Toggle as="div" className="dropdown-item">
                       <strong>Report</strong>
@@ -842,18 +851,24 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                           Rework Report
                         </Dropdown.Item>
                       )}
+                       {permissions.Production.includes("Default Idle Time Report") && (
                       <Dropdown.Item as={Link} to="/MachineDefaultIdle">
                         Default Idle Time Report
                       </Dropdown.Item>
+                       )}
+                        {permissions.Production.includes("Breakdown Analysis Report") && (
                       <Dropdown.Item as={Link} to="/BreakdownAnalysis">
                         Breakdown Analysis Report
                       </Dropdown.Item>
+                        )}
+                         {permissions.Production.includes("Cycle Time Report") && (
                       <Dropdown.Item as={Link} to="/CycleTime1">
                         Cycle Time Report
-                      </Dropdown.Item>
+                      </Dropdown.Item>)}
+                      {permissions.Production.includes("Operator Performance Report") && (
                       <Dropdown.Item as={Link} to="/OperatorReport">
                         Operator Performance Report
-                      </Dropdown.Item>
+                      </Dropdown.Item>)}
                     </Dropdown.Menu>
                   </Dropdown>
                 )}
@@ -862,290 +877,418 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
           )}
 
           {/* //////////////////////////////     Quality       /////////////////////////// */}
-          {permissions?.Quality && (
-          <li className="dropdown-container">
-            <div className="dropdown-toggle" onClick={() => handleDropdownToggle("quality")} >
-              <FaServicestack />
-              <span>Quality .</span>
-            </div>
-            <Dropdown.Menu show={openDropdown === "quality"}>
-              <Dropdown.Item as={Link} to="/QualityPlan">
-                Quality Planning
-              </Dropdown.Item>
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  Purchase GRN QC
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/PandingQCList">
-                    Panding QC List
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/InwardTestCertificate">
-                    Inward Test Certificate
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+          {permissions?.Quality?.length > 0 && (
+  <li className="dropdown-container">
+    <div
+      className="dropdown-toggle"
+      onClick={() => handleDropdownToggle("quality")}
+    >
+      <FaServicestack />
+      <span>Quality</span>
+    </div>
+    <Dropdown.Menu show={openDropdown === "quality"}>
+      {permissions.Quality.includes("Quality Planning") && (
+        <Dropdown.Item as={Link} to="/QualityPlan">
+          Quality Planning
+        </Dropdown.Item>
+      )}
 
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  Subcon / JobWork GRN QC
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/PaddingQCInward">
-                    Pandding QC Inward
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/InwardQCList">
-                    Inward Inspection List
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+      {permissions.Quality.includes("Purchase GRN QC") && (
+        <Dropdown>
+          <Dropdown.Toggle as="div" className="dropdown-item">
+            Purchase GRN QC
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {permissions.Quality.includes("Pending QC List") && (
+              <Dropdown.Item as={Link} to="/PandingQCList">
+                Pending QC List
+              </Dropdown.Item>
+            )}
+            {permissions.Quality.includes("Inward Test Certificate") && (
+              <Dropdown.Item as={Link} to="/InwardTestCertificate">
+                Inward Test Certificate
+              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
+      )}
 
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                 Inprocess QC
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/InprocessInspection">
-                    Inprocess Inspection
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/InprocessInspectionList">
-                  Inprocess Inspection List
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                 Sales Return QC
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/PaddingSalesQC">
-                  Sales Return QC Pandding List
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/SalesQCList">
-                   Sales Return QC List
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+      {permissions.Quality.includes("Subcon / JobWork GRN QC") && (
+        <Dropdown>
+          <Dropdown.Toggle as="div" className="dropdown-item">
+            Subcon / JobWork GRN QC
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {permissions.Quality.includes("Pending QC Inward") && (
+              <Dropdown.Item as={Link} to="/PaddingQCInward">
+                Pending QC Inward
+              </Dropdown.Item>
+            )}
+            {permissions.Quality.includes("Inward Inspection List") && (
+              <Dropdown.Item as={Link} to="/InwardQCList">
+                Inward Inspection List
+              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
+      )}
 
+      {permissions.Quality.includes("Inprocess QC") && (
+        <Dropdown>
+          <Dropdown.Toggle as="div" className="dropdown-item">
+            Inprocess QC
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {permissions.Quality.includes("Inprocess Inspection") && (
+              <Dropdown.Item as={Link} to="/InprocessInspection">
+                Inprocess Inspection
+              </Dropdown.Item>
+            )}
+            {permissions.Quality.includes("Inprocess Inspection List") && (
+              <Dropdown.Item as={Link} to="/InprocessInspectionList">
+                Inprocess Inspection List
+              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
+      )}
 
-              <Dropdown.Item as={Link} to="#/">
-                Gauges And Instruction Calbration
+      {permissions.Quality.includes("Sales Return QC") && (
+        <Dropdown>
+          <Dropdown.Toggle as="div" className="dropdown-item">
+            Sales Return QC
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {permissions.Quality.includes("Sales Return QC Pending List") && (
+              <Dropdown.Item as={Link} to="/PaddingSalesQC">
+                Sales Return QC Pending List
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/HeatCodeRegister">
-                Heat Code Register
+            )}
+            {permissions.Quality.includes("Sales Return QC List") && (
+              <Dropdown.Item as={Link} to="/SalesQCList">
+                Sales Return QC List
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/TestCertificateList">
-                DTC - Dispatch Test Certificate
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/PDIList">
-                PDI - Pre Dispatch Inspection
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/FirstPieceApporval">
-                First Peice Apporval
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/NewSetupApproval">
-                Set Up Apporval
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/HotInspectionList">
-                Hot Inspection
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/SamplingPlan">
-                Samping Plan
-              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
+      )}
 
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  Customer Complaint
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/CustomerComplaintEntry">
-                  Customer Complaint Entry
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/CustomerComplaintAuth">
-                  Customer Complaint Authorization
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/CustomerComplaintList">
-                  Customer Complaint List
-                  </Dropdown.Item>  
-                </Dropdown.Menu>
-              </Dropdown>
+      {permissions.Quality.includes("Gauges And Instruction Calibration") && (
+        <Dropdown.Item as={Link} to="/GaugesCalibration">
+          Gauges and Instruction Calibration
+        </Dropdown.Item>
+      )}
+      {permissions.Quality.includes("Heat Code Register") && (
+        <Dropdown.Item as={Link} to="/HeatCodeRegister">
+          Heat Code Register
+        </Dropdown.Item>
+      )}
+      {permissions.Quality.includes("DTC - Dispatch Test Certificate") && (
+        <Dropdown.Item as={Link} to="/TestCertificateList">
+          DTC - Dispatch Test Certificate
+        </Dropdown.Item>
+      )}
+      {permissions.Quality.includes("PDI - Pre Dispatch Inspection") && (
+        <Dropdown.Item as={Link} to="/PDIList">
+          PDI - Pre Dispatch Inspection
+        </Dropdown.Item>
+      )}
+      {permissions.Quality.includes("First Piece Approval") && (
+        <Dropdown.Item as={Link} to="/FirstPieceApproval">
+          First Piece Approval
+        </Dropdown.Item>
+      )}
+      {permissions.Quality.includes("Set Up Approval") && (
+        <Dropdown.Item as={Link} to="/NewSetupApproval">
+          Setup Approval
+        </Dropdown.Item>
+      )}
+      {permissions.Quality.includes("Hot Inspection") && (
+        <Dropdown.Item as={Link} to="/HotInspectionList">
+          Hot Inspection
+        </Dropdown.Item>
+      )}
+      {permissions.Quality.includes("Sampling Plan") && (
+        <Dropdown.Item as={Link} to="/SamplingPlan">
+          Sampling Plan
+        </Dropdown.Item>
+      )}
 
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  Test Master
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/TestReportList">
-                   Test Report
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/TestMasterNew">
-                   Test Master
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/TestMasterList">
-                   Test Master List
-                  </Dropdown.Item>  
-                </Dropdown.Menu>
-              </Dropdown>
+      {permissions.Quality.includes("Customer Complaint") && (
+        <Dropdown>
+          <Dropdown.Toggle as="div" className="dropdown-item">
+            Customer Complaint
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {permissions.Quality.includes("Customer Complaint Entry") && (
+              <Dropdown.Item as={Link} to="/CustomerComplaintEntry">
+                Customer Complaint Entry
+              </Dropdown.Item>
+            )}
+            {permissions.Quality.includes("Customer Complaint Authorization") && (
+              <Dropdown.Item as={Link} to="/CustomerComplaintAuth">
+                Customer Complaint Authorization
+              </Dropdown.Item>
+            )}
+            {permissions.Quality.includes("Customer Complaint List") && (
+              <Dropdown.Item as={Link} to="/CustomerComplaintList">
+                Customer Complaint List
+              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
+      )}
 
-            </Dropdown.Menu>
+      {permissions.Quality.includes("Test Master") && (
+        <Dropdown>
+          <Dropdown.Toggle as="div" className="dropdown-item">
+            Test Master
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {permissions.Quality.includes("Test Report") && (
+              <Dropdown.Item as={Link} to="/TestReportList">
+                Test Report
+              </Dropdown.Item>
+            )}
+            {permissions.Quality.includes("Test Master") && (
+              <Dropdown.Item as={Link} to="/TestMasterNew">
+                Test Master
+              </Dropdown.Item>
+            )}
+            {permissions.Quality.includes("Test Master List") && (
+              <Dropdown.Item as={Link} to="/TestMasterList">
+                Test Master List
+              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
+      )}
+    </Dropdown.Menu>
+  </li>
+)}
 
-            
-          </li>
-          )}
 
 
           {/* //////////////////////////////     Sales       /////////////////////////// */}
          
-          {permissions?.Sales && (
-          <li className="dropdown-container">
-            <div className="dropdown-toggle" onClick={() => handleDropdownToggle("sales")} >
-              <FaServicestack />
-              <span>Sales</span>
-            </div>
-            <Dropdown.Menu show={openDropdown === "sales"}>
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  E-Invoicing
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/GSTsales1">
-                    GST Sales
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/JobWorkSales">
-                    JobWork Sales
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/DebitNote">
-                    Debit Note
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/CreditNote">
-                    Credit Note
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              
-              <Dropdown.Item as={Link} to="/NewSalesOrder">
-                Customer Sales Order
+          {permissions?.Sales?.length > 0 && (
+  <li className="dropdown-container">
+    <div className="dropdown-toggle" onClick={() => handleDropdownToggle("sales")}>
+      <FaServicestack />
+      <span>Sales</span>
+    </div>
+    <Dropdown.Menu show={openDropdown === "sales"}>
+      {permissions.Sales.includes("E-Invoicing") && (
+        <Dropdown>
+          <Dropdown.Toggle as="div" className="dropdown-item">
+            E-Invoicing
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {permissions.Sales.includes("GST Sales") && (
+              <Dropdown.Item as={Link} to="/GSTsales1">
+                GST Sales
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/SalesOrderAmendList">
-                Customer Sales Order Amendment
+            )}
+            {permissions.Sales.includes("JobWork Sales") && (
+              <Dropdown.Item as={Link} to="/JobWorkSales">
+                JobWork Sales
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/SacheduleSalesNew">
-                Schedule Sales Order
+            )}
+            {permissions.Sales.includes("Debit Note") && (
+              <Dropdown.Item as={Link} to="/DebitNote">
+                Debit Note
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/SalesOrderStatus">
-                Customer Sales Order Status
+            )}
+            {permissions.Sales.includes("Credit Note") && (
+              <Dropdown.Item as={Link} to="/CreditNote">
+                Credit Note
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/NewInvoice">
-                GST Invoice
-              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
+      )}
 
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  GST JobWork
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/GSTJobworkInvoice">
-                   GST JobWork Invoice
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/GSTJobworkDCreturn">
-                  GST JobWork DC Return
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+      {permissions.Sales.includes("Customer Sales Order") && (
+        <Dropdown.Item as={Link} to="/NewSalesOrder">
+          Customer Sales Order
+        </Dropdown.Item>
+      )}
+      {permissions.Sales.includes("Customer Sales Order Amendment") && (
+        <Dropdown.Item as={Link} to="/SalesOrderAmendList">
+          Customer Sales Order Amendment
+        </Dropdown.Item>
+      )}
+      {permissions.Sales.includes("Schedule Sales Order") && (
+        <Dropdown.Item as={Link} to="/SacheduleSalesNew">
+          Schedule Sales Order
+        </Dropdown.Item>
+      )}
+      {permissions.Sales.includes("Customer Sales Order Status") && (
+        <Dropdown.Item as={Link} to="/SalesOrderStatus">
+          Customer Sales Order Status
+        </Dropdown.Item>
+      )}
+      {permissions.Sales.includes("GST Invoice") && (
+        <Dropdown.Item as={Link} to="/NewInvoice">
+          GST Invoice
+        </Dropdown.Item>
+      )}
 
-              <Dropdown.Item as={Link} to="/OutwardChallan">
-                OutWard 57F4 Challan
+      {permissions.Sales.includes("GST JobWork") && (
+        <Dropdown>
+          <Dropdown.Toggle as="div" className="dropdown-item">
+            GST JobWork
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {permissions.Sales.includes("GST JobWork Invoice") && (
+              <Dropdown.Item as={Link} to="/GSTJobworkInvoice">
+                GST JobWork Invoice
               </Dropdown.Item>
-
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  Cradit / Dabit Note
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/PurchaseDabitNote">
-                   Purchase Debit Note
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/NewDabitNote">
-                  Sales Rate Diff Debit Note
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                  JobWork Rate Diff Debit Note
-                  </Dropdown.Item>  
-                  <Dropdown.Item as={Link} to="/">
-                    Cradit Note Entry
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-
-              <Dropdown.Item as={Link} to="#/">
-                GST Sales Return
+            )}
+            {permissions.Sales.includes("GST JobWork DC Return") && (
+              <Dropdown.Item as={Link} to="/GSTJobworkDCreturn">
+                GST JobWork DC Return
               </Dropdown.Item>
-              
-              
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  Material GalePass
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/">
-                  Material GalePass New
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                   Pandding Material GalePass
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                  Material GalePass List
-                  </Dropdown.Item>  
-                </Dropdown.Menu>
-              </Dropdown>
-              
-              <Dropdown>
-                <Dropdown.Toggle as="div" className="dropdown-item">
-                  Report
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/">
-                   Customer Sales Order List
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                   Tax Invoice List
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                  Tax Invoice List Bajaj
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                   JobWork Invoice List
-                  </Dropdown.Item>  
-                  <Dropdown.Item as={Link} to="/">
-                   JobWork DC List
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                   OutWard 57F4 Challan List
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/">
-                   Debit Note List
-                   </Dropdown.Item>
-                   <Dropdown.Item as={Link} to="/">
-                   Cradit Note List
-                   </Dropdown.Item>
-                   <Dropdown.Item as={Link} to="/">
-                   GST Sales Return List
-                   </Dropdown.Item>
-                   <Dropdown.Item as={Link} to="/">
-                   RG1 Register
-                   </Dropdown.Item>
-                   <Dropdown.Item as={Link} to="/">
-                   Transport List
-                   </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
+      )}
 
-                </Dropdown.Menu>
-              </Dropdown>
+      {permissions.Sales.includes("OutWard 57F4 Challan") && (
+        <Dropdown.Item as={Link} to="/OutwardChallan">
+          OutWard 57F4 Challan
+        </Dropdown.Item>
+      )}
 
-            </Dropdown.Menu>
-            
-          </li>
-          )}
+      {permissions.Sales.includes("Credit / Debit Note") && (
+        <Dropdown>
+          <Dropdown.Toggle as="div" className="dropdown-item">
+            Credit / Debit Note
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {permissions.Sales.includes("Purchase Debit Note") && (
+              <Dropdown.Item as={Link} to="/PurchaseDabitNote">
+                Purchase Debit Note
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("Sales Rate Diff Debit Note") && (
+              <Dropdown.Item as={Link} to="/NewDabitNote">
+                Sales Rate Diff Debit Note
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("JobWork Rate Diff Debit Note") && (
+              <Dropdown.Item as={Link} to="/">
+                JobWork Rate Diff Debit Note
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("Credit Note Entry") && (
+              <Dropdown.Item as={Link} to="/">
+                Credit Note Entry
+              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
+      )}
+
+      {permissions.Sales.includes("GST Sales Return") && (
+        <Dropdown.Item as={Link} to="/">
+          GST Sales Return
+        </Dropdown.Item>
+      )}
+
+      {permissions.Sales.includes("Material GatePass") && (
+        <Dropdown>
+          <Dropdown.Toggle as="div" className="dropdown-item">
+            Material GatePass
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {permissions.Sales.includes("Material GatePass New") && (
+              <Dropdown.Item as={Link} to="/">
+                Material GatePass New
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("Pending Material GatePass") && (
+              <Dropdown.Item as={Link} to="/">
+                Pending Material GatePass
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("Material GatePass List") && (
+              <Dropdown.Item as={Link} to="/">
+                Material GatePass List
+              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
+      )}
+
+      {permissions.Sales.includes("Sales Report") && (
+        <Dropdown>
+          <Dropdown.Toggle as="div" className="dropdown-item">
+            Report
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {permissions.Sales.includes("Customer Sales Order List") && (
+              <Dropdown.Item as={Link} to="/">
+                Customer Sales Order List
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("Tax Invoice List") && (
+              <Dropdown.Item as={Link} to="/">
+                Tax Invoice List
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("Tax Invoice List Bajaj") && (
+              <Dropdown.Item as={Link} to="/">
+                Tax Invoice List Bajaj
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("JobWork Invoice List") && (
+              <Dropdown.Item as={Link} to="/">
+                JobWork Invoice List
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("JobWork DC List") && (
+              <Dropdown.Item as={Link} to="/">
+                JobWork DC List
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("OutWard 57F4 Challan List") && (
+              <Dropdown.Item as={Link} to="/">
+                OutWard 57F4 Challan List
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("Debit Note List") && (
+              <Dropdown.Item as={Link} to="/">
+                Debit Note List
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("Credit Note List") && (
+              <Dropdown.Item as={Link} to="/">
+                Credit Note List
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("GST Sales Return List") && (
+              <Dropdown.Item as={Link} to="/">
+                GST Sales Return List
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("RG1 Register") && (
+              <Dropdown.Item as={Link} to="/">
+                RG1 Register
+              </Dropdown.Item>
+            )}
+            {permissions.Sales.includes("Transport List") && (
+              <Dropdown.Item as={Link} to="/">
+                Transport List
+              </Dropdown.Item>
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
+      )}
+    </Dropdown.Menu>
+  </li>
+)}
+
         </ul>
       </div>
     </div>

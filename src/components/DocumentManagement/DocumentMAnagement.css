@@ -3,91 +3,32 @@
   margin: 0px;
   padding: 0px;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+.Document1-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-.main-content.shifted {
-  margin-left: 260px;
-}
-
-body.no-scroll {
-  overflow: hidden;
-}
-.main-content {
-  transition: margin-left 0.3s;
-}
-
-.main-content.shifted {
-  margin-left: 250px; /* Adjust based on your sidebar width */
-}
-.Document {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  height: 100vh;
-}
-.Document1 h5 {
-  color: blue;
-  margin-top: 10px;
-  margin-bottom: 10px;
+.Document1-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 .Documentmaster {
-  background-color: white;
-  height: auto;
-  padding: 20px 20px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
-.Document1 {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: aliceblue;
-  padding: 10px 20px;
-  height: 10vh;
-  margin-bottom: 20px;
-}
-.Document1 h5 {
-  color: blue;
-}
-.Document1 .btnDocument {
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.btnDocument:hover {
-  background-color: #0057b38d;
-}
+
+
 
 .DocumentMain {
-  margin-top: 20px 20px;
-  height: auto;
-  background-color: aliceblue;
-  padding: 20px 20px;
-}
-.Documentselect {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  /* background-color: #f8f9fa; */
-}
-
-.btnDocumentkk {
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.Documentselect .btn i {
-  margin-right: 5px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 @media (max-width: 767.98px) {
@@ -101,11 +42,10 @@ body.no-scroll {
 }
 
 .DocumentTable {
-  margin-top: 20px;
-  height: auto;
-  width: 100%;
-  background-color: aliceblue;
-  padding: 20px 20px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 .DocumentTable .table-responsive {
@@ -118,18 +58,7 @@ body.no-scroll {
   white-space: nowrap;
 }
 
-.DocumentTable .table-primary th {
-  background-color: #007bff;
-  color: white;
-}
 
-.DocumentTable .table th,
-.DocumentTable .table td {
-  vertical-align: middle;
-  text-align: center;
-  padding: 0.75rem;
-  border-top: 1px solid #dee2e6;
-}
 
 .DocumentTable .table .btn-tableww {
   padding: 0.25rem 0.5rem;
@@ -189,6 +118,9 @@ body.no-scroll {
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  max-height: 90%;  /* Allow card to take up most of the screen height */
 }
 
 .cateoverlay .card-header {
@@ -198,6 +130,14 @@ body.no-scroll {
   padding: 16px;
   background-color: white;
   color: #007bff;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.cateoverlay .card-body {
+  padding: 16px;
+  flex: 1;  /* Ensures the body takes up available space */
+  overflow-y: auto;  /* Makes the body scrollable if content overflows */
 }
 
 .cateoverlay .close {
@@ -219,5 +159,6 @@ body.no-scroll {
 
   .cateoverlay .card {
     width: 90%;
+    max-height: 80%;  /* Adjust height on smaller screens */
   }
 }

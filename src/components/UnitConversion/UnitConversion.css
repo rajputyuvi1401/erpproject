@@ -5,42 +5,20 @@
   padding: 0;
 }
 
-/* Main App Container */
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+
+.UniConversion1-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-/* Main Content Area */
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-.main-content.shifted {
-  margin-left: 260px; /* Adjust based on sidebar width */
+.UniConversion1-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 
-body.no-scroll {
-  overflow: hidden;
-}
-
-/* Main Container for UnitConversion Component */
-.UniConversion {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  min-height: 100vh;
-  padding: 20px; /* Add padding for better spacing */
-}
-
-/* Unit Conversion Section */
-.UniConversion1 {
-  background-color: white;
-  padding: 20px;
-  height: auto;
-}
 
 /* Unit Section */
 .Unit {
@@ -51,9 +29,10 @@ body.no-scroll {
 
 /* Main Form Section */
 .UnitMain {
-  background-color: aliceblue;
-  padding: 20px;
-  margin-top: 50px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 /* Button Style */
@@ -71,6 +50,7 @@ body.no-scroll {
   width: 100%;
   border-collapse: collapse;
   margin-top: 40px;
+  
 }
 
 .Unittable th,

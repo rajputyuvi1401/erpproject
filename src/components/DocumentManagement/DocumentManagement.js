@@ -51,21 +51,20 @@ const DocumentManagement = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Documentrmaster">
-                  <div className="Document1">
-                    <div className="container-fluid">
-                      <div className="row d-flex align-items-center">
-                        <div className="col-md-6 text-start">
-                          <h5>Document Management</h5>
+                <div className="Document1-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-6">
+                        <h5 className="header-title">Document Management</h5>
                         </div>
                         <div className="col-md-6 text-md-end text-start mt-2 mt-md-0">
-                          <button className="btnDocument">
+                          <button className="btn">
                             Export To Excel
                           </button>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="DocumentMain">
+               
+                  <div className="DocumentMain mt-5">
                     <div className="container-fluid">
                       <div className="DocumentMain">
                         <table className="table table-bordered">
@@ -76,7 +75,7 @@ const DocumentManagement = () => {
                                 Category{" "}
                                 <span>
                                   <button
-                                    className="btnDocumentkk"
+                                    className="btn"
                                     onClick={() => setShowCategoryOverlay(true)}
                                   >
                                     Add
@@ -129,7 +128,7 @@ const DocumentManagement = () => {
                                   />
                                   <button
                                     type="button"
-                                    className="btnDocumentkk ms-2"
+                                    className="btn ms-2"
                                     // onClick={() => setFile(null)}
                                   >
                                     Clear
@@ -182,14 +181,14 @@ const DocumentManagement = () => {
                               <td>
                                 <button
                                   type="button"
-                                  className="btnDocumentkk"
+                                  className="btn"
                                   onClick={handleSave}
                                 >
                                   Save Doc
                                 </button>
                                 <button
                                   type="button"
-                                  className="btnDocumentkk ms-2"
+                                  className="btn ms-2"
                                   onClick={handleClear}
                                 >
                                   Clear
@@ -224,7 +223,7 @@ const DocumentManagement = () => {
                                 <input type="text" className="form-control" />
                               </div>
                               <div className="col-sm-3">
-                                <button type="button" className="btnDocumentkk">
+                                <button type="button" className="btn">
                                   Save
                                 </button>
                               </div>
@@ -243,7 +242,7 @@ const DocumentManagement = () => {
                           </div>
                           <button
                             type="button"
-                            className="btnDocumentkk mt-3"
+                            className="btn mt-3"
                             onClick={() => setShowCategoryOverlay(false)}
                           >
                             Close
@@ -252,7 +251,7 @@ const DocumentManagement = () => {
                       </div>
                     </div>
                   )}
-                  <div className="DocumentTable">
+                  <div className="DocumentTable mt-5">
                     <div className="container-fluid">
                       <div className="table-responsive">
                         <table className="table">

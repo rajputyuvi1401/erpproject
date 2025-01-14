@@ -54,50 +54,49 @@ const ProjectManagement = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Projectrmaster">
-                  <div className="Project1">
-                    <div className="container-fluid">
-                      <div className="row d-flex align-items-center">
-                        <div className="col-md-2 text-start">
-                          <h5>Project List</h5>
+                  <div className="Project1-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-2">
+                        <h5 className="header-title">Project List</h5>
                         </div>
                         <div className="col-md-10 text-md-end text-start mt-2 mt-md-0">
                           <button
-                            className="btnProject me-2"
+                            className="btn me-2"
                             onClick={handleInventoryStatusClick}
                           >
                             Project Inventory Status
                           </button>
                           <button
-                            className="btnProject  me-2"
+                            className="btn  me-2"
                             onClick={handleAddNewClick}
                           >
                             Add New
                           </button>
                           <button
-                            className="btnProject"
+                            className="btn"
                             onClick={handleViewAllClick}
                           >
                             View All
                           </button>
                           <button
-                            className="btnProject me-2"
+                            className="btn me-2"
                             onClick={handleSystemMasterClick}
                           >
                             System Master
                           </button>
                           <button
-                            className="btnProject  me-2"
+                            className="btn  me-2"
                             onClick={handleProjectQueryClick}
                           >
                             Project - Query
                           </button>
-                          <button className="btnProject">
+                          <button className="btn">
                             Export To Excel
                           </button>
                         </div>
                       </div>
                     </div>
-                  </div>
+            
                   {/* <div className="ProjectMain">
                     <div className="container-fluid">
                       <div className="row text-start Projectselect">

@@ -109,17 +109,16 @@ const UnitConversion = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="UniConversion1">
-                  <div className="Unit">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6 text-start">
-                          <h5 style={{ color: "blue" }}>
+              
+                  <div className="UniConversion1-header mb-4 text-start mt-5">
+                      <div className="row align-items-center">
+                        <div className="col-md-4">
+                          <h5 className="header-title">
                             Item Stock Unit Specification
                           </h5>
                         </div>
                       </div>
-                    </div>
+                
                   </div>
                   <div className="UnitMain">
                     <div className="container-fluid">
@@ -163,9 +162,9 @@ const UnitConversion = () => {
                             <div className="text-danger">{errors.Item}</div>
                           )}
                         </div>
-                        <div className="col-md-1 mb-3">
+                        <div className="col-md-1 mb-3" style={{marginTop:"36px"}}>
                           <button
-                            className="UnitMainbtn"
+                            className="btn"
                             onClick={handleSubmit}
                           >
                             Search
@@ -245,16 +244,16 @@ const UnitConversion = () => {
                             </div>
                           )}
                         </div>
-                        <div className="col-md-1 mb-3">
+                        <div className="col-md-1 mb-3" style={{marginTop:"36px"}}>
                           <button
-                            className="UnitMainbtn"
+                            className="btn"
                             onClick={handleSubmit}
                           >
                             Save
                           </button>
                         </div>
-                        <div className="col-md-1 mb-3">
-                          <button className="UnitMainbtn" onClick={handleClear}>
+                        <div className="col-md-1 mb-3" style={{marginTop:"36px"}}>
+                          <button className="btn" onClick={handleClear}>
                             Clear
                           </button>
                         </div>
@@ -295,7 +294,7 @@ const UnitConversion = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+         
               </main>
             </div>
           </div>

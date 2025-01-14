@@ -3,57 +3,26 @@
   margin: 0px;
   padding: 0px;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+
+.Report1-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-.main-content.shifted {
-  margin-left: 260px;
-}
-
-body.no-scroll {
-  overflow: hidden;
-}
-.main-content {
-  transition: margin-left 0.3s;
-}
-
-.main-content.shifted {
-  margin-left: 250px; /* Adjust based on your sidebar width */
-}
-.Report {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  height: 100vh;
-}
-.Report1 h5 {
-  color: blue;
-  margin-top: 10px;
-  margin-bottom: 10px;
+.Report1-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 .Reportmaster {
-  background-color: white;
-  height: auto;
-  padding: 20px 20px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
-.Report1 {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: aliceblue;
-  padding: 10px 20px;
-  height: 10vh;
-  margin-bottom: 20px;
-}
-.Report1 h5 {
-  color: blue;
-}
+
 .Report1 .btnReport {
   border: none;
   background-color: rgba(235, 233, 233, 0.685);
@@ -67,16 +36,13 @@ body.no-scroll {
 }
 
 .ReportMain {
-  margin-top: 20px 20px;
-  height: auto;
-  background-color: aliceblue;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-.Reportselect1 {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  /* background-color: #f8f9fa; */
-}
+
 
 .Reportselect1 .btnReportkk1 {
   border: none;
@@ -102,11 +68,11 @@ body.no-scroll {
 }
 
 .ReportTable1 {
-  margin-top: 20px;
-  height: auto;
-  width: 100%;
-  background-color: aliceblue;
-  padding: 20px 20px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
+
 }
 
 .ReportTable1 .table-responsive {
@@ -119,18 +85,7 @@ body.no-scroll {
   white-space: nowrap;
 }
 
-.ReportTable1 .table-primary th {
-  background-color: #7b00ff91;
-  color: white;
-}
 
-.ReportTable1 .table th,
-.ReportTable1 .table td {
-  vertical-align: middle;
-  text-align: center;
-  padding: 0.75rem;
-  border-top: 1px solid #dee2e6;
-}
 
 .ReportTable1 .table .btn-tableww {
   padding: 0.25rem 0.5rem;
@@ -173,11 +128,7 @@ body.no-scroll {
   border: none;
 }
 
-.Reportselect2 {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  /* background-color: #f8f9fa; */
-}
+
 
 .Reportselect2 .btnReportkk2 {
   border: none;
@@ -203,11 +154,10 @@ body.no-scroll {
 }
 
 .ReportTable2 {
-  margin-top: 20px;
-  height: auto;
-  width: 100%;
-  background-color: aliceblue;
-  padding: 20px 20px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 .ReportTable2 .table-responsive {
@@ -220,18 +170,7 @@ body.no-scroll {
   white-space: nowrap;
 }
 
-.ReportTable2 .table-primary th {
-  background-color: #7b00ff91;
-  color: white;
-}
 
-.ReportTable2 .table th,
-.ReportTable2 .table td {
-  vertical-align: middle;
-  text-align: center;
-  padding: 0.75rem;
-  border-top: 1px solid #dee2e6;
-}
 
 .ReportTable2 .table .btn-tableww {
   padding: 0.25rem 0.5rem;

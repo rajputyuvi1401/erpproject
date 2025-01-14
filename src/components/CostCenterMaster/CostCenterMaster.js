@@ -202,27 +202,27 @@ const CostCenterMaster = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="CostcenterMaster1">
-                  <div className="Costcenter">
-                    <div className="container-fluid">
-                      <div className="row d-flex align-items-center">
-                        <div className="col-md-6 text-start">
-                          <h5>Cost Center Master</h5>
+                  <div className="Costcenter mt-5">
+                    <div className="Costcenter-header mb-4 text-start">
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">Cost Center Master</h5>
                         </div>
-                        <div className="col-md-6 text-md-end text-start mt-2 mt-md-0">
+                        <div className="col-md-8 text-md-end text-start mt-2 mt-md-0">
                           <button
-                            className="Costcenterbtn"
+                            className="btn"
                             onClick={toggleAddForm}
                           >
                             Add New
                           </button>
-                          <button className="Costcenterbtn">
+                          <button className="btn">
                             Export Report
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="CostcenterMain">
+                  <div className="CostcenterMain mt-5">
                     <div className="container-fluid">
                       <div className="row text-start centerselect">
                         <div className="col-md-2 col-sm-3 mb-3 mb-sm-0">
@@ -244,15 +244,15 @@ const CostCenterMaster = () => {
                             <option value="3">Three</option>
                           </select>
                         </div>
-                        <div className="col-md-1 col-sm-12 text-sm-start text-md-start">
-                          <button className="Costcentermainbtn">
-                            <i className="bi bi-search"></i> Search
+                        <div className="col-md-1 col-sm-12 text-sm-start text-md-start mt-2">
+                          <button className="btn">
+                          Search
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="CostcenterTable">
+                  <div className="CostcenterTable mt-5">
                     <div className="container-fluid">
                       <div className="table-responsive">
                         <table className="table table-bordered table-striped">
@@ -341,16 +341,16 @@ const CostCenterMaster = () => {
                                     <option>Maintenance</option>
                                   </select>
                                 </div>
-                                <div className="col-sm-4 ">
+                                <div className="col-sm-1 mt-2">
                                   <button
-                                    className="card-btn1"
+                                    className="btn"
                                     onClick={toggleAddFormsecond}
                                   >
                                     New
                                   </button>
                                 </div>
-                                <div className="col-sm-3">
-                                  <button className="card-btn2">
+                                <div className="col-sm-1 ms-4 mt-2">
+                                  <button className="btn">
                                     <CachedIcon />
                                   </button>
                                 </div>
@@ -398,9 +398,9 @@ const CostCenterMaster = () => {
                                 </div>
                               </div>
                             </div>
-                            <div className="col-md-1 col-sm-12 text-sm-start text-md-start">
+                            <div className="col-md-1 col-sm-12 text-sm-start text-md-start mt-2">
                               <button
-                                className="Costcentermainbtn"
+                                className="btn"
                                 style={{ marginTop: "30px" }}
                                 onClick={handleSave}
                               >
