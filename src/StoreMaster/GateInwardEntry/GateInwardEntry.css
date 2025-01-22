@@ -1,28 +1,26 @@
 /* General Styles */
-.NewStoreGateInward {
-   
-    height: auto;
-}
+.GateInward1-header {
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;
+  }
+  
+  .GateInward-header .header-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
 
-.GateInward-header {
+
+.GateInward-main1 {
     background-color: #f8f9fa; /* Light background for header */
     border-bottom: 1px solid #dee2e6; /* Border for header */
     padding: 10px 15px; /* Padding around header */
     border-radius: 5px;
 }
 
-.GateInward-main {
-    background-color: aliceblue;
-    padding: 10px;
-    margin-top: 80px;
-    height: auto;
-}
 
-.StoreGateInward {
-    background-color: aliceblue;
-    padding: 10px;
-    height: auto;
-}
 
 .StoreGateInward .table-responsive {
     overflow-x: auto;

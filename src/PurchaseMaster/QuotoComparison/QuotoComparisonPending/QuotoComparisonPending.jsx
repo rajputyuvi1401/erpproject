@@ -19,7 +19,7 @@ const QuotoComparisonPending = () => {
       }
     }, [sideNavOpen]);
   return (
-    <div className="NewPurchaseReport">
+    <div className="NewPurchReport">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -30,23 +30,22 @@ const QuotoComparisonPending = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PurchaseReport-header">
-                  <div className="row flex-nowrap align-items-center">
-                    <div className="col-md-4">
-                      <h5 className="header-title text-start">
+                <div className="PurchReport-header text-start mt-5">
+               
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">
                         Purchase Report (Cost Center Wise)
                       </h5>
                     </div>
                     <div className="col-md-8 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-md-3 d-flex align-items-center">
-                          <button className="pobtn">Export To Excel</button>
-                        </div>
-                      </div>
+                     
+                          <button className="btn">Export To Excel</button>
+                        
                     </div>
                   </div>
                 </div>
-                <div className="PurchaseReport-main">
+                <div className="PurchReport-main mt-5">
                   <ul
                     className="nav nav-pills mb-3"
                     id="pills-tab"
@@ -161,7 +160,7 @@ const QuotoComparisonPending = () => {
                       aria-labelledby="pills-GST-Details-tab"
                       tabindex="0"
                     >
-                      <div className="PurchaseReportstatus1">
+                      <div className="PurchReportstatus1">
                         <div className="container-fluid mt-4">
                           <div className="row align-items-start">
                             <div className="col-md-3 d-flex align-items-start">

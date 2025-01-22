@@ -32,10 +32,10 @@ const PurchseOrderStatus = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PurchaseOrderstatus-header">
-                  <div className="row flex-nowrap align-items-center">
-                    <div className="col-md-4">
-                      <h5 className="header-title text-start">
+              <div className="Purchaseorderstatus  text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">
                         Pending MRN Release List
                       </h5>
                     </div>
@@ -54,7 +54,7 @@ const PurchseOrderStatus = () => {
                     </div>
                   </div>
                 </div>
-                <div className="Purchaseorderstatus">
+                <div className="Purchaseorderstatus mt-5">
                   <div className="container-fluid mt-4">
                     <div className="table-responsive">
                       <table className="table table-bordered">

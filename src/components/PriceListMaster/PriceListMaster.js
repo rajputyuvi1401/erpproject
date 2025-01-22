@@ -98,37 +98,37 @@ const PriceListMaster = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="PriceListMaster1">
-                  <div className="PriceList">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-3 col-sm-6 text-start">
-                          <h5 style={{ color: "blue" }}>Price List Master</h5>
+                 
+                     <div className="PriceList-header mb-4 text-start mt-5">
+                       <div className="row align-items-center">
+                        <div className="col-md-3">
+                         <h5 className="header-title">Price List Master</h5>
                         </div>
                         <div className="col-md-9 col-sm-6 text-end">
                           <button
-                            className="PriceMasterbtn"
+                            className="btn"
                             onClick={toggleAddCard}
                           >
                             Add Price List
                           </button>
                           <button
-                            className="PriceMasterbtn"
+                            className="btn"
                             onClick={toggleAddCardItemRate}
                           >
                             Item Rate Rev Report
                           </button>
                           <button
-                            className="PriceMasterbtn"
+                            className="btn"
                             onClick={toggleAddCardPricereport}
                           >
                             Price List Report
                           </button>
-                          <button className="PriceMasterbtn">
+                          <button className="btn">
                             Price List Query
                           </button>
                           <button
-                            className="PriceMasterbtn"
-                            style={{ padding: "8px" }}
+                            className="btn"
+                           
                           >
                             <div className="form-check">
                               <input
@@ -137,20 +137,18 @@ const PriceListMaster = () => {
                                 value=""
                                 id="flexCheckDefault"
                               />
-                              <label
-                                className="form-check-label"
-                                htmlFor="flexCheckDefault"
-                              >
-                                With Company
-                              </label>
+                               <button className="btn">
+                             With Company
+                              </button>
+                              
                             </div>
                           </button>
-                          <button className="PriceMasterbtn">
+                          <button className="btn">
                             Export To Excel
                           </button>
                         </div>
                       </div>
-                    </div>
+                    
                   </div>
                   {showAddCard && (
                     <div className="Add-price overlay">
@@ -298,7 +296,7 @@ const PriceListMaster = () => {
                     </div>
                   )}
                   {showAddCardItemRate && (
-                    <div className="Itemrate-overlay overlay">
+                    <div className="Itemrate-overlay">
                       <div className="ItemRate-card card">
                         <div className="card-header d-flex justify-content-between">
                           <h5 className="text-start" style={{ color: "blue" }}>
@@ -997,7 +995,7 @@ const PriceListMaster = () => {
                     </div>
                   )}
 
-                  <div className="PriceListMain">
+                  <div className="PriceListMain mt-5">
                     <div className="container-fluid">
                       <div className="row text-start">
                         <div className="col-md-3 col-sm-6">
@@ -1067,19 +1065,18 @@ const PriceListMaster = () => {
                             />
                           </div>
                         </div>
-                        <div className="col-md-3 col-sm-6 text-start">
+                        <div className="col-md-3 col-sm-6 text-start mt-4">
                           <div className="mb-3">
-                            <button className="PriceListMainbtn">Search</button>
+                            <button className="btn">Search</button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="PriceListtable">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-12 text-start">
-                          <table className="table table-striped table-responsive">
+                  <div className="PriceListtable mt-5">
+                    <div className="table-striped table-responsive">
+                     
+                          <table className="table">
                             <thead>
                               <tr>
                                 <th>Sr.</th>
@@ -1111,8 +1108,7 @@ const PriceListMaster = () => {
                               </tr>
                             </tbody>
                           </table>
-                        </div>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>

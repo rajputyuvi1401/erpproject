@@ -12,6 +12,7 @@ import { toast , ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+
 const PurchaseGrn = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -139,8 +140,8 @@ const PurchaseGrn = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Purchasegrn-header">
-                  <div className="row flex-nowrap align-items-center">
+                <div className="Purchasegrn-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
                     <div className="col-md-1">
                       <h5 className="header-title text-start">New GRN</h5>
                     </div>
@@ -194,15 +195,13 @@ const PurchaseGrn = () => {
                       </div>
                     </div>
                     <div className="col-md-2 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-md-6 d-flex align-items-center">
-                          <Link className="pobtn" to="/Grn-List">GM List</Link>
-                        </div>
-                      </div>
+                      
+                          <Link className="btn" to="/Grn-List">GM List</Link>
+                       
                     </div>
                   </div>
                 </div>
-                <div className="Purchasegrn-main">
+                <div className="Purchasegrn-main mt-5">
                   <div className="container-fluid text-start">
                     <div className="row mt-4">
                       <div className="col-md-6">
@@ -234,7 +233,7 @@ const PurchaseGrn = () => {
                         <div className="row">
                           <div className="col-md-4">Select Supplier:</div>
                           <div className="col-md-6">
-                            <input />
+                            <input className="form-control" />
                           </div>
                           <div className="col-md-2">
                             <button type="button" className="pobtn">
@@ -246,7 +245,7 @@ const PurchaseGrn = () => {
                       <div className="col-md-6">
                         <div className="row text-start">
                           <div className="col-md-4">Select Po:</div>
-                          <div className="col-md-4">
+                          <div className="col-md-3">
                             <select id="routingSelect" className="form-select">
                               <option selected>Select</option>
                               <option value="">
@@ -260,7 +259,7 @@ const PurchaseGrn = () => {
                               </option>
                             </select>
                           </div>
-                          <div className="col-md-2">
+                          <div className="col-md-3">
                             <button type="button" className="btn">
                               Add All Item
                             </button>
@@ -278,7 +277,7 @@ const PurchaseGrn = () => {
                         <div className="row ">
                           <div className="col-md-4">Search Item:</div>
                           <div className="col-md-6">
-                            <input />
+                            <input className="form-control" />
                           </div>
                           <div className="col-md-2">
                             <button type="button" className="btn">
@@ -455,9 +454,12 @@ const PurchaseGrn = () => {
                     </div>
                   </div>
 
-                  <div
+                 
+                </div>
+
+                <div
                     className="Purchasegrn122Footer"
-                    style={{ marginTop: "100px" }}
+
                   >
                     <ul
                       className="nav nav-pills mb-3"
@@ -507,7 +509,7 @@ const PurchaseGrn = () => {
                         </button>
                       </li>
                     </ul>
-                    <div className="tab-content" id="pills-tabContent">
+                    <div className="tab-content" id="pills-tabContent" >
                       <div
                         className="tab-pane fade show active"
                         id="pills-Gernal-Detail"
@@ -1111,8 +1113,9 @@ const PurchaseGrn = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+              
               </main>
+             
               {isCardVisible && (
                 <div className="storenewmrn-overlay">
                   <div className="costtype2-overlay">

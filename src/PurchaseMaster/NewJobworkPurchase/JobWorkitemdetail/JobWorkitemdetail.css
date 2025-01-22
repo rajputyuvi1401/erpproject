@@ -26,17 +26,7 @@ margin-top: -20px;
     border: 1px solid #bbbfc37b;
   }
   
-  .JobWorkitem-details .table th {
-    background-color: #d8dbde;
-  }
-  .JobWorkitem-table .table th {
-    background-color: rgba(
-      137,
-      43,
-      226,
-      0.573
-    ); /* Light background for headers */
-  }
+
   
   .JobWorkitem-details .table td input,
   .JobWorkitem-details .table td select,

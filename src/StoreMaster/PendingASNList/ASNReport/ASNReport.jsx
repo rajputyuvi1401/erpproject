@@ -31,8 +31,8 @@ const ASNReport = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ASN-Report-header">
-                  <div className="row flex-nowrap align-items-center">
+                <div className="ASN-Report-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
                     <div className="col-md-3">
                       <h5 className="header-title text-start">
                         Vendor ASN List
@@ -40,7 +40,7 @@ const ASNReport = () => {
                     </div>
                   </div>
                 </div>
-                <div className="ASN-Report-main">
+                <div className="ASN-Report-main mt-5">
                   <div className="container-fluid">
                     <div className="row mt-4">
                       <div className="col-md-12">
@@ -84,7 +84,7 @@ const ASNReport = () => {
 
                           {/* Search Button */}
                           <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                            <button type="submit" className="pobtn w-100">
+                            <button type="submit" className="btn" style={{marginTop:"39px"}}>
                               Search
                             </button>
                           </div>

@@ -283,20 +283,29 @@ export const fetchNextJobWorkNumber = async (shortyear) => {
 };
 
 // Function to fetch the next PO code
-export const getNextPoNumber = async (field, year) => {
+export const getNextPoNumber = async (year) => {
   try {
-    const response = await axios.get(`${BASE_URL}/get_next_code/?field=${field}&year=${year}`);
-    return response.data.next_code;
+    // Use the correct API endpoint and query parameter
+    const response = await axios.get(
+      `${BASE_URL}get_next_PurchaseNewIndent/?Shortyear=${year}`
+    );
+    return response.data.next_PoNo; // Ensure the key matches the API response
   } catch (error) {
-    throw new Error("Error fetching next code: " + error.message);
+    throw new Error("Error fetching next PO number: " + error.message);
   }
 };
 
-export const registerPurchaseOrder = async (payload) => {
+export const registerPurchaseOrder = async (data) => {
   try {
-    const response = await axios.post(`${BASE_URL}/RegisterPO_All_Series/`, payload);
-    return response.data;
+    console.log("Sending payload:", data); // Log the payload being sent
+    const response = await axios.post(`${BASE_URL}RegisterPO_All_Series/`, data);
+    console.log("API Response:", response); // Log the response from the API
+    return response.data; // Return the response data
   } catch (error) {
-    throw new Error("Error saving purchase order: " + error.message);
+    console.error("API Error:", error); // Log the error
+  
+    throw error; // Rethrow the error for further handling
   }
 };
+
+

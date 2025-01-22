@@ -1,30 +1,27 @@
-/* General Styles */
-.NewStoreNewgrn {
-    background-color: white;
-    font-family: Arial, sans-serif;
-  }
+
   
   /* Header Styles */
   .Newgrn-header {
-    margin-top: 20px;
-    background-color: aliceblue;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;
   }
   
+  .Newgrn-header .header-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
   /* Main Content Styles */
   .Newgrn-main {
-    background-color: aliceblue;
-    padding: 15px;
-    margin-top: 20px; /* Adjusted to be closer to the header */
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;
   }
   
-  /* Table Styles */
-  .Newgrntable {
-    background-color: aliceblue;
-    padding: 15px;
-    margin-top: 20px;
-  }
+
   
   .Newgrntable .table-bordered {
     border: 1px solid #ddd;

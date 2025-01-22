@@ -30,32 +30,29 @@ const PurchseOderList = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="PurchaseOrderList-header">
-                <div className="row flex-nowrap align-items-center">
-                  <div className="col-md-4">
-                    <h5 className="header-title text-start">
+              <div className="PurchseOrderList-header  text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">
                       Purchase Order List
                     </h5>
-                  </div>
-                  <div className="col-md-8 text-end">
-                    <div className="row justify-content-end">
-                      <div className="col-md-3  d-flex align-items-center">
-                      <button className="pobtn">Recently PO Approval List</button>
                       </div>
-                      <div className="col-md-3 d-flex align-items-center">
-                        <button className="pobtn">AMC Purchase Order List</button>
-                      </div>
-                      <div className="col-md-3 d-flex align-items-center">
-                        <button className="pobtn">Purchase Order - Query</button>
+                      <div className="col-md-8 text-end">
+                    
+                      <button className="btn">Recently PO Approval List</button>
+                     
+                     
+                        <button className="btn">AMC Purchase Order List</button>
+                    
+                        <button className="btn">Purchase Order - Query</button>
+                  
                       </div>
                     </div>
-                  </div>
-                </div>
               </div>
-              <div className="PurchaseorderList">
+              <div className="PurchaseorderList mt-5">
                 <div className="container-fluid mt-4">
                   <div className="table-responsive">
-                    <table className="table table-bordered">
+                    <table className="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>Plant</th>

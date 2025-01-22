@@ -211,11 +211,11 @@ const Newindent = () => {
                                               Item 2
                                             </option>
                                           </select>
-                                          <button className="indenttablebtn">
+                                          <button className="btn">
                                             Search
                                           </button>
                                           <br />
-                                          <select className="form-control">
+                                          {/* <select className="form-control">
                                             <option value="">
                                               Select Item
                                             </option>
@@ -225,7 +225,7 @@ const Newindent = () => {
                                             <option value="item2">
                                               Item 2
                                             </option>
-                                          </select>
+                                          </select> */}
                                         </td>
                                         <td>
                                           <textarea
@@ -307,10 +307,10 @@ const Newindent = () => {
                                           />
                                         </td>
                                         <td>
-                                          <button className="indenttablebtn me-2">
+                                          <button className="btn me-2">
                                             <FaPlus />
                                           </button>
-                                          <button className="indenttablebtn">
+                                          <button className="btn">
                                             <FaTrash />
                                           </button>
                                         </td>
@@ -391,7 +391,7 @@ const Newindent = () => {
                               <input className="form-control" />
                             </div>
                             <div className="col-md-2">
-                              <button className="newindentbottombtn">
+                              <button className="btn">
                                 Save indent
                               </button>
                             </div>

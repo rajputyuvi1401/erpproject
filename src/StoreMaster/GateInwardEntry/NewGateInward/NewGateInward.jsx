@@ -160,8 +160,8 @@ const getErrorText1 = (field) => errors[field] ? <div className="invalid-feedbac
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="NewGateInward-header">
-                  <div className="row flex-nowrap align-items-center">
+                <div className="NewGateInward-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
                     <div className="col-md-3">
                       <h5 className="header-title text-start">
                         New Gate Entry - Inward
@@ -169,13 +169,11 @@ const getErrorText1 = (field) => errors[field] ? <div className="invalid-feedbac
                     </div>
 
                     <div className="col-md-9 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-md-4 d-flex align-items-center">
-                          <Link className="pobtn" to={"/Gate-Inward-Entry"}>
+                     
+                          <Link className="btn" to={"/Gate-Inward-Entry"}>
                             Gate Entry Inward List
                           </Link>
-                        </div>
-                      </div>
+                        
                     </div>
                   </div>
                 </div>

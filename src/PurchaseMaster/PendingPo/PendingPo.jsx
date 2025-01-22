@@ -31,39 +31,38 @@ const PendingPo = () => {
               />
 
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Pendingpurchase-header">
-                  <div className="row flex-nowrap align-items-center">
-                    {/* Title Column */}
-                    <div className="col-md-4 mt-4">
-                      <h5 className="header-title text-start">
+              <div className="NewPendingpoMaster-header  text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">
                         Pending Purchase Order Release List
                       </h5>
                     </div>
 
                     {/* Buttons */}
-                    <div className="col-md-8 mt-4 d-flex flex-wrap justify-content-end">
+                    <div className="col-md-8  d-flex flex-wrap justify-content-end">
                     
                         <label className="mt-2">Ageing Days</label>
                     
-                      <button className="btn newpurchase-btn mr-2 mb-2">
+                      <button className="btn">
                         [Under 0-7]:
                       </button>
-                      <button className="btn newpurchase-btn mr-2 mb-2">
+                      <button className="btn">
                         [Under 8-15]:
                       </button>
-                      <button className="btn newpurchase-btn mr-2 mb-2">
+                      <button className="btn">
                         [Under 16-30]:
                       </button>
-                      <button className="btn newpurchase-btn mr-2 mb-2">
+                      <button className="btn">
                         [Under 31-60]:
                       </button>
-                      <button className="btn newpurchase-btn">
+                      <button className="btn">
                         [Above 60]:
                       </button>
                     </div>
                   </div>
                 </div>
-                <div className="Pendingpurchase">
+                <div className="Pendingpurchase mt-5">
                   <div className="container-fluid mt-4">
 
                       <div className="table-responsive">

@@ -28,4 +28,43 @@ export const createWorkOrder = async (data) => {
     }
   };
 
-  
+  // Production Entry
+  export const fetchOperators = async (searchTerm = "") => {
+    try {
+      const response = await axios.get(`${BASE_URL}Production_operators/?search=${searchTerm}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching operators:", error);
+      throw error;
+    }
+  };
+
+  export const fetchSupervisors = async (searchTerm = "") => {
+    try {
+      const response = await axios.get(`${BASE_URL}Production_supervisors/?search=${searchTerm}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching supervisors:", error);
+      throw error;
+    }
+  };
+
+  export const fetchContractors = async (searchTerm = "") => {
+    try {
+      const response = await axios.get(`${BASE_URL}Production_contractor/?search=${searchTerm}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching contractors:", error);
+      throw error;
+    }
+  };
+
+  export const fetchUnitMachines = async (searchTerm = "") => {
+    try {
+      const response = await axios.get(`${BASE_URL}Production_unitmachine/?search=${searchTerm}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching unit machines:", error);
+      throw error;
+    }
+  };

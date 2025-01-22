@@ -121,15 +121,14 @@ const MasterReport = () => {
                                     <option value="3">VMC</option>
                                   </select>
                                 </div>
-                                <div className="col-md-2 col-sm-12 text-sm-start text-md-end">
-                                  <button className="btnReportkk1">
-                                    <i className="bi bi-search"></i> Search
+                                <div className="col-md-1 col-sm-12 text-sm-start text-md-end">
+                                  <button className="btn">
+                                     Search
                                   </button>
                                 </div>
                                 <div className="col-md-2 col-sm-12 text-sm-start text-md-end">
-                                  <button className="btnReportkk1">
-                                    <i className="bi bi-search"></i> Export
-                                    Report
+                                  <button className="btn">
+                                     Export Report
                                   </button>
                                 </div>
                               </div>
@@ -235,15 +234,14 @@ const MasterReport = () => {
                                     <option value="3">VMC</option>
                                   </select>
                                 </div>
-                                <div className="col-md-2 col-sm-12 text-sm-start text-md-end">
-                                  <button className="btnReportkk2">
-                                    <i className="bi bi-search"></i> Search
+                                <div className="col-md-1 col-sm-12 text-sm-start text-md-end">
+                                  <button className="btn">
+                                     Search
                                   </button>
                                 </div>
                                 <div className="col-md-2 col-sm-12 text-sm-start text-md-end">
-                                  <button className="btnReportkk2">
-                                    <i className="bi bi-search"></i> Export
-                                    Report
+                                  <button className="btn">
+                                     Export Report
                                   </button>
                                 </div>
                               </div>

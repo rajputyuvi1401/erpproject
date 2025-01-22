@@ -33,24 +33,21 @@ const Rfo = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="RFO-header">
-                <div className="row flex-nowrap align-items-center">
-                  <div className="col-md-4">
-                    <h5 className="header-title text-start">
+            <div className="RFO-header  text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">
                     Request For Quotation (RFO)
                     </h5>
                   </div>
                   <div className="col-md-8 text-end">
-                    <div className="row justify-content-end">
+                   
+                        <button className="btn">RFO New</button>
                      
-                      <div className="col-md-4 d-flex align-items-center">
-                        <button className="pobtn">RFO New</button>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
-              <div className="RFO-main">
+              <div className="RFO-main mt-5">
                 <div className="container-fluid mt-4">
                   <div className="table-responsive">
                     <table className="table table-bordered">
@@ -96,7 +93,7 @@ const Rfo = () => {
                           </td>
                           
                           <td>
-                            <button className="pobtn">Search</button>
+                            <button className="btn">Search</button>
                           </td>
                         </tr>
                       </tbody>
@@ -106,7 +103,7 @@ const Rfo = () => {
                 <div className="RFOtable">
                   <div className="container-fluid mt-4">
                     <div className="table-responsive">
-                      <table className="table table-bordered">
+                      <table className="table table-bordered table-striped">
                         <thead>
                           <tr>
                           <th>From Date</th>

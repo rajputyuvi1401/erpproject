@@ -1,23 +1,21 @@
-/* CustomStyles.css */
+.Purchasemrn-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
+}
 
-/* General Styles */
-.NewPurchsemrnMaster {
-    background-color: white;
-    height: auto;
-  }
-  
-  .Purchasemrn-header {
-    margin-top: 20px;
-    background-color: aliceblue;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+.Purchasemrn-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
   
   .Purchasemrn {
-    background-color: aliceblue;
-    padding: 10px;
-    margin-top: 80px;
-    height: auto;
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;
   }
   
   .Purchasemrn .table-responsive {

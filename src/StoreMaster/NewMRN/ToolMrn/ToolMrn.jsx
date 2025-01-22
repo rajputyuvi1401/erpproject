@@ -32,9 +32,9 @@ const ToolMrn = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ToolMRn-header">
-                  <div className="row flex-nowrap align-items-center">
-                    <div className="col-md-1">
+                <div className="ToolMRn-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
+                    <div className="col-md-2">
                       <h5 className="header-title text-start">New MRN</h5>
                     </div>
                     <div className="col-md-9 mt-4">
@@ -159,7 +159,7 @@ const ToolMrn = () => {
                                   ></textarea>
                                 </td>
                                 <td>
-                                  <button className="pobtn">
+                                  <button className="btn">
                                     <FaTrash />
                                   </button>
                                 </td>

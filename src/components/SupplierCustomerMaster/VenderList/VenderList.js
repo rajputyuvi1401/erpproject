@@ -296,7 +296,7 @@ const VenderList = () => {
                 </button>
               </li>
             </ul>
-          </nav>
+                  </nav>
 
                   <div className="vender-bottom">
                     <div className="row" style={{ color: "blue" }}>

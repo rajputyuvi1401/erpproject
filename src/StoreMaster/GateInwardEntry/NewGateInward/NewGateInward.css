@@ -1,22 +1,18 @@
 /* General Styles */
-.NewStoreNewGateInward {
-    background-color: white;
-    height: auto;
-}
-
 .NewGateInward-header {
-    margin-top: 20px;
-    background-color: aliceblue;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-.NewGateInward-main {
-    background-color: aliceblue;
-    padding: 10px;
-    margin-top: 80px;
-    height: auto;
+.NewGateInward-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
+
+
 .NewGateInward1{
     background-color: white;
     padding: 10px 10px;

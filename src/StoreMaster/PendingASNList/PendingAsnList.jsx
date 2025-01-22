@@ -32,40 +32,38 @@ const PendingAsnList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ArnList-header">
-                  <div className="row flex-nowrap align-items-center">
+                <div className="ArnList-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
                     <div className="col-md-2">
                       <h5 className="header-title text-start">ASN List</h5>
                     </div>
 
                     <div className="col-md-10 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-md-8 d-flex align-items-end">
-                          <Link className="pobtn" to="/PDL-List">
+                      
+                          <Link className="btn" to="/PDL-List">
                             PDI List
                           </Link>
 
-                          <Link className="pobtn" to="/Vendor-Bill-List">
+                          <Link className="btn" to="/Vendor-Bill-List">
                             Bill List
                           </Link>
 
-                          <Link className="pobtn">Export To Excel</Link>
+                          <Link className="btn">Export To Excel</Link>
 
-                          <Link className="pobtn">Short Qty Report</Link>
+                          <Link className="btn">Short Qty Report</Link>
 
-                          <Link className="pobtn" to="/Vendor-Asn-List">
+                          <Link className="btn" to="/Vendor-Asn-List">
                             ASN Modify Logs
                           </Link>
 
-                          <Link className="pobtn" to="/ASN-Report">
+                          <Link className="btn" to="/ASN-Report">
                             ASN Report
                           </Link>
-                        </div>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
-                <div className="ArnList-main">
+                <div className="ArnList-main mt-5">
                   <div className="container-fluid">
                     <div className="row mt-4">
                       <div className="col-md-12">
@@ -123,12 +121,12 @@ const PendingAsnList = () => {
 
                           {/* Search Button */}
                           <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                            <button type="submit" className="pobtn w-100">
+                            <button type="submit" className="btn" style={{marginTop:"-39px"}}>
                               Search
                             </button>
                           </div>
                           <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                            <button type="submit" className="pobtn w-100">
+                            <button type="submit" className="btn" style={{marginTop:"-39px"}}>
                               View All
                             </button>
                           </div>

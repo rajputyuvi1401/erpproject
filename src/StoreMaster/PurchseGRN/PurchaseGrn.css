@@ -1,29 +1,24 @@
-/* General Styles */
-.NewStorePurchasegrn {
-    background-color: white;
-    height: auto;
-    font-family: Arial, sans-serif;
-  }
+
   
-  .Purchasegrn-header {
-    margin-top: 20px;
-    background-color: aliceblue;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
- 
-  .Purchasegrn-main{
-    background-color: aliceblue;
-    padding: 10px;
-    margin-top: 80px;
-    height: auto;
-  }
- 
-  .Purchasegrntable {
-    background-color: aliceblue;
-    padding: 10px;
-    margin-top: 20px;
+  .Purchasegrn-header{
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
+
+.Purchasegrn-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+  .Purchasegrn-main{
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;
+  }
+
 
   .Purchasegrntable .table-responsive {
     overflow-x: auto;
@@ -42,12 +37,7 @@
     padding: 12px;
   }
   
- /* General Styles */
-.Purchasegrn122Footer {
-    background-color: aliceblue;
-    padding: 20px;
-    border: none;
-}
+
 
 .StorePurchasegrn1, .StorePurchasegrn2, .StorePurchasegrn3 {
     margin-top: 20px;

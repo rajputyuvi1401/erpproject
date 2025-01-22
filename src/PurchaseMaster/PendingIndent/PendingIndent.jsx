@@ -33,26 +33,25 @@ const PendingIndent = () => {
               <main
                 className={`main-content ${sideNavOpen ? "shifted" : ""}`}
               >
-                  <div className="Pendingindent-header">
-                  <div className="row flex-nowrap align-items-center">
-                    {/* Title Column */}
-                    <div className="col-md-4 mt-4">
-                      <h5 className="header-title text-start">
+              <div className="PendingIndent-header  text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">
                         Pending Indent Release List
                       </h5>
                     </div>
 
                     {/* Buttons */}
-                    <div className="col-md-8 mt-4 d-flex flex-wrap justify-content-end">
+                    <div className="col-md-8  d-flex flex-wrap justify-content-end">
                     
                        
-                      <button className="btn newpurchase-btn">
+                      <button className="btn">
                         Export To Excel
                       </button>
                     </div>
                   </div>
                 </div>
-                <div className="Pendingindent">
+                <div className="Pendingindent mt-5">
                   <div className="container-fluid mt-4">
                    
                       <div className="table-responsive">

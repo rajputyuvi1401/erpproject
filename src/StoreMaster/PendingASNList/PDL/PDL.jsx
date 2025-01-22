@@ -32,8 +32,8 @@ const PDL = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PDLList-header">
-                  <div className="row flex-nowrap align-items-center">
+                <div className="PDLList-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
                     <div className="col-md-3">
                       <h5 className="header-title text-start">PDL List</h5>
                     </div>
@@ -41,7 +41,7 @@ const PDL = () => {
 
                     <div className="col-md-9 text-end">
                       <div className="row justify-content-end">
-                        <div className="col-md-6 d-flex align-items-end">
+                        <div className="col-md-5 d-flex align-items-end">
                           <div className="form-check">
                             <input
                               type="checkbox"
@@ -56,9 +56,9 @@ const PDL = () => {
                             </label>
                           </div>
 
-                          <Link className="pobtn">Export Excel</Link>
+                          <Link className="btn">Export Excel</Link>
 
-                          <Link className="pobtn" to="/Pending-Asn-List">
+                          <Link className="btn" to="/Pending-Asn-List">
                             Pending ASN List
                           </Link>
                         </div>
@@ -66,7 +66,7 @@ const PDL = () => {
                     </div>
                   </div>
                 </div>
-                <div className="PDLList-main">
+                <div className="PDLList-main mt-5">
                   <div className="container-fluid">
                     <div className="row mt-4">
                       <div className="col-md-12">
@@ -112,7 +112,7 @@ const PDL = () => {
 
                           {/* Search Button */}
                           <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                            <button type="submit" className="pobtn w-100">
+                            <button type="submit" className="btn" style={{marginTop:"-34px"}}>
                               Search
                             </button>
                           </div>

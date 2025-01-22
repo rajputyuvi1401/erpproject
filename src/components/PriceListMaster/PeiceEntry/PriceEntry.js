@@ -128,21 +128,20 @@ const PriceEntry = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="PriceentryMaster1">
-                  <div className="Priceentry">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6 text-start">
-                          <h5 style={{ color: "blue" }}>Price Entry Master</h5>
+                <div className="Priceentry-header mb-4 text-start mt-5">
+                       <div className="row align-items-center">
+                        <div className="col-md-6">
+                         <h5 className="header-title">Price Entry Master</h5>
                         </div>
                         <div className="col-md-6 text-end">
-                          <button className="Priceentrybtn">
+                          <button className="btn">
                             Export To Excel
                           </button>
                         </div>
                       </div>
-                    </div>
+                  
                   </div>
-                  <div className="PriceentryMain">
+                  <div className="PriceentryMain mt-5">
                     <div className="container-fluid">
                       <div className="row text-start">
                         <div className="col-md-5">
@@ -163,7 +162,7 @@ const PriceEntry = () => {
                               </div>
                               <div className="col-sm-3">
                                 <button
-                                  className="PriceListcardbtn"
+                                  className="btn"
                                   type="button"
                                 >
                                   Search
@@ -188,7 +187,7 @@ const PriceEntry = () => {
                               </div>
                               <div className="col-sm-3">
                                 <button
-                                  className="PriceListcardbtn"
+                                  className="btn"
                                   type="button"
                                 >
                                   Search
@@ -213,7 +212,7 @@ const PriceEntry = () => {
                               </div>
                               <div className="col-sm-3">
                                 <button
-                                  className="PriceListcardbtn"
+                                  className="btn"
                                   type="button"
                                 >
                                   Search
@@ -225,7 +224,7 @@ const PriceEntry = () => {
                         <div className="col-md-4">
                           <div className="row">
                             <div className="col-md-6">
-                              <button className="PriceentryMainbtn">
+                              <button className="btn">
                                 Cancel
                               </button>
                             </div>
@@ -264,7 +263,7 @@ const PriceEntry = () => {
                                   </div>
                                 </div>
                                 <div className="col-md-12 mt-3">
-                                  <button className="PriceentryMainbtn">
+                                  <button className="btn">
                                     Export to Excel
                                   </button>
                                 </div>
@@ -330,14 +329,14 @@ const PriceEntry = () => {
                               </select>
                             </div>
                           </div>
-                          <button className="PriceentryMainbtn">
+                          <button className="btn">
                             Upload Price List
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="Priceentrytable">
+                  <div className="Priceentrytable mt-5">
                     <table className="table table-bordered table-responsive">
                       <thead>
                         <tr>
@@ -521,11 +520,11 @@ const PriceEntry = () => {
                       </tbody>
                     </table>
                   </div>
-                  <div className="Priceentrybottom">
+                  <div className="Priceentrybottom mt-5">
                     <div className="row text-start">
                       <div className="col-6">
-                        <button className="PriceentryMainbtn">Save</button>
-                        <button className="PriceentryMainbtn">
+                        <button className="btn">Save</button>
+                        <button className="btn">
                           Price History
                         </button>
                       </div>

@@ -16,46 +16,11 @@
   font-weight: bold;
   margin: 0;
 }
-.Reportmaster {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
-}
-
-.Report1 .btnReport {
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.btnReport:hover {
-  background-color: #0057b38d;
-}
-
-.ReportMain {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
-}
 
 
 
-.Reportselect1 .btnReportkk1 {
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
 
-.Reportselect1 .btn i {
-  margin-right: 5px;
-}
+
 
 @media (max-width: 767.98px) {
   .ReportMain {

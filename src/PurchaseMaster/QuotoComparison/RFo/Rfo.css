@@ -1,21 +1,21 @@
-/* General Styles */
-.RFOMaster {
-    background-color: white;
-    height: auto;
-  }
-  
-  .RFO-header {
-    margin-top: 20px;
-    background-color: aliceblue;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+.RFO-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
+}
+
+.RFO-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
   
   .RFO-main {
-    background-color: aliceblue;
-    padding: 10px;
-    margin-top: 80px;
-    height: auto;
+    background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
   }
  
   .RFO-main .table-responsive {
@@ -35,23 +35,7 @@
     padding: 12px;
   }
   
-  .pobtn {
-    border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    background-color: #007bff; /* Primary button color */
-    color: white; /* Button text color */
-  }
-  
-  .pobtn:hover {
-    background-color: #0056b3; /* Darker shade for hover effect */
-  }
-  
-  .pobtn.mb-3 {
-    margin-bottom: 15px;
-  }
+
   
   .RFO-main .table th input[type="checkbox"] {
     margin: 0;

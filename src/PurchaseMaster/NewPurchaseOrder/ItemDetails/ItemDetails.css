@@ -1,8 +1,4 @@
-.itemdetailsMain {
-  background-color: white;
-  padding: 20px;
-  margin: 20px;
-}
+
 
 .item-details .table-container,
 .item-table .table-container {
@@ -60,12 +56,7 @@
   min-width: 100px; /* Ensure each cell has a minimum width */
 }
 
-.btnpurchase {
-  background-color: rgba(235, 233, 233, 0.685);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
+
 
 .item-table .table td button {
   background: none;

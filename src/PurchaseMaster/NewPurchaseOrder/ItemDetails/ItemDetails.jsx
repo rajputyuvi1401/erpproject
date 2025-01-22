@@ -10,7 +10,7 @@ import {
 import { toast, ToastContainer } from "react-toastify";
 import { getUnitCode } from "../../../Service/Api";
 
-const ItemDetails = () => {
+const ItemDetails = ({ updateFormData }) => {
   const [itemDetails, setItemDetails] = useState([]);
   const [formData, setFormData] = useState({
     Item: "",
@@ -54,7 +54,12 @@ const ItemDetails = () => {
 
   // Handle input change
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    updateFormData("Item_Detail_Enter", (prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   // Add new item
@@ -216,7 +221,7 @@ const ItemDetails = () => {
                       />
                       <span>
                         <button
-                          className="btnpurchase"
+                          className="btn"
                           onClick={handleSearch}
                           disabled={loading}
                         >
@@ -321,7 +326,7 @@ const ItemDetails = () => {
                     <td>
                       {editId ? (
                         <button
-                          className="btnpurchase"
+                          className="btn"
                           type="button"
                           onClick={handleUpdate}
                         >
@@ -329,7 +334,7 @@ const ItemDetails = () => {
                         </button>
                       ) : (
                         <button
-                          className="btnpurchase"
+                          className="btn"
                           type="button"
                           onClick={handleAdd}
                         >
@@ -343,8 +348,8 @@ const ItemDetails = () => {
             </div>
           </div>
           <div className="item-table">
-            <div className="table-container">
-              <table className="table table-responsive">
+            <div className="table-container table-responsive">
+              <table className="table table-striped">
                 <thead>
                   <tr>
                     <th>Sr</th>

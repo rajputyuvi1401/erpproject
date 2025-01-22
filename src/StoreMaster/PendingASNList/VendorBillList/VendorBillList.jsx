@@ -33,29 +33,22 @@ const VendorBillList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Vendor-Bill-List-header">
-                  <div className="row flex-nowrap align-items-center">
+                <div className="Vendor-Bill-List-header  mb-4 text-start mt-5">
+                    <div className="row align-items-center">
                     <div className="col-md-3">
                       <h5 className="header-title text-start">Vendor Bill List</h5>
                     </div>
                     
 
                     <div className="col-md-9 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-md-6 d-flex align-items-end">
-                          
-
-                         
-
-                          <Link className="pobtn" to="/Pending-Asn-List">
+                          <Link className="btn" to="/Pending-Asn-List">
                             Pending ASN List
                           </Link>
-                        </div>
-                      </div>
+                        
                     </div>
                   </div>
                 </div>
-                <div className="Vendor-Bill-List-main">
+                <div className="Vendor-Bill-List-main mt-5">
                   <div className="container-fluid">
                     <div className="row mt-4">
                       <div className="col-md-12">
@@ -95,7 +88,7 @@ const VendorBillList = () => {
 
                           {/* Search Button */}
                           <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                            <button type="submit" className="pobtn w-100">
+                            <button type="submit" className="btn" style={{marginTop:"-32px"}}>
                               Search
                             </button>
                           </div>

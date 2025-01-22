@@ -3,68 +3,33 @@
   margin: 0;
   padding: 0;
 }
-.App {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+
+.Priceentry-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
-main {
-  flex: 1;
-  padding: 20px;
-  margin-top: 60px;
-  transition: margin-left 0.3s;
-}
-.main-content.Shifted {
-  margin-left: 260px;
+.Priceentry-header .header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 
-body.no-scroll {
-  overflow: hidden;
-}
-
-.PriceentryMaster {
-  width: 100%;
-  background-color: rgb(241, 242, 244);
-  min-height: 100vh;
-}
-
-.PriceentryMaster1 {
-  background-color: white;
-  padding: 20px;
-  height: auto;
-}
-
-.Priceentry {
-  background-color: aliceblue;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 .PriceentryMain {
-  background-color: aliceblue;
-  padding: 20px;
-  margin-top: 50px;
-}
-.Priceentrybtn {
-  background-color: rgba(235, 233, 233, 0.685);
-  border: none;
-  padding: 10px;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
   border-radius: 5px;
 }
-.PriceentryMainbtn {
-  background-color: rgba(235, 233, 233, 0.685);
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 30px;
-  margin-right: 10px;
-}
+
 .Priceentrytable {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
-  overflow-x: auto;
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
 }
 
 .Priceentrytable .table-responsive {

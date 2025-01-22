@@ -31,8 +31,8 @@ const VendorASN = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="Vendor-ASN-List-header">
-                <div className="row flex-nowrap align-items-center">
+              <div className="Vendor-ASN-List-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
                   <div className="col-md-3">
                     <h5 className="header-title text-start">Vendor ASN Edit Delete Logs</h5>
                   </div>
@@ -42,7 +42,7 @@ const VendorASN = () => {
                  
                 </div>
               </div>
-              <div className="Vendor-ASN-List-main">
+              <div className="Vendor-ASN-List-main mt-5">
                 <div className="container-fluid">
                   <div className="row mt-4">
                     <div className="col-md-12">
@@ -90,7 +90,7 @@ const VendorASN = () => {
 
                         {/* Search Button */}
                         <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                          <button type="submit" className="pobtn w-100">
+                          <button type="submit" className="btn" style={{marginTop:"39px"}}>
                             Search
                           </button>
                         </div>
@@ -99,7 +99,7 @@ const VendorASN = () => {
                   </div>
                 </div>
 
-                <div className="StoreVendor-ASN-List">
+                <div className="StoreVendor-ASN-List mt-5">
                   <div className="container-fluid mt-4 text-start">
                     <div className="table-responsive">
                       <table className="table table-bordered">

@@ -72,7 +72,7 @@ const CustomerItem = () => {
                     </div>
                     </div>
                   </div>
-                  <div className="cusgstmain">
+                  <div className="cusgstmain mt-5">
                     <div className="container-fluid">
                       <div className="row mb-3 text-start">
                         <label

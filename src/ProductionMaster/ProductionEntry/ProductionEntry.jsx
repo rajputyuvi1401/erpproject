@@ -8,6 +8,7 @@ import "./ProductionEntry.css";
 import { FaPlus } from "react-icons/fa";
 import Cached from "@mui/icons-material/Cached.js";
 
+import { fetchOperators, fetchSupervisors ,fetchContractors ,fetchUnitMachines } from "../../Service/Production.jsx";
 const ProductionEntry = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -22,6 +23,208 @@ const ProductionEntry = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+  // Operators
+
+  const [operators, setOperators] = useState([]);
+  const [filteredOperators, setFilteredOperators] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [ setSelectedOperator] = useState(null);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [ setLoading] = useState(false);
+
+  // Fetch operators using the service
+  const loadOperators = async () => {
+    setLoading(true);
+    try {
+      const data = await fetchOperators();
+      setOperators(data);
+      setFilteredOperators(data); // Initialize filtered list
+    } catch (error) {
+      console.error("Error loading operators:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle search input change
+  const handleSearchChange = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    setDropdownVisible(true);
+
+    // Filter operators based on search term
+    const filtered = operators.filter(
+      (operator) =>
+        operator.Name.toLowerCase().includes(value.toLowerCase()) ||
+        operator.Code.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredOperators(filtered);
+  };
+
+  // Handle selection
+  const handleSelect = (operator) => {
+    setSelectedOperator(`${operator.Name} (${operator.Code})`);
+    setSearchTerm(`${operator.Name} (${operator.Code})`); // Show selected in input
+    setDropdownVisible(false); // Hide dropdown
+  };
+
+  // Fetch data on component mount
+  useEffect(() => {
+    loadOperators();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Supervisor
+  const [supervisorsList, setSupervisorsList] = useState([]);
+  const [filteredSupervisorsList, setFilteredSupervisorsList] = useState([]);
+  const [searchTerm1, setSearchTerm1] = useState("");
+  const [ setSelectedSupervisor] = useState(null);
+  const [dropdownVisible1, setDropdownVisible1] = useState(false);
+  const [ setLoading1] = useState(false);
+
+  // Fetch supervisors using the service
+  const loadSupervisors = async () => {
+    setLoading1(true);
+    try {
+      const data = await fetchSupervisors();
+      setSupervisorsList(data);
+      setFilteredSupervisorsList(data); // Initialize filtered list
+    } catch (error) {
+      console.error("Error loading supervisors:", error);
+    } finally {
+      setLoading1(false);
+    }
+  };
+
+  // Handle search input change
+  const handleSearchChange1 = (event) => {
+    const value = event.target.value;
+    setSearchTerm1(value);
+    setDropdownVisible1(true);
+
+    // Filter supervisors based on search term
+    const filtered = supervisorsList.filter(
+      (supervisor) =>
+        supervisor.Name.toLowerCase().includes(value.toLowerCase()) ||
+        supervisor.Code.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredSupervisorsList(filtered);
+  };
+
+  // Handle selection
+  const handleSelect1 = (supervisor) => {
+    setSelectedSupervisor(`${supervisor.Name} (${supervisor.Code})`);
+    setSearchTerm1(`${supervisor.Name} (${supervisor.Code})`); // Show selected in input
+    setDropdownVisible1(false); // Hide dropdown
+  };
+
+  // Fetch data on component mount
+  useEffect(() => {
+    loadSupervisors();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Contractors
+  const [contractorsData, setContractorsData] = useState([]);
+  const [filteredContractorsData, setFilteredContractorsData] = useState([]);
+  const [searchTermContractor, setSearchTermContractor] = useState("");
+  const [ setSelectedContractorName] = useState(null);
+  const [dropdownVisibleContractor, setDropdownVisibleContractor] = useState(false);
+  const [ setLoadingContractor] = useState(false);
+
+  // Fetch contractors using the service
+  const loadContractors = async () => {
+    setLoadingContractor(true);
+    try {
+      const data = await fetchContractors();
+      setContractorsData(data);
+      setFilteredContractorsData(data); // Initialize filtered list
+    } catch (error) {
+      console.error("Error loading contractors:", error);
+    } finally {
+      setLoadingContractor(false);
+    }
+  };
+
+  // Handle search input change
+  const handleSearchChange2 = (event) => {
+    const value = event.target.value;
+    setSearchTermContractor(value);
+    setDropdownVisibleContractor(true);
+
+    // Filter contractors based on search term
+    const filtered = contractorsData.filter(
+      (contractor) =>
+        contractor.ContractorName?.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredContractorsData(filtered);
+  };
+
+  // Handle selection
+  const handleSelect2 = (contractor) => {
+    setSelectedContractorName(contractor.ContractorName);
+    setSearchTermContractor(contractor.ContractorName); // Show selected in input
+    setDropdownVisibleContractor(false); // Hide dropdown
+  };
+
+  // Fetch data on component mount
+  useEffect(() => {
+    loadContractors();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Unit /Machine
+
+  const [unitMachinesData, setUnitMachinesData] = useState([]);
+  const [filteredUnitMachinesData, setFilteredUnitMachinesData] = useState([]);
+  const [searchTermUnitMachine, setSearchTermUnitMachine] = useState("");
+  const [ setSelectedUnitMachine] = useState(null);
+  const [dropdownVisibleUnitMachine, setDropdownVisibleUnitMachine] = useState(false);
+  const [ setLoadingUnitMachine] = useState(false);
+
+  // Fetch unit machines using the service
+  const loadUnitMachines = async () => {
+    setLoadingUnitMachine(true);
+    try {
+      const data = await fetchUnitMachines();
+      setUnitMachinesData(data);
+      setFilteredUnitMachinesData(data); // Initialize filtered list
+    } catch (error) {
+      console.error("Error loading unit machines:", error);
+    } finally {
+      setLoadingUnitMachine(false);
+    }
+  };
+
+  // Handle search input change
+  const handleSearchChange4 = (event) => {
+    const value = event.target.value;
+    setSearchTermUnitMachine(value);
+    setDropdownVisibleUnitMachine(true);
+
+    // Filter unit machines based on search term
+    const filtered = unitMachinesData.filter(
+      (unitMachine) =>
+        (unitMachine.WorkCenterCode && unitMachine.WorkCenterCode.toLowerCase().includes(value.toLowerCase())) ||
+        (unitMachine.WorkCenterName && unitMachine.WorkCenterName.toLowerCase().includes(value.toLowerCase()))
+    );
+    setFilteredUnitMachinesData(filtered);
+  };
+
+  // Handle selection
+  const handleSelect4 = (unitMachine) => {
+    setSelectedUnitMachine(`${unitMachine.WorkCenterName} (${unitMachine.WorkCenterCode})`);
+    setSearchTermUnitMachine(`${unitMachine.WorkCenterName} (${unitMachine.WorkCenterCode})`); // Show selected in input
+    setDropdownVisibleUnitMachine(false); // Hide dropdown
+  };
+
+  // Fetch data on component mount
+  useEffect(() => {
+    loadUnitMachines();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   return (
     <div className="ProductionEntryMaster">
@@ -86,7 +289,7 @@ const ProductionEntry = () => {
                               type="button"
                               className="btn btn-outline-secondary ml-2"
                             >
-                              <Cached/>
+                              <Cached />
                             </button>
                           </div>
                         </div>
@@ -96,10 +299,42 @@ const ProductionEntry = () => {
                           <div className="col-4">
                             <label htmlFor="contractor">Contractor :</label>
                           </div>
-                          <div className="col-8">
-                            <select className="form-control">
-                              <option>Select</option>
-                            </select>
+                          <div className="col-8 position-relative">
+        <input
+          id="contractor"
+          className="form-control"
+          placeholder="Search by contractor name"
+          value={searchTermContractor}
+          onChange={handleSearchChange2}
+          onFocus={() => setDropdownVisibleContractor(true)} // Show dropdown on focus
+        />
+        {dropdownVisibleContractor && (
+          <ul
+            className="dropdown-menu show mt-2"
+            style={{
+              width: "100%",
+              maxHeight: "200px",
+              overflowY: "auto",
+              zIndex: 1000,
+            }}
+          >
+            {filteredContractorsData.length > 0 ? (
+              filteredContractorsData.map((contractor, index) => (
+                <li
+                  key={index}
+                  className="dropdown-item"
+                  onClick={() => handleSelect2(contractor)}
+                  style={{ cursor: "pointer" }}
+                >
+                 
+                  {contractor.ContractorName}
+                </li>
+              ))
+            ) : (
+              <li className="dropdown-item">No results found</li>
+            )}
+          </ul>
+        )}
                           </div>
                         </div>
 
@@ -108,17 +343,42 @@ const ProductionEntry = () => {
                           <div className="col-4">
                             <label htmlFor="unit-machine">UNIT/Machine :</label>
                           </div>
-                          <div className="col-8 d-flex align-items-center">
-                            <select className="form-control flex-grow-1">
-                              <option>Select</option>
-                            </select>
-                            <button
-                              type="button"
-                              className="btn btn-outline-secondary ml-2"
-                            >
-                                <Cached/>
-                            </button>
-                          </div>
+                          <div className="col-8 position-relative">
+        <input
+          id="unit-machine"
+          className="form-control"
+          placeholder="Search by code or name"
+          value={searchTermUnitMachine}
+          onChange={handleSearchChange4}
+          onFocus={() => setDropdownVisibleUnitMachine(true)} // Show dropdown on focus
+        />
+        {dropdownVisibleUnitMachine && (
+          <ul
+            className="dropdown-menu show mt-2"
+            style={{
+              width: "100%",
+              maxHeight: "200px",
+              overflowY: "auto",
+              zIndex: 1000,
+            }}
+          >
+            {filteredUnitMachinesData.length > 0 ? (
+              filteredUnitMachinesData.map((unitMachine, index) => (
+                <li
+                  key={index}
+                  className="dropdown-item"
+                  onClick={() => handleSelect4(unitMachine)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {`${unitMachine.WorkCenterName} (${unitMachine.WorkCenterCode})`}
+                </li>
+              ))
+            ) : (
+              <li className="dropdown-item">No results found</li>
+            )}
+          </ul>
+        )}
+        </div>
                         </div>
 
                         {/* Item */}
@@ -134,7 +394,7 @@ const ProductionEntry = () => {
                               type="button"
                               className="btn btn-outline-secondary ml-2"
                             >
-                               <Cached/>
+                              <Cached />
                             </button>
                             <button
                               type="button"
@@ -170,7 +430,7 @@ const ProductionEntry = () => {
                             <input
                               id="prod-qty"
                               type="text"
-                               className="form-control"
+                              className="form-control"
                             />
                           </div>
                         </div>
@@ -195,10 +455,49 @@ const ProductionEntry = () => {
                         {/* Supervisor */}
                         <div className="row mb-2">
                           <div className="col-4">
-                            <label htmlFor="supervisor">Supervisor :</label>
+                            <label htmlFor="supervisor">Supervisor:</label>
                           </div>
-                          <div className="col-8">
-                            <input id="supervisor" className="form-control" />
+                          <div className="col-8 position-relative">
+                            <input
+                              id="supervisor"
+                              className="form-control"
+                              placeholder="Search by name or code"
+                              value={searchTerm1}
+                              onChange={handleSearchChange1}
+                              onFocus={() => setDropdownVisible1(true)} // Show dropdown on focus
+                            />
+                            {dropdownVisible1 && (
+                              <ul
+                                className="dropdown-menu show mt-2"
+                                style={{
+                                  width: "100%",
+                                  maxHeight: "200px",
+                                  overflowY: "auto",
+                                  zIndex: 1000,
+                                }}
+                              >
+                                {filteredSupervisorsList.length > 0 ? (
+                                  filteredSupervisorsList.map(
+                                    (supervisor, index) => (
+                                      <li
+                                        key={index}
+                                        className="dropdown-item"
+                                        onClick={() =>
+                                          handleSelect1(supervisor)
+                                        }
+                                        style={{ cursor: "pointer" }}
+                                      >
+                                        {`${supervisor.Name} (${supervisor.Code})`}
+                                      </li>
+                                    )
+                                  )
+                                ) : (
+                                  <li className="dropdown-item">
+                                    No results found
+                                  </li>
+                                )}
+                              </ul>
+                            )}
                           </div>
                         </div>
 
@@ -234,8 +533,8 @@ const ProductionEntry = () => {
                             <label htmlFor="prod-text">Prod Time :</label>
                           </div>
                           <div className="col-8 d-flex">
-                            <input type="text"  className="form-control" />
-                            <input type="text"  className="form-control ml-2" />
+                            <input type="text" className="form-control" />
+                            <input type="text" className="form-control ml-2" />
                           </div>
                         </div>
                       </div>
@@ -259,8 +558,43 @@ const ProductionEntry = () => {
                           <div className="col-4">
                             <label htmlFor="operator">Operator :</label>
                           </div>
-                          <div className="col-8">
-                            <input id="operator" className="form-control" />
+                          <div className="col-8 position-relative">
+                            <input
+                              id="operator"
+                              className="form-control"
+                              placeholder="Search by name or code"
+                              value={searchTerm}
+                              onChange={handleSearchChange}
+                              onFocus={() => setDropdownVisible(true)} // Show dropdown on focus
+                            />
+                            {dropdownVisible && (
+                              <ul
+                                className="dropdown-menu show mt-2"
+                                style={{
+                                  width: "100%",
+                                  maxHeight: "200px",
+                                  overflowY: "auto",
+                                  zIndex: 1000,
+                                }}
+                              >
+                                {filteredOperators.length > 0 ? (
+                                  filteredOperators.map((operator, index) => (
+                                    <li
+                                      key={index}
+                                      className="dropdown-item"
+                                      onClick={() => handleSelect(operator)}
+                                      style={{ cursor: "pointer" }}
+                                    >
+                                      {`${operator.Name} (${operator.Code})`}
+                                    </li>
+                                  ))
+                                ) : (
+                                  <li className="dropdown-item">
+                                    No results found
+                                  </li>
+                                )}
+                              </ul>
+                            )}
                           </div>
                         </div>
 
@@ -283,7 +617,7 @@ const ProductionEntry = () => {
                             <input
                               id="rework-qty"
                               type="text"
-                               className="form-control"
+                              className="form-control"
                             />
                             <label htmlFor="reject-qty" className="ml-2">
                               Reject Qty :
@@ -291,7 +625,7 @@ const ProductionEntry = () => {
                             <input
                               id="reject-qty"
                               type="text"
-                               className="form-control ml-2"
+                              className="form-control ml-2"
                             />
                           </div>
                         </div>
@@ -405,50 +739,83 @@ const ProductionEntry = () => {
                                 <tr>
                                   <td className="border border-gray-300 p-2">
                                     <div className="flex">
-                                      <input type="text"  className="form-control" />
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
                                       <br />
                                       <input
                                         type="text"
-                                         className="form-control"
+                                        className="form-control"
                                       />
                                     </div>
                                   </td>
                                   <td className="border border-gray-300 p-2">
                                     <div className="flex">
-                                      <input type="text"  className="form-control" />
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
                                       <br />
                                       <input
                                         type="text"
-                                         className="form-control"
+                                        className="form-control"
                                       />
                                     </div>
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                 </tr>
                               </tbody>
@@ -491,24 +858,45 @@ const ProductionEntry = () => {
                                       <label>Mill name:</label>
                                     </td>
                                     <td className="border border-gray-300 p-2">
-                                      <input type ="text" className="form-control" />
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
                                       <br />
-                                      <input type ="text" className="form-control" />
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
                                     </td>
                                     <td className="border border-gray-300 p-2">
-                                      <input type ="text" className="form-control" />
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
                                     </td>
                                     <td className="border border-gray-300 p-2">
-                                      <input type ="text" className="form-control" />
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
                                     </td>
                                     <td className="border border-gray-300 p-2">
-                                      <input type ="text" className="form-control" />
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
                                     </td>
                                     <td className="border border-gray-300 p-2">
-                                      <input type ="text" className="form-control" />
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
                                     </td>
                                     <td className="border border-gray-300 p-2">
-                                      <input type ="text" className="form-control" />
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
                                     </td>
                                   </tr>
                                 </tbody>
@@ -556,28 +944,49 @@ const ProductionEntry = () => {
                                 <tr>
                                   <td className="border border-gray-300 p-2">
                                     <div className="flex">
-                                      <input type="text"  className="form-control" />
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
                                     </div>
                                   </td>
                                   <td className="border border-gray-300 p-2">
                                     <div className="flex">
-                                      <input type="time" className="form-control"  />
+                                      <input
+                                        type="time"
+                                        className="form-control"
+                                      />
                                     </div>
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type="time" className="form-control" />
+                                    <input
+                                      type="time"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type="time" className="form-control" />
+                                    <input
+                                      type="time"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
                                     <button type="button" className="btn">
@@ -625,28 +1034,49 @@ const ProductionEntry = () => {
                                 <tr>
                                   <td className="border border-gray-300 p-2">
                                     <div className="flex">
-                                      <input type="text"  className="form-control" />
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
                                     </div>
                                   </td>
                                   <td className="border border-gray-300 p-2">
                                     <div className="flex">
-                                      <input type="time" className="form-control"/>
+                                      <input
+                                        type="time"
+                                        className="form-control"
+                                      />
                                     </div>
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type="time" className="form-control" />
+                                    <input
+                                      type="time"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type="time" className="form-control" />
+                                    <input
+                                      type="time"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <input type ="text" className="form-control" />
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
                                   </td>
                                   <td className="border border-gray-300 p-2">
                                     <button type="button" className="btn">
@@ -676,7 +1106,7 @@ const ProductionEntry = () => {
                                   </select>
                                 </div>
                                 <div className="col-md-1">
-                                  <input type="text"  className="form-control" />
+                                  <input type="text" className="form-control" />
                                 </div>
                                 <div className="col-md-1">
                                   <button type="button" className="btn">
@@ -728,7 +1158,7 @@ const ProductionEntry = () => {
                                   </select>
                                 </div>
                                 <div className="col-md-1">
-                                  <input type="text"  className="form-control" />
+                                  <input type="text" className="form-control" />
                                 </div>
                                 <div className="col-md-1">
                                   <button type="button" className="btn">
@@ -783,7 +1213,7 @@ const ProductionEntry = () => {
                                 <label>Die Name</label>
                               </div>
                               <div className="col-md-2">
-                                <input type="text"  className="form-control" />
+                                <input type="text" className="form-control" />
                               </div>
                               <div className="col-md-1">
                                 <button type="button" className="btn">
@@ -860,19 +1290,19 @@ const ProductionEntry = () => {
                         <label>Production Hours:</label>
                       </div>
                       <div className="col-md-1">
-                        <input type="time"  className="form-control"></input>
+                        <input type="time" className="form-control"></input>
                       </div>
                       <div className="col-md-2">
                         <label>Idle Hours:</label>
                       </div>
                       <div className="col-md-1">
-                        <input type="time"  className="form-control"></input>
+                        <input type="time" className="form-control"></input>
                       </div>
                       <div className="col-md-2">
                         <label>Actual Hours:</label>
                       </div>
                       <div className="col-md-1">
-                        <input type="time"  className="form-control"></input>
+                        <input type="time" className="form-control"></input>
                       </div>
                     </div>
                   </div>

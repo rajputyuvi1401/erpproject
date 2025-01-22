@@ -134,25 +134,23 @@ const QuotoComparisonStatement = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="QuoteStatement-header">
-                  <div className="row flex-nowrap align-items-center">
-                    <div className="col-md-4">
-                      <h5 className="header-title text-start">
+              <div className="QuoteStatement-header  text-start mt-5">
+                    <div className="row align-items-center">
+                      <div className="col-md-4">
+                        <h5 className="header-title">
                         Quoto Comparision Statement
                       </h5>
                     </div>
                     <div className="col-md-8 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-md-4 d-flex align-items-center">
-                          <button className="Quotebtn">
+                     
+                          <button className="btn">
                             Quote Comp Statement List
                           </button>
-                        </div>
-                      </div>
+                        
                     </div>
                   </div>
                 </div>
-                <div className="QuoteStatement-main">
+                <div className="QuoteStatement-main mt-5">
                   <ul
                     className="nav nav-pills mb-3"
                     id="pills-tab"
@@ -529,7 +527,7 @@ const QuotoComparisonStatement = () => {
                         <div className="Purchaseordertable">
                           <div className="container-fluid mt-4">
                             <div className="table-responsive">
-                            <table className="table table-bordered">
+                            <table className="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Select RFQ</th>
@@ -625,7 +623,7 @@ const QuotoComparisonStatement = () => {
                               />
                             </div>
                             <div className="col-md-4 d-flex justify-content-start align-items-start">
-                              <button className="Quotebtn">Search</button>
+                              <button className="btn">Search</button>
                             </div>
                           </div>
                         </div>

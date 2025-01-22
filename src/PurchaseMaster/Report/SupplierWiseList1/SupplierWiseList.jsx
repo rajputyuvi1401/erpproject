@@ -30,8 +30,8 @@ const SupplierWiseList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="SupplierWiseList-header">
-                  <div className="row align-items-center">
+                <div className="SupplierWiseList-header text-start mt-5">
+                    <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title text-start">
                         SupplierWise Item Purchase List
@@ -71,7 +71,7 @@ const SupplierWiseList = () => {
                   </div>
                 </div>
 
-                <div className="SupplierWiseListstatus">
+                <div className="SupplierWiseListstatus mt-5">
                   <div className="container-fluid mt-4">
                     <div className="table-responsive">
                       <table className="table table-bordered">

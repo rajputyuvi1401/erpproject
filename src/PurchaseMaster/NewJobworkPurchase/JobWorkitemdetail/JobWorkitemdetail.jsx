@@ -275,7 +275,7 @@ const JobWorkitemdetail = () => {
             </div>
             <div className="JobWorkitem-table">
               <div className="table-container">
-                <table className="table table-responsive">
+                <table className="table table-responsive table-striped">
                   <thead>
                     <tr>
                       <th>Sr</th>

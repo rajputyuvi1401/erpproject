@@ -148,9 +148,9 @@ const validateForm = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Newgrn-header">
-                  <div className="row flex-nowrap align-items-center">
-                    <div className="col-md-1">
+                <div className="Newgrn-header  mb-4 text-start mt-5">
+                    <div className="row align-items-center">
+                    <div className="col-md-2">
                       <h5 className="header-title text-start">New MRN</h5>
                     </div>
                     <div className="col-md-9 mt-4">
@@ -210,18 +210,16 @@ const validateForm = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-2 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-md-6 d-flex align-items-center">
-                          <Link className="pobtn" to="/Tool-MRN">
+                    <div className="col-md-1 text-end">
+                     
+                          <Link className="btn" to="/Tool-MRN">
                             Tool MRN
                           </Link>
-                        </div>
-                      </div>
+                       
                     </div>
                   </div>
                 </div>
-                <div className="Newgrn-main">
+                <div className="Newgrn-main mt-5">
                   <div className="container-fluid text-start">
                     <div className="row mt-4">
                       <div className="Col-md-12">
