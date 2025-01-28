@@ -523,11 +523,11 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                           57F4 Inward Challan
                         </Dropdown.Item>
                       )}
-                      {permissions.Store.includes("Jobwork Inward Challan") && (
+                      {/* {permissions.Store.includes("Jobwork Inward Challan") && ( */}
                         <Dropdown.Item as={Link} to="/Jobwork-Inward-Challan">
                           Jobwork Inward Challan
                         </Dropdown.Item>
-                      )}
+                      {/* )} */}
                       {permissions.Store.includes("Vendor Scrap Inward") && (
                         <Dropdown.Item as={Link} to="/Vendor-Scrap-Inward">
                           Vendor Scrap Inward
@@ -1177,12 +1177,12 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("JobWork Rate Diff Debit Note") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/JobWorkRateDiff">
                 JobWork Rate Diff Debit Note
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("Credit Note Entry") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/CreditNotie">
                 Credit Note Entry
               </Dropdown.Item>
             )}
@@ -1191,7 +1191,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
       )}
 
       {permissions.Sales.includes("GST Sales Return") && (
-        <Dropdown.Item as={Link} to="/">
+        <Dropdown.Item as={Link} to="/GSTSalesReturn1">
           GST Sales Return
         </Dropdown.Item>
       )}
@@ -1203,17 +1203,17 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
           </Dropdown.Toggle>
           <Dropdown.Menu>
             {permissions.Sales.includes("Material GatePass New") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/MaterialGatepassNew">
                 Material GatePass New
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("Pending Material GatePass") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/PendingMaterialGatepassLis">
                 Pending Material GatePass
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("Material GatePass List") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/MaterialGatepassList">
                 Material GatePass List
               </Dropdown.Item>
             )}
@@ -1228,57 +1228,57 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
           </Dropdown.Toggle>
           <Dropdown.Menu>
             {permissions.Sales.includes("Customer Sales Order List") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/CustSalesOrderList">
                 Customer Sales Order List
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("Tax Invoice List") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/TaxInvoiceList">
                 Tax Invoice List
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("Tax Invoice List Bajaj") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/BajajTaxInvoiceList">
                 Tax Invoice List Bajaj
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("JobWork Invoice List") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/JobworkInvList">
                 JobWork Invoice List
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("JobWork DC List") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/JobworkDCList">
                 JobWork DC List
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("OutWard 57F4 Challan List") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/OutwardChallanList">
                 OutWard 57F4 Challan List
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("Debit Note List") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/DebitNoteList">
                 Debit Note List
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("Credit Note List") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/CreditNoteList">
                 Credit Note List
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("GST Sales Return List") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/GSTSalesReturnList">
                 GST Sales Return List
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("RG1 Register") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/RG1Register">
                 RG1 Register
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("Transport List") && (
-              <Dropdown.Item as={Link} to="/">
+              <Dropdown.Item as={Link} to="/TransportList">
                 Transport List
               </Dropdown.Item>
             )}

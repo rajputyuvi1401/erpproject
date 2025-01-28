@@ -6,6 +6,9 @@ import SideNav from "../../../SideNav/SideNav.js";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import './PoList.css'
+import { fetchPurchaseOrders ,deletePurchaseOrder } from "../../../Service/PurchaseApi.jsx"; 
+import jsPDF from "jspdf";
+
 const PoList = () => {
       const [sideNavOpen, setSideNavOpen] = useState(false);
     
@@ -20,6 +23,52 @@ const PoList = () => {
           document.body.classList.remove("side-nav-open");
         }
       }, [sideNavOpen]);
+
+      const [purchaseOrders, setPurchaseOrders] = useState([]);
+
+  // Fetch purchase orders when component mounts
+  useEffect(() => {
+    const getPurchaseOrders = async () => {
+      try {
+        const data = await fetchPurchaseOrders();
+        setPurchaseOrders(data); // Set the fetched data
+      } catch (error) {
+        console.error('Error fetching purchase orders:', error);
+      }
+    };
+
+    getPurchaseOrders();
+  }, []);
+
+  // Handle deletion of a purchase order
+  const handleDelete = async (id) => {
+    try {
+      await deletePurchaseOrder(id); // Call the delete function
+      setPurchaseOrders((prevOrders) => prevOrders.filter((order) => order.id !== id)); // Remove deleted order from the state
+    } catch (error) {
+      console.error('Error deleting purchase order:', error);
+    }
+  };
+
+  const handleView = (order) => {
+    // Create a new PDF document
+    const doc = new jsPDF();
+
+    // Add content to the PDF (you can format it as needed)
+    doc.text(`Purchase Order No: ${order.PoNo}`, 10, 10);
+    doc.text(`Po Date: ${order.PoDate}`, 10, 20);
+    doc.text(`Po Type: ${order.field}`, 10, 30);
+    doc.text(`Supplier/Vendor Name: ${order.ContactPerson || 'N/A'}`, 10, 40);
+    doc.text(`Po Status: ${order.PoStatus || 'N/A'}`, 10, 50);
+    doc.text(`Email: ${order.Email || 'N/A'}`, 10, 60);
+
+    // Open the PDF in a new window
+    doc.output('dataurlnewwindow');
+
+    // Optionally, you can trigger the print dialog directly
+    doc.autoPrint();
+  };
+
   return (
     <div className="POListMaster">
     <div className="container-fluid">
@@ -177,39 +226,38 @@ const PoList = () => {
 
                         <th scope="col">Edit</th>
                         <th scope="col">View</th>
-                        
+                        <th scope="col">Delete</th> {/* Add Delete column */}
                       </tr>
                     </thead>
                     <tbody>
-                      {/* Example data row */}
-                      <tr>
-                        <td>1</td>
-                        <td>January</td>
-                        <td>01/01/2024</td>
-                        <td>31/01/2024</td>
-                        <td>1</td>
-                        <td>2024</td>
-                        <td>1</td>
-                        <td>January</td>
-                        <td>01/01/2024</td>
-                        <td>31/01/2024</td>
-                        <td>1</td>
-                        <td>2024</td>
-                        <td>2024</td>
-                      
-                        <td>
-                          <button className="btn btn-link">
-                            <FaEdit />
-                          </button>
-                        </td>
-                        <td>
-                          <button className="btn btn-link text-danger">
-                            <FaTrash />
-                          </button>
-                        </td>
-                      </tr>
-                      {/* More rows can be added here */}
-                    </tbody>
+          {purchaseOrders.map((order, index) => (
+            <tr key={order.id}>
+              <td>{index + 1}</td>
+              <td>{order.PoDate ? new Date(order.PoDate).getFullYear() : 'N/A'}</td>
+              <td>{order.Plant || 'N/A'}</td>
+              <td>{order.PoNo}</td>
+              <td>{order.PoDate}</td>
+              <td>{order.field}</td>
+              <td>{order.EnquiryNo}</td>
+              <td>{order.ContactPerson || 'N/A'}</td>
+              <td>{order.User || 'N/A'}</td>
+              <td>{order.PoNote || 'N/A'}</td>
+              <td>{order.ApprovedBy || 'N/A'}</td>
+              <td>{order.PoStatus || 'N/A'}</td>
+              <td>{order.Email || 'N/A'}</td>
+              <td>{order.Doc || 'N/A'}</td>
+              <td>
+                <button type="button" className="btn"><FaEdit/></button>
+              </td>
+              <td>
+                <button type="button" className="btn" onClick={() => handleView(order)}>View</button>
+              </td>
+              <td>
+                <button type="button" className="btn" onClick={() => handleDelete(order.id)}><FaTrash/></button> {/* Delete button */}
+              </td>
+            </tr>
+          ))}
+        </tbody>
                   </table>
                 </div>
               </div>

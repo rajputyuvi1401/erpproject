@@ -1,0 +1,78 @@
+
+.TransportListMaster {
+    margin-top: 0px;
+  }
+  
+  /* Header Styling */
+  .TransportList-header {
+    background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
+  }
+  
+  .TransportList-header .header-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Flex wrapping for buttons and select dropdowns */
+  .TransportList-header .d-flex {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .TransportList-Main {
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+  }
+  
+  /* Inputs and buttons for all screen sizes */
+  .TransportList-Main label {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .TransportList-Main .form-control,
+  .TransportList-Main .form-select {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  
+  .TransportList-Main .btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .TransportList-header .header-title {
+      font-size: 1.2rem;
+    }
+  
+    .TransportList-header .d-flex {
+      justify-content: center;
+    }
+  
+    .TransportList-Main .col-6,
+    .TransportList-Main .col-md-3,
+    .TransportList-Main .col-md-2 {
+      width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  
+    .TransportList-Main .btn {
+      margin-top: 10px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .TransportList-header {
+      text-align: center;
+    }
+  }
+  

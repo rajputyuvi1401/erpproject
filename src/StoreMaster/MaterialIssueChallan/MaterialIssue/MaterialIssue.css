@@ -1,28 +1,22 @@
-/* General Styles */
-.NewStoreMaterialIssueee {
-    background-color: white;
-    min-height: 100vh; /* Ensure the page fills the entire viewport height */
-    padding: 20px; /* Add padding to ensure spacing */
-}
 
-.MaterialIssueee-header {
-    margin-top: 20px;
-    background-color: aliceblue;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.MaterialIssueee-header  {
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;
+  }
+  
+  .MaterialIssueee-header .header-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
   }
   
 
 .MaterialIssueee-main {
-    background-color: aliceblue;
-    padding: 15px;
-    margin-top: 30px;
-    border-radius: 5px;
-}
-
-.StoreMaterialIssueee {
-    background-color: aliceblue;
-    padding: 15px;
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
     border-radius: 5px;
 }
 

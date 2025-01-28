@@ -39,11 +39,16 @@ const ContractorReport = () => {
                       <div className="col-md-4 col-12 mb-2 mb-md-0">
                         <h5 className="header-title">Contractor Payment List</h5>
                       </div>
-                      <div className="col-md-8 col-12 text-end">
-                        <div className="d-flex justify-content-end gap-2 flex-wrap">
-                          <select className="form-select w-auto">
+                      <div className="col-md-2">
+                      <select className="form-select w-auto">
                             <option>Pay</option>
                           </select>
+                      </div>
+                         
+                     
+                      <div className="col-md-6 col-12 text-end">
+                       
+                        
                           <button type="button" className="btn">
                             Efficiency Report
                           </button>
@@ -55,7 +60,7 @@ const ContractorReport = () => {
                           </Link>
                         </div>
                       </div>
-                    </div>
+                    
                   </div>
 
                   <div className="ContractorReport-Main">

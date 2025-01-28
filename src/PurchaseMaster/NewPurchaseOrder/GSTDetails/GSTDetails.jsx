@@ -1,63 +1,88 @@
-import React, { useState } from "react";
-import "./GStDetails.css";
+import React, { useState, useEffect } from "react"
+import "./GStDetails.css"
 
 const GSTDetails = ({ updateFormData = () => {} }) => {
-  const [gstDetails, setGstDetails] = useState({
-    ItemCode: "",
-    HSN: "",
-    Rate: "",
-    Qty: "",
-    SubTotal: "",
-    Discount: { disc: "", amt: "" },
-    Packing: "",
-    Transport: "",
-    ToolAmort: { value: "", amt: "" },
-    AssValue: "",
-    CGST: "",
-    SGST: "",
-    IGST: "",
-    Vat: "",
-    Cess: "",
-    Total: "",
-    TOC_AssableValue: "",
-    TOC_PackCharges: "",
-    TOC_TransportCost: "",
-    TOC_Insurance: "",
-    TOC_InstallationCharges: "",
-    TOC_CGST: "",
-    TOC_SGST: "",
-    TOC_IGST: "",
-    TOC_VAT: "",
-    TOC_CESS: "",
-    TOC_TDS: "",
-    GR_Total: "",
-  });
+  const [gstDetails, setGstDetails] = useState([
+    {
+      ItemCode: "",
+      HSN: "",
+      Rate: "",
+      Qty: "",
+      SubTotal: "",
+      Discount: "",
+      Packing: "",
+      Transport: "",
+      ToolAmort: "",
+      AssValue: "",
+      CGST: "",
+      SGST: "",
+      IGST: "",
+      Vat: "",
+      Cess: "",
+      Total: "",
+      TOC_AssableValue: "",
+      TOC_PackCharges: "",
+      TOC_TransportCost: "",
+      TOC_Insurance: "",
+      TOC_InstallationCharges: "",
+      TOC_CGST: "",
+      TOC_SGST: "",
+      TOC_IGST: "",
+      TOC_VAT: "",
+      TOC_CESS: "",
+      TOC_TDS: "",
+      GR_Total: "",
+    },
+  ])
 
-  // Handle input changes for both flat and nested fields
-  const handleInputChange = (e, parentKey = null, childKey = null) => {
-    const { name, value } = e.target;
+  useEffect(() => {
+    updateFormData("Gst_Details", gstDetails)
+  }, [gstDetails, updateFormData])
 
-    setGstDetails((prev) => {
-      const updatedDetails = { ...prev };
+  const handleInputChange = (index, field, value) => {
+    const updatedDetails = [...gstDetails]
+    updatedDetails[index] = {
+      ...updatedDetails[index],
+      [field]: value,
+    }
+    setGstDetails(updatedDetails)
+  }
 
-      if (parentKey && childKey) {
-        updatedDetails[parentKey] = {
-          ...updatedDetails[parentKey],
-          [childKey]: value,
-        };
-      } else {
-        updatedDetails[name] = value;
-      }
-
-      // Sync with parent component
-      updateFormData("Gst_Details", updatedDetails);
-
-      return updatedDetails;
-    });
-  };
-
-
-
+  const addNewRow = () => {
+    setGstDetails([
+      ...gstDetails,
+      {
+        ItemCode: "",
+        HSN: "",
+        Rate: "",
+        Qty: "",
+        SubTotal: "",
+        Discount: "",
+        Packing: "",
+        Transport: "",
+        ToolAmort: "",
+        AssValue: "",
+        CGST: "",
+        SGST: "",
+        IGST: "",
+        Vat: "",
+        Cess: "",
+        Total: "",
+        TOC_AssableValue: "",
+        TOC_PackCharges: "",
+        TOC_TransportCost: "",
+        TOC_Insurance: "",
+        TOC_InstallationCharges: "",
+        TOC_CGST: "",
+        TOC_SGST: "",
+        TOC_IGST: "",
+        TOC_VAT: "",
+        TOC_CESS: "",
+        TOC_TDS: "",
+        GR_Total: "",
+      },
+    ])
+  }
 
   return (
     <div className="GStDetails">
@@ -84,182 +109,158 @@ const GSTDetails = ({ updateFormData = () => {} }) => {
                   <th>Vat</th>
                   <th>Cess</th>
                   <th>Total</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="ItemCode"
-                      value={gstDetails.ItemCode}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="HSN"
-                      value={gstDetails.HSN}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="Rate"
-                      value={gstDetails.Rate}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="Qty"
-                      value={gstDetails.Qty}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="SubTotal"
-                      value={gstDetails.SubTotal}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <div>
-                      Disc:{" "}
+                {gstDetails.map((detail, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={detail.ItemCode}
+                        onChange={(e) => handleInputChange(index, "ItemCode", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={detail.HSN}
+                        onChange={(e) => handleInputChange(index, "HSN", e.target.value)}
+                      />
+                    </td>
+                    <td>
                       <input
                         type="number"
                         className="form-control"
-                        name="discount.Disc"
-                        value={gstDetails.Discount.disc}
-                        onChange={(e) => handleInputChange(e, "discount", "disc")}
+                        value={detail.Rate}
+                        onChange={(e) => handleInputChange(index, "Rate", e.target.value)}
                       />
-                    </div>
-                    <div>
-                      Amt:{" "}
+                    </td>
+                    <td>
                       <input
                         type="number"
                         className="form-control"
-                        name="discount.amt"
-                        value={gstDetails.Discount.amt}
-                        onChange={(e) => handleInputChange(e, "discount", "amt")}
+                        value={detail.Qty}
+                        onChange={(e) => handleInputChange(index, "Qty", e.target.value)}
                       />
-                    </div>
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="Packing"
-                      value={gstDetails.Packing}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="Transport"
-                      value={gstDetails.Transport}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="ToolAmort.value"
-                      value={gstDetails.ToolAmort.disc}
-                      onChange={(e) => handleInputChange(e, "toolAmort", "value")}
-                    />
-                    <div>
-                      Amt:{" "}
+                    </td>
+                    <td>
                       <input
                         type="number"
                         className="form-control"
-                        name="ToolAmort.amt"
-                        value={gstDetails.ToolAmort.amt}
-                        onChange={(e) => handleInputChange(e, "toolAmort", "amt")}
+                        value={detail.SubTotal}
+                        onChange={(e) => handleInputChange(index, "SubTotal", e.target.value)}
                       />
-                    </div>
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="AssValue"
-                      value={gstDetails.AssValue}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="CGST"
-                      value={gstDetails.CGST}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="SGST"
-                      value={gstDetails.SGST}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="IGST"
-                      value={gstDetails.IGST}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="Vat"
-                      value={gstDetails.Vat}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="Cess"
-                      value={gstDetails.Cess}
-                      onChange={handleInputChange}
-                    />
-                  </td>
-                  <td>
-                    <input type="number" className="form-control" name="Total" value={gstDetails.Total} onChange={handleInputChange} />
-                  </td>
-                </tr>
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={detail.Discount}
+                        onChange={(e) => handleInputChange(index, "Discount", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={detail.Packing}
+                        onChange={(e) => handleInputChange(index, "Packing", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={detail.Transport}
+                        onChange={(e) => handleInputChange(index, "Transport", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={detail.ToolAmort}
+                        onChange={(e) => handleInputChange(index, "ToolAmort", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={detail.AssValue}
+                        onChange={(e) => handleInputChange(index, "AssValue", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={detail.CGST}
+                        onChange={(e) => handleInputChange(index, "CGST", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={detail.SGST}
+                        onChange={(e) => handleInputChange(index, "SGST", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={detail.IGST}
+                        onChange={(e) => handleInputChange(index, "IGST", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={detail.Vat}
+                        onChange={(e) => handleInputChange(index, "Vat", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={detail.Cess}
+                        onChange={(e) => handleInputChange(index, "Cess", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={detail.Total}
+                        onChange={(e) => handleInputChange(index, "Total", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                    <button className="btn" onClick={addNewRow}>
+              Add New Row
+            </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
+           
           </div>
         </div>
       </div>
       <div className="gsttable">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-8">
               <table className="table table-bordered table-responsive">
                 <tbody>
                   <tr>
@@ -268,9 +269,8 @@ const GSTDetails = ({ updateFormData = () => {} }) => {
                       <input
                         type="number"
                         className="form-control"
-                        name="TOC_AssableValue"
-                        value={gstDetails.TOC_AssableValue}
-                        onChange={handleInputChange}
+                        value={gstDetails[0].TOC_AssableValue}
+                        onChange={(e) => handleInputChange(0, "TOC_AssableValue", e.target.value)}
                       />
                     </td>
                     <td>CGST:</td>
@@ -278,9 +278,8 @@ const GSTDetails = ({ updateFormData = () => {} }) => {
                       <input
                         type="number"
                         className="form-control"
-                        name="TOC_CGST"
-                        value={gstDetails.TOC_CGST}
-                        onChange={handleInputChange}
+                        value={gstDetails[0].TOC_CGST}
+                        onChange={(e) => handleInputChange(0, "TOC_CGST", e.target.value)}
                       />
                     </td>
                   </tr>
@@ -292,9 +291,8 @@ const GSTDetails = ({ updateFormData = () => {} }) => {
                       <input
                         type="number"
                         className="form-control"
-                        name="TOC_PackCharges"
-                        value={gstDetails.TOC_PackCharges}
-                        onChange={handleInputChange}
+                        value={gstDetails[0].TOC_PackCharges}
+                        onChange={(e) => handleInputChange(0, "TOC_PackCharges", e.target.value)}
                       />
                     </td>
                     <td>SGST:</td>
@@ -302,9 +300,8 @@ const GSTDetails = ({ updateFormData = () => {} }) => {
                       <input
                         type="number"
                         className="form-control"
-                        name="TOC_SGST"
-                        value={gstDetails.TOC_SGST}
-                        onChange={handleInputChange}
+                        value={gstDetails[0].TOC_SGST}
+                        onChange={(e) => handleInputChange(0, "TOC_SGST", e.target.value)}
                       />
                     </td>
                   </tr>
@@ -316,9 +313,8 @@ const GSTDetails = ({ updateFormData = () => {} }) => {
                       <input
                         type="number"
                         className="form-control"
-                        name="TOC_TransportCost"
-                        value={gstDetails.TOC_TransportCost}
-                        onChange={handleInputChange}
+                        value={gstDetails[0].TOC_TransportCost}
+                        onChange={(e) => handleInputChange(0, "TOC_TransportCost", e.target.value)}
                       />
                     </td>
                     <td>IGST:</td>
@@ -326,9 +322,8 @@ const GSTDetails = ({ updateFormData = () => {} }) => {
                       <input
                         type="number"
                         className="form-control"
-                        name="TOC_IGST"
-                        value={gstDetails.TOC_IGST}
-                        onChange={handleInputChange}
+                        value={gstDetails[0].TOC_IGST}
+                        onChange={(e) => handleInputChange(0, "TOC_IGST", e.target.value)}
                       />
                     </td>
                   </tr>
@@ -340,9 +335,8 @@ const GSTDetails = ({ updateFormData = () => {} }) => {
                       <input
                         type="number"
                         className="form-control"
-                        name="TOC_Insurance"
-                        value={gstDetails.TOC_Insurance}
-                        onChange={handleInputChange}
+                        value={gstDetails[0].TOC_Insurance}
+                        onChange={(e) => handleInputChange(0, "TOC_Insurance", e.target.value)}
                       />
                     </td>
                     <td>VAT:</td>
@@ -350,9 +344,8 @@ const GSTDetails = ({ updateFormData = () => {} }) => {
                       <input
                         type="number"
                         className="form-control"
-                        name="TOC_VAT"
-                        value={gstDetails.TOC_VAT}
-                        onChange={handleInputChange}
+                        value={gstDetails[0].TOC_VAT}
+                        onChange={(e) => handleInputChange(0, "TOC_VAT", e.target.value)}
                       />
                     </td>
                   </tr>
@@ -364,9 +357,8 @@ const GSTDetails = ({ updateFormData = () => {} }) => {
                       <input
                         type="number"
                         className="form-control"
-                        name="TOC_InstallationCharges"
-                        value={gstDetails.TOC_InstallationCharges}
-                        onChange={handleInputChange}
+                        value={gstDetails[0].TOC_InstallationCharges}
+                        onChange={(e) => handleInputChange(0, "TOC_InstallationCharges", e.target.value)}
                       />
                     </td>
                     <td>CESS:</td>
@@ -374,9 +366,8 @@ const GSTDetails = ({ updateFormData = () => {} }) => {
                       <input
                         type="number"
                         className="form-control"
-                        name="TOC_CESS"
-                        value={gstDetails.TOC_CESS}
-                        onChange={handleInputChange}
+                        value={gstDetails[0].TOC_CESS}
+                        onChange={(e) => handleInputChange(0, "TOC_CESS", e.target.value)}
                       />
                     </td>
                   </tr>
@@ -388,19 +379,17 @@ const GSTDetails = ({ updateFormData = () => {} }) => {
                       <input
                         type="number"
                         className="form-control"
-                        name="TOC_TDS"
-                        value={gstDetails.TOC_TDS}
-                        onChange={handleInputChange}
+                        value={gstDetails[0].TOC_TDS}
+                        onChange={(e) => handleInputChange(0, "TOC_TDS", e.target.value)}
                       />
                     </td>
-                    <td htmlFor="GR_Total">GRAND TOTAL:</td>
+                    <td>GRAND TOTAL:</td>
                     <td>
                       <input
                         type="number"
                         className="form-control"
-                        name="GR_Total"
-                        value={gstDetails.GR_Total}
-                        onChange={handleInputChange}
+                        value={gstDetails[0].GR_Total}
+                        onChange={(e) => handleInputChange(0, "GR_Total", e.target.value)}
                       />
                     </td>
                   </tr>

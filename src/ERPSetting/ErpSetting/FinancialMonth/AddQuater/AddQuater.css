@@ -16,6 +16,13 @@
     margin: 0;
 }
 
+.Quarter-Main{
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;  
+}
+
 /* Form and Inputs */
 .Quarter-Main label {
     font-size: 14px;

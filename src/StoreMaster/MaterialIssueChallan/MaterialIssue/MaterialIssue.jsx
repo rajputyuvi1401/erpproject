@@ -48,8 +48,8 @@ const MaterialIssue = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="MaterialIssueee-header">
-                  <div className="row flex-nowrap align-items-center">
+                <div className="MaterialIssueee-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
                     <div className="col-md-2">
                       <h5 className="header-title text-start">
                         New Material Issue
@@ -79,13 +79,11 @@ const MaterialIssue = () => {
                       </div>
                     </div>
                     <div className="col-md-3 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-md-12 d-flex align-items-center">
-                          <Link className="pobtn" to="/Work-Issue-Report">
+                     
+                          <Link className="btn" to="/Work-Issue-Report">
                             WorkOrder Material Issue Report
                           </Link>
-                        </div>
-                      </div>
+                       
                     </div>
                   </div>
                 </div>

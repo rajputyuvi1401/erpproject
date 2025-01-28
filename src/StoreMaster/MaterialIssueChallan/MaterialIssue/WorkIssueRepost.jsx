@@ -30,8 +30,8 @@ const WorkIssueRepost = () => {
             <NavBar toggleSideNav={toggleSideNav} />
             <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="WorkOrderMaterial-header">
-                <div className="row flex-nowrap align-items-center">
+              <div className="WorkOrderMaterial-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
                   <div className="col-md-4">
                     <h5 className="header-title text-start">
                       Work Order Material Issue Report 
@@ -39,12 +39,10 @@ const WorkIssueRepost = () => {
                   </div>
 
                   <div className="col-md-8 text-end">
-                    <div className="row justify-content-end">
-                      <div className="col-md-3 d-flex align-items-end">
-                        <Link className="pobtn">Export To Excel</Link>
+                   
+                        <Link className="btn">Export To Excel</Link>
                       </div>
-                    </div>
-                  </div>
+                   
                 </div>
               </div>
               <div className="WorkOrderMaterial-main">

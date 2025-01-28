@@ -253,12 +253,15 @@
   display: block;
 }
 
+
+
 .blueside-Nav .dropdown-menu .dropdown-item {
   color: #ecf0f1;
   padding: 10px 15px;
   text-decoration: none;
   background-color: #34495e;
 }
+
 
 .blueside-Nav .dropdown-menu .dropdown-item:hover {
   background-color: #1abc9c;

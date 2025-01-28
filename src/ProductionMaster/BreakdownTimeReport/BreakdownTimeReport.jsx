@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
-import { FaEdit, FaTrash } from "react-icons/fa";
+
 
 const BreakdownTimeReport = () => {
     const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -32,7 +32,7 @@ const BreakdownTimeReport = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PRoWorkorderList mt-5">
+                {/* <div className="PRoWorkorderList mt-5">
                   <div className="PRoWorkorderList-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
@@ -57,19 +57,19 @@ const BreakdownTimeReport = () => {
                   <div className="PRoWorkorderList-Main">
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
-                        {/* From Date */}
+                     
                         <div className="col-sm-6 col-md-2 col-lg-1">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
-                        {/* To Date */}
+                       
                         <div className="col-sm-6 col-md-2 col-lg-1">
                           <label>To Date:</label>
                           <input type="date" className="form-control" />
                         </div>
 
-                        {/* Plant */}
+                      
                         <div className="col-sm-6 col-md-2 col-lg-1">
                           <label>Plant:</label>
                           <select className="form-select">
@@ -77,7 +77,7 @@ const BreakdownTimeReport = () => {
                           </select>
                         </div>
 
-                        {/* Status */}
+                       
                         <div className="col-sm-6 col-md-2 col-lg-1">
                           <label>Status:</label>
                           <select className="form-select">
@@ -85,7 +85,7 @@ const BreakdownTimeReport = () => {
                           </select>
                         </div>
 
-                        {/* Type */}
+                       
                         <div className="col-sm-6 col-md-2 col-lg-1">
                           <label>Type:</label>
                           <select className="form-select">
@@ -93,7 +93,7 @@ const BreakdownTimeReport = () => {
                           </select>
                         </div>
 
-                        {/* Series */}
+                       
                         <div className="col-sm-6 col-md-2 col-lg-1">
                           <label>Series:</label>
                           <select className="form-select">
@@ -101,7 +101,7 @@ const BreakdownTimeReport = () => {
                           </select>
                         </div>
 
-                        {/* Auth */}
+                       
                         <div className="col-sm-6 col-md-2 col-lg-1">
                           <label>Auth:</label>
                           <select className="form-select">
@@ -109,19 +109,18 @@ const BreakdownTimeReport = () => {
                           </select>
                         </div>
 
-                        {/* Customer Name */}
+                      
                         <div className="col-sm-6 col-md-1 col-lg-1">
                           <label>Customer Name:</label>
                           <input type="text" className="form-control" />
                         </div>
 
-                        {/* Item Name */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
+                       <div className="col-sm-6 col-md-1 col-lg-1">
                           <label>Item Name:</label>
                           <input type="text" className="form-control" />
                         </div>
 
-                        {/* Wo No */}
+                       
                         <div className="col-sm-6 col-md-1 col-lg-1">
                           <label>Wo No:</label>
                           <input type="text" className="form-control" />
@@ -168,7 +167,7 @@ const BreakdownTimeReport = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {/* Example data row */}
+                       
                         <tr>
                           <td>1</td>
                           <td>January</td>
@@ -196,11 +195,11 @@ const BreakdownTimeReport = () => {
                             </button>
                           </td>
                         </tr>
-                        {/* More rows can be added here */}
+                      
                       </tbody>
                     </table>
                   </div>
-                </div>
+                </div> */}
               </main>
             </div>
           </div>

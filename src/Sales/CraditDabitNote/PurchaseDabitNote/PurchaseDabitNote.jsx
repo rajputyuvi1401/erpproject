@@ -14,6 +14,9 @@ const PurchaseDabitNote = () => {
     const handleButtonClick = () => {
       navigate('/DabitNoteList'); 
     };
+    const handleBttnClick = () => {
+      navigate('/DN574Fout'); 
+    };
 
   const toggleSideNav = () => {
     setSideNavOpen((prevState) => !prevState);
@@ -80,7 +83,7 @@ const PurchaseDabitNote = () => {
                         <button type="button" className="btn" onClick={handleButtonClick}>
                           Dabit Note List
                         </button>
-                        <button type="button" className="btn ">
+                        <button type="button" className="btn " onClick={handleBttnClick}>
                           DN-57F4out
                         </button>
                         </div>

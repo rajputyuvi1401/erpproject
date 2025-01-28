@@ -19,7 +19,7 @@ const ReworkReport = () => { const [sideNavOpen, setSideNavOpen] = useState(fals
     }, [sideNavOpen]);
   
     return (
-      <div className="PRoWorkorderListMaster">
+      <div className="ReworkReportMaster">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -30,8 +30,8 @@ const ReworkReport = () => { const [sideNavOpen, setSideNavOpen] = useState(fals
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PRoWorkorderList mt-5">
-                  <div className="PRoWorkorderList-header mb-4 text-start">
+                <div className="ReworkReport">
+                  <div className="ReworkReport-header mb-4 text-start mt-5">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Process Defect - Rewok Report</h5>
@@ -50,7 +50,7 @@ const ReworkReport = () => { const [sideNavOpen, setSideNavOpen] = useState(fals
                     </div>
                   </div>
   
-                  <div className="PRoWorkorderList-Main">
+                  <div className="ReworkReport-Main mt-5">
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
                         
@@ -99,15 +99,15 @@ const ReworkReport = () => { const [sideNavOpen, setSideNavOpen] = useState(fals
                           <input type="text" className="form-control" />
                         </div>
   
-                        <div className="col-sm-2 col-md-2 col-lg-1 mt-4">
-                        <button type="button" className="btn btn-primary w-100" >
+                        <div className="col-sm-2">
+                        <button type="button" className="btn" style={{marginTop:"30px"}} >
                             Search
                         </button>   
                         </div>
                      </div>
                     </div>
                   </div>
-            <hr />
+
                 </div>
               </main>
             </div>

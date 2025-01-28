@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react"
 import "./Poinfo.css"
 import { FaPlus, FaSync, FaEdit, FaTrash } from "react-icons/fa"
-import {  ToastContainer } from "react-toastify"
+import { ToastContainer } from "react-toastify"
 import { fetchNextCode } from "../../../Service/PurchaseApi"
 
 const Poinfo = ({ updateFormData }) => {
-  const [currentDate, setCurrentDate] = useState("")
+
   const [currentTime, setCurrentTime] = useState("")
   const [showCard, setShowCard] = useState(false)
   const [selectedSeries, setSelectedSeries] = useState("select")
@@ -49,10 +49,10 @@ const Poinfo = ({ updateFormData }) => {
   useEffect(() => {
     // Get the current date and time
     const now = new Date()
-    const date = now.toISOString().split("T")[0] // Get the date in YYYY-MM-DD format
+
     const time = now.toTimeString().split(" ")[0].substring(0, 5) // Get the time in HH:MM format
 
-    setCurrentDate(date)
+
     setCurrentTime(time)
   }, [])
 
@@ -83,29 +83,41 @@ const Poinfo = ({ updateFormData }) => {
   }
 
   const handleSeriesChange = async (e) => {
-    const seriesValue = e.target.value;
-    setSelectedSeries(seriesValue);
+    const seriesValue = e.target.value
+    setSelectedSeries(seriesValue)
+    setFormData((prevState) => ({
+      ...prevState,
+      field: seriesValue,
+    }))
+    updateFormData("field", seriesValue)
 
     if (seriesValue === "select") {
-      setPoNo("");
-      return;
+      setPoNo("")
+      setFormData((prevState) => ({
+        ...prevState,
+        PoNo: "",
+      }))
+      updateFormData("PoNo", "")
+      return
     }
 
-    setLoading(true);
+    setLoading(true)
     try {
-      const year = localStorage.getItem("Shortyear");
-      const response = await fetchNextCode(seriesValue, year);
-      setPoNo(response?.next_code || "");
+      const year = localStorage.getItem("Shortyear")
+      const response = await fetchNextCode(seriesValue, year)
+      const nextCode = response?.next_code || ""
+      setPoNo(nextCode)
+      setFormData((prevState) => ({
+        ...prevState,
+        PoNo: nextCode,
+      }))
+      updateFormData("PoNo", nextCode)
     } catch (error) {
-      console.error("Error fetching PO number:", error);
+      console.error("Error fetching PO number:", error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
-
-
-
-
+  }
 
   const handleClear = () => {
     setFormData({
@@ -142,10 +154,9 @@ const Poinfo = ({ updateFormData }) => {
       GstTaxes: "",
     })
     setErrors({})
-    setErrors({});
-    setSelectedSeries("select");
-    setPoNo("");
-
+    setErrors({})
+    setSelectedSeries("select")
+    setPoNo("")
   }
 
   return (
@@ -182,6 +193,13 @@ const Poinfo = ({ updateFormData }) => {
                           className="form-control mt-2"
                           value={loading ? "Loading..." : PoNo}
                           readOnly
+                          onChange={(e) => {
+                            setFormData((prevState) => ({
+                              ...prevState,
+                              PoNo: e.target.value,
+                            }))
+                            updateFormData("PoNo", e.target.value)
+                          }}
                         />
                       )}
                       {errors.PoNo && <p className="error">{errors.PoNo}</p>}
@@ -348,12 +366,14 @@ const Poinfo = ({ updateFormData }) => {
                   <div className="col-md-8">
                     <div className="form-group mb-3">
                       <input
-                        type="date"
-                        name="date"
+                        type="Date"
+                        name="PoDate"
                         className="form-control"
-                        id="date"
-                        value={currentDate}
-                        onChange={(e) => setCurrentDate(e.target.value)}
+                        id="PoDate"
+                        value={formData.PoDate
+
+                        }
+                        onChange={handleChange}
                       />
                     </div>
                   </div>

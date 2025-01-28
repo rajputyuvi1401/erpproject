@@ -39,32 +39,37 @@ const NewPurchaseOrder = () => {
   const handleSeriesChange = async (e) => {
     const seriesValue = e.target.value
     setSelectedSeries(seriesValue)
+    setFormData((prevData) => ({ ...prevData, field: seriesValue }))
 
     if (seriesValue.trim() === "") {
-      setIndentNo("") // Clear the indent number if no series is selected
+      setIndentNo("")
+      setFormData((prevData) => ({ ...prevData, PoNo: "" }))
       return
     }
 
-    const year = localStorage.getItem("Shortyear") // Fetch Shortyear from localStorage
+    const year = localStorage.getItem("Shortyear")
 
     if (!year) {
       console.error("Year is not available in localStorage.")
-      setIndentNo("") // Clear the indent number and notify the user
+      setIndentNo("")
+      setFormData((prevData) => ({ ...prevData, PoNo: "" }))
       return
     }
 
     setLoading(true)
     try {
-      // Use the selected series and the year from localStorage in the API request
       const response = await fetchNextCode(seriesValue, year)
       if (response && response.next_code) {
-        setIndentNo(response.next_code) // Set the next_code in the indent number field
+        setIndentNo(response.next_code)
+        setFormData((prevData) => ({ ...prevData, PoNo: response.next_code }))
       } else {
-        setIndentNo("") // Clear if no code is returned
+        setIndentNo("")
+        setFormData((prevData) => ({ ...prevData, PoNo: "" }))
       }
     } catch (error) {
       console.error("Error fetching next code:", error)
-      setIndentNo("") // Clear in case of error
+      setIndentNo("")
+      setFormData((prevData) => ({ ...prevData, PoNo: "" }))
     } finally {
       setLoading(false)
     }
@@ -162,27 +167,21 @@ const NewPurchaseOrder = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // // Validate required fields
-
-    console.log("submission",formData);
-    
     if (!formData.field || !formData.PoNo || !formData.EnquiryNo) {
-      toast.error("Field, PoNo, and EnquiryNo are required.");
-      return;
+      toast.error("Field, PoNo, and EnquiryNo are required.")
+      return
     }
-
-    
 
     try {
       const response = await registerPurchaseOrder(formData)
       console.log("Purchase order saved successfully", response)
       toast.success("Purchase order saved successfully")
     } catch (error) {
-      console.error("Error saving purchase order:", error);
+      console.error("Error saving purchase order:", error)
       if (error.response && error.response.data.error) {
-        toast.error(error.response.data.error); // Show backend error
+        toast.error(error.response.data.error)
       } else {
-        toast.error("An unexpected error occurred.");
+        toast.error("An unexpected error occurred.")
       }
     }
   }
@@ -227,7 +226,6 @@ const NewPurchaseOrder = () => {
                         <div className="col-md-2" style={{ marginTop: "20px" }}>
                           <input type="text" className="form-control" value={indentNo} readOnly />
                         </div>
-                       
 
                         <div className="col-md-1">
                           <label>Supplier:</label>
@@ -322,14 +320,17 @@ const NewPurchaseOrder = () => {
                         </div>
                       </div>
 
+<div className="row">
+  
+</div>
                       <div className="button-group mt-3 text-end">
                         {activeTab > 0 && (
-                          <button type="button" className="btn btn-secondary" onClick={handlePrevious}>
+                          <button type="button" className="btn" onClick={handlePrevious}>
                             Previous
                           </button>
                         )}
                         {activeTab < 5 ? (
-                          <button type="button" className="btn btn-primary" onClick={handleNext}>
+                          <button type="button" className="btn" onClick={handleNext}>
                             Next
                           </button>
                         ) : (

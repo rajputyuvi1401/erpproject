@@ -309,3 +309,23 @@ export const registerPurchaseOrder = async (data) => {
 };
 
 
+export const fetchPurchaseOrders = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}RegisterPO_All_Series/`);
+    return response.data; // Return the fetched data
+  } catch (error) {
+    console.error('Error fetching purchase orders:', error);
+    throw error;
+  }
+};
+
+// Delete a purchase order by ID
+export const deletePurchaseOrder = async (id) => {
+  try {
+    const response = await axios.delete(`${BASE_URL}RegisterPO_All_Series/${id}/`);
+    return response.data; // Return the response data after deletion
+  } catch (error) {
+    console.error('Error deleting purchase order:', error);
+    throw error;
+  }
+};

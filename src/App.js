@@ -182,6 +182,8 @@ import StockReport from "./StoreMaster/StockReport/StorckReport.jsx";
 
 import InwardChallanList from "./StoreMaster/SubconGRN/InwardChallanList/InwardChallanList.jsx";
 
+
+
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Erp Setting
@@ -300,13 +302,13 @@ import BreakdownTimeEntry from "./ProductionMaster/BreakdownTimeEntry/BreakdownT
 import BreakdownTimeReport from "./ProductionMaster/BreakdownTimeReport/BreakdownTimeReport.jsx";
 import ContractorReport from "./ProductionMaster/ContractorReport/ContractorReport.jsx";
 import ContractirList from "./ProductionMaster/ContractorReport/ContractorList/ContractirList.jsx";
-
+import OperatorReport from "./ProductionMaster/Report/OperatorReport/OperatorReport.jsx";
 import ProReport from "./ProductionMaster/Report/ProReport.jsx";
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import JobworkList from "./PurchaseMaster/NewJobworkPurchase/JobworkList/JobworkList.jsx";
-
-
-
+import CycleTime1 from "./ProductionMaster/Report/CycleTime/CycleTime.jsx";
+import BreakdownAnalysis from "./ProductionMaster/Report/BreakdownAnalysis/BreakdownAnalysis.jsx";
+import ReworkReport from "./ProductionMaster/Report/ReworkReport/ReworkReport.jsx";
 
 
 /////////////////////////////////////     Sales       ////////////////////////////////////
@@ -332,6 +334,55 @@ import DabitNoteList from "./Sales/CraditDabitNote/PurchaseDabitNote/DabitNoteLi
 // import DN574Fout from "./Sales/CraditDabitNote/PurchaseDabitNote/DN574Fout/DN574Fout.jsx";
 import NewDabitNote from "./Sales/CraditDabitNote/SalesDabitNote/NewDabitNote.jsx";
 
+import JobWorkRateDiff from "./Sales/CraditDabitNote/JobWorkRateDiffDebitNote/JobWorkRateDiff.jsx";
+import CreditNotie from "./Sales/CraditDabitNote/CreditNotie/CreditNotie.jsx";
+import Creditnoteto from "./Sales/CraditDabitNote/CreditNotie/Creditnoteto/Creditnoteto.jsx";
+import CreditNoteList from "./Sales/CraditDabitNote/CreditNotie/CreditNoteList/CreditNoteList.jsx";
+import GSTSalesReturn from "./Sales/GSTSalesReturn/GSTSalesReturn.jsx";
+import GSTSalesReturnList from "./Sales/GSTSalesReturn/GSTSalesReturnList/GSTSalesReturnList.jsx";
+import MaterialGatepassNew from "./Sales/MaterialGatepass/MaterialGatepassNew/MaterialGatepassNew.jsx";
+import PendingMaterialGatepassList from "./Sales/MaterialGatepass/PendingMaterialGatepassList/PendingMaterialGatepassList.jsx";
+import MaterialGatepassList from "./Sales/MaterialGatepass/MaterialGatepassList/MaterialGatepassList.jsx";
+import CustSalesOrderList from "./Sales/Reports/CustSalesOrderList/CustSalesOrderList.jsx";
+import TaxInvoiceList from "./Sales/Reports/TaxInvoiceList/TaxInvoiceList.jsx";
+import BajajTaxInvoiceList from "./Sales/Reports/BajajTaxInvoiceList/BajajTaxInvoiceList.jsx";
+import JobworkInvList from "./Sales/Reports/JobworkInvList/JobworkInvList.jsx";
+import JobworkDCList from "./Sales/Reports/JobworkDCList/JobworkDCList.jsx";
+import OutwardChallanList from "./Sales/Reports/OutwardChallanList/OutwardChallanList.jsx";
+import DebitNoteList from "./Sales/Reports/DebitNoteList/DebitNoteList.jsx";
+import CreditListNote from "./Sales/Reports/CreditNoteList/CreditListNote.jsx";
+import RG1Register from "./Sales/Reports/RG1Register/RG1Register.jsx";
+import TransportList from "./Sales/Reports/TransportList/TransportList.jsx";
+
+////////////////////////////////////////// Quality ////////////////////////////////////////////////
+import QualityPlan from "./Quality/QualityPlan/QualityPlan.jsx";
+import PandingQCList from "./Quality/Purchase/PandingQCList/PandingQCList.jsx";
+import InwardTestCertificate from "./Quality/Purchase/InwardTestCertificate/InwardTestCertificate.jsx";
+import PaddingQCInward from "./Quality/SubconJobwork/PaddingQCInward/PaddingQCInward.jsx";
+import InwardQCList from "./Quality/SubconJobwork/InwardQCList/InwardQCList.jsx";
+import InprocessInspection from "./Quality/InprocessQC/InprocessInspection/InprocessInspection.jsx";
+import InprocessInspectionList from "./Quality/InprocessQC/InprocessInspectionList/InprocessInspectionList.jsx";
+import PaddingSalesQC from "./Quality/SalesReturnQC/PaddingSalesQC/PaddingSalesQC.jsx";
+import SalesQCList from "./Quality/SalesReturnQC/SalesQCList/SalesQCList.jsx";
+import HeatCodeRegister from "./Quality/HeatCodeRegister/HeatCodeRegister.jsx";
+import TestCertificateList from "./Quality/TestCertificateList/TestCertificateList.jsx";
+import PDIList from "./Quality/PDIList/PDIList.jsx";
+import PenddingInvoiceListPDI from "./Quality/PDIList/PenddingInvoiceListPDI.jsx";
+import NewListPDI from "./Quality/PDIList/NewListPDI.jsx";
+import FirstPieceApporval from "./Quality/FirstPieceApporval/FirstPieceApporval.jsx";
+import SetUpApproval from "./Quality/FirstPieceApporval/SetUpApproval.jsx";
+import NewSetupApproval from "./Quality/NewSetupApproval/NewSetupApproval.jsx";
+import SetupList from "./Quality/NewSetupApproval/SetupList/SetupList.jsx";
+import HotInspectionList from "./Quality/HotInspectionList/HotInspectionList.jsx";
+import NewHotInspection from "./Quality/HotInspectionList/NewHotInspection/NewHotInspection.jsx";
+import SamplingPlan from "./Quality/SamplingPlan/SamplingPlan.jsx";
+import CustomerComplaintEntry from "./Quality/CustomerComplaint/CustomerComplaintEntry/CustomerComplaintEntry.jsx";
+import CustomerComplaintList from "./Quality/CustomerComplaint/CustomerComplaintList/CustomerComplaintList.jsx";
+import CustomerComplaintAuth from "./Quality/CustomerComplaint/CustomerComplaintAuth/CustomerComplaintAuth.jsx";
+import TestReportList from "./Quality/TestMaster/TestReportList/TestReportList.jsx";
+import TestReportNew from "./Quality/TestMaster/TestReportList/TestReportNew.jsx";
+import TestMasterNew from "./Quality/TestMaster/TestMasterNew/TestMasterNew.jsx";
+import TestMasterList from "./Quality/TestMaster/TestMasterList/TestMasterList.jsx";
 
 function App() {
   return (
@@ -415,6 +466,12 @@ function App() {
         <Route path="/document-management" element={<DocumentManagement />} />
         {/* Master Report */}
         <Route path="/master-report" element={<MasterReport />} />
+
+
+
+
+
+
         {/* ////////////////////////////////Purchase////////////////////////////////////////////////////////////// */}
         {/* New indent */}
         <Route path="/new-indent" element={<Newindent />} />
@@ -448,6 +505,11 @@ function App() {
         />
         <Route path="supplier-wise-list" element={<SupplierWiseList />} />
         <Route path="purchase-report" element={<PurchaseReport />} />
+
+
+
+
+
         {/* ///////////////////////////////////////Store//////////////////////////////////////// */}
         <Route path="Gate-Inward-Entry" element={<GateInwardEntry />} />
         <Route path="New-Gate-Entry" element={<NewGateInward />} />
@@ -497,10 +559,14 @@ function App() {
         <Route path="Stock-Report" element={<StockReport />} />
         {/* Inward Challan List */}
         <Route path="Inward-challan-list" element={<InwardChallanList />} />
+
+
+
+
+
         {/* ///////////////////////////////////Erp Setting////////////////////////////////////// */}
         <Route path="UserConfiguration" element={<UserConfiguration />} />
         <Route path="/" element={<Navigate replace to="/UserConfiguration" />} />
-       
         <Route path="ErpSetting" element={<ErpSetting />} />
         <Route path="DisableUserList" element={<DisableUserList />} />
         <Route path="UserPermission" element={<UserPermission />} />
@@ -574,7 +640,17 @@ function App() {
         <Route path="/GstsalesReturn" element={<GstsalesReturn />} />
         <Route path="/DocCompanySetting" element={<DocCompanySetting />} />
         <Route path="/ViewItemMaster" element={<ViewItemMaster />} />
-        {/* /////////////////////////////////////Purchase////////////////////////////////////// */}
+
+
+
+
+
+
+
+
+        {/* /////////////////////////////////////Production////////////////////////////////////// */}
+
+
         <Route path="/WorkOrderEntry" element={<WorkOrderEntry />} />
         <Route path="/WorkOrderList" element={<WorkOrderList />} />
         <Route path="/ProductionEntry" element={<ProductionEntry />} />
@@ -583,8 +659,6 @@ function App() {
         <Route path="/ProductionReport" element={<ProductionReport />} />
         <Route path="/MachineIdleTime" element={<MachineIdleTime />} />
         <Route path="/NewIdleMaster" element={<NewIdleMaster />} />
-
-
         <Route path="/ReworkProduction" element={<ReworkProduction />} />
         <Route
           path="/ReworkProductionEntry"
@@ -598,19 +672,22 @@ function App() {
         <Route path="/ScrapRejectionReport" element={<ScrapRejectionReport />} />
         <Route path="/ScrapRejectionEntry" element={<ScrapRejectionEntry />} />
         <Route path="/FGScrapRejectionReport" element={<FGScrapRejectionReport />} />
-<Route path="/PoList" element={<PoList/>} />
-<Route path="/JobworkList" element={<JobworkList/>} />
-
+        <Route path="/PoList" element={<PoList/>} />
+        <Route path="/JobworkList" element={<JobworkList/>} />
         <Route path="/BreakdownTimeEntry" element={<BreakdownTimeEntry />} />
         <Route path="/BreakdownTimeReport" element={<BreakdownTimeReport />} />
         <Route path="/ContractorReport" element={<ContractorReport />} />
         <Route path="/ContractirList" element={<ContractirList />} />
-
         <Route path="/ProReport" element={<ProReport />} />
+        <Route path="/OperatorReport" element={<OperatorReport/>} />
+        <Route path="/ProReport" element={<ProReport />} />
+        <Route path="/CycleTime1" element={<CycleTime1/>} />
+        <Route path="/ReworkReport" element={<ReworkReport />} />
+        <Route path="/BreakdownAnalysis" element={<BreakdownAnalysis/>} />
 
 
           {/* //////////////////////////////     Sales       /////////////////////////// */}
-      <Route path="GSTsales1" element={<GSTsales1/>} />
+        <Route path="GSTsales1" element={<GSTsales1/>} />
         <Route path="JobWorkSales" element={<JobWorkSales />} />
         <Route path="DebitNote" element={<DebitNote />} />
         <Route path="CreditNote" element={<CreditNote />}/>
@@ -631,6 +708,64 @@ function App() {
         <Route path="DabitNoteList" element={<DabitNoteList />} />
         <Route path="NewDabitNote" element={<NewDabitNote />} />
         {/* <Route path="DN574Fout" element={<DN574Fout />} /> */}
+        <Route path="JobWorkRateDiff" element={<JobWorkRateDiff />} />
+        <Route path="CreditNotie" element={<CreditNotie />} />
+        <Route path="Creditnoteto" element={<Creditnoteto />} />
+        <Route path="CreditNoteList" element={<CreditNoteList />} />
+        <Route path="GSTSalesReturn1" element={<GSTSalesReturn />} />
+        <Route path="GSTSalesReturnList" element={<GSTSalesReturnList />} />
+        <Route path="MaterialGatepassNew" element={<MaterialGatepassNew />} />
+        <Route path="PendingMaterialGatepassList" element={<PendingMaterialGatepassList />} />
+        <Route path="MaterialGatepassList" element={<MaterialGatepassList />} />
+        <Route path="CustSalesOrderList" element={<CustSalesOrderList />} />
+        <Route path="TaxInvoiceList" element={<TaxInvoiceList />} />
+        <Route path="BajajTaxInvoiceList" element={<BajajTaxInvoiceList />} />
+        <Route path="JobworkInvList" element={<JobworkInvList />} />
+        <Route path="JobworkDCList" element={<JobworkDCList />} />
+        <Route path="OutwardChallanList" element={<OutwardChallanList />} />
+        <Route path="DebitNoteList" element={<DebitNoteList />} />
+        <Route path="CreditListNote" element={<CreditListNote />} />
+        <Route path="RG1Register" element={<RG1Register />} />
+        <Route path="TransportList" element={<TransportList />} />
+
+
+        {/* //////////////////////////////////  Quality Plan ///////////////////////////////////// */} 
+        <Route path="QualityPlan" element={<QualityPlan/>} />
+        <Route path="PandingQCList" element={<PandingQCList />} />
+        <Route path="InwardTestCertificate" element={<InwardTestCertificate />} />
+        <Route path="PaddingQCInward" element={<PaddingQCInward />} />
+        <Route path="InwardQCList" element={<InwardQCList />} />
+        <Route path="InprocessInspection" element={<InprocessInspection />} />
+        <Route path="InprocessInspectionList" element={<InprocessInspectionList/>} />
+        <Route path="PaddingSalesQC" element={<PaddingSalesQC/>} />
+        <Route path="SalesQCList" element={<SalesQCList/>} />
+        <Route path="HeatCodeRegister" element={<HeatCodeRegister />} />
+        <Route path="TestCertificateList" element={<TestCertificateList/>} />
+        <Route path="PDIList" element={<PDIList/>} />
+        <Route path="PenddingInvoiceListPDI" element={<PenddingInvoiceListPDI />} />
+        <Route path="NewListPDI" element={<NewListPDI />} />
+        <Route path="FirstPieceApporval" element={<FirstPieceApporval />} />
+        <Route path="SetUpApproval" element={<SetUpApproval />} />
+        <Route path="NewSetupApproval" element={<NewSetupApproval />} />
+        <Route path="SetupList" element={<SetupList />} />
+        <Route path="HotInspectionList" element={<HotInspectionList />} />
+        <Route path="NewHotInspection" element={<NewHotInspection />} />
+        <Route path="SamplingPlan" element={<SamplingPlan />} />
+        <Route path="CustomerComplaintEntry" element={<CustomerComplaintEntry />} />
+        <Route path="CustomerComplaintList" element={<CustomerComplaintList />} />
+        <Route path="CustomerComplaintAuth" element={<CustomerComplaintAuth />} />
+        <Route path="TestReportList" element={<TestReportList/> } />
+        <Route path="TestReportNew" element={<TestReportNew />} />
+        <Route path="TestMasterNew" element={<TestMasterNew />} />
+        <Route path="TestMasterList" element={<TestMasterList />} />
+
+
+
+
+
+
+
+
       </Routes>
 
 

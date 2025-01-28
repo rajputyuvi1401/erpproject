@@ -68,3 +68,44 @@ export const createWorkOrder = async (data) => {
       throw error;
     }
   };
+
+
+
+  const ProductionApi = {
+    // Fetch contractor names
+    getContractors: async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}Production_contractor/`);
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching contractors:", error);
+        throw error;
+      }
+    },
+  
+    // Save contractor production entry
+    saveProductionEntry: async (data) => {
+      try {
+        const response = await axios.post(`${BASE_URL}Contractor_Production_Entry/`, data);
+        return response.data;
+      } catch (error) {
+        console.error("Error saving production entry:", error);
+        throw error;
+      }
+    },
+
+
+  // Fetch unit machines
+  fetchUnitMachines: async (searchTerm = "") => {
+    try {
+      const response = await axios.get(`${BASE_URL}Production_unitmachine/?search=${searchTerm}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching unit machines:", error);
+      throw error;
+    }
+  },
+  };
+  
+  export default ProductionApi;
+  

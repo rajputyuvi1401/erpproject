@@ -113,7 +113,7 @@ const NewDabitNote = () => {
                                         </select>
                                     </div> 
                                     <div className="col-md-1">
-                                          <label htmlFor="">From Date :</label>
+                                          <label htmlFor="">From Date:</label>
                                           <input type="date" className="form-control"/>
                                     </div>
                                     <div className="col-md-1">

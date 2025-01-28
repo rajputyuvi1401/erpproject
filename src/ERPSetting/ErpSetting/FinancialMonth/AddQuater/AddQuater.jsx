@@ -40,7 +40,7 @@ const AddQuater = () => {
                     </div>
                   </div>
 
-                  <div className="Quarter-Main">
+                  <div className="Quarter-Main mt-5">
                     <div className="container-fluid">
                         <div className="row text-start">
                             <div className="col-md-1">
@@ -59,23 +59,23 @@ const AddQuater = () => {
                                 <label>Quarter Name:</label>
                             </div>
                             <div className="col-md-1">
-                                <input type="text" className="form-control"/>
+                                <input type="text" className="form-control mt-1"/>
                             </div>
                             <div className="col-md-1">
                                 <label>From Date:</label>
                             </div>
                             <div className="col-md-1">
-                                <input type="date" className="form-control"/>
+                                <input type="date" className="form-control mt-1"/>
                             </div>
                           
                             <div className="col-md-1">
                                 <label>To Date:</label>
                             </div>
                             <div className="col-md-1">
-                                <input type="date" className="form-control"/>
+                                <input type="date" className="form-control mt-1"/>
                             </div>
                             
-                            <div className="col-md-2">
+                            <div className="col-md-2 mt-1">
                               <button type="button" className="btn">SAVE</button>
                             </div>
                             

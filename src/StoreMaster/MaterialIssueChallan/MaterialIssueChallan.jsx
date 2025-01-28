@@ -146,8 +146,8 @@ const MaterialIssueChallan = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="NewMaterialIssue-header">
-                  <div className="row flex-nowrap align-items-center">
+                <div className="NewMaterialIssue-header mb-4 text-start mt-5">
+                    <div className="row align-items-center">
                     <div className="col-md-2 col-sm-6">
                       <h5 className="header-title text-start">
                         New Material Issue
@@ -156,7 +156,7 @@ const MaterialIssueChallan = () => {
                     <div className="col-md-4 col-sm-12 mt-4">
                       <div className="row mb-3">
                         <div className="col-4 col-sm-2">
-                          <label htmlFor="seriesSelect" className="form-label">
+                          <label htmlFor="seriesSelect" className="form-label mt-2">
                             Plant:
                           </label>
                         </div>
@@ -165,28 +165,26 @@ const MaterialIssueChallan = () => {
                             <option selected>Produlink</option>
                           </select>
                         </div>
-                        <div className="col-12 col-sm-7 mt-2 mt-sm-0">
+                        <div className="col-12 col-sm-7 mt-2 mt-sm-0 ">
                           <input
                             type="text"
                             id="inputField"
-                            className="form-control"
+                            className="form-control mt-1"
                             placeholder="Enter value"
                           />
                         </div>
                       </div>
                     </div>
                     <div className="col-md-6 col-sm-12 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-12 d-flex flex-wrap justify-content-end">
-                          <Link className="pobtn" to="/Work-Order-Material">
+                     
+                          <Link className="btn" to="/Work-Order-Material">
                             WorkOrder Material Issue Report
                           </Link>
 
-                          <Link className="pobtn" to="/Material-Issue">
+                          <Link className="btn" to="/Material-Issue">
                             Material Issue WorkOrder Only
                           </Link>
-                        </div>
-                      </div>
+                        
                     </div>
                   </div>
                 </div>

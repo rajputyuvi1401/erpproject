@@ -1,0 +1,78 @@
+
+.BajajTaxInvoiceListMaster {
+    margin-top: 0px;
+  }
+  
+  /* Header Styling */
+  .BajajTaxInvoiceList-header {
+    background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
+  }
+  
+  .BajajTaxInvoiceList-header .header-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Flex wrapping for buttons and select dropdowns */
+  .BajajTaxInvoiceList-header .d-flex {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .BajajTaxInvoiceList-Main {
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+  }
+  
+  /* Inputs and buttons for all screen sizes */
+  .BajajTaxInvoiceList-Main label {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .BajajTaxInvoiceList-Main .form-control,
+  .BajajTaxInvoiceList-Main .form-select {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  
+  .BajajTaxInvoiceList-Main .btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .BajajTaxInvoiceList-header .header-title {
+      font-size: 1.2rem;
+    }
+  
+    .BajajTaxInvoiceList-header .d-flex {
+      justify-content: center;
+    }
+  
+    .BajajTaxInvoiceList-Main .col-6,
+    .BajajTaxInvoiceList-Main .col-md-3,
+    .BajajTaxInvoiceList-Main .col-md-2 {
+      width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  
+    .BajajTaxInvoiceList-Main .btn {
+      margin-top: 10px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .BajajTaxInvoiceList-header {
+      text-align: center;
+    }
+  }
+  

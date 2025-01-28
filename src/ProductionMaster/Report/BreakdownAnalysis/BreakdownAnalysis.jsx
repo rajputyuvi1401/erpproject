@@ -21,7 +21,7 @@ const BreakdownAnalysis = () =>  { const [sideNavOpen, setSideNavOpen] = useStat
     }, [sideNavOpen]);
   
     return (
-      <div className="PRoWorkorderListMaster">
+      <div className="BreakdownAnalysisMaster">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -32,8 +32,8 @@ const BreakdownAnalysis = () =>  { const [sideNavOpen, setSideNavOpen] = useStat
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PRoWorkorderList mt-5">
-                  <div className="PRoWorkorderList-header mb-4 text-start">
+                <div className="BreakdownAnalysis mt-5">
+                  <div className="BreakdownAnalysis-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Breakdown Analysis</h5>
@@ -47,7 +47,7 @@ const BreakdownAnalysis = () =>  { const [sideNavOpen, setSideNavOpen] = useStat
                     </div>
                   </div>
   
-                  <div className="PRoWorkorderList-Main">
+                  <div className="BreakdownAnalysis-Main">
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
                          {/* Plant */}
@@ -85,15 +85,15 @@ const BreakdownAnalysis = () =>  { const [sideNavOpen, setSideNavOpen] = useStat
                           </select>
                         </div>
   
-                        <div className="col-sm-2 col-md-2 col-lg-1 mt-4">
-                        <button type="button" className="btn btn-primary w-100" >
+                        <div className="col-sm-2">
+                        <button type="button" className="btn" style={{marginTop:"34px"}}>
                             Search
                         </button>   
                         </div>
                      </div>
                     </div>
                   </div>
-            <hr />
+       
                 </div>
               </main>
             </div>

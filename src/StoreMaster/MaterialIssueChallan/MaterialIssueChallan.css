@@ -1,31 +1,38 @@
-/* General Styles */
-.NewStoreNewMaterialIssue {
-    background-color: white;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Header Styles */
+
   .NewMaterialIssue-header {
-    margin-top: 20px;
-    background-color: aliceblue;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;
   }
   
+  .NewMaterialIssue-header .header-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  .NewMaterialIssue-header .form-label {
+    font-size: 14px; /* Consistent label size */
+    font-weight: 600; /* Slightly bold for readability */
+    color: #495057; /* Neutral color */
+  }
+  
+  .NewMaterialIssue-header .form-select,
+  .NewMaterialIssue-header .form-control {
+    font-size: 14px; /* Consistent input font size */
+    padding: 8px 12px; /* Comfortable padding */
+    border: 1px solid #ced4da; /* Subtle border for inputs */
+    border-radius: 5px; /* Rounded corners */
+  }
   /* Main Content Styles */
   .NewMaterialIssue-main {
-    background-color: aliceblue;
-    padding: 15px;
-    margin-top: 20px; /* Adjusted to be closer to the header */
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;
   }
   
-  /* Table Styles */
-  .NewMaterialIssuetable {
-    background-color: aliceblue;
-    padding: 15px;
-    margin-top: 20px;
-  }
-  
+
   .NewMaterialIssuetable .table-bordered {
     border: 1px solid #ddd;
   }

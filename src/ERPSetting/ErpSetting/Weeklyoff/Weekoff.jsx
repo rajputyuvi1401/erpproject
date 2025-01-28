@@ -128,7 +128,7 @@ const Weekoff = () => {
                           <div className="col-md-2">
                             <label>Type:</label>
                             <select
-                              className="form-control"
+                              className="form-control" style={{marginTop:"0px"}}
                               name="type"
                               value={holidayDetails.type}
                               onChange={handleHolidayInputChange}
@@ -158,7 +158,7 @@ const Weekoff = () => {
                               onChange={handleHolidayInputChange}
                             />
                           </div>
-                          <div className="col-md-1" style={{marginTop:'35px'}}>
+                          <div className="col-md-1" style={{marginTop:'39px'}}>
                             <button className="btn btn-primary w-100" onClick={addHoliday}>
                               Add Holiday
                             </button>
@@ -168,7 +168,7 @@ const Weekoff = () => {
                  
                  <div className="table-responsive">
                    <table className="table table-bordered">
-                     <thead className="table-dark">
+                     <thead>
                        <tr>
                          <th>Date</th>
                          <th>Type</th>

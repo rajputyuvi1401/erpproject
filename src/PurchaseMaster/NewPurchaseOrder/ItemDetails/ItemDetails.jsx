@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { FaTrash, FaEdit } from "react-icons/fa";
-import {
-  addItem,
-  getItems,
-  updateItem,
-  deleteItem,
-  fetchItemFields,
-} from "../../../Service/PurchaseApi";
+import { FaTrash } from "react-icons/fa";
+import { getItems, deleteItem, fetchItemFields } from "../../../Service/PurchaseApi";
 import { toast, ToastContainer } from "react-toastify";
 import { getUnitCode } from "../../../Service/Api";
 
 const ItemDetails = ({ updateFormData }) => {
   const [itemDetails, setItemDetails] = useState([]);
-  const [formData, setFormData] = useState({
+  const [currentItem, setCurrentItem] = useState({
     Item: "",
     ItemDescription: "",
     ItemSize: "",
@@ -25,16 +19,15 @@ const ItemDetails = ({ updateFormData }) => {
     DeliveryDt: "",
   });
   const [errors, setErrors] = useState({});
-  const [editId, setEditId] = useState(null);
   const [loading, setLoading] = useState(false);
-    const [unitCodes, setUnitCodes] = useState([]);
-  
+  const [unitCodes, setUnitCodes] = useState([]);
 
   // Fetch items on component mount
   useEffect(() => {
     const fetchItems = async () => {
       try {
         const items = await getItems();
+        console.log("Fetched Items:", items); // Debugging
         setItemDetails(items);
       } catch (error) {
         toast.error("Failed to fetch items.");
@@ -43,112 +36,40 @@ const ItemDetails = ({ updateFormData }) => {
     fetchItems();
   }, []);
 
-  // Validate item details
-  const validateItemDetails = (data) => {
-    const errors = {};
-    if (!data.Item.trim()) errors.Item = "Item is required.";
-    if (!data.ItemDescription.trim())
-      errors.ItemDescription = "Item Description is required.";
-    return errors;
-  };
+  // Fetch unit codes on mount
+  useEffect(() => {
+    const fetchUnitCodes = async () => {
+      try {
+        const data = await getUnitCode();
+        console.log("Fetched Unit Codes:", data); // Debugging
+        setUnitCodes(data);
+      } catch (error) {
+        console.error("Error fetching unit codes:", error);
+      }
+    };
+    fetchUnitCodes();
+  }, []);
 
   // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    updateFormData("Item_Detail_Enter", (prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  // Add new item
-  const handleAdd = async () => {
-    const validationErrors = validateItemDetails(formData);
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    try {
-      await addItem(formData);
-      toast.success("Item added successfully!");
-      resetForm();
-      const updatedItems = await getItems();
-      setItemDetails(updatedItems);
-    } catch (error) {
-      toast.error("Failed to add item.");
-    }
-  };
-
-  // Delete item
-  const handleDelete = async (id) => {
-    try {
-      await deleteItem(id);
-      toast.success("Item deleted successfully!");
-      const updatedItems = await getItems();
-      setItemDetails(updatedItems);
-    } catch (error) {
-      toast.error("Failed to delete item.");
-    }
-  };
-
-  // Edit item
-  const handleEdit = (item) => {
-    setFormData(item);
-    setEditId(item.id);
-  };
-
-  // Update item
-  const handleUpdate = async () => {
-    const validationErrors = validateItemDetails(formData);
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    try {
-      await updateItem(editId, formData);
-      toast.success("Item updated successfully!");
-      resetForm();
-      const updatedItems = await getItems();
-      setItemDetails(updatedItems);
-    } catch (error) {
-      toast.error("Failed to update item.");
-    }
-  };
-
-  // Reset form
-  const resetForm = () => {
-    setFormData({
-      Item: "",
-      ItemDescription: "",
-      ItemSize: "",
-      Rate: "",
-      Disc: "",
-      Qty: "",
-      Unit: "",
-      Particular: "",
-      Mill_Name: "",
-      DeliveryDt: "",
-    });
-    setErrors({});
-    setEditId(null);
+    setCurrentItem((prev) => ({ ...prev, [name]: value }));
   };
 
   // Search for item
   const handleSearch = async () => {
-    if (!formData.Item.trim()) {
+    if (!currentItem.Item.trim()) {
       setErrors({ Item: "Please enter a part number or item description." });
       return;
     }
 
     setLoading(true);
     try {
-      const data = await fetchItemFields(formData.Item);
+      const data = await fetchItemFields(currentItem.Item);
+      console.log("Search Results:", data); // Debugging
       if (data.length > 0) {
         const item = data[0];
-        setFormData((prevData) => ({
+        setCurrentItem((prevData) => ({
           ...prevData,
           Item: item.part_no || "",
           ItemDescription: item.Name_Description || "",
@@ -166,23 +87,49 @@ const ItemDetails = ({ updateFormData }) => {
     }
   };
 
-    useEffect(() => {
-      const fetchUnitCodes = async () => {
+  // Handle select change
+  const handleSelectChange = (e) => {
+    setCurrentItem({ ...currentItem, Unit: e.target.value });
+  };
+
+  // Add item to the list
+  const addItem = () => {
+    if (currentItem.Item && currentItem.ItemDescription) {
+      const updatedItems = [...itemDetails, currentItem];
+      console.log("Updated Items before sending:", updatedItems); // Debugging
+      setItemDetails(updatedItems);
+      updateFormData("Item_Detail_Enter", updatedItems); // Update parent form data
+      setCurrentItem({
+        Item: "",
+        ItemDescription: "",
+        ItemSize: "",
+        Rate: "",
+        Disc: "",
+        Qty: "",
+        Unit: "",
+        Particular: "",
+        Mill_Name: "",
+        DeliveryDt: "",
+      });
+    } else {
+      toast.error("Item and Item Description are required.");
+    }
+  };
+
+  // Delete item
+  const handleDelete = async (id) => {
+    if (window.confirm('Are you sure you want to delete this item?')) {
+        setLoading(true);
         try {
-          const data = await getUnitCode();
-          setUnitCodes(data);
+            await deleteItem(id);
+            setItemDetails((prevItems) => prevItems.filter((item) => item.id !== id));
         } catch (error) {
-          console.error("Error fetching unit codes:", error);
+            alert('Failed to delete item. Please try again.');
+        } finally {
+            setLoading(false);
         }
-      };
-  
-      fetchUnitCodes();
-    }, []);
-  
-    const handleSelectChange = (e) => {
-      setFormData({ ...formData, Unit: e.target.value });
-    };
-    
+    }
+};
 
 
   return (
@@ -216,40 +163,31 @@ const ItemDetails = ({ updateFormData }) => {
                         name="Item"
                         className="form-control"
                         placeholder="Search"
-                        value={formData.Item}
+                        value={currentItem.Item}
                         onChange={handleChange}
                       />
                       <span>
-                        <button
-                          className="btn"
-                          onClick={handleSearch}
-                          disabled={loading}
-                        >
+                        <button className="btn" onClick={handleSearch} disabled={loading}>
                           {loading ? "Searching..." : "Search"}
                         </button>
                       </span>
-                      {errors.Item && (
-                        <p className="error-text">{errors.Item}</p>
-                      )}
+                      {errors.Item && <p className="error-text">{errors.Item}</p>}
                     </td>
                     <td>
                       <textarea
                         name="ItemDescription"
                         className="form-control"
                         rows="2"
-                        value={formData.ItemDescription}
+                        value={currentItem.ItemDescription}
                         onChange={handleChange}
                       ></textarea>
-                      {errors.ItemDescription && (
-                        <p className="error-text">{errors.ItemDescription}</p>
-                      )}
                     </td>
                     <td>
                       <input
                         type="text"
                         name="ItemSize"
                         className="form-control"
-                        value={formData.ItemSize}
+                        value={currentItem.ItemSize}
                         onChange={handleChange}
                       />
                     </td>
@@ -258,7 +196,7 @@ const ItemDetails = ({ updateFormData }) => {
                         type="text"
                         name="Rate"
                         className="form-control"
-                        value={formData.Rate}
+                        value={currentItem.Rate}
                         onChange={handleChange}
                       />
                     </td>
@@ -267,7 +205,7 @@ const ItemDetails = ({ updateFormData }) => {
                         type="text"
                         name="Disc"
                         className="form-control"
-                        value={formData.Disc}
+                        value={currentItem.Disc}
                         onChange={handleChange}
                       />
                     </td>
@@ -276,32 +214,31 @@ const ItemDetails = ({ updateFormData }) => {
                         type="text"
                         name="Qty"
                         className="form-control"
-                        value={formData.Qty}
+                        value={currentItem.Qty}
                         onChange={handleChange}
                       />
                     </td>
                     <td>
-                    <select
-  id="unitCode"
-  className="form-select"
-  value={formData.Unit}
-  onChange={handleSelectChange} // Use the updated function here
->
-  <option value="">Select ..</option>
-  {unitCodes.map((unit, index) => (
-    <option key={index} value={unit.name}>
-      {unit.name}
-    </option>
-  ))}
-</select>
-
+                      <select
+                        id="unitCode"
+                        className="form-select"
+                        value={currentItem.Unit}
+                        onChange={handleSelectChange}
+                      >
+                        <option value="">Select ..</option>
+                        {unitCodes.map((unit, index) => (
+                          <option key={index} value={unit.name}>
+                            {unit.name}
+                          </option>
+                        ))}
+                      </select>
                     </td>
                     <td>
                       <textarea
                         name="Particular"
                         className="form-control"
                         rows="2"
-                        value={formData.Particular}
+                        value={currentItem.Particular}
                         onChange={handleChange}
                       ></textarea>
                     </td>
@@ -310,7 +247,7 @@ const ItemDetails = ({ updateFormData }) => {
                         name="Mill_Name"
                         className="form-control"
                         rows="2"
-                        value={formData.Mill_Name}
+                        value={currentItem.Mill_Name}
                         onChange={handleChange}
                       ></textarea>
                     </td>
@@ -319,34 +256,21 @@ const ItemDetails = ({ updateFormData }) => {
                         type="date"
                         name="DeliveryDt"
                         className="form-control"
-                        value={formData.DeliveryDt}
+                        value={currentItem.DeliveryDt}
                         onChange={handleChange}
                       />
                     </td>
                     <td>
-                      {editId ? (
-                        <button
-                          className="btn"
-                          type="button"
-                          onClick={handleUpdate}
-                        >
-                          Update
-                        </button>
-                      ) : (
-                        <button
-                          className="btn"
-                          type="button"
-                          onClick={handleAdd}
-                        >
-                          Add
-                        </button>
-                      )}
+                      <button type="button" className="btn" onClick={addItem}>
+                        Add Item
+                      </button>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
+
           <div className="item-table">
             <div className="table-container table-responsive">
               <table className="table table-striped">
@@ -363,13 +287,12 @@ const ItemDetails = ({ updateFormData }) => {
                     <th>Make / Mill Name</th>
                     <th>Delivery Date</th>
                     <th>Note</th>
-                    <th>Edit</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                {itemDetails.map((item, index) => (
-                    <tr key={item.id}>
+                  {itemDetails.map((item, index) => (
+                    <tr key={index}>
                       <td>{index + 1}</td>
                       <td>{item.Item}</td>
                       <td>{item.ItemDescription}</td>
@@ -381,14 +304,6 @@ const ItemDetails = ({ updateFormData }) => {
                       <td>{item.Mill_Name}</td>
                       <td>{item.DeliveryDt}</td>
                       <td></td>
-                      <td>
-                        <button
-                          className="btn"
-                          onClick={() => handleEdit(item)}
-                        >
-                          <FaEdit />
-                        </button>
-                      </td>
                       <td>
                         <button
                           className="btn"

@@ -15,8 +15,28 @@ const Schedule = ({ updateFormData }) => {
   ])
 
   useEffect(() => {
-    updateFormData("Schedule_Line", scheduleLine)
-  }, [scheduleLine, updateFormData])
+    const transformedScheduleLine = scheduleLine.map((row) => {
+      const flatRow = {
+        ItemCode: row.itemCode,
+        Description: row.description,
+        TotalQty: row.totalQty,
+      };
+  
+      // Flatten dates and quantities into Date1, Qty1, ..., Date10, Qty10
+      row.dates.forEach((date, index) => {
+        flatRow[`Date${index + 1}`] = date;
+      });
+  
+      row.quantities.forEach((quantity, index) => {
+        flatRow[`Qty${index + 1}`] = quantity;
+      });
+  
+      return flatRow;
+    });
+  
+    updateFormData("Schedule_Line", transformedScheduleLine);
+  }, [scheduleLine, updateFormData]);
+  
 
   const handleAutoCalculateChange = (e) => {
     setAutoCalculate(e.target.checked)

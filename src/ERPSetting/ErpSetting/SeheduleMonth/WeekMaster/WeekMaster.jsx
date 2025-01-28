@@ -70,7 +70,7 @@ const WeekMaster = () => {
                   <div className="Week-table mt-4">
                     <div className="table-responsive">
                       <table className="table table-bordered table-hover">
-                        <thead className="table-dark">
+                        <thead>
                           <tr>
                             <th>Sr.</th>
                             <th>Month</th>

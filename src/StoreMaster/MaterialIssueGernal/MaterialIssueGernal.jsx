@@ -150,7 +150,7 @@ const MaterialIssueGernal = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="NewMaterialGernal-header">
+                <div className="NewMaterialGernal-header mt-5">
                   <div className="row flex-wrap align-items-center">
                     <div className="col-md-3 col-sm-6">
                       <h5 className="header-title text-start">
@@ -214,7 +214,7 @@ const MaterialIssueGernal = () => {
                   </div>
                 </div>
 
-                <div className="NewMaterialGernal-main">
+                <div className="NewMaterialGernal-main mt-5">
                   <div className="container-fluid text-start">
                     <div className="row mt-4">
                       <div className="col-md-12">

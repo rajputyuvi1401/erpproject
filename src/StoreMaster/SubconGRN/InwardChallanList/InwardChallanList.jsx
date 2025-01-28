@@ -30,8 +30,8 @@ const InwardChallanList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="InwardList-header">
-                  <div className="row flex-nowrap align-items-center">
+                <div className="InwardList-header mb-4 text-start mt-5">
+                  <div className="row align-items-center">
                     <div className="col-md-2">
                       <h5 className="header-title text-start">
                         Inward Challan List
@@ -43,14 +43,11 @@ const InwardChallanList = () => {
                       </div>
                     </div>
                     <div className="col-md-4 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-md-4 d-flex ">
-                          <button className="pobtn">GRN : Report</button>
-                        </div>
-                        <div className="col-md-6 d-flex ">
-                          <button className="pobtn">57F4-Inward - Query</button>
-                        </div>
-                      </div>
+                      
+                          <button className="btn">GRN : Report</button>
+                        
+                          <button className="btn">57F4-Inward - Query</button>
+                       
                     </div>
                   </div>
                 </div>

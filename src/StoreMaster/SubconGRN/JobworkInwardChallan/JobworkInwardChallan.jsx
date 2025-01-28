@@ -111,8 +111,8 @@ const JobworkInwardChallan = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="InwardJobwork-header">
-                  <div className="row flex-nowrap align-items-center">
+                <div className="InwardJobwork-header mb-4 text-start mt-5">
+                  <div className="row align-items-center">
                     <div className="col-md-2">
                       <h5 className="header-title text-start">
                         Jobwork InWard
@@ -125,7 +125,7 @@ const JobworkInwardChallan = () => {
                             <option selected>Produlink</option>
                           </select>
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-1 mt-2">
                           <label htmlFor="seriesSelect" className="form-label">
                             Series:
                           </label>
@@ -143,7 +143,7 @@ const JobworkInwardChallan = () => {
                           </select>
                         </div>
                         {/* Input Field */}
-                        <div className="col-md-1">
+                        <div className="col-md-1 mt-1">
                           <input
                             type="text"
                             id="inputField"
@@ -151,7 +151,7 @@ const JobworkInwardChallan = () => {
                             placeholder="Enter value"
                           />
                         </div>
-                        <div className="col-md-2">Gate Entry No:</div>
+                        <div className="col-md-2 mt-2">Gate Entry No:</div>
                         <div className="col-md-1">
                           <select id="routingSelect" className="form-select">
                             <option selected>Select</option>
@@ -167,8 +167,8 @@ const JobworkInwardChallan = () => {
                             </option>
                           </select>
                         </div>
-                        <div className="col-md-1">Customer:</div>
-                        <div className="col-md-2">
+                        <div className="col-md-1 mt-2">Customer:</div>
+                        <div className="col-md-2 mt-1">
                           <input
                             type="text"
                             id="inputField"
@@ -176,12 +176,12 @@ const JobworkInwardChallan = () => {
                             placeholder="Enter value"
                           />
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-1 mt-1">
                           <button type="button" className="btn">
                             Search
                           </button>
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-1 mt-1">
                           <button type="button" className="btn">
                             Cancel
                           </button>
@@ -190,7 +190,7 @@ const JobworkInwardChallan = () => {
                     </div>
                   </div>
                 </div>
-                <div className="InwardJobwork-main">
+                <div className="InwardJobwork-main mt-5">
                   <div className="container-fluid text-start">
                     <div className="container-fluid">
                       <div className="row">
@@ -409,9 +409,11 @@ const JobworkInwardChallan = () => {
                     </div>
                   </div>
 
-                  <div
+                 
+                </div>
+                <div
                     className="StoreInwardJobworkFooter"
-                    style={{ marginTop: "50px" }}
+                    
                   >
                     <ul
                       className="nav nav-pills mb-3"
@@ -892,7 +894,6 @@ const JobworkInwardChallan = () => {
                       </div>
                     </div>
                   </div>
-                </div>
               </main>
             </div>
           </div>

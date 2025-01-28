@@ -48,39 +48,50 @@ const ScheduleMonth = () => {
                     </div>
                   </div>
                   <div className="Schedule-Main">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-2">
-                          <label>Month Name</label>
-                          <input type="text" className="form-control"/>
-                        </div>
-                        <div className="col-md-2">
-                          <label>From Date</label>
-                          <input type="date" className="form-control"/>
-                        </div>
-                        <div className="col-md-2">
-                          <label>To Date</label>
-                          <input type="date" className="form-control"/>
-                        </div>
-                        <div className="col-md-2">
-                          <label>Month No</label>
-                          <input type="text" className="form-control"/>
-                        </div>
-                        <div className="col-md-2">
-                          <label>Year No</label>
-                          <input type="text" className="form-control"/>
-                        </div>
-                        <div className="col-md-1 mt-1">
-                         <button type="button" className="btn btn-primary mt-4">Add</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+  <div className="container-fluid">
+    <div className="row align-items-center text-start">
+      <div className="col-md-1">
+        <label htmlFor="monthName">Month Name</label>
+      </div>
+      <div className="col-md-1">
+        <input type="text" id="monthName" className="form-control" placeholder="Enter month name" />
+      </div>
+      <div className="col-md-1">
+        <label htmlFor="fromDate">From Date</label>
+      </div>
+      <div className="col-md-1">
+        <input type="date" id="fromDate" className="form-control" />
+      </div>
+      <div className="col-md-1">
+        <label htmlFor="toDate">To Date</label>
+      </div>
+      <div className="col-md-1">
+        <input type="date" id="toDate" className="form-control" />
+      </div>
+      <div className="col-md-1">
+        <label htmlFor="monthNo">Month No</label>
+      </div>
+      <div className="col-md-1">
+        <input type="text" id="monthNo" className="form-control" placeholder="MM" />
+      </div>
+      <div className="col-md-1">
+        <label htmlFor="yearNo">Year No</label>
+      </div>
+      <div className="col-md-1">
+        <input type="text" id="yearNo" className="form-control" placeholder="YYYY" />
+      </div>
+      <div className="col-md-2 mt-2">
+        <button type="button" className="btn btn-primary w-100">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
                   <div className="Schedule-table mt-4">
                     <div className="table-responsive">
                       <table className="table table-bordered table-hover">
-                        <thead className="table-dark">
+                        <thead>
                           <tr>
                             <th>Sr.</th>
                             <th>Month Name</th>

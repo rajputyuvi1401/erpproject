@@ -41,10 +41,7 @@
     padding: 0.5rem;
   }
   
-  .ContractorReport-Main .btn {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-  }
+ 
   
   /* Responsive Adjustments */
   @media (max-width: 768px) {

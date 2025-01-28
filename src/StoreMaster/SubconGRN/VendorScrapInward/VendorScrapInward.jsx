@@ -98,8 +98,8 @@ const VendorScrapInward = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="VendorScrap-header">
-                  <div className="row flex-nowrap align-items-center">
+                <div className="VendorScrap-header mb-4 text-start mt-5">
+                  <div className="row align-items-center">
                     <div className="col-md-3 col-6">
                       <h5 className="header-title text-start">
                         Inward Vendor Scrap Challan
@@ -110,7 +110,7 @@ const VendorScrapInward = () => {
                     </div>
                   </div>
                 </div>
-                <div className="VendorScrap-main">
+                <div className="VendorScrap-main mt-5">
                   <div className="container-fluid text-start">
                     <div className="row mt-4">
                       <div className="col-md-6">
@@ -131,7 +131,7 @@ const VendorScrapInward = () => {
 
                   <div
                     className="StoreSubconFooter"
-                    style={{ marginTop: "100px" }}
+                  
                   >
                     <ul
                       className="nav nav-pills mb-3"
@@ -153,7 +153,7 @@ const VendorScrapInward = () => {
                         </button>
                       </li>
                     </ul>
-                    <div className="tab-content" id="pills-tabContent">
+                    <div className="tab-content" id="pills-tabContent" style={{border:"none"}}>
                       <div
                         className="tab-pane fade show active"
                         id="pills-Gernal-Detail"

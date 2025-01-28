@@ -1,0 +1,78 @@
+
+.DebitNoteListMaster {
+    margin-top: 0px;
+  }
+  
+  /* Header Styling */
+  .DebitNoteList-header {
+    background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
+  }
+  
+  .DebitNoteList-header .header-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Flex wrapping for buttons and select dropdowns */
+  .DebitNoteList-header .d-flex {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .DebitNoteList-Main {
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+  }
+  
+  /* Inputs and buttons for all screen sizes */
+  .DebitNoteList-Main label {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .DebitNoteList-Main .form-control,
+  .DebitNoteList-Main .form-select {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  
+  .DebitNoteList-Main .btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .DebitNoteList-header .header-title {
+      font-size: 1.2rem;
+    }
+  
+    .DebitNoteList-header .d-flex {
+      justify-content: center;
+    }
+  
+    .DebitNoteList-Main .col-6,
+    .DebitNoteList-Main .col-md-3,
+    .DebitNoteList-Main .col-md-2 {
+      width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  
+    .DebitNoteList-Main .btn {
+      margin-top: 10px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .DebitNoteList-header {
+      text-align: center;
+    }
+  }
+  

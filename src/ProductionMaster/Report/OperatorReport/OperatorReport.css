@@ -1,42 +1,46 @@
-.ProductionPlanListMaster {
-    margin-top: 20px;
-  }
-  
+
   /* Header Styling */
-  .ProductionPlanList-header {
+  .OperatorReport-header {
     background-color: #f8f9fa; /* Light background for header */
     border-bottom: 1px solid #dee2e6; /* Border for header */
     padding: 10px 15px; /* Padding around header */
     border-radius: 5px;
   }
   
-  .ProductionPlanList-header .header-title {
+  .OperatorReport-header .header-title {
     font-size: 20px;
     font-weight: bold;
     margin: 0;
   }
+
+  .OperatorReport-Main{
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    border-radius: 5px;
+  }
   
   /* Form and Inputs */
-  .ProductionPlanList-Main label {
+  .OperatorReport-Main label {
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 5px;
     margin-top: 5px;
   }
   
-  .ProductionPlanList-Main .form-control {
+  .OperatorReport-Main .form-control {
     height: 35px;
     padding: 5px 10px;
     border-radius: 4px;
   }
   
-  .ProductionPlanList-Main select {
+  .OperatorReport-Main select {
     width: 100%;
     padding: 5px;
     border-radius: 4px;
   }
   
-  .ProductionPlanList-Main button {
+  .OperatorReport-Main button {
     background-color: #007bff;
     color: white;
     border: none;
@@ -45,22 +49,22 @@
     cursor: pointer;
   }
   
-  .ProductionPlanList-Main button:hover {
+  .OperatorReport-Main button:hover {
     background-color: #0056b3;
   }
   
   /* Table Styling */
-  .ProductionPlanListMaster .table-responsive {
+  .OperatorReportMaster .table-responsive {
     overflow-x: auto;
     margin-top: 20px;
   }
   
-  .ProductionPlanListMaster .table {
+  .OperatorReportMaster .table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  .ProductionPlanListMaster .table th, .table td {
+  .OperatorReportMaster .table th, .table td {
     text-align: center;
     vertical-align: middle;
     padding: 8px;
@@ -68,7 +72,7 @@
   
   
   /* Button for Edit and Delete */
-  .ProductionPlanListMaster .table .btn-link {
+  .OperatorReportMaster .table .btn-link {
     font-size: 18px;
     color: #007bff;
     padding: 0;
@@ -77,43 +81,43 @@
     cursor: pointer;
   }
   
-  .ProductionPlanListMaster .table .btn-link:hover {
+  .OperatorReportMaster .table .btn-link:hover {
     color: #0056b3;
   }
   
-  .ProductionPlanListMaster .table .btn-link.text-danger:hover {
+  .OperatorReportMaster .table .btn-link.text-danger:hover {
     color: #d9534f;
   }
   
   /* Responsive Styling */
   @media (max-width: 991px) {
-    .ProductionPlanList-Main .col-md-1,
-    .ProductionPlanList-Main .col-md-2 {
+    .OperatorReport-Main .col-md-1,
+    .OperatorReport-Main .col-md-2 {
         flex: 0 0 100%;
         max-width: 100%;
         margin-bottom: 10px;
     }
   
-    .ProductionPlanList-header .header-title {
+    .OperatorReport-header .header-title {
         text-align: center;
         font-size: 18px;
     }
   
-    .ProductionPlanListMaster   .table th, .table td {
+    .OperatorReportMaster   .table th, .table td {
         font-size: 14px;
     }
   }
   
   @media (max-width: 576px) {
-    .ProductionPlanList-header .header-title {
+    .OperatorReport-header .header-title {
         font-size: 16px;
     }
   
-    .ProductionPlanListMaster   .table th, .table td {
+    .OperatorReportMaster   .table th, .table td {
         font-size: 12px;
     }
   
-    .ProductionPlanListMaster  .table-responsive {
+    .OperatorReportMaster  .table-responsive {
         overflow-x: scroll;
     }
   }
