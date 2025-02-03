@@ -168,6 +168,7 @@ const AddCycleTime = () => {
                               </label>
                               <select
                                 className="form-select"
+                                style={{marginTop:"-1px"}}
                                 id="Plant"
                                 name="Plant"
                                 value={formData.Plant}
@@ -191,6 +192,7 @@ const AddCycleTime = () => {
                               </label>
                               <select
                                 className="form-select"
+                                style={{marginTop:"-1px"}}
                                 id="PartCode"
                                 name="PartCode"
                                 value={formData.PartCode}
@@ -217,6 +219,7 @@ const AddCycleTime = () => {
                               </label>
                               <select
                                 className="form-select"
+                                style={{marginTop:"-1px"}}
                                 id="MachineType"
                                 name="MachineType"
                                 value={formData.MachineType}
@@ -244,6 +247,7 @@ const AddCycleTime = () => {
                               </label>
                               <select
                                 className="form-select"
+                                style={{marginTop:"-1px"}}
                                 id="Machine"
                                 name="Machine"
                                 value={formData.Machine}

@@ -1,5 +1,5 @@
 import "./NewPurchaseOrder.css"
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min"
 import NavBar from "../../NavBar/NavBar.js"
@@ -17,11 +17,12 @@ import "react-toastify/dist/ReactToastify.css"
 
 const NewPurchaseOrder = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false)
-  const [selectedSeries, setSelectedSeries] = useState("") // To store selected series
-  const [indentNo, setIndentNo] = useState("") // To store the generated indent number
-  const [supplierName, setSupplierName] = useState("") // State for supplier name input
-  const [supplierCode, setSupplierCode] = useState("") // State for supplier code input
-  const [loading, setLoading] = useState(false) // State for loading indicator
+  const [selectedSeries, setSelectedSeries] = useState("")
+  const [indentNo, setIndentNo] = useState("")
+  const [supplierName, setSupplierName] = useState("")
+  const [supplierCode, setSupplierCode] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [ setSupplierData] = useState(null)
 
   const toggleSideNav = () => {
     setSideNavOpen((prevState) => !prevState)
@@ -35,7 +36,6 @@ const NewPurchaseOrder = () => {
     }
   }, [sideNavOpen])
 
-  // Fetching the Shortyear from localStorage with a fallback
   const handleSeriesChange = async (e) => {
     const seriesValue = e.target.value
     setSelectedSeries(seriesValue)
@@ -83,13 +83,19 @@ const NewPurchaseOrder = () => {
 
     setLoading(true)
     try {
-      const data = await fetchSupplierData(supplierName) // Fetch supplier data
+      const data = await fetchSupplierData(supplierName)
       if (data && data.length > 0) {
-        const supplier = data[0] // Assuming the first result is the correct one
-        setSupplierCode(supplier.number) // Set the supplier code
+        const supplier = data[0]
+        setSupplierCode(supplier.number)
+        setSupplierData(supplier)
+        setFormData((prevData) => ({
+          ...prevData,
+          PaymentTerms: supplier.Payment_Term,
+        }))
       } else {
         alert("Supplier not found.")
-        setSupplierCode("") // Clear the code if no supplier is found
+        setSupplierCode("")
+        setSupplierData(null)
       }
     } catch (error) {
       console.error("Error fetching supplier data:", error)
@@ -99,7 +105,7 @@ const NewPurchaseOrder = () => {
     }
   }
 
-  const [activeTab, setActiveTab] = useState(0) // Tracks the current active tab
+  const [activeTab, setActiveTab] = useState(0)
   const [formData, setFormData] = useState({
     Item_Detail_Enter: [],
     Gst_Details: [],
@@ -147,8 +153,6 @@ const NewPurchaseOrder = () => {
   }
 
   const validateCurrentTab = () => {
-    // Example validation logic
-
     return true
   }
 
@@ -289,12 +293,12 @@ const NewPurchaseOrder = () => {
                         <div className="tab-content" id="pills-tabContent">
                           {activeTab === 0 && (
                             <div className="tab-pane fade show active" role="tabpanel">
-                              <ItemDetails updateFormData={updateFormData} />
+                              <ItemDetails updateFormData={updateFormData} supplierCode={supplierCode} />
                             </div>
                           )}
                           {activeTab === 1 && (
                             <div className="tab-pane fade show active" role="tabpanel">
-                              <GSTDetails updateFormData={updateFormData} />
+                              <GSTDetails updateFormData={updateFormData} itemDetails={formData.Item_Detail_Enter} />
                             </div>
                           )}
                           {activeTab === 2 && (
@@ -314,15 +318,17 @@ const NewPurchaseOrder = () => {
                           )}
                           {activeTab === 5 && (
                             <div className="tab-pane fade show active" role="tabpanel">
-                              <Poinfo updateFormData={updateFormData} />
+                              <Poinfo
+                                updateFormData={updateFormData}
+                                paymentTerms={formData.PaymentTerms}
+                                handleChange={(e) => updateFormData(e.target.name, e.target.value)}
+                              />
                             </div>
                           )}
                         </div>
                       </div>
 
-<div className="row">
-  
-</div>
+                      <div className="row"></div>
                       <div className="button-group mt-3 text-end">
                         {activeTab > 0 && (
                           <button type="button" className="btn" onClick={handlePrevious}>

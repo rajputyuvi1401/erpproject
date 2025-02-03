@@ -96,7 +96,7 @@ const SupplierWiseList = () => {
                                 Item Name
                               </label>
                             </th>
-                            <th></th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>

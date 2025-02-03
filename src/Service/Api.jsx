@@ -1229,15 +1229,21 @@ export const deleteCostCenter = async (id) => {
     const response = await fetch(`${BASE_URL}Cost_Center/${id}/`, {
       method: "DELETE",
     });
+
     if (!response.ok) {
       throw new Error("Failed to delete data");
     }
-    return await response.json();
+
+    // Check if response has content before parsing
+    const text = await response.text();
+    return text ? JSON.parse(text) : {};  // Avoids JSON parsing error
+
   } catch (error) {
-    console.error(error);
+    console.error("Delete Error:", error);
     throw error;
   }
 };
+
 
 // card1
 export const saveCostCenterAdd = async (data) => {
@@ -1296,21 +1302,24 @@ export const updateCostCenterAdd = async (id, data) => {
 
 export const deleteCostCenterAdd = async (id) => {
   try {
-    const response = await fetch(
-      `${BASE_URL}Cost_Center_Master_Add_New/${id}/`,
-      {
-        method: "DELETE",
-      }
-    );
+    const response = await fetch(`${BASE_URL}Cost_Center_Master_Add_New/${id}/`, {
+      method: "DELETE",
+    });
+
     if (!response.ok) {
       throw new Error("Failed to delete data");
     }
-    return await response.json();
+
+    // Check if response has content before parsing
+    const text = await response.text();
+    return text ? JSON.parse(text) : {};  // Avoids JSON parsing error
+
   } catch (error) {
-    console.error(error);
+    console.error("Delete Error:", error);
     throw error;
   }
 };
+
 
 // Price Entry Component
 
@@ -1399,16 +1408,42 @@ export const getMainGroups = async () => {
 
 export const deleteMainGroup = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}AddMainGroup/${id}/`, {
+    const response = await fetch(`${BASE_URL}AddMainGroup/${id}`, {
       method: "DELETE",
     });
-    if (!response.ok) throw new Error("Failed to delete data");
-    return await response.json();
+
+    if (!response.ok) {
+      throw new Error(`Failed to delete: ${response.statusText}`);
+    }
+
+    return true; // Return true to indicate success
   } catch (error) {
-    console.error("Error occurred while deleting data:", error);
+    console.error("Error deleting data:", error);
     throw error;
   }
 };
+
+export const updateMainGroup = async (id, data) => {
+  try {
+    const response = await fetch(`${BASE_URL}AddMainGroup/${id}/`, {
+      method: "PUT", // Use PUT for updating
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to update: ${response.statusText}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error updating data:", error);
+    throw error;
+  }
+};
+
 
 // item group
 export const saveItemGroup = async (data) => {
@@ -1460,14 +1495,26 @@ export const deleteItemGroup = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}AddItemGroup/${id}/`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    if (!response.ok) throw new Error("Failed to delete data");
+
+    if (response.status === 204) {
+      return { message: "Deleted successfully" }; // Some APIs return no content on delete
+    }
+
+    if (!response.ok) {
+      throw new Error(`Failed to delete: ${response.statusText}`);
+    }
+
     return await response.json();
   } catch (error) {
     console.error("Error occurred while deleting data:", error);
     throw error;
   }
 };
+
 
 
 // Part No
@@ -2430,3 +2477,61 @@ export const saveData = async (data) => {
   }
 };
 
+
+
+// Vendor Login 
+// Services/Api.jsx
+
+// const BASE_URL = "http://13.201.136.34:8000/";
+// const BASE_URL = "api/";
+
+export const loginVendor = async (data) => {
+  try {
+    const response = await fetch(`${BASE_URL}vendor/login/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(JSON.stringify(errorData));
+    }
+
+    return await response.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Dashboard
+export const fetchVendorProfile = async () => {
+  try {
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
+      throw new Error("No authentication token found");
+    }
+
+    const response = await fetch(`${BASE_URL}vendor/profile/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`, // Include token for authorization
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Error fetching profile data:", errorData); // Log detailed error
+      throw new Error(errorData.detail || "Failed to fetch profile data");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error in fetchVendorProfile:", error); // Log error message
+    throw new Error(error.message);
+  }
+};

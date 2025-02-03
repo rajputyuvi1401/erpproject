@@ -176,7 +176,7 @@ const BomRouting = () => {
                     <div className="row">
                       <div className="col-md-12">
                         <div className="table-responsive">
-                          <table className="table table-bordered table-striped">
+                          <table className="table  table-striped">
                             <thead>
                               <tr>
                                 <th>Sr</th>

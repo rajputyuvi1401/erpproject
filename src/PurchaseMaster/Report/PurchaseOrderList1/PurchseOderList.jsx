@@ -72,8 +72,8 @@ const PurchseOderList = () => {
                           <th>User</th>
                           
                           
-                         <th></th>
-                         <th></th>
+                         <th>Search</th>
+                         <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>

@@ -36,6 +36,31 @@ const Schedule = ({ updateFormData }) => {
   
     updateFormData("Schedule_Line", transformedScheduleLine);
   }, [scheduleLine, updateFormData]);
+
+  useEffect(() => {
+    const fetchScheduleLineData = async () => {
+      try {
+        const response = await fetch("http://13.201.136.34:8000/Purchase/get-item-details/")
+        const data = await response.json()
+        if (data && data.ItemDetails && Array.isArray(data.ItemDetails)) {
+          const formattedScheduleLine = data.ItemDetails.map((item) => ({
+            id: item.id,
+            itemCode: item.Item,
+            description: item.ItemDescription,
+            totalQty: item.Qty,
+            dates: item.Schedule_Line.map((sl) => sl.DeliveryDt || ""),
+            quantities: item.Schedule_Line.map((sl) => sl.Qty || ""),
+          }))
+          setScheduleLine(formattedScheduleLine)
+          updateFormData("Schedule_Line", formattedScheduleLine)
+        }
+      } catch (error) {
+        console.error("Error fetching Schedule Line data:", error)
+      }
+    }
+
+    fetchScheduleLineData()
+  }, [updateFormData])
   
 
   const handleAutoCalculateChange = (e) => {

@@ -58,7 +58,7 @@ const PendingIndent = () => {
                         <table className="table table-bordered">
                           <thead>
                             <tr>
-                              <th></th>
+                              <th>All Pending Indent</th>
                               <th>From Date</th>
                               <th>To Date</th>
                               <th>Plant</th>
@@ -89,7 +89,7 @@ const PendingIndent = () => {
                               <th>Direct/MRP</th>
                               <th>Department</th>
 
-                              <th></th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>

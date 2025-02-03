@@ -188,37 +188,31 @@ const BillMaterial = () => {
 
   const handleSave1 = async (e) => {
     e.preventDefault();
+    console.log("Saving operation:", formData);
+  
     if (!validateForm1()) {
       return;
     }
+  
     try {
       if (isEditing) {
+        console.log("Updating operation with ID:", editId);
         await updateOperation(editId, formData);
         toast.success("Operation updated successfully!");
       } else {
+        console.log("Creating new operation");
         await saveOperation(formData);
         toast.success("Operation saved successfully!");
       }
+  
       fetchOperations(); // Refresh data
-      setFormData({
-        Std_Otp: "",
-        Operation_Name: "",
-        Prefix: "",
-        Mhr_Rate: "",
-        BomQc: "",
-        ProductionDept: "",
-        MachineType: "",
-        Production_Cycle_Time: "",
-        Stop_Mc_Booking: "",
-        Per_Day_Prod_Qty: "",
-      });
-      setIsEditing(false);
-      setEditId(null);
+      handleClear1();
     } catch (error) {
       toast.error("Failed to save operation.");
       console.error("Error saving operation:", error);
     }
   };
+  
 
   const handleClear1 = () => {
     setFormData({
@@ -249,32 +243,25 @@ const BillMaterial = () => {
   };
 
   const handleDelete1 = async (id) => {
+    console.log("Deleting operation with ID:", id);
     try {
       await deleteOperation(id);
       toast.success("Operation deleted successfully!");
-      fetchOperations(); // Refresh data
+      fetchOperations(); // Refresh the list
     } catch (error) {
       toast.error("Failed to delete operation.");
       console.error("Error deleting operation:", error);
     }
   };
+  
 
   const handleEdit1 = (item) => {
-    setFormData({
-      Std_Otp: item.Std_Otp,
-      Operation_Name: item.Operation_Name,
-      Prefix: item.Prefix,
-      Mhr_Rate: item.Mhr_Rate,
-      BomQc: item.BomQc,
-      ProductionDept: item.ProductionDept,
-      MachineType: item.MachineType,
-      Production_Cycle_Time: item.Production_Cycle_Time,
-      Stop_Mc_Booking: item.Stop_Mc_Booking,
-      Per_Day_Prod_Qty: item.Per_Day_Prod_Qty,
-    });
+    console.log("Editing operation:", item);
+    setFormData({ ...item });
     setIsEditing(true);
     setEditId(item.id);
   };
+  
 
   return (
     <div className="BillMaterial">
@@ -402,7 +389,7 @@ const BillMaterial = () => {
                                 <button
                                   type="submit"
                                   className="bomButton"
-                                  style={{ marginTop: "24px" }}
+                                  style={{ marginTop: "31px" }}
                                 >
                                   {isEditing ? "Update" : "Save"}
                                 </button>
@@ -458,22 +445,18 @@ const BillMaterial = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-md-12 text-end mb-4">
-                          <button
-                            className="Closebom"
-                            onClick={toggleCardProduction}
-                          >
-                            Close
-                          </button>
-                        </div>
+                       
                       </div>
                     </div>
                   )}
                   {cardVisibleOperation && (
                     <div className="Operation">
-                      <div className="card">
-                        <div className="card-header d-flex justify-content-between">
-                          <span>Production Department Master</span>
+                     
+                        <div className="card">
+                        <div className="card-header d-flex justify-content-between mt-5">
+                        <h5 style={{ color: "blue" }}>
+                        Operation Master
+                          </h5>
                           <button
                             className="Closebom"
                             onClick={toggleCardOperation}
@@ -483,13 +466,7 @@ const BillMaterial = () => {
                         </div>
 
                         <div className="card-body">
-                          <div className="row mb-3">
-                            <div className="col-12 text-start">
-                              <h5 style={{ color: "blue" }}>
-                                Operation Master
-                              </h5>
-                            </div>
-                          </div>
+                          
                           <form onSubmit={handleSave1}>
                             <div className="row mb-3 text-start">
                               <div className="col-md-6">
@@ -836,7 +813,8 @@ const BillMaterial = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
+                        </div>
+                     
                   )}
                   {cardVisibleStandard && (
                     <div className="Standard">

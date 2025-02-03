@@ -8,8 +8,10 @@ import {
   updateStdRouting,
   deleteStdRouting,
 } from "../../../Service/Api";
+import "./BillMaterial.css";
 
 const VisibleStandard = () => {
+  
   const [data, setData] = useState([]);
   const [formData, setFormData] = useState({
     Std_Routing_No: "",
@@ -117,8 +119,8 @@ const VisibleStandard = () => {
   };
 
   return (
-    <div className="container">
-      <div className="card-body mb-4">
+    <div className="container ">
+      <div className="card-body mb-4 scrollable-card" style={{maxHeight:"400px",overflowY:"auto"}}>
         <ToastContainer />
         <div className="row mb-3">
           <div className="col-md-2 text-start">
@@ -336,9 +338,6 @@ const VisibleStandard = () => {
             </div>
           </div>
         </form>
-      </div>
-
-      <div className="card-body py-3">
         <table className="table table-bordered table-striped">
           <thead>
             <tr>
@@ -385,6 +384,8 @@ const VisibleStandard = () => {
           </tbody>
         </table>
       </div>
+
+      
     </div>
   );
 };

@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
-
+import "./ProReportt.css";
 
 const ProReport = () => {
     const [sideNavOpen, setSideNavOpen] = useState(false);

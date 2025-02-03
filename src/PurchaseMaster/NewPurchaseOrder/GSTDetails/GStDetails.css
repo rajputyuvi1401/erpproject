@@ -37,6 +37,11 @@
    .gsttable {
     padding: 15px;
   }
+
+  .gsttable .table-responsive {
+    overflow-x: auto; /* Horizontal scrolling */
+  }
+  
   
   .gsttable .table {
     width: 100%;
@@ -52,7 +57,7 @@
   }
   
   .gsttable .table input[type="text"] {
-    width: 100%;
+    width: 150%;
     box-sizing: border-box; 
   }
   
@@ -67,17 +72,26 @@
   .gsttable .table-responsive {
     overflow-x: auto;
   }
-  .table .form-control {
+  .gsttable  .table .form-control {
     width: 100%;
     padding: 0.5rem;
     box-sizing: border-box;
   }
-  
-  /* Adjust font size and padding */
-  .table .form-control {
-    font-size: 0.875rem; /* Slightly smaller font for better fit */
-    padding: 0.375rem 0.75rem;
+  .gsttable  input.form-control {
+    width: 100%; /* Ensures it fills the entire column width */
+    height: 40px; /* Adjust the height for bigger inputs */
+    font-size: 16px; /* Increase font size */
+    padding: 10px; /* Add padding for better readability */
+    box-sizing: border-box; /* Prevent overflow */
   }
+  
+  /* Optional: Increase the height of the table rows */
+  .gsttable  table td {
+    vertical-align: middle; /* Vertically center the content in each cell */
+  }
+  
+  
+  
   @media (max-width: 768px) {
     .gsttable  .table td {
       padding: 4px;

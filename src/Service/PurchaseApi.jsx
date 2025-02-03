@@ -309,15 +309,15 @@ export const registerPurchaseOrder = async (data) => {
 };
 
 
-export const fetchPurchaseOrders = async () => {
-  try {
-    const response = await axios.get(`${BASE_URL}RegisterPO_All_Series/`);
-    return response.data; // Return the fetched data
-  } catch (error) {
-    console.error('Error fetching purchase orders:', error);
-    throw error;
-  }
-};
+// export const fetchPurchaseOrders = async () => {
+//   try {
+//     const response = await axios.get(`${BASE_URL}RegisterPO_All_Series/`);
+//     return response.data; // Return the fetched data
+//   } catch (error) {
+//     console.error('Error fetching purchase orders:', error);
+//     throw error;
+//   }
+// };
 
 // Delete a purchase order by ID
 export const deletePurchaseOrder = async (id) => {
@@ -329,3 +329,76 @@ export const deletePurchaseOrder = async (id) => {
     throw error;
   }
 };
+
+export const updatePurchaseOrder = async (id, data) => {
+  try {
+    const response = await fetch(`${BASE_URL}RegisterPO_All_Series/${id}/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error("Error updating purchase order:", error)
+    throw error
+  }
+}
+
+export const fetchPurchaseOrderById = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}RegisterPO_All_Series/`)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    const data = await response.json()
+    const order = data.find((order) => order.id === Number.parseInt(id))
+    if (!order) {
+      throw new Error("Purchase order not found")
+    }
+    return order
+  } catch (error) {
+    console.error("Error fetching purchase order:", error)
+    throw error
+  }
+}
+
+export const fetchPurchaseOrders = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}RegisterPO_All_Series/`)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error("Error fetching purchase orders:", error)
+    throw error
+  }
+}
+
+
+
+
+export const getItems1 = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}get-item-details/`)
+    return response.data.ItemDetails
+  } catch (error) {
+    console.error("Error fetching items:", error)
+    throw error
+  }
+}
+
+export const fetchItemFields1 = async (itemCode) => {
+  try {
+    const response = await axios.get(`${BASE_URL}get-item-details/?item=${itemCode}`)
+    return response.data.ItemDetails
+  } catch (error) {
+    console.error("Error fetching item fields:", error)
+    throw error
+  }
+}

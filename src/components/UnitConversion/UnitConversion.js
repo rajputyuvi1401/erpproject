@@ -130,6 +130,7 @@ const UnitConversion = () => {
                           <select
                             id="SubGroup"
                             className="form-select"
+                            style={{marginTop:"-1px"}}
                             value={formData.SubGroup}
                             onChange={handleChange}
                           >
@@ -162,7 +163,7 @@ const UnitConversion = () => {
                             <div className="text-danger">{errors.Item}</div>
                           )}
                         </div>
-                        <div className="col-md-1 mb-3" style={{marginTop:"36px"}}>
+                        <div className="col-md-1 mb-3" style={{marginTop:"31px"}}>
                           <button
                             className="btn"
                             onClick={handleSubmit}
@@ -177,6 +178,7 @@ const UnitConversion = () => {
                           <select
                             id="Unit"
                             className="form-select"
+                            style={{marginTop:"-1px"}}
                             value={formData.Unit}
                             onChange={handleChange}
                           >
@@ -221,6 +223,7 @@ const UnitConversion = () => {
                           <select
                             id="StockUnit"
                             className="form-select"
+                            style={{marginTop:"-1px"}}
                             value={formData.StockUnit}
                             onChange={handleChange}
                           >
@@ -244,7 +247,7 @@ const UnitConversion = () => {
                             </div>
                           )}
                         </div>
-                        <div className="col-md-1 mb-3" style={{marginTop:"36px"}}>
+                        <div className="col-md-1 mb-3" style={{marginTop:"31px"}}>
                           <button
                             className="btn"
                             onClick={handleSubmit}
@@ -252,7 +255,7 @@ const UnitConversion = () => {
                             Save
                           </button>
                         </div>
-                        <div className="col-md-1 mb-3" style={{marginTop:"36px"}}>
+                        <div className="col-md-1 mb-3" style={{marginTop:"31px"}}>
                           <button className="btn" onClick={handleClear}>
                             Clear
                           </button>
@@ -260,10 +263,12 @@ const UnitConversion = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="Unittable">
+                  <div className="Unittable mt-5">
                     <div className="container-fluid">
-                      <div className="row text-start">
-                        <table>
+                    <div className="row">
+  <div className="table-responsive">
+    <table className="table table-striped mt-4">
+
                           <thead>
                             <tr>
                               <th>SubGroup</th>
@@ -291,6 +296,7 @@ const UnitConversion = () => {
                             )}
                           </tbody>
                         </table>
+                        </div>
                       </div>
                     </div>
                   </div>

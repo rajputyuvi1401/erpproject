@@ -120,8 +120,8 @@ const OperatorSupervisor = () => {
                     <div className="container-fluid">
                       <div className="row gy-3 text-start">
                         <div className="col-md-1 col-6">
-                          <label htmlFor="Produlink" className="form-label"></label>
-                          <select id="Produlink" className="form-select mb-4">
+                          <label htmlFor="Produlink" className="form-label">Plant</label>
+                          <select id="Produlink" className="form-select" style={{marginTop:"-1px"}}>
                             <option value="">Produlink</option>
                             {/* Add options here */}
                           </select>
@@ -151,7 +151,7 @@ const OperatorSupervisor = () => {
                           <label htmlFor="description" className="form-label">
                             Description
                           </label>
-                          <select id="contractor" className="form-select">
+                          <select id="contractor" className="form-select" style={{marginTop:"-1px"}}>
                             <option value="">All</option>
                             <option value="">All</option>
                             {/* Add options here */}
@@ -161,7 +161,7 @@ const OperatorSupervisor = () => {
                           <label htmlFor="contractor" className="form-label">
                             Contractor
                           </label>
-                          <select id="contractor" className="form-select">
+                          <select id="contractor" className="form-select" style={{marginTop:"-1px"}}>
                             <option value="">All</option>
                             <option value="Company">Company</option>
                             <option value="SAINATH JADHAV">
@@ -177,7 +177,7 @@ const OperatorSupervisor = () => {
                           <label htmlFor="type" className="form-label">
                             Type
                           </label>
-                          <select id="type" className="form-select">
+                          <select id="type" className="form-select" style={{marginTop:"-1px"}}>
                             <option value="">All</option>
                             <option value="FID">FID</option>{" "}
                             <option value="INSPECTOR">INSPECTOR</option>{" "}
@@ -191,7 +191,7 @@ const OperatorSupervisor = () => {
                           <label htmlFor="status" className="form-label">
                             Status
                           </label>
-                          <select id="status" className="form-select">
+                          <select id="status" className="form-select" style={{marginTop:"-1px"}}>
                             <option>All</option>
                             <option value="Status1">Status1</option>
                             <option value="Status2">Status2</option>
@@ -199,7 +199,7 @@ const OperatorSupervisor = () => {
                         </div>
                         <div className="col-md-1 col-12">
                           
-                          <button className="btn" style={{marginTop:"39px"}}>
+                          <button className="btn" style={{marginTop:"31px"}}>
                             Search
                           </button>
                         </div>
@@ -249,7 +249,7 @@ const OperatorSupervisor = () => {
                                     <i className="fas fa-trash-alt"></i>
                                   </td>
                                   <td>
-                                    <button className="Operatortablebtn">
+                                    <button className="btn">
                                       Action
                                     </button>
                                   </td>

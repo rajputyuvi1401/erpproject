@@ -59,15 +59,31 @@ const BuyerContactDetail = () => {
 
   const handleAddBuyerContact = async () => {
     if (!validateForm()) return;
-
+  
     try {
       if (formData.id) {
+        // Updating existing contact
         await updateBuyerContactDetail(formData.id, formData);
         toast.success("Buyer contact detail updated successfully!");
       } else {
+        // Check for duplicate email or contact number
+        const isDuplicate = buyerContacts.some(
+          (contact) =>
+            contact.Email.toLowerCase() === formData.Email.toLowerCase() ||
+            contact.Contact_No === formData.Contact_No
+        );
+  
+        if (isDuplicate) {
+          toast.error("A contact with the same email or phone number already exists!");
+          return;
+        }
+  
+        // Add new buyer contact
         await addBuyerContactDetail(formData);
         toast.success("Buyer contact detail added successfully!");
       }
+  
+      // Refresh the list
       const updatedBuyerContacts = await fetchBuyerContactDetails();
       setBuyerContacts(updatedBuyerContacts);
       setFormData({
@@ -83,6 +99,7 @@ const BuyerContactDetail = () => {
       toast.error("Error saving buyer contact detail!");
     }
   };
+  
 
   const handleEditBuyerContact = (contact) => {
     setFormData(contact);

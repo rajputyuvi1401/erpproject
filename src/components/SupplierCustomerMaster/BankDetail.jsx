@@ -88,11 +88,25 @@ const BankDetails = () => {
           await updateBankDetail(editingId, formData);
           toast.success("Bank detail updated successfully!");
         } else {
+          // Check if bank account or IFSC already exists
+          const isDuplicate = bankDetails.some(
+            (detail) =>
+              detail.Bank_Account === formData.Bank_Account ||
+              detail.IFSC_Code === formData.IFSC_Code
+          );
+  
+          if (isDuplicate) {
+            toast.error("Bank detail with the same Account Number or IFSC Code already exists!");
+            return;
+          }
+  
           // Add new bank detail
           await addBankDetail(formData);
           toast.success("Bank detail added successfully!");
         }
-        const updatedBankDetails = await fetchBankDetails(); // Refresh the list
+  
+        // Refresh the list
+        const updatedBankDetails = await fetchBankDetails();
         setBankDetails(updatedBankDetails);
         setFormData({
           Account_Holder_name: "",
@@ -107,6 +121,7 @@ const BankDetails = () => {
       }
     }
   };
+  
 
   const handleEditBankDetail = (detail) => {
     setFormData({

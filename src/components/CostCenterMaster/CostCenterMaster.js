@@ -183,11 +183,14 @@ const CostCenterMaster = () => {
     try {
       await deleteCostCenterAdd(id);
       toast.success("Cost Center deleted successfully!");
-      fetchCostCentersAdd().then((data) => setCostCenterData1(data));
+      
+      // Update state directly without refetching
+      setCostCenterData1(prevData => prevData.filter(item => item.id !== id));
     } catch (error) {
       toast.error("Failed to delete data");
     }
   };
+  
 
   return (
     <div className="CostcenterMaster">
@@ -535,10 +538,10 @@ const CostCenterMaster = () => {
                               </div>
                             </div>
 
-                            <div className="col-md-1 col-sm-12 text-sm-start text-md-start">
+                            <div className="col-md-1 text-start">
                               <button
-                                className="Costcentermainbtn"
-                                style={{ marginTop: "30px" }}
+                                className="btn"
+                                style={{ marginTop: "38px" }}
                                 onClick={handleSave1}
                               >
                                 Save

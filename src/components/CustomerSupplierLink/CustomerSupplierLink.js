@@ -189,7 +189,7 @@ const CustomerSupplierLink = () => {
                                           <div className="col-sm-2">
                                             <button
                                               type="button"
-                                              className="sear-btn"
+                                              className="btn"
                                             >
                                               Search
                                             </button>
@@ -270,11 +270,11 @@ const CustomerSupplierLink = () => {
                                             )}
                                           </div>
                                         </div>
-                                        <div className="row mb-3 text-start">
+                                        <div className="row mb-3 text-end">
                                           <div className="col-sm-1">
                                             <button
                                               type="submit"
-                                              className="wise1-btn"
+                                              className="btn"
                                             >
                                               Save
                                             </button>
@@ -282,7 +282,7 @@ const CustomerSupplierLink = () => {
                                           <div className="col-sm-1">
                                             <button
                                               type="button"
-                                              className="wise1-btn"
+                                              className="btn"
                                               onClick={handleClear}
                                             >
                                               Clear
@@ -361,7 +361,7 @@ const CustomerSupplierLink = () => {
                                         </label>
                                       </div>
                                     </div>
-                                    <div className="col-md-3">
+                                    <div className="col-md-3" style={{marginTop:"-7px"}}>
                                       <input
                                         type="text"
                                         className="form-control mt-2"
@@ -397,7 +397,7 @@ const CustomerSupplierLink = () => {
                                         </label>
                                       </div>
                                     </div>
-                                    <div className="col-md-3">
+                                    <div className="col-md-3" style={{marginTop:"-7px"}}>
                                       <input
                                         type="text"
                                         className="form-control mt-2"

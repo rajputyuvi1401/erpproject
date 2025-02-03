@@ -138,6 +138,7 @@ const ShiftMaster = () => {
                             <select
                               id="Plant"
                               className="form-select"
+                              style={{marginTop:"-1px"}}
                               aria-label="Default select example"
                               onChange={handleChange1}
                               value={selectedOption}
@@ -308,15 +309,18 @@ const ShiftMaster = () => {
                           </div>
                         </div>
                         <div className="col-md-2">
-                          <div className="mb-3 mt-4">
+                          <div className="mb-3">
                             <button
                               className="btn"
                               type="button"
                               onClick={handleSubmit}
+                              style={{marginTop:"31px"}}
                             >
                               Save
                             </button>
-                            <button className="btn">Cancel</button>
+                            <button className="btn" type="button"
+                             
+                              style={{marginTop:"31px"}}>Cancel</button>
                           </div>
                         </div>
                       </div>

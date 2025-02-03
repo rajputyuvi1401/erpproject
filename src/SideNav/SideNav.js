@@ -835,7 +835,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     Contractor Payment
                   </Dropdown.Item>
                 )}
-                {permissions.Production.includes("P Report") && (
+                {permissions.Production.includes("PReport") && (
                   <Dropdown>
                     <Dropdown.Toggle as="div" className="dropdown-item">
                       <strong>Report</strong>

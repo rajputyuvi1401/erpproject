@@ -59,7 +59,7 @@ const ContractorMaster = () => {
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12 text-start">
-                          <div className="row mt-3">
+                          <div className="row">
                             <div className="col-md-3">
                               <label
                                 htmlFor="plantSelect"
@@ -67,7 +67,7 @@ const ContractorMaster = () => {
                               >
                                 Plant:
                               </label>
-                              <select id="plantSelect" className="form-select">
+                              <select id="plantSelect" className="form-select" style={{marginTop:"-1px"}}>
                                 <option value="Produlink">Produlink</option>
                                 
                               </select>
@@ -86,13 +86,13 @@ const ContractorMaster = () => {
                                 placeholder="Enter Contractor Name"
                               />
                             </div>
-                            <div className="col-md-1 d-flex align-items-end">
-                              <button className="ContractorMainbtn ">
+                            <div className="col-md-3" style={{marginTop:"34px"}}>
+                              <button className="btn" type="button">
                                 Search
                               </button>
-                            </div>
-                            <div className="col-md-2 d-flex align-items-end">
-                              <button className="ContractorMainbtn">
+                            
+                            
+                              <button className="btn" type="button">
                                 View All
                               </button>
                             </div>

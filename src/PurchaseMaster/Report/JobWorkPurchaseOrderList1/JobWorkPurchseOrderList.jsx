@@ -83,7 +83,7 @@ const JobWorkPurchseOrderList = () => {
                             </label>
                           </th>
                           <th>
-                           
+                           Action
                           </th>
                         </tr>
                       </thead>

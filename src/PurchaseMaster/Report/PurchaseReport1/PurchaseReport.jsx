@@ -97,7 +97,7 @@ const PurchaseReport = () => {
                                   <th>To Date</th>
 
                                   <th>Cost Center Group</th>
-                                  <th></th>
+                                  <th>Action</th>
                                 </tr>
                               </thead>
                               <tbody>

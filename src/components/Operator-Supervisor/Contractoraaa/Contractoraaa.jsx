@@ -257,7 +257,7 @@ const Contractoraaa = () => {
               )}
             </div>
           </div>
-          <button className="AddContractorMainbtn" onClick={handleSubmit}>
+          <button className="btn btn-primary" onClick={handleSubmit}>
             Save
           </button>
         </div>

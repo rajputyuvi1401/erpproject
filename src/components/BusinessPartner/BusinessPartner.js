@@ -276,7 +276,7 @@ const BusinessPartner = () => {
                                 )}
                               </div>
                               <div className="col-md-2">
-                                <button type="button" className="btn-ty" onClick={handleSearch}>
+                                <button type="button" className="btn" onClick={handleSearch}>
                                   Search
                                 </button>
                               </div>
@@ -704,14 +704,14 @@ const BusinessPartner = () => {
                           
                               <div className="row mb-3 text-end">
                               <div className="col-sm-10">
-                                <button type="submit" className="btn-ty">
+                                <button type="submit" className="btn">
                                   Save
                                 </button>
                               </div>
                               <div className="col-sm-2">
                                 <button
                                   type="button"
-                                  className="btn-ty"
+                                  className="btn"
                                   onClick={handleClear}
                                 >
                                   Clear
@@ -844,7 +844,7 @@ const BusinessPartner = () => {
                           />
                         </div>
                         <div className="col-sm-3">
-                          <button className="bsi-btn">Search</button>
+                          <button className="btn">Search</button>
                         </div>
                       </div>
                     </div>

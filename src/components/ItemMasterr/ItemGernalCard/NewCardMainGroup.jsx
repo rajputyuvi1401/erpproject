@@ -6,12 +6,16 @@ import {
   saveMainGroup,
   getMainGroups,
   deleteMainGroup,
+  updateMainGroup
 } from "../../../Service/Api";
 
 const NewCardMainGroup = () => {
+  const [editId, setEditId] = useState(null); // Track which item is being edited
+
   const [formData, setFormData] = useState({
     name: "", // Initialize formData with "name" field
   });
+
   const [errors, setErrors] = useState({});
   const [MainGroup, setMainGroup] = useState([]);
 
@@ -45,23 +49,31 @@ const NewCardMainGroup = () => {
   // Handle save (create/update) main group
   const handleSave = async (e) => {
     e.preventDefault();
-
-    // Validate form before submitting
+  
     if (!validateForm()) {
       return;
     }
-
+  
     try {
-      await saveMainGroup(formData); // Call the API to save main group
-      toast.success("Main Group saved successfully!");
-
+      if (editId) {
+        // If we have an ID, it's an update request
+        await updateMainGroup(editId, formData);
+        toast.success("Main Group updated successfully!");
+      } else {
+        // If no ID, it's a create request
+        await saveMainGroup(formData);
+        toast.success("Main Group saved successfully!");
+      }
+  
       setFormData({ name: "" }); // Clear form after saving
+      setEditId(null); // Reset edit mode
       fetchMainGroups(); // Refresh the list
     } catch (error) {
-      console.error("Error saving main group:", error);
-      toast.error("Failed to save Main Group.");
+      console.error("Error saving/updating main group:", error);
+      toast.error("Failed to save/update Main Group.");
     }
   };
+  
 
   // Fetch main groups from API
   const fetchMainGroups = async () => {
@@ -86,6 +98,13 @@ const NewCardMainGroup = () => {
     }
   };
 
+
+  const handleEdit = (item) => {
+    setEditId(item.id); // Store the ID of the item being edited
+    setFormData({ name: item.name }); // Populate form with the selected item's data
+  };
+
+  
   return (
     <div className="container">
       {/* Main Group Form */}
@@ -127,11 +146,11 @@ const NewCardMainGroup = () => {
             <tr key={item.id}>
               <td>{item.name}</td>
               <td>
-                <FaEdit
-                  className="text-primary mx-2"
-                  style={{ cursor: "pointer" }}
-                  // Implement edit functionality if needed
-                />
+              <FaEdit
+    className="text-primary mx-2"
+    style={{ cursor: "pointer" }}
+    onClick={() => handleEdit(item)}
+  />
                 <FaTrash
                   className="text-danger mx-2"
                   style={{ cursor: "pointer" }}

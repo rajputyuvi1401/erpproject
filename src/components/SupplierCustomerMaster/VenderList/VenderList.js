@@ -150,13 +150,13 @@ const VenderList = () => {
                           </div>
                           <div className="col-sm-4">
                             <button
-                              className="Vendermainbtn"
+                              className="btn"
                               onClick={handleSearch}
                             >
                               Search
                             </button>
                             <button
-                              className="Vendermainbtn"
+                              className="btn"
                               onClick={handleViewAll}
                             >
                               View All

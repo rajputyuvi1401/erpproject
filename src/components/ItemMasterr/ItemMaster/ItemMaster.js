@@ -219,9 +219,10 @@ const ItemMaster = () => {
 
                   <div className="search-table mt-5">
                     <div className="container-fluid">
-                      <div className="row">
-                        <div className="table-responsive">
-                          <table className="table mt-4">
+                    <div className="row">
+  <div className="table-responsive">
+    <table className="table table-striped mt-4">
+
                             <thead>
                               <tr>
                                 <th>Sr</th>
@@ -280,7 +281,7 @@ const ItemMaster = () => {
       </div>
 
                   <div className="pagination-container">
-          <div className="row">
+          <div className="row text-end">
             <div className="col-md-12 text-end">
               <nav aria-label="Page navigation">
                 <ul className="pagination">

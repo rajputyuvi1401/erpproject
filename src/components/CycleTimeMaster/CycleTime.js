@@ -116,9 +116,10 @@ const CycleTime = () => {
                   </div>
                   <div className="CycletimeTable mt-5">
                     <div className="container-fluid">
-                      <div className="table-responsive">
-                        <table className="table">
-                          <thead className="table-primary">
+                    <div className="row">
+  <div className="table-responsive">
+    <table className="table table-striped mt-4">
+                          <thead>
                             <tr>
                               <th scope="col">Sr</th>
                               <th scope="col">Item No.</th>
@@ -159,6 +160,7 @@ const CycleTime = () => {
                             ))}
                           </tbody>
                         </table>
+                      </div>
                       </div>
                     </div>
                   </div>

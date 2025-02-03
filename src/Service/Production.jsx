@@ -109,3 +109,60 @@ export const createWorkOrder = async (data) => {
   
   export default ProductionApi;
   
+
+  // Function to get the next scrap rejection number based on the series
+export const getNextScrapRejectionNo = async (shortYear = "2324") => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}scrap_rejection_no/?Shortyear=${shortYear}`
+    );
+    return response.data.next_scrap_rejection_no;
+  } catch (error) {
+    console.error("Error fetching scrap rejection number:", error);
+    throw error; // Rethrow error for handling in the calling component
+  }
+};
+
+// Function to submit the scrap rejection form data
+export const submitScrapRejection = async (payload) => {
+  try {
+    const response = await axios.post(`${BASE_URL}scrap_rejection/`, payload);
+    return response.data;
+  } catch (error) {
+    console.error("Error submitting data:", error);
+    throw error; // Rethrow error for handling in the calling component
+  }
+};
+
+// GET all scrap rejections
+export const getScrapRejections = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}scrap_rejection/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return [];
+  }
+};
+
+// POST a new scrap rejection
+export const addScrapRejection = async (data) => {
+  try {
+    const response = await axios.post(`${BASE_URL}scrap_rejection/`, data);
+    return response.data;
+  } catch (error) {
+    console.error("Error adding data", error);
+    throw error;
+  }
+};
+
+// DELETE a scrap rejection by id
+export const deleteScrapRejection = async (id) => {
+  try {
+    await axios.delete(`${BASE_URL}scrap_rejection/${id}/`);
+    return id;
+  } catch (error) {
+    console.error("Error deleting data", error);
+    throw error;
+  }
+};

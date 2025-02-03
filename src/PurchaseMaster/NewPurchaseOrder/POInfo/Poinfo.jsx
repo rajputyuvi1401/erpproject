@@ -4,7 +4,8 @@ import { FaPlus, FaSync, FaEdit, FaTrash } from "react-icons/fa"
 import { ToastContainer } from "react-toastify"
 import { fetchNextCode } from "../../../Service/PurchaseApi"
 
-const Poinfo = ({ updateFormData }) => {
+const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
+  
 
   const [currentTime, setCurrentTime] = useState("")
   const [showCard, setShowCard] = useState(false)
@@ -258,15 +259,16 @@ const Poinfo = ({ updateFormData }) => {
                   </div>
                   <div className="col-md-8">
                     <div className="form-group mb-3">
-                      <input
-                        type="text"
-                        id="PaymentTerms"
-                        name="PaymentTerms"
-                        className="form-control"
-                        placeholder="Enter Payment Terms"
-                        value={formData.PaymentTerms}
-                        onChange={handleChange}
-                      />
+                     
+                    <input
+              type="text"
+              id="PaymentTerms"
+              name="PaymentTerms"
+              className="form-control"
+              placeholder="Enter Payment Terms"
+              value={paymentTerms}
+              onChange={handleChange}
+            />
                     </div>
                   </div>
                 </div>

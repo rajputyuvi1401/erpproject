@@ -8,6 +8,7 @@ import {
   updateBomItemGroup,
   deleteBomItemGroup,
 } from "../../../Service/Api";
+import "./BillMaterial.css";
 
 const VisibleBomitem = () => {
   const [data, setData] = useState([]);
@@ -119,6 +120,7 @@ const VisibleBomitem = () => {
               <label className="form-label">BOM Item Group:<span className="text-danger">*</span>
                                                </label>
               <select
+               style={{marginTop:"-1px"}}
                 className={`form-select ${
                   errors.Bom_Item_Group ? "is-invalid" : ""
                 }`}
@@ -160,11 +162,11 @@ const VisibleBomitem = () => {
                 <div className="invalid-feedback">{errors.Qty}</div>
               )}
             </div>
-            <div className="col-md-3 text-end">
+            <div className="col-md-1 text-end">
               <button
                 type="submit"
                 className="BomitemButton"
-                style={{ marginTop: "24px" }}
+                style={{ marginTop: "31px" }}
               >
                 {isEditing ? "Update" : "Save"}
               </button>

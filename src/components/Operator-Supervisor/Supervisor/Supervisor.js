@@ -1033,7 +1033,7 @@ const Supervisor = () => {
                   <div className="text-danger">{errors.EnterDeptName}</div>
                 )}
               </div>
-              <div className="col-md-2" style={{marginTop:"39px"}}>
+              <div className="col-md-2" style={{marginTop:"31px"}}>
                 <button className="btn" type="submit">
                   Save
                 </button>
@@ -1060,7 +1060,7 @@ const Supervisor = () => {
                   <td>{dep.EnterDeptName}</td>
                   <td>
                     <button
-                      className="btn-action"
+                      className="btn"
                       onClick={() => handleEdit(dep.id)}
                     >
                       <i className="fas fa-edit"></i>
@@ -1068,7 +1068,7 @@ const Supervisor = () => {
                   </td>
                   <td>
                     <button
-                      className="btn-action"
+                      className="btn"
                       onClick={() => handleDelete(dep.id)}
                     >
                       <i className="fas fa-trash-alt"></i>

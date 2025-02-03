@@ -122,6 +122,8 @@ import PurchseOderList from "./PurchaseMaster/Report/PurchaseOrderList1/PurchseO
 import PurchaseReport from "./PurchaseMaster/Report/PurchaseReport1/PurchaseReport.jsx";
 import SupplierWiseList from "./PurchaseMaster/Report/SupplierWiseList1/SupplierWiseList.jsx";
 
+import POEdit from "./PurchaseMaster/NewPurchaseOrder/POEdit/POEdit.jsx";
+import PurchaseOrderPDF from "./PurchaseMaster/NewPurchaseOrder/PurcheseOrderPDF/PurchaseOrderPDF.jsx";
 ////////////////////////////////Store//////////////////////////////////////////////////////
 
 // Gate Inward Entry
@@ -506,6 +508,12 @@ function App() {
         <Route path="supplier-wise-list" element={<SupplierWiseList />} />
         <Route path="purchase-report" element={<PurchaseReport />} />
 
+  
+<Route path="/EditPo/:id" element={<POEdit/>} />
+
+<Route path="/POpdf/:id" element={<PurchaseOrderPDF />} />
+
+
 
 
 
@@ -680,7 +688,7 @@ function App() {
         <Route path="/ContractirList" element={<ContractirList />} />
         <Route path="/ProReport" element={<ProReport />} />
         <Route path="/OperatorReport" element={<OperatorReport/>} />
-        <Route path="/ProReport" element={<ProReport />} />
+       
         <Route path="/CycleTime1" element={<CycleTime1/>} />
         <Route path="/ReworkReport" element={<ReworkReport />} />
         <Route path="/BreakdownAnalysis" element={<BreakdownAnalysis/>} />
