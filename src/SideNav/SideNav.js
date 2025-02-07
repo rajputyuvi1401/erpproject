@@ -835,7 +835,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     Contractor Payment
                   </Dropdown.Item>
                 )}
-                {permissions.Production.includes("PReport") && (
+                {permissions.Production.includes("P Report") && (
                   <Dropdown>
                     <Dropdown.Toggle as="div" className="dropdown-item">
                       <strong>Report</strong>
@@ -1208,7 +1208,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
               </Dropdown.Item>
             )}
             {permissions.Sales.includes("Pending Material GatePass") && (
-              <Dropdown.Item as={Link} to="/PendingMaterialGatepassLis">
+              <Dropdown.Item as={Link} to="/PendingMaterialGatepassList">
                 Pending Material GatePass
               </Dropdown.Item>
             )}

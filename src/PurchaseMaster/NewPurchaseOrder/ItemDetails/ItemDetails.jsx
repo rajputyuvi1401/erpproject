@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { FaTrash } from "react-icons/fa"
-import {  fetchItemFields } from "../../../Service/PurchaseApi"
+import { deleteItem, fetchItemFields } from "../../../Service/PurchaseApi"
 import { toast, ToastContainer } from "react-toastify"
 import { getUnitCode } from "../../../Service/Api"
 
@@ -19,6 +19,13 @@ const ItemDetails = ({ updateFormData }) => {
     Particular: "",
     Mill_Name: "",
     DeliveryDt: "",
+    Schedule_Line: [
+      {
+        Item: "",
+        ItemDescription: "",
+        Qty: "",
+      },
+    ],
   })
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
@@ -103,14 +110,6 @@ const ItemDetails = ({ updateFormData }) => {
 
   // Add item to the list
   const addItem = () => {
-    const validationErrors = validateItem(currentItem)
-
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors)
-      toast.error("Please correct the errors before adding the item.")
-      return
-    }
-
     if (currentItem.Item && currentItem.ItemDescription) {
       const newItem = {
         ...currentItem,
@@ -121,6 +120,13 @@ const ItemDetails = ({ updateFormData }) => {
           SGST: { Rate: 0, Amt: 0 },
           IGST: { Rate: 0, Amt: 0 },
         },
+        Schedule_Line: [
+          {
+            Item: currentItem.Item,
+            ItemDescription: currentItem.ItemDescription,
+            Qty: currentItem.Qty,
+          },
+        ],
       }
       const updatedItems = [...itemDetails, newItem]
       setItemDetails(updatedItems)
@@ -138,6 +144,13 @@ const ItemDetails = ({ updateFormData }) => {
         Particular: "",
         Mill_Name: "",
         DeliveryDt: "",
+        Schedule_Line: [
+          {
+            Item: "",
+            ItemDescription: "",
+            Qty: "",
+          },
+        ],
       })
     } else {
       toast.error("Item and Item Description are required.")
@@ -145,24 +158,19 @@ const ItemDetails = ({ updateFormData }) => {
   }
 
   // Delete item
-  const handleDelete = (id) => {
-    const updatedItems = itemDetails.filter((item) => item.id !== id)
-    setItemDetails(updatedItems)
-    updateFormData("Item_Detail_Enter", updatedItems)
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      setLoading(true)
+      try {
+        await deleteItem(id)
+        setItemDetails((prevItems) => prevItems.filter((item) => item.id !== id))
+      } catch (error) {
+        alert("Failed to delete item. Please try again.")
+      } finally {
+        setLoading(false)
+      }
+    }
   }
-
-
-  const validateItem = (item) => {
-    const newErrors = {}
-    if (item.Item.length > 30) newErrors.Item = "Ensure this field has no more than 30 characters."
-    if (isNaN(Number.parseFloat(item.Rate))) newErrors.Rate = "A valid number is required."
-    if (isNaN(Number.parseFloat(item.Disc))) newErrors.Discount = "A valid number is required."
-    if (isNaN(Number.parseInt(item.Qty))) newErrors.Qty = "A valid integer is required."
-    const subTotal = Number.parseFloat(item.Rate) * Number.parseInt(item.Qty)
-    if (isNaN(subTotal)) newErrors.SubTotal = "A valid number is required."
-    return newErrors
-  }
-
 
   return (
     <div className="container-fluid">
@@ -339,6 +347,7 @@ const ItemDetails = ({ updateFormData }) => {
                     <th>Make / Mill Name</th>
                     <th>Delivery Date</th>
                     <th>GST Details</th>
+                    <th>Schedule Line</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
@@ -365,6 +374,19 @@ const ItemDetails = ({ updateFormData }) => {
                         SGST: {item.GST_Details?.SGST?.Rate || 0}%
                         <br />
                         IGST: {item.GST_Details?.IGST?.Rate || 0}%
+                      </td>
+                      <td>
+                        {item.Schedule_Line && item.Schedule_Line[0] ? (
+                          <>
+                            Item: {item.Schedule_Line[0].Item}
+                            <br />
+                            Desc: {item.Schedule_Line[0].ItemDescription}
+                            <br />
+                            Qty: {item.Schedule_Line[0].Qty}
+                          </>
+                        ) : (
+                          "No schedule data"
+                        )}
                       </td>
                       <td>
                         <button className="btn" onClick={() => handleDelete(item.id)}>

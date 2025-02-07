@@ -16,6 +16,12 @@
   margin: 0;
 }
 
+.productionbottom{
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Border for header */
+  padding: 10px 15px; /* Padding around header */
+  border-radius: 5px;
+}
 /* Form and Inputs */
 /* Additional spacing for table cells */
 .ProductionEntryMaster .table-bordered td, .table-bordered th {

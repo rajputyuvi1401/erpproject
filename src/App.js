@@ -311,6 +311,7 @@ import JobworkList from "./PurchaseMaster/NewJobworkPurchase/JobworkList/Jobwork
 import CycleTime1 from "./ProductionMaster/Report/CycleTime/CycleTime.jsx";
 import BreakdownAnalysis from "./ProductionMaster/Report/BreakdownAnalysis/BreakdownAnalysis.jsx";
 import ReworkReport from "./ProductionMaster/Report/ReworkReport/ReworkReport.jsx";
+import ProductionEntryList from "./ProductionMaster/ProductionEntry/ProductionEntryList/ProductionEntryList.jsx";
 
 
 /////////////////////////////////////     Sales       ////////////////////////////////////
@@ -692,7 +693,7 @@ function App() {
         <Route path="/CycleTime1" element={<CycleTime1/>} />
         <Route path="/ReworkReport" element={<ReworkReport />} />
         <Route path="/BreakdownAnalysis" element={<BreakdownAnalysis/>} />
-
+        <Route path="/ProductionEntryList" element={<ProductionEntryList/>} />
 
           {/* //////////////////////////////     Sales       /////////////////////////// */}
         <Route path="GSTsales1" element={<GSTsales1/>} />

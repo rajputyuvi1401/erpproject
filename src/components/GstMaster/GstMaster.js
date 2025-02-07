@@ -444,8 +444,8 @@ const GstMaster = () => {
                                             value={formData.Type}
                                             onChange={handleInputChange}
                                           >
-                                            <option value="type1">HSN</option>
-                                            <option value="type2">SAC</option>
+                                            <option value="HSN">HSN</option>
+                                            <option value="SAC">SAC</option>
                                           </select>
                                         </td>
                                       </tr>

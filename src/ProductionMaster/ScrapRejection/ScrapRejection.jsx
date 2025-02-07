@@ -50,7 +50,7 @@ const ScrapRejection = () => {
 
     if (selectedSeries === "Line R") {
       try {
-        const nextRejectionNo = await getNextScrapRejectionNo("2324");
+        const nextRejectionNo = await getNextScrapRejectionNo(year);
         setScrapRejectionNo(nextRejectionNo);
       } catch (error) {
         console.error("Failed to fetch next scrap rejection number:", error);
@@ -58,7 +58,7 @@ const ScrapRejection = () => {
     }
   };
 
-
+  const year = localStorage.getItem("Shortyear");
 
   
 

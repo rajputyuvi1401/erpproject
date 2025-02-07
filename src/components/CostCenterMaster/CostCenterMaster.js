@@ -312,7 +312,7 @@ const CostCenterMaster = () => {
                           </div>
                           <div className="col-md-2 text-end">
                             <button
-                              className="card-btn"
+                              className="btn"
                               onClick={toggleAddForm}
                             >
                               X
@@ -336,6 +336,7 @@ const CostCenterMaster = () => {
                                     className="form-select"
                                     value={formData.Category_Code}
                                     onChange={handleInputChange}
+                                    style={{marginTop:"-1px"}}
                                   >
                                     <option value="" disabled>
                                       Select ..
@@ -344,7 +345,7 @@ const CostCenterMaster = () => {
                                     <option>Maintenance</option>
                                   </select>
                                 </div>
-                                <div className="col-sm-1 mt-2">
+                                <div className="col-sm-1"    style={{marginTop:"-1px"}}>
                                   <button
                                     className="btn"
                                     onClick={toggleAddFormsecond}
@@ -352,8 +353,8 @@ const CostCenterMaster = () => {
                                     New
                                   </button>
                                 </div>
-                                <div className="col-sm-1 ms-4 mt-2">
-                                  <button className="btn">
+                                <div className="col-sm-1 ms-4">
+                                  <button className="btn"    style={{marginTop:"-1px"}}>
                                     <CachedIcon />
                                   </button>
                                 </div>
@@ -404,7 +405,7 @@ const CostCenterMaster = () => {
                             <div className="col-md-1 col-sm-12 text-sm-start text-md-start mt-2">
                               <button
                                 className="btn"
-                                style={{ marginTop: "30px" }}
+                                style={{ marginTop: "29px" }}
                                 onClick={handleSave}
                               >
                                 Save
@@ -481,7 +482,7 @@ const CostCenterMaster = () => {
                           </div>
                           <div className="col-md-2 text-end">
                             <button
-                              className="card-btn"
+                              className="btn"
                               onClick={toggleAddFormsecond}
                             >
                               X
@@ -505,6 +506,7 @@ const CostCenterMaster = () => {
                                     className="form-select"
                                     value={formData1.Category_Code}
                                     onChange={handleInputChange1}
+                                    style={{marginTop:"-1px"}}
                                   >
                                     <option value="" disabled>
                                       Select ..

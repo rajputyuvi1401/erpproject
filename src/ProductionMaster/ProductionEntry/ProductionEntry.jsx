@@ -1,213 +1,475 @@
-import { useState, useEffect } from "react"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap/dist/js/bootstrap.bundle.min"
-import NavBar from "../../NavBar/NavBar.js"
-import SideNav from "../../SideNav/SideNav.js"
+import { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import NavBar from "../../NavBar/NavBar.js";
+import SideNav from "../../SideNav/SideNav.js";
 
-import "./ProductionEntry.css"
-import { FaPlus } from "react-icons/fa"
-import Cached from "@mui/icons-material/Cached.js"
+import "./ProductionEntry.css";
+import { FaPlus, FaTrash } from "react-icons/fa";
+import Cached from "@mui/icons-material/Cached.js";
 
-import { fetchOperators, fetchSupervisors, fetchContractors, fetchUnitMachines } from "../../Service/Production.jsx"
+import {
+  fetchShifts,
+  fetchContractors,
+  fetchUnitMachines,
+  fetchOperators,
+  fetchSupervisors,
+  createProductionEntry,
+  getProductionNumber,
+  fetchHelpers,
+} from "../../Service/Production.jsx";
+import { Link } from "react-router-dom";
 
 // ProductionEntry Component
 const ProductionEntry = () => {
   // Side Navigation State
-  const [sideNavOpen, setSideNavOpen] = useState(false)
+  const [sideNavOpen, setSideNavOpen] = useState(false);
 
   const toggleSideNav = () => {
-    setSideNavOpen((prevState) => !prevState)
-  }
+    setSideNavOpen((prevState) => !prevState);
+  };
 
   useEffect(() => {
     if (sideNavOpen) {
-      document.body.classList.add("side-nav-open")
+      document.body.classList.add("side-nav-open");
     } else {
-      document.body.classList.remove("side-nav-open")
+      document.body.classList.remove("side-nav-open");
     }
-  }, [sideNavOpen])
+  }, [sideNavOpen]);
 
-  // Operators State and Functions
-  const [operators, setOperators] = useState([])
-  const [filteredOperators, setFilteredOperators] = useState([])
-  const [searchTerm, setSearchTerm] = useState("")
-  const [, setSelectedOperator] = useState(null) // Update 1: Removed selectedOperator
-  const [dropdownVisible, setDropdownVisible] = useState(false)
+  // Function to get current date & time in the required format
+  const getCurrentDateTime = () => {
+    const now = new Date();
 
-  // Fetch operators using the service
-  const loadOperators = async () => {
-    try {
-      const data = await fetchOperators()
-      setOperators(data)
-      setFilteredOperators(data) // Initialize filtered list
-    } catch (error) {
-      console.error("Error loading operators:", error)
+    // Get current date in YYYY-MM-DD format
+    const currentDate = now.toISOString().split("T")[0];
+
+    // Get current time in HH:MM format
+    const currentTime = now.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false, // 24-hour format
+    });
+
+    return { currentDate, currentTime };
+  };
+
+  // Set default date & time when the component loads
+  useEffect(() => {
+    const { currentDate, currentTime } = getCurrentDateTime();
+    setFormData((prev) => ({
+      ...prev,
+      Date: currentDate,
+      Time: currentTime,
+    }));
+  }, []);
+
+  const [series, setSeries] = useState("");
+  const [prodNo, setProdNo] = useState("");
+
+  // Retrieve the shortYear from local storage
+  const shortYear = localStorage.getItem("Shortyear");
+
+  // useEffect hook to call the API whenever the selected series changes to "DP"
+  useEffect(() => {
+    if (series === "DP" && shortYear) {
+      getProductionNumber(series, shortYear)
+        .then((data) => {
+          // Assuming the API returns { "prod_no": "DP 252600004" }
+          setProdNo(data.prod_no);
+        })
+        .catch((error) => {
+          console.error("Error fetching production number:", error);
+        });
+    } else {
+      // Clear the production number if series is not "DP"
+      setProdNo("");
     }
-  }
+  }, [series, shortYear]);
 
-  // Handle search input change
-  const handleSearchChange = (event) => {
-    const value = event.target.value
-    setSearchTerm(value)
-    setDropdownVisible(true)
+  const [helpers, setHelpers] = useState([]);
+  const [filteredHelpers, setFilteredHelpers] = useState([]);
+  const [searchTermHelper, setSearchTermHelper] = useState("");
+  const [dropdownVisibleHelper, setDropdownVisibleHelper] = useState(false);
 
-    // Filter operators based on search term
+  useEffect(() => {
+    const loadHelpers = async () => {
+      const data = await fetchHelpers();
+      setHelpers(data);
+      setFilteredHelpers(data);
+    };
+    loadHelpers();
+  }, []);
+
+  const handleSearchChangeHelper = (event) => {
+    const value = event.target.value;
+    setSearchTermHelper(value);
+    setDropdownVisibleHelper(true);
+
+    const filtered = helpers.filter(
+      (helper) =>
+        helper.Name.toLowerCase().includes(value.toLowerCase()) ||
+        (helper.Code && helper.Code.toLowerCase().includes(value.toLowerCase()))
+    );
+    setFilteredHelpers(filtered);
+  };
+
+  const handleSelectHelper = (helper) => {
+    setSearchTermHelper(`${helper.Name} (${helper.Code})`);
+    setDropdownVisibleHelper(false);
+  };
+
+  // Unit Machine
+  const [unitMachines, setUnitMachines] = useState([]);
+  const [filteredUnitMachines, setFilteredUnitMachines] = useState([]);
+  const [searchTermUnitMachine, setSearchTermUnitMachine] = useState("");
+  const [dropdownVisibleUnitMachine, setDropdownVisibleUnitMachine] =
+    useState(false);
+
+  useEffect(() => {
+    const loadUnitMachines = async () => {
+      const data = await fetchUnitMachines();
+      setUnitMachines(data);
+      setFilteredUnitMachines(data);
+    };
+    loadUnitMachines();
+  }, []);
+
+  const handleSearchChangeUnitMachine = (event) => {
+    const value = event.target.value;
+    setSearchTermUnitMachine(value);
+    setDropdownVisibleUnitMachine(true);
+
+    const filtered = unitMachines.filter(
+      (unit) =>
+        unit.WorkCenterName.toLowerCase().includes(value.toLowerCase()) ||
+        unit.WorkCenterCode.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredUnitMachines(filtered);
+  };
+
+  const handleSelectUnitMachine = (unit) => {
+    setSearchTermUnitMachine(`${unit.WorkCenterName} (${unit.WorkCenterCode})`);
+    setFormData((prev) => ({ ...prev, unit_machine: unit.WorkCenterCode }));
+    setDropdownVisibleUnitMachine(false);
+  };
+
+  // Contractoer
+  const [contractors, setContractors] = useState([]);
+  const [filteredContractors, setFilteredContractors] = useState([]);
+  const [searchTermContractor, setSearchTermContractor] = useState("");
+  const [dropdownVisibleContractor, setDropdownVisibleContractor] =
+    useState(false);
+  useEffect(() => {
+    const loadContractors = async () => {
+      const data = await fetchContractors();
+      setContractors(data);
+      setFilteredContractors(data);
+    };
+    loadContractors();
+  }, []);
+  const handleSearchChangeContractor = (event) => {
+    const value = event.target.value;
+    setSearchTermContractor(value);
+    setDropdownVisibleContractor(true);
+
+    const filtered = contractors.filter((contractor) =>
+      contractor.ContractorName.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredContractors(filtered);
+  };
+
+  const handleSelectContractor = (contractor) => {
+    setSearchTermContractor(contractor.ContractorName);
+    setFormData((prev) => ({ ...prev, contractor: contractor.ContractorName }));
+    setDropdownVisibleContractor(false);
+  };
+
+  // Operator
+  const [operators, setOperators] = useState([]);
+  const [filteredOperators, setFilteredOperators] = useState([]);
+  const [searchTermOperator, setSearchTermOperator] = useState("");
+  const [dropdownVisibleOperator, setDropdownVisibleOperator] = useState(false);
+
+  useEffect(() => {
+    const loadOperators = async () => {
+      const data = await fetchOperators();
+      setOperators(data);
+      setFilteredOperators(data);
+    };
+    loadOperators();
+  }, []);
+
+  const handleSearchChangeOperator = (event) => {
+    const value = event.target.value;
+    setSearchTermOperator(value);
+    setDropdownVisibleOperator(true);
+
     const filtered = operators.filter(
       (operator) =>
         operator.Name.toLowerCase().includes(value.toLowerCase()) ||
-        operator.Code.toLowerCase().includes(value.toLowerCase()),
-    )
-    setFilteredOperators(filtered)
-  }
+        operator.Code.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredOperators(filtered);
+  };
 
-  // Handle selection
-  const handleSelect = (operator) => {
-    setSelectedOperator(`${operator.Name} (${operator.Code})`)
-    setSearchTerm(`${operator.Name} (${operator.Code})`) // Show selected in input
-    setDropdownVisible(false) // Hide dropdown
-  }
+  const handleSelectOperator = (operator) => {
+    setSearchTermOperator(`${operator.Name} (${operator.Code})`);
+    setFormData((prev) => ({ ...prev, operator: operator.Code }));
+    setDropdownVisibleOperator(false);
+  };
 
-  // Fetch data on component mount
+  // supervissor
+
+  const [supervisors, setSupervisors] = useState([]);
+  const [filteredSupervisors, setFilteredSupervisors] = useState([]);
+  const [searchTermSupervisor, setSearchTermSupervisor] = useState("");
+  const [dropdownVisibleSupervisor, setDropdownVisibleSupervisor] =
+    useState(false);
   useEffect(() => {
-    loadOperators()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    const loadSupervisors = async () => {
+      const data = await fetchSupervisors();
+      setSupervisors(data);
+      setFilteredSupervisors(data);
+    };
+    loadSupervisors();
+  }, []);
 
-  // Supervisors State and Functions
-  const [supervisorsList, setSupervisorsList] = useState([])
-  const [filteredSupervisorsList, setFilteredSupervisorsList] = useState([])
-  const [searchTerm1, setSearchTerm1] = useState("")
-  const [, setSelectedSupervisor] = useState(null) // Update 2: Removed selectedSupervisor
-  const [dropdownVisible1, setDropdownVisible1] = useState(false)
+  const handleSearchChangeSupervisor = (event) => {
+    const value = event.target.value;
+    setSearchTermSupervisor(value);
+    setDropdownVisibleSupervisor(true);
 
-  // Fetch supervisors using the service
-  const loadSupervisors = async () => {
-    try {
-      const data = await fetchSupervisors()
-      setSupervisorsList(data)
-      setFilteredSupervisorsList(data) // Initialize filtered list
-    } catch (error) {
-      console.error("Error loading supervisors:", error)
-    }
-  }
-
-  // Handle search input change
-  const handleSearchChange1 = (event) => {
-    const value = event.target.value
-    setSearchTerm1(value)
-    setDropdownVisible1(true)
-
-    // Filter supervisors based on search term
-    const filtered = supervisorsList.filter(
+    const filtered = supervisors.filter(
       (supervisor) =>
         supervisor.Name.toLowerCase().includes(value.toLowerCase()) ||
-        supervisor.Code.toLowerCase().includes(value.toLowerCase()),
-    )
-    setFilteredSupervisorsList(filtered)
-  }
+        supervisor.Code.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredSupervisors(filtered);
+  };
 
-  // Handle selection
-  const handleSelect1 = (supervisor) => {
-    setSelectedSupervisor(`${supervisor.Name} (${supervisor.Code})`)
-    setSearchTerm1(`${supervisor.Name} (${supervisor.Code})`) // Show selected in input
-    setDropdownVisible1(false) // Hide dropdown
-  }
+  const handleSelectSupervisor = (supervisor) => {
+    setSearchTermSupervisor(`${supervisor.Name} (${supervisor.Code})`);
+    setFormData((prev) => ({ ...prev, Supervisor: supervisor.Name }));
+    setDropdownVisibleSupervisor(false);
+  };
 
-  // Fetch data on component mount
+  // shift
+  const [shifts, setShifts] = useState([]);
+  const [filteredShifts, setFilteredShifts] = useState([]);
+  const [searchTermShift, setSearchTermShift] = useState("");
+  const [dropdownVisibleShift, setDropdownVisibleShift] = useState(false);
+  const [ setSelectedShift] = useState(null);
+
   useEffect(() => {
-    loadSupervisors()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    const loadShifts = async () => {
+      const data = await fetchShifts();
+      setShifts(data);
+      setFilteredShifts(data);
+    };
+    loadShifts();
+  }, []);
+  const handleSearchChangeShift = (event) => {
+    const value = event.target.value;
+    setSearchTermShift(value);
+    setDropdownVisibleShift(true);
 
-  // Contractors State and Functions
-  const [contractorsData, setContractorsData] = useState([])
-  const [filteredContractorsData, setFilteredContractorsData] = useState([])
-  const [searchTermContractor, setSearchTermContractor] = useState("")
-  const [, setSelectedContractorName] = useState(null) // Update 3: Removed selectedContractorName
-  const [dropdownVisibleContractor, setDropdownVisibleContractor] = useState(false)
+    const filtered = shifts.filter(
+      (shift) =>
+        shift.Shift_Name.toLowerCase().includes(value.toLowerCase()) ||
+        shift.Shift_From.toLowerCase().includes(value.toLowerCase()) ||
+        shift.Shift_Till.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredShifts(filtered);
+  };
 
-  // Fetch contractors using the service
-  const loadContractors = async () => {
-    try {
-      const data = await fetchContractors()
-      setContractorsData(data)
-      setFilteredContractorsData(data) // Initialize filtered list
-    } catch (error) {
-      console.error("Error loading contractors:", error)
+  const handleSelectShift = (shift) => {
+    setSearchTermShift(
+      `${shift.Shift_Name} From: ${shift.Shift_From} To: ${shift.Shift_Till}`
+    );
+    setSelectedShift(shift);
+    setFormData((prev) => ({ ...prev, shift: shift.Shift_Name }));
+    setDropdownVisibleShift(false);
+
+    // Update form data with the selected shift's information
+    setFormData({
+      shift_from: shift.Shift_From,
+      shift_to: shift.Shift_Till,
+      break_from: shift.Break_Name, // Assuming Break_Name is what you want here
+      break_to: shift.Break_Till, // Assuming Break_Till is what you want here
+      break_total: shift.Break_Time,
+      shift_time: shift.Total_Hours, // Assuming Total_Hours as shift_time
+      prod_qty: "", // Add any other fields if necessary
+      avail_time: "",
+      cycle_time: "",
+      op_time: "",
+      lu_time: "",
+      mo_time: "",
+      total_time: "",
+    });
+  };
+
+  const [formData, setFormData] = useState({
+    Series: "DP",
+    General: "General info about production",
+    MachineDowntime: "No downtime",
+    // Prod_no: "DP 252600002",
+    contractor: "",
+    unit_machine: "",
+    item: "",
+    operation: "",
+    prod_qty: "",
+    Date: "",
+    Time: "",
+    Supervisor: "",
+    machine_speed: "",
+    Helper: "",
+    ParentOperation: "",
+    ProdTime: "",
+    shift: "",
+    operator: "",
+    lot_no: "",
+    rework_qty: "",
+    reject_qty: "",
+    shift_from: "",
+    shift_to: "",
+    break_from: "",
+    break_to: "",
+    break_total: "",
+    shift_time: "",
+    avail_time: "",
+    prod_time: "",
+    cycle_time: "",
+    op_time: "",
+    lu_time: "",
+    mo_time: "",
+    total_time: "",
+    electricity_start_unit: "",
+    electricity_end_unit: "",
+    electricity_total_unit: "",
+    scrap_end_piece_qty: "",
+    scrap_qty: "",
+    scrap_end_remark: "",
+    mill_name: "",
+    remark: "",
+    target_qty: "",
+    production_hours: "",
+    idle_hours: "",
+    actual_hours: "",
+    Rework_Description: "",
+    ReworkQty: "",
+    Reject_Description: "",
+    Reject_Quantity: "",
+    ItemCode: "",
+    ItemDescription: "",
+    MachineIdleTime_Detail_Enter: [],
+  });
+
+  const [idleTimeForm, setIdleTimeForm] = useState({
+    idle_reason: "",
+    from_time: "",
+    to_time: "",
+    total_time: "",
+    supervisor_operator: "",
+    setting_part: "",
+    remark: "",
+  });
+
+  const [idleTimeRecords, setIdleTimeRecords] = useState([]);
+
+  // Auto-calculate total time
+  useEffect(() => {
+    if (idleTimeForm.from_time && idleTimeForm.to_time) {
+      const from = new Date(`1970-01-01T${idleTimeForm.from_time}`);
+      const to = new Date(`1970-01-01T${idleTimeForm.to_time}`);
+      const diff = (to - from) / 1000 / 60 / 60;
+      setIdleTimeForm((prev) => ({
+        ...prev,
+        total_time: diff.toFixed(2) + " hrs",
+      }));
     }
-  }
+  }, [idleTimeForm.from_time, idleTimeForm.to_time]);
 
-  // Handle search input change
-  const handleSearchChange2 = (event) => {
-    const value = event.target.value
-    setSearchTermContractor(value)
-    setDropdownVisibleContractor(true)
-
-    // Filter contractors based on search term
-    const filtered = contractorsData.filter((contractor) =>
-      contractor.ContractorName?.toLowerCase().includes(value.toLowerCase()),
-    )
-    setFilteredContractorsData(filtered)
-  }
-
-  // Handle selection
-  const handleSelect2 = (contractor) => {
-    setSelectedContractorName(contractor.ContractorName)
-    setSearchTermContractor(contractor.ContractorName) // Show selected in input
-    setDropdownVisibleContractor(false) // Hide dropdown
-  }
-
-  // Fetch data on component mount
-  useEffect(() => {
-    loadContractors()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  // Unit/Machine State and Functions
-  const [unitMachinesData, setUnitMachinesData] = useState([])
-  const [filteredUnitMachinesData, setFilteredUnitMachinesData] = useState([])
-  const [searchTermUnitMachine, setSearchTermUnitMachine] = useState("")
-  const [, setSelectedUnitMachine] = useState(null) // Update 4: Removed selectedUnitMachine
-  const [dropdownVisibleUnitMachine, setDropdownVisibleUnitMachine] = useState(false)
-
-  // Fetch unit machines using the service
-  const loadUnitMachines = async () => {
-    try {
-      const data = await fetchUnitMachines()
-      setUnitMachinesData(data)
-      setFilteredUnitMachinesData(data) // Initialize filtered list
-    } catch (error) {
-      console.error("Error loading unit machines:", error)
+  const handleAddIdleTime = () => {
+    if (
+      !idleTimeForm.idle_reason ||
+      !idleTimeForm.from_time ||
+      !idleTimeForm.to_time
+    ) {
+      alert("Please fill in all required fields.");
+      return;
     }
-  }
 
-  // Handle search input change
-  const handleSearchChange4 = (event) => {
-    const value = event.target.value
-    setSearchTermUnitMachine(value)
-    setDropdownVisibleUnitMachine(true)
+    setIdleTimeRecords((prev) => [...prev, idleTimeForm]);
 
-    // Filter unit machines based on search term
-    const filtered = unitMachinesData.filter(
-      (unitMachine) =>
-        (unitMachine.WorkCenterCode && unitMachine.WorkCenterCode.toLowerCase().includes(value.toLowerCase())) ||
-        (unitMachine.WorkCenterName && unitMachine.WorkCenterName.toLowerCase().includes(value.toLowerCase())),
-    )
-    setFilteredUnitMachinesData(filtered)
-  }
+    // Reset form fields after adding a record
+    setIdleTimeForm({
+      idle_reason: "",
+      from_time: "",
+      to_time: "",
+      total_time: "",
+      supervisor_operator: "",
+      setting_part: "",
+      remark: "",
+    });
+  };
 
-  // Handle selection
-  const handleSelect4 = (unitMachine) => {
-    setSelectedUnitMachine(`${unitMachine.WorkCenterName} (${unitMachine.WorkCenterCode})`)
-    setSearchTermUnitMachine(`${unitMachine.WorkCenterName} (${unitMachine.WorkCenterCode})`) // Show selected in input
-    setDropdownVisibleUnitMachine(false) // Hide dropdown
-  }
+  const handleDeleteIdleTime = (index) => {
+    setIdleTimeRecords(idleTimeRecords.filter((_, i) => i !== index));
+  };
 
-  // Fetch data on component mount
+  // Handle form input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   useEffect(() => {
-    loadUnitMachines()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    console.log("Updated Idle Time Records:", idleTimeRecords);
+  }, [idleTimeRecords]);
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const postData = {
+      ...formData,
+      Prod_no: prodNo || "", // Ensure it's never undefined
+      contractor: formData.contractor || "N/A",
+      unit_machine: formData.unit_machine || "N/A",
+      item: formData.item || "N/A",
+      operation: formData.operation || "N/A",
+      prod_qty: formData.prod_qty || "0", // Set default numeric values
+      Date: formData.Date || new Date().toISOString().split("T")[0], // Default to today
+      Time: formData.Time || new Date().toLocaleTimeString(), // Default to now
+      Supervisor: formData.Supervisor || "N/A",
+      shift: formData.shift || "Morning",
+      operator: formData.operator || "N/A",
+      lot_no: formData.lot_no || "N/A",
+      rework_qty: formData.rework_qty || "0",
+      MachineIdleTime_Detail_Enter: idleTimeRecords,
+    };
+
+    try {
+      const response = await createProductionEntry(postData);
+
+      // ✅ Check if response exists and validate success
+      if (!response || response.error) {
+        throw new Error(`Error: ${response.error || "Unknown error occurred"}`);
+      }
+
+      alert("✅ Production entry submitted successfully!");
+
+      // ✅ Fetch the next production number only after successful submission
+      const nextProdData = await getProductionNumber(series, shortYear);
+      if (nextProdData && nextProdData.prod_no) {
+        setProdNo(nextProdData.prod_no); // Update the field with the next available production number
+      }
+    } catch (error) {
+      console.error("❌ Failed to submit production entry:", error);
+      alert("❌ Failed to submit production entry. Please try again.");
+    }
+  };
 
   return (
     // ProductionEntry Component UI
@@ -217,838 +479,1470 @@ const ProductionEntry = () => {
           <div className="col-md-12">
             <div className="Main-NavBar">
               <NavBar toggleSideNav={toggleSideNav} />
-              <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
+              <SideNav
+                sideNavOpen={sideNavOpen}
+                toggleSideNav={toggleSideNav}
+              />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="ProductionEntry mt-5">
-                  <div className="ProductionEntry-header mb-4 text-start">
-                    <div className="row align-items-center">
-                      <div className="col-md-2">
-                        <h5 className="header-title">Production Entry</h5>
-                      </div>
-                      <div className="col-md-1">Series</div>
-                      <div className="col-md-1">
-                        <select>
-                          <option>Select</option>
-                        </select>
-                      </div>
-                      <div className="col-md-1">
-                        <label className="checkbox-label">
-                          <input type="checkbox" id="general" />
-                          General
-                        </label>
-                      </div>
-                      <div className="col-md-1">
-                        <label className="checkbox-label">
-                          <input type="checkbox" id="downtime" />
-                          Downtime
-                        </label>
-                      </div>
-
-                      <div className="col-md-6 text-end">
-                        <button type="button" className="btn">
-                          Production List
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="ProductionEntry-main mt-5">
-                    <div className="row text-start">
-                      {/* First Column */}
-                      <div className="col-md-4">
-                        {/* Prod. No */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="prod-no">Prod. No :</label>
-                          </div>
-                          <div className="col-8 d-flex align-items-center">
-                            <input id="prod-no" placeholder="232400001" className="form-control" />
-                            <button type="button" className="btn btn-outline-secondary ml-2">
-                              <Cached />
-                            </button>
-                          </div>
+                  <form onSubmit={handleSubmit} autoComplete="off">
+                    <div className="ProductionEntry-header mb-4 text-start">
+                      <div className="row align-items-center">
+                        <div className="col-md-2">
+                          <h5 className="header-title">Production Entry</h5>
                         </div>
-
-                        {/* Contractor */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="contractor">Contractor :</label>
-                          </div>
-                          <div className="col-8 position-relative">
+                        <div className="col-md-1">Series</div>
+                        <div className="col-md-1">
+                          <select
+                            value={series}
+                            id="series"
+                            name="series"
+                            onChange={(e) => setSeries(e.target.value)}
+                            className="form-control"
+                          >
+                            <option value="">Select</option>
+                            <option value="DP">Daily Production</option>
+                          </select>
+                        </div>
+                        <div className="col-md-1">
+                          <label className="checkbox-label">
                             <input
-                              id="contractor"
-                              className="form-control"
-                              placeholder="Search by contractor name"
-                              value={searchTermContractor}
-                              onChange={handleSearchChange2}
-                              onFocus={() => setDropdownVisibleContractor(true)} // Show dropdown on focus
+                              type="checkbox"
+                              id="general"
+                              name="General"
+                              value={formData.General}
+                              onChange={handleChange}
                             />
-                            {dropdownVisibleContractor && (
-                              <ul
-                                className="dropdown-menu show mt-2"
-                                style={{
-                                  width: "100%",
-                                  maxHeight: "200px",
-                                  overflowY: "auto",
-                                  zIndex: 1000,
-                                }}
-                              >
-                                {filteredContractorsData.length > 0 ? (
-                                  filteredContractorsData.map((contractor, index) => (
-                                    <li
-                                      key={index}
-                                      className="dropdown-item"
-                                      onClick={() => handleSelect2(contractor)}
-                                      style={{ cursor: "pointer" }}
-                                    >
-                                      {contractor.ContractorName}
-                                    </li>
-                                  ))
-                                ) : (
-                                  <li className="dropdown-item">No results found</li>
-                                )}
-                              </ul>
-                            )}
-                          </div>
+                            General
+                          </label>
                         </div>
-
-                        {/* UNIT/Machine */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="unit-machine">UNIT/Machine :</label>
-                          </div>
-                          <div className="col-8 position-relative">
+                        <div className="col-md-1">
+                          <label className="checkbox-label">
                             <input
-                              id="unit-machine"
-                              className="form-control"
-                              placeholder="Search by code or name"
-                              value={searchTermUnitMachine}
-                              onChange={handleSearchChange4}
-                              onFocus={() => setDropdownVisibleUnitMachine(true)} // Show dropdown on focus
+                              type="checkbox"
+                              id="downtime"
+                              name="MachineDowntime"
+                              value={formData.MachineDowntime}
+                              onChange={handleChange}
                             />
-                            {dropdownVisibleUnitMachine && (
-                              <ul
-                                className="dropdown-menu show mt-2"
-                                style={{
-                                  width: "100%",
-                                  maxHeight: "200px",
-                                  overflowY: "auto",
-                                  zIndex: 1000,
-                                }}
-                              >
-                                {filteredUnitMachinesData.length > 0 ? (
-                                  filteredUnitMachinesData.map((unitMachine, index) => (
-                                    <li
-                                      key={index}
-                                      className="dropdown-item"
-                                      onClick={() => handleSelect4(unitMachine)}
-                                      style={{ cursor: "pointer" }}
-                                    >
-                                      {`${unitMachine.WorkCenterName} (${unitMachine.WorkCenterCode})`}
-                                    </li>
-                                  ))
-                                ) : (
-                                  <li className="dropdown-item">No results found</li>
-                                )}
-                              </ul>
-                            )}
-                          </div>
+                            Downtime
+                          </label>
                         </div>
 
-                        {/* Item */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="item">Item :</label>
-                          </div>
-                          <div className="col-8 d-flex align-items-center">
-                            <select className="form-control flex-grow-1">
-                              <option>ALL</option>
-                            </select>
-                            <button type="button" className="btn btn-outline-secondary ml-2">
-                              <Cached />
-                            </button>
-                            <button type="button" className="btn btn-outline-secondary ml-2">
-                              📋
-                            </button>
-                            <button type="button" className="btn btn-outline-secondary ml-2">
-                              📝
-                            </button>
-                          </div>
-                        </div>
-
-                        {/* Operation */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="operation">Operation :</label>
-                          </div>
-                          <div className="col-8">
-                            <input id="operation" className="form-control" />
-                          </div>
-                        </div>
-
-                        {/* Prod. Qty */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="prod-qty">Prod. Qty :</label>
-                          </div>
-                          <div className="col-8">
-                            <input id="prod-qty" type="text" className="form-control" />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Second Column */}
-                      <div className="col-md-4">
-                        {/* Date & Time */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="date">Date & Time :</label>
-                          </div>
-                          <div className="col-8">
-                            <input id="date" type="datetime-local" className="form-control" />
-                          </div>
-                        </div>
-
-                        {/* Supervisor */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="supervisor">Supervisor:</label>
-                          </div>
-                          <div className="col-8 position-relative">
-                            <input
-                              id="supervisor"
-                              className="form-control"
-                              placeholder="Search by name or code"
-                              value={searchTerm1}
-                              onChange={handleSearchChange1}
-                              onFocus={() => setDropdownVisible1(true)} // Show dropdown on focus
-                            />
-                            {dropdownVisible1 && (
-                              <ul
-                                className="dropdown-menu show mt-2"
-                                style={{
-                                  width: "100%",
-                                  maxHeight: "200px",
-                                  overflowY: "auto",
-                                  zIndex: 1000,
-                                }}
-                              >
-                                {filteredSupervisorsList.length > 0 ? (
-                                  filteredSupervisorsList.map((supervisor, index) => (
-                                    <li
-                                      key={index}
-                                      className="dropdown-item"
-                                      onClick={() => handleSelect1(supervisor)}
-                                      style={{ cursor: "pointer" }}
-                                    >
-                                      {`${supervisor.Name} (${supervisor.Code})`}
-                                    </li>
-                                  ))
-                                ) : (
-                                  <li className="dropdown-item">No results found</li>
-                                )}
-                              </ul>
-                            )}
-                          </div>
-                        </div>
-
-                        {/* Machine Speed */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="machine-speed">Machine Speed:</label>
-                          </div>
-                          <div className="col-8">
-                            <select className="form-control">
-                              <option>Not Applicable</option>
-                            </select>
-                          </div>
-                        </div>
-
-                        {/* Lot No */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="lot-no">Lot No :</label>
-                          </div>
-                          <div className="col-8">
-                            <select className="form-control">
-                              <option>Select</option>
-                            </select>
-                          </div>
-                        </div>
-
-                        {/* Prod Time */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="prod-text">Prod Time :</label>
-                          </div>
-                          <div className="col-8 d-flex">
-                            <input type="text" className="form-control" />
-                            <input type="text" className="form-control ml-2" />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Third Column */}
-                      <div className="col-md-4">
-                        {/* Shift */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="shift">Shift :</label>
-                          </div>
-                          <div className="col-8">
-                            <select className="form-control">
-                              <option>Select</option>
-                            </select>
-                          </div>
-                        </div>
-
-                        {/* Operator */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="operator">Operator :</label>
-                          </div>
-                          <div className="col-8 position-relative">
-                            <input
-                              id="operator"
-                              className="form-control"
-                              placeholder="Search by name or code"
-                              value={searchTerm}
-                              onChange={handleSearchChange}
-                              onFocus={() => setDropdownVisible(true)} // Show dropdown on focus
-                            />
-                            {dropdownVisible && (
-                              <ul
-                                className="dropdown-menu show mt-2"
-                                style={{
-                                  width: "100%",
-                                  maxHeight: "200px",
-                                  overflowY: "auto",
-                                  zIndex: 1000,
-                                }}
-                              >
-                                {filteredOperators.length > 0 ? (
-                                  filteredOperators.map((operator, index) => (
-                                    <li
-                                      key={index}
-                                      className="dropdown-item"
-                                      onClick={() => handleSelect(operator)}
-                                      style={{ cursor: "pointer" }}
-                                    >
-                                      {`${operator.Name} (${operator.Code})`}
-                                    </li>
-                                  ))
-                                ) : (
-                                  <li className="dropdown-item">No results found</li>
-                                )}
-                              </ul>
-                            )}
-                          </div>
-                        </div>
-
-                        {/* Helper */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="helper">Helper :</label>
-                          </div>
-                          <div className="col-8">
-                            <input id="helper" className="form-control" />
-                          </div>
-                        </div>
-
-                        {/* Rework and Reject Qty */}
-                        <div className="row mb-2">
-                          <div className="col-4">
-                            <label htmlFor="rework-qty">Rework Qty :</label>
-                          </div>
-                          <div className="col-8 d-flex">
-                            <input id="rework-qty" type="text" className="form-control" />
-                            <label htmlFor="reject-qty" className="ml-2">
-                              Reject Qty :
-                            </label>
-                            <input id="reject-qty" type="text" className="form-control ml-2" />
-                          </div>
+                        <div className="col-md-6 text-end">
+                          <Link to="/ProductionEntryList" type="button" className="btn">
+                            Production List
+                          </Link>
                         </div>
                       </div>
                     </div>
-
-                    <div className="ProductionEntry-second">
-                      <ul className="nav nav-tabs" id="productionEntryTabs" role="tablist">
-                        <li className="nav-item" role="presentation">
-                          <button
-                            className="nav-link active"
-                            id="shift-tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#shift"
-                            type="button"
-                            role="tab"
-                          >
-                            Shift / Cycle Time
-                          </button>
-                        </li>
-                        <li className="nav-item" role="presentation">
-                          <button
-                            className="nav-link"
-                            id="machine-idle-tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#machineIdle"
-                            type="button"
-                            role="tab"
-                          >
-                            Machine Idle Time
-                          </button>
-                        </li>
-                        <li className="nav-item" role="presentation">
-                          <button
-                            className="nav-link"
-                            id="rework-tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#rework"
-                            type="button"
-                            role="tab"
-                          >
-                            Rework / Reject Reason
-                          </button>
-                        </li>
-                        <li className="nav-item" role="presentation">
-                          <button
-                            className="nav-link"
-                            id="tool-die-tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#toolDie"
-                            type="button"
-                            role="tab"
-                          >
-                            Tool and Die Details
-                          </button>
-                        </li>
-                      </ul>
-                      <div className="tab-content mt-4" id="productionEntryTabsContent">
-                        <div className="tab-pane fade show active" id="shift" role="tabpanel">
-                          <div className="table table-bordered table-responsive">
-                            <table>
-                              <thead>
-                                <tr className="bg-gray-100">
-                                  <th className="border border-gray-300 p-2">Shift From..To</th>
-                                  <th className="border border-gray-300 p-2">Break From..To</th>
-                                  <th className="border border-gray-300 p-2">Break Total</th>
-                                  <th className="border border-gray-300 p-2">Shift Time</th>
-                                  <th className="border border-gray-300 p-2">Prod Time</th>
-                                  <th className="border border-gray-300 p-2">Avl. Time</th>
-                                  <th className="border border-gray-300 p-2">Cycle Time</th>
-                                  <th className="border border-gray-300 p-2">OP Time</th>
-                                  <th className="border border-gray-300 p-2">L/U Time</th>
-                                  <th className="border border-gray-300 p-2">I/O Time</th>
-                                  <th className="border border-gray-300 p-2">Total Time</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td className="border border-gray-300 p-2">
-                                    <div className="flex">
-                                      <input type="text" className="form-control" />
-                                      <br />
-                                      <input type="text" className="form-control" />
-                                    </div>
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <div className="flex">
-                                      <input type="text" className="form-control" />
-                                      <br />
-                                      <input type="text" className="form-control" />
-                                    </div>
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
+                    <div className="ProductionEntry-main mt-5">
+                      <div className="row text-start">
+                        {/* First Column */}
+                        <div className="col-md-4">
+                          {/* Prod. No */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="prod-no">Prod. No :</label>
+                            </div>
+                            <div className="col-8 d-flex align-items-center">
+                              <input
+                                id="prod_no"
+                                placeholder="232400001"
+                                className="form-control"
+                                value={prodNo}
+                                readOnly
+                              />
+                              <button
+                                type="button"
+                                className="btn btn-outline-secondary ml-2"
+                              >
+                                <Cached />
+                              </button>
+                            </div>
                           </div>
 
-                          <div className="row">
-                            <div className="table table-responsive">
-                              <table>
-                                <thead>
-                                  <tr className="bg-gray-100">
-                                    <th className="border border-gray-300 p-2">Electricity</th>
-                                    <th className="border border-gray-300 p-2">Start Unit:</th>
-                                    <th className="border border-gray-300 p-2">Edit Unit:</th>
-                                    <th className="border border-gray-300 p-2">Total Unit:</th>
-                                    <th className="border border-gray-300 p-2">Scrap / End Piece Code:0</th>
-                                    <th className="border border-gray-300 p-2">Scrap /End Qty :</th>
-                                    <th className="border border-gray-300 p-2">Scrap /End Remark :</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td className="border border-gray-300 p-2">
-                                      <label>Consumption:</label>
-                                      <br />
-                                      <label>Mill name:</label>
-                                    </td>
-                                    <td className="border border-gray-300 p-2">
-                                      <input type="text" className="form-control" />
-                                      <br />
-                                      <input type="text" className="form-control" />
-                                    </td>
-                                    <td className="border border-gray-300 p-2">
-                                      <input type="text" className="form-control" />
-                                    </td>
-                                    <td className="border border-gray-300 p-2">
-                                      <input type="text" className="form-control" />
-                                    </td>
-                                    <td className="border border-gray-300 p-2">
-                                      <input type="text" className="form-control" />
-                                    </td>
-                                    <td className="border border-gray-300 p-2">
-                                      <input type="text" className="form-control" />
-                                    </td>
-                                    <td className="border border-gray-300 p-2">
-                                      <input type="text" className="form-control" />
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
+                          {/* Contractor */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="contractor">Contractor :</label>
+                            </div>
+                            <div className="col-8 position-relative">
+                              <input
+                                id="contractor"
+                                className="form-control"
+                                placeholder="Search by contractor name"
+                                value={searchTermContractor}
+                                onChange={handleSearchChangeContractor}
+                                onFocus={() =>
+                                  setDropdownVisibleContractor(true)
+                                } // Show dropdown on focus
+                              />
+                              {dropdownVisibleContractor && (
+                                <ul
+                                  className="dropdown-menu show mt-2"
+                                  style={{
+                                    width: "100%",
+                                    maxHeight: "200px",
+                                    overflowY: "auto",
+                                    zIndex: 1000,
+                                  }}
+                                >
+                                  {filteredContractors.length > 0 ? (
+                                    filteredContractors.map(
+                                      (contractor, index) => (
+                                        <li
+                                          key={index}
+                                          className="dropdown-item"
+                                          onClick={() =>
+                                            handleSelectContractor(contractor)
+                                          }
+                                          style={{ cursor: "pointer" }}
+                                        >
+                                          {contractor.ContractorName}
+                                        </li>
+                                      )
+                                    )
+                                  ) : (
+                                    <li className="dropdown-item">
+                                      No results found
+                                    </li>
+                                  )}
+                                </ul>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* UNIT/Machine */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="unit-machine">
+                                UNIT/Machine :
+                              </label>
+                            </div>
+                            <div className="col-8 position-relative">
+                              <input
+                                id="unit-machine"
+                                className="form-control"
+                                placeholder="Search by name or code"
+                                value={searchTermUnitMachine}
+                                onChange={handleSearchChangeUnitMachine}
+                                onFocus={() =>
+                                  setDropdownVisibleUnitMachine(true)
+                                } // Show dropdown on focus
+                              />
+                              {dropdownVisibleUnitMachine && (
+                                <ul
+                                  className="dropdown-menu show mt-2"
+                                  style={{
+                                    width: "100%",
+                                    maxHeight: "200px",
+                                    overflowY: "auto",
+                                    zIndex: 1000,
+                                  }}
+                                >
+                                  {filteredUnitMachines.length > 0 ? (
+                                    filteredUnitMachines.map((unit, index) => (
+                                      <li
+                                        key={index}
+                                        className="dropdown-item"
+                                        onClick={() =>
+                                          handleSelectUnitMachine(unit)
+                                        }
+                                        style={{ cursor: "pointer" }}
+                                      >
+                                        {`${unit.WorkCenterName} (${unit.WorkCenterCode})`}
+                                      </li>
+                                    ))
+                                  ) : (
+                                    <li className="dropdown-item">
+                                      No results found
+                                    </li>
+                                  )}
+                                </ul>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Item */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="item">Item :</label>
+                            </div>
+                            <div className="col-8 d-flex align-items-center">
+                              <select
+                                className="form-control flex-grow-1"
+                                value={formData.item}
+                                onChange={(e) =>
+                                  setFormData((prev) => ({
+                                    ...prev,
+                                    item: e.target.value,
+                                  }))
+                                }
+                              >
+                                <option value="">Select</option>
+                                <option value="1">One</option>
+                              </select>
+
+                              <button
+                                type="button"
+                                className="btn btn-outline-secondary ml-2"
+                              >
+                                <Cached />
+                              </button>
+                              <button
+                                type="button"
+                                className="btn btn-outline-secondary ml-2"
+                              >
+                                📋
+                              </button>
+                              <button
+                                type="button"
+                                className="btn btn-outline-secondary ml-2"
+                              >
+                                📝
+                              </button>
+                            </div>
+                          </div>
+
+                          {/* Operation */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="operation">Operation :</label>
+                            </div>
+                            <div className="col-8">
+                              <input
+                                id="operation"
+                                name="operation"
+                                className="form-control"
+                                placeholder="Operation Type"
+                                value={formData.operation}
+                                onChange={handleChange}
+                              />
+                            </div>
+                          </div>
+
+                          {/* Prod. Qty */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="prod_qty">Prod. Qty :</label>
+                            </div>
+                            <div className="col-8">
+                              <input
+                                id="prod-qty"
+                                name="prod_qty"
+                                type="text"
+                                className="form-control"
+                                value={formData.prod_qty}
+                                onChange={handleChange}
+                              />
                             </div>
                           </div>
                         </div>
 
-                        <div className="tab-pane fade" id="machineIdle" role="tabpanel">
-                          <div className="table table-bordered table-responsive">
-                            <table>
-                              <thead>
-                                <tr className="bg-gray-100">
-                                  <th className="border border-gray-300 p-2">Idle Reason:</th>
-                                  <th className="border border-gray-300 p-2">From:</th>
-                                  <th className="border border-gray-300 p-2">To:</th>
-                                  <th className="border border-gray-300 p-2">Total Time:</th>
-                                  <th className="border border-gray-300 p-2">Supervisor /Operators:</th>
-                                  <th className="border border-gray-300 p-2">Setting Part:</th>
-                                  <th className="border border-gray-300 p-2">Remark:</th>
-                                  <th className="border border-gray-300 p-2">Add:</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td className="border border-gray-300 p-2">
-                                    <div className="flex">
-                                      <input type="text" className="form-control" />
-                                    </div>
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <div className="flex">
-                                      <input type="time" className="form-control" />
-                                    </div>
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="time" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="time" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <button type="button" className="btn">
-                                      Add
-                                    </button>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                          <div className="table table-bordered table-responsive">
-                            <table>
-                              <thead>
-                                <tr className="bg-gray-100">
-                                  <th className="border border-gray-300 p-2">S no.:</th>
-                                  <th className="border border-gray-300 p-2">Reason:</th>
-                                  <th className="border border-gray-300 p-2">From Time:</th>
-                                  <th className="border border-gray-300 p-2">To Time:</th>
-                                  <th className="border border-gray-300 p-2">Idle Time:</th>
-                                  <th className="border border-gray-300 p-2">Operator Name:</th>
-                                  <th className="border border-gray-300 p-2">Setting Part:</th>
-                                  <th className="border border-gray-300 p-2">Remark:</th>
-                                  <th className="border border-gray-300 p-2">Delete:</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td className="border border-gray-300 p-2">
-                                    <div className="flex">
-                                      <input type="text" className="form-control" />
-                                    </div>
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <div className="flex">
-                                      <input type="time" className="form-control" />
-                                    </div>
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="time" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="time" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <input type="text" className="form-control" />
-                                  </td>
-                                  <td className="border border-gray-300 p-2">
-                                    <button type="button" className="btn">
-                                      Delete
-                                    </button>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-
-                        <div className="tab-pane fade" id="rework" role="tabpanel">
-                          <div className="row">
-                            <div className="col-md-6">
-                              <div className="row">
-                                <div className="col-md-1">
-                                  <label>Rework</label>
-                                </div>
-                                <div className="col-md-2">
-                                  <select>
-                                    <option>Select</option>
-                                  </select>
-                                </div>
-                                <div className="col-md-1">
-                                  <input type="text" className="form-control" />
-                                </div>
-                                <div className="col-md-1">
-                                  <button type="button" className="btn">
-                                    Add
-                                  </button>
-                                </div>
-                                <div className="col-md-1">
-                                  <button type="button" className="btn">
-                                    <FaPlus />
-                                  </button>
-                                </div>
-                                <div className="col-md-1">
-                                  <button type="button" className="btn">
-                                    <Cached />
-                                  </button>
-                                </div>
-                              </div>
-                              <div className="row">
-                                <div className="table table-bordered table-responsive">
-                                  <table>
-                                    <thead>
-                                      <tr>
-                                        <th>Sr no.</th>
-                                        <th>Description</th>
-                                        <th>Qty</th>
-                                        <th>Delete</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>Sr no.</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
+                        {/* Second Column */}
+                        <div className="col-md-4">
+                          {/* Date & Time */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="date">Date & Time :</label>
                             </div>
-                            <div className="col-md-6">
-                              <div className="row">
-                                <div className="col-md-1">
-                                  <label>Reject</label>
-                                </div>
-                                <div className="col-md-2">
-                                  <select>
-                                    <option>Select</option>
-                                  </select>
-                                </div>
-                                <div className="col-md-1">
-                                  <input type="text" className="form-control" />
-                                </div>
-                                <div className="col-md-1">
-                                  <button type="button" className="btn">
-                                    Add
-                                  </button>
-                                </div>
-                                <div className="col-md-1">
-                                  <button type="button" className="btn">
-                                    <FaPlus />
-                                  </button>
-                                </div>
-                                <div className="col-md-1">
-                                  <button type="button" className="btn">
-                                    <Cached />
-                                  </button>
-                                </div>
-                              </div>
-                              <div className="row">
-                                <div className="table table-bordered table-responsive">
-                                  <table>
-                                    <thead>
-                                      <tr>
-                                        <th>Sr no.</th>
-                                        <th>Description</th>
-                                        <th>Qty</th>
-                                        <th>Delete</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>Sr no.</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
+                            <div className="col-md-4">
+                              <input
+                                id="date"
+                                type="date"
+                                name="Date"
+                                className="form-control"
+                                value={formData.Date}
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="col-md-4">
+                              <input
+                                id="time"
+                                type="time"
+                                name="Time"
+                                className="form-control"
+                                value={formData.Time}
+                                onChange={handleChange}
+                              />
+                            </div>
+                          </div>
+
+                          {/* Supervisor */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="supervisor">Supervisor:</label>
+                            </div>
+                            <div className="col-8 position-relative">
+                              <input
+                                id="supervisor"
+                                name="Supervisor"
+                                className="form-control"
+                                placeholder="Search by name or code"
+                                value={searchTermSupervisor}
+                                onChange={handleSearchChangeSupervisor}
+                                onFocus={() =>
+                                  setDropdownVisibleSupervisor(true)
+                                } // Show dropdown on focus
+                              />
+                              {dropdownVisibleSupervisor && (
+                                <ul
+                                  className="dropdown-menu show mt-2"
+                                  style={{
+                                    width: "100%",
+                                    maxHeight: "200px",
+                                    overflowY: "auto",
+                                    zIndex: 1000,
+                                  }}
+                                >
+                                  {filteredSupervisors.length > 0 ? (
+                                    filteredSupervisors.map(
+                                      (supervisor, index) => (
+                                        <li
+                                          key={index}
+                                          className="dropdown-item"
+                                          onClick={() =>
+                                            handleSelectSupervisor(supervisor)
+                                          }
+                                          style={{ cursor: "pointer" }}
+                                        >
+                                          {`${supervisor.Name} (${supervisor.Code})`}
+                                        </li>
+                                      )
+                                    )
+                                  ) : (
+                                    <li className="dropdown-item">
+                                      No results found
+                                    </li>
+                                  )}
+                                </ul>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Machine Speed */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="machine-speed">
+                                Machine Speed:
+                              </label>
+                            </div>
+                            <div className="col-8">
+                              <select
+                                id="machine-speed"
+                                name="machine_speed"
+                                className="form-control"
+                                value={formData.machine_speed}
+                                onChange={handleChange}
+                              >
+                                <option value="Not Applicable">
+                                  Not Applicable
+                                </option>
+                                <option value="High Speed">High Speed</option>
+                                <option value="Medium Speed">
+                                  Medium Speed
+                                </option>
+                                <option value="Low Speed">Low Speed</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          {/* Lot No */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="lot-no">Lot No :</label>
+                            </div>
+                            <div className="col-8">
+                              <select
+                                name="lot_no"
+                                className="form-control"
+                                value={formData.lot_no}
+                                onChange={handleChange}
+                              >
+                                <option>Select</option>
+                                <option value="One">One</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          {/* Prod Time */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="prod-text">Prod Time :</label>
+                            </div>
+                            <div className="col-8 d-flex">
+                              <input
+                                type="text"
+                                className="form-control"
+                                name="ProdTime"
+                                value={formData.ProdTime}
+                                onChange={handleChange}
+                              />
+                              <input
+                                type="text"
+                                name="ParentOperation"
+                                className="form-control ml-2"
+                                value={formData.ParentOperation}
+                                onChange={handleChange}
+                              />
                             </div>
                           </div>
                         </div>
 
-                        <div className="tab-pane fade" id="toolDie" role="tabpanel">
-                          <div className="Container-fluid">
+                        {/* Third Column */}
+                        <div className="col-md-4">
+                          {/* Shift */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="shift">Shift :</label>
+                            </div>
+                            <div className="col-8 position-relative">
+                              <input
+                                id="shift"
+                                name="shift"
+                                className="form-control"
+                                placeholder="Search shift by name or time"
+                                value={searchTermShift}
+                                onChange={handleSearchChangeShift}
+                                onFocus={() => setDropdownVisibleShift(true)} // Show dropdown on focus
+                              />
+                              {dropdownVisibleShift && (
+                                <ul
+                                  className="dropdown-menu show mt-2"
+                                  style={{
+                                    width: "100%",
+                                    maxHeight: "200px",
+                                    overflowY: "auto",
+                                    zIndex: 1000,
+                                  }}
+                                >
+                                  {filteredShifts.length > 0 ? (
+                                    filteredShifts.map((shift, index) => (
+                                      <li
+                                        key={index}
+                                        className="dropdown-item"
+                                        onClick={() => handleSelectShift(shift)}
+                                        style={{ cursor: "pointer" }}
+                                      >
+                                        {`${shift.Shift_Name} From: ${shift.Shift_From} To: ${shift.Shift_Till}`}
+                                      </li>
+                                    ))
+                                  ) : (
+                                    <li className="dropdown-item">
+                                      No results found
+                                    </li>
+                                  )}
+                                </ul>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Operator */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="operator">Operator :</label>
+                            </div>
+                            <div className="col-8 position-relative">
+                              <input
+                                id="operator"
+                                name="operator"
+                                className="form-control"
+                                placeholder="Search by name or code"
+                                value={searchTermOperator}
+                                onChange={handleSearchChangeOperator}
+                                onFocus={() => setDropdownVisibleOperator(true)} // Show dropdown on focus
+                              />
+                              {dropdownVisibleOperator && (
+                                <ul
+                                  className="dropdown-menu show mt-2"
+                                  style={{
+                                    width: "100%",
+                                    maxHeight: "200px",
+                                    overflowY: "auto",
+                                    zIndex: 1000,
+                                  }}
+                                >
+                                  {filteredOperators.length > 0 ? (
+                                    filteredOperators.map((operator, index) => (
+                                      <li
+                                        key={index}
+                                        className="dropdown-item"
+                                        onClick={() =>
+                                          handleSelectOperator(operator)
+                                        }
+                                        style={{ cursor: "pointer" }}
+                                      >
+                                        {`${operator.Name} (${operator.Code})`}
+                                      </li>
+                                    ))
+                                  ) : (
+                                    <li className="dropdown-item">
+                                      No results found
+                                    </li>
+                                  )}
+                                </ul>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Helper */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="helper">Helper :</label>
+                            </div>
+                            <div className="col-8 position-relative">
+                              <input
+                                id="helper"
+                                name="Helper"
+                                className="form-control"
+                                placeholder="Search by name or code"
+                                value={searchTermHelper}
+                                onChange={handleSearchChangeHelper}
+                                onFocus={() => setDropdownVisibleHelper(true)} // Show dropdown on focus
+                              />
+                              {dropdownVisibleHelper && (
+                                <ul
+                                  className="dropdown-menu show mt-2"
+                                  style={{
+                                    width: "100%",
+                                    maxHeight: "200px",
+                                    overflowY: "auto",
+                                    zIndex: 1000,
+                                  }}
+                                >
+                                  {filteredHelpers.length > 0 ? (
+                                    filteredHelpers.map((helper, index) => (
+                                      <li
+                                        key={index}
+                                        className="dropdown-item"
+                                        onClick={() =>
+                                          handleSelectHelper(helper)
+                                        }
+                                        style={{ cursor: "pointer" }}
+                                      >
+                                        {`${helper.Name} (${helper.Code})`}
+                                      </li>
+                                    ))
+                                  ) : (
+                                    <li className="dropdown-item">
+                                      No results found
+                                    </li>
+                                  )}
+                                </ul>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Rework and Reject Qty */}
+                          <div className="row mb-2">
+                            <div className="col-4">
+                              <label htmlFor="rework-qty">Rework Qty :</label>
+                            </div>
+                            <div className="col-8 d-flex">
+                              <input
+                                id="rework-qty"
+                                name="rework_qty"
+                                type="text"
+                                className="form-control"
+                                value={formData.rework_qty}
+                                onChange={handleChange}
+                              />
+                              <label htmlFor="reject-qty" className="ml-2">
+                                Reject Qty :
+                              </label>
+                              <input
+                                id="reject-qty"
+                                name="reject_qty"
+                                type="text"
+                                className="form-control ml-2"
+                                value={formData.reject_qty}
+                                onChange={handleChange}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="ProductionEntry-second">
+                        <ul
+                          className="nav nav-tabs"
+                          id="productionEntryTabs"
+                          role="tablist"
+                        >
+                          <li className="nav-item" role="presentation">
+                            <button
+                              className="nav-link active"
+                              id="shift-tab"
+                              data-bs-toggle="tab"
+                              data-bs-target="#shifttabs"
+                              type="button"
+                              role="tab"
+                            >
+                              Shift / Cycle Time
+                            </button>
+                          </li>
+                          <li className="nav-item" role="presentation">
+                            <button
+                              className="nav-link"
+                              id="machine-idle-tab"
+                              data-bs-toggle="tab"
+                              data-bs-target="#machineIdle"
+                              type="button"
+                              role="tab"
+                            >
+                              Machine Idle Time
+                            </button>
+                          </li>
+                          <li className="nav-item" role="presentation">
+                            <button
+                              className="nav-link"
+                              id="rework-tab"
+                              data-bs-toggle="tab"
+                              data-bs-target="#rework"
+                              type="button"
+                              role="tab"
+                            >
+                              Rework / Reject Reason
+                            </button>
+                          </li>
+                          <li className="nav-item" role="presentation">
+                            <button
+                              className="nav-link"
+                              id="tool-die-tab"
+                              data-bs-toggle="tab"
+                              data-bs-target="#toolDie"
+                              type="button"
+                              role="tab"
+                            >
+                              Tool and Die Details
+                            </button>
+                          </li>
+                        </ul>
+                        <div
+                          className="tab-content mt-4"
+                          id="productionEntryTabsContent"
+                        >
+                          <div
+                            className="tab-pane fade show active"
+                            id="shifttabs"
+                            role="tabpanel"
+                          >
                             <div className="row">
-                              <div className="col-md-1">
-                                <label>Die Name</label>
+                              <div className="table table-bordered table-responsive">
+                                <table>
+                                  <thead>
+                                    <tr className="bg-gray-100">
+                                      <th className="border border-gray-300 p-2">
+                                        Shift From
+                                      </th>
+                                      <th className="border border-gray-300 p-2">
+                                        To
+                                      </th>
+
+                                      <th className="border border-gray-300 p-2">
+                                        Break From
+                                      </th>
+                                      <th className="border border-gray-300 p-2">
+                                        To
+                                      </th>
+
+                                      <th className="border border-gray-300 p-2">
+                                        Break Total
+                                      </th>
+                                      <th className="border border-gray-300 p-2">
+                                        Shift Time
+                                      </th>
+                                      <th className="border border-gray-300 p-2">
+                                        Prod Time
+                                      </th>
+                                      <th className="border border-gray-300 p-2">
+                                        Avl. Time
+                                      </th>
+                                      <th className="border border-gray-300 p-2">
+                                        Cycle Time
+                                      </th>
+                                      <th className="border border-gray-300 p-2">
+                                        OP Time
+                                      </th>
+                                      <th className="border border-gray-300 p-2">
+                                        L/U Time
+                                      </th>
+                                      <th className="border border-gray-300 p-2">
+                                        MO Time
+                                      </th>
+                                      <th className="border border-gray-300 p-2">
+                                        Total Time
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="shift_from"
+                                          className="form-control"
+                                          value={formData.shift_from}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="shift_to"
+                                          className="form-control"
+                                          value={formData.shift_to}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="break_from"
+                                          className="form-control"
+                                          value={formData.break_from}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="break_to"
+                                          className="form-control"
+                                          value={formData.break_to}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="break_total"
+                                          className="form-control"
+                                          value={formData.break_total}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="shift_time"
+                                          className="form-control"
+                                          value={formData.shift_time}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="prod_time"
+                                          className="form-control"
+                                          value={formData.prod_time}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="avail_time"
+                                          className="form-control"
+                                          value={formData.avail_time}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="cycle_time"
+                                          className="form-control"
+                                          value={formData.cycle_time}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="op_time"
+                                          className="form-control"
+                                          value={formData.op_time}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="lu_time"
+                                          className="form-control"
+                                          value={formData.lu_time}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="mo_time"
+                                          className="form-control"
+                                          value={formData.mo_time}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td className="border border-gray-300 p-2">
+                                        <input
+                                          type="text"
+                                          name="total_time"
+                                          className="form-control"
+                                          value={formData.total_time}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
                               </div>
-                              <div className="col-md-2">
-                                <input type="text" className="form-control" />
-                              </div>
-                              <div className="col-md-1">
-                                <button type="button" className="btn">
-                                  Add
-                                </button>
+
+                              <div className="row">
+                                <div className="table table-responsive">
+                                  <table>
+                                    <thead>
+                                      <tr className="bg-gray-100">
+                                        <th className="border border-gray-300 p-2">
+                                          Electricity
+                                        </th>
+                                        <th className="border border-gray-300 p-2">
+                                          Start Unit:
+                                        </th>
+                                        <th className="border border-gray-300 p-2">
+                                          Edit Unit:
+                                        </th>
+                                        <th className="border border-gray-300 p-2">
+                                          Total Unit:
+                                        </th>
+                                        <th className="border border-gray-300 p-2">
+                                          Scrap / End Piece Code:0
+                                        </th>
+                                        <th className="border border-gray-300 p-2">
+                                          Scrap /End Qty :
+                                        </th>
+                                        <th className="border border-gray-300 p-2">
+                                          Scrap /End Remark :
+                                        </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td className="border border-gray-300 p-2">
+                                          <label>Consumption:</label>
+                                          <br />
+                                          <label>Mill name:</label>
+                                        </td>
+                                        <td className="border border-gray-300 p-2">
+                                          <input
+                                            type="text"
+                                            name="electricity_start_unit"
+                                            className="form-control"
+                                            value={
+                                              formData.electricity_start_unit
+                                            }
+                                            onChange={handleChange}
+                                          />
+                                          <br />
+                                          <input
+                                            type="text"
+                                            name="mill_name"
+                                            className="form-control"
+                                            value={formData.mill_name}
+                                            onChange={handleChange}
+                                          />
+                                        </td>
+                                        <td className="border border-gray-300 p-2">
+                                          <input
+                                            type="text"
+                                            name="electricity_end_unit"
+                                            className="form-control"
+                                            value={
+                                              formData.electricity_end_unit
+                                            }
+                                            onChange={handleChange}
+                                          />
+                                        </td>
+                                        <td className="border border-gray-300 p-2">
+                                          <input
+                                            type="text"
+                                            name="electricity_total_unit"
+                                            className="form-control"
+                                            value={
+                                              formData.electricity_total_unit
+                                            }
+                                            onChange={handleChange}
+                                          />
+                                        </td>
+                                        <td className="border border-gray-300 p-2">
+                                          <input
+                                            type="text"
+                                            name="scrap_end_piece_qty"
+                                            className="form-control"
+                                            value={formData.scrap_end_piece_qty}
+                                            onChange={handleChange}
+                                          />
+                                        </td>
+                                        <td className="border border-gray-300 p-2">
+                                          <input
+                                            type="text"
+                                            name="scrap_qty"
+                                            className="form-control"
+                                            value={formData.scrap_qty}
+                                            onChange={handleChange}
+                                          />
+                                        </td>
+                                        <td className="border border-gray-300 p-2">
+                                          <input
+                                            type="text"
+                                            name="scrap_end_remark"
+                                            className="form-control"
+                                            value={formData.scrap_end_remark}
+                                            onChange={handleChange}
+                                          />
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
                               </div>
                             </div>
                           </div>
-                          <div className="row">
+
+                          <div
+                            className="tab-pane fade"
+                            id="machineIdle"
+                            role="tabpanel"
+                          >
                             <div className="table table-bordered table-responsive">
                               <table>
                                 <thead>
-                                  <tr>
-                                    <th>Sr no.</th>
-                                    <th>Item Code</th>
-                                    <th>Item Description</th>
-                                    <th>Delete</th>
+                                  <tr className="bg-gray-100">
+                                    <th className="border border-gray-300 p-2">
+                                      Idle Reason:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      From:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      To:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      Total Time:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      Supervisor /Operators:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      Setting Part:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      Remark:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      Add:
+                                    </th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td>Sr no.</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td className="border border-gray-300 p-2">
+                                      <div className="flex">
+                                        <input
+                                          type="text"
+                                          className="form-control"
+                                          name="idle_reason"
+                                          value={idleTimeForm.idle_reason}
+                                          onChange={(e) =>
+                                            setIdleTimeForm({
+                                              ...idleTimeForm,
+                                              idle_reason: e.target.value,
+                                            })
+                                          }
+                                        />
+                                      </div>
+                                    </td>
+                                    <td className="border border-gray-300 p-2">
+                                      <div className="flex">
+                                        <input
+                                          type="time"
+                                          className="form-control"
+                                          name="from_time"
+                                          value={idleTimeForm.from_time}
+                                          onChange={(e) =>
+                                            setIdleTimeForm({
+                                              ...idleTimeForm,
+                                              from_time: e.target.value,
+                                            })
+                                          }
+                                        />
+                                      </div>
+                                    </td>
+                                    <td className="border border-gray-300 p-2">
+                                      <input
+                                        type="time"
+                                        className="form-control"
+                                        name="to_time"
+                                        value={idleTimeForm.to_time}
+                                        onChange={(e) =>
+                                          setIdleTimeForm({
+                                            ...idleTimeForm,
+                                            to_time: e.target.value,
+                                          })
+                                        }
+                                      />
+                                    </td>
+                                    <td className="border border-gray-300 p-2">
+                                      <input
+                                        type="time"
+                                        className="form-control"
+                                        name="total_time"
+                                        value={idleTimeForm.total_time}
+                                        onChange={(e) =>
+                                          setIdleTimeForm({
+                                            ...idleTimeForm,
+                                            total_time: e.target.value,
+                                          })
+                                        }
+                                      />
+                                    </td>
+                                    <td className="border border-gray-300 p-2">
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                        name="supervisor_operator"
+                                        value={idleTimeForm.supervisor_operator}
+                                        onChange={(e) =>
+                                          setIdleTimeForm({
+                                            ...idleTimeForm,
+                                            supervisor_operator: e.target.value,
+                                          })
+                                        }
+                                      />
+                                    </td>
+                                    <td className="border border-gray-300 p-2">
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                        name="setting_part"
+                                        value={idleTimeForm.setting_part}
+                                        onChange={(e) =>
+                                          setIdleTimeForm({
+                                            ...idleTimeForm,
+                                            setting_part: e.target.value,
+                                          })
+                                        }
+                                      />
+                                    </td>
+                                    <td className="border border-gray-300 p-2">
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                        name="remark"
+                                        value={idleTimeForm.remark}
+                                        onChange={(e) =>
+                                          setIdleTimeForm({
+                                            ...idleTimeForm,
+                                            remark: e.target.value,
+                                          })
+                                        }
+                                      />
+                                    </td>
+                                    <td className="border border-gray-300 p-2">
+                                      <button
+                                        type="button"
+                                        className="btn"
+                                        onClick={handleAddIdleTime}
+                                      >
+                                        Add
+                                      </button>
+                                    </td>
                                   </tr>
                                 </tbody>
                               </table>
+                            </div>
+                            <div className="table table-bordered table-responsive">
+                              <table>
+                                <thead>
+                                  <tr className="bg-gray-100">
+                                    <th className="border border-gray-300 p-2">
+                                      S no.:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      Reason:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      From Time:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      To Time:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      Idle Time:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      Operator Name:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      Setting Part:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      Remark:
+                                    </th>
+                                    <th className="border border-gray-300 p-2">
+                                      Delete:
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {idleTimeRecords.map((record, index) => (
+                                    <tr key={index}>
+                                      <td>{index + 1}</td>
+                                      <td>{record.idle_reason}</td>
+                                      <td>{record.from_time}</td>
+                                      <td>{record.to_time}</td>
+                                      <td>{record.total_time}</td>
+                                      <td>{record.supervisor_operator}</td>
+                                      <td>{record.setting_part}</td>
+                                      <td>{record.remark}</td>
+                                      <td>
+                                        <button
+                                          className="btn btn-danger"
+                                          onClick={() =>
+                                            handleDeleteIdleTime(index)
+                                          }
+                                        >
+                                          Delete
+                                        </button>
+                                      </td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+
+                          <div
+                            className="tab-pane fade"
+                            id="rework"
+                            role="tabpanel"
+                          >
+                            <div className="row">
+                              <div className="col-md-6">
+                                <div className="row">
+                                  <div className="col-md-1">
+                                    <label>Rework</label>
+                                  </div>
+                                  <div className="col-md-2">
+                                    <select>
+                                      <option>Select</option>
+                                    </select>
+                                  </div>
+                                  {/* <div className="col-md-1">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
+                                  </div> */}
+                                  {/* <div className="col-md-1">
+                                    <button type="button" className="btn">
+                                      Add
+                                    </button>
+                                  </div> */}
+                                  <div className="col-md-1">
+                                    <button type="button" className="btn">
+                                      <FaPlus />
+                                    </button>
+                                  </div>
+                                  <div className="col-md-1">
+                                    <button type="button" className="btn">
+                                      <Cached />
+                                    </button>
+                                  </div>
+                                </div>
+                                <div className="row">
+                                  <div className="table table-bordered table-responsive">
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>Sr no.</th>
+                                          <th>Description</th>
+                                          <th>Qty</th>
+                                          <th>Delete</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              className="form-control"
+                                              type="text"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              className="form-control"
+                                              type="text"
+                                              name="Rework_Description"
+                                              value={
+                                                formData.Rework_Description
+                                              }
+                                              onChange={handleChange}
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              className="form-control"
+                                              type="text"
+                                              name="ReworkQty"
+                                              value={formData.ReworkQty}
+                                              onChange={handleChange}
+                                            />
+                                          </td>
+
+                                          <td>
+                                            <FaTrash />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className="row">
+                                  <div className="col-md-1">
+                                    <label>Reject</label>
+                                  </div>
+                                  <div className="col-md-2">
+                                    <select>
+                                      <option>Select</option>
+                                    </select>
+                                  </div>
+                                  {/* <div className="col-md-1">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                    />
+                                  </div>
+                                  <div className="col-md-1">
+                                    <button type="button" className="btn">
+                                      Add
+                                    </button>
+                                  </div> */}
+                                  <div className="col-md-1">
+                                    <button type="button" className="btn">
+                                      <FaPlus />
+                                    </button>
+                                  </div>
+                                  <div className="col-md-1">
+                                    <button type="button" className="btn">
+                                      <Cached />
+                                    </button>
+                                  </div>
+                                </div>
+                                <div className="row">
+                                  <div className="table table-bordered table-responsive">
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>Sr no.</th>
+                                          <th>Description</th>
+                                          <th>Qty</th>
+                                          <th>Delete</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              className="form-control"
+                                              type="text"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              className="form-control"
+                                              type="text"
+                                              name="Reject_Description"
+                                              value={
+                                                formData.Reject_Description
+                                              }
+                                              onChange={handleChange}
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              className="form-control"
+                                              type="text"
+                                              name="Reject_Quantity"
+                                              value={formData.Reject_Quantity}
+                                              onChange={handleChange}
+                                            />
+                                          </td>
+
+                                          <td>
+                                            <FaTrash />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div
+                            className="tab-pane fade"
+                            id="toolDie"
+                            role="tabpanel"
+                          >
+                            <div className="Container-fluid">
+                              <div className="row">
+                                <div className="col-md-1">
+                                  <label>Die Name</label>
+                                </div>
+                                <div className="col-md-2">
+                                  <input type="text" className="form-control" />
+                                </div>
+                                <div className="col-md-1">
+                                  <button type="button" className="btn">
+                                    Add
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="row">
+                              <div className="table table-bordered table-responsive">
+                                <table>
+                                  <thead>
+                                    <tr>
+                                      <th>Sr no.</th>
+                                      <th>Item Code</th>
+                                      <th>Item Description</th>
+                                      <th>Delete</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <input
+                                          className="form-control"
+                                          type="text"
+                                        />
+                                      </td>
+                                      <td>
+                                        <input
+                                          className="form-control"
+                                          type="text"
+                                          name="ItemCode"
+                                          value={formData.ItemCode}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+                                      <td>
+                                        <input
+                                          className="form-control"
+                                          type="text"
+                                          name="ItemDescription"
+                                          value={formData.ItemDescription}
+                                          onChange={handleChange}
+                                        />
+                                      </td>
+
+                                      <td>
+                                        <FaTrash />
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <div className="productionbottom mt-5">
+                      <div className="row align-items-center text-start g-2 mt-2">
+                        {/* Remark */}
+                        <div className="col-md-2">
+                          <label>Remark:</label>
+                          <textarea
+                            className="form-control"
+                            name="remark"
+                            value={formData.remark}
+                            onChange={handleChange}
+                          ></textarea>
+                        </div>
 
-                    <div className="row text-start">
-                      <div className="col-md-1">
-                        <label>Remark:</label>
-                      </div>
-                      <div className="col-md-1">
-                        <textarea className="form-control"></textarea>
-                      </div>
-                      <div className="col-md-1">
-                        <label>Target Qty:</label>
-                      </div>
-                      <div className="col-md-1">
-                        <button type="button" className="btn">
-                          0
-                        </button>
-                        <button type="button" className="btn">
-                          0
-                        </button>
-                      </div>
-                      <div className="col-md-1">
-                        <label>Prod:</label>
-                      </div>
-                      <div className="col-md-1">
-                        <select>
-                          <option>Regular</option>
-                        </select>
-                      </div>
-                      <div className="col-md-2">
-                        <div className="text-end s-4">
-                          <button type="button" className="btn">
-                            Cancel
-                          </button>
-                          <button type="button" className="btn">
+                        {/* Target Qty */}
+                        <div className="col-md-2">
+                          <label>Target Qty:</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            name="target_qty"
+                            value={formData.target_qty}
+                            onChange={handleChange}
+                          />
+                        </div>
+
+                        {/* Prod */}
+                        <div className="col-md-2">
+                          <label>Prod:</label>
+                          <select className="form-control" name="prod_type">
+                            <option>Regular</option>
+                          </select>
+                        </div>
+
+                        {/* Production Hours */}
+                        <div className="col-md-2">
+                          <label>Production Hours:</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            name="production_hours"
+                            value={formData.production_hours}
+                            onChange={handleChange}
+                          />
+                        </div>
+
+                        {/* Idle Hours */}
+                        <div className="col-md-2">
+                          <label>Idle Hours:</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            name="idle_hours"
+                            value={formData.idle_hours}
+                            onChange={handleChange}
+                          />
+                        </div>
+
+                        {/* Actual Hours */}
+                        <div className="col-md-2">
+                          <label>Actual Hours:</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            name="actual_hours"
+                            value={formData.actual_hours}
+                            onChange={handleChange}
+                          />
+                        </div>
+
+                        {/* Save Button */}
+                        <div className="col-md-12 d-flex justify-content-end mt-3">
+                          <button type="submit" className="btn">
                             Save Entry
                           </button>
                         </div>
                       </div>
                     </div>
-                    <div className="row text-start">
-                      <div className="col-md-2">
-                        <label>Production Hours:</label>
-                      </div>
-                      <div className="col-md-1">
-                        <input type="time" className="form-control"></input>
-                      </div>
-                      <div className="col-md-2">
-                        <label>Idle Hours:</label>
-                      </div>
-                      <div className="col-md-1">
-                        <input type="time" className="form-control"></input>
-                      </div>
-                      <div className="col-md-2">
-                        <label>Actual Hours:</label>
-                      </div>
-                      <div className="col-md-1">
-                        <input type="time" className="form-control"></input>
-                      </div>
-                    </div>
-                  </div>
+                  </form>
                 </div>
               </main>
             </div>
@@ -1056,8 +1950,7 @@ const ProductionEntry = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductionEntry
-
+export default ProductionEntry;
