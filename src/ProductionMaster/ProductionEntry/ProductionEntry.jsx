@@ -259,7 +259,7 @@ const ProductionEntry = () => {
   const [filteredShifts, setFilteredShifts] = useState([]);
   const [searchTermShift, setSearchTermShift] = useState("");
   const [dropdownVisibleShift, setDropdownVisibleShift] = useState(false);
-  const [ setSelectedShift] = useState(null);
+  const [, setSelectedShift] = useState(null);
 
   useEffect(() => {
     const loadShifts = async () => {
