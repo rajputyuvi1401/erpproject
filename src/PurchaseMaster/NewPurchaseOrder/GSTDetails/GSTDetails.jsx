@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { toast } from "react-toastify"
 import "./GStDetails.css"
 
 const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
@@ -53,17 +54,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
     updateFormData("Gst_Details", calculatedGSTDetails)
   }, [itemDetails, updateFormData])
 
-  const handleInputChange = (index, field, value) => {
-    const updatedDetails = [...gstDetails]
-    if (!updatedDetails[index]) {
-      updatedDetails[index] = {}
-    }
-    updatedDetails[index] = {
-      ...updatedDetails[index],
-      [field]: value,
-    }
-    setGstDetails(updatedDetails)
-  }
+ 
 
   const addNewRow = () => {
     setGstDetails([
@@ -100,6 +91,78 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
       },
     ])
   }
+
+
+
+
+  useEffect(() => {
+    const fetchGSTDetails = async () => {
+      try {
+        const response = await fetch("http://13.201.136.34:8000/Purchase/get-item-details/")
+        const data = await response.json()
+        if (data && data.ItemDetails && Array.isArray(data.ItemDetails)) {
+          const calculatedGSTDetails = data.ItemDetails.map((item) => ({
+            ItemCode: item.Item,
+            HSN: item.GST_Details?.HSN || "",
+            Rate: item.Rate || "",
+            Qty: item.Qty || "",
+            SubTotal: (Number(item.Rate) * Number(item.Qty)).toFixed(2),
+            Discount: item.Disc || "",
+            Packing: "",
+            Transport: "",
+            ToolAmort: "",
+            AssValue: "",
+            CGST: item.GST_Details?.CGST?.Rate || "",
+            SGST: item.GST_Details?.SGST?.Rate || "",
+            IGST: item.GST_Details?.IGST?.Rate || "",
+            Vat: "",
+            Cess: "",
+            Total: item.GST_Details?.Total || "",
+          }))
+          setGstDetails(calculatedGSTDetails)
+          updateFormData("Gst_Details", calculatedGSTDetails)
+        }
+      } catch (error) {
+        console.error("Error fetching GST details:", error)
+      }
+    }
+
+    fetchGSTDetails()
+  }, [updateFormData])
+
+  const handleInputChange = (index, field, value) => {
+    // Limit ItemCode to 30 characters
+    if (field === "ItemCode" && value.length > 30) {
+      toast.error("Item Code cannot exceed 30 characters.");
+      return;
+    }
+  
+    const updatedDetails = [...gstDetails];
+    updatedDetails[index][field] = field === "Rate" || field === "Qty" || field === "CGST" || field === "SGST" || field === "IGST"
+      ? Number(value) || 0
+      : value;
+    setGstDetails(updatedDetails);
+    updateFormData("Gst_Details", updatedDetails);
+  };
+  
+  
+
+  const calculateTotals = () => {
+    const totals = gstDetails.reduce(
+      (acc, item) => {
+        acc.subTotal += Number(item.SubTotal) || 0
+        acc.cgst += Number(item.CGST) || 0
+        acc.sgst += Number(item.SGST) || 0
+        acc.igst += Number(item.IGST) || 0
+        acc.total += Number(item.Total) || 0
+        return acc
+      },
+      { subTotal: 0, cgst: 0, sgst: 0, igst: 0, total: 0 },
+    )
+    return totals
+  }
+
+  const totals = calculateTotals()
 
   return (
     <div className="GStDetails">
@@ -293,7 +356,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                     <input
                       type="number"
                       className="form-control"
-                      value={gstDetails[0].TOC_CGST || ""}
+                      value={totals.cgst.toFixed(2)}
                       onChange={(e) => handleInputChange(0, "TOC_CGST", e.target.value)}
                     />
                   </td>
@@ -315,7 +378,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                     <input
                       type="number"
                       className="form-control"
-                      value={gstDetails[0].TOC_SGST || ""}
+                      value={totals.sgst.toFixed(2)}
                       onChange={(e) => handleInputChange(0, "TOC_SGST", e.target.value)}
                     />
                   </td>
@@ -337,7 +400,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                     <input
                       type="number"
                       className="form-control"
-                      value={gstDetails[0].TOC_IGST || ""}
+                      value={totals.igst.toFixed(2)}
                       onChange={(e) => handleInputChange(0, "TOC_IGST", e.target.value)}
                     />
                   </td>
@@ -403,7 +466,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                     <input
                       type="number"
                       className="form-control"
-                      value={gstDetails[0].GR_Total || ""}
+                      value={totals.total.toFixed(2)}
                       onChange={(e) => handleInputChange(0, "GR_Total", e.target.value)}
                     />
                   </td>

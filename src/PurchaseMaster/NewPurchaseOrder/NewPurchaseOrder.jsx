@@ -176,8 +176,30 @@ const NewPurchaseOrder = () => {
       return
     }
 
+    const formattedData = {
+      ...formData,
+      Item_Detail_Enter: formData.Item_Detail_Enter.map(item => ({
+        ...item,
+        Item: (item.Item || "").substring(0, 30).trim(),
+        Rate: Number(item.Rate) || 0,
+        Qty: Number(item.Qty) || 0,
+        Disc: Number(item.Disc) || 0,
+        Particular: item.Particular === "I" ? "Item" : item.Particular,
+      })),
+      Gst_Details: formData.Gst_Details.map(gst => ({
+        ...gst,
+        ItemCode: (gst.ItemCode || "").substring(0, 30).trim(),
+        Rate: Number(gst.Rate) || 0,
+        Qty: Number(gst.Qty) || 0,
+        CGST: Number(gst.CGST) || 0,
+        SGST: Number(gst.SGST) || 0,
+        IGST: Number(gst.IGST) || 0,
+      })),
+    };
+    
+
     try {
-      const response = await registerPurchaseOrder(formData)
+      const response = await registerPurchaseOrder(formattedData)
       console.log("Purchase order saved successfully", response)
       toast.success("Purchase order saved successfully")
     } catch (error) {
@@ -320,8 +342,7 @@ const NewPurchaseOrder = () => {
                             <div className="tab-pane fade show active" role="tabpanel">
                               <Poinfo
                                 updateFormData={updateFormData}
-                                paymentTerms={formData.PaymentTerms}
-                                handleChange={(e) => updateFormData(e.target.name, e.target.value)}
+                                paymentTermsFromSupplier={formData.PaymentTerms}
                               />
                             </div>
                           )}

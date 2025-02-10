@@ -235,7 +235,7 @@ const ItemMasterGernal = () => {
       "item_group",
       "Name_Description",
       "Store_Location",
-      "SAC_Code",
+     
       "HSN_SAC_Code",
     ];
 
@@ -1580,9 +1580,7 @@ const ItemMasterGernal = () => {
                                                 className="col-sm-5 col-form-label"
                                               >
                                                 SAC Code:
-                                                <span className="text-danger">
-                                                  *
-                                                </span>
+                                               
                                               </label>
                                               <div className="col-sm-7">
                                                 <input

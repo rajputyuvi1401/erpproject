@@ -201,7 +201,7 @@ const SupplierCustomerMaster = () => {
       "number",
       "Payment_Term",
       "Pin_Code",
-      "GST_No2",
+   
 
       
       // Add other required fields here
@@ -234,6 +234,13 @@ const SupplierCustomerMaster = () => {
     // if (formData.GST_No && !gstPattern.test(formData.GST_No)) {
     //   newErrors.GST_No = "Invalid GST number format";
     // }
+
+
+    if (!formData.GST_No || formData.GST_No.trim() === "") {
+      newErrors.GST_No = "GST Type is required";
+    }
+  
+
 
     // Validate URL format for website
     const urlPattern = /^(https?:\/\/)?[^\s/$.?#].[^\s]*$/i;

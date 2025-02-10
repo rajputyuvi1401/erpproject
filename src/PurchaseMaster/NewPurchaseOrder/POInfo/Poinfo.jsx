@@ -4,7 +4,7 @@ import { FaPlus, FaSync, FaEdit, FaTrash } from "react-icons/fa"
 import { ToastContainer } from "react-toastify"
 import { fetchNextCode } from "../../../Service/PurchaseApi"
 
-const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
+const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
   
 
   const [currentTime, setCurrentTime] = useState("")
@@ -70,18 +70,28 @@ const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
   }
 
   // Handle input changes
+  useEffect(() => {
+    if (paymentTermsFromSupplier) {
+      setFormData((prev) => ({
+        ...prev,
+        PaymentTerms: paymentTermsFromSupplier,
+      }));
+    }
+  }, [paymentTermsFromSupplier]);
+
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
 
     // Update local state
     setFormData((prevState) => ({
       ...prevState,
       [name]: value,
-    }))
+    }));
 
-    // Update parent state
-    updateFormData(name, value)
-  }
+    // Update parent state (so the API receives correct data)
+    updateFormData(name, value);
+  };
+  
 
   const handleSeriesChange = async (e) => {
     const seriesValue = e.target.value
@@ -172,6 +182,9 @@ const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
                   <div className="col-md-3">
                     <div className="form-group mb-3">
                       <label htmlFor="PoNo">PO No:</label>
+                      <span className="text-danger">
+                                                *
+                                              </span>
                     </div>
                   </div>
                   <div className="col-md-3">
@@ -212,6 +225,9 @@ const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
                   <div className="col-md-4">
                     <div className="form-group mb-3">
                       <label htmlFor="EnquiryNo">Enquiry No:</label>
+                      <span className="text-danger">
+                                                *
+                                              </span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -255,6 +271,9 @@ const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
                   <div className="col-md-4">
                     <div className="form-group mb-3">
                       <label htmlFor="PaymentTerms">Payment Terms:</label>
+                      <span className="text-danger">
+                                                *
+                                              </span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -266,7 +285,7 @@ const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
               name="PaymentTerms"
               className="form-control"
               placeholder="Enter Payment Terms"
-              value={paymentTerms}
+              value={formData.PaymentTerms}
               onChange={handleChange}
             />
                     </div>
@@ -277,6 +296,9 @@ const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
                   <div className="col-md-4">
                     <div className="form-group mb-3">
                       <label htmlFor="DeliveryDate">Delivery Date:</label>
+                      <span className="text-danger">
+                                                *
+                                              </span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -363,6 +385,9 @@ const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
                       <label className="form-check-label" htmlFor="PoDate">
                         PO Date:
                       </label>
+                      <span className="text-danger">
+                                                *
+                                              </span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -387,6 +412,9 @@ const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
                       <label className="form-check-label" htmlFor="EnquiryDate">
                         Enquiry Date:
                       </label>
+                      <span className="text-danger">
+                                                *
+                                              </span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -410,6 +438,9 @@ const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
                       <label className="form-check-label" htmlFor="QuotDate">
                         Quot Date:
                       </label>
+                      <span className="text-danger">
+                                                *
+                                              </span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -674,6 +705,9 @@ const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
                       <label className="form-check-label" htmlFor="PoValidityDate">
                         PO Validity Date:
                       </label>
+                      <span className="text-danger">
+                                                *
+                                              </span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -697,6 +731,9 @@ const Poinfo = ({ updateFormData ,  paymentTerms = "" }) => {
                       <label className="form-check-label" htmlFor="PoEffectiveDate">
                         PO Effective Date:
                       </label>
+                      <span className="text-danger">
+                                                *
+                                              </span>
                     </div>
                   </div>
                   <div className="col-md-8">

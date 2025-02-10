@@ -1632,11 +1632,11 @@ const ProductionEntry = () => {
                             <div className="row">
                               <div className="col-md-6">
                                 <div className="row">
-                                  <div className="col-md-1">
+                                  <div className="col-md-2">
                                     <label>Rework</label>
                                   </div>
                                   <div className="col-md-2">
-                                    <select>
+                                    <select style={{marginTop:"2px"}}>
                                       <option>Select</option>
                                     </select>
                                   </div>
@@ -1662,7 +1662,7 @@ const ProductionEntry = () => {
                                     </button>
                                   </div>
                                 </div>
-                                <div className="row">
+                                <div className="row mt-5">
                                   <div className="table table-bordered table-responsive">
                                     <table>
                                       <thead>
@@ -1713,11 +1713,11 @@ const ProductionEntry = () => {
                               </div>
                               <div className="col-md-6">
                                 <div className="row">
-                                  <div className="col-md-1">
+                                  <div className="col-md-2">
                                     <label>Reject</label>
                                   </div>
                                   <div className="col-md-2">
-                                    <select>
+                                    <select style={{marginTop:"2px"}}>
                                       <option>Select</option>
                                     </select>
                                   </div>
@@ -1743,7 +1743,7 @@ const ProductionEntry = () => {
                                     </button>
                                   </div>
                                 </div>
-                                <div className="row">
+                                <div className="row mt-5">
                                   <div className="table table-bordered table-responsive">
                                     <table>
                                       <thead>
@@ -1806,7 +1806,7 @@ const ProductionEntry = () => {
                                   <label>Die Name</label>
                                 </div>
                                 <div className="col-md-2">
-                                  <input type="text" className="form-control" />
+                                  <input type="text" className="form-control" style={{marginTop:"-2px"}} />
                                 </div>
                                 <div className="col-md-1">
                                   <button type="button" className="btn">
@@ -1815,7 +1815,7 @@ const ProductionEntry = () => {
                                 </div>
                               </div>
                             </div>
-                            <div className="row">
+                            <div className="row mt-4">
                               <div className="table table-bordered table-responsive">
                                 <table>
                                   <thead>

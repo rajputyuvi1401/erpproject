@@ -4,7 +4,7 @@ import { deleteItem, fetchItemFields } from "../../../Service/PurchaseApi"
 import { toast, ToastContainer } from "react-toastify"
 import { getUnitCode } from "../../../Service/Api"
 
-const ItemDetails = ({ updateFormData }) => {
+const ItemDetails = ({ updateFormData ,supplierCode}) => {
   const [itemDetails, setItemDetails] = useState([])
   const [currentItem, setCurrentItem] = useState({
     Item: "",
@@ -12,20 +12,14 @@ const ItemDetails = ({ updateFormData }) => {
     ItemSize: "",
     Rate: "",
     HSN_SAC_Code: "",
-    Number: "",
+    Number: supplierCode || "", // Set the supplier code here
     Disc: "",
     Qty: "",
     Unit: "",
     Particular: "",
     Mill_Name: "",
     DeliveryDt: "",
-    Schedule_Line: [
-      {
-        Item: "",
-        ItemDescription: "",
-        Qty: "",
-      },
-    ],
+    
   })
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
@@ -66,9 +60,26 @@ const ItemDetails = ({ updateFormData }) => {
 
   // Handle input change
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setCurrentItem((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    
+    // Limit Item field to 30 characters
+    if (name === "Item" && value.length > 30) {
+      toast.error("Item cannot exceed 30 characters.");
+      return;
+    }
+  
+    setCurrentItem((prev) => ({
+      ...prev,
+      [name]: name === "Rate" || name === "Qty" || name === "Disc" ? Number(value) || 0 : value,
+    }));
+  };
+  
+  useEffect(() => {
+    setCurrentItem((prev) => ({
+      ...prev,
+      Number: supplierCode || "", // Update supplier code when it changes
+    }));
+  }, [supplierCode]);
 
   // Search for item
   const handleSearch = async () => {
@@ -257,7 +268,7 @@ const ItemDetails = ({ updateFormData }) => {
                         name="Number"
                         className="form-control"
                         value={currentItem.Number}
-                        onChange={handleChange}
+                        onChange={(e) => setCurrentItem({ ...currentItem, Number: e.target.value })}
                       />
                     </td>
                     <td>

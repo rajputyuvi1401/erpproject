@@ -47,16 +47,20 @@ const ScrapRejection = () => {
   const handleSeriesChange = async (e) => {
     const selectedSeries = e.target.value;
     setSeries(selectedSeries);
-
+  
     if (selectedSeries === "Line R") {
       try {
-        const nextRejectionNo = await getNextScrapRejectionNo(year);
-        setScrapRejectionNo(nextRejectionNo);
+        const response = await getNextScrapRejectionNo(year);
+        console.log("API Response:", response); // Debugging log
+        setScrapRejectionNo(response.next_scrap_rejection_no); // ✅ Extract the correct field
       } catch (error) {
         console.error("Failed to fetch next scrap rejection number:", error);
       }
+    } else {
+      setScrapRejectionNo(""); // Reset when not "Line R"
     }
   };
+  
 
   const year = localStorage.getItem("Shortyear");
 
@@ -204,16 +208,15 @@ const ScrapRejection = () => {
             <label htmlFor="text" className="form-label">
               Scrap / Rej. No
             </label>
-            {series && (
-            <input
-              type="text"
-              className="form-control"
-              id="text"
-              value={scrapRejectionNo}
-              onChange={(e) => setScrapRejectionNo(e.target.value)}
-              readOnly
-            />
-          )}
+            {series === "Line R" && (
+    <input
+      type="text"
+      className="form-control"
+      id="scrapRejectionNo"
+      value={scrapRejectionNo || ""}
+      readOnly 
+    />
+  )}
           </div>
       
                       <div className="col-md-3">
