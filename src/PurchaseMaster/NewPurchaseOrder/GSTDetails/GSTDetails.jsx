@@ -92,44 +92,24 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
     ])
   }
 
-
-
-
   useEffect(() => {
-    const fetchGSTDetails = async () => {
-      try {
-        const response = await fetch("http://13.201.136.34:8000/Purchase/get-item-details/")
-        const data = await response.json()
-        if (data && data.ItemDetails && Array.isArray(data.ItemDetails)) {
-          const calculatedGSTDetails = data.ItemDetails.map((item) => ({
-            ItemCode: item.Item,
-            HSN: item.GST_Details?.HSN || "",
-            Rate: item.Rate || "",
-            Qty: item.Qty || "",
-            SubTotal: (Number(item.Rate) * Number(item.Qty)).toFixed(2),
-            Discount: item.Disc || "",
-            Packing: "",
-            Transport: "",
-            ToolAmort: "",
-            AssValue: "",
-            CGST: item.GST_Details?.CGST?.Rate || "",
-            SGST: item.GST_Details?.SGST?.Rate || "",
-            IGST: item.GST_Details?.IGST?.Rate || "",
-            Vat: "",
-            Cess: "",
-            Total: item.GST_Details?.Total || "",
-          }))
-          setGstDetails(calculatedGSTDetails)
-          updateFormData("Gst_Details", calculatedGSTDetails)
-        }
-      } catch (error) {
-        console.error("Error fetching GST details:", error)
-      }
-    }
-
-    fetchGSTDetails()
-  }, [updateFormData])
-
+    const calculatedGSTDetails = itemDetails.map((item) => ({
+      ItemCode: item.Item,
+      HSN: item.HSN_SAC_Code,
+      Rate: item.Rate,
+      Qty: item.Qty,
+      SubTotal: (item.Rate * item.Qty).toFixed(2),
+      Discount: item.Disc,
+      CGST: item.GST_Details?.CGST?.Rate || 0,
+      SGST: item.GST_Details?.SGST?.Rate || 0,
+      IGST: item.GST_Details?.IGST?.Rate || 0,
+      Total: item.GST_Details?.Total || 0,
+    }));
+  
+    setGstDetails(calculatedGSTDetails);
+    updateFormData("Gst_Details", calculatedGSTDetails);
+  }, [itemDetails, updateFormData]);
+  
   const handleInputChange = (index, field, value) => {
     // Limit ItemCode to 30 characters
     if (field === "ItemCode" && value.length > 30) {

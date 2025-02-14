@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { FaTrash } from "react-icons/fa"
-import { deleteItem, fetchItemFields } from "../../../Service/PurchaseApi"
+import { deleteItem, fetchItemFields,fetchItemDetails } from "../../../Service/PurchaseApi"
 import { toast, ToastContainer } from "react-toastify"
 import { getUnitCode } from "../../../Service/Api"
 
@@ -25,24 +25,20 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
   const [loading, setLoading] = useState(false)
   const [unitCodes, setUnitCodes] = useState([])
 
-  // Fetch items on component mount
+  // ✅ Fetch all item details
   useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await fetch("http://13.201.136.34:8000/Purchase/get-item-details/")
-        const data = await response.json()
-        if (data && data.ItemDetails && Array.isArray(data.ItemDetails)) {
-          setItemDetails(data.ItemDetails)
-        } else {
-          throw new Error("Invalid data format")
-        }
-      } catch (error) {
-        console.error("Error fetching items:", error)
-        toast.error("Failed to fetch items.")
+    const loadItems = async () => {
+      const data = await fetchItemDetails();
+      if (data && data.ItemDetails) {
+        setItemDetails(data.ItemDetails);
+      } else {
+        toast.error("Failed to fetch items.");
       }
-    }
-    fetchItems()
-  }, [])
+    };
+
+    loadItems();
+  }, []);
+
 
   // Fetch unit codes on mount
   useEffect(() => {

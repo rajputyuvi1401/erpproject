@@ -73,21 +73,18 @@ export const createWorkOrder = async (data) => {
   export default ProductionApi;
   
 
-  // Function to get the next scrap rejection number based on the series
-export const getNextScrapRejectionNo = async (shortYear) => {
-  try {
-    const response = await axios.get(
-      `${BASE_URL}scrap_rejection_no/`,{
-        params: { Shortyear: shortYear },
-      }
-    );
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching scrap rejection number:", error);
-    throw error; // Rethrow error for handling in the calling component
-  }
-};
-
+  export const getNextScrapRejectionNo = async (series, year) => {
+    try {
+      const response = await axios.get(`${BASE_URL}scrap_rejection_no/`, {
+        params: { Shortyear: year, field: series }, // Ensure correct parameters
+      });
+  
+      return response.data; // Expecting { "next_scrap_rejection_no": "Line R 242500002" }
+    } catch (error) {
+      console.error("Error fetching scrap rejection number:", error);
+      throw error; // Rethrow error for handling in the calling component
+    }
+  };
 
 
 

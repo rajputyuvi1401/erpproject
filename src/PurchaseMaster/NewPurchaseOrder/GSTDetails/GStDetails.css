@@ -91,7 +91,19 @@
   }
   
   
-  
+  /* Wrapper for the table to make it scrollable */
+  .gsttable .table-wrapper {
+  overflow-x: auto; /* Enable horizontal scroll */
+  -webkit-overflow-scrolling: touch; /* For smoother scrolling on mobile */
+  max-width: 100%; /* Ensure it fills available space */
+}
+
+/* Optionally, set a max height for the table to make it vertically scrollable as well */
+.gsttable .table-wrapper table {
+  width: 100%; /* Ensure the table width takes the full container width */
+  min-width: 1200px; /* Ensure the table is wide enough, adjust if needed */
+}
+
   @media (max-width: 768px) {
     .gsttable  .table td {
       padding: 4px;

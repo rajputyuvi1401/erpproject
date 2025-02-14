@@ -61,3 +61,6 @@
   .tbleroo {
     border-top: 3px solid black;
   }
+  .PurchaseOrderPDFMaster .btn{
+    background-color: rgb(80, 80, 101);
+  }

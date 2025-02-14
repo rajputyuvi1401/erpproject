@@ -14,6 +14,7 @@ import { fetchSupplierData, fetchNextCode, registerPurchaseOrder } from "../../S
 import { Link } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { useCallback } from "react"
 
 const NewPurchaseOrder = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false)
@@ -22,7 +23,9 @@ const NewPurchaseOrder = () => {
   const [supplierName, setSupplierName] = useState("")
   const [supplierCode, setSupplierCode] = useState("")
   const [loading, setLoading] = useState(false)
-  const [ setSupplierData] = useState(null)
+  // eslint-disable-next-line no-unused-vars
+  const [supplierData, setSupplierData] = useState(null);
+
 
   const toggleSideNav = () => {
     setSideNavOpen((prevState) => !prevState)
@@ -145,12 +148,12 @@ const NewPurchaseOrder = () => {
     GstTaxes: "",
   })
 
-  const updateFormData = (key, value) => {
+  const updateFormData = useCallback((field, value) => {
     setFormData((prevData) => ({
       ...prevData,
-      [key]: value,
-    }))
-  }
+      [field]: value,
+    }));
+  }, []);
 
   const validateCurrentTab = () => {
     return true
@@ -178,6 +181,10 @@ const NewPurchaseOrder = () => {
 
     const formattedData = {
       ...formData,
+    Schedule_Line: formData.Schedule_Line.map((item) => ({
+      ...item,
+      ItemCode: item.ItemCode ? item.ItemCode.substring(0, 30).trim() : "", // 🔹 Ensure max 30 characters
+    })),
       Item_Detail_Enter: formData.Item_Detail_Enter.map(item => ({
         ...item,
         Item: (item.Item || "").substring(0, 30).trim(),
@@ -214,7 +221,7 @@ const NewPurchaseOrder = () => {
 
   return (
     <div className="NewPurchaseMaster">
-      <ToastContainer />
+      <ToastContainer className="newpurchase" />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -325,12 +332,14 @@ const NewPurchaseOrder = () => {
                           )}
                           {activeTab === 2 && (
                             <div className="tab-pane fade show active" role="tabpanel">
-                              <ItemOther updateFormData={updateFormData} />
+                             <ItemOther updateFormData={updateFormData} itemDetails={formData.Item_Detail_Enter} />
+
                             </div>
                           )}
                           {activeTab === 3 && (
                             <div className="tab-pane fade show active" role="tabpanel">
-                              <Schedule updateFormData={updateFormData} />
+                              <Schedule updateFormData={updateFormData} itemDetails={formData.Item_Detail_Enter} />
+
                             </div>
                           )}
                           {activeTab === 4 && (

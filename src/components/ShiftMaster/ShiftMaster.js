@@ -235,7 +235,7 @@ const ShiftMaster = () => {
                         <div className="col-md-2">
                           <div className="mb-3">
                             <label htmlFor="Break_Name" className="form-label">
-                              Break Name:<span className="text-danger">*</span>
+                              Break Name:
                             </label>
                             <input
                               type="text"
@@ -244,17 +244,13 @@ const ShiftMaster = () => {
                               value={formData.Break_Name}
                               onChange={handleChange1}
                             />
-                            {errors.Break_Name && (
-                              <small className="text-danger">
-                                {errors.Break_Name}
-                              </small>
-                            )}
+                          
                           </div>
                         </div>
                         <div className="col-md-1">
                           <div className="mb-3">
                             <label htmlFor="Break_Till" className="form-label">
-                              Break Till:<span className="text-danger">*</span>
+                              Break Till:
                             </label>
                             <input
                               type="text"
@@ -263,11 +259,7 @@ const ShiftMaster = () => {
                               value={formData.Break_Till}
                               onChange={handleChange1}
                             />
-                            {errors.Break_Till && (
-                              <small className="text-danger">
-                                {errors.Break_Till}
-                              </small>
-                            )}
+                           
                           </div>
                         </div>
                         <div className="col-md-1">

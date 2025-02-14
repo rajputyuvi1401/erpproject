@@ -181,3 +181,8 @@
 .is-invalid {
   border-color: red;
 }
+
+.scrollable-card {
+  max-height: 500px; /* Adjust the height as needed */
+  overflow-y: auto;
+}

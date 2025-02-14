@@ -48,21 +48,30 @@ const ScrapRejection = () => {
     const selectedSeries = e.target.value;
     setSeries(selectedSeries);
   
+    const year = localStorage.getItem("Shortyear"); // Ensure correct key
+  
+    if (!year) {
+      console.error("Shortyear is missing from localStorage");
+      return;
+    }
+  
     if (selectedSeries === "Line R") {
       try {
-        const response = await getNextScrapRejectionNo(year);
-        console.log("API Response:", response); // Debugging log
-        setScrapRejectionNo(response.next_scrap_rejection_no); // ✅ Extract the correct field
+        const response = await getNextScrapRejectionNo(selectedSeries, year); // Pass series & year
+        console.log("API Response:", response);
+        setScrapRejectionNo(response?.next_scrap_rejection_no || ""); // Ensure correct field
       } catch (error) {
-        console.error("Failed to fetch next scrap rejection number:", error);
+        console.error(
+          "Failed to fetch next scrap rejection number:",
+          error.response?.data || error.message
+        );
+        setScrapRejectionNo(""); // Clear input if API call fails
       }
     } else {
       setScrapRejectionNo(""); // Reset when not "Line R"
     }
   };
   
-
-  const year = localStorage.getItem("Shortyear");
 
   
 

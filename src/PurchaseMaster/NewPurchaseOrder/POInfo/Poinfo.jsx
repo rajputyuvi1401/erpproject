@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react"
-import "./Poinfo.css"
-import { FaPlus, FaSync, FaEdit, FaTrash } from "react-icons/fa"
-import { ToastContainer } from "react-toastify"
-import { fetchNextCode } from "../../../Service/PurchaseApi"
+import React, { useState, useEffect } from "react";
+import "./Poinfo.css";
+import { FaPlus, FaSync, FaEdit, FaTrash } from "react-icons/fa";
+import { ToastContainer } from "react-toastify";
+import { fetchNextCode } from "../../../Service/PurchaseApi";
 
-const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
-  
-
-  const [currentTime, setCurrentTime] = useState("")
-  const [showCard, setShowCard] = useState(false)
-  const [selectedSeries, setSelectedSeries] = useState("select")
-  const [PoNo, setPoNo] = useState("")
-  const [errors, setErrors] = useState({})
-  const [loading, setLoading] = useState(false)
+const Poinfo = ({ updateFormData, paymentTermsFromSupplier }) => {
+  const [paymentTerms, setPaymentTerms] = useState(paymentTermsFromSupplier || "");
+  const [currentTime, setCurrentTime] = useState("");
+  const [showCard, setShowCard] = useState(false);
+  const [selectedSeries, setSelectedSeries] = useState("select");
+  const [PoNo, setPoNo] = useState("");
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     field: "",
     PoNo: "",
@@ -45,39 +44,33 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
     TransportName: "",
     PoValidity_WarrantyTerm: "",
     GstTaxes: "",
-  })
+  });
 
   useEffect(() => {
     // Get the current date and time
-    const now = new Date()
+    const now = new Date();
 
-    const time = now.toTimeString().split(" ")[0].substring(0, 5) // Get the time in HH:MM format
+    const time = now.toTimeString().split(" ")[0].substring(0, 5); // Get the time in HH:MM format
 
-
-    setCurrentTime(time)
-  }, [])
+    setCurrentTime(time);
+  }, []);
 
   const handleAddClick = () => {
-    setShowCard(true)
-  }
+    setShowCard(true);
+  };
 
   const handleRefreshClick = () => {
-    console.log("Data refreshed")
-  }
+    console.log("Data refreshed");
+  };
 
   const handleCloseCard = () => {
-    setShowCard(false)
-  }
+    setShowCard(false);
+  };
 
-  // Handle input changes
   useEffect(() => {
-    if (paymentTermsFromSupplier) {
-      setFormData((prev) => ({
-        ...prev,
-        PaymentTerms: paymentTermsFromSupplier,
-      }));
-    }
+    setPaymentTerms(paymentTermsFromSupplier);
   }, [paymentTermsFromSupplier]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -89,46 +82,46 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
     }));
 
     // Update parent state (so the API receives correct data)
+    setPaymentTerms(value);
     updateFormData(name, value);
   };
-  
 
   const handleSeriesChange = async (e) => {
-    const seriesValue = e.target.value
-    setSelectedSeries(seriesValue)
+    const seriesValue = e.target.value;
+    setSelectedSeries(seriesValue);
     setFormData((prevState) => ({
       ...prevState,
       field: seriesValue,
-    }))
-    updateFormData("field", seriesValue)
+    }));
+    updateFormData("field", seriesValue);
 
     if (seriesValue === "select") {
-      setPoNo("")
+      setPoNo("");
       setFormData((prevState) => ({
         ...prevState,
         PoNo: "",
-      }))
-      updateFormData("PoNo", "")
-      return
+      }));
+      updateFormData("PoNo", "");
+      return;
     }
 
-    setLoading(true)
+    setLoading(true);
     try {
-      const year = localStorage.getItem("Shortyear")
-      const response = await fetchNextCode(seriesValue, year)
-      const nextCode = response?.next_code || ""
-      setPoNo(nextCode)
+      const year = localStorage.getItem("Shortyear");
+      const response = await fetchNextCode(seriesValue, year);
+      const nextCode = response?.next_code || "";
+      setPoNo(nextCode);
       setFormData((prevState) => ({
         ...prevState,
         PoNo: nextCode,
-      }))
-      updateFormData("PoNo", nextCode)
+      }));
+      updateFormData("PoNo", nextCode);
     } catch (error) {
-      console.error("Error fetching PO number:", error)
+      console.error("Error fetching PO number:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleClear = () => {
     setFormData({
@@ -163,12 +156,12 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
       TransportName: "",
       PoValidity_WarrantyTerm: "",
       GstTaxes: "",
-    })
-    setErrors({})
-    setErrors({})
-    setSelectedSeries("select")
-    setPoNo("")
-  }
+    });
+    setErrors({});
+    setErrors({});
+    setSelectedSeries("select");
+    setPoNo("");
+  };
 
   return (
     <div className="Poinfo">
@@ -182,14 +175,16 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                   <div className="col-md-3">
                     <div className="form-group mb-3">
                       <label htmlFor="PoNo">PO No:</label>
-                      <span className="text-danger">
-                                                *
-                                              </span>
+                      <span className="text-danger">*</span>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="form-group mb-3">
-                      <select className="form-control" value={selectedSeries} onChange={handleSeriesChange}>
+                      <select
+                        className="form-control"
+                        value={selectedSeries}
+                        onChange={handleSeriesChange}
+                      >
                         <option value="select">Select</option>
                         <option value="RM">RM</option>
                         <option value="CONSUMABLE">CONSUMABLE</option>
@@ -211,8 +206,8 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                             setFormData((prevState) => ({
                               ...prevState,
                               PoNo: e.target.value,
-                            }))
-                            updateFormData("PoNo", e.target.value)
+                            }));
+                            updateFormData("PoNo", e.target.value);
                           }}
                         />
                       )}
@@ -225,9 +220,7 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                   <div className="col-md-4">
                     <div className="form-group mb-3">
                       <label htmlFor="EnquiryNo">Enquiry No:</label>
-                      <span className="text-danger">
-                                                *
-                                              </span>
+                      <span className="text-danger">*</span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -241,7 +234,9 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                         value={formData.EnquiryNo}
                         onChange={handleChange}
                       />
-                      {errors.EnquiryNo && <p className="error">{errors.EnquiryNo}</p>}
+                      {errors.EnquiryNo && (
+                        <p className="error">{errors.EnquiryNo}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -271,23 +266,20 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                   <div className="col-md-4">
                     <div className="form-group mb-3">
                       <label htmlFor="PaymentTerms">Payment Terms:</label>
-                      <span className="text-danger">
-                                                *
-                                              </span>
+                      <span className="text-danger">*</span>
                     </div>
                   </div>
                   <div className="col-md-8">
                     <div className="form-group mb-3">
-                     
-                    <input
-              type="text"
-              id="PaymentTerms"
-              name="PaymentTerms"
-              className="form-control"
-              placeholder="Enter Payment Terms"
-              value={formData.PaymentTerms}
-              onChange={handleChange}
-            />
+                      <input
+                        type="text"
+                        id="PaymentTerms"
+                        name="PaymentTerms"
+                        className="form-control"
+                        placeholder="Enter Payment Terms"
+                        value={paymentTerms}
+                        onChange={handleChange}
+                      />
                     </div>
                   </div>
                 </div>
@@ -296,9 +288,7 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                   <div className="col-md-4">
                     <div className="form-group mb-3">
                       <label htmlFor="DeliveryDate">Delivery Date:</label>
-                      <span className="text-danger">
-                                                *
-                                              </span>
+                      <span className="text-danger">*</span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -385,9 +375,7 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                       <label className="form-check-label" htmlFor="PoDate">
                         PO Date:
                       </label>
-                      <span className="text-danger">
-                                                *
-                                              </span>
+                      <span className="text-danger">*</span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -397,9 +385,7 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                         name="PoDate"
                         className="form-control"
                         id="PoDate"
-                        value={formData.PoDate
-
-                        }
+                        value={formData.PoDate}
                         onChange={handleChange}
                       />
                     </div>
@@ -412,9 +398,7 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                       <label className="form-check-label" htmlFor="EnquiryDate">
                         Enquiry Date:
                       </label>
-                      <span className="text-danger">
-                                                *
-                                              </span>
+                      <span className="text-danger">*</span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -438,9 +422,7 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                       <label className="form-check-label" htmlFor="QuotDate">
                         Quot Date:
                       </label>
-                      <span className="text-danger">
-                                                *
-                                              </span>
+                      <span className="text-danger">*</span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -461,7 +443,10 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                 <div className="row text-start">
                   <div className="col-md-4">
                     <div className="form-group mb-3">
-                      <label className="form-check-label" htmlFor="PaymentRemark">
+                      <label
+                        className="form-check-label"
+                        htmlFor="PaymentRemark"
+                      >
                         Payment Remark:
                       </label>
                     </div>
@@ -484,7 +469,10 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                 <div className="row text-start">
                   <div className="col-md-4">
                     <div className="form-group mb-3">
-                      <label className="form-check-label" htmlFor="DeliveryType">
+                      <label
+                        className="form-check-label"
+                        htmlFor="DeliveryType"
+                      >
                         Delivery Type/Period:
                       </label>
                     </div>
@@ -507,7 +495,10 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                 <div className="row text-start">
                   <div className="col-md-4">
                     <div className="form-group mb-3">
-                      <label className="form-check-label" htmlFor="DeliveryNote">
+                      <label
+                        className="form-check-label"
+                        htmlFor="DeliveryNote"
+                      >
                         Delivery/Note:
                       </label>
                     </div>
@@ -642,12 +633,20 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                     </div>
                   </div>
                   <div className="col-md-1">
-                    <button type="button" className="po1btn" onClick={handleAddClick}>
+                    <button
+                      type="button"
+                      className="po1btn"
+                      onClick={handleAddClick}
+                    >
                       <FaPlus />
                     </button>
                   </div>
                   <div className="col-md-1">
-                    <button type="button" className="po1btn" onClick={handleRefreshClick}>
+                    <button
+                      type="button"
+                      className="po1btn"
+                      onClick={handleRefreshClick}
+                    >
                       <FaSync />
                     </button>
                   </div>
@@ -679,7 +678,10 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                 <div className="row text-start">
                   <div className="col-md-4">
                     <div className="form-group mb-3">
-                      <label className="form-check-label" htmlFor="ContactPerson">
+                      <label
+                        className="form-check-label"
+                        htmlFor="ContactPerson"
+                      >
                         Contact Person:
                       </label>
                     </div>
@@ -702,12 +704,13 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                 <div className="row text-start">
                   <div className="col-md-4">
                     <div className="form-group mb-3">
-                      <label className="form-check-label" htmlFor="PoValidityDate">
+                      <label
+                        className="form-check-label"
+                        htmlFor="PoValidityDate"
+                      >
                         PO Validity Date:
                       </label>
-                      <span className="text-danger">
-                                                *
-                                              </span>
+                      <span className="text-danger">*</span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -728,12 +731,13 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                 <div className="row text-start">
                   <div className="col-md-4">
                     <div className="form-group mb-3">
-                      <label className="form-check-label" htmlFor="PoEffectiveDate">
+                      <label
+                        className="form-check-label"
+                        htmlFor="PoEffectiveDate"
+                      >
                         PO Effective Date:
                       </label>
-                      <span className="text-danger">
-                                                *
-                                              </span>
+                      <span className="text-danger">*</span>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -754,7 +758,10 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                 <div className="row text-start">
                   <div className="col-md-4">
                     <div className="form-group mb-3">
-                      <label className="form-check-label" htmlFor="TransportName">
+                      <label
+                        className="form-check-label"
+                        htmlFor="TransportName"
+                      >
                         Transport Name:
                       </label>
                     </div>
@@ -875,21 +882,33 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
               </div>
             </div>
             {showCard && (
-              <div className="modal fade show d-block" tabIndex="-1" role="dialog">
+              <div
+                className="modal fade show d-block"
+                tabIndex="-1"
+                role="dialog"
+              >
                 <div className="modal-dialog" role="document">
                   <div className="modal-content">
                     <div className="modal-header">
                       <div className="row">
                         <div className="col-md-12 text-start">
-                          <h5 className="modal-title text-primary">Freight Master</h5>
+                          <h5 className="modal-title text-primary">
+                            Freight Master
+                          </h5>
                         </div>
                       </div>
                     </div>
                     <div className="modal-body">
                       <div className="row mb-3">
                         <div className="col-md-6">
-                          <label htmlFor="freightName">Enter Freight Name:</label>
-                          <input type="text" id="freightName" className="form-control" />
+                          <label htmlFor="freightName">
+                            Enter Freight Name:
+                          </label>
+                          <input
+                            type="text"
+                            id="freightName"
+                            className="form-control"
+                          />
                         </div>
                         <div className="col-md-6">
                           <button type="button" className="btn mt-4">
@@ -925,7 +944,11 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
                       </table>
                     </div>
                     <div className="modal-footer">
-                      <button type="button" className="btn" onClick={handleCloseCard}>
+                      <button
+                        type="button"
+                        className="btn"
+                        onClick={handleCloseCard}
+                      >
                         Close
                       </button>
                     </div>
@@ -937,8 +960,7 @@ const Poinfo = ({ updateFormData ,  paymentTermsFromSupplier }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Poinfo
-
+export default Poinfo;

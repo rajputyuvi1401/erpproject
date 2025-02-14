@@ -1,72 +1,92 @@
-"use client"
+import React, { useState, useEffect, useRef } from "react";
+import { fetchScheduleData , updateScheduleData  } from "../../../Service/PurchaseApi"; 
+import "./Schedule.css";
 
-import React, { useState, useEffect } from "react"
-import "./Schedule.css"
+const Schedule = ({ updateFormData, itemDetails = [] }) => {
+  const [scheduleLine, setScheduleLine] = useState([]);
+  const isInitialRender = useRef(true); // Prevents infinite loop on first render
 
-const Schedule = ({ updateFormData }) => {
-  const [autoCalculate, setAutoCalculate] = useState(false)
-  const [scheduleLine, setScheduleLine] = useState([])
-
+  // ✅ Fetch existing schedule data from API **only once**
   useEffect(() => {
-    const fetchScheduleLineData = async () => {
-      try {
-        const response = await fetch("http://13.201.136.34:8000/Purchase/get-item-details/")
-        const data = await response.json()
-        if (data && data.ItemDetails && Array.isArray(data.ItemDetails)) {
-          const formattedScheduleLine = data.ItemDetails.map((item) => ({
-            id: item.id,
-            itemCode: item.Item,
-            description: item.ItemDescription,
-            totalQty: item.Qty,
-            dates: Array(10).fill(""),
-            quantities: Array(10).fill(""),
-          }))
-          setScheduleLine(formattedScheduleLine)
-          updateFormData("Schedule_Line", formattedScheduleLine)
-        }
-      } catch (error) {
-        console.error("Error fetching Schedule Line data:", error)
+    const loadScheduleData = async () => {
+      const data = await fetchScheduleData();
+      if (data?.ItemDetails?.length) {
+        const formattedSchedule = data.ItemDetails.map((item, index) => ({
+          id: item.id || index + 1,
+          ItemCode: (item.Item || "").substring(0, 30).trim(),
+          Description: item.ItemDescription || "",
+          TotalQty: item.Qty || 0,
+          Dates: item.Schedule_Line?.map((s) => s.Date) || Array(10).fill(""),
+          Quantities: item.Schedule_Line?.map((s) => s.Qty) || Array(10).fill(""),
+        }));
+
+        setScheduleLine(formattedSchedule);
+        updateFormData("Schedule_Line", formattedSchedule);
       }
+    };
+
+    if (isInitialRender.current) {
+      isInitialRender.current = false;
+      loadScheduleData();
     }
+  }, [updateFormData]); // ✅ Empty dependency array prevents infinite loop
 
-    fetchScheduleLineData()
-  }, [updateFormData])
+  // ✅ Update when `itemDetails` changes
+  useEffect(() => {
+    if (itemDetails.length > 0) {
+      const formattedSchedule = itemDetails.map((item, index) => ({
+        id: index + 1,
+        ItemCode: (item.Item || "").substring(0, 30).trim(),
+        Description: item.ItemDescription || "",
+        TotalQty: item.Qty || 0,
+        Dates: Array(10).fill(""),
+        Quantities: Array(10).fill(""),
+      }));
 
-  const handleAutoCalculateChange = (e) => {
-    setAutoCalculate(e.target.checked)
-  }
+      setScheduleLine(formattedSchedule);
+      updateFormData("Schedule_Line", formattedSchedule);
+    }
+  }, [itemDetails, updateFormData]);
 
-  const handleInputChange = (index, field, value, dateIndex) => {
-    const updatedScheduleLine = [...scheduleLine]
-    if (field === "dates" || field === "quantities") {
-      updatedScheduleLine[index][field][dateIndex] = value
+  // ✅ Handle date and quantity changes
+  const handleInputChange = (rowIndex, field, value, dateIndex) => {
+    setScheduleLine((prevSchedule) => {
+      const updatedSchedule = prevSchedule.map((row, index) => {
+        if (index === rowIndex) {
+          const updatedRow = { ...row };
+
+          if (field === "Dates") {
+            updatedRow.Dates = [...row.Dates];
+            updatedRow.Dates[dateIndex] = value;
+          } else if (field === "Quantities") {
+            updatedRow.Quantities = [...row.Quantities];
+            updatedRow.Quantities[dateIndex] = value;
+          }
+
+          return updatedRow;
+        }
+        return row;
+      });
+
+      updateFormData("Schedule_Line", updatedSchedule);
+      return updatedSchedule;
+    });
+  };
+
+  // ✅ Update schedule to API
+  const saveSchedule = async () => {
+    const success = await updateScheduleData(scheduleLine);
+    if (success) {
+      alert("Schedule updated successfully");
     } else {
-      updatedScheduleLine[index][field] = value
+      alert("Failed to update schedule");
     }
-    setScheduleLine(updatedScheduleLine)
-    updateFormData("Schedule_Line", updatedScheduleLine)
-  }
+  };
 
   return (
     <div className="scheduleline">
       <div className="container-fluid">
-        <h3>Schedule Line</h3>
-        <div className="row mb-3">
-          <div className="col-md-12">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="autoCalculate"
-                checked={autoCalculate}
-                onChange={handleAutoCalculateChange}
-              />
-              <label className="form-check-label" htmlFor="autoCalculate">
-                Auto Calculate Schedule Line On Report
-              </label>
-            </div>
-          </div>
-        </div>
+        
 
         <div className="table-responsive">
           <table className="table table-bordered">
@@ -87,43 +107,57 @@ const Schedule = ({ updateFormData }) => {
               </tr>
             </thead>
             <tbody>
-              {scheduleLine.map((row, rowIndex) => (
-                <tr key={row.id}>
-                  <td>{rowIndex + 1}</td>
-                  <td>{row.itemCode}</td>
-                  <td>{row.description}</td>
-                  <td>{row.totalQty}</td>
-                  {Array(10)
-                    .fill()
-                    .map((_, index) => (
-                      <React.Fragment key={index}>
-                        <td>
-                          <input
-                            type="date"
-                            className="form-control"
-                            value={row.dates[index]}
-                            onChange={(e) => handleInputChange(rowIndex, "dates", e.target.value, index)}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            className="form-control"
-                            value={row.quantities[index]}
-                            onChange={(e) => handleInputChange(rowIndex, "quantities", e.target.value, index)}
-                          />
-                        </td>
-                      </React.Fragment>
-                    ))}
+              {scheduleLine.length > 0 ? (
+                scheduleLine.map((row, rowIndex) => (
+                  <tr key={row.id}>
+                    <td>{rowIndex + 1}</td>
+                    <td>{row.ItemCode}</td>
+                    <td>{row.Description}</td>
+                    <td>{row.TotalQty}</td>
+                    {Array(10)
+                      .fill()
+                      .map((_, index) => (
+                        <React.Fragment key={index}>
+                          <td>
+                            <input
+                              type="date"
+                              className="form-control"
+                              value={row.Dates[index]}
+                              onChange={(e) => handleInputChange(rowIndex, "Dates", e.target.value, index)}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="number"
+                              className="form-control"
+                              value={row.Quantities[index]}
+                              onChange={(e) => handleInputChange(rowIndex, "Quantities", e.target.value, index)}
+                            />
+                          </td>
+                        </React.Fragment>
+                      ))}
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="22">No schedule data available</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
+
+<div className="row text-end">
+  <div className="col-md">
+  <button className="btn mt-3" onClick={saveSchedule}>
+          Update Schedule
+        </button>
+  </div>
+</div>
+        
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Schedule
-
+export default Schedule;

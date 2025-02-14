@@ -116,7 +116,7 @@ const PurchaseOrderPDF = () => {
                         
               </div>
 
-                    <div className="col-md-4 sideroow">
+                            <div className="col-md-4 sideroow">
                               <div className="row mb-2">
                                 <div className="col-3">
                                     <label htmlFor="shift"><b>AO No :</b></label>
@@ -135,26 +135,28 @@ const PurchaseOrderPDF = () => {
                                 <div className="row mb-2">
                                 <div className="col-2">
                                     <label htmlFor="shift"><b>PONo:</b></label>
-                                    <span>{poData.PoNo}</span>
-                                </div>
-                                <div className="col-4">
-                                SBO-000091
+                                    
                                 </div>
                                 <div className="col-3">
-                                    <label htmlFor="shift"><b> PO Date : </b></label>
-                                    <span>{poData.PoDate}</span>
-                                </div>
-                                <div className="col-3">
-                                08/03/2020
-                                </div>
-                                </div>
-
-                                <div className="row mb-2 sideroww">
-                                <div className="col-3 ">
+                                <span>{poData.PoNo}</span>
+                               </div>
+                               <div className="col-3">
                                     <label htmlFor="shift"><b> PO Mode :</b></label>
                                 </div>
                                 <div className="col-3">
                                     Open
+                                </div>
+
+                               
+                                </div>
+
+                                <div className="row mb-2 sideroww">
+                                <div className="col-3">
+                                    <label htmlFor="shift"><b> PO Date : </b></label>
+                                    
+                                </div>
+                                <div className="col-4">
+                                <span>{poData.PoDate}</span>
                                 </div>
                                 </div>
 
@@ -275,6 +277,7 @@ const PurchaseOrderPDF = () => {
               <th>No</th>
               <th>Item</th>
               <th>Description</th>
+              <th>HSN</th>
               <th>Size</th>
               <th>Qty.</th>
               <th>Unit</th>
@@ -289,6 +292,7 @@ const PurchaseOrderPDF = () => {
                 <td>{index + 1}</td>
                 <td>{item.Item}</td>
                 <td>{item.ItemDescription}</td>
+                <td>{item.HSN}</td>
                 <td>{item.ItemSize}</td>
                 <td>{item.Qty}</td>
                 <td>{item.Unit}</td>
@@ -373,27 +377,29 @@ const PurchaseOrderPDF = () => {
                             <p>Technical Advisor</p>                   
                         </div>
              </div>
-
-        </div>
-        <div className="action-buttons d-flex">
+             <div className="action-buttons d-flex">
         
-        <button onClick={handlePrint} className="btn-primary">
+        <button onClick={handlePrint} className="btn btn-primary">
           Print
         </button>
-        <button onClick={handleDownload} className="btn-primary">
+        <button onClick={handleDownload} className="btn btn-primary">
           Download PDF
         </button>
       </div>
+
+        </div>
+       
     </div>
   )
 }
-// const styles = {
-//     cell: {
-//       border: "1px solid black",
-//       padding: "8px",
-//       textAlign: "center",
-//       whiteSpace: "nowrap",
-//     },
-//   };
+// eslint-disable-next-line no-unused-vars
+const styles = {
+    cell: {
+      border: "1px solid black",
+      padding: "8px",
+      textAlign: "center",
+      whiteSpace: "nowrap",
+    },
+  };
 
 export default PurchaseOrderPDF

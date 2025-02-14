@@ -47,16 +47,6 @@ export const updateItem = async (id, data) => {
     }
 };
 
-export const deleteItem = async (id) => {
-    try {
-        await fetch(`${BASE_URL}ItemDetail/${id}/`, {
-            method: 'DELETE',
-        });
-    } catch (error) {
-        console.error('Error deleting item:', error);
-        throw error;
-    }
-};
 
 // Po info
 export const getPOInfo = async () => {
@@ -402,3 +392,138 @@ export const fetchItemFields1 = async (itemCode) => {
     throw error
   }
 }
+
+// ✅ GET GST Details from API
+export const getGSTDetails = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/get-gst-details/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching GST details:", error);
+    throw error;
+  }
+};
+
+// ✅ POST (Update) GST Details to API
+export const updateGSTDetails = async (gstDetails) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/update-gst-details/`, gstDetails);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating GST details:", error);
+    throw error;
+  }
+};
+
+// ✅ GET Item Details (For GST Calculation)
+export const getItemDetails = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/get-item-details/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching item details:", error);
+    throw error;
+  }
+};
+
+// ✅ POST (Add) Item Details
+export const addItemDetails = async (itemData) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/add-item-detail/`, itemData);
+    return response.data;
+  } catch (error) {
+    console.error("Error adding item details:", error);
+    throw error;
+  }
+};
+
+// ✅ POST (Create Full Purchase Order)
+export const createPurchaseOrder = async (purchaseData) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/RegisterPO_All_Series/`, purchaseData);
+    return response.data;
+  } catch (error) {
+    console.error("Error creating purchase order:", error);
+    throw error;
+  }
+};
+
+export const fetchScheduleData = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}get-item-details/`);
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching schedule data:", error);
+    return null;
+  }
+};
+
+// ✅ Update schedule data to API
+export const updateScheduleData = async (scheduleLine) => {
+  try {
+    const response = await fetch(`${BASE_URL}update-schedule/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ Schedule_Line: scheduleLine }),
+    });
+
+    return response.ok;
+  } catch (error) {
+    console.error("Error updating schedule:", error);
+    return false;
+  }
+};
+
+// ✅ Fetch all item details
+export const fetchItemDetails = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}get-item-details/`);
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching item details:", error);
+    return null;
+  }
+};
+
+
+
+// ✅ Add a new item
+export const addItemToAPI = async (itemData) => {
+  try {
+    const response = await fetch(`${BASE_URL}add-item-detail/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(itemData),
+    });
+
+    return response.ok ? await response.json() : null;
+  } catch (error) {
+    console.error("Error adding item:", error);
+    return null;
+  }
+};
+
+// ✅ Delete an item
+export const deleteItem = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}delete-item/${id}/`, {
+      method: "DELETE",
+    });
+
+    return response.ok;
+  } catch (error) {
+    console.error("Error deleting item:", error);
+    return false;
+  }
+};
+
+// ✅ Fetch unit codes
+export const getUnitCode = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}get-unit-codes/`);
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching unit codes:", error);
+    return [];
+  }
+};
