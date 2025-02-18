@@ -1,11 +1,18 @@
-import { useState, useEffect } from "react"
-import { FaTrash } from "react-icons/fa"
-import { deleteItem, fetchItemFields,fetchItemDetails } from "../../../Service/PurchaseApi"
-import { toast, ToastContainer } from "react-toastify"
-import { getUnitCode } from "../../../Service/Api"
+import { useState, useEffect } from "react";
+import { FaTrash } from "react-icons/fa";
+import {
+  deleteItem,
+  fetchItemFields,
+  fetchItemDetails,
+} from "../../../Service/PurchaseApi";
+import { toast, ToastContainer } from "react-toastify";
+import { getUnitCode } from "../../../Service/Api";
+import "./ItemDetails.css";
 
-const ItemDetails = ({ updateFormData ,supplierCode}) => {
-  const [itemDetails, setItemDetails] = useState([])
+const ItemDetails = ({ updateFormData, supplierCode }) => {
+  const [itemDetails, setItemDetails] = useState([]);
+  const [searchResults, setSearchResults] = useState([]); // Store multiple results
+  const [showDropdown, setShowDropdown] = useState(false); // Control dropdown visibility
   const [currentItem, setCurrentItem] = useState({
     Item: "",
     ItemDescription: "",
@@ -19,11 +26,10 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
     Particular: "",
     Mill_Name: "",
     DeliveryDt: "",
-    
-  })
-  const [errors, setErrors] = useState({})
-  const [loading, setLoading] = useState(false)
-  const [unitCodes, setUnitCodes] = useState([])
+  });
+  const [errors, setErrors] = useState({});
+
+  const [unitCodes, setUnitCodes] = useState([]);
 
   // ✅ Fetch all item details
   useEffect(() => {
@@ -39,37 +45,39 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
     loadItems();
   }, []);
 
-
   // Fetch unit codes on mount
   useEffect(() => {
     const fetchUnitCodes = async () => {
       try {
-        const data = await getUnitCode()
-        console.log("Fetched Unit Codes:", data)
-        setUnitCodes(data)
+        const data = await getUnitCode();
+        console.log("Fetched Unit Codes:", data);
+        setUnitCodes(data);
       } catch (error) {
-        console.error("Error fetching unit codes:", error)
+        console.error("Error fetching unit codes:", error);
       }
-    }
-    fetchUnitCodes()
-  }, [])
+    };
+    fetchUnitCodes();
+  }, []);
 
   // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
+
     // Limit Item field to 30 characters
     if (name === "Item" && value.length > 30) {
       toast.error("Item cannot exceed 30 characters.");
       return;
     }
-  
+
     setCurrentItem((prev) => ({
       ...prev,
-      [name]: name === "Rate" || name === "Qty" || name === "Disc" ? Number(value) || 0 : value,
+      [name]:
+        name === "Rate" || name === "Qty" || name === "Disc"
+          ? Number(value) || 0
+          : value,
     }));
   };
-  
+
   useEffect(() => {
     setCurrentItem((prev) => ({
       ...prev,
@@ -78,42 +86,53 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
   }, [supplierCode]);
 
   // Search for item
-  const handleSearch = async () => {
-    if (!currentItem.Item.trim()) {
-      setErrors({ Item: "Please enter a part number or item description." })
-      return
+  const handleSearch = async (e) => {
+    const value = e.target.value;
+    setCurrentItem({ ...currentItem, Item: value });
+
+    if (!value.trim()) {
+      setSearchResults([]);
+      setShowDropdown(false);
+      setErrors({ Item: "Please enter a part number" }); // ✅ Set error when input is empty
+      return;
     }
 
-    setLoading(true)
     try {
-      const data = await fetchItemFields(currentItem.Item)
-      console.log("Search Results:", data)
+      const data = await fetchItemFields(value); // Fetch matching items
+      console.log("Search Results:", data);
 
-      if (data.length > 0) {
-        const item = data[0]
-        setCurrentItem((prevData) => ({
-          ...prevData,
-          Item: item.part_no || "",
-          ItemDescription: item.Name_Description || "",
-          ItemSize: item.Item_Size || "",
-          Rate: item.Rate || "",
-          HSN_SAC_Code: item.HSN_SAC_Code || "",
-        }))
-        setErrors({})
+      if (Array.isArray(data) && data.length > 0) {
+        setSearchResults(data);
+        setShowDropdown(true);
       } else {
-        setErrors({ Item: "No matching item found." })
+        setSearchResults([]);
+        setShowDropdown(false);
       }
     } catch (error) {
-      setErrors({ Item: "Error fetching item details." })
-    } finally {
-      setLoading(false)
+      console.error("Error fetching item details:", error);
+      setSearchResults([]);
+      setShowDropdown(false);
     }
-  }
+  };
+
+  // Handle selection from dropdown
+  const handleSelectItem = (item) => {
+    setCurrentItem({
+      ...currentItem,
+      Item: item.part_no || "",
+      PartCode: item.Part_Code || "",
+      ItemDescription: item.Name_Description || "",
+      ItemSize: item.Item_Size || "",
+      Rate: item.Rate || "",
+      HSN_SAC_Code: item.HSN_SAC_Code || "",
+    });
+    setShowDropdown(false); // Hide dropdown after selection
+  };
 
   // Handle select change
   const handleSelectChange = (e) => {
-    setCurrentItem({ ...currentItem, Unit: e.target.value })
-  }
+    setCurrentItem({ ...currentItem, Unit: e.target.value });
+  };
 
   // Add item to the list
   const addItem = () => {
@@ -134,10 +153,10 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
             Qty: currentItem.Qty,
           },
         ],
-      }
-      const updatedItems = [...itemDetails, newItem]
-      setItemDetails(updatedItems)
-      updateFormData("Item_Detail_Enter", updatedItems)
+      };
+      const updatedItems = [...itemDetails, newItem];
+      setItemDetails(updatedItems);
+      updateFormData("Item_Detail_Enter", updatedItems);
       setCurrentItem({
         Item: "",
         ItemDescription: "",
@@ -158,26 +177,49 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
             Qty: "",
           },
         ],
-      })
+      });
     } else {
-      toast.error("Item and Item Description are required.")
+      toast.error("Item and Item Description are required.");
     }
-  }
+  };
 
   // Delete item
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
-      setLoading(true)
       try {
-        await deleteItem(id)
-        setItemDetails((prevItems) => prevItems.filter((item) => item.id !== id))
+        await deleteItem(id);
+        setItemDetails((prevItems) =>
+          prevItems.filter((item) => item.id !== id)
+        );
       } catch (error) {
-        alert("Failed to delete item. Please try again.")
+        alert("Failed to delete item. Please try again.");
       } finally {
-        setLoading(false)
       }
     }
-  }
+  };
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; // Set number of items per page
+
+  // Calculate indexes for slicing
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = itemDetails.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Pagination handlers
+  const totalPages = Math.ceil(itemDetails.length / itemsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
+  };
+
+  const handlePageClick = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div className="container-fluid">
@@ -213,14 +255,38 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
                         className="form-control"
                         placeholder="Search"
                         value={currentItem.Item}
-                        onChange={handleChange}
+                        onChange={handleSearch}
                       />
-                      <span>
-                        <button className="btn" onClick={handleSearch} disabled={loading}>
-                          {loading ? "Searching..." : "Search"}
-                        </button>
-                      </span>
-                      {errors.Item && <p className="error-text">{errors.Item}</p>}
+                      {/* Dropdown for search results */}
+                      {showDropdown && searchResults.length > 0 && (
+                        <ul
+                          className="dropdown-menu show"
+                          style={{
+                            width: "30%",
+                            maxHeight: "200px", // Set max height for scroll
+                            overflowY: "auto", // Enable scrolling
+
+                            border: "1px solid #ccc",
+                            zIndex: 1000, // Keep dropdown above other elements
+                          }}
+                        >
+                          {searchResults.map((item) => (
+                            <li
+                              key={item.part_no}
+                              className="dropdown-item"
+                              onClick={() => handleSelectItem(item)}
+                              style={{ padding: "5px", cursor: "pointer" }}
+                            >
+                              {item.part_no}- {item.Part_Code} -{" "}
+                              {item.Name_Description}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+
+                      {errors.Item && (
+                        <p className="error-text">{errors.Item}</p>
+                      )}
                     </td>
                     <td>
                       <textarea
@@ -264,7 +330,12 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
                         name="Number"
                         className="form-control"
                         value={currentItem.Number}
-                        onChange={(e) => setCurrentItem({ ...currentItem, Number: e.target.value })}
+                        onChange={(e) =>
+                          setCurrentItem({
+                            ...currentItem,
+                            Number: e.target.value,
+                          })
+                        }
                       />
                     </td>
                     <td>
@@ -346,6 +417,7 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
                     <th>Sr</th>
                     <th>Item Code</th>
                     <th>Item Description</th>
+                    <th>Item Size</th>
                     <th>Rate</th>
                     <th>Disc %</th>
                     <th>QTY</th>
@@ -353,13 +425,13 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
                     <th>Particular</th>
                     <th>Make / Mill Name</th>
                     <th>Delivery Date</th>
-                    <th>GST Details</th>
+                   
                     <th>Schedule Line</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {itemDetails.map((item, index) => (
+                  {currentItems.map((item, index) => (
                     <tr key={item.id || index}>
                       <td>{index + 1}</td>
                       <td>
@@ -368,6 +440,7 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
                         {item.GST_Details?.HSN}
                       </td>
                       <td>{item.ItemDescription}</td>
+                      <td>{item.ItemSize}</td>
                       <td>{item.Rate}</td>
                       <td>{item.Disc}</td>
                       <td>{item.Qty}</td>
@@ -376,27 +449,14 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
                       <td>{item.Mill_Name}</td>
                       <td>{item.DeliveryDt}</td>
                       <td>
-                        CGST: {item.GST_Details?.CGST?.Rate || 0}%
-                        <br />
-                        SGST: {item.GST_Details?.SGST?.Rate || 0}%
-                        <br />
-                        IGST: {item.GST_Details?.IGST?.Rate || 0}%
+                       
                       </td>
+                     
                       <td>
-                        {item.Schedule_Line && item.Schedule_Line[0] ? (
-                          <>
-                            Item: {item.Schedule_Line[0].Item}
-                            <br />
-                            Desc: {item.Schedule_Line[0].ItemDescription}
-                            <br />
-                            Qty: {item.Schedule_Line[0].Qty}
-                          </>
-                        ) : (
-                          "No schedule data"
-                        )}
-                      </td>
-                      <td>
-                        <button className="btn" onClick={() => handleDelete(item.id)}>
+                        <button
+                          className="btn"
+                          onClick={() => handleDelete(item.id)}
+                        >
                           <FaTrash />
                         </button>
                       </td>
@@ -404,13 +464,42 @@ const ItemDetails = ({ updateFormData ,supplierCode}) => {
                   ))}
                 </tbody>
               </table>
+              {/* Pagination Controls */}
+              <div className="row text-end">
+                <div className="col-md">
+                  <div className="pagination">
+                    <button
+                      onClick={handlePrevPage}
+                      disabled={currentPage === 1}
+                    >
+                      Previous
+                    </button>
+
+                    {[...Array(totalPages).keys()].map((num) => (
+                      <button
+                        key={num + 1}
+                        onClick={() => handlePageClick(num + 1)}
+                        className={currentPage === num + 1 ? "active" : ""}
+                      >
+                        {num + 1}
+                      </button>
+                    ))}
+
+                    <button
+                      onClick={handleNextPage}
+                      disabled={currentPage === totalPages}
+                    >
+                      Next
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ItemDetails
-
+export default ItemDetails;

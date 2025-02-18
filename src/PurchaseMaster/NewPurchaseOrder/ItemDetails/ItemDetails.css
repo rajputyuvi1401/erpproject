@@ -24,17 +24,7 @@
   border: 1px solid #bbbfc37b;
 }
 
-.item-details .table th {
-  background-color: #d8dbde;
-}
-.item-table .table th {
-  background-color: rgba(
-    137,
-    43,
-    226,
-    0.573
-  ); /* Light background for headers */
-}
+
 
 .item-details .table td input,
 .item-details .table td select,
@@ -97,4 +87,27 @@
     font-size: 10px; /* Further adjust font size for very small screens */
     padding: 3px; /* Further reduce padding for very small screens */
   }
+}
+.itemdetailsMain .pagination {
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+}
+
+.itemdetailsMain .pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.itemdetailsMain .pagination button.active {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.itemdetailsMain .pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

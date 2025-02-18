@@ -58,6 +58,30 @@ const PoList = () => {
     navigate(`/EditPo/${order.id}`)
   }
 
+  
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; // Set number of items per page
+
+  // Calculate indexes for slicing
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = purchaseOrders.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Pagination handlers
+  const totalPages = Math.ceil(purchaseOrders.length / itemsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
+  };
+
+  const handlePageClick = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div className="POListMaster">
@@ -193,7 +217,7 @@ const PoList = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {purchaseOrders.map((order, index) => (
+                        {currentItems.map((order, index) => (
                           <tr key={order.id}>
                             <td>{index + 1}</td>
                             <td>{order.PoDate ? new Date(order.PoDate).getFullYear() : "N/A"}</td>
@@ -228,6 +252,36 @@ const PoList = () => {
                         ))}
                       </tbody>
                     </table>
+                     {/* Pagination Controls */}
+              <div className="row text-end">
+                <div className="col-md">
+                  <div className="pagination">
+                    <button
+                      onClick={handlePrevPage}
+                      disabled={currentPage === 1}
+                    >
+                      Previous
+                    </button>
+
+                    {[...Array(totalPages).keys()].map((num) => (
+                      <button
+                        key={num + 1}
+                        onClick={() => handlePageClick(num + 1)}
+                        className={currentPage === num + 1 ? "active" : ""}
+                      >
+                        {num + 1}
+                      </button>
+                    ))}
+
+                    <button
+                      onClick={handleNextPage}
+                      disabled={currentPage === totalPages}
+                    >
+                      Next
+                    </button>
+                  </div>
+                </div>
+              </div>
                   </div>
                 </div>
               </main>

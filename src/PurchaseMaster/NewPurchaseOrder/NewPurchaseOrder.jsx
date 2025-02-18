@@ -78,35 +78,36 @@ const NewPurchaseOrder = () => {
     }
   }
 
-  const handleSelectSupplier = async () => {
-    if (!supplierName) {
-      alert("Please enter a supplier name.")
-      return
-    }
+ // Fetch supplier list based on input
+ const handleSearchSupplier = async (e) => {
+  const value = e.target.value;
+  setSupplierName(value);
 
-    setLoading(true)
-    try {
-      const data = await fetchSupplierData(supplierName)
-      if (data && data.length > 0) {
-        const supplier = data[0]
-        setSupplierCode(supplier.number)
-        setSupplierData(supplier)
-        setFormData((prevData) => ({
-          ...prevData,
-          PaymentTerms: supplier.Payment_Term,
-        }))
-      } else {
-        alert("Supplier not found.")
-        setSupplierCode("")
-        setSupplierData(null)
-      }
-    } catch (error) {
-      console.error("Error fetching supplier data:", error)
-      alert("Error fetching supplier data.")
-    } finally {
-      setLoading(false)
-    }
+  if (!value.trim()) {
+    setSearchResults([]);
+    setShowDropdown(false);
+    return;
   }
+
+  setLoading(true);
+  try {
+    const data = await fetchSupplierData(value); // Fetch matching suppliers
+    if (Array.isArray(data) && data.length > 0) {
+      setSearchResults(data);
+      setShowDropdown(true);
+    } else {
+      setSearchResults([]);
+      setShowDropdown(false);
+    }
+  } catch (error) {
+    console.error("Error fetching supplier data:", error);
+    setSearchResults([]);
+    setShowDropdown(false);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const [activeTab, setActiveTab] = useState(0)
   const [formData, setFormData] = useState({
@@ -219,6 +220,24 @@ const NewPurchaseOrder = () => {
     }
   }
 
+
+  const [searchResults, setSearchResults] = useState([]);
+
+  const [showDropdown, setShowDropdown] = useState(false);
+
+ 
+
+  // Handle supplier selection
+  const handleSelectSupplier = (supplier) => {
+    setSupplierName(supplier.Name);
+    setSupplierCode(supplier.number);
+    setFormData((prevData) => ({
+      ...prevData,
+      PaymentTerms: supplier.Payment_Term,
+    }));
+    setShowDropdown(false); // Hide dropdown after selection
+  };
+
   return (
     <div className="NewPurchaseMaster">
       <ToastContainer className="newpurchase" />
@@ -266,9 +285,33 @@ const NewPurchaseOrder = () => {
                             type="text"
                             className="form-control"
                             value={supplierName}
-                            onChange={(e) => setSupplierName(e.target.value)}
+                            onChange={handleSearchSupplier}
                             disabled={loading}
                           />
+                            {showDropdown && searchResults.length > 0 && (
+                        <ul
+                          className="dropdown-menu show"
+                          style={{
+                            width: "30%",
+                            maxHeight: "200px", // Set max height for scroll
+                            overflowY: "auto", // Enable scrolling
+
+                            border: "1px solid #ccc",
+                            zIndex: 1000, // Keep dropdown above other elements
+                          }}
+                        >
+                             {searchResults.map((supplier) => (
+              <li
+                key={supplier.number}
+                className="dropdown-item"
+                onClick={() => handleSelectSupplier(supplier)}
+                style={{ padding: "5px", cursor: "pointer" }}
+              >
+                {supplier.Name} ({supplier.number})
+              </li>
+                          ))}
+                        </ul>
+                      )}
                         </div>
                         <div className="col-md-1">
                           <button className="btn btn-primary mt-4" onClick={handleSelectSupplier} disabled={loading}>
@@ -296,7 +339,7 @@ const NewPurchaseOrder = () => {
                         </div>
                       </div>
                     </div>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} autocomplete="off">
                       <div className="new-purchase-main">
                         <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
                           {[

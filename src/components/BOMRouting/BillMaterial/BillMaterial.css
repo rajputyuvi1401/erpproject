@@ -59,7 +59,7 @@
   }
 }
 .ProductionDeptCard,
-.Operation,
+
 .Standard,
 .Bomitem {
   position: fixed;
@@ -75,7 +75,7 @@
 }
 
 .ProductionDeptCard .card,
-.Operation .card,
+
 .Standard .card,
 .Bomitem .card {
   margin-top: 20px;

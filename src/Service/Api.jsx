@@ -11,8 +11,8 @@ const CUT_WISE_URL = `${BASE_URL}Cut_Wise/`;
 const UPLOAD_URL = `${BASE_URL}upload/`;
 
 // Home
-// const BASE_URL1 = "http://13.201.136.34:8000";
-const BASE_URL1 = "api";
+const BASE_URL1 = "http://13.201.136.34:8000";
+// const BASE_URL1 = "api";
 export async function postRequest(endpoint, data) {
   try {
     const response = await fetch(`${BASE_URL1}${endpoint}`, {
@@ -800,6 +800,18 @@ export const saveWorkCenterTypeGroupData = async (data) => {
       console.log("An unexpected error occurred");
     }
     throw error;
+  }
+};
+
+export const getMachineTypes = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}Machine_Group_Work_Center/`);
+    if (!response.ok) throw new Error("Failed to fetch machine types");
+    const data = await response.json();
+    return data.filter((item) => item.EnterType !== null); // Filter out null values
+  } catch (error) {
+    console.error("Error fetching machine types:", error);
+    return [];
   }
 };
 
