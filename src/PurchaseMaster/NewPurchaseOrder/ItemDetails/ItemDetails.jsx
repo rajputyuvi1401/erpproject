@@ -1,25 +1,21 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
-import {
-  deleteItem,
-  fetchItemFields,
-  fetchItemDetails,
-} from "../../../Service/PurchaseApi";
+import { deleteItem, fetchItemFields, fetchItemDetails } from "../../../Service/PurchaseApi";
 import { toast, ToastContainer } from "react-toastify";
 import { getUnitCode } from "../../../Service/Api";
 import "./ItemDetails.css";
 
 const ItemDetails = ({ updateFormData, supplierCode }) => {
-  const [itemDetails, setItemDetails] = useState([]);
-  const [searchResults, setSearchResults] = useState([]); // Store multiple results
-  const [showDropdown, setShowDropdown] = useState(false); // Control dropdown visibility
+  const [itemDetails, setItemDetails] = useState([]); // Store item details
+  const [searchResults, setSearchResults] = useState([]); 
+  const [showDropdown, setShowDropdown] = useState(false); 
   const [currentItem, setCurrentItem] = useState({
     Item: "",
     ItemDescription: "",
     ItemSize: "",
     Rate: "",
     HSN_SAC_Code: "",
-    Number: supplierCode || "", // Set the supplier code here
+    Number: supplierCode || "",
     Disc: "",
     Qty: "",
     Unit: "",
@@ -27,30 +23,40 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
     Mill_Name: "",
     DeliveryDt: "",
   });
-  const [errors, setErrors] = useState({});
-
+  
   const [unitCodes, setUnitCodes] = useState([]);
+  const [currentItemId, setCurrentItemId] = useState(null); // Store current item ID dynamically
 
-  // ✅ Fetch all item details
   useEffect(() => {
+    console.log("Current Item ID:", currentItemId);
     const loadItems = async () => {
-      const data = await fetchItemDetails();
-      if (data && data.ItemDetails) {
-        setItemDetails(data.ItemDetails);
-      } else {
-        toast.error("Failed to fetch items.");
+      if (currentItemId) {
+        try {
+          const data = await fetchItemDetails(currentItemId);
+          console.log("Fetched Data:", data);
+          if (data && data.ItemDetails) {
+            setItemDetails(data.ItemDetails);
+          } else {
+            toast.error("No item details found.");
+          }
+        } catch (error) {
+          if (error.response && error.response.status === 404) {
+            toast.error("Item not found. Please check the ID.");
+          } else {
+            toast.error("Error fetching item details.");
+          }
+          console.error("Error fetching item details:", error);
+        }
       }
     };
-
     loadItems();
-  }, []);
-
+  }, [currentItemId]);
+  
   // Fetch unit codes on mount
   useEffect(() => {
     const fetchUnitCodes = async () => {
       try {
         const data = await getUnitCode();
-        console.log("Fetched Unit Codes:", data);
         setUnitCodes(data);
       } catch (error) {
         console.error("Error fetching unit codes:", error);
@@ -59,16 +65,8 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
     fetchUnitCodes();
   }, []);
 
-  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    // Limit Item field to 30 characters
-    if (name === "Item" && value.length > 30) {
-      toast.error("Item cannot exceed 30 characters.");
-      return;
-    }
-
     setCurrentItem((prev) => ({
       ...prev,
       [name]:
@@ -81,11 +79,10 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
   useEffect(() => {
     setCurrentItem((prev) => ({
       ...prev,
-      Number: supplierCode || "", // Update supplier code when it changes
+      Number: supplierCode || "",
     }));
   }, [supplierCode]);
 
-  // Search for item
   const handleSearch = async (e) => {
     const value = e.target.value;
     setCurrentItem({ ...currentItem, Item: value });
@@ -93,14 +90,12 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
     if (!value.trim()) {
       setSearchResults([]);
       setShowDropdown(false);
-      setErrors({ Item: "Please enter a part number" }); // ✅ Set error when input is empty
+    
       return;
     }
 
     try {
-      const data = await fetchItemFields(value); // Fetch matching items
-      console.log("Search Results:", data);
-
+      const data = await fetchItemFields(value);
       if (Array.isArray(data) && data.length > 0) {
         setSearchResults(data);
         setShowDropdown(true);
@@ -115,7 +110,6 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
     }
   };
 
-  // Handle selection from dropdown
   const handleSelectItem = (item) => {
     setCurrentItem({
       ...currentItem,
@@ -126,15 +120,25 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
       Rate: item.Rate || "",
       HSN_SAC_Code: item.HSN_SAC_Code || "",
     });
-    setShowDropdown(false); // Hide dropdown after selection
+    setShowDropdown(false);
   };
 
-  // Handle select change
   const handleSelectChange = (e) => {
     setCurrentItem({ ...currentItem, Unit: e.target.value });
   };
 
-  // Add item to the list
+
+  useEffect(() => {
+    if (currentItemId) {
+      const item = itemDetails.find(item => item.id === currentItemId);
+      if (item) {
+        setCurrentItem(item);
+      }
+    }
+  }, [currentItemId, itemDetails]);
+
+  
+  // Add item and update item details dynamically
   const addItem = () => {
     if (currentItem.Item && currentItem.ItemDescription) {
       const newItem = {
@@ -157,6 +161,10 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
       const updatedItems = [...itemDetails, newItem];
       setItemDetails(updatedItems);
       updateFormData("Item_Detail_Enter", updatedItems);
+
+      // Dynamically update the current item ID after adding an item
+      setCurrentItemId(newItem.id);
+
       setCurrentItem({
         Item: "",
         ItemDescription: "",
@@ -183,7 +191,6 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
     }
   };
 
-  // Delete item
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
       try {
@@ -193,32 +200,8 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
         );
       } catch (error) {
         alert("Failed to delete item. Please try again.");
-      } finally {
       }
     }
-  };
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10; // Set number of items per page
-
-  // Calculate indexes for slicing
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = itemDetails.slice(indexOfFirstItem, indexOfLastItem);
-
-  // Pagination handlers
-  const totalPages = Math.ceil(itemDetails.length / itemsPerPage);
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
-  };
-
-  const handlePageClick = (page) => {
-    setCurrentPage(page);
   };
 
   return (
@@ -257,17 +240,15 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
                         value={currentItem.Item}
                         onChange={handleSearch}
                       />
-                      {/* Dropdown for search results */}
                       {showDropdown && searchResults.length > 0 && (
                         <ul
                           className="dropdown-menu show"
                           style={{
                             width: "30%",
-                            maxHeight: "200px", // Set max height for scroll
-                            overflowY: "auto", // Enable scrolling
-
+                            maxHeight: "200px",
+                            overflowY: "auto",
                             border: "1px solid #ccc",
-                            zIndex: 1000, // Keep dropdown above other elements
+                            zIndex: 1000,
                           }}
                         >
                           {searchResults.map((item) => (
@@ -277,15 +258,10 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
                               onClick={() => handleSelectItem(item)}
                               style={{ padding: "5px", cursor: "pointer" }}
                             >
-                              {item.part_no}- {item.Part_Code} -{" "}
-                              {item.Name_Description}
+                              {item.part_no}- {item.Part_Code} - {item.Name_Description}
                             </li>
                           ))}
                         </ul>
-                      )}
-
-                      {errors.Item && (
-                        <p className="error-text">{errors.Item}</p>
                       )}
                     </td>
                     <td>
@@ -425,20 +401,15 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
                     <th>Particular</th>
                     <th>Make / Mill Name</th>
                     <th>Delivery Date</th>
-                   
                     <th>Schedule Line</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {currentItems.map((item, index) => (
+                  {itemDetails.map((item, index) => (
                     <tr key={item.id || index}>
                       <td>{index + 1}</td>
-                      <td>
-                        {item.Item}
-                        <br />
-                        {item.GST_Details?.HSN}
-                      </td>
+                      <td>{item.Item}</td>
                       <td>{item.ItemDescription}</td>
                       <td>{item.ItemSize}</td>
                       <td>{item.Rate}</td>
@@ -448,10 +419,7 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
                       <td>{item.Particular}</td>
                       <td>{item.Mill_Name}</td>
                       <td>{item.DeliveryDt}</td>
-                      <td>
-                       
-                      </td>
-                     
+                      <td>{/* Schedule Line */}</td>
                       <td>
                         <button
                           className="btn"
@@ -464,36 +432,6 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
                   ))}
                 </tbody>
               </table>
-              {/* Pagination Controls */}
-              <div className="row text-end">
-                <div className="col-md">
-                  <div className="pagination">
-                    <button
-                      onClick={handlePrevPage}
-                      disabled={currentPage === 1}
-                    >
-                      Previous
-                    </button>
-
-                    {[...Array(totalPages).keys()].map((num) => (
-                      <button
-                        key={num + 1}
-                        onClick={() => handlePageClick(num + 1)}
-                        className={currentPage === num + 1 ? "active" : ""}
-                      >
-                        {num + 1}
-                      </button>
-                    ))}
-
-                    <button
-                      onClick={handleNextPage}
-                      disabled={currentPage === totalPages}
-                    >
-                      Next
-                    </button>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

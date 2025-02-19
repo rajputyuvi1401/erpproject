@@ -426,16 +426,7 @@ export const getItemDetails = async () => {
   }
 };
 
-// ✅ POST (Add) Item Details
-export const addItemDetails = async (itemData) => {
-  try {
-    const response = await axios.post(`${BASE_URL}/add-item-detail/`, itemData);
-    return response.data;
-  } catch (error) {
-    console.error("Error adding item details:", error);
-    throw error;
-  }
-};
+
 
 // ✅ POST (Create Full Purchase Order)
 export const createPurchaseOrder = async (purchaseData) => {
@@ -474,16 +465,7 @@ export const updateScheduleData = async (scheduleLine) => {
   }
 };
 
-// ✅ Fetch all item details
-export const fetchItemDetails = async () => {
-  try {
-    const response = await fetch(`${BASE_URL}get-item-details/`);
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching item details:", error);
-    return null;
-  }
-};
+
 
 
 
@@ -503,19 +485,7 @@ export const addItemToAPI = async (itemData) => {
   }
 };
 
-// ✅ Delete an item
-export const deleteItem = async (id) => {
-  try {
-    const response = await fetch(`${BASE_URL}delete-item/${id}/`, {
-      method: "DELETE",
-    });
 
-    return response.ok;
-  } catch (error) {
-    console.error("Error deleting item:", error);
-    return false;
-  }
-};
 
 // ✅ Fetch unit codes
 export const getUnitCode = async () => {
@@ -527,3 +497,43 @@ export const getUnitCode = async () => {
     return [];
   }
 };
+
+
+
+// Function to fetch item details by ID
+export const fetchItemDetails = async (id) => {
+  try {
+    console.log(`Fetching details for ID: ${id}`);
+    const response = await axios.get(`${BASE_URL}get-item-details/${id}/`);
+    console.log("API Response:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching item details:", error);
+    throw error;
+  }
+};
+
+
+// Function to add a new item (if needed for your use case)
+export const addItemDetails = async (itemData) => {
+  try {
+    const response = await axios.post(`${BASE_URL}add-item/`, itemData);
+    return response.data;
+  } catch (error) {
+    console.error("Error adding item:", error);
+    throw error;
+  }
+};
+
+// Function to delete an item by ID
+export const deleteItem = async (id) => {
+  try {
+    const response = await axios.delete(`${BASE_URL}delete-item/${id}/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting item:", error);
+    throw error;
+  }
+};
+
+

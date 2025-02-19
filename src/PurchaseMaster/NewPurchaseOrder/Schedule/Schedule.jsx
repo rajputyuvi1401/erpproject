@@ -1,50 +1,32 @@
-import React, { useState, useEffect, useRef } from "react";
-import { fetchScheduleData , updateScheduleData  } from "../../../Service/PurchaseApi"; 
+import React, { useState, useEffect } from "react";
+
 import "./Schedule.css";
 
 const Schedule = ({ updateFormData, itemDetails = [] }) => {
   const [scheduleLine, setScheduleLine] = useState([]);
-  const isInitialRender = useRef(true); // Prevents infinite loop on first render
 
-  // ✅ Fetch existing schedule data from API **only once**
-  useEffect(() => {
-    const loadScheduleData = async () => {
-      const data = await fetchScheduleData();
-      if (data?.ItemDetails?.length) {
-        const formattedSchedule = data.ItemDetails.map((item, index) => ({
-          id: item.id || index + 1,
-          ItemCode: (item.Item || "").substring(0, 30).trim(),
-          Description: item.ItemDescription || "",
-          TotalQty: item.Qty || 0,
-          Dates: item.Schedule_Line?.map((s) => s.Date) || Array(10).fill(""),
-          Quantities: item.Schedule_Line?.map((s) => s.Qty) || Array(10).fill(""),
-        }));
 
-        setScheduleLine(formattedSchedule);
-        updateFormData("Schedule_Line", formattedSchedule);
-      }
-    };
 
-    if (isInitialRender.current) {
-      isInitialRender.current = false;
-      loadScheduleData();
-    }
-  }, [updateFormData]); // ✅ Empty dependency array prevents infinite loop
-
-  // ✅ Update when `itemDetails` changes
+  // ✅ Update schedule when `itemDetails` changes
   useEffect(() => {
     if (itemDetails.length > 0) {
-      const formattedSchedule = itemDetails.map((item, index) => ({
-        id: index + 1,
-        ItemCode: (item.Item || "").substring(0, 30).trim(),
-        Description: item.ItemDescription || "",
-        TotalQty: item.Qty || 0,
-        Dates: Array(10).fill(""),
-        Quantities: Array(10).fill(""),
-      }));
+      setScheduleLine((prevSchedule) => {
+        const updatedSchedule = itemDetails.map((item, index) => {
+          const existingItem = prevSchedule.find((prev) => prev.ItemCode === item.Item);
 
-      setScheduleLine(formattedSchedule);
-      updateFormData("Schedule_Line", formattedSchedule);
+          return {
+            id: index + 1,
+            ItemCode: (item.Item || "").substring(0, 30).trim(),
+            Description: item.ItemDescription || "",
+            TotalQty: item.Qty || 0,
+            Dates: existingItem ? existingItem.Dates : Array(10).fill(""),
+            Quantities: existingItem ? existingItem.Quantities : Array(10).fill(""),
+          };
+        });
+
+        updateFormData("Schedule_Line", updatedSchedule);
+        return updatedSchedule;
+      });
     }
   }, [itemDetails, updateFormData]);
 
@@ -53,17 +35,10 @@ const Schedule = ({ updateFormData, itemDetails = [] }) => {
     setScheduleLine((prevSchedule) => {
       const updatedSchedule = prevSchedule.map((row, index) => {
         if (index === rowIndex) {
-          const updatedRow = { ...row };
-
-          if (field === "Dates") {
-            updatedRow.Dates = [...row.Dates];
-            updatedRow.Dates[dateIndex] = value;
-          } else if (field === "Quantities") {
-            updatedRow.Quantities = [...row.Quantities];
-            updatedRow.Quantities[dateIndex] = value;
-          }
-
-          return updatedRow;
+          return {
+            ...row,
+            [field]: row[field].map((val, i) => (i === dateIndex ? value : val)),
+          };
         }
         return row;
       });
@@ -73,21 +48,11 @@ const Schedule = ({ updateFormData, itemDetails = [] }) => {
     });
   };
 
-  // ✅ Update schedule to API
-  const saveSchedule = async () => {
-    const success = await updateScheduleData(scheduleLine);
-    if (success) {
-      alert("Schedule updated successfully");
-    } else {
-      alert("Failed to update schedule");
-    }
-  };
+
 
   return (
     <div className="scheduleline">
       <div className="container-fluid">
-        
-
         <div className="table-responsive">
           <table className="table table-bordered">
             <thead>
@@ -123,7 +88,9 @@ const Schedule = ({ updateFormData, itemDetails = [] }) => {
                               type="date"
                               className="form-control"
                               value={row.Dates[index]}
-                              onChange={(e) => handleInputChange(rowIndex, "Dates", e.target.value, index)}
+                              onChange={(e) =>
+                                handleInputChange(rowIndex, "Dates", e.target.value, index)
+                              }
                             />
                           </td>
                           <td>
@@ -131,7 +98,9 @@ const Schedule = ({ updateFormData, itemDetails = [] }) => {
                               type="number"
                               className="form-control"
                               value={row.Quantities[index]}
-                              onChange={(e) => handleInputChange(rowIndex, "Quantities", e.target.value, index)}
+                              onChange={(e) =>
+                                handleInputChange(rowIndex, "Quantities", e.target.value, index)
+                              }
                             />
                           </td>
                         </React.Fragment>
@@ -147,13 +116,6 @@ const Schedule = ({ updateFormData, itemDetails = [] }) => {
           </table>
         </div>
 
-<div className="row text-end">
-  <div className="col-md">
-  <button className="btn mt-3" onClick={saveSchedule}>
-          Update Schedule
-        </button>
-  </div>
-</div>
         
       </div>
     </div>

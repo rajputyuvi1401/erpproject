@@ -9,7 +9,7 @@ import VisibleStandard from "./VisibleStandard.jsx";
 // Purchase Card
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 import {
   saveDepartment,
   getDepartments,
@@ -17,14 +17,13 @@ import {
   deleteDepartmentCard,
 } from "../../../Service/Api.jsx";
 
-
-
 import VisibleBomitem from "./VisibleBomitem.jsx";
 import { Link } from "react-router-dom";
 import BOMoperation from "../BOMoperation/BOMoperation.jsx";
 
 const BillMaterial = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
+  const [activeTab,setActiveTab] = useState("BOM");
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
@@ -159,8 +158,6 @@ const BillMaterial = () => {
     setIsEditing(true);
     setEditId(item.id);
   };
-
-
 
   return (
     <div className="BillMaterial">
@@ -346,10 +343,7 @@ const BillMaterial = () => {
                       </div>
                     </div>
                   )}
-                  {cardVisibleOperation && (
-                    <BOMoperation/>
-                   
-                  )}
+                  {cardVisibleOperation && <BOMoperation />}
                   {cardVisibleStandard && (
                     <div className="Standard">
                       <div className="card">
@@ -422,8 +416,228 @@ const BillMaterial = () => {
                       </div>
                       <div className="row mt-3">
                         <div className="col text-start">
-                          <button className="BOMBOttombtn">BOM</button>
-                          <button className="BOMBOttombtn">BOM History</button>
+                          <div className="tabs">
+                            <ul className="nav nav-tabs">
+                              <li className="nav-item">
+                                <button
+                                  className={`nav-link ${
+                                    activeTab === "BOM" ? "active" : ""
+                                  }`}
+                                  onClick={() => setActiveTab("BOM")}
+                                >
+                                  BOM
+                                </button>
+                              </li>
+                              <li className="nav-item">
+                                <button
+                                  className={`nav-link ${
+                                    activeTab === "BOM History" ? "active" : ""
+                                  }`}
+                                  onClick={() => setActiveTab("BOM History")}
+                                >
+                                  BOM History
+                                </button>
+                              </li>
+                            </ul>
+                            <div
+                              className="tab-content"
+                              style={{ border: "none" }}
+                            >
+                              {activeTab === "BOM" && (
+                                <div className="tab-pane fade show active">
+                                  <div className="row">
+                                  <div className="col-md-1">
+                  <input type="checkbox" id="manualCheckbox" />
+                  <label htmlFor="manualCheckbox" className="ms-2">Manual</label>
+                </div>
+                <div className="col-md-4">
+                  <input type="checkbox" id="routingCheckbox" />
+                  <label htmlFor="routingCheckbox" className="ms-2">Standard Routing</label>
+                </div>
+                                  </div>
+                                  <div className="row mb-3 text-start mt-4">
+                                    <div className="col-md-1">
+                                      <label>Op No:</label>
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
+                                    </div>
+                                    <div className="col-md-2">
+                                      <label>Part Code:</label>
+                                      <div className="row align-items-center">
+                    <div className="col">
+                      <input type="text" className="form-control" />
+                    </div>
+                    <div className="col-auto">
+                      <button className="btn">
+                        <FaPlus />
+                      </button>
+                    </div>
+                    </div>
+                                     
+                                    </div>
+                                    <div className="col-md-2">
+                                      <label>BOM Part Type:</label>
+<div className="row mt-2">
+                                      <div className="col-md-2 d-flex">
+                  <input type="checkbox" id="RMCheckbox" />
+                  <label htmlFor="RMCheckbox" className="ms-2">RM</label>
+                </div>
+                <div className="col-md-2 d-flex ms-4">
+                  <input type="checkbox" id="COMCheckbox" />
+                  <label htmlFor="COMCheckbox" className="ms-2">COM</label>
+                </div>
+                <div className="col-md-2 d-flex ms-4">
+                  <input type="checkbox" id="BOMCheckbox" />
+                  <label htmlFor="BOMCheckbox" className="ms-2">BOM</label>
+                </div>
+                </div>
+                                      
+                                    </div>
+                                    <div className="col-md-1">
+                                      <label>Bom Part Code:</label>
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
+                                    </div>
+                                    <div className="col-md-1">
+                                      <label>Qty : Kg</label>
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
+                                    </div>
+                                    <div className="col-md-1">
+                                      <label>Scrap Code</label>
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
+                                    </div>
+                                    <div className="col-md-1">
+                                      <label>Scrap Qty</label>
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
+                                    </div>
+                                    <div className="col-md-1">
+                                      <label>QC</label>
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                      />
+                                    </div>
+                                    <div className="col-md-1">
+                                    <label>Ass Prod</label>
+                  <select className="form-control">
+                    <option value="">Select</option>
+                    <option value="NO">NO</option>
+                    <option value="Yes">Yes</option>
+                  </select>
+                                    </div>
+                                    <div className="col-md-1 d-flex align-items-end mb-1">
+                                      <button className="btn  me-2">
+                                        Save
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="table-responsive">
+                                    <table className="table table-bordered mt-3">
+                                      <thead>
+                                        <tr>
+                                          <th>OP No</th>
+                                          <th>Part Code</th>
+                                          <th>Part Type</th>
+                                          <th>BOM Part Code</th>
+                                          <th>Qty</th>
+                                          <th>Bom Part Desc</th>
+                                          <th>Scrap Item</th>
+                                          <th>Scrap Qty</th>
+                                          <th>Op Name</th>
+                                          <th>QC</th>
+                                          <th>Prod Qty</th>
+                                          <th>Wip wt</th>
+                                          <th>WIP rate</th>
+                                          <th>Piece Rate</th>
+                                          <th>Op Rate</th>
+                                          <th>Active</th>
+                                          <th>Edit</th>
+                                          <th>Doc</th>
+                                          <th>Del</th>
+                                          <th>BOM</th>
+                                          <th>Tool</th>
+                                          <th>#</th>
+                                          <th>Modify Date</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody></tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              )}
+                              {activeTab === "BOM History" && (
+                                <div className="tab-pane fade show active">
+                                  <div className="row mb-3 text-start">
+                                  <div className="col-md-2 ms-1">
+                                  <label>Select BOM Revision:</label>
+                                    </div>
+                                    <div className="col-md-1">
+                                      
+                                      <select
+                                        name=""
+                                      
+                                        className="form-control"
+                                        style={{ marginTop: "-1px" }}
+                                      >
+                                        <option value="">Select</option>
+                                        <option value="All">All</option>
+                                        <option value="Director">
+                                          Director
+                                        </option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="Ac">Ac</option>
+                                        <option value="Sales">Sales</option>
+                                        <option value="Store">Store</option>
+                                        <option value="Planning">
+                                          Planning
+                                        </option>
+                                        <option value="Purchase">
+                                          Purchase
+                                        </option>
+                                        <option value="CRM">CRM</option>
+                                        <option value="Account">Account</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-md-2">
+                                    
+                                      <button
+                                       
+                                        className="btn"
+                                      >
+                                        Export To Excel
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div className="table-responsive">
+                                    <table className="table table-bordered mt-3">
+                                      <thead>
+                                        <tr>
+                                          <th>NO Data Found</th>
+                                         
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

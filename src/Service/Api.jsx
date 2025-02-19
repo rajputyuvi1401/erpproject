@@ -11,8 +11,8 @@ const CUT_WISE_URL = `${BASE_URL}Cut_Wise/`;
 const UPLOAD_URL = `${BASE_URL}upload/`;
 
 // Home
-const BASE_URL1 = "http://13.201.136.34:8000";
-// const BASE_URL1 = "api";
+// const BASE_URL1 = "http://13.201.136.34:8000";
+const BASE_URL1 = "api";
 export async function postRequest(endpoint, data) {
   try {
     const response = await fetch(`${BASE_URL1}${endpoint}`, {
