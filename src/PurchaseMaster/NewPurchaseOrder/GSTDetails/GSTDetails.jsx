@@ -180,6 +180,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="text"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.ItemCode}
                         onChange={(e) => handleInputChange(index, "ItemCode", e.target.value)}
                       />
@@ -188,6 +189,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="text"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.HSN}
                         onChange={(e) => handleInputChange(index, "HSN", e.target.value)}
                       />
@@ -196,6 +198,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.Rate}
                         onChange={(e) => handleInputChange(index, "Rate", e.target.value)}
                       />
@@ -204,6 +207,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.Qty}
                         onChange={(e) => handleInputChange(index, "Qty", e.target.value)}
                       />
@@ -212,6 +216,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.SubTotal}
                         onChange={(e) => handleInputChange(index, "SubTotal", e.target.value)}
                       />
@@ -220,6 +225,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.Discount}
                         onChange={(e) => handleInputChange(index, "Discount", e.target.value)}
                       />
@@ -228,6 +234,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.Packing}
                         onChange={(e) => handleInputChange(index, "Packing", e.target.value)}
                       />
@@ -236,6 +243,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.Transport}
                         onChange={(e) => handleInputChange(index, "Transport", e.target.value)}
                       />
@@ -244,6 +252,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.ToolAmort}
                         onChange={(e) => handleInputChange(index, "ToolAmort", e.target.value)}
                       />
@@ -252,6 +261,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.AssValue}
                         onChange={(e) => handleInputChange(index, "AssValue", e.target.value)}
                       />
@@ -260,6 +270,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.CGST}
                         onChange={(e) => handleInputChange(index, "CGST", e.target.value)}
                       />
@@ -268,6 +279,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.SGST}
                         onChange={(e) => handleInputChange(index, "SGST", e.target.value)}
                       />
@@ -276,6 +288,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.IGST}
                         onChange={(e) => handleInputChange(index, "IGST", e.target.value)}
                       />
@@ -284,6 +297,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.Vat}
                         onChange={(e) => handleInputChange(index, "Vat", e.target.value)}
                       />
@@ -292,6 +306,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.Cess}
                         onChange={(e) => handleInputChange(index, "Cess", e.target.value)}
                       />
@@ -300,6 +315,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       <input
                         type="number"
                         className="form-control"
+                         style={{ minWidth: "90px" }}
                         value={detail.Total}
                         onChange={(e) => handleInputChange(index, "Total", e.target.value)}
                       />
@@ -322,7 +338,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
             {gstDetails.length > 0 ? (
               <>
                 <tr>
-                  <td>TDC Assable Value:</td>
+                  <td>TOC Assable Value:</td>
                   <td>
                     <input
                       type="number"

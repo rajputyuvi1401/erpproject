@@ -182,7 +182,7 @@ const NewPurchaseOrder = () => {
 
     const formattedData = {
       ...formData,
-    Schedule_Line: formData.Schedule_Line.map((item) => ({
+      Schedule_Line: formData.Schedule_Line.map((item) => ({
       ...item,
       ItemCode: item.ItemCode ? item.ItemCode.substring(0, 30).trim() : "", // 🔹 Ensure max 30 characters
     })),
@@ -309,6 +309,7 @@ const NewPurchaseOrder = () => {
               >
                 {supplier.Name} ({supplier.number})
               </li>
+              
                           ))}
                         </ul>
                       )}

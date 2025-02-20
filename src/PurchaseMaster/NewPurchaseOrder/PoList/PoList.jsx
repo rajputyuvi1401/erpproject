@@ -221,10 +221,10 @@ const PoList = () => {
                           <tr key={order.id}>
                             <td>{index + 1}</td>
                             <td>{order.PoDate ? new Date(order.PoDate).getFullYear() : "N/A"}</td>
-                            <td>{order.Plant}</td>
+                            <td>{order.Plant || "Produlink"}</td>
                             <td>{order.PoNo}</td>
                             <td>{order.PoDate}</td>
-                            <td>{order.field}</td>
+                            <td>{order.PoType || "Close"}</td>
                             <td>{order.EnquiryNo}</td>
                             <td>{order.ContactPerson}</td>
                             <td>{order.User || "N/A"}</td>
