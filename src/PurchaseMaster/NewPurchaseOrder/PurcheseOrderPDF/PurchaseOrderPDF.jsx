@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { fetchPurchaseOrderById } from "../../../Service/PurchaseApi"
 import jsPDF from "jspdf"
-import html2canvas from "html2canvas";
+
 const PurchaseOrderPDF = () => {
     const [poData, setPoData] = useState(null)
     const [error, setError] = useState(null)
@@ -38,38 +38,20 @@ const PurchaseOrderPDF = () => {
     const handlePrint = () => {
       window.print()
     }
-
-    
   
-    const handleDownload = async () => {
-      // const doc = new jsPDF()
+    const handleDownload = () => {
+      const doc = new jsPDF()
       const content = document.getElementById("po-content")
   
-      if (!content) {
-        console.error("Content not found")
-        return
-      }
-    
-      const canvas = await html2canvas(content, { scale: 2 })
-      const imgData = canvas.toDataURL("image/png")
-    
-      const pdf = new jsPDF("p", "mm", "a4")
-      const imgWidth = 210
-      const imgHeight = (canvas.height * imgWidth) / canvas.width
-    
-      pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight)
-      pdf.save(`PO-${poData.PoNo}.pdf`)
-
-
-      // doc.html(content, {
-      //   callback: (doc) => {
-      //     doc.save(`PO-${poData.PoNo}.pdf`)
-      //   },
-      //   x: 10,
-      //   y: 10,
-      //   width: 180,
-      //   windowWidth: 650,
-      // })
+      doc.html(content, {
+        callback: (doc) => {
+          doc.save(`PO-${poData.PoNo}.pdf`)
+        },
+        x: 10,
+        y: 10,
+        width: 180,
+        windowWidth: 650,
+      })
     }
   
     if (isLoading) return <div>Loading...</div>

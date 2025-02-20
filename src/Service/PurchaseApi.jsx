@@ -341,21 +341,25 @@ export const updatePurchaseOrder = async (id, data) => {
 
 export const fetchPurchaseOrderById = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}RegisterPO_All_Series/`)
+    const response = await fetch(`${BASE_URL}RegisterPO_All_Series/`);
+    const contentType = response.headers.get("content-type");
+
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const data = await response.json()
-    const order = data.find((order) => order.id === Number.parseInt(id))
-    if (!order) {
-      throw new Error("Purchase order not found")
+
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error("Received non-JSON response");
     }
-    return order
+
+    const data = await response.json();
+    return data.find((order) => order.id === Number.parseInt(id));
   } catch (error) {
-    console.error("Error fetching purchase order:", error)
-    throw error
+    console.error("Error fetching purchase order:", error);
+    throw error;
   }
-}
+};
+
 
 export const fetchPurchaseOrders = async () => {
   try {
