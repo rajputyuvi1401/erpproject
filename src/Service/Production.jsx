@@ -333,3 +333,18 @@ export const postProductionEntry = async (data) => {
     throw error;
   }
 };
+
+
+export const getNextReworkNo = async (year) => {
+  try {
+    console.log(`Fetching next rework number for year: ${year}`);
+    const response = await axios.get(
+      `${BASE_URL}api/production-entries2/get_next_rework_no/?year=${year}`
+    );
+    console.log("API Response:", response.data);
+    return response.data.next_rework_no || "";
+  } catch (error) {
+    console.error("Error fetching next rework number:", error);
+    return ""; // Return empty string if API fails
+  }
+};
