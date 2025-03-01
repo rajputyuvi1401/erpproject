@@ -2547,3 +2547,60 @@ export const fetchVendorProfile = async () => {
     throw new Error(error.message);
   }
 };
+
+
+// BOM
+export const fetchScrapData = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}FetchScrap/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching scrap data:", error);
+    return [];
+  }
+};
+
+export const saveItemData = async (formData) => {
+  try {
+    const response = await axios.post(`${BASE_URL}api/items/`, formData, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error saving item data:", error);
+    throw error;
+  }
+};
+
+export const fetchScrapDataItem = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}api/items/`);
+    console.log("API Response:", response.data); // ✅ Check if correct data is returned
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching items:", error);
+    return [];
+  }
+};
+
+
+export const updateScrapData = async (id, updatedData) => {
+  try {
+    const response = await axios.put(`${BASE_URL}api/items/${id}/`, updatedData, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating item:", error);
+    throw error;
+  }
+};
+
+export const deleteScrapData = async (id) => {
+  try {
+    await axios.delete(`${BASE_URL}api/items/${id}/`);
+  } catch (error) {
+    console.error("Error deleting item:", error);
+    throw error;
+  }
+};

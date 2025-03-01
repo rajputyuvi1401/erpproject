@@ -322,3 +322,14 @@ export const fetchProductionEntries = async () => {
     return []; // Return empty array if error occurs
   }
 };
+
+
+export const postProductionEntry = async (data) => {
+  try {
+    const response = await axios.post(`${BASE_URL}api/production-entries2/`, data);
+    return response.data;
+  } catch (error) {
+    console.error("Error in postProductionEntry:", error);
+    throw error;
+  }
+};

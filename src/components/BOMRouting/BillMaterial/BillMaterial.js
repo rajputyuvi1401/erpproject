@@ -20,10 +20,17 @@ import {
 import VisibleBomitem from "./VisibleBomitem.jsx";
 import { Link } from "react-router-dom";
 import BOMoperation from "../BOMoperation/BOMoperation.jsx";
+import {
+  fetchScrapData,
+  saveItemData,
+  updateScrapData,
+  deleteScrapData,
+  fetchScrapDataItem,
+} from "../../../Service/Api.jsx";
 
 const BillMaterial = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
-  const [activeTab,setActiveTab] = useState("BOM");
+  const [activeTab, setActiveTab] = useState("BOM");
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
@@ -157,6 +164,114 @@ const BillMaterial = () => {
     });
     setIsEditing(true);
     setEditId(item.id);
+  };
+
+  //BOM
+
+  const [scrapOptions, setScrapOptions] = useState([]);
+  const [items, setItems] = useState([]);
+  const [formData1, setFormData1] = useState({
+    OPNo: "",
+    PartCode: "",
+    BOMPartType: [],
+    BomPartCode: "",
+    QtyKg: "",
+    ScrapCode: "",
+    ScracpQty: "",
+    QC: "",
+    AssProd: "",
+  });
+  const [editingId, setEditingId] = useState(null); // Track item being edited
+
+  useEffect(() => {
+    const loadScrapData = async () => {
+      const data = await fetchScrapData();
+      setScrapOptions(data);
+    };
+
+    loadScrapData();
+  }, []);
+
+  useEffect(() => {
+    loadItems();
+  }, []);
+
+  const loadItems = async () => {
+    const data = await fetchScrapDataItem();
+    console.log("Setting Items:", data); // ✅ Check if data is being stored correctly
+    setItems(data);
+  };
+  
+
+  useEffect(() => {
+    console.log("Items state updated:", items); // Debugging
+  }, [items]);
+  
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+  
+    if (type === "checkbox") {
+      setFormData1((prevData) => ({
+        ...prevData,
+        [name]: checked
+          ? [...prevData[name], value] // ✅ Add to array if checked
+          : prevData[name].filter((item) => item !== value), // ✅ Remove if unchecked
+      }));
+    } else {
+      setFormData1((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
+  };
+  
+
+  const handleSubmit1 = async () => {
+    try {
+      const payload = {
+        ...formData1,
+        BOMPartType: formData1.BOMPartType.join(","), // ✅ Convert array to string
+      };
+  
+      if (editingId) {
+        await updateScrapData(editingId, payload);
+        setEditingId(null);
+      } else {
+        await saveItemData(payload);
+      }
+      
+      alert("Data saved successfully!");
+      setFormData1({
+        OPNo: "",
+        PartCode: "",
+        BOMPartType: [],
+        BomPartCode: "",
+        QtyKg: "",
+        ScrapCode: "",
+        ScracpQty: "",
+        QC: "",
+        AssProd: "",
+      });
+      
+      loadItems();
+    } catch (error) {
+      alert("Failed to save data");
+    }
+  };
+  
+  
+  const handleEdit1 = (item) => {
+    setEditingId(item.id);
+    setFormData1({ ...item }); // ✅ Ensure all values are assigned properly
+  };
+  
+
+  const handleDelete1 = async (id) => {
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      await deleteScrapData(id);
+      loadItems();
+    }
   };
 
   return (
@@ -446,14 +561,30 @@ const BillMaterial = () => {
                               {activeTab === "BOM" && (
                                 <div className="tab-pane fade show active">
                                   <div className="row">
-                                  <div className="col-md-1">
-                  <input type="checkbox" id="manualCheckbox" />
-                  <label htmlFor="manualCheckbox" className="ms-2">Manual</label>
-                </div>
-                <div className="col-md-4">
-                  <input type="checkbox" id="routingCheckbox" />
-                  <label htmlFor="routingCheckbox" className="ms-2">Standard Routing</label>
-                </div>
+                                    <div className="col-md-1">
+                                      <input
+                                        type="checkbox"
+                                        id="manualCheckbox"
+                                      />
+                                      <label
+                                        htmlFor="manualCheckbox"
+                                        className="ms-2"
+                                      >
+                                        Manual
+                                      </label>
+                                    </div>
+                                    <div className="col-md-4">
+                                      <input
+                                        type="checkbox"
+                                        id="routingCheckbox"
+                                      />
+                                      <label
+                                        htmlFor="routingCheckbox"
+                                        className="ms-2"
+                                      >
+                                        Standard Routing
+                                      </label>
+                                    </div>
                                   </div>
                                   <div className="row mb-3 text-start mt-4">
                                     <div className="col-md-1">
@@ -461,45 +592,59 @@ const BillMaterial = () => {
                                       <input
                                         type="text"
                                         className="form-control"
+                                        name="OPNo"
+                                        value={formData1.OPNo}
+                                        onChange={handleChange}
                                       />
                                     </div>
                                     <div className="col-md-2">
                                       <label>Part Code:</label>
                                       <div className="row align-items-center">
-                    <div className="col">
-                      <input type="text" className="form-control" />
-                    </div>
-                    <div className="col-auto">
-                      <button className="btn">
-                        <FaPlus />
-                      </button>
-                    </div>
-                    </div>
-                                     
+                                        <div className="col">
+                                          <input
+                                            type="text"
+                                            className="form-control"
+                                            name="PartCode"
+                                            value={formData1.PartCode}
+                                            onChange={handleChange}
+                                          />
+                                        </div>
+                                        <div className="col-auto">
+                                          <button className="btn">
+                                            <FaPlus />
+                                          </button>
+                                        </div>
+                                      </div>
                                     </div>
                                     <div className="col-md-2">
                                       <label>BOM Part Type:</label>
-<div className="row mt-2">
-                                      <div className="col-md-2 d-flex">
-                  <input type="checkbox" id="RMCheckbox" />
-                  <label htmlFor="RMCheckbox" className="ms-2">RM</label>
-                </div>
-                <div className="col-md-2 d-flex ms-4">
-                  <input type="checkbox" id="COMCheckbox" />
-                  <label htmlFor="COMCheckbox" className="ms-2">COM</label>
-                </div>
-                <div className="col-md-2 d-flex ms-4">
-                  <input type="checkbox" id="BOMCheckbox" />
-                  <label htmlFor="BOMCheckbox" className="ms-2">BOM</label>
-                </div>
-                </div>
-                                      
+                                      <div className="row mt-2">
+  {["RM", "COM", "BOM"].map((type) => (
+    <div key={type} className="col-md-2 d-flex ms-4">
+      <input
+        type="checkbox"
+        id={type}
+        name="BOMPartType"
+        value={type} // ✅ Ensure value is set
+        checked={formData1.BOMPartType.includes(type)} // ✅ Check if in array
+        onChange={handleChange}
+      />
+      <label htmlFor={type} className="ms-2">
+        {type}
+      </label>
+    </div>
+  ))}
+</div>
+
                                     </div>
                                     <div className="col-md-1">
                                       <label>Bom Part Code:</label>
                                       <input
                                         type="text"
                                         className="form-control"
+                                        name="BomPartCode"
+                                        value={formData1.BomPartCode}
+                                        onChange={handleChange}
                                       />
                                     </div>
                                     <div className="col-md-1">
@@ -507,20 +652,39 @@ const BillMaterial = () => {
                                       <input
                                         type="text"
                                         className="form-control"
+                                        name="QtyKg"
+                                        value={formData1.QtyKg}
+                                        onChange={handleChange}
                                       />
                                     </div>
                                     <div className="col-md-1">
                                       <label>Scrap Code</label>
-                                      <input
-                                        type="text"
+                                      <select
                                         className="form-control"
-                                      />
+                                        name="ScrapCode"
+                                        value={formData1.ScrapCode}
+                                        onChange={handleChange}
+                                      >
+                                        <option value="">Select</option>
+                                        {scrapOptions.map((item, index) => (
+                                          <option
+                                            key={index}
+                                            value={item.part_no}
+                                          >
+                                            {item.part_no} ||{" "}
+                                            {item.Name_Description}
+                                          </option>
+                                        ))}
+                                      </select>
                                     </div>
                                     <div className="col-md-1">
                                       <label>Scrap Qty</label>
                                       <input
                                         type="text"
                                         className="form-control"
+                                        name="ScracpQty"
+                                        value={formData1.ScracpQty}
+                                        onChange={handleChange}
                                       />
                                     </div>
                                     <div className="col-md-1">
@@ -528,19 +692,30 @@ const BillMaterial = () => {
                                       <input
                                         type="text"
                                         className="form-control"
+                                        name="QC"
+                                        value={formData1.QC}
+                                        onChange={handleChange}
                                       />
                                     </div>
                                     <div className="col-md-1">
-                                    <label>Ass Prod</label>
-                  <select className="form-control">
-                    <option value="">Select</option>
-                    <option value="NO">NO</option>
-                    <option value="Yes">Yes</option>
-                  </select>
+                                      <label>Ass Prod</label>
+                                      <select
+                                        className="form-control"
+                                        name="AssProd"
+                                        value={formData1.AssProd}
+                                        onChange={handleChange}
+                                      >
+                                        <option value="">Select</option>
+                                        <option value="NO">NO</option>
+                                        <option value="Yes">Yes</option>
+                                      </select>
                                     </div>
                                     <div className="col-md-1 d-flex align-items-end mb-1">
-                                      <button className="btn  me-2">
-                                        Save
+                                      <button
+                                        className="btn me-2"
+                                        onClick={handleSubmit1}
+                                      >
+                                        {editingId ? "Update" : "Save"}
                                       </button>
                                     </div>
                                   </div>
@@ -550,7 +725,8 @@ const BillMaterial = () => {
                                         <tr>
                                           <th>OP No</th>
                                           <th>Part Code</th>
-                                          <th>Part Type</th>
+                                          <th>BOM Part type</th>
+
                                           <th>BOM Part Code</th>
                                           <th>Qty</th>
                                           <th>Bom Part Desc</th>
@@ -559,7 +735,7 @@ const BillMaterial = () => {
                                           <th>Op Name</th>
                                           <th>QC</th>
                                           <th>Prod Qty</th>
-                                          <th>Wip wt</th>
+                                          <th>AssProd</th>
                                           <th>WIP rate</th>
                                           <th>Piece Rate</th>
                                           <th>Op Rate</th>
@@ -573,7 +749,56 @@ const BillMaterial = () => {
                                           <th>Modify Date</th>
                                         </tr>
                                       </thead>
-                                      <tbody></tbody>
+                                      <tbody>
+                                        {items.map((item) => (
+                                          <tr key={item.id}>
+                                            <td>{item.OPNo}</td>
+                                            <td>{item.PartCode}</td>
+                                            <td>{item.BOMPartType}</td>
+                                            <td>{item.BomPartCode}</td>
+                                            <td>{item.QtyKg}</td>
+                                            <td>Bom Part Desc</td>
+
+                                            <td>{item.ScrapCode}</td>
+                                            <td>{item.ScracpQty}</td>
+                                            <td>Op Name</td>
+                                            <td>{item.QC}</td>
+                                            <td>Prod Qty</td>
+                                            <td>{item.AssProd}</td>
+
+                                            <td>WIP rate</td>
+                                            <td>Piece Rate</td>
+                                            <td>Op Rate</td>
+                                            <td>Active</td>
+
+                                            <td>
+                                              <button
+                                                className="btn btn-sm"
+                                                onClick={() =>
+                                                  handleEdit1(item)
+                                                }
+                                              >
+                                                <FaEdit/>
+                                              </button>
+                                            </td>
+                                            <td>Doc</td>
+                                            <td>
+                                              <button
+                                                className="btn btn-sm"
+                                                onClick={() =>
+                                                  handleDelete1(item.id)
+                                                }
+                                              >
+                                                <FaTrash/>
+                                              </button>
+                                            </td>
+                                            <td>BOM</td>
+                                            <td>Tool</td>
+                                            <td>#</td>
+                                            <td>Modify Date</td>
+                                          </tr>
+                                        ))}
+                                      </tbody>
                                     </table>
                                   </div>
                                 </div>
@@ -581,14 +806,12 @@ const BillMaterial = () => {
                               {activeTab === "BOM History" && (
                                 <div className="tab-pane fade show active">
                                   <div className="row mb-3 text-start">
-                                  <div className="col-md-2 ms-1">
-                                  <label>Select BOM Revision:</label>
+                                    <div className="col-md-2 ms-1">
+                                      <label>Select BOM Revision:</label>
                                     </div>
                                     <div className="col-md-1">
-                                      
                                       <select
                                         name=""
-                                      
                                         className="form-control"
                                         style={{ marginTop: "-1px" }}
                                       >
@@ -612,11 +835,7 @@ const BillMaterial = () => {
                                       </select>
                                     </div>
                                     <div className="col-md-2">
-                                    
-                                      <button
-                                       
-                                        className="btn"
-                                      >
+                                      <button className="btn">
                                         Export To Excel
                                       </button>
                                     </div>
@@ -626,12 +845,9 @@ const BillMaterial = () => {
                                       <thead>
                                         <tr>
                                           <th>NO Data Found</th>
-                                         
                                         </tr>
                                       </thead>
-                                      <tbody>
-                                        
-                                      </tbody>
+                                      <tbody></tbody>
                                     </table>
                                   </div>
                                 </div>
