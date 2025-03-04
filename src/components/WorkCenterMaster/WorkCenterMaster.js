@@ -7,8 +7,9 @@ import SideNav from "../../SideNav/SideNav";
 import "./WorkCenterMaster.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { saveWorkCenterTypeGroupData } from "../../Service/Api.jsx";
+import { saveWorkCenterTypeGroupData ,getWorkCenters ,updateWorkCenter,deleteWorkCenter} from "../../Service/Api.jsx";
 import AddNewCard from "./AddNewCard/AddNewCard.jsx";
+import { FaEdit, FaTrash } from "react-icons/fa";
 const WorkCenterMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -42,57 +43,7 @@ const WorkCenterMaster = () => {
 
   // table add New button
 
-  const [records] = useState([
-    {
-      id: 1,
-      plant: "Produlink",
-      workCenterCode: "WC001",
-      workCenterName: "Main Work Center",
-      machineType: "Type A",
-      typeGroup: "Group 1",
-      category: "Category 1",
-      wHrRate: 50,
-      ppm: 100,
-      active: "Yes",
-    },
-    {
-      id: 1,
-      plant: "Produlink",
-      workCenterCode: "WC001",
-      workCenterName: "Main Work Center",
-      machineType: "Type A",
-      typeGroup: "Group 1",
-      category: "Category 1",
-      wHrRate: 50,
-      ppm: 100,
-      active: "Yes",
-    },
-    {
-      id: 1,
-      plant: "Produlink",
-      workCenterCode: "WC001",
-      workCenterName: "Main Work Center",
-      machineType: "Type A",
-      typeGroup: "Group 1",
-      category: "Category 1",
-      wHrRate: 50,
-      ppm: 100,
-      active: "Yes",
-    },
-    {
-      id: 1,
-      plant: "Produlink",
-      workCenterCode: "WC001",
-      workCenterName: "Main Work Center",
-      machineType: "Type A",
-      typeGroup: "Group 1",
-      category: "Category 1",
-      wHrRate: 50,
-      ppm: 100,
-      active: "Yes",
-    },
-    // Add more records as needed
-  ]);
+ 
 
   const [errors, setErrors] = useState({});
 
@@ -131,6 +82,53 @@ const WorkCenterMaster = () => {
     }
   };
 
+
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+ 
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const result = await getWorkCenters();
+      setData(result);
+    } catch (err) {
+      setError("Failed to fetch data");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle Edit
+  const handleEdit = (item) => {
+    const newValue = prompt("Enter new Work Center Name:", item.WorkCenterName);
+    if (newValue) {
+      updateWorkCenter(item.id, { ...item, WorkCenterName: newValue })
+        .then(() => fetchData())
+        .catch((err) => console.error("Update error:", err));
+    }
+  };
+
+  // Handle Delete
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this work center?")) {
+      try {
+        await deleteWorkCenter(id);
+        fetchData();
+      } catch (error) {
+        console.error("Delete error:", error);
+      }
+    }
+  };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
+
+  
   return (
     <div className="work-center">
       <ToastContainer />
@@ -357,48 +355,41 @@ const WorkCenterMaster = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {records.map((record, index) => (
-                              <tr key={record.id}>
-                                <td>{index + 1}</td>
-                                <td>{record.plant}</td>
-                                <td>{record.workCenterCode}</td>
-                                <td>{record.workCenterName}</td>
-                                <td>{record.machineType}</td>
-                                <td>{record.typeGroup}</td>
-                                <td>{record.category}</td>
-                                <td>{record.wHrRate}</td>
-                                <td>{record.ppm}</td>
-                                <td>{record.active}</td>
-                                <td>
-                                  <button className="btn-tableww">
-                                    {" "}
-                                    <i className="fas fa-edit"></i>
-                                  </button>
-                                </td>
-                                <td>
-                                  <button className="btn-tableww">
-                                    <i className="fas fa-trash"></i>
-                                  </button>
-                                </td>
-                                <td>
-                                  <button className="btn-tableww">
-                                    {" "}
-                                    <i className="fas fa-file-alt"></i>
-                                  </button>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="record-count text-start"
-                    style={{ color: "blue", padding: "10px" }}
-                  >
-                    Total Records: {records.length}
-                  </div>
+                          {data.map((item, index) => (
+                <tr key={item.id}>
+                  <td>{index + 1}</td>
+                  <td>{item.Plant}</td>
+                  <td>{item.WorkCenterCode}</td>
+                  <td>{item.WorkCenterName}</td>
+                  <td>{item.WorkCenterType}</td>
+                  <td>-</td>
+                  <td>{item.Category}</td>
+                  <td>{item.Mhr_Rate}</td>
+                  <td>{item.PPM}</td>
+                  <td>-</td>
+                  <td>
+                    <button className="btn" onClick={() => handleEdit(item)}>
+                      <FaEdit/>
+                    </button>
+                  </td>
+                  <td>
+                    <button className="btn" onClick={() => handleDelete(item.id)}>
+                      <FaTrash/>
+                    </button>
+                  </td>
+                  <td>
+                    <button className="btn">Doc</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+      <div className="record-count text-start" style={{ color: "blue", padding: "10px" }}>
+        Total Records: {data.length}
+      </div>
                 </div>
               </main>
             </div>

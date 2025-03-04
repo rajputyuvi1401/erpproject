@@ -60,7 +60,7 @@ const ShiftMaster = () => {
     const selectedValue = e.target.value;
 
     setSelectedOption(selectedValue);
-    if (selectedValue === "1") {
+    if (selectedValue === "Produlink") {
       setShowTable(true);
     } else {
       setShowTable(false);
@@ -317,7 +317,7 @@ const ShiftMaster = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                
                   {!showTable && (
                     <div className="Shifttable1">
                       <div className="container-fluid">
@@ -340,11 +340,11 @@ const ShiftMaster = () => {
                   )}
 
                   {showTable && (
-                    <div className="Shifttable">
+                    <div className="Shifttable mt-5">
                       <div className="container-fluid">
-                        <div className="row">
+                        <div className="table-responsive">
                           <div className="col-md-12 text-start">
-                            <table className="table table-striped table-responsive">
+                            <table className="table table-striped ">
                               <thead>
                                 <tr>
                                   <th>Sr.</th>
@@ -395,6 +395,7 @@ const ShiftMaster = () => {
                       </div>
                     </div>
                   )}
+                    </div>
                 </div>
               </main>
             </div>

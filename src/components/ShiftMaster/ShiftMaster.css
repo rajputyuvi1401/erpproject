@@ -25,18 +25,7 @@
   border-radius: 5px;
 }
 
-.Shifttable {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
-  overflow-x: auto;
-}
 
-.Shifttable .table-responsive {
-  max-height: 400px; /* Adjust height as needed */
-  overflow-y: auto;
-}
 
 .Shifttable .table th,
 .Shifttable .table td {

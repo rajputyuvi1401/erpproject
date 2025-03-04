@@ -152,8 +152,54 @@ const ReworkProduction = () => {
   
     try {
       const response = await postProductionEntry(payload);
-      console.log("API Response:", response); // Debugging
+      console.log("API Response:", response);
       alert("Data saved successfully!");
+  
+       // Reset form data after successful save
+    setFormData({
+      ReworkNo: "",  // Rework No ko blank rakhein, new fetch hoga
+      ReworkDate: "",
+      Reworktime: "",
+      shift: "",
+      contractor: "",
+      Supervisor: "",
+      operator: "",
+      ItemCode: "",
+      PartCode: "",
+      HeatNo: "",
+      unit_machine: "",
+      ProdTime: "",
+      ReworktoOk: "",
+      ProductionHours: "",
+      IdleHours: "",
+      ActualHours: "",
+      shift_from: "",
+      shift_till: "",
+      break_from: "",
+      break_till: "",
+      total: "",
+      op_time: "",
+      lu_time: "",
+      mo_time: "",
+      total_time: "",
+      target_qty: "",
+      target_qty_hours: "",
+      ReasonForRework: "",
+    });
+
+    setIdleTimeRows([]); // Idle time rows bhi clear karna hai
+
+    
+      // Save hone ke baad naye Rework Number ko fetch karein
+      const year = localStorage.getItem("Shortyear");
+      if (year) {
+        const nextReworkNo = await getNextReworkNo(year);
+        console.log("Fetched New Rework Number:", nextReworkNo);
+  
+        if (nextReworkNo) {
+          setFormData((prev) => ({ ...prev, ReworkNo: nextReworkNo }));
+        }
+      }
     } catch (error) {
       console.error("Error saving data:", error);
       alert("Failed to save data.");

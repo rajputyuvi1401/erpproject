@@ -44,7 +44,10 @@ const ReworkProductionEntry = () => {
                        <label>Series</label>
                       </div>
                       <div className="col-md-1">
-                        <select><option>Select</option></select>
+                        <select>
+                          <option>Select</option>
+                          <option value="Rework Production">Rework Production</option>
+                        </select>
                       </div>
                       <div className="col-md-6 text-end">
                        

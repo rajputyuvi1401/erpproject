@@ -3,16 +3,16 @@
 import axios from "axios";
 
 // Define base URLs
-// const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
-const BASE_URL = "api/All_Masters/";
+const BASE_URL = "http://13.201.136.34:8000/All_Masters/";
+// const BASE_URL = "api/All_Masters/";
 const TAX_CODE_URL = `${BASE_URL}Tax_Code/`;
 const GST_MASTER_URL = `${BASE_URL}GST_Master/`;
 const CUT_WISE_URL = `${BASE_URL}Cut_Wise/`;
 const UPLOAD_URL = `${BASE_URL}upload/`;
 
 // Home
-// const BASE_URL1 = "http://13.201.136.34:8000";
-const BASE_URL1 = "api";
+const BASE_URL1 = "http://13.201.136.34:8000";
+// const BASE_URL1 = "api";
 export async function postRequest(endpoint, data) {
   try {
     const response = await fetch(`${BASE_URL1}${endpoint}`, {
@@ -2601,6 +2601,40 @@ export const deleteScrapData = async (id) => {
     await axios.delete(`${BASE_URL}api/items/${id}/`);
   } catch (error) {
     console.error("Error deleting item:", error);
+    throw error;
+  }
+};
+
+
+export const getWorkCenters = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}Work_Center/`);
+    console.log("API Response:", response.data); // ✅ Check if correct data is returned
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching items:", error);
+    return [];
+  }
+};
+
+
+// Update work center
+export const updateWorkCenter = async (id, updatedData) => {
+  try {
+    const response = await axios.put(`${BASE_URL}Work_Center/${id}/`, updatedData);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating work center:", error);
+    throw error;
+  }
+};
+
+// Delete work center
+export const deleteWorkCenter = async (id) => {
+  try {
+    await axios.delete(`${BASE_URL}Work_Center/${id}/`);
+  } catch (error) {
+    console.error("Error deleting work center:", error);
     throw error;
   }
 };
