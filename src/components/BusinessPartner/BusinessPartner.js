@@ -10,6 +10,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { fetchCountries ,fetchStateData, fetchStateDetails} from '../../Service/Api.jsx';
+import {ToastContainer, toast } from "react-toastify";
 const BusinessPartner = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -170,9 +171,9 @@ const BusinessPartner = () => {
 
     if (validateGSTNo()) {
       // Proceed with form submission (e.g., API call)
-      alert("Form submitted successfully");
+      toast.success("Form submitted successfully");
     } else {
-      alert("Form has errors");
+      toast.error("Form has errors");
     }
 
     const newErrors = {};
@@ -220,6 +221,7 @@ const BusinessPartner = () => {
 
   return (
     <div className="Bussiness">
+      <ToastContainer/>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">

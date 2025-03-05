@@ -19,6 +19,9 @@ import {
   fetchHelpers,
 } from "../../Service/Production.jsx";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 // ProductionEntry Component
 const ProductionEntry = () => {
@@ -396,7 +399,7 @@ const ProductionEntry = () => {
       !idleTimeForm.from_time ||
       !idleTimeForm.to_time
     ) {
-      alert("Please fill in all required fields.");
+      toast.error("Please fill in all required fields.");
       return;
     }
 
@@ -458,7 +461,7 @@ const ProductionEntry = () => {
         throw new Error(`Error: ${response.error || "Unknown error occurred"}`);
       }
 
-      alert("✅ Production entry submitted successfully!");
+      toast.success("✅ Production entry submitted successfully!");
 
       // ✅ Fetch the next production number only after successful submission
       const nextProdData = await getProductionNumber(series, shortYear);
@@ -467,13 +470,14 @@ const ProductionEntry = () => {
       }
     } catch (error) {
       console.error("❌ Failed to submit production entry:", error);
-      alert("❌ Failed to submit production entry. Please try again.");
+      toast.error("❌ Failed to submit production entry. Please try again.");
     }
   };
 
   return (
     // ProductionEntry Component UI
     <div className="ProductionEntryMaster">
+      <ToastContainer/>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">

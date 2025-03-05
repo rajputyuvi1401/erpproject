@@ -6,6 +6,9 @@ import NavBar from "../../../NavBar/NavBar";
 import SideNav from "../../../SideNav/SideNav";
 import { uploadFile } from "../../../Service/Api.jsx"; // Adjust path as necessary
 import "./CustomerItem.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const CustomerItem = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -38,16 +41,17 @@ const CustomerItem = () => {
       const data = await uploadFile(selectedFile);
       console.log("File uploaded successfully:", data);
       setUploadResult(`File uploaded successfully! File ID: ${data.id}`); // Update result
-      alert("File uploaded successfully!");
+      toast.success("File uploaded successfully!");
     } catch (error) {
       console.error("Error during file upload:", error);
       setUploadResult("Error during file upload: " + error.message); // Update result
-      alert("Error during file upload: " + error.message);
+      toast.error("Error during file upload: " + error.message);
     }
   };
 
   return (
     <div className="GstCustomer">
+      <ToastContainer/>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">

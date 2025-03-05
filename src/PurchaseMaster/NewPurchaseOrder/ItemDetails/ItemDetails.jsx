@@ -199,7 +199,7 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
           prevItems.filter((item) => item.id !== id)
         );
       } catch (error) {
-        alert("Failed to delete item. Please try again.");
+        toast.error("Failed to delete item. Please try again.");
       }
     }
   };

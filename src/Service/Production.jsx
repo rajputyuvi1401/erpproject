@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://13.201.136.34:8000/Production/";
-// const BASE_URL = "api/Production/";
+// const BASE_URL = "http://13.201.136.34:8000/Production/";
+const BASE_URL = "api/Production/";
 
 export const createWorkOrder = async (data) => {
     try {
@@ -354,7 +354,7 @@ export const getNextReworkNo = async (year) => {
 // Fetch Next Available Rework No
 export const getNextReworkNo1 = async (year) => {
   try {
-    const response = await axios.get(`${BASE_URL}/production-entries5/get_prod_no/?year=${year}`);
+    const response = await axios.get(`${BASE_URL}production-entries5/get_prod_no/?year=${year}`);
     return response.data.next_rework_no;
   } catch (error) {
     console.error("Error fetching next rework no:", error);
@@ -365,7 +365,7 @@ export const getNextReworkNo1 = async (year) => {
 // Submit Production Entry
 export const postProductionEntry1 = async (data) => {
   try {
-    const response = await axios.post(`${BASE_URL}/api/product-details/`, data);
+    const response = await axios.post(`${BASE_URL}api/product-details/`, data);
     return response.data;
   } catch (error) {
     console.error("Error posting production entry:", error);

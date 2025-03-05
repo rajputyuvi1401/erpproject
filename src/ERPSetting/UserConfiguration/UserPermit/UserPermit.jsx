@@ -3,6 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./UserPermit.css";
 import {
   fetchUsersDropdown,
@@ -130,7 +133,7 @@ const UserPermit = () => {
       setUsers(data);
     } catch (error) {
       console.error("Error fetching users:", error);
-      alert("Error fetching users");
+      toast.error("Error fetching users");
     }
   };
 
@@ -182,7 +185,7 @@ const UserPermit = () => {
 
   const handleSubmit = async () => {
     if (!selectedUser) {
-      alert("Please select a user");
+      toast.warning("Please select a user");
       return;
     }
 
@@ -201,13 +204,13 @@ const UserPermit = () => {
       const response = await assignPermissions(selectedUser, modulesToSubmit);
       console.log("Full response:", response);
       if (response.message === "Permissions assigned successfully") {
-        alert("Permissions assigned successfully");
+        toast.success("Permissions assigned successfully");
       } else {
-        alert("Unexpected response format");
+        toast.info("Unexpected response format");
       }
     } catch (error) {
       console.error("Error assigning permissions:", error);
-      alert("Error assigning permissions");
+      toast.error("Error assigning permissions");
     }
   };
 
@@ -236,6 +239,7 @@ const UserPermit = () => {
 
   return (
     <div className="UserPermit">
+      <ToastContainer/>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">

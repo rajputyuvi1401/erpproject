@@ -11,6 +11,9 @@ import JobWorkschedule from "./JobWorkschedule/JobWorkschedule.jsx";
 import JobWorkShiptoadd from "./JobWorkShiptoadd/JobWorkShiptoadd.jsx";
 import { fetchNextJobWorkNumber ,fetchSupplierData} from "../../Service/PurchaseApi.jsx";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const NewJobworkPurchase = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -70,7 +73,7 @@ const NewJobworkPurchase = () => {
   
     const handleSelectSupplier = async () => {
       if (!supplierName) {
-        alert("Please enter a supplier name.");
+        toast.error("Please enter a supplier name.");
         return;
       }
   
@@ -81,12 +84,12 @@ const NewJobworkPurchase = () => {
           const supplier = data[0]; // Assuming the first result is the correct one
           setSupplierCode(supplier.number); // Set the supplier code
         } else {
-          alert("Supplier not found.");
+          toast.error("Supplier not found.");
           setSupplierCode(""); // Clear the code if no supplier is found
         }
       } catch (error) {
         console.error("Error fetching supplier data:", error);
-        alert("Error fetching supplier data.");
+        toast.error("Error fetching supplier data.");
       } finally {
         setLoading(false);
       }
@@ -95,6 +98,7 @@ const NewJobworkPurchase = () => {
 
   return (
     <div className="NewJobworkMaster">
+      <ToastContainer/>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">

@@ -6,6 +6,8 @@ import SideNav from "../../../SideNav/SideNav.js";
 import './ContractirList.css';
 import { Link } from "react-router-dom";
 import ProductionApi from "../../../Service/Production.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContractirList = () => {
     const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -81,15 +83,16 @@ const ContractirList = () => {
       e.preventDefault();
       try {
         const response = await ProductionApi.saveProductionEntry(formData);
-        alert("Data saved successfully!");
+        toast.success("Data saved successfully!");
         console.log("Response:", response);
       } catch (error) {
-        alert("Failed to save data. Please try again.");
+        toast.error("Failed to save data. Please try again.");
       }
     };
    
   return (
     <div className="ContractorListMaster">
+      <ToastContainer/>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">

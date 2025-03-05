@@ -164,7 +164,7 @@ const NewPurchaseOrder = () => {
     if (validateCurrentTab()) {
       setActiveTab((prevTab) => prevTab + 1)
     } else {
-      alert("Please fill all required fields in the current tab.")
+      toast.error("Please fill all required fields in the current tab.")
     }
   }
 

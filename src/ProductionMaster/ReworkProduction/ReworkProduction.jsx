@@ -13,6 +13,9 @@ import {
   postProductionEntry,
 getNextReworkNo
 } from "../../Service/Production.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const ReworkProduction = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -89,7 +92,7 @@ const ReworkProduction = () => {
   // Add new idle time entry to the table
   const addIdleTimeRow = () => {
     if (!idleTime.idle_reason || !idleTime.from_time || !idleTime.to_time) {
-      alert("Please fill in all required fields!");
+      toast.error("Please fill in all required fields!");
       return;
     }
 
@@ -202,7 +205,7 @@ const ReworkProduction = () => {
       }
     } catch (error) {
       console.error("Error saving data:", error);
-      alert("Failed to save data.");
+      toast.error("Failed to save data.");
     }
   };
   
@@ -397,6 +400,7 @@ const ReworkProduction = () => {
 
   return (
     <div className="ReworkProductionMaster">
+      <ToastContainer/>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">

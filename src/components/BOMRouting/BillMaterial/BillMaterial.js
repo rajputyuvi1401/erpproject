@@ -241,7 +241,7 @@ const BillMaterial = () => {
         await saveItemData(payload);
       }
       
-      alert("Data saved successfully!");
+      toast.success("Data saved successfully!");
       setFormData1({
         OPNo: "",
         PartCode: "",
@@ -256,7 +256,7 @@ const BillMaterial = () => {
       
       loadItems();
     } catch (error) {
-      alert("Failed to save data");
+      toast.error("Failed to save data");
     }
   };
   
