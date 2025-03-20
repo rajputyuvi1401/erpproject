@@ -31,46 +31,21 @@ export const createWorkOrder = async (data) => {
 
 
  
-
-
-
-  const ProductionApi = {
-    // Fetch contractor names
-    getContractors: async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}Production_contractor/`);
-        return response.data;
-      } catch (error) {
-        console.error("Error fetching contractors:", error);
-        throw error;
-      }
-    },
-  
-    // Save contractor production entry
-    saveProductionEntry: async (data) => {
-      try {
-        const response = await axios.post(`${BASE_URL}Contractor_Production_Entry/`, data);
-        return response.data;
-      } catch (error) {
-        console.error("Error saving production entry:", error);
-        throw error;
-      }
-    },
-
-
-  // Fetch unit machines
-  fetchUnitMachines: async (searchTerm = "") => {
+  export const saveContractorProduction = async (productionData) => {
     try {
-      const response = await axios.get(`${BASE_URL}Production_unitmachine/?search=${searchTerm}`);
+      const response = await axios.post(`${BASE_URL}api/ProductionRecord/`, productionData, {
+        headers: { "Content-Type": "application/json" },
+      });
+  
       return response.data;
     } catch (error) {
-      console.error("Error fetching unit machines:", error);
+      console.error("Error saving production entry:", error.response?.data || error);
       throw error;
     }
-  },
   };
   
-  export default ProductionApi;
+
+
   
 
   export const getNextScrapRejectionNo = async (series, year) => {
@@ -369,6 +344,93 @@ export const postProductionEntry1 = async (data) => {
     return response.data;
   } catch (error) {
     console.error("Error posting production entry:", error);
+    throw error;
+  }
+};
+
+
+export const getNextDPNo = async (year) => {
+  try {
+    const response = await axios.get(`${BASE_URL}api/get-next-dp-no/?year=${year}`);
+    return response.data; // Return full response
+  } catch (error) {
+    console.error("Error fetching next DP number:", error);
+    return null;
+  }
+};
+
+
+// Submit Production Entry
+export const submitProductionEntry = async (data) => {
+  try {
+    const response = await axios.post(`${BASE_URL}api/production-entriesAss/`, data);
+    return response.data;
+  } catch (error) {
+    console.error("Error submitting production entry:", error);
+    throw error;
+  }
+};
+
+
+export const getReworkReasons = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}ReworkReason2/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching rework reasons:", error);
+    return [];
+  }
+};
+
+// Fetch Reject Reasons
+export const getRejectReasons = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}RejectReason2/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching reject reasons:", error);
+    return [];
+  }
+};
+
+// Add Rework Reason
+export const addReworkReason = async (data) => {
+  try {
+    await axios.post(`${BASE_URL}ReworkReason2/`, data);
+  } catch (error) {
+    console.error("Error adding rework reason:", error);
+  }
+};
+
+// Add Reject Reason
+export const addRejectReason = async (data) => {
+  try {
+    await axios.post(`${BASE_URL}RejectReason2/`, data);
+  } catch (error) {
+    console.error("Error adding reject reason:", error);
+  }
+};
+
+
+// Submit Scrap Rejection Entry
+export const getNextNoteNo = async (year) => {
+  try {
+    const response = await axios.get(`${BASE_URL}GetNextNoteNo/?year=${year}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching next note number:", error);
+    return null;
+  }
+};
+
+export const submitScrapRejectionEntry = async (data) => {
+  try {
+    const response = await axios.post(`${BASE_URL}api/FGScrapDetails/`, data, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error submitting scrap rejection entry:", error);
     throw error;
   }
 };

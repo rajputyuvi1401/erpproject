@@ -480,34 +480,62 @@ const ProductionDetailsTab = ({
       </div>
 
       <div className="row mb-3 text-start">
-        <div className="col-md-4">
-          <label>Machine:</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search Machine"
-            value={searchTermUnitMachine}
-            onChange={handleSearchChangeUnitMachine}
-            onClick={() => setDropdownVisibleUnitMachine(!dropdownVisibleUnitMachine)}
-          />
-          {dropdownVisibleUnitMachine && (
-            <div className="dropdown-container">
-              {filteredUnitMachines.length > 0 ? (
-                filteredUnitMachines.map((unit) => (
-                  <div
-                    key={unit.WorkCenterCode}
-                    className="dropdown-item"
-                    onClick={() => handleSelectUnitMachine(unit)}
-                  >
-                    {unit.WorkCenterName} ({unit.WorkCenterCode})
-                  </div>
-                ))
-              ) : (
-                <div className="dropdown-item">No machines found</div>
-              )}
+      <div className="col-md-4" style={{ position: "relative" }}>
+    <label>Machine:</label>
+    <input
+      type="text"
+      className="form-control"
+      placeholder="Search Machine"
+      value={searchTermUnitMachine}
+      onChange={handleSearchChangeUnitMachine}
+      onClick={() => setDropdownVisibleUnitMachine(!dropdownVisibleUnitMachine)}
+      style={{
+        width: "100%",
+        padding: "8px",
+        border: "1px solid #ccc",
+        borderRadius: "4px",
+      }}
+    />
+    {dropdownVisibleUnitMachine && (
+      <div
+        style={{
+          position: "absolute",
+          width: "100%",
+          maxHeight: "200px",
+          overflowY: "auto",
+          overflowX: "auto",
+          background: "#fff",
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+          zIndex: 1000,
+        }}
+      >
+        {filteredUnitMachines.length > 0 ? (
+          filteredUnitMachines.map((unit) => (
+            <div
+              key={unit.WorkCenterCode}
+              onClick={() => handleSelectUnitMachine(unit)}
+              style={{
+                padding: "8px 12px",
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#f1f1f1")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
+            >
+              {unit.WorkCenterName} ({unit.WorkCenterCode})
             </div>
-          )}
-        </div>
+          ))
+        ) : (
+          <div style={{ padding: "8px 12px" }}>No machines found</div>
+        )}
+      </div>
+    )}
+  </div>
+
         <div className="col-md-4">
           <label>Work Order:</label>
           <input

@@ -5,9 +5,12 @@ import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import './ContractirList.css';
 import { Link } from "react-router-dom";
-import ProductionApi from "../../../Service/Production.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { fetchShifts,  fetchContractors,
+  fetchUnitMachines, saveContractorProduction } from "../../../Service/Production.jsx";
+  
+
 
 const ContractirList = () => {
     const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -24,71 +27,82 @@ const ContractirList = () => {
       }
     }, [sideNavOpen]);
 
-    const [machines, setMachines] = useState([]);
-    const [contractors, setContractors] = useState([]);
     const [formData, setFormData] = useState({
       date: "",
       machine: "",
-      job_no: "",
       shift: "",
       item_name: "",
       total_production_qty: "",
-      item_rate: "",
       total_production_hours: "",
-      shift_target_qty: "",
       total_breakdown_hours: "",
-      machine_rate: "",
       contractor_name: "",
-      downtime_reason: "",
-      note: "",
+      job_no: "",
+      item_rate: "",
+      shift_target_qty: "",
+      machine_rate_per_hr: "",
+      prod_amt: "",
+      bd_amt: "",
+      efficiency: "",
     });
-  
-    // Fetch contractor names
-    useEffect(() => {
-      const fetchContractors = async () => {
-        try {
-          const data = await ProductionApi.getContractors();
-          setContractors(data);
-        } catch (error) {
-          console.error("Error fetching contractors:", error);
-        }
-      };
-      fetchContractors();
-    }, []);
-
-     // Fetch machines
-  useEffect(() => {
-    const fetchMachines = async () => {
-      try {
-        const data = await ProductionApi.fetchUnitMachines();
-        setMachines(data);
-      } catch (error) {
-        console.error("Error fetching machines:", error);
-      }
-    };
-    fetchMachines();
-  }, []);
   
     // Handle form input changes
     const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
+      setFormData({ ...formData, [e.target.name]: e.target.value });
     };
   
-    // Handle form submission
+    // Submit form
     const handleSubmit = async (e) => {
       e.preventDefault();
+      console.log("Submitting Data:", formData);
+  
       try {
-        const response = await ProductionApi.saveProductionEntry(formData);
+        await saveContractorProduction(formData);
         toast.success("Data saved successfully!");
-        console.log("Response:", response);
       } catch (error) {
-        toast.error("Failed to save data. Please try again.");
+        console.error("Error:", error.response?.data || error.message);
+        toast.error("Failed to save data. Please check required fields.");
       }
     };
+  
+    // Fetch Unit Machines
+    const [unitMachines, setUnitMachines] = useState([]);
+    const [searchTermMachine, setSearchTermMachine] = useState("");
+    useEffect(() => {
+      fetchUnitMachines().then(setUnitMachines);
+    }, []);
+  
+    const handleMachineSelect = (machine) => {
+      setSearchTermMachine(`${machine.WorkCenterName} (${machine.WorkCenterCode})`);
+      setFormData((prev) => ({ ...prev, machine: machine.WorkCenterCode }));
+    };
+  
+    // Fetch Contractors
+    const [contractors, setContractors] = useState([]);
+    const [searchTermContractor, setSearchTermContractor] = useState("");
+    useEffect(() => {
+      fetchContractors().then(setContractors);
+    }, []);
+  
+    const [selectedContractor, setSelectedContractor] = useState(null);
+
+    const handleContractorSelect = (contractor) => {
+      setSelectedContractor(contractor);
+      setSearchTermContractor(""); // Clear search input
+    };
+    
+  
+    // Fetch Shifts
+    const [shifts, setShifts] = useState([]);
+    const [searchTermShift, setSearchTermShift] = useState("");
+    useEffect(() => {
+      fetchShifts().then(setShifts);
+    }, []);
+  
+    const handleShiftSelect = (shift) => {
+      setSearchTermShift(`${shift.Shift_Name} From: ${shift.Shift_From} To: ${shift.Shift_Till}`);
+      setFormData((prev) => ({ ...prev, shift: shift.Shift_Name }));
+    };
+  
    
   return (
     <div className="ContractorListMaster">
@@ -141,25 +155,58 @@ const ContractirList = () => {
             className="form-control"
           />
                   </div>
-                  <div className="col-md-2">
-                    <label>Machine:</label>
-                    <select
-          name="machine"
-          value={formData.machine}
-          onChange={handleChange}
-          className="form-control"
-        >
-          <option value="">Select</option>
-          {machines.map((machine, index) => (
-            <option
-              key={index}
-              value={machine.WorkCenterCode}
-            >
-              {machine.WorkCenterCode} - {machine.WorkCenterName}
-            </option>
-          ))}
-        </select>
-                  </div>
+                  <div className="col-md-2" style={{ position: "relative" }}>
+  <label>Machine:</label>
+  <input
+    type="text"
+    value={searchTermMachine}
+    className="form-control"
+    placeholder="Search Machine"
+    onChange={(e) => setSearchTermMachine(e.target.value)}
+    style={{
+      width: "100%",
+      padding: "8px",
+      border: "1px solid #ccc",
+      borderRadius: "4px",
+    }}
+  />
+  {searchTermMachine && (
+    <div
+      style={{
+        position: "absolute",
+        width: "100%",
+        maxHeight: "150px",
+        overflowY: "auto",
+        overflowX: "auto",
+        background: "#fff",
+       
+        borderRadius: "4px",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        zIndex: 1000,
+      }}
+    >
+      {unitMachines
+        .filter((m) => m.WorkCenterName.includes(searchTermMachine))
+        .map((machine) => (
+          <div
+            key={machine.WorkCenterCode}
+            onClick={() => handleMachineSelect(machine)}
+            style={{
+              padding: "8px 12px",
+              cursor: "pointer",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#f1f1f1")}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
+          >
+            {machine.WorkCenterName} ({machine.WorkCenterCode})
+          </div>
+        ))}
+    </div>
+  )}
+</div>
                   <div className="col-md-2">
                     <label>Job No:</label>
                     <input
@@ -170,19 +217,55 @@ const ContractirList = () => {
             className="form-control"
           />
                   </div>
-                  <div className="col-md-2">
-                    <label>Shift:</label>
-                    <select
-            name="shift"
-            value={formData.shift}
-            onChange={handleChange}
-            className="form-control"
+                  <div className="col-md-2" style={{ position: "relative" }}>
+  <label>Shift:</label>
+  <input
+    type="text"
+    value={searchTermShift}
+    className="form-control"
+    placeholder="Search Shift"
+    onChange={(e) => setSearchTermShift(e.target.value)}
+    style={{
+      width: "100%",
+      padding: "8px",
+      border: "1px solid #ccc",
+      borderRadius: "4px",
+    }}
+  />
+  {searchTermShift && (
+    <div
+      style={{
+        position: "absolute",
+        width: "100%",
+        maxHeight: "150px",
+        overflowY: "auto",
+        background: "#fff",
+        
+        borderRadius: "4px",
+      
+        zIndex: 1000,
+      }}
+    >
+      {shifts
+        .filter((s) => s.Shift_Name.toLowerCase().includes(searchTermShift.toLowerCase()))
+        .map((shift) => (
+          <div
+            key={shift.Shift_Name}
+            onClick={() => handleShiftSelect(shift)}
+            style={{
+              padding: "8px 12px",
+              cursor: "pointer",
+            }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#f1f1f1")}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
           >
-            <option value="">Select</option>
-            <option value="a">a</option>
-          </select>
+            {shift.Shift_Name} ({shift.Shift_From} - {shift.Shift_Till})
+          </div>
+        ))}
+    </div>
+  )}
+</div>
 
-                  </div>
                   <div className="col-md-2">
                     <label>Item Name:</label>
                     <input
@@ -211,7 +294,7 @@ const ContractirList = () => {
                   <div className="col-md-2">
                     <label>Item Rate:</label>
                     <input
-            type="text"
+            type="number"
             name="item_rate"
             value={formData.item_rate}
             onChange={handleChange}
@@ -221,7 +304,7 @@ const ContractirList = () => {
                   <div className="col-md-2">
                     <label>Production Hours (HH:MM):</label>
                     <input
-            type="text"
+            type="number"
             name="total_production_hours"
             value={formData.total_production_hours}
             onChange={handleChange}
@@ -231,7 +314,7 @@ const ContractirList = () => {
                   <div className="col-md-2">
                     <label>Shift Target Qty:</label>
                     <input
-            type="text"
+            type="number"
             name="shift_target_qty"
             value={formData.shift_target_qty}
             onChange={handleChange}
@@ -241,7 +324,7 @@ const ContractirList = () => {
                   <div className="col-md-2">
                     <label>Total Breakdown Hours:</label>
                     <input
-            type="text"
+            type="number"
             name="total_breakdown_hours"
             value={formData.total_breakdown_hours}
             onChange={handleChange}
@@ -252,31 +335,69 @@ const ContractirList = () => {
 
                 <div className="row mb-3 text-start">
                 <div className="col-md-2">
-                    <label>MAchine Rate (Per Hr):</label>
+                    <label>Machine Rate (Per Hr):</label>
                     <input
-            type="text"
-            name="machine_rate"
-            value={formData.machine_rate}
+            type="number"
+            name="machine_rate_per_hr"            value={formData.machine_rate_per_hr}
             onChange={handleChange}
             className="form-control"
           />
                   </div> 
-                  <div className="col-md-2">
-                    <label>Contractor Name:</label>
-                    <select
-          name="contractor_name"
-          value={formData.contractor_name}
-          onChange={handleChange}
-          className="form-control"
-        >
-          <option value="">Select</option>
-          {contractors.map((contractor, index) => (
-            <option key={index} value={contractor.ContractorName}>
-              {contractor.ContractorName || "Unknown"}
-            </option>
-          ))}
-        </select>
-                  </div>
+                  <div className="col-md-2" style={{ position: "relative" }}>
+  <label>Contractor Name:</label>
+  <input
+    type="text"
+    value={selectedContractor ? selectedContractor.ContractorName : searchTermContractor}
+    className="form-control"
+    placeholder="Search Contractor"
+    onChange={(e) => {
+      setSearchTermContractor(e.target.value);
+      setSelectedContractor(null); // Reset selected contractor when typing
+    }}
+    style={{
+      width: "100%",
+      padding: "8px",
+      border: "1px solid #ccc",
+      borderRadius: "4px",
+    }}
+  />
+  {searchTermContractor && !selectedContractor && (
+    <div
+      style={{
+        position: "absolute",
+        width: "100%",
+        maxHeight: "150px",
+        overflowY: "auto",
+        background: "#fff",
+        border: "1px solid #ccc",
+        borderRadius: "4px",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        zIndex: 1000,
+      }}
+    >
+      {contractors
+        .filter((c) => c.ContractorName.toLowerCase().includes(searchTermContractor.toLowerCase()))
+        .map((contractor) => (
+          <div
+            key={contractor.ContractorName}
+            onClick={() => handleContractorSelect(contractor)}
+            style={{
+              padding: "8px 12px",
+              cursor: "pointer",
+            }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#f1f1f1")}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
+          >
+            {contractor.ContractorName}
+          </div>
+        ))}
+    </div>
+  )}
+</div>
+
+
+
+                  
                   <div className="col-md-2">
                     <label>Downtime Reason:</label>
                     <select
@@ -298,12 +419,46 @@ const ContractirList = () => {
             className="form-control"
           ></textarea>
                   </div>
+                  <div className="col-md-2">
+                    <label>Prod amt:</label>
+                    <input
+            name="prod_amt"
+            type="number"
+            value={formData.prod_amt}
+            onChange={handleChange}
+            className="form-control"
+       />
+                  </div>
+
+                  <div className="row">
+                  <div className="col-md-2">
+                    <label>bd amt:</label>
+                    <input
+            name="bd_amt"
+            type="number"
+            value={formData.bd_amt}
+            onChange={handleChange}
+            className="form-control"
+         />
+                  </div>
+                  <div className="col-md-2">
+                    <label>Efficiency:</label>
+                    <input
+                    type="number"
+            name="efficiency"
+            value={formData.efficiency}
+            onChange={handleChange}
+            className="form-control"
+        />
+                  </div>
                   <div className="col-md-2 mt-2">
                   <div className="button-section mt-4 text-end">
                   <button type="submit" className="btn">Save</button>
                   <button type="button" className="btn"  onClick={() => setFormData({})}>Clear</button>
                 </div>
                   </div>
+                  </div>
+                
                 </div>
 
                

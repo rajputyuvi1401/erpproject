@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect ,useCallback} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar.js";
@@ -76,19 +76,21 @@ const ProductionEntry = () => {
   // useEffect hook to call the API whenever the selected series changes to "DP"
   useEffect(() => {
     if (series === "DP" && shortYear) {
-      getProductionNumber(series, shortYear)
-        .then((data) => {
-          // Assuming the API returns { "prod_no": "DP 252600004" }
-          setProdNo(data.prod_no);
-        })
-        .catch((error) => {
-          console.error("Error fetching production number:", error);
-        });
+        console.log("🔄 Fetching production number...");
+        getProductionNumber(series, shortYear)
+            .then((data) => {
+                console.log("🆕 Received Production Number:", data.prod_no);
+                setProdNo(data.prod_no);
+            })
+            .catch((error) => {
+                console.error("❌ Error fetching production number:", error);
+            });
     } else {
-      // Clear the production number if series is not "DP"
-      setProdNo("");
+        console.warn("⚠️ Series is not DP or shortYear is missing. Clearing prodNo.");
+        setProdNo("");
     }
-  }, [series, shortYear]);
+}, [series, shortYear]);
+
 
   const [helpers, setHelpers] = useState([]);
   const [filteredHelpers, setFilteredHelpers] = useState([]);
@@ -431,48 +433,107 @@ const ProductionEntry = () => {
     console.log("Updated Idle Time Records:", idleTimeRecords);
   }, [idleTimeRecords]);
 
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const fetchNextProductionNumber = useCallback(async () => {
+    if (!series || !shortYear) {
+        console.warn("⚠️ Missing series or shortYear, skipping next production number fetch.");
+        return;
+    }
 
-    const postData = {
-      ...formData,
-      Prod_no: prodNo || "", // Ensure it's never undefined
-      contractor: formData.contractor || "N/A",
-      unit_machine: formData.unit_machine || "N/A",
-      item: formData.item || "N/A",
-      operation: formData.operation || "N/A",
-      prod_qty: formData.prod_qty || "0", // Set default numeric values
-      Date: formData.Date || new Date().toISOString().split("T")[0], // Default to today
-      Time: formData.Time || new Date().toLocaleTimeString(), // Default to now
-      Supervisor: formData.Supervisor || "N/A",
-      shift: formData.shift || "Morning",
-      operator: formData.operator || "N/A",
-      lot_no: formData.lot_no || "N/A",
-      rework_qty: formData.rework_qty || "0",
-      MachineIdleTime_Detail_Enter: idleTimeRecords,
-    };
+    console.log("🔄 Fetching next production number for series:", series, "and year:", shortYear);
 
     try {
-      const response = await createProductionEntry(postData);
+        const nextProdData = await getProductionNumber(series, shortYear);
+        console.log("🆕 Next Production Number Response:", nextProdData);
 
-      // ✅ Check if response exists and validate success
-      if (!response || response.error) {
-        throw new Error(`Error: ${response.error || "Unknown error occurred"}`);
-      }
-
-      toast.success("✅ Production entry submitted successfully!");
-
-      // ✅ Fetch the next production number only after successful submission
-      const nextProdData = await getProductionNumber(series, shortYear);
-      if (nextProdData && nextProdData.prod_no) {
-        setProdNo(nextProdData.prod_no); // Update the field with the next available production number
-      }
+        if (nextProdData?.prod_no) {
+            setProdNo(nextProdData.prod_no);
+            console.log("✅ Updated Production Number:", nextProdData.prod_no);
+        } else {
+            toast.error("⚠️ Failed to fetch the next production number.");
+        }
     } catch (error) {
-      console.error("❌ Failed to submit production entry:", error);
-      toast.error("❌ Failed to submit production entry. Please try again.");
+        console.error("❌ Error fetching next production number:", error);
+        toast.error("❌ Failed to get the next production number.");
     }
+}, [series, shortYear]); // ✅ Dependencies added correctly
+
+useEffect(() => {
+  if (series === "DP" && shortYear) {
+      fetchNextProductionNumber();
+  }
+}, [series, shortYear, fetchNextProductionNumber]); // ✅ No ESLint warnings
+
+
+
+  // Handle form submission
+ 
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+      console.log("🚀 Form submission started...");
+  
+      const postData = {
+          ...formData,
+          Prod_no: prodNo || "",
+          contractor: formData.contractor || "N/A",
+          unit_machine: formData.unit_machine || "N/A",
+          item: formData.item || "N/A",
+          operation: formData.operation || "N/A",
+          prod_qty: formData.prod_qty || "0",
+          Date: formData.Date || new Date().toISOString().split("T")[0],
+          Time: formData.Time || new Date().toLocaleTimeString("en-GB"),
+          Supervisor: formData.Supervisor || "N/A",
+          shift: formData.shift || "Morning",
+          operator: formData.operator || "N/A",
+          lot_no: formData.lot_no || "N/A",
+          rework_qty: formData.rework_qty || "0",
+          MachineIdleTime_Detail_Enter: idleTimeRecords,
+      };
+  
+      console.log("📤 Sending Data:", postData);
+  
+      try {
+          const response = await createProductionEntry(postData);
+          console.log("✅ API Response:", response);
+  
+          if (!response || response.error) {
+              throw new Error(`Error: ${response.error || "Unknown error occurred"}`);
+          }
+  
+          toast.success("✅ Production entry submitted successfully!");
+  
+          // ✅ Clear form fields **before fetching the next production number**
+          setFormData({
+              Prod_no: "",
+              contractor: "",
+              unit_machine: "",
+              item: "",
+              operation: "",
+              prod_qty: "",
+              Date: getCurrentDateTime().currentDate,  
+              Time: getCurrentDateTime().currentTime,  
+              Supervisor: "",
+              machine_speed: "",
+              Helper: "",
+              ParentOperation: "",
+              shift: "",
+              operator: "",
+              lot_no: "",
+              rework_qty: "",
+              reject_qty: "",
+              MachineIdleTime_Detail_Enter: [],
+          });
+  
+          // ✅ Fetch next production number **after clearing the form**
+          await fetchNextProductionNumber();
+  
+      } catch (error) {
+          console.error("❌ Submission Error:", error);
+          toast.error(`❌ Submission failed: ${error.message}`);
+      }
   };
+  
+
+
 
   return (
     // ProductionEntry Component UI

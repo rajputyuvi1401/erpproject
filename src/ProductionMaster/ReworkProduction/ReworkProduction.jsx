@@ -156,7 +156,7 @@ const ReworkProduction = () => {
     try {
       const response = await postProductionEntry(payload);
       console.log("API Response:", response);
-      alert("Data saved successfully!");
+      toast.success("Data saved successfully!");
   
        // Reset form data after successful save
     setFormData({
