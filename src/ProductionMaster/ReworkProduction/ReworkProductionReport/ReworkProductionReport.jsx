@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback ,useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import "./ReworkProductionReport.css";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { getProductDetails ,deleteProductDetail} from "../../../Service/Production.jsx";
 
 const ReworkProductionReport = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -20,6 +21,30 @@ const ReworkProductionReport = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+  const [data, setData] = useState([]);
+  const [filters, setFilters] = useState({ from: '', to: '', item: '' });
+
+  const fetchData = useCallback(async () => {
+    const result = await getProductDetails(filters);
+    setData(result);
+  }, [filters]);
+
+  // Fetch data on component mount and whenever filters change
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+  const handleSearch = () => {
+    fetchData();
+  };
+
+  const handleDelete = async (id) => {
+    const success = await deleteProductDetail(id);
+    if (success) {
+      setData(data.filter(item => item.id !== id));
+    }
+  };
+
 
   return (
     <div className="ReworkProductionReportMaster">
@@ -54,37 +79,38 @@ const ReworkProductionReport = () => {
                     </div>
                   </div>
                   <div className="ReworkProductionReport-main mb-4  mt-5">
-                    <div className="row ">
-                      <div className="col-md-1">
-                        <select>
-                          <option>Produlink</option>
-                        </select>
-                      </div>
-                      <div className="col-md-1">
-                        <label>From</label>
-                      </div>
-                      <div className="col-md-1">
-                        <input type="date" className="from-control" />
-                      </div>
-                      <div className="col-md-1">
-                        <label>To</label>
-                      </div>
-                      <div className="col-md-1">
-                        <input type="date" className="from-control" />
-                      </div>
-                      <div className="col-md-1">
-                        <label>Item</label>
-                      </div>
-                      <div className="col-md-1">
-                        <input type="text" className="from-control" />
-                      </div>
-
-                      <div className="col-md-1">
-                        <button type="button" className="btn btn-primary">
-                          Search
-                        </button>
-                      </div>
-                    </div>
+                  <div className="row text-start">
+        <div className="col-md-2">
+          <label>From</label>
+          <input 
+            type="date" 
+            className="form-control" 
+            value={filters.from} 
+            onChange={(e) => setFilters({ ...filters, from: e.target.value })} 
+          />
+        </div>
+        <div className="col-md-2">
+          <label>To</label>
+          <input 
+            type="date" 
+            className="form-control" 
+            value={filters.to} 
+            onChange={(e) => setFilters({ ...filters, to: e.target.value })} 
+          />
+        </div>
+        <div className="col-md-2">
+          <label>Item</label>
+          <input 
+            type="text" 
+            className="form-control" 
+            value={filters.item} 
+            onChange={(e) => setFilters({ ...filters, item: e.target.value })} 
+          />
+        </div>
+        <div className="col-md-2">
+          <button type="button" className="btn btn-primary mt-4" onClick={handleSearch}>Search</button>
+        </div>
+      </div>
                   </div>
 
                   <div className="ReworkProductionReport-main mb-4 text-start mt-5">
@@ -111,8 +137,8 @@ const ReworkProductionReport = () => {
                           <th>Del</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        {/* Sample Row */}
+                      {/* <tbody>
+                   
                         <tr>
                           <td>1</td>
                           <td>24-25</td>
@@ -132,8 +158,31 @@ const ReworkProductionReport = () => {
                           <td><FaEdit/></td>
                           <td><FaTrash/></td>
                         </tr>
-                        {/* Additional rows can be added dynamically */}
-                      </tbody>
+                       
+                      </tbody> */}
+                       <tbody>
+            {data.map((item, index) => (
+              <tr key={item.id}>
+                <td>{index + 1}</td>
+                <td>24-25</td>
+                <td>Produlink</td>
+                <td>{item.rework_no}</td>
+                <td>{item.rework_date}</td>
+                <td>{item.item_code}</td>
+                <td>{item.item_desc}</td>
+                <td>{item.part_code}</td>
+                <td>{item.change_fg}</td>
+                <td>{item.rework_to_ok_qty}</td>
+                <td>{item.reject_to_ok_qty}</td>
+                <td>{item.rework_to_reject_qty}</td>
+                <td>{item.quality_remark}</td>
+                <td>{item.operator}</td>
+                <td>{item.user}</td>
+                <td><FaEdit /></td>
+                <td><FaTrash onClick={() => handleDelete(item.id)}  /></td>
+              </tr>
+            ))}
+          </tbody>
                     </table>
                   </div>
                   </div>

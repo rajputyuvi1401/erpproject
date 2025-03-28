@@ -49,47 +49,45 @@ const ScrapRejectionEntry = () => {
   });
   const handleSeriesChange = async (e) => {
     const selectedSeries = e.target.value;
-    setFormData({ ...formData, Series: selectedSeries });
+    setFormData((prevData) => ({
+      ...prevData,
+      Series: selectedSeries,
+    }));
   
     if (selectedSeries === "FG Scrap Rejection Note") {
-      const shortYear = localStorage.getItem("Shortyear");
-      const data = await getNextNoteNo(shortYear);
-      if (data) {
-        setNoteNo(data.next_note_no);
-        setFormData((prevData) => ({
-          ...prevData,
-          NoteNo: data.next_note_no,
-        }));
+      const shortYear = localStorage.getItem("Shortyear"); // Get year from localStorage
+      if (shortYear) {
+        try {
+          const nextNoteNo = await getNextNoteNo(shortYear);
+          if (nextNoteNo) {
+            setNoteNo(nextNoteNo); // Set the note number state
+            setFormData((prevData) => ({
+              ...prevData,
+              NoteNo: nextNoteNo,
+            }));
+          }
+        } catch (error) {
+          console.error("Error fetching next note number:", error);
+        }
       }
+    } else {
+      // Reset NoteNo if a different series is selected
+      setNoteNo("");
+      setFormData((prevData) => ({
+        ...prevData,
+        NoteNo: "",
+      }));
     }
   };
+  
+  
   
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleClear = () => {
-    setFormData({
-      Plant:"",
-      Series: "",
-      NoteType: "",
-      NoteNo: "",
-      NoteDate: "",
-      ItemCode: "",
-      PartCode: "",
-      Stock: "",
-      Rework: "",
-      Reject: "",
-      ScrapReason: "",
-      ReworkScrapRemark: "",
-      RejectScrapRemark: "",
-      ScrapItemCode: "",
-      ScrapWt: "",
-    });
-    setNoteNo("");
-    toast.info("Form cleared!", { position: "top-right", autoClose: 2000 });
-  };
+
 
   const handleAdd = () => {
     if (!formData.ItemCode || !formData.PartCode || !formData.Reject || !formData.ScrapReason || !formData.ScrapWt) {
@@ -125,15 +123,17 @@ const ScrapRejectionEntry = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const payload = { ...formData }; // Include all form fields
+      const payload = { ...formData };
       console.log("Submitting Data:", payload); // Debugging
   
-      await submitScrapRejectionEntry(payload);
+      const response = await submitScrapRejectionEntry(payload);
+      console.log("API Response:", response); // Debug API response
+  
       toast.success("Entry saved successfully!", { position: "top-right", autoClose: 2000 });
   
       // Reset form after submission
       setFormData({
-        Plant:"",
+        Plant: "",
         Series: "",
         NoteType: "",
         NoteNo: "",
@@ -153,9 +153,11 @@ const ScrapRejectionEntry = () => {
   
       setNoteNo(""); // Reset Note No
     } catch (error) {
+      console.error("API Error:", error); // Debugging error
       toast.error("Failed to save entry.", { position: "top-right", autoClose: 2000 });
     }
   };
+  
   
 
   const handleRemove = (index) => {
@@ -214,15 +216,16 @@ const ScrapRejectionEntry = () => {
                             Series
                           </label>
                           <select
-                            className="form-select"
-                            id="series"
-                            onChange={handleSeriesChange}
-                          >
-                            <option>Select</option>
-                            <option value="FG Scrap Rejection Note">
-                              FG Scrap Rejection Note
-                            </option>
-                          </select>
+  className="form-select"
+  id="series"
+  name="Series"
+  value={formData.Series}
+  onChange={handleSeriesChange}
+>
+  <option value="">Select</option>
+  <option value="FG Scrap Rejection Note">FG Scrap Rejection Note</option>
+</select>
+
                         </div>
                         <div className="col-md-2">
                           <label htmlFor="NoteType" className="form-label">
@@ -476,7 +479,7 @@ const ScrapRejectionEntry = () => {
                         <button
                           type="button"
                           className="btn btn-secondary"
-                          onClick={handleClear}
+                         
                         >
                           Clear
                         </button>

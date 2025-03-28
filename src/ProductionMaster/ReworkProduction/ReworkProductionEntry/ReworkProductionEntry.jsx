@@ -451,11 +451,11 @@ const ProductionDetailsTab = ({
   return (
     <div className="ReworkProductionEntry-first">
       <div className="row mb-3 text-start">
-        <div className="col-md-4">
+        <div className="col-md-3">
           <label>Rework No:</label>
           <input type="text" className="form-control" name="rework_no" value={formData.rework_no} readOnly />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3">
           <label>Rework Date:</label>
           <input
             type="date"
@@ -466,7 +466,7 @@ const ProductionDetailsTab = ({
             required
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3">
           <label>Rework Time:</label>
           <input
             type="time"
@@ -477,10 +477,7 @@ const ProductionDetailsTab = ({
             required
           />
         </div>
-      </div>
-
-      <div className="row mb-3 text-start">
-      <div className="col-md-4" style={{ position: "relative" }}>
+        <div className="col-md-3" style={{ position: "relative" }}>
     <label>Machine:</label>
     <input
       type="text"
@@ -535,8 +532,12 @@ const ProductionDetailsTab = ({
       </div>
     )}
   </div>
+      </div>
 
-        <div className="col-md-4">
+      <div className="row mb-3 text-start">
+      
+
+        <div className="col-md-3">
           <label>Work Order:</label>
           <input
             type="text"
@@ -547,7 +548,7 @@ const ProductionDetailsTab = ({
             required
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3">
           <label>Item Code:</label>
           <input
             type="text"
@@ -557,10 +558,7 @@ const ProductionDetailsTab = ({
             onChange={handleItemChange}
           />
         </div>
-      </div>
-
-      <div className="row mb-3 text-start">
-        <div className="col-md-4">
+        <div className="col-md-3">
           <label>Part Code:</label>
           <select className="form-select" name="part_code" value={formData.part_code} onChange={handleChange}>
             <option value="">Select</option>
@@ -568,7 +566,7 @@ const ProductionDetailsTab = ({
             <option value="Part 2">Part 2</option>
           </select>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3">
           <label>Heat Code:</label>
           <input
             type="text"
@@ -578,7 +576,11 @@ const ProductionDetailsTab = ({
             onChange={handleItemChange}
           />
         </div>
-        <div className="col-md-4">
+      </div>
+
+      <div className="row mb-3 text-start">
+      
+        <div className="col-md-3">
           <label>Rework to Ok Qty:</label>
           <input
             type="text"
@@ -588,10 +590,7 @@ const ProductionDetailsTab = ({
             onChange={handleItemChange}
           />
         </div>
-      </div>
-
-      <div className="row mb-3 text-start">
-        <div className="col-md-4">
+        <div className="col-md-3">
           <label>Reject to Ok Qty:</label>
           <input
             type="text"
@@ -601,7 +600,7 @@ const ProductionDetailsTab = ({
             onChange={handleItemChange}
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3">
           <label>Rework to Reject Qty:</label>
           <input
             type="text"
@@ -611,10 +610,7 @@ const ProductionDetailsTab = ({
             onChange={handleItemChange}
           />
         </div>
-      </div>
-
-      <div className="row mb-3 text-start">
-        <div className="col-md-4">
+        <div className="col-md-3">
           <label>Change FG:</label>
           <input
             type="text"
@@ -624,7 +620,13 @@ const ProductionDetailsTab = ({
             onChange={handleChange}
           />
         </div>
-        <div className="col-md-4">
+      </div>
+
+      
+
+      <div className="row mb-3 text-start">
+        
+        <div className="col-md-3">
           <label>Part Code 2:</label>
           <select className="form-select" name="part_code2" value={formData.part_code2} onChange={handleChange}>
             <option value="">Select</option>
@@ -632,7 +634,7 @@ const ProductionDetailsTab = ({
             <option value="Machine 2">Machine 2</option>
           </select>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3">
           <label>Heat Code 2:</label>
           <input
             type="text"
@@ -642,14 +644,50 @@ const ProductionDetailsTab = ({
             onChange={handleChange}
           />
         </div>
+        <div className="col-md-3">
+          <label>Reason For Rework:</label>
+          <input
+            type="text"
+            className="form-control"
+            name="reason_for_rework"
+            value={formData.reason_for_rework}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="col-md-3">
+          <label>Quality Remark:</label>
+          <input
+            type="text"
+            className="form-control"
+            name="quality_remark"
+            value={formData.quality_remark}
+            onChange={handleChange}
+          />
+        </div>
       </div>
-
       <div className="row mb-3 text-start">
-        <div className="col-md-2 offset-md-10">
-          <button type="button" className="btn btn-primary" onClick={handleAddItem}>
+       
+        <div className="col-md-3">
+          <label>Operator:</label>
+          <input
+            type="text"
+            className="form-control"
+            name="operator"
+            value={formData.operator}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="col-md-2 offset-md-10 text-end" style={{marginTop:"-35px"}}>
+          <button type="button" className="btn" onClick={handleAddItem}>
             Add
           </button>
         </div>
+      </div>
+
+      <div className="row mb-3 text-start">
+       
       </div>
 
       <div className="ReworkProductionEntry-table-section">
@@ -692,40 +730,7 @@ const ProductionDetailsTab = ({
         </table>
       </div>
 
-      <div className="row mb-3 text-start">
-        <div className="col-md-4">
-          <label>Reason For Rework:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="reason_for_rework"
-            value={formData.reason_for_rework}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="col-md-4">
-          <label>Quality Remark:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="quality_remark"
-            value={formData.quality_remark}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="col-md-4">
-          <label>Operator:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="operator"
-            value={formData.operator}
-            onChange={handleChange}
-            required
-          />
-        </div>
-      </div>
+    
     </div>
   )
 }

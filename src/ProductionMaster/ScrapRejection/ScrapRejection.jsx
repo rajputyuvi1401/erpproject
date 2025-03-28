@@ -4,10 +4,11 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
 import "./ScrapRejection.css";
-import { getNextScrapRejectionNo,getScrapRejections, addScrapRejection, deleteScrapRejection} from "../../Service/Production.jsx";
+import { getScrapLineRejectionNote , submitScrapRejectionNote} from "../../Service/Production.jsx";
 import { toast ,ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa6";
+// import { FaTrash } from "react-icons/fa";
 
 const ScrapRejection = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -25,126 +26,128 @@ const ScrapRejection = () => {
   }, [sideNavOpen]);
 
 
+  const shortYear = localStorage.getItem("Shortyear");
+
+  // State for form fields
   const [series, setSeries] = useState("");
-  const [scrapRejectionNo, setScrapRejectionNo] = useState("");
-  const [scrapRejectionDate, setScrapRejectionDate] = useState("");
-  const [scrapRejectionQty, setScrapRejectionQty] = useState("");
-  const [scrapRejectionRemark, setScrapRejectionRemark] = useState("");
-  const [transactionType, setTransactionType] = useState("regular");
+  const [ScrapRejectionNo, setScrapRejectionNo] = useState("");
+  const [scrapRejections, setScrapRejections] = useState([]); // Stores multiple table entries
 
-  // Additional fields
-  const [itemNoCode, setItemNoCode] = useState("");
-  const [heatNoStock, setHeatNoStock] = useState("");
-  const [rejectReason, setRejectReason] = useState("");
-  const [custSupp, setCustSupp] = useState("");
-  const [scrapRejItem, setScrapRejItem] = useState("");
-  const [scrapQty, setScrapQty] = useState("");
- 
-  const [scrapRejections, setScrapRejections] = useState([]);
+  const [formData, setFormData] = useState({
+    Plant: "",
+    Series: "",
+    TrnType: "",
+    ScrapRejectionNo: "",
+    ScrapRejectionNoteDate: "",
+    ItemNo: "",
+    HeatCode: "",
+    ScrapRejectionQty: "",
+    ScrapRejectRemark: "",
+    RejectReason: "",
+    cust_SuppName: "",
+    ScrapRejectionItem: "",
+    ScrapQty: "",
+  });
 
-  
-
+  // Fetch next rejection number
   const handleSeriesChange = async (e) => {
     const selectedSeries = e.target.value;
     setSeries(selectedSeries);
-  
-    const year = localStorage.getItem("Shortyear"); // Ensure correct key
-  
-    if (!year) {
-      console.error("Shortyear is missing from localStorage");
-      return;
-    }
-  
+
     if (selectedSeries === "Line R") {
       try {
-        const response = await getNextScrapRejectionNo(selectedSeries, year); // Pass series & year
-        console.log("API Response:", response);
-        setScrapRejectionNo(response?.next_scrap_rejection_no || ""); // Ensure correct field
+        const nextRejectionNo = await getScrapLineRejectionNote(shortYear);
+        if (nextRejectionNo) {
+          setScrapRejectionNo(nextRejectionNo);
+        } else {
+          toast.error("Failed to fetch Scrap Rejection No.");
+        }
       } catch (error) {
-        console.error(
-          "Failed to fetch next scrap rejection number:",
-          error.response?.data || error.message
-        );
-        setScrapRejectionNo(""); // Clear input if API call fails
+        toast.error("Error fetching Scrap Rejection No.");
+        console.error(error);
+        setScrapRejectionNo("");
       }
     } else {
-      setScrapRejectionNo(""); // Reset when not "Line R"
+      setScrapRejectionNo("");
     }
   };
-  
 
-  
+  // Handle input changes
+  const handleInputChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
-  // Fetch data when component mounts
-  useEffect(() => {
-    const fetchScrapRejections = async () => {
-      const data = await getScrapRejections();
-      setScrapRejections(data);
-    };
-    fetchScrapRejections();
-  }, []);
+  // Add entry to the table
+  const handleAddEntry = () => {
+    if (!formData.ItemNo || !formData.ScrapRejectionQty || !formData.ScrapQty) {
+      toast.error("Please fill in required fields!");
+      return;
+    }
 
+    setScrapRejections((prev) => [...prev, { ...formData }]);
+
+    // Reset item-related fields
+    setFormData((prev) => ({
+      ...prev,
+      ItemNo: "",
+      ScrapRejectionQty: "",
+      ScrapRejectRemark: "",
+      RejectReason: "",
+      ScrapRejectionItem: "",
+      ScrapQty: "",
+    }));
+  };
+
+  // Clear all fields
+  const clearForm = () => {
+    setScrapRejections([]);
+    setScrapRejectionNo("");
+    setSeries("");
+    setFormData({
+      Plant: "",
+      Series: "",
+      TrnType: "",
+      ScrapRejectionNo: "",
+      ScrapRejectionNoteDate: "",
+      ItemNo: "",
+      HeatCode: "",
+      ScrapRejectionQty: "",
+      ScrapRejectRemark: "",
+      RejectReason: "",
+      cust_SuppName: "",
+      ScrapRejectionItem: "",
+      ScrapQty: "",
+    });
+  };
+
+  // Submit data
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Validate fields
-    if (!scrapRejectionQty || !scrapQty) {
-      alert("Scrap Rejection Qty and Scrap Qty cannot be null.");
-      return;
-    }
-  
-    if (
-      rejectReason === "" ||
-      custSupp === "" ||
-      scrapRejItem === ""
-    ) {
-      alert("Reject Reason, Cust/Supp, and Scrap/Rej Item must be boolean values.");
-      return;
-    }
-  
-    const payload = {
-      series: "Line R",
-      transaction_type: transactionType,
-      scrap_rejection_no: scrapRejectionNo,
-      scrap_rejection_date: scrapRejectionDate,
-      item_no_code: itemNoCode,
-      heat_no_stock: heatNoStock,
-      scrap_rejection_qty: parseFloat(scrapRejectionQty),
-      scrap_rejection_remark: scrapRejectionRemark,
-      reject_reason: rejectReason === "true", // Convert to boolean
-      cust_supp: custSupp === "true", // Convert to boolean
-      scrap_rej_item: scrapRejItem === "true", // Convert to boolean
-      scrap_qty: parseFloat(scrapQty),
-    };
-  
-    try {
-      await addScrapRejection(payload);
-      toast.success("Data added successfully!");
-      // Refresh data after successful submission
-      const updatedData = await getScrapRejections();
-      setScrapRejections(updatedData);
-       // Clear form fields
-       setScrapRejectionQty("");
-       setScrapQty("");
-       setScrapRejectionRemark("");
-       setRejectReason("");
-       setCustSupp("");
-       setScrapRejItem("");
-    } catch (error) {
-      console.error("Error adding data:", error);
-      toast.error("Failed to add data.");
-    }
-  };
 
-  const handleDelete = async (id) => {
+    if (scrapRejections.length === 0) {
+      toast.error("No entries to submit!");
+      return;
+    }
+
+    const submissionData = {
+      scrap_items: scrapRejections, // Include table entries
+      ...formData,
+      Series: series,
+      ScrapRejectionNo,
+    };
+
+    console.log("Submitting data:", JSON.stringify(submissionData, null, 2));
+
     try {
-      await deleteScrapRejection(id);
-      const updatedData = await getScrapRejections();
-      setScrapRejections(updatedData);
-      toast.success("Data deleted successfully!");
+      await submitScrapRejectionNote(submissionData);
+      toast.success("Scrap rejection note submitted successfully!");
+      clearForm(); // Clear after submission
     } catch (error) {
-      console.error("Error deleting data:", error);
-      toast.error("Failed to delete data.");
+      toast.error("Failed to submit scrap rejection note.");
+      console.error(error);
     }
   };
 
@@ -160,7 +163,10 @@ const ScrapRejection = () => {
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="ScrapRejection mt-4">
+                <form onSubmit={handleSubmit}>
+
                   <div className="ScrapRejection-header mb-3">
+
                     <div className="row align-items-center">
                     <div className="col-md-3">
                       <h5 className="header-title text-start">Scrap/Line Rejection Note</h5>
@@ -169,9 +175,17 @@ const ScrapRejection = () => {
                       <div className="row align-items-center">
                        
                         <div className="col-md-2">
-                          <select id="seriesSelect" className="form-select">
-                            <option>Produlink</option>
-                          </select>
+                        <select
+  id="seriesSelect"
+  className="form-select"
+  name="Plant"
+  value={formData.Plant}
+  onChange={handleInputChange}
+>
+  <option value="">Select Plant</option>
+  <option value="Produlink">Produlink</option>
+  <option value="FactoryA">Factory A</option>
+</select>
                         </div>
                       </div>
                     </div>
@@ -180,185 +194,125 @@ const ScrapRejection = () => {
                   </div>
 
                   <div className="ScrapRejection-form bg-light p-3 rounded">
-                  <form onSubmit={handleSubmit}>
+                  
                     <div className="row g-3 text-start">
-                      <div className="col-md-3">
-                        <label htmlFor="series" className="form-label">
-                          Series <span style={{ color: "red" }}>*</span>
-                        </label>
-                        <select
-            className="form-select"
-            style={{ marginTop: "-1px" }}
-            id="series"
-            value={series}
-            onChange={handleSeriesChange}
-          >
-            <option>Select</option>
-            <option value="Line R">Line R</option>
-          </select>
-                      </div>
-                      <div className="col-md-3">
-                        <label htmlFor="type" className="form-label">
-                        TM.Type
-                        </label>
-                        <select
-            className="form-select"
-            style={{ marginTop: "-1px" }}
-            id="type"
-            value={transactionType}
-            onChange={(e) => setTransactionType(e.target.value)}
-          >
-            <option>Select</option>
-            <option>Option 1</option>
-          </select>
-                      </div>
+                    <div className="col-md-3">
+    <label htmlFor="series" className="form-label">
+      Series <span style={{ color: "red" }}>*</span>
+    </label>
+    <select
+      className="form-select"
+      style={{ marginTop: "-1px" }}
+      id="series"
+      value={series}
+      onChange={handleSeriesChange}
+    >
+      <option>Select</option>
+      <option value="Line R">Line R</option>
+    </select>
+  </div>
+
+  <div className="col-md-3">
+            <label>TM.Type:</label>
+            <select className="form-select" id="type" name="TrnType" value={formData.TrnType} onChange={handleInputChange}>
+              <option>Select</option>
+              <option value="Option 1">Option 1</option>
+            </select>
+          </div>
                      
-          <div className="col-md-3">
-            <label htmlFor="text" className="form-label">
-              Scrap / Rej. No
-            </label>
-            {series === "Line R" && (
+          {series === "Line R" && (
+  <div className="col-md-3">
+    <label htmlFor="scrapRejectionNo" className="form-label">
+      Scrap / Rej. No
+    </label>
     <input
       type="text"
       className="form-control"
       id="scrapRejectionNo"
-      value={scrapRejectionNo || ""}
-      readOnly 
+      value={ScrapRejectionNo || ""}
+      readOnly
     />
-  )}
-          </div>
+  </div>
+)}
+
       
                       <div className="col-md-3">
-                        <label htmlFor="date" className="form-label">
+                        <label htmlFor="date"  className="form-label">
                           Scrap / Rej. Date
                         </label>
                         <input
             type="date"
             className="form-control"
             id="date"
-            value={scrapRejectionDate}
-            onChange={(e) => setScrapRejectionDate(e.target.value)}
+           
           />
                       </div>
                     </div>
                     <div className="row g-3 text-start">
-        <div className="col-md-3">
-          <label htmlFor="itemNoCode" className="form-label">
-            Item NO/Code:
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="itemNoCode"
-            value={itemNoCode}
-            onChange={(e) => setItemNoCode(e.target.value)}
-          />
-        </div>
-        <div className="col-md-3">
-          <label htmlFor="heatNoStock" className="form-label">
-            Heat No(Stock)
-          </label>
-          <select
-            className="form-select"
-            style={{ marginTop: "-1px" }}
-            id="heatNoStock"
-            value={heatNoStock}
-            onChange={(e) => setHeatNoStock(e.target.value)}
-          >
-            <option>Select</option>
-            <option>Option 1</option>
-          </select>
-        </div>
-        <div className="col-md-3">
-          <label htmlFor="scrapRejQty" className="form-label">
-            Scrap / Rej. Qty <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="scrapRejQty"
-            value={scrapRejectionQty}
-            onChange={(e) => setScrapRejectionQty(e.target.value)}
-          />
-        </div>
-        <div className="col-md-3">
-          <label htmlFor="scrapRejRemark" className="form-label">
-            Scrap / Rej. Remark
-          </label>
-          <textarea
-            className="form-control"
-            style={{ marginTop: "-1px" }}
-            id="scrapRejRemark"
-            value={scrapRejectionRemark}
-            onChange={(e) => setScrapRejectionRemark(e.target.value)}
-          />
-        </div>
-      </div>
+                    <div className="col-md-3">
+            <label htmlFor="ItemNo" className="form-label">Item NO/Code:</label>
+            <input type="text" className="form-control" name="ItemNo" value={formData.ItemNo} onChange={handleInputChange} />
+          </div>
+          <div className="col-md-3">
+            <label  htmlFor="HeatCode" className="form-label">Heat No (Stock):</label>
+            <select className="form-select" id="HeatCode" name="HeatNoCode" value={formData.HeatNoCode} onChange={handleInputChange}>
+              <option>Select</option>
+              <option value="Option 1">Option 1</option>
+            </select>
+          </div>
 
-      <div className="row g-3 text-start">
         <div className="col-md-3">
-          <label htmlFor="rejectReason" className="form-label">
-            Reject Reason
-          </label>
-          <select
-            className="form-select"
-            style={{ marginTop: "-1px" }}
-            id="rejectReason"
-            value={rejectReason}
-            onChange={(e) => setRejectReason(e.target.value)}
-          >
-            <option>Select</option>
-            <option>Option 1</option>
-          </select>
-        </div>
+            <label htmlFor="ScrapRejectionQty" className="form-label">Scrap / Rej. Qty <span style={{ color: "red" }}>*</span></label>
+            <input type="text" className="form-control" name="ScrapRejectionQty" value={formData.ScrapRejectionQty} onChange={handleInputChange} />
+          </div>
+
+
+          <div className="col-md-3">
+            <label htmlFor="ScrapRejectionNoteDate" className="form-label">Scrap / Rej. Date:</label>
+            <input type="date" className="form-control" id="date" name="ScrapRejectionNoteDate" value={formData.ScrapRejectionNoteDate} onChange={handleInputChange} />
+          </div>
+                    </div>
+
+                    <div className="row g-3 text-start">
+  <div className="col-md-3">
+            <label htmlFor="ScrapRejectionRemark" className="form-label">Scrap / Rej. Remark:</label>
+            <textarea className="form-control" id="scrapRejRemark" name="ScrapRejectRemark" value={formData.ScrapRejectRemark} onChange={handleInputChange} />
+          </div>
+
         <div className="col-md-3">
-          <label htmlFor="custSupp" className="form-label">
+          <label htmlFor="cust_SuppName" className="form-label">
             Cust/Supp
           </label>
-          <input
-            type="text"
-            className="form-control"
-            id="custSupp"
-            value={custSupp}
-            onChange={(e) => setCustSupp(e.target.value)}
-          />
+          <input type="type" className="form-control" id="cust_SuppName" name="cust_SuppName" onChange={handleInputChange} />
         </div>
         <div className="col-md-3">
-          <label htmlFor="scrapRejItem" className="form-label">
+          <label htmlFor="ScrapRejectionItem" className="form-label">
             Scrap / Rej. Item
           </label>
           <input
             type="text"
             className="form-control"
-            id="scrapRejItem"
-            value={scrapRejItem}
-            onChange={(e) => setScrapRejItem(e.target.value)}
+            id="ScrapRejectionItem"
+            name="ScrapRejectionItem" onChange={handleInputChange}
           />
         </div>
         <div className="col-md-3">
-          <label htmlFor="scrapQty" className="form-label">
-            Scrap Qty <span style={{ color: "red" }}>*</span>
-          </label>
-          <textarea
-            className="form-control"
-            style={{ marginTop: "-1px" }}
-            id="scrapQty"
-            value={scrapQty}
-            onChange={(e) => setScrapQty(e.target.value)}
-          />
-        </div>
-      </div>
+            <label htmlFor="ScrapQty" className="form-label">Scrap Qty <span style={{ color: "red" }}>*</span></label>
+            <input type="text" className="form-control" name="ScrapQty" value={formData.ScrapQty} onChange={handleInputChange} />
+          </div>
+
+                     </div>
 
                     <div className="row g-3 text-end mt-2 ">
                       <div className="col-md-12">
-                        <button className="btn" type="submit">ADD</button>
+                      <button type="button" className="btn" onClick={handleAddEntry}>Add Entry</button>
                       </div>
                       </div>
-</form>
 
-                  </div>
 
-                  <div className="ScrapRejection-table mt-4">
+               
+
+                    <div className="ScrapRejection-table mt-4">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -372,34 +326,43 @@ const ScrapRejection = () => {
                         </tr>
                       </thead>
                       <tbody>
-          {scrapRejections.length > 0 ? (
-            scrapRejections.map((item, index) => (
-              <tr key={item.id}>
-                <td>{index + 1}</td>
-                <td>{item.item_no_code}</td>
-                <td>{item.scrap_rejection_qty}</td>
-                <td>{item.scrap_rejection_remark}</td>
-                <td>{item.reject_reason ? "Yes" : "No"}</td>
-                <td>{item.scrap_qty}</td>
-                <td>
-                  <button
-                    className="btn"
-                    onClick={() => handleDelete(item.id)}
-                  >
-                    <FaTrash/>
-                  </button>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="7">No data available</td>
-            </tr>
-          )}
-        </tbody>
+              {scrapRejections.length > 0 ? scrapRejections.map((item, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{item.ItemNo}</td>
+                  <td>{item.ScrapRejectionQty}</td>
+                  
+                 
+                  <td>{item.ScrapRejectRemark}</td>
+                  <td>{item.ScrapRejectionItem}</td>
+                  <td>{item.ScrapQty}</td>
+                  <td>
+                    <button className="btn" onClick={() => setScrapRejections(scrapRejections.filter((_, i) => i !== index))}><FaTrash/></button>
+                  </td>
+                </tr>
+              )) : (
+                <tr><td colSpan="5">No entries added</td></tr>
+              )}
+            </tbody>
                     </table>
+                    </div>
+                  <div className="row mt-3 justify-content-end">
+                      <div className="text-end col-auto d-flex gap-2">
+                        {/* Save Entry Button */}
+                        <button type="submit" className="btn btn-primary">
+                          Save Entry
+                        </button>
+
+                        {/* Clear Button */}
+                        <button type="button" className="btn btn-secondary ms-2" onClick={() => setScrapRejections([])}>Clear</button>
+        </div>
+
+                    </div>
+                   
                   </div>
-                </div>
+</form>
+</div>
+
               </main>
             </div>
           </div>

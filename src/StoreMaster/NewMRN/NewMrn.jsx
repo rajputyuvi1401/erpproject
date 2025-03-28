@@ -6,10 +6,12 @@ import SideNav from "../../SideNav/SideNav.js";
 import { Link } from "react-router-dom";
 import "./NewMrn.css";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { saveNewMrn, fetchMrnData, editMrnData, deleteMrnData  } from "../../Service/StoreApi.jsx";
+import { getNewMRN, submitNewMRN ,searchMRNItem ,searchEmployeeDept} from "../../Service/StoreApi.jsx";
 import { toast, ToastContainer } from "react-toastify"; // Make sure to install react-toastify
 import "react-toastify/dist/ReactToastify.css";
+import { fetchUnitMachines } from "../../Service/Production.jsx";
 const NewMrn = () => {
+
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
   const toggleSideNav = () => {
@@ -23,118 +25,321 @@ const NewMrn = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
-  const [showModal, setShowModal] = useState(false);
-  const [showModal1, setShowModal1] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
 
-  const handleModalClose = () => setShowModal(false);
-  const handleModalOpen = () => setShowModal(true);
-
-  const handleModalClose1 = () => setShowModal1(false);
-  const handleModalOpen1 = () => setShowModal1(true);
-
-  const handleModalClose2 = () => setShowModal2(false);
-  const handleModalOpen2 = () => setShowModal2(true);
-
-  // table 1
   const [formData, setFormData] = useState({
+    Plant: "",
+    Series: "",
+    MRN_no: "",
+    General: false,
+    Work_order: false,
     ItemCode: "",
     Description: "",
-    Qty: "",
+    Qty_1: "",
+    QtyUnit: "",
     Unit: "",
     Type: "",
     Machine: "",
     Employee: "",
     Dept: "",
-    Remark: "",
-  });
+    Remark_1: "",
+    MRN_date: new Date().toISOString().split("T")[0], // Current date in YYYY-MM-DD format
+    MRN_time: new Date().toTimeString().split(" ")[0], // Current time in HH:MM:SS format
+    Remark_2: "",
+  })
 
-  const [errors, setErrors] = useState({});
-  const [mrnData, setMrnData] = useState([]);
-  const [editingId, setEditingId] = useState(null);
+  // State for table data
+  const [NewMRNTable, setNewMRNTable] = useState([])
 
+  // State for MRN number
+  const [MrnNo, setMrnNo] = useState("")
 
+  // State for series
+  const [series, setSeries] = useState("")
+
+  // State to track if we're editing an existing row
+  const [editIndex, setEditIndex] = useState(-1)
+
+  // State for form submission status
+  const [submitting, setSubmitting] = useState(false)
+  const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState("")
+
+  // Fetch MRN number on component mount
   useEffect(() => {
-    fetchData();
-  }, []);
+    const fetchMRNNumber = async () => {
+      const currentYear = new Date().getFullYear()
+      const mrnNumber = await getNewMRN(currentYear)
+      if (mrnNumber) {
+        setMrnNo(mrnNumber)
+        setFormData((prev) => ({ ...prev, MRN_no: mrnNumber }))
+      }
+    }
 
-  const fetchData = async () => {
+    fetchMRNNumber()
+  }, [])
+
+  // Handle form field changes
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target
+
+    // Handle checkboxes
+    if (type === "checkbox") {
+      setFormData((prev) => ({ ...prev, [name]: checked }))
+      return
+    }
+
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  // Handle series change
+  const handleSeriesChange = (e) => {
+    const value = e.target.value
+    setSeries(value)
+    setFormData((prev) => ({ ...prev, Series: value }))
+  }
+
+  // Handle checkbox changes
+  const handleCheckboxChange = (e) => {
+    const { id, checked } = e.target
+
+    if (id === "poGrnCheckbox") {
+      setFormData((prev) => ({ ...prev, General: checked }))
+    } else if (id === "directGrnCheckbox") {
+      setFormData((prev) => ({ ...prev, Work_order: checked }))
+    }
+  }
+
+  // Add item to table
+  const handleAddToTable = (e) => {
+    e.preventDefault()
+
+    // Validate required fields
+    if (!formData.ItemCode || !formData.Description || !formData.Qty_1) {
+      alert("Please fill in Item Code, Description, and Quantity fields")
+      return
+    }
+
+    // Create new item for table
+    const newItem = {
+      ItemCode: formData.ItemCode,
+      Description: formData.Description,
+      QtyUnit: formData.QtyUnit,
+      Qty_1: formData.Qty_1,
+      Unit: formData.Unit,
+      Type: formData.Type,
+      Machine: formData.Machine,
+      Employee: formData.Employee,
+      Dept: formData.Dept,
+      Remark_1: formData.Remark_1,
+    }
+
+    // If editing existing row, update it
+    if (editIndex >= 0) {
+      const updatedTable = [...NewMRNTable]
+      updatedTable[editIndex] = newItem
+      setNewMRNTable(updatedTable)
+      setEditIndex(-1) // Reset edit index
+    } else {
+      // Otherwise add new row
+      setNewMRNTable((prev) => [...prev, newItem])
+    }
+
+    // Clear form fields
+    setFormData((prev) => ({
+      ...prev,
+      ItemCode: "",
+      Description: "",
+      Qty_1: "",
+      QtyUnit: "",
+      Unit: "",
+      Type: "",
+      Machine: "",
+      Employee: "",
+      Dept: "",
+      Remark_1: "",
+    }))
+  }
+
+  // Edit table row
+  const handleEdit = (item, index) => {
+    // Set form data with selected row data
+    setFormData((prev) => ({
+      ...prev,
+      ItemCode: item.ItemCode,
+      Description: item.Description,
+      Qty_1: item.Qty_1,
+      QtyUnit: item.QtyUnit,
+      Unit: item.Unit,
+      Type: item.Type,
+      Machine: item.Machine,
+      Employee: item.Employee,
+      Dept: item.Dept,
+      Remark_1: item.Remark_1,
+    }))
+
+    // Set edit index
+    setEditIndex(index)
+  }
+
+  // Delete table row
+  const handleDelete = (index) => {
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      const updatedTable = [...NewMRNTable]
+      updatedTable.splice(index, 1)
+      setNewMRNTable(updatedTable)
+
+      // If currently editing this row, reset edit state
+      if (editIndex === index) {
+        setEditIndex(-1)
+        setFormData((prev) => ({
+          ...prev,
+          ItemCode: "",
+          Description: "",
+          Qty_1: "",
+          QtyUnit: "",
+          Unit: "",
+          Type: "",
+          Machine: "",
+          Employee: "",
+          Dept: "",
+          Remark_1: "",
+        }))
+      }
+    }
+  }
+  
+
+  // 🔹 Handle Submit (Ab Table Data Remove Nahi Hoga Jab Tak Submit Nahi Hota)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    // Validate table has at least one item
+    if (NewMRNTable.length === 0) {
+      alert("Please add at least one item to the MRN")
+      return
+    }
+
+    // Prepare data for submission
+    const submitData = {
+      ...formData,
+      NewMRNTable: NewMRNTable,
+    }
+
+    setSubmitting(true)
+    setSubmitError("")
+
     try {
-      const data = await fetchMrnData();
-      setMrnData(data);
+      const result = await submitNewMRN(submitData)
+      if (result) {
+        setSubmitSuccess(true)
+
+        // Reset form after successful submission
+        setNewMRNTable([])
+        setFormData({
+          Plant: "",
+          Series: "",
+          MRN_no: "",
+          General: false,
+          Work_order: false,
+          ItemCode: "",
+          Description: "",
+          Qty_1: "",
+          QtyUnit: "",
+          Unit: "",
+          Type: "",
+          Machine: "",
+          Employee: "",
+          Dept: "",
+          Remark_1: "",
+          MRN_date: new Date().toISOString().split("T")[0],
+          MRN_time: new Date().toTimeString().split(" ")[0],
+          Remark_2: "",
+        })
+
+        // Fetch new MRN number
+        const currentYear = new Date().getFullYear()
+        const mrnNumber = await getNewMRN(currentYear)
+        if (mrnNumber) {
+          setMrnNo(mrnNumber)
+          setFormData((prev) => ({ ...prev, MRN_no: mrnNumber }))
+        }
+
+        
+        toast.success("MRN saved successfully!")
+      } else {
+        setSubmitError("Failed to save MRN. Please try again.")
+      }
     } catch (error) {
-      toast.error('Failed to fetch data.');
+      setSubmitError("Error saving MRN: " + error.message)
+    } finally {
+      setSubmitting(false)
+    }
+  }
+  
+// search
+const [searchResults, setSearchResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleItemCodeChange = async (e) => {
+    const value = e.target.value;
+    setFormData({ ...formData, ItemCode: value });
+
+    if (value.length >= 2) {
+      const results = await searchMRNItem(value);
+      setSearchResults(results);
+      setShowDropdown(true);
+    } else {
+      setSearchResults([]);
+      setShowDropdown(false);
     }
   };
 
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleSelectItem = (item) => {
     setFormData({
       ...formData,
-      [name]: value,
+      ItemCode: item.part_no,
+      Description: item.Name_Description,
+      QtyUnit: item.Unit_Code,
     });
+    setShowDropdown(false);
   };
 
-const validateForm = () => {
-    const newErrors = {};
-    for (const [key, value] of Object.entries(formData)) {
-      if (!value) {
-        newErrors[key] = 'This field is required.';
-      }
-    }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (validateForm()) {
-      try {
-        if (editingId) {
-          // Edit existing item
-          await editMrnData(editingId, formData);
-          toast.success('Data updated successfully!');
-        } else {
-          // Save new item
-          await saveNewMrn(formData);
-          toast.success('Data saved successfully!');
-        }
-        fetchData(); // Refresh data after saving
-        setFormData({
-          ItemCode: '',
-          Description: '',
-          Qty: '',
-          Unit: '',
-          Type: '',
-          Machine: '',
-          Employee: '',
-          Dept: '',
-          Remark: '',
-        });
-        setEditingId(null); // Reset editing state
-      } catch (error) {
-        toast.error('Failed to save data.');
-      }
-    }
-  };
-
-  const handleEdit = (item) => {
-    setFormData(item);
-    setEditingId(item.id);
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      await deleteMrnData(id);
-      toast.success('Data deleted successfully!');
-      fetchData(); // Refresh data after deletion
-    } catch (error) {
-      toast.error('Failed to delete data.');
-    }
-  };
   
+
+  const handleEmployeeChange = async (e) => {
+    const value = e.target.value;
+    setFormData({ ...formData, Employee: value });
+
+    if (value.length >= 2) {
+      const results = await searchEmployeeDept(value);
+      setSearchResults(results);
+      setShowDropdown(true);
+    } else {
+      setSearchResults([]);
+      setShowDropdown(false);
+    }
+  };
+
+  const handleSelectEmployee = (employee) => {
+    setFormData({
+      ...formData,
+      Employee: `${employee.Code} - ${employee.Name}`,
+      Dept: employee.Department || "", // Default to empty if null
+    });
+    setShowDropdown(false);
+  };
+
+
+  const [machines, setMachines] = useState([]);
+  useEffect(() => {
+    const loadMachines = async () => {
+      const data = await fetchUnitMachines();
+      setMachines(data);
+    };
+    loadMachines();
+  }, []);
+
+
   return (
     <div className="NewStoreNewgrn">
       <ToastContainer />
@@ -148,83 +353,107 @@ const validateForm = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Newgrn-header  mb-4 text-start mt-5">
+                <form className="row" onSubmit={handleSubmit}>
+                  <div className="Newgrn-header  mb-4 text-start mt-5">
                     <div className="row align-items-center">
-                    <div className="col-md-2">
-                      <h5 className="header-title text-start">New MRN</h5>
-                    </div>
-                    <div className="col-md-9 mt-4">
-                      <div className="row mb-3">
-                        <div className="col-md-1">
-                          <label htmlFor="seriesSelect" className="form-label">
-                            Plant:
-                          </label>
-                        </div>
-                        <div className="col-md-2">
-                          <select id="sharpSelect" className="form-select">
-                            <option selected>Produlink</option>
-                          </select>
-                        </div>
+                      <div className="col-md-2">
+                        <h5 className="header-title text-start">New MRN</h5>
+                      </div>
+                      <div className="col-md-9 mt-4">
+                        <div className="row mb-3">
+                          <div className="col-md-1">
+                            <label
+                              htmlFor="seriesSelect"
+                              className="form-label"
+                            >
+                              Plant:
+                            </label>
+                          </div>
+                          <div className="col-md-2">
+                          <select
+                  id="plantSelect"
+                  className="form-select"
+                  name="Plant"
+                  value={formData.Plant}
+                  onChange={handleChange}
+                >
+                  <option value="">Select</option>
+                  <option value="Produlink">Produlink</option>
+                </select>
+                          </div>
 
-                        {/* Label: Series and Series Select Option */}
-                        <div className="col-md-1">
-                          <label htmlFor="seriesSelect" className="form-label">
-                            Series:
-                          </label>
-                        </div>
-                        <div className="col-md-2">
-                          <select id="seriesSelect" className="form-select">
-                            <option selected>Select</option>
-                            <option value="Purchase GRN">Purchase GRN</option>
-                            <option value="s2">s2</option>
-                            <option value="s3">s3</option>
-                            <option value="s4">s4</option>
-                          </select>
-                        </div>
+                          {/* Label: Series and Series Select Option */}
+                          <div className="col-md-1">
+                            <label
+                              htmlFor="seriesSelect"
+                              className="form-label"
+                            >
+                              Series:
+                            </label>
+                          </div>
+                          <div className="col-md-2">
+                            <select
+                              id="seriesSelect"
+                              className="form-select"
+                              value={series}
+                              onChange={handleSeriesChange} // ✅ Fix: Add onChange event
+                            >
+                              <option value="">Select</option>
+                              <option value="Purchase GRN">Purchase GRN</option>
+                            </select>
+                          </div>
 
-                        <div className="col-md-1">
-                          <label htmlFor="seriesSelect" className="form-label">
-                            MRN No:
-                          </label>
-                        </div>
-                        {/* Input Field */}
-                        <div className="col-md-2">
-                          <input
-                            type="text"
-                            id="inputField"
-                            className="form-control"
-                            placeholder="Enter value"
-                          />
-                        </div>
-                        <div className="col-md-1 d-flex align-items-center">
-                          <input type="checkbox" id="poGrnCheckbox" />
-                          <label htmlFor="poGrnCheckbox" className="ms-1">
-                            Gernal
-                          </label>
-                        </div>
-                        <div className="col-md-2 d-flex align-items-center">
-                          <input type="checkbox" id="directGrnCheckbox" />
-                          <label htmlFor="directGrnCheckbox" className="ms-1">
-                            Work Order
-                          </label>
+                          <div className="col-md-1">
+                            <label htmlFor="MrnNo" className="form-label">
+                              MRN No:
+                            </label>
+                          </div>
+                          <div className="col-md-2">
+                          {series ? (
+                  <input type="text" id="MrnNo" className="form-control" value={MrnNo} readOnly />
+                ) : (
+                  <input
+                    type="text"
+                    id="MrnNo"
+                    className="form-control"
+                    value=""
+                    readOnly
+                    placeholder="Select series first"
+                  />
+                )}
+                          </div>
+
+                          <div className="col-md-1 d-flex align-items-center">
+                <input type="checkbox" id="poGrnCheckbox" checked={formData.General} onChange={handleCheckboxChange} />
+                <label htmlFor="poGrnCheckbox" className="ms-1">
+                  General
+                </label>
+              </div>
+              <div className="col-md-2 d-flex align-items-center">
+                <input
+                  type="checkbox"
+                  id="directGrnCheckbox"
+                  checked={formData.Work_order}
+                  onChange={handleCheckboxChange}
+                />
+                <label htmlFor="directGrnCheckbox" className="ms-1">
+                  Work Order
+                </label>
+              </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="col-md-1 text-end">
-                     
-                          <Link className="btn" to="/Tool-MRN">
-                            Tool MRN
-                          </Link>
-                       
+                      <div className="col-md-1 text-end">
+                        <Link className="btn" to="/Tool-MRN">
+                          Tool MRN
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="Newgrn-main mt-5">
-                  <div className="container-fluid text-start">
-                    <div className="row mt-4">
-                      <div className="Col-md-12">
-                        <div className="container-fluid">
-                          <form className="row" onSubmit={handleSubmit}>
+                  <div className="Newgrn-main mt-5">
+                    <div className="container-fluid text-start">
+                      <div className="row mt-4">
+                        <div className="Col-md-12">
+                          <div className="container-fluid">
                             <div className="table-responsive">
                               <table className="table table-bordered">
                                 <thead>
@@ -243,83 +472,68 @@ const validateForm = () => {
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td data-label="Item Code View stock">
-                                      <div className="d-flex">
-                                        <input
-                                          type="text"
-                                          name="ItemCode"
-                                          className={`form-control ${
-                                            errors.ItemCode ? "is-invalid" : ""
-                                          }`}
-                                          value={formData.ItemCode}
-                                          onChange={handleChange}
-                                        />
-                                        <button className="pobtn">
-                                          Search
-                                        </button>
-                                      </div>
-                                      {errors.ItemCode && (
-                                        <div className="invalid-feedback">
-                                          {errors.ItemCode}
-                                        </div>
-                                      )}
-                                    </td>
-                                    <td data-label="Description">
-                                      <textarea
-                                        name="Description"
-                                        className={`form-control ${
-                                          errors.Description ? "is-invalid" : ""
-                                        }`}
-                                        value={formData.Description}
-                                        onChange={handleChange}
-                                        rows="1"
-                                      ></textarea>
-                                      {errors.Description && (
-                                        <div className="invalid-feedback">
-                                          {errors.Description}
-                                        </div>
-                                      )}
-                                    </td>
-                                    <td data-label="Qty">
+                                  <td style={{ position: "relative" }}>
+            <input
+              type="text"
+              name="ItemCode"
+              placeholder="serach"
+              value={formData.ItemCode}
+              onChange={handleItemCodeChange}
+              className="form-control"
+              autoComplete="off"
+            />
+            {showDropdown && searchResults.length > 0 && (
+              <div className="dropdown-menu show" style={dropdownStyles}>
+                {searchResults.map((item, index) => (
+                  <div
+                    key={index}
+                    className="dropdown-item"
+                    onClick={() => handleSelectItem(item)}
+                  >
+                    {item.part_no} - {item.Name_Description}
+                  </div>
+                ))}
+              </div>
+            )}
+          </td>
+
+          <td>
+            <textarea
+              name="Description"
+              value={formData.Description}
+              onChange={(e) =>
+                setFormData({ ...formData, Description: e.target.value })
+              }
+              className="form-control"
+              rows="1"
+            ></textarea>
+          </td>
+                                    <td>
                                       <input
                                         type="text"
-                                        name="Qty"
-                                        className={`form-control ${
-                                          errors.Qty ? "is-invalid" : ""
-                                        }`}
-                                        value={formData.Qty}
+                                        name="Qty_1"
+                                        value={formData.Qty_1}
                                         onChange={handleChange}
+                                        className="form-control"
                                       />
-                                      {errors.Qty && (
-                                        <div className="invalid-feedback">
-                                          {errors.Qty}
-                                        </div>
-                                      )}
                                     </td>
-                                    <td data-label="Unit">
-                                      <input
-                                        type="text"
-                                        name="Unit"
-                                        className={`form-control ${
-                                          errors.Unit ? "is-invalid" : ""
-                                        }`}
-                                        value={formData.Unit}
-                                        onChange={handleChange}
-                                      />
-                                      {errors.Unit && (
-                                        <div className="invalid-feedback">
-                                          {errors.Unit}
-                                        </div>
-                                      )}
-                                    </td>
-                                    <td data-label="Type">
+                                    <td>
+            <input
+              type="text"
+              name="Unit"
+              value={formData.QtyUnit}
+              onChange={(e) =>
+                setFormData({ ...formData, QtyUnit: e.target.value })
+              }
+              className="form-control"
+            />
+          </td>
+                                    <td>
                                       <select
                                         name="Type"
-                                        className={`form-select ${
-                                          errors.Type ? "is-invalid" : ""
-                                        }`}
                                         value={formData.Type}
                                         onChange={handleChange}
+                                        className="form-control"
                                       >
                                         <option>Select</option>
                                         <option value="Critical">
@@ -327,365 +541,197 @@ const validateForm = () => {
                                         </option>
                                         <option value="Regular">Regular</option>
                                       </select>
-                                      {errors.Type && (
-                                        <div className="invalid-feedback">
-                                          {errors.Type}
-                                        </div>
-                                      )}
                                     </td>
-                                    <td data-label="Machine">
-                                      <select
-                                        name="Machine"
-                                        className={`form-select ${
-                                          errors.Machine ? "is-invalid" : ""
-                                        }`}
-                                        value={formData.Machine}
-                                        onChange={handleChange}
-                                      >
-                                        <option>Select</option>
-                                        <option value="L4">L4 | LATHE 4</option>
-                                        <option value="L5">L5 | LATHE 5</option>
-                                        <option value="L6">L6 | LATHE 6</option>
-                                        <option value="L7">L7 | LATHE 7</option>
-                                      </select>
-                                      {errors.Machine && (
-                                        <div className="invalid-feedback">
-                                          {errors.Machine}
-                                        </div>
-                                      )}
-                                    </td>
-                                    <td data-label="Employee">
-                                      <input
-                                        type="text"
-                                        name="Employee"
-                                        className={`form-control ${
-                                          errors.Employee ? "is-invalid" : ""
-                                        }`}
-                                        value={formData.Employee}
-                                        onChange={handleChange}
-                                      />
-                                      {errors.Employee && (
-                                        <div className="invalid-feedback">
-                                          {errors.Employee}
-                                        </div>
-                                      )}
-                                    </td>
-                                    <td data-label="Dept.">
-                                      <select
-                                        name="Dept"
-                                        className={`form-select ${
-                                          errors.Dept ? "is-invalid" : ""
-                                        }`}
-                                        value={formData.Dept}
-                                        onChange={handleChange}
-                                      >
-                                        <option>Select</option>
-                                        <option value="AYUSH">AYUSH</option>
-                                        <option value="PRODUCTION">
-                                          PRODUCTION
-                                        </option>
-                                        <option value="PURCHASE">
-                                          PURCHASE
-                                        </option>
-                                        <option value="QUALITY">QUALITY</option>
-                                        <option value="STORE">STORE</option>
-                                        <option value="SHAKAMBARI">
-                                          SHAKAMBARI
-                                        </option>
-                                      </select>
-                                      {errors.Dept && (
-                                        <div className="invalid-feedback">
-                                          {errors.Dept}
-                                        </div>
-                                      )}
-                                    </td>
-                                    <td data-label="Remark">
+                                   <td>
+      <select
+        name="Machine"
+        value={formData.Machine}
+        onChange={(e) => setFormData({ ...formData, Machine: e.target.value })}
+        className="form-control"
+      >
+        <option value="">Select Machine</option>
+        {machines.map((machine, index) => (
+          <option key={index} value={machine.WorkCenterCode}>
+            {machine.WorkCenterCode} - {machine.WorkCenterName}
+          </option>
+        ))}
+      </select>
+    </td>
+                                    <td style={{ position: "relative" }}>
+            <input
+              type="text"
+              name="Employee"
+              placeholder="code ,employee"
+              value={formData.Employee}
+              onChange={handleEmployeeChange}
+              className="form-control"
+              autoComplete="off"
+            />
+            {showDropdown && searchResults.length > 0 && (
+              <div className="dropdown-menu show" style={dropdownStyles}>
+                {searchResults.map((emp, index) => (
+                  <div
+                    key={index}
+                    className="dropdown-item"
+                    onClick={() => handleSelectEmployee(emp)}
+                  >
+                    {emp.Code} - {emp.Name} ({emp.Type})
+                  </div>
+                ))}
+              </div>
+            )}
+          </td>
+          <td>
+  <input
+    type="text"
+    name="Dept"
+    value={formData.Dept}
+    onChange={(e) => setFormData({ ...formData, Dept: e.target.value })}
+    className="form-control"
+  />
+</td>
+
+                                    <td>
                                       <textarea
-                                        name="Remark"
-                                        className={`form-control ${
-                                          errors.Remark ? "is-invalid" : ""
-                                        }`}
-                                        value={formData.Remark}
+                                        name="Remark_1"
+                                        value={formData.Remark_1}
                                         onChange={handleChange}
+                                        className="form-control"
                                       ></textarea>
-                                      {errors.Remark && (
-                                        <div className="invalid-feedback">
-                                          {errors.Remark}
-                                        </div>
-                                      )}
                                     </td>
                                     <td data-label="Action">
-                                    <button type="submit" className="pobtn">{editingId ? 'Update' : 'Add'}</button>
+                                    <button onClick={handleAddToTable} type="button" className="btn btn-primary">
+                            {editIndex >= 0 ? "Update" : "Add"}
+                          </button>
                                     </td>
                                   </tr>
                                   {/* Add more rows as needed */}
                                 </tbody>
                               </table>
                             </div>
-                          </form>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="Newgrntable">
-                    <div className="container-fluid mt-4 text-start">
-                      <div className="table-responsive">
-                        <table className="table table-bordered">
-                          <thead>
-                            <tr>
-                              <th>Sr no.</th>
-                              <th>Item No</th>
+                    <div className="Newgrntable">
+                      <div className="container-fluid mt-4 text-start">
+                        <div className="table-responsive">
+                          <table className="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Sr no.</th>
+                                <th>Item No</th>
 
-                              <th>Description</th>
-                              <th>unit</th>
-                              <th>Qty</th>
-                              <th>
-                                Type{" "}
-                                <button
-                                  className="newbtn"
-                                  onClick={handleModalOpen}
-                                >
-                                  Add
-                                </button>
-                              </th>
-                              <th>
-                                Machine{" "}
-                                <button
-                                  className="newbtn"
-                                  onClick={handleModalOpen1}
-                                >
-                                  Add
-                                </button>
-                              </th>
-                              <th>
-                                Employee{" "}
-                                <button
-                                  className="newbtn"
-                                  onClick={handleModalOpen2}
-                                >
-                                  See All
-                                </button>
-                              </th>
-                              <th>Dept</th>
-                              <th>Remark</th>
+                                <th>Description</th>
+                                <th>unit</th>
+                                <th>Qty</th>
+                                <th>Type </th>
+                                <th>Machine </th>
+                                <th>Employee </th>
+                                <th>Dept</th>
+                                <th>Remark</th>
 
-                              <th>Edit</th>
-                              <th>Delete</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          {mrnData.map((item, index) => (
-                    <tr key={item.id}>
-                      <td>{index + 1}</td>
-                      <td>{item.ItemCode}</td>
-                      <td>{item.Description}</td>
-                      <td>{item.Unit}</td>
-                      <td>{item.Qty}</td>
-                      <td>{item.Type}</td>
-                      <td>{item.Machine}</td>
-                      <td>{item.Employee}</td>
-                      <td>{item.Dept}</td>
-                      <td>{item.Remark}</td>
-                             
-                              <td>
-                                <FaEdit className="text-primary" onClick={() => handleEdit(item)}  />
-                              </td>
-                              <td>
-                                <FaTrash className="text-danger" onClick={() => handleDelete(item.id)} />
-                              </td>
-                            </tr>
-                          ))}
-                          </tbody>
-                        </table>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {Array.isArray(NewMRNTable) &&
+                              NewMRNTable.length > 0 ? (
+                                NewMRNTable.map((item, index) => (
+                                  <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    <td>{item.ItemCode}</td>
+                                    <td>{item.Description}</td>
+                                    <td>{item.Unit}</td>
+                                    <td>{item.Qty_1}</td>
+                                    <td>{item.Type}</td>
+                                    <td>{item.Machine}</td>
+                                    <td>{item.Employee}</td>
+                                    <td>{item.Dept}</td>
+                                    <td>{item.Remark_1}</td>
+                                    <td>
+                                      <FaEdit
+                                        className="text-primary"
+                                        onClick={() => handleEdit(item, index)}
+                                      />
+                                    </td>
+                                    <td>
+                                      <FaTrash
+                                        className="text-danger"
+                                        onClick={() => handleDelete(index)}
+                                      />
+                                    </td>
+                                  </tr>
+                                ))
+                              ) : (
+                                <tr>
+                                  <td colSpan="12" className="text-center">
+                                    No data available
+                                  </td>
+                                </tr>
+                              )}
+                            </tbody>
+                          </table>
+                        </div>
+                     
                       </div>
-                      {/* Models */}
                     </div>
-                    <div
-                      className={`modal fade ${
-                        showModal ? "show d-block" : ""
-                      }`}
-                      tabIndex="-1"
-                      role="dialog"
-                    >
-                      <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <h5 className="modal-title">Search</h5>
-                            <button
-                              type="button"
-                              className="btn-close"
-                              onClick={handleModalClose}
-                            >
-                              X
-                            </button>
-                          </div>
-                          <div className="modal-body">
-                            <div className="container-fluid">
-                              <div className="row mb-3">
-                                <div className="col-md-6">
-                                  <label className="form-label">
-                                    Select Employee:
-                                  </label>
-                                </div>
-                                <div className="col-md-6">
-                                  <input type="text" className="form-control" />
-                                </div>
+
+                    <div className="NewgrnFooter">
+                      <div className="container-fluid">
+                        <div className="row g-3">
+                          <div className="col-md-2">
+                            <div className="row align-items-center">
+                              <div className="col-4 col-md-4 text-end">
+                                <label>Remark:</label>
+                              </div>
+
+                              <div className="col-md-8">
+                                <input
+                                  type="text"
+                                  name="Remark_2"
+                                  className="form-control"
+                                  value={formData.Remark_2}
+                                  onChange={handleChange}
+                                />
                               </div>
                             </div>
                           </div>
-
-                          <div className="modal-footer">
-                            <button type="button" className="newbtn1">
-                              See ALL
-                            </button>
-                            <button
-                              type="button"
-                              className="newbtn1"
-                              onClick={handleModalClose}
-                            >
-                              Close
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      className={`modal fade ${
-                        showModal1 ? "show d-block" : ""
-                      }`}
-                      tabIndex="-1"
-                      role="dialog"
-                    >
-                      <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <h5 className="modal-title">Add Type</h5>
-                            <button
-                              type="button"
-                              className="btn-close"
-                              onClick={handleModalClose1}
-                            >
-                              X
-                            </button>
-                          </div>
-                          <div className="modal-body">
-                            <div className="container-fluid">
-                              <div className="row mb-3">
-                                <div className="col-md-6">
-                                  <label className="form-label">
-                                    Select Employee:
-                                  </label>
-                                </div>
-                                <div className="col-md-6">
-                                  <input type="text" className="form-control" />
-                                </div>
+                          <div className="col-md-2">
+                            <div className="row align-items-center">
+                              <div className="col-md-4 col-md-4 text-end">
+                                <label>MRN Date:</label>
+                              </div>
+                              <div className="col-8 col-md-8">
+                                <input
+                                  type="date"
+                                  name="MRN_date"
+                                  className="form-control"
+                                  value={formData.MRN_date}
+                                  onChange={handleChange}
+                                />
                               </div>
                             </div>
                           </div>
-                          <div className="modal-footer">
-                            <button
-                              type="button"
-                              className="newbtn1"
-                              onClick={handleModalClose1}
-                            >
-                              Close
-                            </button>
-                            <button type="button" className="newbtn1">
-                              Save changes
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      className={`modal fade ${
-                        showModal2 ? "show d-block" : ""
-                      }`}
-                      tabIndex="-1"
-                      role="dialog"
-                    >
-                      <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <h5 className="modal-title">Add Type</h5>
-                            <button
-                              type="button"
-                              className="btn-close"
-                              onClick={handleModalClose2}
-                            >
-                              X
-                            </button>
-                          </div>
-                          <div className="modal-body">
-                            {/* Content of the modal */}
-                            <p>Type form fields here.</p>
-                          </div>
-                          <div className="modal-footer">
-                            <button
-                              type="button"
-                              className="newbtn1"
-                              onClick={handleModalClose2}
-                            >
-                              Close
-                            </button>
-                            <button type="button" className="newbtn1">
-                              Save changes
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="NewgrnFooter">
-                    <div className="container-fluid">
-                      <div className="row justify-content-end align-items-center mb-3">
-                        <div className="col-md-1 text-end">
-                          <label className="form-label">Remarks:</label>
-                        </div>
-                        <div className="col-md-3">
-                          <textarea
-                            cols="3"
-                            className="form-control"
-                          ></textarea>
-                        </div>
-                      </div>
-                      <div className="row g-3">
-                        <div className="col-md-2">
-                          <div className="row align-items-center">
-                            <div className="col-4 col-md-4 text-end">
-                              <label>MRN No:</label>
-                            </div>
-                            <div className="col-4 col-md-4">
-                              <input className="form-control mb-2" />
-                            </div>
-                            <div className="col-4 col-md-4">
-                              <input className="form-control" />
+                          <div className="col-md-2">
+                            <div className="row align-items-center">
+                              <div className="col-4 col-md-4 text-end">
+                                <label>MRN Time:</label>
+                              </div>
+                              <div className="col-8 col-md-8">
+                                <input
+                                  type="time"
+                                  name="MRN_time"
+                                  className="form-control"
+                                  value={formData.MRN_time}
+                                  onChange={handleChange}
+                                />
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-md-2">
-                          <div className="row align-items-center">
-                            <div className="col-md-4 col-md-4 text-end">
-                              <label>MRN Date:</label>
-                            </div>
-                            <div className="col-8 col-md-8">
-                              <input type="date" className="form-control" />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-md-2">
-                          <div className="row align-items-center">
-                            <div className="col-4 col-md-4 text-end">
-                              <label>MRN Time:</label>
-                            </div>
-                            <div className="col-8 col-md-8">
-                              <input type="text" className="form-control" />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-md-2">
+                          {/* <div className="col-md-2">
                           <div className="row align-items-center">
                             <div className="col-4 col-md-4 text-end">
                               <label>Project:</label>
@@ -696,14 +742,32 @@ const validateForm = () => {
                               </select>
                             </div>
                           </div>
+                        </div> */}
+                          <div className="col-md-2 d-flex justify-content-end align-items-center">
+                          <button type="submit" className="btn w-100" disabled={submitting}>
+                  {submitting ? "Saving..." : "Save MRN"}
+                </button>
+                          </div>
                         </div>
-                        <div className="col-md-2 d-flex justify-content-end align-items-center">
-                          <button className="btn w-100">Save MRN</button>
-                        </div>
+                        {submitSuccess && (
+              <div className="row mt-3">
+                <div className="col-12">
+                  <div className="alert alert-success">MRN saved successfully!</div>
+                </div>
+              </div>
+            )}
+
+            {submitError && (
+              <div className="row mt-3">
+                <div className="col-12">
+                  <div className="alert alert-danger">{submitError}</div>
+                </div>
+              </div>
+            )}
                       </div>
                     </div>
                   </div>
-                </div>
+                </form>
               </main>
             </div>
           </div>
@@ -712,5 +776,16 @@ const validateForm = () => {
     </div>
   );
 };
+
+const dropdownStyles = {
+  position: "absolute",
+  background: "#fff",
+  border: "1px solid #ccc",
+  maxHeight: "200px",
+  overflowY: "auto",
+  width: "100%",
+  zIndex: 1000,
+};
+
 
 export default NewMrn;

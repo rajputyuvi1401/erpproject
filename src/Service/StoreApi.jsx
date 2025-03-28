@@ -3,94 +3,6 @@ import axios from 'axios';
 
 // const Base_Url = "http://13.201.136.34:8000/Store/";
 const Base_Url = "api/Store/"; 
-
-
-export const saveGateEntry = async (data) => {
-    try {
-        const response = await fetch(`${Base_Url}GeneralDetails/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
-        const result = await response.json();
-        console.log('Data saved successfully:', result);
-        return result;
-    } catch (error) {
-        console.error('Error saving data:', error);
-        throw error;
-    }
-};
-
-export const saveItemDetails = async (data) => {
-    try {
-        const response = await fetch(`${Base_Url}ItemDetails/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
-        const result = await response.json();
-        console.log('Item details saved successfully:', result);
-        return result;
-    } catch (error) {
-        console.error('Error saving item details:', error);
-        throw error;
-    }
-};
-
-
-export const saveNewMrn = async (data) => {
-    try {
-      const response = await axios.post(`${Base_Url}NewMrn/`, data);
-      return response.data;
-    } catch (error) {
-      console.error('Error saving data:', error);
-      throw error;
-    }
-  };
-  
-  export const fetchMrnData = async () => {
-    try {
-      const response = await axios.get(`${Base_Url}NewMrn/`);
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      throw error;
-    }
-  };
-  
-  export const editMrnData = async (id, data) => {
-    try {
-      const response = await axios.put(`${Base_Url}NewMrn/${id}/`, data);
-      return response.data;
-    } catch (error) {
-      console.error('Error editing data:', error);
-      throw error;
-    }
-  };
-  
-  export const deleteMrnData = async (id) => {
-    try {
-      const response = await axios.delete(`${Base_Url}NewMrn/${id}/`);
-      return response.data;
-    } catch (error) {
-      console.error('Error deleting data:', error);
-      throw error;
-    }
-  };
   
 // Purchase gernal grn
 export const postGrnDetails = async (data) => {
@@ -327,4 +239,73 @@ export const indentsaveData = async (data) => {
   }
 
   return response.json();
+};
+
+
+export const getNewMRN = async (year) => {
+  try {
+    const response = await axios.get(`${Base_Url}api/get-next-mrn-no/?year=${year}`);
+    return response.data.next_mrn_no;
+  } catch (error) {
+    console.error("Error fetching next note number:", error);
+    return null;
+  }
+};
+
+export const submitNewMRN = async (data) => {
+  try {
+    const response = await axios.post(`${Base_Url}api/New-MRN-Entry/`, data);
+    return response.data;
+  } catch (error) {
+    console.error("Error submitting MRN entry:", error);
+    return null;
+  }
+};
+
+export const searchMRNItem = async (query) => {
+  try {
+    const response = await axios.get(`${Base_Url}NewMRN_Item_Search/`, {
+      params: { search: query },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching MRN items:", error);
+    return [];
+  }
+};
+
+
+export const searchEmployeeDept = async (query) => {
+  try {
+    const response = await axios.get(`${Base_Url}NewMRN_EmployeeDept_Search/`, {
+      params: { search: query },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching employees:", error);
+    return [];
+  }
+};
+
+
+
+export const getNewGateInward = async (year) => {
+  try {
+    const response = await axios.get(`${Base_Url}api/get-next-ge-no/?year=${year}`);
+    return response.data.next_GE_No
+    ;
+  } catch (error) {
+    console.error("Error fetching next note number:", error);
+    return null;
+  }
+};
+
+export const SaveNewGateInward = async (data) => {
+  try {
+    const response = await axios.post(`${Base_Url}api/general-details/`, data);
+    return response.data;
+  } catch (error) {
+    console.error("Error submitting MRN entry:", error);
+    return null;
+  }
 };

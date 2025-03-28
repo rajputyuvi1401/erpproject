@@ -306,13 +306,13 @@ import ContractorReport from "./ProductionMaster/ContractorReport/ContractorRepo
 import ContractirList from "./ProductionMaster/ContractorReport/ContractorList/ContractirList.jsx";
 import OperatorReport from "./ProductionMaster/Report/OperatorReport/OperatorReport.jsx";
 import ProReport from "./ProductionMaster/Report/ProReport.jsx";
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 import JobworkList from "./PurchaseMaster/NewJobworkPurchase/JobworkList/JobworkList.jsx";
 import CycleTime1 from "./ProductionMaster/Report/CycleTime/CycleTime.jsx";
 import BreakdownAnalysis from "./ProductionMaster/Report/BreakdownAnalysis/BreakdownAnalysis.jsx";
 import ReworkReport from "./ProductionMaster/Report/ReworkReport/ReworkReport.jsx";
 import ProductionEntryList from "./ProductionMaster/ProductionEntry/ProductionEntryList/ProductionEntryList.jsx";
-
+import MachineDefaultidle from "./ProductionMaster/Report/MachineDefaultIdle/MachineDefaultIdle.jsx"
 
 /////////////////////////////////////     Sales       ////////////////////////////////////
 import GSTsales1 from "./Sales/EInvoicing/GSTsales/GSTsales1.jsx";
@@ -693,7 +693,10 @@ function App() {
         <Route path="/CycleTime1" element={<CycleTime1/>} />
         <Route path="/ReworkReport" element={<ReworkReport />} />
         <Route path="/BreakdownAnalysis" element={<BreakdownAnalysis/>} />
+        <Route path="/MachineDefaultidle" element={<MachineDefaultidle/>} />
         <Route path="/ProductionEntryList" element={<ProductionEntryList/>} />
+
+
 
           {/* //////////////////////////////     Sales       /////////////////////////// */}
         <Route path="GSTsales1" element={<GSTsales1/>} />

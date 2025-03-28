@@ -4,30 +4,27 @@ import axios from "axios";
 const BASE_URL = "api/Production/";
 
 export const createWorkOrder = async (data) => {
+  try {
+    const response = await axios.post(`${BASE_URL}api/work-order-entry/`, data, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error creating work order:", error.response?.data || error.message);
+    throw error;
+  }
+};
+
+
+  export const fetchNextWorkOrderNo = async (year) => {
     try {
-      const response = await axios.post(`${BASE_URL}workorderentry/`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      return response.data;
+      const response = await axios.get(`${BASE_URL}api/work_order_entry/?year=${year}`);
+      return response.data.next_wo_no;
     } catch (error) {
-      console.error("Error creating work order:", error);
+      console.error("Error fetching next WO No:", error);
       throw error;
     }
   };
-
-
-  export const fetchWorkOrders = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}workorderentry/`);
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching Work Orders:", error);
-      throw error;
-    }
-  };
-
 
 
  
@@ -416,7 +413,7 @@ export const addRejectReason = async (data) => {
 export const getNextNoteNo = async (year) => {
   try {
     const response = await axios.get(`${BASE_URL}GetNextNoteNo/?year=${year}`);
-    return response.data;
+    return response.data.next_note_no;
   } catch (error) {
     console.error("Error fetching next note number:", error);
     return null;
@@ -426,6 +423,51 @@ export const getNextNoteNo = async (year) => {
 export const submitScrapRejectionEntry = async (data) => {
   try {
     const response = await axios.post(`${BASE_URL}api/FGScrapDetails/`, data, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error submitting scrap rejection entry:", error);
+    throw error;
+  }
+};
+
+
+export const getProductDetails = async (filters = {}) => {
+  try {
+    const params = new URLSearchParams(filters).toString();
+    const response = await axios.get(`${BASE_URL}api/product-details/?${params}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching product details:', error);
+    return [];
+  }
+};
+
+export const deleteProductDetail = async (id) => {
+  try {
+    await axios.delete(`${BASE_URL}api/product-details/${id}/`);
+    return true;
+  } catch (error) {
+    console.error('Error deleting product detail:', error);
+    return false;
+  }
+};
+
+
+export const getScrapLineRejectionNote = async (year) => {
+  try {
+    const response = await axios.get(`${BASE_URL}GetNextNote/?year=${year}`);
+    return response.data.next_ScrapRejectionNo; // Ensure this matches API response
+  } catch (error) {
+    console.error("Error fetching next scrap rejection note:", error);
+    return null;
+  }
+};
+
+export const submitScrapRejectionNote = async (data) => {
+  try {
+    const response = await axios.post(`${BASE_URL}api/ScrapLineRejectionNote/`, data, {
       headers: { "Content-Type": "application/json" },
     });
     return response.data;

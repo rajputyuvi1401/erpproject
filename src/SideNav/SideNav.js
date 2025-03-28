@@ -808,7 +808,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                       {permissions.Production.includes(
                         "FG Scrap/Rejection Report"
                       ) && (
-                        <Dropdown.Item as={Link} to="/ScrapRejectionEntry">
+                        <Dropdown.Item as={Link} to="/FGScrapRejectionReport">
                           FG Scrap/Rejection Report
                         </Dropdown.Item>
                       )}
@@ -851,8 +851,8 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                           Rework Report
                         </Dropdown.Item>
                       )}
-                       {permissions.Production.includes("Default Idle Time Report") && (
-                      <Dropdown.Item as={Link} to="/MachineDefaultIdle">
+                       {permissions.Production.includes("Default Ideal Time Report") && (
+                      <Dropdown.Item as={Link} to="/MachineDefaultidle">
                         Default Idle Time Report
                       </Dropdown.Item>
                        )}
