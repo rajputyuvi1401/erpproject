@@ -39,14 +39,14 @@ const MaterialGatepassList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="MaterialGatepassList mt-5">
-                  <div className="MaterialGatepassList-header mb-4 text-start">
+                <div className="MaterialGatepassList">
+                  <div className="MaterialGatepassList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Material Gatepass List </h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn" onClick={handleButtonClick}>
+                        <button type="button" className="vndrbtn" onClick={handleButtonClick}>
                           New Material Gatepass 
                         </button>
                         </div>
@@ -58,39 +58,40 @@ const MaterialGatepassList = () => {
                     <div className="MaterialGatepassList-main">
 
                         <div className="row text-start mt-3">
-                        <div className="col-3">
-                           <div className="row">
-                               <div className="col-md-4 mt-2">
-                                  <label htmlFor="">From Date :</label>
-                               </div>
-                               <div className="col-md-8">
-                                  <input type="date" className="form-control" placeholder="1"/>
-                               </div>
-                           </div>
-                        </div>
-                        <div className="col-3">
-                           <div className="row">
-                               <div className="col-md-4 mt-2">
-                                  <label htmlFor="">To Date:</label>
-                               </div>
-                               <div className="col-md-8">
-                                  <input type="date" className="form-control" placeholder=""/>
-                               </div>
-                          </div>
-                        </div>
-                     
-                        <div className="col-1 mt-2">  
-                            <button type="button" className="btn btn-primary">
-                                    Search
-                            </button>
-                        </div>
+
+                            <div className="col-3">
+                              <div className="row">
+                                  <div className="col-md-4 mt-2">
+                                      <label htmlFor="">From Date:</label>
+                                  </div>
+                                  <div className="col-md-8">
+                                      <input type="date" className="form-control" placeholder="1"/>
+                                  </div>
+                              </div>
+                            </div>
+                            <div className="col-3">
+                              <div className="row">
+                                  <div className="col-md-4 mt-2">
+                                      <label htmlFor="">To Date:</label>
+                                  </div>
+                                  <div className="col-md-8">
+                                      <input type="date" className="form-control" placeholder=""/>
+                                  </div>
+                              </div>
+                            </div>
+                        
+                            <div className="col-1 mt-1">  
+                                <button type="button" className="vndrbtn ">
+                                        Search
+                                </button>
+                            </div>
                           
                         </div>
 
                     </div>
 
 
-                  <div className="MaterialGatepassList-main mt-5">
+                  <div className="MaterialGatepassList-main mt-2">
                     <div className="MaterialGatepassList-tabs">
                         <div className="row text-start">
                             <div className="col-12">

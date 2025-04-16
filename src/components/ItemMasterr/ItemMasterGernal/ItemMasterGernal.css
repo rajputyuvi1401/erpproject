@@ -4,34 +4,177 @@
   padding: 0px;
 }
 
-.Itemmastergernalpage .btn {
-  background-color: rgba(235, 233, 233, 0.685);
-  border: none;
-  margin: 5px;
-}
-.Itemmastergernalpage .btn:hover {
-  background-color: rgba(202, 201, 201, 0.685);
-  color: black;
-  border: none;
-}
- .top-but3-header {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+
+.Itemmastergernalpage {
+  width: 100%;
+  height: 100vh;
 }
 
-.top-but3-header .header-title {
+.top-but3-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
+}
+
+.header-title {
   font-size: 20px;
   font-weight: bold;
+  color: blue;
   margin: 0;
 }
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
 .itemmastergernal {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
-  
+  background-color: #f8f9fa;
+  padding: 10px;
+  font-size: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+th {
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
+  }
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+}
+
+label{
+  font-size: 12px;
 }
 .top-but3 label {
   margin-right: 10px;
@@ -39,14 +182,6 @@
 
 .top-but3 input {
   margin-right: 10px;
-}
-
-.btn-uper {
-  margin-right: 10px;
-  background-color: rgba(235, 233, 233, 0.685);
-  padding: 5px 10px;
-  border: none;
-  border-radius: 10px;
 }
 
 #pills-tab {
@@ -58,16 +193,15 @@
 /* custom.css */
 .nav-pills .nav-link {
   border: none;
-  color: grey; /* Default text color for buttons */
-  /* background-color: white; Default background color for buttons */
+  color: grey;
 }
 .nav-pills .nav-link:hover {
   color: gray;
 }
 .nav-pills .nav-link.active {
   border: none;
-  background-color: blueviolet !important; /* Active button background color */
-  color: white !important; /* Active button text color */
+  background-color: #16bfff; 
+  color: white;
 }
 .nav-item {
   border: none;
@@ -76,11 +210,11 @@
 /* new button click card */
 .nav-item button {
   border: none;
-  background-color: white;
+  /* background-color: white; */
   color: grey;
   padding: 12px;
   margin: 10px;
-  background-color: blueviolet;
+  background-color: #16bfff;
   color: grey;
 }
 .new-card-overlay {
@@ -115,7 +249,7 @@
 }
 
 .card-btn {
-  background-color: blueviolet;
+  background-color: #16bfff;
   color: white;
   border: none;
   padding: 8px;
@@ -200,7 +334,7 @@
 }
 
 .TdcCard .card-btn {
-  background-color: blueviolet;
+  background-color: #16bfff;
   color: white;
   border: none;
   padding: 8px;
@@ -289,7 +423,7 @@
   justify-content: start;
   margin: 5px;
   padding: 8px 12px;
-  background-color: blueviolet;
+  background-color: #16bfff;
   color: white;
   border-radius: 5px;
   border: none;
@@ -305,7 +439,7 @@
 }
 
 .itemgroup .btn-primary {
-  background-color: blueviolet;
+  background-color: #16bfff;
   color: white;
 }
 
@@ -395,7 +529,7 @@
 }
 
 .Store-card .card-btn {
-  background-color: blueviolet;
+  background-color: #16bfff;
   color: white;
   border: none;
   padding: 8px;
@@ -471,7 +605,7 @@
 }
 
 .RouteCard .card-btn {
-  background-color: blueviolet;
+  background-color: #16bfff;
   color: white;
   border: none;
   padding: 8px;
@@ -587,7 +721,7 @@
   margin-left: -20px;
 }
 .btn:hover{
-  background-color: black;
+  /* background-color: black; */
   color: white;
 }
 
@@ -596,6 +730,9 @@
   background-color: white;
   height: auto;
   padding: 20px 20px;
+}
+.gerneral label{
+  font-size: 12px;
 }
 .gerneral1 {
   background-color: white;
@@ -607,11 +744,14 @@
   height: auto;
   padding: 20px 20px;
 }
+.data-2 label{
+  font-size: 12px;
+}
 .axcv {
   /* background-color: white; */
   height: auto;
-  padding: 20px 20px;
-  margin-bottom: 10px;
+  /* padding: 20px 20px; */
+  /* margin-bottom: 10px; */
 }
 .bjkd {
   border: none;

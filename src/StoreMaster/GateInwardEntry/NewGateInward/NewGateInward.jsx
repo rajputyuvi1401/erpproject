@@ -189,7 +189,7 @@ const deleteItem = (index) => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="NewGateInward-header mb-4 text-start mt-5">
+                <div className="NewGateInward-header mb-4 text-start">
                     <div className="row align-items-center">
                     <div className="col-md-3">
                       <h5 className="header-title text-start">
@@ -199,13 +199,14 @@ const deleteItem = (index) => {
 
                     <div className="col-md-9 text-end">
                      
-                          <Link className="btn" to={"/Gate-Inward-Entry"}>
+                          <Link className="vndrbtn" to={"/Gate-Inward-Entry"}>
                             Gate Entry Inward List
                           </Link>
                         
                     </div>
                   </div>
                 </div>
+
                 <form onSubmit={handleSubmit}>
                 <div className="NewGateInward-main">
                   <ul
@@ -372,7 +373,7 @@ const deleteItem = (index) => {
                                     
                                   </div>
                                   {/* <div className="col-md-3">
-                                    <button type="button" className="btn">
+                                    <button type="button" className="vndrbtn">
                                       Search
                                     </button>
                                   </div> */}
@@ -683,148 +684,148 @@ const deleteItem = (index) => {
                       <div className="NewGateInward1">
                         <div className="container-fluid">
                        
-                                <div className="row text-start">
-                                 
-                                  
-                                <div className="col-md-2 col-sm-6">
-  <div className="position-relative">
-    <label className="form-label">Select Item</label>
-    <input
-      type="text"
-      className="form-control"
-      placeholder="Search Item..."
-      value={searchQuery}
-      onChange={handleSearchChange}
-    />
-    {searchResults.length > 0 && (
-      <div className="dropdown-menu show w-100" style={{ maxHeight: "200px", overflowY: "auto" }}>
-        {searchResults.map((item, index) => (
-          <div
-            key={index}
-            className="dropdown-item d-flex justify-content-between"
-            onClick={() => handleSelectItem(item)}
-            style={{ cursor: "pointer" }}
-          >
-            <span>{item.part_no}</span>
-            <span>{item.Name_Description}</span>
-            <span>({item.Unit_Code})</span>
-          </div>
-        ))}
-      </div>
-    )}
-  </div>
-</div>
-
-
-
-<div className="col-md-2">
-  <label className="form-label">Description</label>
-  <input
-    type="text"
-    className="form-control"
-    name="Description"
-    value={newItem.Description}
-    readOnly
-  />
-</div>
-
-                                        <div className="col-md-2">
-                  <label className="form-label">Qty NOS</label>
-                  <input
-            type="text"
-            className="form-control"
-            name="Qty_NOS"
-            value={newItem.Qty_NOS}
-            onChange={(e) => setNewItem({ ...newItem, Qty_NOS: e.target.value })}
-            placeholder="Enter Qty_NOS"
-          />
-                </div>
-                <div className="col-md-2">
-                  <label className="form-label">QTY KG</label>
-                  <input
-            type="text"
-            className="form-control"
-            name="QTY_KG"
-            value={newItem.QTY_KG}
-            onChange={(e) => setNewItem({ ...newItem, QTY_KG: e.target.value })}
-            placeholder="Enter QTY_KG"
-          />
-                </div>
-                <div className="col-md-1">
-  <label className="form-label">Unit Code</label>
-  <input
-    type="text"
-    className="form-control"
-    name="Unit_Code"
-    value={newItem.Unit_Code}
-    readOnly
-  />
-</div>
-                <div className="col-md-2">
-                  <label className="form-label">Remark</label>
-                  <input
-            type="text"
-            className="form-control"
-            name="Remark"
-            value={newItem.Remark}
-            onChange={(e) => setNewItem({ ...newItem, Remark: e.target.value })}
-            placeholder="Enter Remark"
-          />
-                </div>
-                <div className="col-md-1 align-self-end">
-                  <button type="button" className="btn btn-primary w-100" onClick={addItem}>Add</button>
-                </div>
-                                
-                                 
-                                </div>
-                                <div className="table-responsive mt-4">
-                                  <table className="table table-bordered">
-                                    <thead>
-                                      <tr>
-                                        <th>Sr.</th>
-                                        <th>Item No | Code</th>
-                                        <th>Description</th>
-                                        <th>Qty (Desc)</th>
-                                        <th>Qty (Kg)</th>
-                                        <th>Unit Code</th>
-                                        <th>Remark</th>
-                                       
-                                        <th>Delete</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                    {formData.ItemDetails.map((item, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{item.ItemNo}</td>
-                        <td>{item.Description}</td>
-                        <td>{item.Qty_NOS}</td>
-                        <td>{item.QTY_KG}</td>
-
-                      
-                        <td>{item.Unit_Code}</td>
-                       
-                        <td>{item.Remark}</td>
-                        <td>
-                          <button className="btn" onClick={() => deleteItem(index)}><FaTrash/></button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                                  </table>
-                                </div>
+                            <div className="row text-start">
+                                      
+                              <div className="col-md-2 col-sm-6">
+                                  <div className="position-relative">
+                                    <label className="form-label">Select Item</label>
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      placeholder="Search Item..."
+                                      value={searchQuery}
+                                      onChange={handleSearchChange}
+                                    />
+                                    {searchResults.length > 0 && (
+                                      <div className="dropdown-menu show w-100" style={{ maxHeight: "200px", overflowY: "auto" }}>
+                                        {searchResults.map((item, index) => (
+                                          <div
+                                            key={index}
+                                            className="dropdown-item d-flex justify-content-between"
+                                            onClick={() => handleSelectItem(item)}
+                                            style={{ cursor: "pointer" }}
+                                          >
+                                            <span>{item.part_no}</span>
+                                            <span>{item.Name_Description}</span>
+                                            <span>({item.Unit_Code})</span>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
                               </div>
-                           
-                      </div>
+
+                        <div className="col-md-2">
+                          <label className="form-label">Description</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            name="Description"
+                            value={newItem.Description}
+                            readOnly
+                          />
+                        </div>
+
+                          <div className="col-md-2">
+                            <label className="form-label">Qty NOS</label>
+                            <input
+                      type="text"
+                      className="form-control"
+                      name="Qty_NOS"
+                      value={newItem.Qty_NOS}
+                      onChange={(e) => setNewItem({ ...newItem, Qty_NOS: e.target.value })}
+                      placeholder="Enter Qty_NOS"
+                    />
+                          </div>
+                          <div className="col-md-2">
+                            <label className="form-label">QTY KG</label>
+                            <input
+                      type="text"
+                      className="form-control"
+                      name="QTY_KG"
+                      value={newItem.QTY_KG}
+                      onChange={(e) => setNewItem({ ...newItem, QTY_KG: e.target.value })}
+                      placeholder="Enter QTY_KG"
+                    />
+                          </div>
+                                    <div className="col-md-1">
+                      <label className="form-label">Unit Code</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="Unit_Code"
+                        value={newItem.Unit_Code}
+                        readOnly
+                      />
+                                    </div>
+                                    <div className="col-md-2">
+                                      <label className="form-label">Remark</label>
+                                      <input
+                                type="text"
+                                className="form-control"
+                                name="Remark"
+                                value={newItem.Remark}
+                                onChange={(e) => setNewItem({ ...newItem, Remark: e.target.value })}
+                                placeholder="Enter Remark"
+                              />
+                                    </div>
+
+                                  <div className="col-md-1 align-self-end">
+                                    <button type="button" className="vndrbtn w-100" onClick={addItem}>Add</button>
+                                  </div>
+                                    
+                                    
+                            </div>
+
+                              <div className="table-responsive mt-3">
+                                      <table className="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>Sr.</th>
+                                            <th>Item No | Code</th>
+                                            <th>Description</th>
+                                            <th>Qty (Desc)</th>
+                                            <th>Qty (Kg)</th>
+                                            <th>Unit Code</th>
+                                            <th>Remark</th>
+                                          
+                                            <th>Delete</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        {formData.ItemDetails.map((item, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{item.ItemNo}</td>
+                            <td>{item.Description}</td>
+                            <td>{item.Qty_NOS}</td>
+                            <td>{item.QTY_KG}</td>
+
+                          
+                            <td>{item.Unit_Code}</td>
+                          
+                            <td>{item.Remark}</td>
+                            <td>
+                              <button className="vndrbtn" onClick={() => deleteItem(index)}><FaTrash/></button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                                      </table>
+                            </div>
+                      </div>         
+                    </div>
+                  
                     </div>
                   </div>
                 </div>
-                <div className="row mb-3 text-end">
+
+                            <div className="row mb-3 text-end mt-4">
                                 <div className="col-md-12">
-                                  <button className="pobtn"type="submit">
+                                  <button className="vndrbtn"type="submit">
                                     Save Gate Entry
                                   </button>
-                                  <button className="btn btn-secondary mx-2" type="reset">Clear</button>
+                                  <button className="vndrbtn mx-2" type="reset">Clear</button>
                                 </div>
                               </div>
                 </form>

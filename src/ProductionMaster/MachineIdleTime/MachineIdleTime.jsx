@@ -33,8 +33,8 @@ const MachineIdleTime = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="MachineIdle mt-5">
-                  <div className="MachineIdle-header mb-4 text-start">
+                <div className="MachineIdle">
+                  <div className="MachineIdle-header mb-3 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">
@@ -42,7 +42,7 @@ const MachineIdleTime = () => {
                         </h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <Link type="button" className="btn" to='/NewIdleMaster'>
+                        <Link type="button" className="vndrbtn" to='/NewIdleMaster'>
                           Idle List
                         </Link>
                       </div>
@@ -51,13 +51,14 @@ const MachineIdleTime = () => {
 
                   <div className="MachineIdle-Main card p-4">
                     <form>
+
                       <div className="row text-start">
                         <div className="col-md-1 mb-3">
                           <label htmlFor="date" className="form-label">
                             Date
                           </label>
                         </div>
-                        <div className="col-md-1 mb-3">
+                        <div className="col-md-2 mb-3">
                           <input
                             type="date"
                             id="date"
@@ -69,7 +70,7 @@ const MachineIdleTime = () => {
                             Shift
                           </label>
                         </div>
-                        <div className="col-md-1 mb-3">
+                        <div className="col-md-2 mb-3">
                           <select id="shift" className="form-select">
                             <option>ALL</option>
                             <option>FIRST 8HRS: 07:00 - 15:30</option>
@@ -82,7 +83,7 @@ const MachineIdleTime = () => {
                             Machine Type
                           </label>
                         </div>
-                        <div className="col-md-1 mb-3">
+                        <div className="col-md-2 mb-3">
                           <select id="machineType" className="form-select">
                             <option>ALL</option>
                             <option>Type 1</option>
@@ -107,18 +108,19 @@ const MachineIdleTime = () => {
                         </div>
 
                         <div className="col-md-1 mt-2">
-                          <button type="button" className="btn">
+                          <button type="button" className="vndrbtn">
                             Search
                           </button>
                         </div>
                       </div>
+
                       <div className="row text-start">
                         <div className="col-md-1 mb-3">
                           <label htmlFor="reason" className="form-label">
                             Reason
                           </label>
                         </div>
-                        <div className="col-md-1 mb-3">
+                        <div className="col-md-2 mb-3">
                           <select id="machineType" className="form-select">
                             <option>Select Change</option>
                             <option>Type 1</option>
@@ -126,19 +128,21 @@ const MachineIdleTime = () => {
                             <option>Type 3</option>
                           </select>
                         </div>
-                        <div className="col-md-1 mb-3">
-                          <button type="button" className="btn">
+                        <div className="col-md-2 mb-3">
+                          <button type="button" className="vndrbtn">
                             Set to -- All
                           </button>
                         </div>
-                        <div className="col-md-9 text-end">
-                          <button type="button" className="btn">
+                        <div className="col-md-7 text-end">
+                          <button type="button" className="vndrbtn">
                             Save Idle Time
                           </button>
                         </div>
                       </div>
+
                     </form>
                   </div>
+
                 </div>
               </main>
             </div>

@@ -149,7 +149,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
-            <table className="table table-bordered table-responsive">
+            <table className="table table-responsive">
               <thead>
                 <tr>
                   <th>Sr.</th>
@@ -321,7 +321,7 @@ const GSTDetails = ({ updateFormData = () => {}, itemDetails = [] }) => {
                       />
                     </td>
                     <td>
-                      <button className="btn" onClick={addNewRow}>
+                      <button className="vndrbtn" onClick={addNewRow}>
                         Add New Row
                       </button>
                     </td>

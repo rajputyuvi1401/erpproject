@@ -5,6 +5,7 @@ import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+import "../MaterialIssue/MaterialIssue.css"
 
 const WorkIssueRepost = () => {
 
@@ -30,7 +31,7 @@ const WorkIssueRepost = () => {
             <NavBar toggleSideNav={toggleSideNav} />
             <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="WorkOrderMaterial-header mb-4 text-start mt-5">
+              <div className="WorkOrderMaterial-header mb-4 text-start">
                     <div className="row align-items-center">
                   <div className="col-md-4">
                     <h5 className="header-title text-start">
@@ -40,30 +41,30 @@ const WorkIssueRepost = () => {
 
                   <div className="col-md-8 text-end">
                    
-                        <Link className="btn">Export To Excel</Link>
+                        <Link className="vndrbtn">Export To Excel</Link>
                       </div>
                    
                 </div>
               </div>
               <div className="WorkOrderMaterial-main">
                 <div className="container-fluid">
-                  <div className="row mt-4">
+                  <div className="row mt-2">
                     <div className="col-md-12">
                       <form className="row g-3 text-start">
                         {/* From Date */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">From Date</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* To Date */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">To Date</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* Plant */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">Plant</label>
                           <select className="form-select">
                             <option value="">Produlink</option>
@@ -71,7 +72,7 @@ const WorkIssueRepost = () => {
                         </div>
 
                         {/* Series */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">Series</label>
                           <select className="form-select">
                             <option value="">Select</option>
@@ -80,7 +81,7 @@ const WorkIssueRepost = () => {
                         </div>
 
                         {/* Report Type */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">Report Type</label>
                           <select className="form-select">
                             <option value="Details">Details</option>
@@ -89,7 +90,7 @@ const WorkIssueRepost = () => {
                         </div>
 
                         {/* Is Pending */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">Is Pending</label>
                           <select className="form-select">
                             <option value="All">All</option>
@@ -109,7 +110,7 @@ const WorkIssueRepost = () => {
                         </div>
 
                         {/* Main Group */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">Main Group</label>
                           <select className="form-select">
                             <option value="">ALL</option>
@@ -141,8 +142,8 @@ const WorkIssueRepost = () => {
                         </div>
 
                         {/* Search Button */}
-                        <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                          <button type="submit" className="pobtn w-100">
+                        <div className="col-md-2 col-sm-6 mt-5">
+                          <button type="submit" className="vndrbtn w-100">
                             Search
                           </button>
                         </div>
@@ -152,7 +153,7 @@ const WorkIssueRepost = () => {
                 </div>
 
                 <div className="StoreWorkOrderMaterial">
-                  <div className="container-fluid mt-4 text-start">
+                  <div className="container-fluid mt-2 text-start">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>

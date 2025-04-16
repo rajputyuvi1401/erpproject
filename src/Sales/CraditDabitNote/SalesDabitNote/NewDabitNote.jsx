@@ -39,21 +39,21 @@ const NewDabitNote = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="NewDabitNote mt-5">
-                  <div className="NewDabitNote-header mb-4 text-start">
+                <div className="NewDabitNote">
+                  <div className="NewDabitNote-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">New Dabit Note (Sales Rate Diff) </h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn" onClick={handleButtonClick}>
+                        <button type="button" className=" vndrbtn" onClick={handleButtonClick}>
                           Dabit Note List
                         </button>
                         </div>
                     </div>
                   </div>
 
-                  <div className="NewDabitNote-main mt-5">
+                  <div className="NewDabitNote-main">
                      <div className="row text-start">
 
                      <div className="col-md-2">
@@ -77,7 +77,7 @@ const NewDabitNote = () => {
                             <label> 1 Dabit Note </label>
                      </div>
 
-                     <div className="col-md-2">
+                     <div className="col-md-3">
                             <label htmlFor="">Single :</label>
                             <label htmlFor="">Per Item Wise Dabit Note</label>
                      </div>
@@ -85,7 +85,7 @@ const NewDabitNote = () => {
                      </div>
                   </div>
 
-                  <div className="NewDabitNote-main mt-5">
+                  <div className="NewDabitNote-main">
                     <div className="NewDabitNote-second">
                       <ul className="nav nav-tabs" id="NewDabitNoteTabs" role="tablist" >
                         <li className="nav-item" role="presentation">
@@ -100,33 +100,33 @@ const NewDabitNote = () => {
                         </li>
                       </ul>
 
-                      <div className="tab-content mt-4"  id="NewDabitNoteTabsContent">
+                      <div className="tab-content"  id="NewDabitNoteTabsContent">
 
                         <div  className="tab-pane fade show active" id="invoicedetails" role="tabpanel" >
-                            <div className="NewDabitNote-main mt-5">
+                            <div className="NewDabitNote-main">
                                   <div className="row text-start">
 
-                                  <div className="col-md-1">
+                                  <div className="col-md-3">
                                           <label htmlFor="">Plant :</label>
                                           <select name="" id="" className="form-control">
                                             <option value="">ProduLink</option>
                                         </select>
                                     </div> 
-                                    <div className="col-md-1">
+                                    <div className="col-md-3">
                                           <label htmlFor="">From Date:</label>
                                           <input type="date" className="form-control"/>
                                     </div>
-                                    <div className="col-md-1">
+                                    <div className="col-md-3">
                                           <label htmlFor="">To Date :</label>
                                           <input type="date" className="form-control"/>
                                     </div>
 
-                                  <div className="col-md-1">
+                                  <div className="col-md-3">
                                           <label htmlFor="">Customer.:</label>
                                           <input type="date" className="form-control" placeholder="Enter Name ..."/>                            
                                     </div> 
                                   
-                                    <div className="col-md-1">
+                                    <div className="col-md-3 mt-3">
                                           <label htmlFor="">Add Code :</label>
                                           <select name="" id="" className="form-control">
                                             <option value="">Select</option>
@@ -134,15 +134,15 @@ const NewDabitNote = () => {
                                             <option value=""></option>
                                         </select>
                                     </div> 
-                                    <div className="col-md-1">
-                                      <div className="d-flex justify-content-center align-items-center">
+                                    <div className="col-md-3 mt-3">
+                                      <div className="d-flex justify-content-start align-items-center">
                                             <input type="checkbox" id="Item-checkbox" />
                                             <label htmlFor="Item-checkbox" className="ms-1">Item:</label>
                                         </div>
                                             <input type="text" placeholder="Enter Code | Name" className="form-control"/>
                                     </div> 
 
-                                  <div className="col-md-1">
+                                  <div className="col-md-3 mt-3">
                                           <label htmlFor="">Note Type :</label>
                                           <select name="" id="" className="form-control">
                                             <option value="">All Inv</option>
@@ -150,8 +150,8 @@ const NewDabitNote = () => {
                                             <option value=""></option>
                                         </select>
                                     </div> 
-                                    <div className="col-md-1 mt-4">
-                                        <button type="button" className="btn btn-primary w-100" >
+                                    <div className="col-md-3">
+                                        <button type="button" className=" vndrbtn w-100"  style={{marginTop:"35px"}}>
                                             Search
                                         </button> 
                                     </div>
@@ -161,7 +161,7 @@ const NewDabitNote = () => {
                         </div>
 
                          <div className="tab-pane fade" id="dabitnotedetails" role="tabpanel" >
-                              <div className="NewDabitNote-header mb-4 text-start">
+                              <div className="NewDabitNote-header text-start">
 
                                  <div className="table-responsive">
                                   <table className="table table-bordered">
@@ -217,7 +217,7 @@ const NewDabitNote = () => {
                                  <div className="row">
                                     <div className="col-md-12">
                                       <div className="table-responsive">
-                                        <table className="table table-bordered">
+                                        <table className="table">
                                           <tbody>
                                             <tr>
                                               <td>SubTotal:</td>
@@ -259,41 +259,44 @@ const NewDabitNote = () => {
                                  </div>
 
                                  <div className="row text-start">
-                          <div className="col-md-3">
-                             <label htmlFor="">Bill To Add Code</label>
-                              <select className="form-control" name="" id="">
-                                    <option value=""></option>
-                              </select>
-                          </div>
-                          <div className="col-md-3">
-                             <label htmlFor="">:</label>
-                             <textarea name="" className="form-control" id=""></textarea>
-                          </div>
-                          <div className="col-md-3">
-                             <label htmlFor="">Other Reference:</label>
-                             <textarea name="" className="form-control" id=""></textarea>
-                          </div>
-                          <div className="col-md-3">
-                             <label htmlFor="">Remark :</label>
-                             <textarea name="" className="form-control" id=""></textarea>
-                          </div>
-                                 </div>
-                                  <div className="row text-start">
-                                    
                                       <div className="col-md-3">
+                                        <label htmlFor="">Bill To Add Code</label>
+                                          <select className="form-control" name="" id="">
+                                                <option value=""></option>
+                                          </select>
+                                      </div>
+                                      <div className="col-md-3">
+                                        <label htmlFor="">:</label>
+                                        <textarea name="" className="form-control" id=""></textarea>
+                                      </div>
+                                      <div className="col-md-3">
+                                        <label htmlFor="">Other Reference:</label>
+                                        <textarea name="" className="form-control" id=""></textarea>
+                                      </div>
+                                      <div className="col-md-3">
+                                        <label htmlFor="">Remark :</label>
+                                        <textarea name="" className="form-control" id=""></textarea>
+                                      </div>
+                                 </div>
+
+                                  <div className="row mt-2 mt-2 text-start">
+                                    
+                                      <div className="col-md-3 ">
                                           <label htmlFor="">For E-Invoice</label>
                                         <select name="" className="form-control" id="">
                                             <option value="">Bussiness To Bussiness</option>
                                         </select>
                                       </div>
-                                      <div className="col-md-2">
-                                        <input type="checkbox" className="mt-5 " placeholder="" />
-                                        <label htmlFor=""> IS Service DN</label>
+                                      <div className="col-md-2 d-flex align-items-center">
+                                      <input type="checkbox" id="isServiceDn" className="me-2" />
+                                      <label htmlFor="isServiceDn">IS Service DN</label>
+                                    </div>
+
+                                      <div className="col-md-4 d-flex mt-4">
+                                        <button className=" vndrbtn">Save Dabit Note</button>
+                                        <button className=" vndrbtn">Cancel</button>
                                       </div>
-                                      <div className="col-md-2 mt-5">
-                                        <button className="btn">Save Dabit Note</button>
-                                        <button className="btn">Cancel</button>
-                                      </div>
+
                                   </div>
 
                              </div>

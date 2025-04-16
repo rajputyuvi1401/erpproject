@@ -354,7 +354,7 @@ const [searchResults, setSearchResults] = useState([]);
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <form className="row" onSubmit={handleSubmit}>
-                  <div className="Newgrn-header  mb-4 text-start mt-5">
+                  <div className="Newgrn-header  mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title text-start">New MRN</h5>
@@ -410,7 +410,7 @@ const [searchResults, setSearchResults] = useState([]);
                           </div>
                           <div className="col-md-2">
                           {series ? (
-                  <input type="text" id="MrnNo" className="form-control" value={MrnNo} readOnly />
+                  <input type="text" id="MrnNo" className="form-control mt-1" value={MrnNo} readOnly />
                 ) : (
                   <input
                     type="text"
@@ -443,13 +443,13 @@ const [searchResults, setSearchResults] = useState([]);
                         </div>
                       </div>
                       <div className="col-md-1 text-end">
-                        <Link className="btn" to="/Tool-MRN">
-                          Tool MRN
+                        <Link className="vndrbtn" to="/Tool-MRN">
+                          ToolMRN
                         </Link>
                       </div>
                     </div>
                   </div>
-                  <div className="Newgrn-main mt-5">
+                  <div className="Newgrn-main">
                     <div className="container-fluid text-start">
                       <div className="row mt-4">
                         <div className="Col-md-12">
@@ -600,7 +600,7 @@ const [searchResults, setSearchResults] = useState([]);
                                       ></textarea>
                                     </td>
                                     <td data-label="Action">
-                                    <button onClick={handleAddToTable} type="button" className="btn btn-primary">
+                                    <button onClick={handleAddToTable} type="button" className="vndrbtn">
                             {editIndex >= 0 ? "Update" : "Add"}
                           </button>
                                     </td>
@@ -615,9 +615,9 @@ const [searchResults, setSearchResults] = useState([]);
                     </div>
 
                     <div className="Newgrntable">
-                      <div className="container-fluid mt-4 text-start">
+                      <div className="container-fluid mt-3 text-start">
                         <div className="table-responsive">
-                          <table className="table table-bordered">
+                          <table className="table">
                             <thead>
                               <tr>
                                 <th>Sr no.</th>
@@ -682,7 +682,7 @@ const [searchResults, setSearchResults] = useState([]);
                     <div className="NewgrnFooter">
                       <div className="container-fluid">
                         <div className="row g-3">
-                          <div className="col-md-2">
+                          <div className="col-md-3">
                             <div className="row align-items-center">
                               <div className="col-4 col-md-4 text-end">
                                 <label>Remark:</label>
@@ -699,7 +699,7 @@ const [searchResults, setSearchResults] = useState([]);
                               </div>
                             </div>
                           </div>
-                          <div className="col-md-2">
+                          <div className="col-md-3">
                             <div className="row align-items-center">
                               <div className="col-md-4 col-md-4 text-end">
                                 <label>MRN Date:</label>
@@ -715,7 +715,7 @@ const [searchResults, setSearchResults] = useState([]);
                               </div>
                             </div>
                           </div>
-                          <div className="col-md-2">
+                          <div className="col-md-3">
                             <div className="row align-items-center">
                               <div className="col-4 col-md-4 text-end">
                                 <label>MRN Time:</label>
@@ -744,9 +744,9 @@ const [searchResults, setSearchResults] = useState([]);
                           </div>
                         </div> */}
                           <div className="col-md-2 d-flex justify-content-end align-items-center">
-                          <button type="submit" className="btn w-100" disabled={submitting}>
-                  {submitting ? "Saving..." : "Save MRN"}
-                </button>
+                          <button type="submit" className="vndrbtn w-100" disabled={submitting}>
+                            {submitting ? "Saving..." : "Save MRN"}
+                          </button>
                           </div>
                         </div>
                         {submitSuccess && (

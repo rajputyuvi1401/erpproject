@@ -109,19 +109,19 @@ const AddCycleTime = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="AddCycletimermaster">
                   <div className="AddCycletime">
-                  <div className="AddCycletime-header mb-4 text-start mt-5">
+                  <div className="AddCycletime-header mb-4 text-start">
                       <div className="row align-items-center">
                         <div className="col-md-5">
                         <h5 className="header-title">Cycle Time Master</h5>
                         </div>
-                        <div className="col-md-4 text-md-end text-start mt-3 mt-md-0">
+                        <div className="col-md-4 text-md-end text-start mt-md-0">
                           <p style={{ color: "green" }}>
                             **Note: Please Enter Time in Seconds
                           </p>
                         </div>
                         <div className="col-md-3 text-md-end text-start mt-2 mt-md-0">
                           <button
-                            className="btn me-2"
+                            className=" vndrbtn me-2"
                             onClick={handleAddNewCycleTime}
                           >
                             Cycle Time Master List
@@ -130,7 +130,7 @@ const AddCycleTime = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="AddCycletimeMain mt-5">
+                  <div className="AddCycletimeMain">
                     <div className="container-fluid">
                       <div className="row text-start centerselect">
                         <div className="col-md-1 col-sm-3 mb-3 mb-sm-0">
@@ -150,18 +150,19 @@ const AddCycleTime = () => {
                           />
                         </div>
                         <div className="col-md-1 col-sm-12 text-sm-start text-md-start">
-                          <button className="btn mt-1">
+                          <button className=" vndrbtn mt-1">
                            Search
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="AddCycleaside mt-5">
+
+                  <div className="AddCycleaside mt-3">
                     <div className="container-fluid">
                       <form onSubmit={handleSubmit}>
                         <div className="row text-start">
-                          <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
+                          <div className="col-md-2 col-sm-3 mb-3 mb-sm-0">
                             <div className="mb-3">
                               <label htmlFor="Plant" className="form-label">
                                 Plant
@@ -185,7 +186,7 @@ const AddCycleTime = () => {
                               )} */}
                             </div>
                           </div>
-                          <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
+                          <div className="col-md-2 col-sm-3 mb-3 mb-sm-0">
                             <div className="mb-3">
                               <label htmlFor="PartCode" className="form-label">
                                 Part Code
@@ -240,7 +241,7 @@ const AddCycleTime = () => {
                               )} */}
                             </div>
                           </div>
-                          <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
+                          <div className="col-md-2 col-sm-3 mb-3 mb-sm-0">
                             <div className="mb-3">
                               <label htmlFor="Machine" className="form-label">
                                 Machine
@@ -264,7 +265,7 @@ const AddCycleTime = () => {
                               )}
                             </div>
                           </div>
-                          <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
+                          <div className="col-md-2 col-sm-3 mb-3 mb-sm-0">
                             <div className="mb-3">
                               <label htmlFor="OPTime" className="form-label">
                                 Op Time<span className="text-danger">
@@ -286,7 +287,7 @@ const AddCycleTime = () => {
                               )}
                             </div>
                           </div>
-                          <div className="col-md-2 col-sm-6 mb-3 mb-sm-0">
+                          <div className="col-md-2 col-sm-3 mb-3 mb-sm-0">
                             <div className="mb-3">
                               <label
                                 htmlFor="Load_Unload_Time"
@@ -311,7 +312,7 @@ const AddCycleTime = () => {
                               )}
                             </div>
                           </div>
-                          <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
+                          <div className="col-md-2 col-sm-3 mb-3 mb-sm-0">
                             <div className="mb-3">
                               <label htmlFor="MO_Time" className="form-label">
                                 Mo Time<span className="text-danger">
@@ -333,7 +334,7 @@ const AddCycleTime = () => {
                               )}
                             </div>
                           </div>
-                          <div className="col-md-1 col-sm-6 mb-3 mb-sm-0">
+                          <div className="col-md-2 col-sm-3 mb-3 mb-sm-0">
                             <div className="mb-3">
                               <label
                                 htmlFor="Total_Time"
@@ -395,25 +396,25 @@ const AddCycleTime = () => {
                               )} */}
                             </div>
                           </div>
-                          <div className="row text-end">
-                            <div className="col-md-12 col-sm-6">
-                              <button type="submit" className="btn me-2">
+                          <div className="col-md-4 col-sm-6 mt-4">
+                              <button type="submit" className=" vndrbtn me-2">
                                 Add
                               </button>
                               <button
                                 type="button"
-                                className="btn"
+                                className=" vndrbtn"
                                 onClick={handleClear}
                               >
                                 Clear
                               </button>
                             </div>
-                          </div>
+
+                          
                         </div>
                       </form>
                     </div>
                   </div>
-                  <div className="AddCycletable mt-5">
+                  <div className="AddCycletable mt-3">
                     <div className="container-fluid">
                       <div className="row text-start">
                         <div className="col-md-12">
@@ -428,8 +429,8 @@ const AddCycleTime = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-12 text-end mt-5">
-                    <button className="btn">Save</button>
+                  <div className="col-md-12 text-end mt-3">
+                    <button className=" vndrbtn">Save</button>
                   </div>
                 </div>
               </main>

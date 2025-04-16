@@ -32,14 +32,14 @@ const OrderLiast = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="OrderLiast mt-5">
-                  <div className="OrderLiast-header mb-4 text-start">
+                <div className="OrderLiast">
+                  <div className="OrderLiast-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title"> Order List </h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn">
+                        <button type="button" className=" vndrbtn">
                           Export To Excel
                         </button>
                       </div>
@@ -48,7 +48,7 @@ const OrderLiast = () => {
 
 
                   {/* Filter Section */}
-                  <div className="OrderLiast-filter mb-4">
+                  <div className="OrderLiast-filter">
                     <div className="row text-start">
                       
                       <div className="col-md-1">
@@ -60,7 +60,7 @@ const OrderLiast = () => {
                         <input type="date" className="form-control" />
                       </div>
 
-                      <div className="col-md-1 margin-5">
+                      <div className="col-md-2 margin-5">
                         <label>OrderStatus</label>
                         <select className="form-control">
                           <option value="">All</option>
@@ -71,7 +71,7 @@ const OrderLiast = () => {
                         </select>
                       </div>
 
-                      <div className="col-md-1 margin-5">
+                      <div className="col-md-2 margin-5">
                         <label>DeliveryStatus</label>
                         <select className="form-control">
                           <option value="">All</option>
@@ -99,7 +99,7 @@ const OrderLiast = () => {
                       </div> 
 
                       <div className="col-md-1 mt-4">               
-                         <button className="btn btn-primary">Search</button>          
+                         <button className=" vndrbtn">Search</button>          
                       </div>
 
                     </div>        
@@ -151,7 +151,7 @@ const OrderLiast = () => {
                             <td></td>
                         
                           <td>
-                            <button className="btn btn-sm btn-light">
+                            <button className=" vndrbtn">
                               <i className="fas fa-eye"></i>
                             </button>
                           </td>
@@ -161,6 +161,7 @@ const OrderLiast = () => {
                     </table>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

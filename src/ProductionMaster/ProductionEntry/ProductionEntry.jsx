@@ -549,7 +549,7 @@ useEffect(() => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ProductionEntry mt-5">
+                <div className="ProductionEntry mt-1">
                   <form onSubmit={handleSubmit} autoComplete="off">
                     <div className="ProductionEntry-header mb-4 text-start">
                       <div className="row align-items-center">
@@ -574,6 +574,7 @@ useEffect(() => {
                             <input
                               type="checkbox"
                               id="general"
+                              className="mt-2"
                               name="General"
                               value={formData.General}
                               onChange={handleChange}
@@ -586,6 +587,7 @@ useEffect(() => {
                             <input
                               type="checkbox"
                               id="downtime"
+                              className="mt-2"
                               name="MachineDowntime"
                               value={formData.MachineDowntime}
                               onChange={handleChange}
@@ -595,13 +597,13 @@ useEffect(() => {
                         </div>
 
                         <div className="col-md-6 text-end">
-                          <Link to="/ProductionEntryList" type="button" className="btn">
+                          <Link to="/ProductionEntryList" type="button" className="vndrbtn">
                             Production List
                           </Link>
                         </div>
                       </div>
                     </div>
-                    <div className="ProductionEntry-main mt-5">
+                    <div className="ProductionEntry-main mt-1">
                       <div className="row text-start">
                         {/* First Column */}
                         <div className="col-md-4">
@@ -620,7 +622,7 @@ useEffect(() => {
                               />
                               <button
                                 type="button"
-                                className="btn btn-outline-secondary ml-2"
+                                className="vndrbtn ml-2"
                               >
                                 <Cached />
                               </button>
@@ -751,19 +753,19 @@ useEffect(() => {
 
                               <button
                                 type="button"
-                                className="btn btn-outline-secondary ml-2"
+                                className="vndrbtn  ml-2"
                               >
                                 <Cached />
                               </button>
                               <button
                                 type="button"
-                                className="btn btn-outline-secondary ml-2"
+                                className="vndrbtn ml-2"
                               >
                                 📋
                               </button>
                               <button
                                 type="button"
-                                className="btn btn-outline-secondary ml-2"
+                                className="vndrbtn  ml-2"
                               >
                                 📝
                               </button>
@@ -1618,7 +1620,7 @@ useEffect(() => {
                                     <td className="border border-gray-300 p-2">
                                       <button
                                         type="button"
-                                        className="btn"
+                                        className="vndrbtn"
                                         onClick={handleAddIdleTime}
                                       >
                                         Add
@@ -1674,7 +1676,7 @@ useEffect(() => {
                                       <td>{record.remark}</td>
                                       <td>
                                         <button
-                                          className="btn btn-danger"
+                                          className="vndrbtn"
                                           onClick={() =>
                                             handleDeleteIdleTime(index)
                                           }
@@ -1712,17 +1714,17 @@ useEffect(() => {
                                     />
                                   </div> */}
                                   {/* <div className="col-md-1">
-                                    <button type="button" className="btn">
+                                    <button type="button" className="vndrbtn">
                                       Add
                                     </button>
                                   </div> */}
                                   <div className="col-md-1">
-                                    <button type="button" className="btn">
+                                    <button type="button" className="vndrbtn">
                                       <FaPlus />
                                     </button>
                                   </div>
                                   <div className="col-md-1">
-                                    <button type="button" className="btn">
+                                    <button type="button" className="vndrbtn">
                                       <Cached />
                                     </button>
                                   </div>
@@ -1793,17 +1795,17 @@ useEffect(() => {
                                     />
                                   </div>
                                   <div className="col-md-1">
-                                    <button type="button" className="btn">
+                                    <button type="button" className="vndrbtn">
                                       Add
                                     </button>
                                   </div> */}
                                   <div className="col-md-1">
-                                    <button type="button" className="btn">
+                                    <button type="button" className="vndrbtn">
                                       <FaPlus />
                                     </button>
                                   </div>
                                   <div className="col-md-1">
-                                    <button type="button" className="btn">
+                                    <button type="button" className="vndrbtn">
                                       <Cached />
                                     </button>
                                   </div>
@@ -1874,7 +1876,7 @@ useEffect(() => {
                                   <input type="text" className="form-control" style={{marginTop:"-2px"}} />
                                 </div>
                                 <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                  <button type="button" className="vndrbtn">
                                     Add
                                   </button>
                                 </div>
@@ -1930,7 +1932,8 @@ useEffect(() => {
                         </div>
                       </div>
                     </div>
-                    <div className="productionbottom mt-5">
+
+                    <div className="productionbottom mt-2">
                       <div className="row align-items-center text-start g-2 mt-2">
                         {/* Remark */}
                         <div className="col-md-2">
@@ -2001,12 +2004,13 @@ useEffect(() => {
 
                         {/* Save Button */}
                         <div className="col-md-12 d-flex justify-content-end mt-3">
-                          <button type="submit" className="btn">
+                          <button type="submit" className="vndrbtn">
                             Save Entry
                           </button>
                         </div>
                       </div>
                     </div>
+
                   </form>
                 </div>
               </main>

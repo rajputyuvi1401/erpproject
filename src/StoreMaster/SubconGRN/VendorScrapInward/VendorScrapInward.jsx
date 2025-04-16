@@ -98,9 +98,9 @@ const VendorScrapInward = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="VendorScrap-header mb-4 text-start mt-5">
+                <div className="VendorScrap-header mb-4 text-start">
                   <div className="row align-items-center">
-                    <div className="col-md-3 col-6">
+                    <div className="col-md-4 col-6">
                       <h5 className="header-title text-start">
                         Inward Vendor Scrap Challan
                       </h5>
@@ -110,7 +110,7 @@ const VendorScrapInward = () => {
                     </div>
                   </div>
                 </div>
-                <div className="VendorScrap-main mt-5">
+                <div className="VendorScrap-main ">
                   <div className="container-fluid text-start">
                     <div className="row mt-4">
                       <div className="col-md-6">
@@ -120,7 +120,7 @@ const VendorScrapInward = () => {
                             <input className="form-control" />
                           </div>
                           <div className="col-md-2 col-12 mt-2 mt-md-0">
-                            <button type="button" className="btn">
+                            <button type="button" className="vndrbtn">
                               Search
                             </button>
                           </div>
@@ -390,7 +390,7 @@ const VendorScrapInward = () => {
                                             className="text-center"
                                           >
                                             <button
-                                              className="btn"
+                                              className="vndrbtn"
                                               onClick={handleSubmit}
                                             >
                                               Save Challan
@@ -405,6 +405,7 @@ const VendorScrapInward = () => {
                             </div>
                           </div>
                         </div>
+                        
                       </div>
                     </div>
                   </div>

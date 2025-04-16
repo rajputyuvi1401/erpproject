@@ -38,15 +38,15 @@ const HotInspectionList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="HotInspectionList mt-5">
-                  <div className="HotInspectionList-header mb-4 text-start">
+                <div className="HotInspectionList">
+                  <div className="HotInspectionList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Hot Inspection List</h5>
                       </div>
                      
                       <div className="col-md-6 text-end">
-                        <button type="button" className="btn" onClick={handleNavigate}>
+                        <button type="button" className="vndrbtn" onClick={handleNavigate}>
                          New Hot Inspection 
                         </button>
 
@@ -54,7 +54,7 @@ const HotInspectionList = () => {
                     </div>
                   </div>
 
-                  <div className="HotInspectionList-main mt-5">
+                  <div className="HotInspectionList-main">
         
                     <div className="row g-3 text-start">
                       <div className="col-sm-6 col-md-2 col-lg-2">
@@ -77,8 +77,8 @@ const HotInspectionList = () => {
                        <input type="text"  placeholder=" " className="form-control"/>
                       </div>
 
-                    <div className="col-6 col-md-1 mt-5">
-                    <button type="button" className="btn btn-primary w-100" >
+                    <div className="col-6 col-md-1">
+                    <button type="button" className="vndrbtn w-100" style={{marginTop:"22px"}}>
                         Search
                     </button> 
                     </div>

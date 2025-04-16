@@ -34,20 +34,20 @@ const WorkOrderList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PRoWorkorderList mt-5">
+                <div className="  ">
                   <div className="PRoWorkorderList-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Work Order List</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <Link type="button" className="btn" to="/AddQuater">
+                        <Link type="button" className="vndrbtn" to="/AddQuater">
                           Work Order Report
                         </Link>
 
                         <Link
                           type="button"
-                          className="btn"
+                          className="vndrbtn"
                           to="/Companysetup"
                         >
                           Work Order - Query
@@ -56,23 +56,23 @@ const WorkOrderList = () => {
                     </div>
                   </div>
 
-                  <div className="PRoWorkorderList-Main">
+                  <div className="PRoWorkorderList-Main mt-2">
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
                         {/* From Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* To Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>To Date:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* Plant */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>Plant:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -80,7 +80,7 @@ const WorkOrderList = () => {
                         </div>
 
                         {/* Status */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>Status:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -88,7 +88,7 @@ const WorkOrderList = () => {
                         </div>
 
                         {/* Type */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>Type:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -96,7 +96,7 @@ const WorkOrderList = () => {
                         </div>
 
                         {/* Series */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>Series:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -104,7 +104,7 @@ const WorkOrderList = () => {
                         </div>
 
                         {/* Auth */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>Auth:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -112,28 +112,28 @@ const WorkOrderList = () => {
                         </div>
 
                         {/* Customer Name */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
+                        <div className="col-sm-6 col-md-1 col-lg-2">
                           <label>Customer Name:</label>
                           <input type="text" className="form-control" />
                         </div>
 
                         {/* Item Name */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
+                        <div className="col-sm-6 col-md-1 col-lg-2">
                           <label>Item Name:</label>
                           <input type="text" className="form-control" />
                         </div>
 
                         {/* Wo No */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
+                        <div className="col-sm-6 col-md-1 col-lg-2">
                           <label>Wo No:</label>
                           <input type="text" className="form-control" />
                         </div>
 
-                        <div className="col-sm-2 col-md-2 col-lg-1 mt-4">
+                        <div className="col-sm-2 col-md-2 col-lg-2 mt-4">
                           <label></label>
-                        <button
+                         <button
                             type="button"
-                            className="btn btn-primary w-100"
+                            className="vndrbtn w-100"
                           >
                             Search
                           </button>
@@ -146,7 +146,7 @@ const WorkOrderList = () => {
                     </div>
                   </div>
 
-                  <div className="table-responsive">
+                  <div className=" PRoWorkorderListtable table-responsive mt-3">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -188,12 +188,12 @@ const WorkOrderList = () => {
                           <td>2024</td>
                           <td>2024</td>
                           <td>
-                            <button className="btn btn-link">
+                            <button className="vndrbtn vndrbtn-link">
                               <FaEdit />
                             </button>
                           </td>
                           <td>
-                            <button className="btn btn-link text-danger">
+                            <button className="vndrbtn vndrbtn-link text-danger">
                               <FaTrash />
                             </button>
                           </td>

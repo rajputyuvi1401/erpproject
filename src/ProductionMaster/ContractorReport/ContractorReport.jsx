@@ -33,29 +33,27 @@ const ContractorReport = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ContractorReport mt-5">
-                  <div className="ContractorReport-header mb-4 text-start">
+                <div className="ContractorReport">
+                  <div className="ContractorReport-header mb-2 text-start">
                     <div className="row align-items-center">
-                      <div className="col-md-4 col-12 mb-2 mb-md-0">
+                      <div className="col-md-4 mb-2 mb-md-0">
                         <h5 className="header-title">Contractor Payment List</h5>
                       </div>
-                      <div className="col-md-2">
+                      <div className="col-md-2 ">
                       <select className="form-select w-auto">
                             <option>Pay</option>
                           </select>
                       </div>
                          
                      
-                      <div className="col-md-6 col-12 text-end">
-                       
-                        
-                          <button type="button" className="btn">
+                      <div className="col-md-6 text-end">
+                          <button type="button" className="vndrbtn">
                             Efficiency Report
                           </button>
-                          <button type="button" className="btn">
+                          <button type="button" className="vndrbtn">
                             Contractor Pay Report
                           </button>
-                          <Link type="button" className="btn" to="/ContractirList">
+                          <Link type="button" className="vndrbtn" to="/ContractirList">
                             New Contractor Payment
                           </Link>
                         </div>
@@ -92,14 +90,14 @@ const ContractorReport = () => {
                         </div>
 
                         <div className="col-6 col-md-1 mt-5">
-                          <button type="button" className="btn btn-primary">
+                          <button type="button" className="vndrbtn">
                             Search
                           </button>
                         </div>
                         <div className="col-6 col-md-2 mt-5">
                           <button
                             type="button"
-                            className="btn btn-primary"
+                            className="vndrbtn"
                           >
                             Search Option
                           </button>

@@ -41,36 +41,36 @@ const MRNList = () => {
 
                     <div className="col-md-9 text-end">
                       <div className="row justify-content-end">
-                        <div className="col-md-9 d-flex align-items-end">
+                        <div className="col-md-4 d-flex align-items-end">
                         
                          
-                          <Link className="pobtn">Export Excel</Link>
+                          <Link className="vndrbtn">Export Excel</Link>
                         
-                          <Link className="pobtn">MRN - Query</Link>
+                          <Link className="vndrbtn">MRN - Query</Link>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="GateInward-main">
+                <div className="GateInward-main mt-3">
                   <div className="container-fluid">
                     <div className="row mt-4">
                       <div className="col-md-12">
                         <form className="row g-3 text-start">
                           {/* From Date */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">From Date</label>
                             <input type="date" className="form-control" />
                           </div>
 
                           {/* To Date */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">To Date</label>
                             <input type="date" className="form-control" />
                           </div>
 
                           {/* Plant */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">Plant</label>
                             <select className="form-select">
                               <option value="Produlink">Produlink</option>
@@ -79,7 +79,7 @@ const MRNList = () => {
                           </div>
 
                           {/* Series */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">Series</label>
                             <select className="form-select">
                               <option value="">Select Series</option>
@@ -120,7 +120,7 @@ const MRNList = () => {
                           </div>
 
                          {/* Plant */}
-                         <div className="col-md-1 col-sm-6">
+                         <div className="col-md-2 col-sm-6">
                             <label className="form-label">Issue Status</label>
                             <select className="form-select">
                               <option value="Produlink">Produlink</option>
@@ -129,8 +129,8 @@ const MRNList = () => {
                           </div>
 
                           {/* Search Button */}
-                          <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                            <button type="submit" className="pobtn w-100">
+                          <div className="col-md-2 col-sm-6 mt-1 align-self-end">
+                            <button type="submit" className="vndrbtn w-100">
                               Search
                             </button>
                           </div>

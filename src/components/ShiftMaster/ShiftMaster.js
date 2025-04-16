@@ -114,8 +114,8 @@ const ShiftMaster = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="ShiftMaster1">
                 
-                  <div className="Shift-header mb-4 text-start mt-5">
-                    <div className="row align-items-center">
+                  <div className="Shift-header mb-4 text-start mt-1">
+                      <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Shift Master</h5>
                         </div>
@@ -127,10 +127,10 @@ const ShiftMaster = () => {
                       </div>
                     </div>
                
-                  <div className="ShiftMain mt-5">
+                  <div className="ShiftMain mt-1">
                     <div className="container-fluid">
                       <div className="row text-start">
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <div className="mb-3">
                             <label htmlFor="Plant" className="form-label">
                               Plant:
@@ -155,7 +155,7 @@ const ShiftMaster = () => {
                             )} */}
                           </div>
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <label htmlFor="Shift_Name" className="form-label">
                             Shift Name:<span className="text-danger">*</span>
                           </label>
@@ -172,7 +172,7 @@ const ShiftMaster = () => {
                             </small>
                           )}
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <div className="mb-3">
                             <label
                               htmlFor="Shift_Prefix"
@@ -194,7 +194,7 @@ const ShiftMaster = () => {
                             )} */}
                           </div>
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <div className="mb-3">
                             <label htmlFor="Shift_From" className="form-label">
                               Shift From:<span className="text-danger">*</span>
@@ -213,7 +213,7 @@ const ShiftMaster = () => {
                             )}
                           </div>
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <div className="mb-3">
                             <label htmlFor="Shift_Till" className="form-label">
                               Shift Till:<span className="text-danger">*</span>
@@ -247,7 +247,7 @@ const ShiftMaster = () => {
                           
                           </div>
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <div className="mb-3">
                             <label htmlFor="Break_Till" className="form-label">
                               Break Till:
@@ -262,7 +262,7 @@ const ShiftMaster = () => {
                            
                           </div>
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <div className="mb-3">
                             <label htmlFor="Break_Time" className="form-label">
                               Break Time:<span className="text-danger">*</span>
@@ -281,7 +281,7 @@ const ShiftMaster = () => {
                             )}
                           </div>
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <div className="mb-3">
                             <label htmlFor="Total_Hours" className="form-label">
                               Total Hours:<span className="text-danger">*</span>
@@ -300,26 +300,27 @@ const ShiftMaster = () => {
                             )}
                           </div>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-4">
                           <div className="mb-3">
                             <button
-                              className="btn"
+                              className=" vndrbtn"
                               type="button"
                               onClick={handleSubmit}
                               style={{marginTop:"31px"}}
                             >
                               Save
                             </button>
-                            <button className="btn" type="button"
+                            <button className=" vndrbtn" type="button"
                              
                               style={{marginTop:"31px"}}>Cancel</button>
                           </div>
                         </div>
                       </div>
                     </div>
-                
-                  {!showTable && (
-                    <div className="Shifttable1">
+                  </div>
+
+                    {!showTable && (
+                    <div className="Shifttable">
                       <div className="container-fluid">
                         <div className="row">
                           <div className="col-md-12 text-start">
@@ -337,7 +338,7 @@ const ShiftMaster = () => {
                         </div>
                       </div>
                     </div>
-                  )}
+                    )}
 
                   {showTable && (
                     <div className="Shifttable mt-5">
@@ -372,17 +373,17 @@ const ShiftMaster = () => {
                                     <td>{shift.Break_Time}</td>
                                     <td>{shift.Total_Hours}</td>
                                     <td>
-                                      <button className="Shiftbtnicon">
+                                      <button className="Shift vndrbtn">
                                         <i className="fas fa-edit"></i>
                                       </button>
                                     </td>
                                     <td>
-                                      <button className="Shiftbtnicon">
+                                      <button className="Shift vndrbtn">
                                         <i className="fas fa-trash"></i>
                                       </button>
                                     </td>
                                     <td>
-                                      <button className="Shiftbtnicon">
+                                      <button className="Shift vndrbtn">
                                         Active
                                       </button>
                                     </td>
@@ -395,7 +396,7 @@ const ShiftMaster = () => {
                       </div>
                     </div>
                   )}
-                    </div>
+
                 </div>
               </main>
             </div>

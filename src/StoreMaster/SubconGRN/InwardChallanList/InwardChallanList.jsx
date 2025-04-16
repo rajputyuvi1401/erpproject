@@ -30,7 +30,7 @@ const InwardChallanList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="InwardList-header mb-4 text-start mt-5">
+                <div className="InwardList-header mb-4 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-2">
                       <h5 className="header-title text-start">
@@ -44,9 +44,9 @@ const InwardChallanList = () => {
                     </div>
                     <div className="col-md-4 text-end">
                       
-                          <button className="btn">GRN : Report</button>
+                          <button className="vndrbtn">GRN : Report</button>
                         
-                          <button className="btn">57F4-Inward - Query</button>
+                          <button className="vndrbtn">57F4-Inward - Query</button>
                        
                     </div>
                   </div>
@@ -54,7 +54,7 @@ const InwardChallanList = () => {
                 <div className="InwardList-main">
                   <div className="container-fluid text-start">
                     <div className="row mt-4">
-                      <div className="col-12 col-md">
+                      <div className="col-12 col-md-2">
                         <label htmlFor="fromDate">From Date</label>
                         <input
                           type="date"
@@ -62,7 +62,7 @@ const InwardChallanList = () => {
                           id="fromDate"
                         />
                       </div>
-                      <div className="col-12 col-md">
+                      <div className="col-12 col-md-2">
                         <label htmlFor="toDate">To Date</label>
                         <input
                           type="date"
@@ -70,21 +70,21 @@ const InwardChallanList = () => {
                           id="toDate"
                         />
                       </div>
-                      <div className="col-12 col-md">
+                      <div className="col-12 col-md-2">
                         <label htmlFor="plant">Plant</label>
                         <select className="form-control" id="plant">
                           <option>Produlink</option>
                          
                         </select>
                       </div>
-                      <div className="col-12 col-md">
+                      <div className="col-12 col-md-2">
                         <label htmlFor="type">Type</label>
                         <select className="form-control" id="type">
                           <option>ALL</option>
                           {/* Add options here */}
                         </select>
                       </div>
-                      <div className="col-12 col-md">
+                      <div className="col-12 col-md-2">
                         <label htmlFor="series">Series</label>
                         <select className="form-control" id="series">
                             <option>Select</option>
@@ -98,14 +98,14 @@ const InwardChallanList = () => {
                          
                         </select>
                       </div>
-                      <div className="col-12 col-md">
+                      <div className="col-12 col-md-2">
                         <label htmlFor="f4Status">F4 Status</label>
                         <select className="form-control" id="f4Status">
                           <option>ALL</option>
                           {/* Add options here */}
                         </select>
                       </div>
-                      <div className="col-12 col-md">
+                      <div className="col-12 col-md-2">
                         <label htmlFor="vendorCustomerName">
                           V Name
                         </label>
@@ -115,7 +115,7 @@ const InwardChallanList = () => {
                           id="vendorCustomerName"
                         />
                       </div>
-                      <div className="col-12 col-md">
+                      <div className="col-12 col-md-2">
                         <label htmlFor="itemCodeNo">ItemCodeNo:</label>
                         <input
                           type="text"
@@ -123,7 +123,7 @@ const InwardChallanList = () => {
                           id="itemCodeNo"
                         />
                       </div>
-                      <div className="col-12 col-md">
+                      <div className="col-12 col-md-2">
                         <label htmlFor="partCode">Part Code:</label>
                         <input
                           type="text"
@@ -131,16 +131,16 @@ const InwardChallanList = () => {
                           id="partCode"
                         />
                       </div>
-                      <div className="col-12 col-md">
+                      <div className="col-12 col-md-2">
                         <label htmlFor="inward">Inward</label>
                         <select className="form-control" id="inward">
                           <option>Select Inward</option>
                           {/* Add options here */}
                         </select>
                       </div>
-                      <div className="col-12 col-md text-start">
+                      <div className="col-12 col-md-2 mt-4 text-start">
                         <label htmlFor="critical">Is Critical</label>
-                        <button type="button" className="pobtn">
+                        <button type="button" className="vndrbtn">
                           Search
                         </button>
                       </div>
@@ -149,7 +149,7 @@ const InwardChallanList = () => {
                   </div>
 
                   <div className="InwardList-table">
-                    <div className="container-fluid mt-4 text-start">
+                    <div className="container-fluid mt-2 text-start">
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>

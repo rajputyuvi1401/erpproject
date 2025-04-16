@@ -32,27 +32,27 @@ const GSTJobworkDCreturn = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="GSTJobworkInvoice mt-5">
-                  <div className="GSTJobworkInvoice-header mb-4 text-start">
+                <div className="GSTJobworkInvoice">
+                  <div className="GSTJobworkInvoice-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">New Jobwork DC</h5>
                       </div>
                       <div className="col-md-1">Plant</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option>ProduLink</option>
                         </select>
                       </div>
                       <div className="col-md-1">Series</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option> Select </option>
                           <option> Delivery Challan</option>
                         </select>
                       </div>
                       <div className="col-md-1">
-                        <input type="text" placeholder="DCNo  : 24250001" className="w-100" />
+                        <input type="text" placeholder="DCNo  : 24250001" className="form-control" />
                       </div>
                         <div className="col-md-1">
                         <input type="radio" id="css" name="fav_language" value="CSS"/>
@@ -69,7 +69,7 @@ const GSTJobworkDCreturn = () => {
                     </div>
                   </div>
 
-                  <div className="GSTJobworkInvoice-main mt-5">
+                  <div className="GSTJobworkInvoice-main">
                     <div className="GSTJobworkInvoice-tabs">
                    
                       <ul
@@ -132,7 +132,7 @@ const GSTJobworkDCreturn = () => {
                                             </div>
                                             <div className="col-md-8 d-flex">
                                                 <input type="text"  className="form-control" placeholder="Enter Name"/>
-                                                <button style={{marginBottom:"15px"}} className="btn w-50">Search</button>
+                                                <button style={{marginBottom:"15px"}} className=" vndrbtn w-50">Search</button>
                                             </div>
                                      </div>
                                 </div>
@@ -145,7 +145,7 @@ const GSTJobworkDCreturn = () => {
                                             </div>
                                             <div className="col-md-8 d-flex">
                                                 <input type="text"  className="form-control" placeholder=" "/>
-                                                <button style={{marginBottom:"15px"}} className="btn w-50">Search</button>
+                                                <button style={{marginBottom:"15px"}} className=" vndrbtn w-50">Search</button>
                                             </div>
                                      </div>
                                 </div>
@@ -153,7 +153,7 @@ const GSTJobworkDCreturn = () => {
 
                                     </div>
                                     <div className="col-md-4">
-                                        <button style={{marginBottom:"15px"}} className="btn">View Pandding Challan List</button>
+                                        <button style={{marginBottom:"15px"}} className=" vndrbtn">View Pandding Challan List</button>
                                     </div>
                           </div>
                         
@@ -333,7 +333,7 @@ const GSTJobworkDCreturn = () => {
 
                           <div className="row">
                             <div className="col-md-2">
-                                <button className="btn btn-primary"> Generete DC </button>
+                                <button className="vndrbtn"> Generete DC </button>
                             </div>
                           </div>
 
@@ -370,21 +370,21 @@ const GSTJobworkDCreturn = () => {
                                                 <td></td>
                                                 <td><span>HSN Code :</span> </td>
                                                 <td className="text-start">
-                                                    <select name="" id="">
+                                                    <select className="form-control" name="" id="">
                                                             <option value="">NOS</option>
                                                         </select>
                                                 </td>
-                                                <td><input type="text" className="w-50"/></td>
+                                                <td><input type="text" className="form-control"/></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td><input type="text" className="w-50"/> <br />
+                                                <td><input type="text" className="form-control"/> <br />
                                                     <br />
-                                                    <input type="text" className="w-50" placeholder="" /> Kg<br />
+                                                    <input type="text" className="form-control" placeholder="" /> Kg<br />
                                                 
                                                 </td>
-                                                <td><textarea name="" id=""></textarea></td>
+                                                <td><textarea className="form-control" name="" id=""></textarea></td>
                                                 <td>LN No.</td>
-                                                <td><span style={{border:"1px solid black"}}>X</span></td>
+                                                <td><span className="vndrbtn" style={{border:"1px solid black"}}>X</span></td>
                                             </tr>
                                         </tbody>
                                         </table>

@@ -214,7 +214,7 @@ const DeliveryChallan = () => {
                     </div>
                   </div>
                 </div>
-                <div className="Deliverychallan-main">
+                <div className="Deliverychallan-main mt-2">
                   <div className="container-fluid text-start">
                     <div className="container-fluid">
                       <div className="row">
@@ -276,7 +276,7 @@ const DeliveryChallan = () => {
                                       className="form-control"
                                       type="text"
                                     />
-                                    <button type="button" className="btn">
+                                    <button type="button" className="vndrbtn">
                                       Search
                                     </button>
                                   </td>
@@ -287,7 +287,7 @@ const DeliveryChallan = () => {
                                   </td>
 
                                   <td>
-                                    <button type="button" className="btn">
+                                    <button type="button" className="vndrbtn">
                                       Cancel
                                     </button>
                                   </td>
@@ -399,7 +399,7 @@ const DeliveryChallan = () => {
                                       />
                                     </td>
                                     <td>
-                                      <button type="submit" className="pobtn">
+                                      <button type="submit" className="vndrbtn">
                                         {isEditing ? "Update" : "Add"}
                                       </button>
                                     </td>
@@ -747,7 +747,7 @@ const DeliveryChallan = () => {
                                             >
                                               <button
                                                 type="submit"
-                                                className="btn"
+                                                className="vndrbtn"
                                               >
                                                 Save Challan
                                               </button>

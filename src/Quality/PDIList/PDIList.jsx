@@ -48,20 +48,20 @@ const PDIList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PDIList mt-5">
-                  <div className="PDIList-header mb-4 text-start">
+                <div className="PDIList">
+                  <div className="PDIList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title"> ( PDI ) - Pre Dispatch Inspection </h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn" onClick={handleNewPDI}>
+                        <button type="button" className="vndrbtn" onClick={handleNewPDI}>
                           New PDI
                         </button>
-                        <button type="button" className="btn" onClick={toggleModal}>
+                        <button type="button" className="vndrbtn" onClick={toggleModal}>
                           PDI Summary
                         </button>
-                        <button type="button" className="btn" onClick={handleNavigate}>
+                        <button type="button" className="vndrbtn" onClick={handleNavigate}>
                           Pending Invoice List PDI
                         </button>
                       </div>
@@ -74,13 +74,13 @@ const PDIList = () => {
   aria-labelledby="exampleModalLabel"
   aria-hidden={!showModal}
 >
-  <div className="modal-dialog modal-lg">
+  <div className="modal-dialog modal-lg" style={{marginTop:"170px"}}>
     <div className="modal-content">
       <div className="modal-header">
         <h5 className="modal-title" id="exampleModalLabel">
           PDI Summary 
         </h5>
-        <button type="button" className="btn-close" onClick={toggleModal} > </button>
+        <button type="button" className="vndrbtn" onClick={toggleModal} > X </button>
       </div>
       <div className="modal-body">
         <form>
@@ -133,12 +133,12 @@ const PDIList = () => {
 
           <div className="row">
             <div className="col-4 mb-3">
-              <button type="button" className="btn btn-primary w-100">
+              <button type="button" className="vndrbtn w-100">
                  Daywise Report
               </button>
             </div>
             <div className="col-4 mb-3">
-              <button type="button" className="btn btn-primary w-100">
+              <button type="button" className="vndrbtn w-100">
                  Monthwise Report
               </button>
             </div>
@@ -151,19 +151,20 @@ const PDIList = () => {
 
 
                   {/* Filter Section */}
-                  <div className="PDIList-filter mb-4">
+                  <div className="PDIList-filter">
+
                     <div className="row text-start">
                       
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                         <label>From Date</label>
                         <input type="date" className="form-control" />
                       </div>
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                         <label>To Date</label>
                         <input type="date" className="form-control" />
                       </div>
 
-                      <div className="col-md-1 margin-5">
+                      <div className="col-md-2 margin-5">
                         <label>Plant</label>
                         <select className="form-select">
                           <option value="SHARP">SHARP</option>
@@ -179,7 +180,7 @@ const PDIList = () => {
                         <input type="text"  placeholder="Cust Name" className="form-control"/>
                       </div>
 
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                       <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label">Item Code: </label>
@@ -187,7 +188,7 @@ const PDIList = () => {
                         <input type="text" placeholder="Item Code " className="form-control" />
                       </div>
 
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                       <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label">PDI No: </label>
@@ -195,7 +196,7 @@ const PDIList = () => {
                         <input type="text" placeholder=" " className="form-control" />
                       </div>
 
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                       <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label">Inv. No: </label>
@@ -205,8 +206,8 @@ const PDIList = () => {
             
                 
 
-                      <div className="col-md-1 mt-4">               
-                         <button className="btn btn-primary">Search</button>          
+                      <div className="col-md-2">               
+                         <button className="vndrbtn w-100" style={{marginTop:"27px"}}>Search</button>          
                       </div>
 
                     </div>
@@ -265,7 +266,7 @@ const PDIList = () => {
                             <td></td>
                         
                           <td>
-                            <button className="btn btn-sm btn-light">
+                            <button className="vndrbtn">
                               <i className="fas fa-eye"></i>
                             </button>
                           </td>

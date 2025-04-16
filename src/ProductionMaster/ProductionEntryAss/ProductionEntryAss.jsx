@@ -621,7 +621,7 @@ const handleDeleteReject = (index) => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="AssemblyEntry mt-5">
+                <div className="AssemblyEntry mt-1">
                   <form onSubmit={handleSubmit} autoComplete="off">
                     <div className="AssemblyEntry-header mb-4 text-start">
                     <div className="row align-items-center">
@@ -684,7 +684,7 @@ const handleDeleteReject = (index) => {
 
   {/* Production List Button */}
   <div className="col-md-2 text-end">
-    <button type="button" className="btn btn-primary">
+    <button type="button" className="vndrbtn">
       Production List
     </button>
   </div>
@@ -692,7 +692,7 @@ const handleDeleteReject = (index) => {
 
                     </div>
 
-                    <div className="AssemblyEntry-main mt-5">
+                    <div className="AssemblyEntry-main">
                       <div className="AssemblyEntry-tabs">
                         <ul
                           className="nav nav-tabs"
@@ -878,19 +878,19 @@ const handleDeleteReject = (index) => {
                                     </select>
                                     <button
                                       type="button"
-                                      className="btn btn-outline-secondary ml-2"
+                                      className="vndrbtn ml-2"
                                     >
                                       Select
                                     </button>
                                     <button
                                       type="button"
-                                      className="btn btn-outline-secondary ml-2"
+                                      className="vndrbtn ml-2"
                                     >
                                       <FaEye />
                                     </button>
                                     <button
                                       type="button"
-                                      className="btn btn-outline-secondary ml-2"
+                                      className="vndrbtn ml-2"
                                     >
                                       📋
                                     </button>
@@ -1432,7 +1432,8 @@ const handleDeleteReject = (index) => {
                         </div>
                       </div>
                     </div>
-                    <div className="AssemblyEntry-bottom mt-5">
+
+                    <div className="AssemblyEntry-bottom mt-2">
                       <div className="AssemblyEntry-tabs">
                         <ul
                           className="nav nav-tabs"
@@ -1812,7 +1813,7 @@ const handleDeleteReject = (index) => {
             />
           </td>
           <td className="border border-gray-300 p-2">
-            <button type="button" className="btn" onClick={handleAddIdleTime}>
+            <button type="button" className="vndrbtn" onClick={handleAddIdleTime}>
               Add
             </button>
           </td>
@@ -1849,7 +1850,7 @@ const handleDeleteReject = (index) => {
             <td className="border border-gray-300 p-2">{entry.setting_part}</td>
             <td className="border border-gray-300 p-2">{entry.remark}</td>
             <td className="border border-gray-300 p-2">
-              <button type="button" className="btn" onClick={() => handleDeleteIdleTime(index)}>
+              <button type="button" className="vndrbtn" onClick={() => handleDeleteIdleTime(index)}>
                 <FaTrash/>
               </button>
             </td>
@@ -1861,15 +1862,15 @@ const handleDeleteReject = (index) => {
                           </div>
 
 
-                          <div className="tab-pane fade" id="rework" role="tabpanel">
+ <div className="rejectreworkass tab-pane fade" id="rework" role="tabpanel">
   <div className="row">
     {/* Left Side - Rework Section */}
     <div className="col-md-6">
       <div className="row">
-        <div className="col-md-1">
+        <div className="col-md-2 mt-2">
           <label>Rework</label>
         </div>
-        <div className="col-md-2">
+        <div className="col-md-3">
           <select className="form-control" onChange={handleSelectRework}>
             <option>Select</option>
             {reworkReasons.map((reason, index) => (
@@ -1880,8 +1881,8 @@ const handleDeleteReject = (index) => {
           </select>
         </div>
        
-        <div className="col-md-1">
-          <button type="button" className="btn btn-primary" onClick={() => setShowReworkCard(true)}>
+        <div className="col-md-2 mt-2">
+          <button type="button" className="vndrbtn" onClick={() => setShowReworkCard(true)}>
             <FaPlus />
           </button>
         </div>
@@ -1910,8 +1911,8 @@ const handleDeleteReject = (index) => {
           onChange={(e) => setNewRework({ ...newRework, ParentCode: e.target.value })}
         />
         <div className="text-end mt-3">
-          <button className="btn btn-secondary me-2" onClick={() => setShowReworkCard(false)}>Cancel</button>
-          <button className="btn btn-success" onClick={handleAddRework}>Save</button>
+          <button className="vndrbtn  me-2" onClick={() => setShowReworkCard(false)}>Cancel</button>
+          <button className="vndrbtn" onClick={handleAddRework}>Save</button>
         </div>
       </div>
     </div>
@@ -1938,22 +1939,23 @@ const handleDeleteReject = (index) => {
                   <input type="text" className="form-control" />
                 </td>
                 <td>
-                  <button className="btn" onClick={() => handleDeleteRework(index)}><FaTrash/></button>
+                  <button className="vndrbtn" onClick={() => handleDeleteRework(index)}><FaTrash/></button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
     </div>
 
     {/* Right Side - Reject Section */}
     <div className="col-md-6">
       <div className="row">
-        <div className="col-md-1">
+        <div className="col-md-2 mt-2">
           <label>Reject</label>
         </div>
-        <div className="col-md-2">
+        <div className="col-md-3">
           <select className="form-control" onChange={handleSelectReject}>
             <option>Select</option>
             {rejectReasons.map((reason, index) => (
@@ -1964,8 +1966,8 @@ const handleDeleteReject = (index) => {
           </select>
         </div>
         
-        <div className="col-md-1">
-          <button type="button" className="btn btn-primary" onClick={() => setShowRejectCard(true)}>
+        <div className="col-md-2 mt-2">
+          <button type="button" className="vndrbtn" onClick={() => setShowRejectCard(true)}>
             <FaPlus />
           </button>
         </div>
@@ -1994,8 +1996,8 @@ const handleDeleteReject = (index) => {
           onChange={(e) => setNewReject({ ...newReject, ParentCode: e.target.value })}
         />
         <div className="text-end mt-3">
-          <button className="btn btn-secondary me-2" onClick={() => setShowRejectCard(false)}>Cancel</button>
-          <button className="btn btn-success" onClick={handleAddReject}>Save</button>
+          <button className="vndrbtn  me-2" onClick={() => setShowRejectCard(false)}>Cancel</button>
+          <button className="vndrbtn" onClick={handleAddReject}>Save</button>
         </div>
       </div>
     </div>
@@ -2022,13 +2024,14 @@ const handleDeleteReject = (index) => {
                   <input type="text" className="form-control" />
                 </td>
                 <td>
-                  <button className="btn" onClick={() => handleDeleteReject(index)}><FaTrash/></button>
+                  <button className="vndrbtn" onClick={() => handleDeleteReject(index)}><FaTrash/></button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
     </div>
   </div>
 </div>
@@ -2040,14 +2043,14 @@ const handleDeleteReject = (index) => {
                             role="tabpanel"
                           >
                             <div className="row">
-                              <div className="col-md-1">
+                              <div className="col-md-2">
                                 <label>Die Name</label>
                               </div>
                               <div className="col-md-2">
                                 <input type="text" className="form-control" />
                               </div>
                               <div className="col-md-1">
-                                <button type="button" className="btn">
+                                <button type="button" className="vndrbtn">
                                   Add
                                 </button>
                               </div>
@@ -2075,16 +2078,18 @@ const handleDeleteReject = (index) => {
                                 </table>
                               </div>
                             </div>
+
                           </div>
+
                         </div>
                       </div>
 
-                      <div className="row text-start">
+    <div className="productionassbottom mt-2 row text-start">
   {/* Remark */}
-  <div className="col-md-1">
+  <div className="col-md-2">
     <label>Remark:</label>
   </div>
-  <div className="col-md-1">
+  <div className="col-md-2">
     <textarea
       className="form-control"
       name="Remark"
@@ -2094,10 +2099,10 @@ const handleDeleteReject = (index) => {
   </div>
 
   {/* Target Qty */}
-  <div className="col-md-1">
+  <div className="col-md-2">
     <label>Target Qty:</label>
   </div>
-  <div className="col-md-1 d-flex align-items-center">
+  <div className="col-md-2 d-flex align-items-center">
 
     <input
       type="text"
@@ -2109,10 +2114,10 @@ const handleDeleteReject = (index) => {
   </div>
 
   {/* Production Type */}
-  <div className="col-md-1">
+  <div className="col-md-2">
     <label>Prod:</label>
   </div>
-  <div className="col-md-1">
+  <div className="col-md-2">
     <select
       name="Prod"
       className="form-control"
@@ -2126,10 +2131,10 @@ const handleDeleteReject = (index) => {
   </div>
 
   {/* Production Hours */}
-  <div className="col-md-1">
+  <div className="col-md-2 mt-2">
     <label>Production Hours:</label>
   </div>
-  <div className="col-md-1">
+  <div className="col-md-2 mt-2">
     <input
       type="time"
       className="form-control"
@@ -2140,10 +2145,10 @@ const handleDeleteReject = (index) => {
   </div>
 
   {/* Idle Hours */}
-  <div className="col-md-1">
+  <div className="col-md-2 mt-2">
     <label>Idle Hours:</label>
   </div>
-  <div className="col-md-1">
+  <div className="col-md-2 mt-2">
     <input
       type="time"
       className="form-control"
@@ -2154,10 +2159,10 @@ const handleDeleteReject = (index) => {
   </div>
 
   {/* Actual Hours */}
-  <div className="col-md-1">
+  <div className="col-md-2 mt-2">
     <label>Actual Hours:</label>
   </div>
-  <div className="col-md-1">
+  <div className="col-md-2 mt-2">
     <input
       type="time"
       className="form-control"
@@ -2166,21 +2171,21 @@ const handleDeleteReject = (index) => {
       onChange={handleInputChange}
     />
   </div>
-</div>
+    </div>
 
-<div className="row mt-3 justify-content-end">
-  <div className="text-end col-auto d-flex gap-2">
-    {/* Save Entry Button */}
-    <button type="submit" className="btn btn-primary">
-      Save Entry
-    </button>
+    <div className="row mt-3 justify-content-end">
+      <div className="text-end col-auto d-flex gap-2">
+        {/* Save Entry Button */}
+        <button type="submit" className="vndrbtn ">
+          Save Entry
+        </button>
 
-    {/* Clear Button */}
-    <button type="button" className="btn btn-secondary" onClick={handleClear}>
-      Clear
-    </button>
-  </div>
-</div>
+        {/* Clear Button */}
+        <button type="button" className="vndrbtn" onClick={handleClear}>
+          Clear
+        </button>
+      </div>
+    </div>
 
                      
                     </div>

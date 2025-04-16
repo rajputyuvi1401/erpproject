@@ -411,7 +411,7 @@ const ReworkProduction = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ReworkProduction mt-5">
+                <div className="ReworkProduction">
                   <div className="ReworkProduction-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
@@ -421,7 +421,7 @@ const ReworkProduction = () => {
                   </div>
 
                   {/* Form Section */}
-                  <div className="ReworkProduction-Main">
+                  <div className="ReworkProduction-Main mt-2">
                     <form
                       className="form-section"
                       onSubmit={handleSubmit}
@@ -460,7 +460,7 @@ const ReworkProduction = () => {
                         </div>
                         <div className="col-md-3">
                           <label>Shift:</label>
-                          <div className="col-8 position-relative">
+                          <div className="col-12 position-relative">
                             <input
                               id="shift"
                               name="shift"
@@ -502,7 +502,7 @@ const ReworkProduction = () => {
                         </div>
                         <div className="col-md-3">
                           <label>Contractor:</label>
-                          <div className="col-8 position-relative">
+                          <div className="col-12 position-relative">
                             <input
                               id="contractor"
                               className="form-control"
@@ -550,7 +550,7 @@ const ReworkProduction = () => {
                       <div className="row mt-3 text-start">
                         <div className="col-md-3">
                           <label>Supervisor:</label>
-                          <div className="col-8 position-relative">
+                          <div className="col-12 position-relative">
                             <input
                               id="supervisor"
                               name="Supervisor"
@@ -596,7 +596,7 @@ const ReworkProduction = () => {
                         </div>
                         <div className="col-md-3">
                           <label>Operator:</label>
-                          <div className="col-8 position-relative">
+                          <div className="col-12 position-relative">
                             <input
                               id="operator"
                               name="operator"
@@ -675,7 +675,7 @@ const ReworkProduction = () => {
                         </div>
                         <div className="col-md-3">
                           <label>Unit / Machine:</label>
-                          <div className="col-8 position-relative">
+                          <div className="col-12 position-relative">
                             <input
                               id="unit-machine"
                               className="form-control"
@@ -815,7 +815,7 @@ const ReworkProduction = () => {
                         <div className="col-md-2 d-flex align-items-end">
                           <button
                             type="button"
-                            className="btn btn-primary"
+                            className="vndrbtn"
                             onClick={addIdleTimeRow}
                           >
                             Add
@@ -850,7 +850,7 @@ const ReworkProduction = () => {
                                   <td>{row.remark}</td>
                                   <td>
                                     <button
-                                      className="btn btn-danger btn-sm"
+                                      className="vndrbtn"
                                       onClick={() => deleteIdleTimeRow(index)}
                                     >
                                       Delete
@@ -1029,7 +1029,7 @@ const ReworkProduction = () => {
                       </div>
 
                       <div className="form-actions text-end mt-4">
-                        <button className="btn" type="submit">
+                        <button className="vndrbtn" type="submit">
                           Save
                         </button>
                       </div>

@@ -1,113 +1,145 @@
 
-
-.item-details .table-container,
-.item-table .table-container {
-  overflow-x: auto; /* Enable horizontal scrolling */
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
 }
 
-.item-details .table {
-  width: 100%;
-  table-layout: auto;
-}
-.item-table .table {
-  width: 100%;
-  table-layout: auto; /* Allow table columns to resize based on content */
-}
-
-.item-details .table th,
-.item-details .table td,
-.item-table .table th,
-.item-table .table td {
-  padding: 10px;
-  text-align: left;
-  vertical-align: middle;
-  border: 1px solid #bbbfc37b;
-}
-
-
-
-.item-details .table td input,
-.item-details .table td select,
-.item-details .table td textarea,
-.item-table .table td input,
-.item-table .table td select,
-.item-table .table td textarea {
-  width: 100%; /* Make inputs and selects full width */
-}
-
-.item-details .table td label,
-.item-table .table td label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.item-details .table td,
-.item-table .table td {
-  min-width: 100px; /* Ensure each cell has a minimum width */
-}
-
-
-
-.item-table .table td button {
-  background: none;
+.vndrbtn {
   border: none;
-  cursor: pointer;
-  color: #dc3545; /* Red color for delete button */
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
 }
 
-.item-table .table td button:hover {
-  color: #c82333; /* Darker red on hover */
-}
-
-@media (max-width: 768px) {
-  .item-details .table-container,
-  .item-table .table-container {
-    overflow-x: auto; /* Enable horizontal scrolling on small screens */
-  }
-
-  .item-details .table th,
-  .item-details .table td,
-  .item-table .table th,
-  .item-table .table td {
-    font-size: 12px; /* Adjust font size for small screens */
-    padding: 5px; /* Reduce padding for small screens */
-  }
-}
-
-@media (max-width: 520px) {
-  .item-details .table-container,
-  .item-table .table-container {
-    overflow-x: auto; /* Ensure horizontal scrolling on very small screens */
-  }
-
-  .item-details .table th,
-  .item-details .table td,
-  .item-table .table th,
-  .item-table .table td {
-    font-size: 10px; /* Further adjust font size for very small screens */
-    padding: 3px; /* Further reduce padding for very small screens */
-  }
-}
-.itemdetailsMain .pagination {
-  display: flex;
-  justify-content: end;
-  margin-top: 10px;
-}
-
-.itemdetailsMain .pagination button {
-  margin: 0 5px;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
-
-.itemdetailsMain .pagination button.active {
-  background-color: #007bff;
+.vndrbtn:hover{
+  background-color: #16bfff;
   color: white;
-  border: none;
 }
 
-.itemdetailsMain .pagination button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.itemdetailsMain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  /* margin-top: -10px; */
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
+  }
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
 }

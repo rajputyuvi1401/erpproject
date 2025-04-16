@@ -39,15 +39,15 @@ const DabitNoteList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="DabitNoteList mt-5">
-                  <div className="DabitNoteList-header mb-4 text-start">
+                <div className="DabitNoteList">
+                  <div className="DabitNoteList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title"> Dabit Note List</h5>
                       </div>
                                   
                         <div className="col-md-8 text-end">
-                        <button type="button" className="btn" onClick={handleButtonClick}>
+                        <button type="button" className="vndrbtn" onClick={handleButtonClick}>
                           Dabit Note - Query
                         </button>
                         </div>
@@ -58,21 +58,21 @@ const DabitNoteList = () => {
                     <div className="DabitNoteList-main">
                     
                       <div className="row text-start">
-                          <div className="col-md-2">
+                          <div className="col-md-3">
                              <label htmlFor="">From Date</label>
                              <input type="date" className="form-control" placeholder="" />
                           </div>
-                          <div className="col-md-2">
+                          <div className="col-md-3">
                              <label htmlFor="">To Date:</label>
                              <input type="date" className="form-control" placeholder="" />
                           </div>
-                          <div className="col-md-2">
+                          <div className="col-md-3">
                              <label htmlFor="">Plant:</label>
                                 <select name="" id="" className="form-control">
                                     <option value="">Produlink</option>
                                 </select>         
                          </div>
-                          <div className="col-md-2">
+                          <div className="col-md-3">
                              <label htmlFor="">Type:</label>
                              <select name="" id="" className="form-control">
                                     <option value="">All - Dabit Note </option>
@@ -81,35 +81,36 @@ const DabitNoteList = () => {
                                     <option value="">Jobwork Rate Diff - Dabit Note</option>
                              </select> 
                           </div>
-                          <div className="col-md-2 ">
-                          <label htmlFor="serviceDN" className="d-flex align-items-center text-start"> <input type="checkbox" id="serviceDN" className="me-2" />
+                         
+
+                      </div>
+                      <div className="row mt-3 text-start">
+                          
+                      <div className="col-md-3 ">
+                          <label htmlFor="serviceDN" className="d-flex align-items-start text-start"> <input type="checkbox" id="serviceDN" className="me-2" />
                             PartyName:</label>
                             <input type="text" className="form-control" placeholder="Party Name" />
                          </div>
-
-                      </div>
-                      <div className="row text-start">
-                          
-                          <div className="col-md-2 ">
-                          <label htmlFor="serviceDN" className="d-flex align-items-center text-start"> <input type="checkbox" id="serviceDN" className="me-2" />
+                          <div className="col-md-3 ">
+                          <label htmlFor="serviceDN" className="d-flex align-items-start text-start"> <input type="checkbox" id="serviceDN" className="me-2" />
                             Item:</label>
                             <input type="text" className="form-control" placeholder=" " />
                          </div>
-                         <div className="col-md-2 ">
-                          <label htmlFor="serviceDN" className="d-flex align-items-center text-start"> <input type="checkbox" id="serviceDN" className="me-2" />
+                         <div className="col-md-3 ">
+                          <label htmlFor="serviceDN" className="d-flex align-items-start text-start"> <input type="checkbox" id="serviceDN" className="me-2" />
                              DCNo:</label>
                             <input type="text" className="form-control" placeholder=" " />
                          </div>
-                         <div className="col-md-2 mt-4">
-                            <button className="btn">Search</button>
-                            <button className="btn">Blue Print</button>
+                         <div className="col-md-3 mt-4">
+                            <button className="vndrbtn">Search</button>
+                            <button className="vndrbtn">Blue Print</button>
                          </div>
 
                       </div>
                       
                     </div>
           
-                     <div className="table-responsive">
+                     <div className="DabitNoteList-main mt-2 table-responsive">
                                   <table className="table table-bordered">
                                         <thead>
                                             <tr>

@@ -42,15 +42,15 @@ const CreditNotie = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="CreditNotie mt-5">
-                  <div className="CreditNotie-header mb-4 text-start">
+                <div className="CreditNotie">
+                  <div className="CreditNotie-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-1">
                         <h5 className="header-title">New Credit Note </h5>
                       </div>
                       <div className="col-md-2">
                          <div className="row">
-                             <div className="col-4 mt-3">
+                             <div className="col-4 mt-1">
                                <label htmlFor="">Plant:</label>
                              </div>
                              <div className="col-8">
@@ -62,7 +62,7 @@ const CreditNotie = () => {
                       </div>
                       <div className="col-md-2">
                          <div className="row">
-                             <div className="col-4 mt-3">
+                             <div className="col-4 mt-1">
                                <label htmlFor="">Series:</label>
                              </div>
                              <div className="col-8">
@@ -74,7 +74,7 @@ const CreditNotie = () => {
                       </div>
                       <div className="col-md-2">
                          <div className="row">
-                             <div className="col-4 mt-3">
+                             <div className="col-4 mt-1">
                                <label htmlFor="">Type:</label>
                              </div>
                              <div className="col-8">
@@ -87,7 +87,7 @@ const CreditNotie = () => {
                       </div>
                       <div className="col-md-2">
                          <div className="row">
-                             <div className="col-4 mt-3">
+                             <div className="col-4 mt-1">
                                <label htmlFor="">SubType:</label>
                              </div>
                              <div className="col-8">
@@ -103,10 +103,10 @@ const CreditNotie = () => {
                       </div>
                         
                         <div className="col-md-3 text-end">
-                        <button type="button" className="btn" onClick={handleBttnClick}>
+                        <button type="button" className="vndrbtn" onClick={handleBttnClick}>
                           CN-Against Inv.
                         </button>
-                        <button type="button" className="btn" onClick={handleButtonClick}>
+                        <button type="button" className="vndrbtn" onClick={handleButtonClick}>
                           Credit Note List
                         </button>
                         </div>
@@ -147,16 +147,16 @@ const CreditNotie = () => {
                           </div>
                         </div>
                         <div className="col-1 mt-2">
-                            <button type="button" className="btn">Search</button>
+                            <button type="button" className="vndrbtn">Search</button>
                         </div>
                        </div>
                     </div>
 
 
-                  <div className="CreditNotie-main mt-5">
+                  <div className="CreditNotie-main mt-2">
                     <div className="CreditNotie-tabs">
                    
-                      <div className="tab-content mt-4" id="" >
+                      <div className="tab-content" id="" >
                             <div className="table-responsive">
                                         <table className="table table-bordered">
                                         <thead class="table-header">
@@ -172,13 +172,13 @@ const CreditNotie = () => {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><input type="text" className="form-control" /> <button className="btn">Search</button></td>
+                                                <td><input type="text" className="form-control" /> <button className="vndrbtn">Search</button></td>
                                                 <td><textarea name="" id=""></textarea></td>
                                                 <td><textarea name="" id=""></textarea></td>
                                                 <td><input type="text" className="form-control" /></td>
                                                 <td> <input type="text" className="form-control" /></td>
                                                 <td> <input type="text" className="form-control" /></td>
-                                                <td> <button className="btn"> Add </button></td>
+                                                <td> <button className="vndrbtn"> Add </button></td>
                                                 
                                             </tr>
                                         </tbody>
@@ -216,7 +216,7 @@ const CreditNotie = () => {
                                                 <td><input type="text" className="form-control" /></td>
                                                 <td> + + </td>
                                                 <td> <input type="text" className="form-control" /></td>
-                                                <td> <button className="btn"> X </button></td>
+                                                <td> <button className="vndrbtn"> X </button></td>
                                                 
                                             </tr>
                                         </tbody>
@@ -227,7 +227,9 @@ const CreditNotie = () => {
                     </div>
                   </div>
 
-                     <div className="row mt-5">
+                  <div className="CreditNotie-main mt-2">
+
+                     <div className="row">
                             <div className="col-md-12">
                                 <div className="table-responsive">
                                     <table className="table table-bordered">
@@ -265,7 +267,10 @@ const CreditNotie = () => {
                                 
                             </div>
                       </div>
+                
+                 </div>
 
+                      <div className="CreditNotie-main mt-2">
                       <div className="row text-start">
                           <div className="col-md-2">
                              <label htmlFor="">Supp CrDr No:</label>
@@ -289,13 +294,14 @@ const CreditNotie = () => {
                                <option value="">Select GL</option>
                              </select>
                           </div>
-                      </div>
-
-                      <div className="row text-start">
                           <div className="col-md-2">
                              <label htmlFor="">Remark</label>
                              <textarea name=""  className="form-control" id=""></textarea>
                           </div>
+                      </div>
+                      
+                      <div className="row mt-3 text-start">
+                          
                           <div className="col-md-2">
                              <label htmlFor="">Other Ref.</label>
                              <textarea name=""  className="form-control" id=""></textarea>
@@ -307,13 +313,14 @@ const CreditNotie = () => {
                              </select>
                           </div>
                           <div className="col-md-2">
-                             <input type="checkbox" className="mt-5 " placeholder="" />
+                             <input type="checkbox" className="mt-3" placeholder="" />
                              <label htmlFor="" className="ml-3"> IS Service Invoice</label>
                           </div>
-                          <div className="col-md-2 mt-5">
-                            <button className="btn">Save Dabit Note</button>
-                            <button className="btn">Clear</button>
+                          <div className="col-md-3 mt-4">
+                            <button className="vndrbtn">Save Dabit Note</button>
+                            <button className="vndrbtn">Clear</button>
                           </div>
+                      </div>
                       </div>
 
                 </div>

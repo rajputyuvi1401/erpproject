@@ -7,13 +7,44 @@
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
   padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
-
-.ProjectInventory1-header .header-title {
+.header-title {
   font-size: 20px;
   font-weight: bold;
+  color: blue;
   margin: 0;
+}
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
 }
 
 
@@ -22,7 +53,7 @@
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
   padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  font-size: 12px;
 }
 
 

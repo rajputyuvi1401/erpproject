@@ -167,35 +167,35 @@ const GstMaster = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="GstMaster1 mt-5">
+                <div className="GstMaster1">
                   <div className="GstMasterupper-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">GST Rate Master</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <Link to="/task-master" className="btn">
+                        <Link to="/task-master" className="  vndrbtn ">
                           Tax Code Master
                         </Link>
-                        <Link to="/Cut-wise" className="btn">
+                        <Link to="/Cut-wise" className="  vndrbtn ">
                           Cust-Wise GST Master
                         </Link>
-                        <Link to="/Customer-Item-Wise-Gst" className="btn">
+                        <Link to="/Customer-Item-Wise-Gst" className="  vndrbtn ">
                           Cut-Wise GST Rate - Excel Upload
                         </Link>
-                        <Link to="/" className="btn">
+                        <Link to="/" className="  vndrbtn ">
                           Export To Excel
                         </Link>
                       </div>
                     </div>
                   </div>
 
-                  <div className="GstMasterMain mt-5">
+                  <div className="GstMasterMain">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
                           <div className="table-responsive">
-                            <table className="table table-bordered">
+                            <table className="table">
                               <thead>
                                 <tr>
                                   <th>
@@ -209,8 +209,8 @@ const GstMaster = () => {
                                   <th>Domestic</th>
                                   <th>Export</th>
                                   <th>Action</th>
-                                  <th></th>
-                                  <th></th>
+                                  <th>Action</th>
+                                 
                                 </tr>
                               </thead>
                               <tbody>
@@ -454,7 +454,7 @@ const GstMaster = () => {
 
                                   <td>
                                     <button
-                                      className="btn-gst"
+                                      className="  vndrbtn -gst"
                                       onClick={handleSave}
                                     >
                                       Save
@@ -473,7 +473,7 @@ const GstMaster = () => {
                         <div className="row">
                           <div className="col-md-12">
                             <div className="table-responsive">
-                              <table className="table table-bordered">
+                              <table className="table">
                                 <thead>
                                   <tr>
                                     <th>Sr</th>
@@ -515,20 +515,20 @@ const GstMaster = () => {
                                       <td>{record.User}</td>
                                       <td>
                                         <button
-                                          className="sgstbtn"
+                                          className="sgst  vndrbtn "
                                           onClick={() => handleEdit(record)}
                                         >
                                           <i className="fas fa-edit"></i>
                                         </button>
                                         <button
-                                          className="sgstbtn"
+                                          className="sgst  vndrbtn "
                                           onClick={() =>
                                             handleDelete(record.id)
                                           }
                                         >
                                           <i className="fas fa-trash"></i>
                                         </button>
-                                        <button className="sgstbtn">
+                                        <button className="sgst  vndrbtn ">
                                           <i className="fas fa-info-circle"></i>
                                         </button>
                                       </td>

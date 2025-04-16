@@ -109,7 +109,7 @@ const Npd = () => {
           </div>
         </div>
 
-        <div className="container">
+        <div className="container mt-2">
           <div className="row">
             <div className="col-md-3">
               <div className="row">
@@ -152,18 +152,19 @@ const Npd = () => {
               <div className="row mb-3">
                 <div className="col-sm-12 text-end">
                   <button
-                    className="btn me-2"
+                    className="vndrbtn me-2"
                     onClick={handleSave}
                     disabled={dataSaved}
                   >
                     Save
                   </button>
-                  <button className="btn" onClick={handleClear}>
+                  <button className="vndrbtn" onClick={handleClear}>
                     Clear
                   </button>
                 </div>
               </div>
             </div>
+            
           </div>
         </div>
       </div>

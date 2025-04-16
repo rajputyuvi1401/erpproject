@@ -81,7 +81,7 @@ const CustomerSupplierLink = () => {
   };
 
   return (
-    <div className="Supplier mt-5">
+    <div className="Supplier">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -102,10 +102,10 @@ const CustomerSupplierLink = () => {
                           </h5>
                         </div>
                         <div className="col-md-6 text-end">
-                          <button className="btn">
+                          <button className="vndrbtn">
                             CustomerMaster Item Upload
                           </button>
-                          <button className="btn">
+                          <button className="vndrbtn">
                             Export to Excel
                           </button>
                         </div>
@@ -189,7 +189,7 @@ const CustomerSupplierLink = () => {
                                           <div className="col-sm-2">
                                             <button
                                               type="button"
-                                              className="btn"
+                                              className="vndrbtn"
                                             >
                                               Search
                                             </button>
@@ -274,7 +274,7 @@ const CustomerSupplierLink = () => {
                                           <div className="col-sm-1">
                                             <button
                                               type="submit"
-                                              className="btn"
+                                              className="vndrbtn"
                                             >
                                               Save
                                             </button>
@@ -282,7 +282,7 @@ const CustomerSupplierLink = () => {
                                           <div className="col-sm-1">
                                             <button
                                               type="button"
-                                              className="btn"
+                                              className="vndrbtn"
                                               onClick={handleClear}
                                             >
                                               Clear
@@ -294,7 +294,7 @@ const CustomerSupplierLink = () => {
                                   </div>
                                 </div>
                               </div>
-                              <div className="table-container">
+                              <div className="table table-container">
                                 <table className="wise-table">
                                   <thead>
                                     <tr>
@@ -416,13 +416,13 @@ const CustomerSupplierLink = () => {
                                   </div>
                                   <div className="row mb-3 text-end">
                                     <div className="col-md-5">
-                                      <button type="submit" className="btn">
+                                      <button type="submit" className="vndrbtn">
                                         Search
                                       </button>
                                     </div>
                                   </div>
                                 </form>
-                                <div className="table-container">
+                                <div className="table table-container">
                                   <table className="wise-table">
                                     <thead>
                                       <tr>

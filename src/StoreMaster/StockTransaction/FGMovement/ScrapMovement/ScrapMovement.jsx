@@ -33,17 +33,17 @@ const ScrapMovement = () => {
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
               <div className="ScrapMovement-header">
                 <div className="row flex-nowrap align-items-center">
-                  <div className="col-md-3">
+                  <div className="col-md-4">
                     <h5 className="header-title text-start">Scrap To FG Movement Report</h5>
                   </div>
-                  <div className="col-md-9 text-end">
+                  <div className="col-md-8 text-end">
                     <div className="row justify-content-end">
                       <div className="col-md-12 d-flex flex-wrap justify-content-end">
                         
-                        <Link className="FGBtn" to="/ScrapToFg">
+                        <Link className="vndrbtn" to="/ScrapToFg">
                           Scrap To FG
                         </Link>
-                        <Link className="FGBtn" to="">
+                        <Link className="vndrbtn" to="">
                           Export To Excel
                         </Link>
                       </div>
@@ -51,7 +51,7 @@ const ScrapMovement = () => {
                   </div>
                 </div>
               </div>
-              <div className="ScrapMovement-main">
+              <div className="ScrapMovement-main mt-3">
                 <div className="container-fluid text-start">
                   <div className="row mt-4">
                     <div className="col-md-12">
@@ -65,7 +65,7 @@ const ScrapMovement = () => {
                         {/* To Date */}
                         <div className="col-md-2 col-sm-6">
                           <label className="form-label">To Date:</label>
-                          <input type="date" className="form-control" />
+                          <input type="date" className="form-control"/>
                         </div>
 
                         {/* Plant */}
@@ -94,7 +94,7 @@ const ScrapMovement = () => {
 
                         {/* Search Button */}
                         <div className="col-md-2 col-sm-6 d-flex align-items-end mt-1">
-                          <button type="submit" className="pobtn w-100">
+                          <button type="submit" className="vndrbtn w-100">
                             Search
                           </button>
                         </div>
@@ -104,7 +104,7 @@ const ScrapMovement = () => {
                 </div>
 
                 <div className="ScrapMovementtable">
-                  <div className="container-fluid mt-4 text-start">
+                  <div className="container-fluid mt-3 text-start">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>
@@ -144,12 +144,12 @@ const ScrapMovement = () => {
                             <td><input type="text" className="form-control" /></td>
                             <td><input type="text" className="form-control" /></td>
                             <td>
-                              <button className="btn">
+                              <button className="vndrbtn">
                                 <FaEdit />
                               </button>
                             </td>
                             <td>
-                              <button className="btn">
+                              <button className="vndrbtn">
                                 <FaTrash />
                               </button>
                             </td>

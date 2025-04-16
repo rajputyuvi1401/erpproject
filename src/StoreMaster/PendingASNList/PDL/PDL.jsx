@@ -32,7 +32,7 @@ const PDL = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PDLList-header mb-4 text-start mt-5">
+                <div className="PDLList-header mb-4 text-start">
                     <div className="row align-items-center">
                     <div className="col-md-3">
                       <h5 className="header-title text-start">PDL List</h5>
@@ -41,7 +41,7 @@ const PDL = () => {
 
                     <div className="col-md-9 text-end">
                       <div className="row justify-content-end">
-                        <div className="col-md-5 d-flex align-items-end">
+                        <div className="col-md-6 d-flex align-items-end">
                           <div className="form-check">
                             <input
                               type="checkbox"
@@ -56,9 +56,9 @@ const PDL = () => {
                             </label>
                           </div>
 
-                          <Link className="btn">Export Excel</Link>
+                          <Link className="vndrbtn">Export Excel</Link>
 
-                          <Link className="btn" to="/Pending-Asn-List">
+                          <Link className="vndrbtn" to="/Pending-Asn-List">
                             Pending ASN List
                           </Link>
                         </div>
@@ -66,19 +66,19 @@ const PDL = () => {
                     </div>
                   </div>
                 </div>
-                <div className="PDLList-main mt-5">
+                <div className="PDLList-main mt-3">
                   <div className="container-fluid">
                     <div className="row mt-4">
                       <div className="col-md-12">
                         <form className="row g-3 text-start">
                           {/* From Date */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">From Date</label>
                             <input type="date" className="form-control" />
                           </div>
 
                           {/* To Date */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">To Date</label>
                             <input type="date" className="form-control" />
                           </div>
@@ -104,15 +104,15 @@ const PDL = () => {
                           {/* Gate Entry No. */}
                           <div className="col-md-2 col-sm-6">
                             <label className="form-label">Status</label>
-                            <select className="form-select">
+                            <select className="form-select"  style={{marginTop:"-1px"}}>
                               <option value="">ALL</option>
                               <option value="Pending">Pending</option>
                             </select>
                           </div>
 
                           {/* Search Button */}
-                          <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                            <button type="submit" className="btn" style={{marginTop:"-34px"}}>
+                          <div className="col-md-1 col-sm-6 align-self-end">
+                            <button type="submit" className="vndrbtn">
                               Search
                             </button>
                           </div>
@@ -122,7 +122,7 @@ const PDL = () => {
                   </div>
 
                   <div className="StorePDLList">
-                    <div className="container-fluid mt-4 text-start">
+                    <div className="container-fluid mt-3 text-start">
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>

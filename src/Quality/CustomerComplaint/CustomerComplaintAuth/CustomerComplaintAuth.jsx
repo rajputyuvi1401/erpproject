@@ -39,8 +39,8 @@ const CustomerComplaintAuth = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="CustomerComplaintAuth mt-5">
-                  <div className="CustomerComplaintAuth-header mb-4 text-start">
+                <div className="CustomerComplaintAuth ">
+                  <div className="CustomerComplaintAuth-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Customer Complaint Authorization : </h5>
@@ -48,10 +48,10 @@ const CustomerComplaintAuth = () => {
                       
                      
                       <div className="col-md-8  text-end">
-                        <button type="button" className="btn" onClick={handleCoustoterComplaintEntry} >
+                        <button type="button" className="vndrbtn" onClick={handleCoustoterComplaintEntry} >
                         Customer Complaint New
                         </button>
-                        <button type="button" className="btn" >
+                        <button type="button" className="vndrbtn" >
                          Export Excel
                         </button>
 
@@ -59,9 +59,9 @@ const CustomerComplaintAuth = () => {
                     </div>
                   </div>
 
-                  <div className="CustomerComplaintAuth-main mt-5">
+                  <div className="CustomerComplaintAuth-main">
                      
-                  <div className="row text-start">
+                    <div className="row text-start">
                      
                       <div className="col-md-2">
                             <label htmlFor="">Plant :</label>
@@ -87,7 +87,7 @@ const CustomerComplaintAuth = () => {
                             <input type="text" placeholder="Select Item" className="form-control"/>
                       </div>
                       <div className="col-md-2 mt-4">
-                           <button type="button" className="btn btn-primary w-100" >
+                           <button type="button" className="vndrbtn w-100" >
                               Save
                            </button> 
                         </div>
@@ -95,6 +95,7 @@ const CustomerComplaintAuth = () => {
                     </div>
                     
                   </div>
+                  
                 </div>
             </main>
            </div>

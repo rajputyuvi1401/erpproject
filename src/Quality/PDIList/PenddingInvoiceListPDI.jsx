@@ -34,14 +34,14 @@ const PenddingInvoiceListPDI = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PDIList mt-5">
-                  <div className="PDIList-header mb-4 text-start">
+                <div className="PDIList">
+                  <div className="PDIList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">  Pending Invoice List For - Pre Dispatch Inspection </h5>
                       </div>
                       <div className="col-md-6 text-end">
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           Export To Excel
                         </button>
                       </div>
@@ -49,21 +49,21 @@ const PenddingInvoiceListPDI = () => {
                   </div>
 
                   {/* Filter Section */}
-                  <div className="PDIList-filter mb-4">
+                  <div className="PDIList-filter">
                     <div className="row text-start">
                       
                       <div className="col-md-2">
                         <label>From Date :</label>
-                        <input type="date" className="form-control" />
+                        <input type="date" className="form-control mt-2" />
                       </div>
                       <div className="col-md-2">
                         <label>To Date :</label>
-                        <input type="date" className="form-control" />
+                        <input type="date" className="form-control mt-2" />
                       </div>
 
                       <div className="col-md-2 margin-5">
                         <label>Plant :</label>
-                        <select className="form-select" >
+                        <select className="form-select mt-2" >
                           <option value="SHARP">SHARP</option>
                           {/* Add more options as needed */}
                         </select>
@@ -86,7 +86,7 @@ const PenddingInvoiceListPDI = () => {
                       </div>        
 
                       <div className="col-md-1 mt-4">               
-                         <button className="btn btn-primary">Search</button>          
+                         <button className="vndrbtn">Search</button>          
                       </div>
 
                     </div>

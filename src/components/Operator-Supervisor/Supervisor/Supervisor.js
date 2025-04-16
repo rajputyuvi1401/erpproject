@@ -413,7 +413,7 @@ const Supervisor = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Supervisor1">
                  
-                  <div className="Supervisorupper-header mb-4 text-start mt-5">
+                  <div className="Supervisorupper-header mb-4 text-start">
                     <div className="row align-items-center">
                        <div className="col-md-4">
                         <h5 className="header-title">
@@ -429,10 +429,10 @@ const Supervisor = () => {
                       </div>
                   </div>
                 
-                  <div className="SupervisorMain mt-5">
+                  <div className="SupervisorMain mt-1">
                     <div className="container-fluid">
                       <form onSubmit={handleSubmit} autoComplete="off">
-                        <div className="row text-start mt-5">
+                        <div className="row text-start mt-2">
                           <div className="col-md-4 col-sm-12">
                             <div className="row mb-3">
                               <label
@@ -466,12 +466,12 @@ const Supervisor = () => {
                                   </select>
                                   <span
                                     type="button"
-                                    className="Supbtn"
+                                    className="vndrbtn"
                                     onClick={toggleAddDepartment} // Toggle modal on click
                                   >
                                     <i className="fas fa-plus"></i>
                                   </span>
-                                  <span type="button" className="Supbtn">
+                                  <span type="button" className="vndrbtn">
                                     <i className="fas fa-sync"></i>
                                   </span>
                                 </div>
@@ -696,12 +696,12 @@ const Supervisor = () => {
                                   </select>
                                   <span
                                     type="button"
-                                    className="Supbtn"
+                                    className="vndrbtn"
                                     onClick={toggleAddDesignation} // Toggle modal on click
                                   >
                                     <i className="fas fa-plus"></i>
                                   </span>
-                                  <span type="button" className="Supbtn">
+                                  <span type="button" className="vndrbtn">
                                     <i className="fas fa-sync"></i>
                                   </span>
 
@@ -814,12 +814,12 @@ const Supervisor = () => {
                                   </select>
                                   <span
                                     type="button"
-                                    className="Supbtn"
+                                    className="vndrbtn"
                                     onClick={toggleAddContractor} // Toggle modal on click
                                   >
                                     <i className="fas fa-plus"></i>
                                   </span>
-                                  <span type="button" className="Supbtn">
+                                  <span type="button" className="vndrbtn">
                                     <i className="fas fa-sync"></i>
                                   </span>
                                   {/* {errors.Contractor && (
@@ -949,12 +949,12 @@ const Supervisor = () => {
                         </div>
                         <div className="row">
                           <div className="col-12 text-end">
-                            <button type="submit" className="btn">
+                            <button type="submit" className=" vndrbtn">
                               SAVE
                             </button>
                             <button
                               type="reset"
-                              className="btn"
+                              className=" vndrbtn"
                               onClick={handleReset}
                             >
                               CLEAR
@@ -970,7 +970,7 @@ const Supervisor = () => {
         <h5 className="card-title">Department Master</h5>
         <button
           type="button"
-          className="btn"
+          className=" vndrbtn"
           aria-label="Close"
           onClick={toggleAddDepartment}
         >
@@ -1005,12 +1005,12 @@ const Supervisor = () => {
                   </select>
                   <button
                     type="button"
-                    className="btn ms-1"
+                    className=" vndrbtn ms-1"
                     onClick={toggleAddDepartmentCategory}
                   >
                     New
                   </button>
-                  <button type="button" className="btn ms-1">
+                  <button type="button" className=" vndrbtn ms-1">
                     <i className="fas fa-sync"></i>
                   </button>
                 </div>
@@ -1034,7 +1034,7 @@ const Supervisor = () => {
                 )}
               </div>
               <div className="col-md-2" style={{marginTop:"31px"}}>
-                <button className="btn" type="submit">
+                <button className=" vndrbtn" type="submit">
                   Save
                 </button>
               </div>
@@ -1060,7 +1060,7 @@ const Supervisor = () => {
                   <td>{dep.EnterDeptName}</td>
                   <td>
                     <button
-                      className="btn"
+                      className=" vndrbtn"
                       onClick={() => handleEdit(dep.id)}
                     >
                       <i className="fas fa-edit"></i>
@@ -1068,7 +1068,7 @@ const Supervisor = () => {
                   </td>
                   <td>
                     <button
-                      className="btn"
+                      className=" vndrbtn"
                       onClick={() => handleDelete(dep.id)}
                     >
                       <i className="fas fa-trash-alt"></i>
@@ -1093,7 +1093,7 @@ const Supervisor = () => {
                               <h5 className="card-title">Add New Category</h5>
                               <button
                                 type="button"
-                                className="btn-close"
+                                className=" vndrbtn"
                                 aria-label="Close"
                                 onClick={toggleAddDepartmentCategory}
                               >
@@ -1132,7 +1132,7 @@ const Supervisor = () => {
                                         )}
                                       </div>
                                       <div className="col-sm-1">
-                                        <button className="adddepbtn">
+                                        <button className="adddep vndrbtn">
                                           Save
                                         </button>
                                       </div>
@@ -1195,7 +1195,7 @@ const Supervisor = () => {
                               <h5 className="card-title">Operation Type</h5>
                               <button
                                 type="button"
-                                className="btn-close"
+                                className=" vndrbtn"
                                 aria-label="Close"
                                 onClick={toggleAddDesignation}
                               >
@@ -1234,7 +1234,7 @@ const Supervisor = () => {
                                         )}
                                       </div>
                                       <div className="col-sm-1">
-                                        <button className="adddepbtn">
+                                        <button className="adddep vndrbtn">
                                           Save
                                         </button>
                                       </div>
@@ -1296,7 +1296,7 @@ const Supervisor = () => {
                               <h5 className="card-title">Contractor Type</h5>
                               <button
                                 type="button"
-                                className="btn-close"
+                                className=" vndrbtn "
                                 aria-label="Close"
                                 onClick={toggleAddContractor}
                               >

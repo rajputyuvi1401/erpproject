@@ -142,7 +142,7 @@ const ItemCrossReference = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Crossrefer">
                  
-                  <div className="reference-upper-header mb-4 text-start mt-4">
+                  <div className="reference-upper-header mb-4 text-start">
                       <div className="row align-items-center">
                         <div className="col-md-6">
                         <h5 className="header-title">
@@ -150,12 +150,12 @@ const ItemCrossReference = () => {
                           </h5>
                         </div>
                         <div className="col-md-6 text-end">
-                          <button className="btn">Export To Excel</button>
+                          <button className="vndrbtn">Export To Excel</button>
                         </div>
                       </div>
                     </div>
             
-                  <div className="reference-form mt-5">
+                  <div className="reference-form">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-6">
@@ -180,7 +180,7 @@ const ItemCrossReference = () => {
                                 )}
                               </div>
                               <div className="col-sm-2">
-                                <button className="resss-btn" type="button" onClick={handleSearchSEItem}>
+                                <button className="vndrbtn" type="button" onClick={handleSearchSEItem}>
                                   Search
                                 </button>
                               </div>
@@ -206,7 +206,7 @@ const ItemCrossReference = () => {
                                 )}
                               </div>
                               <div className="col-sm-2">
-                                <button className="resss-btn" type="button" onClick={handleSearchCustSuppName}>
+                                <button className="vndrbtn" type="button" onClick={handleSearchCustSuppName}>
                                   Search
                                 </button>
                               </div>
@@ -398,13 +398,13 @@ const ItemCrossReference = () => {
                             </div>
                             <div className="row mb-3 text-end">
                               <div className="col-md-10">
-                                <button className="pac-btn" type="submit">
+                                <button className="vndrbtn" type="submit">
                                   Save
                                 </button>
                               </div>
                               <div className="col-md-1">
                                 <button
-                                  className="pac-btn"
+                                  className="vndrbtn"
                                   type="button"
                                   onClick={handleClear}
                                 >

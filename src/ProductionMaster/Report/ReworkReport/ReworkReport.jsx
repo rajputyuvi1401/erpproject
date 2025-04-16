@@ -31,43 +31,43 @@ const ReworkReport = () => { const [sideNavOpen, setSideNavOpen] = useState(fals
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="ReworkReport">
-                  <div className="ReworkReport-header mb-4 text-start mt-5">
+                  <div className="ReworkReport-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Process Defect - Rewok Report</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn" to="/AddQuater">
+                        <button type="button" className="vndrbtn" to="/AddQuater">
                           Process Defect Rework
                         </button>
-                        <button type="button" className="btn" to="#/">
+                        <button type="button" className="vndrbtn" to="#/">
                           Print Format
                         </button>
-                        <button type="button" className="btn" to="#/">
+                        <button type="button" className="vndrbtn" to="#/">
                           Print Format 2
                         </button>
                       </div>
                     </div>
                   </div>
   
-                  <div className="ReworkReport-Main mt-5">
+                  <div className="ReworkReport-Main">
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
                         
                         {/* From Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-3">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
   
                         {/* To Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-3">
                           <label>To Date:</label>
                           <input type="date" className="form-control" />
                         </div>
   
                         {/* Months Wise */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-3">
                           <label>Months Wise :</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -78,13 +78,13 @@ const ReworkReport = () => { const [sideNavOpen, setSideNavOpen] = useState(fals
                         </div>
   
                         {/* Operator Wise */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-3">
                           <label>Operator Wise:</label>
                           <input type="text" className="form-control"/>
                         </div>
   
                         {/* Reason Wise */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-3">
                           <label>Reason Wise:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -94,13 +94,13 @@ const ReworkReport = () => { const [sideNavOpen, setSideNavOpen] = useState(fals
                         </div>
   
                         {/* Item Wise */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-3">
                           <label>Item Wise:</label>
                           <input type="text" className="form-control" />
                         </div>
   
                         <div className="col-sm-2">
-                        <button type="button" className="btn" style={{marginTop:"30px"}} >
+                        <button type="button" className="vndrbtn" style={{marginTop:"22px"}} >
                             Search
                         </button>   
                         </div>

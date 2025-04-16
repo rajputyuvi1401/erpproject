@@ -18,6 +18,7 @@ const QuotoComparisonPending = () => {
         document.body.classList.remove("side-nav-open");
       }
     }, [sideNavOpen]);
+
   return (
     <div className="NewPurchReport">
       <div className="container-fluid">
@@ -30,7 +31,7 @@ const QuotoComparisonPending = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PurchReport-header text-start mt-5">
+                <div className="PurchReport-header text-start">
                
                     <div className="row align-items-center">
                       <div className="col-md-4">
@@ -39,13 +40,11 @@ const QuotoComparisonPending = () => {
                       </h5>
                     </div>
                     <div className="col-md-8 text-end">
-                     
-                          <button className="btn">Export To Excel</button>
-                        
+                          <button className="vndrbtn">Export To Excel</button>
                     </div>
                   </div>
                 </div>
-                <div className="PurchReport-main mt-5">
+                <div className="PurchReport-main">
                   <ul
                     className="nav nav-pills mb-3"
                     id="pills-tab"
@@ -124,7 +123,7 @@ const QuotoComparisonPending = () => {
                                   </td>
 
                                   <td>
-                                    <button className="pobtn">Search</button>
+                                    <button className="vndrbtn">Search</button>
                                   </td>
                                 </tr>
                               </tbody>
@@ -171,7 +170,7 @@ const QuotoComparisonPending = () => {
                               />
                               <label
                                 htmlFor="costCenterCodeCheck"
-                                className="form-label mb-0"
+                                className="form-label2 mt- mb-0"
                               >
                                 Cost Center Code
                               </label>
@@ -185,7 +184,7 @@ const QuotoComparisonPending = () => {
                               />
                             </div>
                             <div className="col-md-4 d-flex justify-content-start align-items-start">
-                              <button className="pobtn">Search</button>
+                              <button className="vndrbtn">Search</button>
                             </div>
                           </div>
                         </div>

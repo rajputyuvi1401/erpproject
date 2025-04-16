@@ -37,31 +37,33 @@ const HeatCodeRegister = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="HeatCodeRegister mt-5">
-                  <div className="HeatCodeRegister-header mb-4 text-start">
+                <div className="HeatCodeRegister">
+                  <div className="HeatCodeRegister-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Heat Code Register : </h5>
                       </div>
                        
                       <div className="col-md-8  text-end">
-                      <button type="button" className="btn" onClick={toggleModal}>
+                      <button type="button" className="vndrbtn" onClick={toggleModal}>
                           Operation VS Dispatch
                         </button>
-                        <button type="button" className="btn" >
+                        <button type="button" className="vndrbtn" >
                           Export Excel
                         </button>
-                        <button type="button" className="btn" >
+                        <button type="button" className="vndrbtn" >
                         <select name="" id="">
                             <option value="">PDF</option>
                         </select>
                         </button>
-                        <button type="button" className="btn" >
+                        <button type="button" className="vndrbtn" >
                           Print List
                         </button>
                       </div>             
                     </div>
                   </div>
+
+{/* POPUP */}
 
 <div  className={`modal ${showModal ? "show" : ""}`}
   style={{ display: showModal ? "block" : "none" }}
@@ -69,24 +71,24 @@ const HeatCodeRegister = () => {
   aria-labelledby="exampleModalLabel"
   aria-hidden={!showModal}
 >
-  <div className="modal-dialog modal-lg">
+  <div className="modal-dialog modal-lg" style={{marginTop:"170px"}}>
     <div className="modal-content">
       <div className="modal-header">
         <h5 className="modal-title" id="exampleModalLabel">
            Operation Vs Dispatch :
         </h5>
-            <button type="button" className="btn-close" onClick={toggleModal} > <i class="fa fa-times" aria-hidden="true"></i> </button>        
+            <button type="button" className="vndrbtn" onClick={toggleModal} > <i class="fa fa-times" aria-hidden="true"></i> </button>        
       </div>
 
-      <div className="modal-body">
-      <div className="HeatCodeRegister-header mb-4 text-start">
-      <div className="row align-items-center">
+                    <div className="modal-body">
+                    <div className="HeatCodeRegister-header mb-4 text-start">
+                    <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Operation Vs Dispatch : : </h5>
                       </div>
                        
                       <div className="col-md-8  text-end">
-                        <button type="button" className="btn" >
+                        <button type="button" className="vndrbtn" >
                           Export Excel
                         </button>
                       </div>             
@@ -95,7 +97,7 @@ const HeatCodeRegister = () => {
         <form>
           <div className="row">
             {/* Plant */}
-             <div className="col-md-2 mb-3">
+             <div className="col-md-4 mb-3">
                             <label htmlFor="" className="">Operation: </label>
                         
                         <select name=""  className="form-control" id="">
@@ -105,35 +107,36 @@ const HeatCodeRegister = () => {
                             <option value="">Select</option>
                         </select>
                      </div>
-             <div className="col-md-2 mb-3">
+             <div className="col-md-4 mb-3">
                       <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label"> Heat Code : </label>
                         </div>
                         <input type="text"  placeholder=" " className="form-control"/>
              </div>
-             <div className="col-md-2 mb-3">
+             <div className="col-md-4 mb-3">
                       <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label">  Raw Material: </label>
                         </div>
                         <input type="text"  placeholder="Raw Material" className="form-control"/>
              </div>
-             <div className="col-md-2 mb-3">
+             <div className="col-md-4 mb-3">
                       <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label"> Finish Good: </label>
                         </div>
                         <input type="text"  placeholder="FG Item Name" className="form-control"/>
              </div>
-             <div className="col-md-2 mt-4">
-                     <button type="button" className="btn btn-primary w-100">
+             <div className="col-md-4 mt-4">
+                     <button type="button" className="vndrbtn w-100">
                  Daywise Report
               </button>
              </div>
           </div>
           </form>
-          <div className="HeatCodeRegister-Main">
+               
+                 <div className="HeatCodeRegister-Main">
                   <div className="table-responsive">
                     <table className="table table-bordered">
                       <thead>
@@ -167,30 +170,25 @@ const HeatCodeRegister = () => {
                     </table>
                     </div>
                   </div>
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
       </div>
     </div>
   </div>
 </div>
 
 
-                  <div className="HeatCodeRegister-main mt-5">
+                  <div className="HeatCodeRegister-main">
                      
                   <div className="row text-start">
                      
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">From :</label>
                             <input type="date" className="form-control"/>
                       </div>
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">To :</label>
                             <input type="date" className="form-control"/>
                       </div> 
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">MainGroup:</label>
                             <select name="" id="" className="form-control">
                                <option value="">All</option>
@@ -210,7 +208,7 @@ const HeatCodeRegister = () => {
                                <option value="">DI</option>
                            </select>
                       </div> 
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">ItemGroup :</label>
                             <select name="" id="" className="form-control">
                                <option value="">All</option>
@@ -235,25 +233,25 @@ const HeatCodeRegister = () => {
 
                            </select>
                       </div> 
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">Cust/Supp :</label>
                             <input type="text" placeholder="Supp. Name" className="form-control"/>
                       </div> 
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">ItemName :</label>
                             <input type="text" placeholder="Enter Code" className="form-control"/>
                       </div> 
-                      <div className="col-md-1">
+                      <div className="col-md-2 mt-3">
                             <label htmlFor="">HeatCode :</label>
                             <input type="date" placeholder="HeatCode" className="form-control"/>
                       </div> 
-                      <div className="col-md-1">
+                      <div className="col-md-2 mt-3">
                             <label htmlFor="">HeatNo :</label>
                             <input type="date" placeholder="HeatNo" className="form-control"/>
                       </div> 
                     
-                      <div className="col-md-1 mt-4">
-                           <button type="button" className="btn btn-primary w-100" >
+                      <div className="col-md-2 ">
+                           <button type="button" className="vndrbtn w-100" style={{marginTop:"35px"}}>
                               Search
                            </button> 
                         </div>
@@ -263,7 +261,7 @@ const HeatCodeRegister = () => {
                   </div>
                 </div>
 
-                <div className="table-responsive">
+                <div className="HeatCodeRegistertable table-responsive">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -291,7 +289,7 @@ const HeatCodeRegister = () => {
                           <td>T06078</td>
                           <td><span className="clrble">View</span></td>
                           <td><span className="clrble">OP Vs Dispatch</span></td>
-                          <td><button className="btn btn-sm btn-light">
+                          <td><button className="vndrbtn">
                               <i className="fas fa-eye"></i>
                             </button>
                          </td>
@@ -309,7 +307,7 @@ const HeatCodeRegister = () => {
                           <td>2383345</td>
                           <td><span className="clrble">View</span></td>
                           <td><span className="clrble">OP Vs Dispatch</span></td>
-                          <td><button className="btn btn-sm btn-light">
+                          <td><button className="vndrbtn">
                               <i className="fas fa-eye"></i>
                             </button>
                          </td>
@@ -327,7 +325,7 @@ const HeatCodeRegister = () => {
                           <td>527611</td>
                           <td><span className="clrble">View</span></td>
                           <td><span className="clrble">OP Vs Dispatch</span></td>
-                          <td><button className="btn btn-sm btn-light">
+                          <td><button className="vndrbtn">
                               <i className="fas fa-eye"></i>
                             </button>
                          </td>
@@ -345,115 +343,7 @@ const HeatCodeRegister = () => {
                           <td>F26497</td>
                           <td><span className="clrble">View</span></td>
                           <td><span className="clrble">OP Vs Dispatch</span></td>
-                          <td><button className="btn btn-sm btn-light">
-                              <i className="fas fa-eye"></i>
-                            </button>
-                         </td>
-                        </tr>
-                      </tbody>
-                      <tbody>
-                        {/* Example data row */}
-                        <tr>
-                          <td>5</td>
-                          <td>VISHWA SAMRIDHI INDUSTRIES.</td>
-                          <td>RM1100</td>
-                          <td>18.5 Die ENTA</td>
-                          <td>MACHINING</td>
-                          <td>E44206</td>
-                          <td>E44206</td>
-                          <td><span className="clrble">View</span></td>
-                          <td><span className="clrble">OP Vs Dispatch</span></td>
-                          <td><button className="btn btn-sm btn-light">
-                              <i className="fas fa-eye"></i>
-                            </button>
-                         </td>
-                        </tr>
-                      </tbody>
-                      <tbody>
-                        {/* Example data row */}
-                        <tr>
-                          <td>6</td>
-                          <td>VISHWA SAMRIDHI INDUSTRIES.</td>
-                          <td>RM1091</td>
-                          <td>8 Dta ENTA (L)</td>
-                          <td>MACHINING</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td><span className="clrble">View</span></td>
-                          <td><span className="clrble">OP Vs Dispatch</span></td>
-                          <td><button className="btn btn-sm btn-light">
-                              <i className="fas fa-eye"></i>
-                            </button>
-                         </td>
-                        </tr>
-                      </tbody>
-                      <tbody>
-                        {/* Example data row */}
-                        <tr>
-                          <td>7</td>
-                          <td>TATA STEEL LIMITED.</td>
-                          <td>RM1057</td>
-                          <td>36.85 * 28.4 CEW Tube</td>
-                          <td>MACHINING</td>
-                          <td>4725656608</td>
-                          <td>4725656608</td>
-                          <td><span className="clrble">View</span></td>
-                          <td><span className="clrble">OP Vs Dispatch</span></td>
-                          <td><button className="btn btn-sm btn-light">
-                              <i className="fas fa-eye"></i>
-                            </button>
-                         </td>
-                        </tr>
-                      </tbody>
-                      <tbody>
-                        {/* Example data row */}
-                        <tr>
-                          <td>8</td>
-                          <td>VISHWA SAMRIDHI INDUSTRIES</td>
-                          <td>RM1037</td>
-                          <td>17.5 Dta EBTA (L)</td>
-                          <td>MACHINING</td>
-                          <td>F26497</td>
-                          <td>F26497</td>
-                          <td><span className="clrble">View</span></td>
-                          <td><span className="clrble">OP Vs Dispatch</span></td>
-                          <td><button className="btn btn-sm btn-light">
-                              <i className="fas fa-eye"></i>
-                            </button>
-                         </td>
-                        </tr>
-                      </tbody>
-                      <tbody>
-                        {/* Example data row */}
-                        <tr>
-                          <td>9</td>
-                          <td>VISHWA SAMRIDHI INDUSTRIES.</td>
-                          <td>RM1095</td>
-                          <td>19.2 Dta EBTA (L)</td>
-                          <td>MACHINING</td>
-                          <td>A57604</td>
-                          <td>A57604</td>
-                          <td><span className="clrble">View</span></td>
-                          <td><span className="clrble">OP Vs Dispatch</span></td>
-                          <td><button className="btn btn-sm btn-light">
-                              <i className="fas fa-eye"></i>
-                            </button>
-                         </td>
-                        </tr>
-                      </tbody>
-                      <tbody>
-                        {/* Example data row */}
-                        <tr>
-                          <td>10</td>
-                          <td>TUBE INVESTMENT OF INDIA LTD.</td>
-                          <td>RM1075</td>
-                          <td>32.90 * 22.30 CEW Tube</td>
-                          <td>MACHINING</td>
-                          <td>8549428</td>
-                          <td>8549428</td>
-                          <td><span className="clrble">View</span></td>
-                          <td><span className="clrble">OP Vs Dispatch</span></td>
-                          <td><button className="btn btn-sm btn-light">
+                          <td><button className="vndrbtn">
                               <i className="fas fa-eye"></i>
                             </button>
                          </td>

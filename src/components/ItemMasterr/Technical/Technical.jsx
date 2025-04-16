@@ -103,20 +103,20 @@ const Technical = () => {
           </div>
           <div className="col-md-4 text-end">
             <button
-              className="tech-btn btn btn-secondary"
+              className="vndrbtn"
               onClick={handleClear}
             >
               Clear Tech. Specifications
             </button>
           </div>
           <div className="col-md-6">
-            <button className="tech-btn btn btn-secondary">
+            <button className="vndrbtn">
               Get Last Tech. Specification
             </button>
           </div>
         </div>
 
-        <div className="row" style={{ marginTop: "10px" }}>
+        <div className="row" style={{ marginTop: "5px" }}>
           <div className="col-md-6 mb-4">
             <table className="table table-bordered">
               <thead>
@@ -147,7 +147,7 @@ const Technical = () => {
                     />
                   </td>
                   <td>
-                    <button className="btn-tech" onClick={handleSave}>
+                    <button className="vndrbtn" onClick={handleSave}>
                       <FaPlus />
                     </button>
                   </td>
@@ -242,8 +242,8 @@ const Technical = () => {
           </div>
         </div>
 
-        <div className="row" style={{ marginTop: "80px" }}>
-          <div className="col-md-8">
+        <div className="row" style={{ marginTop: "10px" }}>
+          <div className="col-md-12">
             <table className="table table-bordered">
               <thead>
                 <tr>
@@ -283,14 +283,14 @@ const Technical = () => {
                     <td>
                       {editId === spec.id ? (
                         <button
-                          className="btn-tech"
+                          className="vndrbtn"
                           onClick={() => handleEdit(spec.id)}
                         >
                           <FaSave />
                         </button>
                       ) : (
                         <button
-                          className="btn-tech"
+                          className="vndrbtn"
                           onClick={() => handleEditMode(spec)}
                         >
                           <FaEdit />
@@ -299,7 +299,7 @@ const Technical = () => {
                     </td>
                     <td>
                       <button
-                        className="btn-tech"
+                        className="vndrbtn"
                         onClick={() => handleDelete(spec.id)}
                       >
                         <FaTrash />
@@ -312,7 +312,7 @@ const Technical = () => {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="container mt-2">
         <div className="row text-start">
           <div className="col-md-1 text-start">
             <label className="form-check-label" for="flexCheckDefault">

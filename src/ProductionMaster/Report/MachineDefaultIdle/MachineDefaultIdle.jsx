@@ -31,14 +31,14 @@ const MachineDefaultIdle = () => { const [sideNavOpen, setSideNavOpen] = useStat
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PRoWorkorderList mt-5">
-                  <div className="PRoWorkorderList-header mb-4 text-start">
+                <div className="PRoWorkorderList">
+                  <div className="PRoWorkorderList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Machine Default Idle</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn" to="/MachineDefaultBook">
+                        <button type="button" className="vndrbtn" to="/MachineDefaultBook">
                            Book To Idle
                         </button>
                         
@@ -51,19 +51,19 @@ const MachineDefaultIdle = () => { const [sideNavOpen, setSideNavOpen] = useStat
                       <div className="row g-3 text-start">
                         
                         {/* From Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
   
                         {/* To Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>To Date:</label>
                           <input type="date" className="form-control" />
                         </div>
   
                         {/* Shift */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Shift :</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -74,7 +74,7 @@ const MachineDefaultIdle = () => { const [sideNavOpen, setSideNavOpen] = useStat
                         </div>
   
                         {/* Group */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Group:</label> 
                           <select className="form-select">
                             <option>Select All</option>
@@ -85,7 +85,7 @@ const MachineDefaultIdle = () => { const [sideNavOpen, setSideNavOpen] = useStat
                         </div>
   
                         {/* Unit Machine */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Unit Machine :</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -95,7 +95,7 @@ const MachineDefaultIdle = () => { const [sideNavOpen, setSideNavOpen] = useStat
                         </div>
   
                         {/* Type */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Type :</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -104,19 +104,19 @@ const MachineDefaultIdle = () => { const [sideNavOpen, setSideNavOpen] = useStat
                           </select>
                         </div>
   
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                             <label htmlFor="">Show Prod Idle</label>
-                            <input checked />
+                            <input className="form-control" checked />
                         </div>
-                        <div className="col-sm-2 col-md-2 col-lg-1 mt-4">
-                        <button type="button" className="btn btn-primary w-100" >
+                        <div className="col-sm-2 col-md-2 col-lg-1">
+                        <button type="button" className="vndrbtn w-100" style={{marginTop:"22px"}} >
                             Search
                         </button>   
                         </div>
                      </div>
                     </div>
                   </div>
-            <hr />
+
                 </div>
               </main>
             </div>

@@ -112,7 +112,7 @@ const NewJobworkPurchase = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="NewJobwork">
                   <div className="container-fluid">
-                  <div className="NewJobwork-header mb-4 text-start">
+                  <div className="NewJobwork-header mb-4 text-start" >
                     <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">New JW-PO</h5>
@@ -129,23 +129,23 @@ const NewJobworkPurchase = () => {
                         <div className="col-md-1">
                           <label>Series:</label>
                           <select
-          className="form-control"
-          value={selectedSeries}
-          onChange={handleSeriesChange}
-        >
-         <option value="select">Select</option>
-          <option value="JOBWORK">JOBWORK</option>
-          {/* Add other series options here if needed */}
-        </select>
+                            className="form-control"
+                            value={selectedSeries}
+                            onChange={handleSeriesChange}
+                          >
+                          <option value="select">Select</option>
+                            <option value="JOBWORK">JOBWORK</option>
+                            {/* Add other series options here if needed */}
+                          </select>
                         </div>
                         <div className="col-md-2" style={{marginTop:"20px"}}>
                         
                           <input
-          type="text"
-          className="form-control"
-          value={indentNo}
-          readOnly
-        />
+                            type="text"
+                            className="form-control"
+                            value={indentNo}
+                            readOnly
+                          />
                         </div>
                         <div className="col-md-1">
                           <label>Supplier:</label>
@@ -159,7 +159,7 @@ const NewJobworkPurchase = () => {
                         </div>
                         <div className="col-md-1">
                           <button
-                            className="btn btn-primary mt-4"
+                            className="vndrbtn mt-4"
                             onClick={handleSelectSupplier} // Trigger the search when clicked
                            
                           >
@@ -187,15 +187,16 @@ const NewJobworkPurchase = () => {
                           ></i>
                         </div>
                         <div className="col-md-1 mt-4">
-                          <button className="btn newpurchase-btn">Clear</button>
+                          <button className="vndrbtn">Clear</button>
                         </div>
                         <div className="col-md-1 mt-4">
-                          <Link to="/JobworkList" className="btn newpurchase-btn">
+                          <Link to="/JobworkList" className="vndrbtn">
                             PO List
                           </Link>
                         </div>
                       </div>
                     </div>
+
                     <div className="newjobwork-main">
                       <ul
                         className="nav nav-pills mb-3"

@@ -140,12 +140,12 @@ const PurchaseGrn = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Purchasegrn-header mb-4 text-start mt-5">
+                <div className="Purchasegrn-header mb-4 text-start">
                     <div className="row align-items-center">
-                    <div className="col-md-1">
+                    <div className="col-md-2">
                       <h5 className="header-title text-start">New GRN</h5>
                     </div>
-                    <div className="col-md-9 mt-4">
+                    <div className="col-md-8 mt-2">
                       <div className="row mb-3">
                        
                         <div className="col-md-2">
@@ -156,7 +156,7 @@ const PurchaseGrn = () => {
 
                         {/* Label: Series and Series Select Option */}
                         <div className="col-md-1">
-                          <label htmlFor="seriesSelect" className="form-label">
+                          <label htmlFor="seriesSelect" className="form-label mt-2">
                             Series:
                           </label>
                         </div>
@@ -176,7 +176,7 @@ const PurchaseGrn = () => {
                           <input
                             type="text"
                             id="inputField"
-                            className="form-control"
+                            className="form-control mt-2"
                             placeholder="Enter value"
                           />
                         </div>
@@ -196,12 +196,12 @@ const PurchaseGrn = () => {
                     </div>
                     <div className="col-md-2 text-end">
                       
-                          <Link className="btn" to="/Grn-List">GM List</Link>
+                          <Link className="vndrbtn" to="/Grn-List">GM List</Link>
                        
                     </div>
                   </div>
                 </div>
-                <div className="Purchasegrn-main mt-5">
+                <div className="Purchasegrn-main ">
                   <div className="container-fluid text-start">
                     <div className="row mt-4">
                       <div className="col-md-6">
@@ -236,7 +236,7 @@ const PurchaseGrn = () => {
                             <input className="form-control" />
                           </div>
                           <div className="col-md-2">
-                            <button type="button" className="pobtn">
+                            <button type="button" className="vndrbtn">
                               Search
                             </button>
                           </div>
@@ -260,12 +260,12 @@ const PurchaseGrn = () => {
                             </select>
                           </div>
                           <div className="col-md-3">
-                            <button type="button" className="btn">
+                            <button type="button" className="vndrbtn">
                               Add All Item
                             </button>
                           </div>
                           <div className="col-md-1">
-                            <button type="button" className="btn">
+                            <button type="button" className="vndrbtn">
                               Cancel
                             </button>
                           </div>
@@ -280,7 +280,7 @@ const PurchaseGrn = () => {
                             <input className="form-control" />
                           </div>
                           <div className="col-md-2">
-                            <button type="button" className="btn">
+                            <button type="button" className="vndrbtn">
                               Add
                             </button>
                           </div>
@@ -291,7 +291,7 @@ const PurchaseGrn = () => {
                           <div className="col-md-8">
                             <button
                               type="button"
-                              className="btn"
+                              className="vndrbtn"
                               onClick={handleButtonClick}
                             >
                               Pending Release PO item
@@ -443,7 +443,7 @@ const PurchaseGrn = () => {
                                  
                                 
                                 <td>
-                                  <button className="btn">
+                                  <button className="vndrbtn">
                                     <FaTrash />
                                   </button>
                                 </td>
@@ -850,7 +850,7 @@ const PurchaseGrn = () => {
                                             colspan="2"
                                             className="text-center"
                                           >
-                                            <button type="submit" className="btn">
+                                            <button type="submit" className="vndrbtn">
                                               Save GRN
                                             </button>
                                           </td>
@@ -874,7 +874,7 @@ const PurchaseGrn = () => {
                       >
                         <div className="StorePurchasegrn2">
                           <div className="row ">
-                            <div className="col-md-8">
+                            <div className="col-md-4 mt-4" style={{marginLeft:"20px"}}>
                               <div className="table-responsive">
                                 <table className="table table-bordered">
                                   <thead>
@@ -903,11 +903,11 @@ const PurchaseGrn = () => {
                                 </table>
                               </div>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-7">
                               <div className="row">
-                                <div className="col-md-6 text-start">
+                                <div className="col-md-7 text-start">
                                   {/* Second Column Group */}
-                                  <div className="container">
+                                  <div className="container mt-4">
                                     <div className="table-responsive">
                                       <table className="table table-bordered">
                                         <tbody>
@@ -981,7 +981,7 @@ const PurchaseGrn = () => {
                                     </div>
                                   </div>
                                 </div>
-                                <div className="col-md-6 text-start">
+                                <div className="col-md-5 text-start">
                                   {/* Third Column Group */}
                                   <div className="container mt-4">
                                     <div className="table-responsive">
@@ -1057,7 +1057,7 @@ const PurchaseGrn = () => {
                                               colspan="2"
                                               className="text-start"
                                             >
-                                              <button className="btn">
+                                              <button className="vndrbtn">
                                                 DocTCUpload
                                               </button>
                                             </td>
@@ -1081,7 +1081,7 @@ const PurchaseGrn = () => {
                       >
                         <div className="StorePurchasegrn3">
                           <div className="row ">
-                            <div className="col-md-8 mt-4">
+                            <div className="col-md-12 mt-4" style={{margin:"10px"}}>
                               <div className="table-responsive">
                                 <table className="table table-bordered">
                                   <thead>
@@ -1104,7 +1104,7 @@ const PurchaseGrn = () => {
                           </div>
                           <div className="row">
                             <div className="col-md-12 text-end">
-                              <button className="pobtn" type="button">
+                              <button className="vndrbtn" type="button">
                                 Doc/Tc Upload
                               </button>
                             </div>
@@ -1127,7 +1127,7 @@ const PurchaseGrn = () => {
                           </h5>
                         </div>
                         <div className="col-md-2 text-end">
-                          <button className="btn" onClick={handleClose}>
+                          <button className="vndrbtn" onClick={handleClose}>
                             X
                           </button>
                         </div>

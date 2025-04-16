@@ -25,6 +25,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
             <h6 className="logo-light">Produlink</h6>
           </li>
 
+
           {permissions && permissions.VendorsUserManagement?.length > 0 && (
             <li>
               <Link to="/mainpage">
@@ -336,7 +337,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                   </Dropdown.Item>
                 )}
                 {permissions.All_Masters.includes("Customer State") && (
-                  <Dropdown.Item as={Link} to="/customer-state">
+                  <Dropdown.Item as={Link} to="/CustomerState">
                     Customer State
                   </Dropdown.Item>
                 )}

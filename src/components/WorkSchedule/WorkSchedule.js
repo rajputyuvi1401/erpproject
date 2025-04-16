@@ -26,7 +26,7 @@ const WorkSchedule = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Workschedulemaster">
-                    <div className="Workschedule1-header mb-4 text-start mt-5">
+                    <div className="Workschedule1-header mb-4 text-start mt-1">
                       <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Work Center Idle Time | Setting</h5>
@@ -34,7 +34,7 @@ const WorkSchedule = () => {
                       </div>
                     </div>
                
-                  <div className="WorkscheduleMain mt-5">
+                  <div className="WorkscheduleMain mt-2">
                     <div className="container-fluid">
                       <div className="row text-start Workscheduleselect">
                         <div className="col-md-1 col-sm-3 mb-3 mb-sm-0">
@@ -94,8 +94,8 @@ const WorkSchedule = () => {
                             <option value="3">VMC</option>
                           </select>
                         </div>
-                        <div className="col-md-1 text-sm-start mt-2">
-                          <button className="btn">
+                        <div className="col-md-1 text-sm-start mt-1">
+                          <button className=" vndrbtn">
                            Search
                           </button>
                         </div>
@@ -103,9 +103,12 @@ const WorkSchedule = () => {
                     </div>
                   </div>
 
-                  <div className="WorkscheduleTable mt-5">
-                    <div className="container-fluid"></div>
+                  <div className="WorkscheduleTable mt-3">
+                    <div className="container-fluid">
+
+                    </div>
                   </div>
+                  
                 </div>
               </main>
             </div>

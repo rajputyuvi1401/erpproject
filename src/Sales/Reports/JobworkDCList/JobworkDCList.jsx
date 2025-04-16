@@ -43,15 +43,15 @@ const JobworkDCList  = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="JobworkDCList mt-5">
-                <div className="JobworkDCList-header mb-4 text-start">
+              <div className="JobworkDCList">
+                <div className="JobworkDCList-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title"> Jobwork DC List </h5>
                     </div>
 
                     <div className="col-md-8 text-end">
-                        <button type="button" className="btn" to="#/" onClick={handleButtonClick}>
+                        <button type="button" className=" vndrbtn" to="#/" onClick={handleButtonClick}>
                             New Jobwork DC
                         </button> 
                     </div>
@@ -62,19 +62,19 @@ const JobworkDCList  = () => {
                 <div className="JobworkDCList-Main">
                     <div className="container-fluid">
                       
-                        <div className="row g-3 text-start mt-3">  
+                        <div className="row g-3 text-start">  
 
-                       <div className="col-sm-6 col-md-2 col-lg-1">
+                       <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>To:</label>
                           <input type="date" className="form-control" />
                         </div>
                      
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-4 col-lg-2">
                        <div className="form-check">
                             <input type="radio" className="form-check-input" id="radio" />
                             <label htmlFor="radio" className="form-check-label">All : </label>
@@ -91,8 +91,8 @@ const JobworkDCList  = () => {
                         <input type="text"  placeholder="No" className="form-control"/>
                       </div>
                         
-                       <div className="col-6 col-md-2 align-items-center mt-5">
-                          <button type="button" className="btn btn-primary">
+                       <div className="col-6 col-md-2 align-items-center" style={{marginTop:"37px"}}>
+                          <button type="button" className=" vndrbtn">
                             Search
                           </button>
                         </div>
@@ -102,7 +102,7 @@ const JobworkDCList  = () => {
                     </div>
                   </div>
 
-             <div className="table-responsive">
+             <div className="JobworkDCList-Main mt-2 table-responsive">
                      
              </div>
 

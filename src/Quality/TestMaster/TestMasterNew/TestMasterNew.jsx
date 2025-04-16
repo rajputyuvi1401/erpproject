@@ -38,22 +38,22 @@ const TestMasterNew = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="TestMasterNew mt-5">
-                  <div className="TestMasterNew-header mb-4 text-start">
+                <div className="TestMasterNew">
+                  <div className="TestMasterNew-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Test Master  : </h5>
                       </div>
                  
                       <div className="col-md-8  text-end">
-                        <button type="button" className="btn" onClick={handleTestMasterList} >
+                        <button type="button" className="vndrbtn" onClick={handleTestMasterList} >
                           Test Master List
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="TestMasterNew-main mt-5">
+                  <div className="TestMasterNew-main">
                      
                   <div className="row text-start">
                       <div className="col-md-4">
@@ -101,7 +101,7 @@ const TestMasterNew = () => {
                       </div>
                   </div>
                   <div className="row text-start">
-                    <label htmlFor=""> No Load Loss Measu (O.C) (In Walt)</label>
+                    <label htmlFor=""> <b> No Load Loss Measu (O.C) (In Walt) </b> </label>
                   </div>
                   <div className="row text-start">
                       <div className="col-md-4">
@@ -130,7 +130,7 @@ const TestMasterNew = () => {
                       </div>
                   </div>
                   <div className="row text-start">
-                    <label htmlFor=""> 50 % Load Loss Measu (S.C) (In Walt) </label>
+                    <label htmlFor=""> <b> 50 % Load Loss Measu (S.C) (In Walt) </b> </label>
                   </div>
                   <div className="row text-start">
                       <div className="col-md-4">
@@ -155,7 +155,7 @@ const TestMasterNew = () => {
                       </div>
                   </div>
                   <div className="row text-start">
-                    <label htmlFor=""> 100 % Load Loss Measu (S.C) (In Walt) </label>
+                    <label htmlFor=""> <b> 100 % Load Loss Measu (S.C) (In Walt) </b> </label>
                   </div>
                   <div className="row text-start">
                       <div className="col-md-4">
@@ -306,7 +306,7 @@ const TestMasterNew = () => {
                       <div className="col-md-4">
                         <div className="row mb-2">
                           <div className="col-4 mt-2">
-                          <button type="button" className="btn" >
+                          <button type="button" className="vndrbtn" >
                              Save
                           </button>   
                         </div>      

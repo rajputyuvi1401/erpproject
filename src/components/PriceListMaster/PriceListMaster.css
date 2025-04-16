@@ -1,128 +1,178 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
+.PriceListMaster {
+  width: 100%;
+  height: 100vh;
+}
 
 .PriceList-header {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
 }
 
-.PriceList-header .header-title {
+.PriceListMain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 20px;
+}
+
+.header-title {
   font-size: 20px;
   font-weight: bold;
+  color: blue;
   margin: 0;
 }
 
-
-
-.PriceListMain {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
 }
 
-.PriceListMainbtn {
-  background-color: rgba(235, 233, 233, 0.685);
+.vndrbtn {
   border: none;
-  padding: 8px;
-  margin-top: 25px;
-  border-radius: 5px;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
 }
 
 .PriceListtable {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
 }
 
-.PriceListtable .table-responsive {
-  max-height: 400px; /* Adjust height as needed */
-  overflow-y: auto;
+.table-responsive {
+  overflow-x: auto;
 }
 
-.PriceListtable .table th {
-  white-space: nowrap;
-}
-.PriceListtable .table td {
-  height: 180px;
-}
-
-.PriceListbtnicon {
-  border: none;
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
 }
 
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
 @media (max-width: 576px) {
-  .PriceMasterbtn {
-    padding: 5px;
-    font-size: 12px;
+  .header-title {
+    font-size: 16px;
+    text-align: center;
   }
 
-  .PriceListMainbtn {
-    padding: 5px;
-    font-size: 12px;
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
   }
 
-  .PriceListtable {
-    padding: 10px;
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
   }
 
-  .PriceListtable .table th,
-  .PriceListtable .table td {
-    font-size: 12px;
-  }
-
-  .PriceListMain {
-    padding: 10px;
-  }
-
-  .PriceList {
-    padding: 10px;
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
   }
 }
 
-@media (max-width: 768px) {
-  .PriceListMaster1 {
-    padding: 10px;
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
   }
 
-  .AddPriceListCard {
-    width: 90%;
+  .vndrbtn {
+    padding: 5px 10px;
   }
 
-  .form-label {
-    flex-direction: column;
-    align-items: flex-start;
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
   }
 
-  .col-sm-4 {
-    flex: 0 0 100%;
-    max-width: 100%;
+  .table th,
+  .table td {
+    font-size: 11px;
   }
 }
 
-@media (max-width: 576px) {
-  .PriceListMaster1 {
-    padding: 5px;
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
   }
 
-  .PriceMasterbtn,
-  .PriceListcardbtn,
-  .PriceListMainbtn {
-    padding: 6px;
-    margin: 3px;
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
   }
 
-  .form-label {
-    padding: 5px;
+  .table th,
+  .table td {
+    font-size: 12px;
   }
 }
+
+
 /* Overlay Styles */
 .Add-price.overlay {
   position: fixed;
@@ -138,7 +188,7 @@
 }
 
 /* Card Styles */
-.AddPriceListCard.card {
+.AddPriceListCard .card {
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -319,7 +369,7 @@
 }
 
 .Itemrate-overlay .tab-content {
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 /* Form Styles */
@@ -364,16 +414,16 @@
   width: 100%;
   border-collapse: collapse;
 }
+.itemratetable .table th{
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
 
-.itemratetable .table th,
 .itemratetable .table td {
   padding: 10px;
   text-align: left;
   border: 1px solid #dee2e6;
-}
-
-.itemratetable .table th {
-  background-color: #f8f9fa;
 }
 
 .itemratetable .table td {
@@ -505,10 +555,10 @@
 /* Tab Content Styles */
 .tab-content {
   padding: 20px;
-  border: 1px solid #dee2e6;
-  border-top: none;
-  border-radius: 0 0 10px 10px;
-  background-color: #fff;
+  /* border: 1px solid #dee2e6; */
+  /* border-top: none; */
+  /* border-radius: 0 0 10px 10px; */
+  /* background-color: #fff; */
   overflow-x: auto; /* Horizontal scrolling */
 }
 
@@ -552,6 +602,7 @@
 /* Table Styles */
 .Pricereport-card .table {
   width: 100%;
+  margin-top: 10px;
   border-collapse: collapse;
 }
 
@@ -563,7 +614,10 @@
 }
 
 .Pricereport-card .table th {
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
   font-weight: bold;
 }
 

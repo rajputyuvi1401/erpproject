@@ -32,7 +32,7 @@ const PurchseOrderStatus = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="Purchaseorderstatus  text-start mt-5">
+              <div className="Purchaseorderstatus  text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">
@@ -47,15 +47,15 @@ const PurchseOrderStatus = () => {
                             Send Email
                           </label>
                         </div>
-                        <div className="col-md-2 d-flex align-items-center">
-                          <button className="pobtn">Export To Excel</button>
+                        <div className="col-md-3 d-flex align-items-center">
+                          <button className="vndrbtn">Export To Excel</button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="Purchaseorderstatus mt-5">
-                  <div className="container-fluid mt-4">
+                <div className="Purchaseorderstatus mt-3">
+                  <div className="container-fluid">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>
@@ -166,7 +166,7 @@ const PurchseOrderStatus = () => {
                               </label>
                             </td>
                             <td>
-                              <button className="pobtn">Search</button>
+                              <button className="vndrbtn">Search</button>
                             </td>
                           </tr>
                         </tbody>

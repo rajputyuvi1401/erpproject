@@ -4,6 +4,8 @@ import { saveWorkCenter } from "../../../Service/Api.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import MachineGroup from "../MachineGroup/MachineGroup.jsx";
 
+
+
 const AddNewCard = () => {
   const [isCardVisibleMachine, setCardVisibleMachine] = useState(false);
 
@@ -136,7 +138,7 @@ const AddNewCard = () => {
               </div>
               <div className="row mb-3">
                 <div className="col-md-12 text-start">
-                  <button className="mst-btn" type="button">
+                  <button className="vndrbtn" type="button">
                     Master
                   </button>
                 </div>
@@ -365,10 +367,10 @@ const AddNewCard = () => {
               </div>
               <div className="row mb-3">
                 <div className="col-md-12">
-                  <button className="btn" type="submit">
+                  <button className="vndrbtn" type="submit">
                     Save
                   </button>
-                  <button className="btn ms-2" type="button" onClick={handleClear}>
+                  <button className="vndrbtn ms-2" type="button" onClick={handleClear}>
                     Clear
                   </button>
                 </div>

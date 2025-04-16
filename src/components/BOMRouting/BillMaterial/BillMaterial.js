@@ -288,7 +288,7 @@ const BillMaterial = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="BillMaterial1">
-                  <div className="BillMaterialMain mb-4 text-start mt-5">
+                  <div className="BillMaterialMain mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-5">
                         <h5 className="header-title">
@@ -297,31 +297,31 @@ const BillMaterial = () => {
                       </div>
                       <div className="col-md-7 text-end">
                         <button
-                          className="Billmaterialbtn"
+                          className="Billmaterial  vndrbtn"
                           onClick={toggleCardProduction}
                         >
                           1. Production Dept
                         </button>
                         <button
-                          className="Billmaterialbtn"
+                          className="Billmaterial  vndrbtn"
                           onClick={toggleCardOperation}
                         >
                           2. Operation Master
                         </button>
                         <button
-                          className="Billmaterialbtn"
+                          className="Billmaterial  vndrbtn"
                           onClick={toggleCardStandard}
                         >
                           3. Std Routing
                         </button>
                         <button
-                          className="Billmaterialbtn"
+                          className="Billmaterial  vndrbtn"
                           onClick={toggleCardBomitem}
                         >
                           BOM Item Group
                         </button>
-                        <button className="Billmaterialbtn">BOM Print</button>
-                        <Link to={"/bom-routing"} className="Billmaterialbtn">
+                        <button className="Billmaterial  vndrbtn">BOM Print</button>
+                        <Link to={"/bom-routing"} className="Billmaterial  vndrbtn">
                           BOM List
                         </Link>
                       </div>
@@ -344,6 +344,7 @@ const BillMaterial = () => {
                         </div>
 
                         <div className="card-body">
+
                           <form onSubmit={handleSave}>
                             <div className="row mb-3 text-start">
                               <div className="col-md-5">
@@ -371,6 +372,7 @@ const BillMaterial = () => {
                                   </div>
                                 )}
                               </div>
+
                               <div className="col-md-5">
                                 <label
                                   htmlFor="Short_Name"
@@ -395,17 +397,20 @@ const BillMaterial = () => {
                                   </div>
                                 )}
                               </div>
+
                               <div className="col-md-2">
                                 <button
                                   type="submit"
-                                  className="bomButton"
+                                  className="vndrbtn"
                                   style={{ marginTop: "31px" }}
                                 >
                                   {isEditing ? "Update" : "Save"}
                                 </button>
                               </div>
+
                             </div>
                           </form>
+
                           <div className="row">
                             <div className="col-12">
                               <table className="table table-bordered table-striped">
@@ -454,6 +459,7 @@ const BillMaterial = () => {
                               </table>
                             </div>
                           </div>
+
                         </div>
                       </div>
                     </div>
@@ -491,9 +497,10 @@ const BillMaterial = () => {
                       </div>
                     </div>
                   )}
-                  <div className="BillMaterialsection mt-4">
+
+                  <div className="BillMaterialsection mt-3">
                     <div className="container-fluid">
-                      <div className="row mt-3 align-items-center mt-4">
+                      <div className="row mt-3 align-items-center mt-2">
                         <div className="col-md-2">
                           <select className="form-select">
                             <option>ALL</option>
@@ -508,8 +515,8 @@ const BillMaterial = () => {
                         </div>
 
                         <div className="col-md-2">
-                          <button className="materialbtn">Search</button>
-                          <button className="materialbtn">Clear</button>
+                          <button className="vndrbtn">Search</button>
+                          <button className="vndrbtn">Clear</button>
                         </div>
                         <div className="col-md-2" style={{ marginTop: "10px" }}>
                           <label className="form-label">Born Authorise</label>
@@ -521,7 +528,7 @@ const BillMaterial = () => {
                           </select>
                         </div>
                         <div className="col-md-1">
-                          <button className="materialbtn">Copy BOM</button>
+                          <button className="vndrbtn">CopyBOM</button>
                         </div>
                         <div className="col-md-2">
                           <p style={{ color: "blue", marginTop: "10px" }}>
@@ -529,6 +536,8 @@ const BillMaterial = () => {
                           </p>
                         </div>
                       </div>
+
+
                       <div className="row mt-3">
                         <div className="col text-start">
                           <div className="tabs">
@@ -573,7 +582,8 @@ const BillMaterial = () => {
                                         Manual
                                       </label>
                                     </div>
-                                    <div className="col-md-4">
+                                  
+                                     <div className="col-md-4">
                                       <input
                                         type="checkbox"
                                         id="routingCheckbox"
@@ -586,8 +596,9 @@ const BillMaterial = () => {
                                       </label>
                                     </div>
                                   </div>
+
                                   <div className="row mb-3 text-start mt-4">
-                                    <div className="col-md-1">
+                                    <div className="col-md-2">
                                       <label>Op No:</label>
                                       <input
                                         type="text"
@@ -597,7 +608,8 @@ const BillMaterial = () => {
                                         onChange={handleChange}
                                       />
                                     </div>
-                                    <div className="col-md-2">
+
+                                    <div className="col-md-3">
                                       <label>Part Code:</label>
                                       <div className="row align-items-center">
                                         <div className="col">
@@ -610,34 +622,35 @@ const BillMaterial = () => {
                                           />
                                         </div>
                                         <div className="col-auto">
-                                          <button className="btn">
+                                          <button className="  vndrbtn">
                                             <FaPlus />
                                           </button>
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="col-md-2">
-                                      <label>BOM Part Type:</label>
-                                      <div className="row mt-2">
-  {["RM", "COM", "BOM"].map((type) => (
-    <div key={type} className="col-md-2 d-flex ms-4">
-      <input
-        type="checkbox"
-        id={type}
-        name="BOMPartType"
-        value={type} // ✅ Ensure value is set
-        checked={formData1.BOMPartType.includes(type)} // ✅ Check if in array
-        onChange={handleChange}
-      />
-      <label htmlFor={type} className="ms-2">
-        {type}
-      </label>
-    </div>
-  ))}
-</div>
 
+                                    <div className="col-md-3">
+                                      <label style={{marginLeft:"20px"}}>BOM Part Type:</label>
+                                      <div className="row mt-2">
+                                          {["RM", "COM", "BOM"].map((type) => (
+                                            <div key={type} className="col-md-2 d-flex ms-4">
+                                              <input
+                                                type="checkbox"
+                                                id={type}
+                                                name="BOMPartType"
+                                                value={type} // ✅ Ensure value is set
+                                                checked={formData1.BOMPartType.includes(type)} // ✅ Check if in array
+                                                onChange={handleChange}
+                                              />
+                                              <label htmlFor={type} className="ms-2">
+                                                {type}
+                                              </label>
+                                            </div>
+                                          ))}
+                                        </div>
                                     </div>
-                                    <div className="col-md-1">
+
+                                    <div className="col-md-2">
                                       <label>Bom Part Code:</label>
                                       <input
                                         type="text"
@@ -647,7 +660,7 @@ const BillMaterial = () => {
                                         onChange={handleChange}
                                       />
                                     </div>
-                                    <div className="col-md-1">
+                                    <div className="col-md-2">
                                       <label>Qty : Kg</label>
                                       <input
                                         type="text"
@@ -657,7 +670,7 @@ const BillMaterial = () => {
                                         onChange={handleChange}
                                       />
                                     </div>
-                                    <div className="col-md-1">
+                                    <div className="col-md-2 mt-2">
                                       <label>Scrap Code</label>
                                       <select
                                         className="form-control"
@@ -677,7 +690,7 @@ const BillMaterial = () => {
                                         ))}
                                       </select>
                                     </div>
-                                    <div className="col-md-1">
+                                    <div className="col-md-2 mt-2">
                                       <label>Scrap Qty</label>
                                       <input
                                         type="text"
@@ -687,7 +700,7 @@ const BillMaterial = () => {
                                         onChange={handleChange}
                                       />
                                     </div>
-                                    <div className="col-md-1">
+                                    <div className="col-md-2 mt-2">
                                       <label>QC</label>
                                       <input
                                         type="text"
@@ -697,7 +710,7 @@ const BillMaterial = () => {
                                         onChange={handleChange}
                                       />
                                     </div>
-                                    <div className="col-md-1">
+                                    <div className="col-md-2 mt-2">
                                       <label>Ass Prod</label>
                                       <select
                                         className="form-control"
@@ -712,13 +725,14 @@ const BillMaterial = () => {
                                     </div>
                                     <div className="col-md-1 d-flex align-items-end mb-1">
                                       <button
-                                        className="btn me-2"
+                                        className="  vndrbtn me-2"
                                         onClick={handleSubmit1}
                                       >
                                         {editingId ? "Update" : "Save"}
                                       </button>
                                     </div>
                                   </div>
+
                                   <div className="table-responsive">
                                     <table className="table table-bordered mt-3">
                                       <thead>
@@ -726,7 +740,6 @@ const BillMaterial = () => {
                                           <th>OP No</th>
                                           <th>Part Code</th>
                                           <th>BOM Part type</th>
-
                                           <th>BOM Part Code</th>
                                           <th>Qty</th>
                                           <th>Bom Part Desc</th>
@@ -773,7 +786,7 @@ const BillMaterial = () => {
 
                                             <td>
                                               <button
-                                                className="btn btn-sm"
+                                                className="  vndrbtn   vndrbtn-sm"
                                                 onClick={() =>
                                                   handleEdit1(item)
                                                 }
@@ -784,7 +797,7 @@ const BillMaterial = () => {
                                             <td>Doc</td>
                                             <td>
                                               <button
-                                                className="btn btn-sm"
+                                                className="  vndrbtn   vndrbtn-sm"
                                                 onClick={() =>
                                                   handleDelete1(item.id)
                                                 }
@@ -803,8 +816,10 @@ const BillMaterial = () => {
                                   </div>
                                 </div>
                               )}
+
                               {activeTab === "BOM History" && (
                                 <div className="tab-pane fade show active">
+
                                   <div className="row mb-3 text-start">
                                     <div className="col-md-2 ms-1">
                                       <label>Select BOM Revision:</label>
@@ -835,11 +850,12 @@ const BillMaterial = () => {
                                       </select>
                                     </div>
                                     <div className="col-md-2">
-                                      <button className="btn">
+                                      <button className="  vndrbtn">
                                         Export To Excel
                                       </button>
                                     </div>
                                   </div>
+
                                   <div className="table-responsive">
                                     <table className="table table-bordered mt-3">
                                       <thead>
@@ -850,8 +866,10 @@ const BillMaterial = () => {
                                       <tbody></tbody>
                                     </table>
                                   </div>
+
                                 </div>
                               )}
+                              
                             </div>
                           </div>
                         </div>

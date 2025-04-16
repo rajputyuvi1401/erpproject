@@ -150,11 +150,11 @@ const InwardChallan1 = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="StoreSubcon-header mb-4 text-start mt-5">
+                <div className="StoreSubcon-header mb-4 text-start">
                   <div className="row align-items-center">
-                    <div className="col-md-2">
+                    <div className="col-md-3">
                       <h5 className="header-title text-start">
-                        57-F4(InWard Challan)
+                        57F4(InWard Challan)
                       </h5>
                     </div>
                     <div className="col-md-6 mt-4">
@@ -203,14 +203,14 @@ const InwardChallan1 = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-4 text-end">
-                      <Link className="btn" to={"/Inward-challan-list"}>
+                    <div className="col-md-3 text-end">
+                      <Link className="vndrbtn" to={"/Inward-challan-list"}>
                         Inward Challan List
                       </Link>
                     </div>
                   </div>
                 </div>
-                <div className="StoreSubcon-main mt-5">
+                <div className="StoreSubcon-main">
                   <div className="storesubcon-background">
                     <div className="container-fluid text-start">
                       <div className="row mt-4">
@@ -250,7 +250,7 @@ const InwardChallan1 = () => {
                               <input />
                             </div>
                             <div className="col-md-2">
-                              <button type="button" className="btn">
+                              <button type="button" className="vndrbtn">
                                 Search
                               </button>
                             </div>
@@ -277,12 +277,12 @@ const InwardChallan1 = () => {
                               </select>
                             </div>
                             <div className="col-md-2">
-                              <button type="button" className="btn">
+                              <button type="button" className="vndrbtn">
                                 Search
                               </button>
                             </div>
                             <div className="col-md-1">
-                              <button type="button" className="btn">
+                              <button type="button" className="vndrbtn">
                                 Cancel
                               </button>
                             </div>
@@ -297,7 +297,7 @@ const InwardChallan1 = () => {
                               <input />
                             </div>
                             <div className="col-md-2">
-                              <button type="button" className="btn">
+                              <button type="button" className="vndrbtn">
                                 Add
                               </button>
                             </div>
@@ -306,7 +306,7 @@ const InwardChallan1 = () => {
                       </div>
                     </div>
 
-                    <div className="StoreSubconstatus mt-5">
+                    <div className="StoreSubconstatus mt-2">
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>
@@ -332,8 +332,10 @@ const InwardChallan1 = () => {
                         </table>
                       </div>
                     </div>
+
                   </div>
                 </div>
+
                 <div className="StoreSubconFooter">
                   <ul
                     className="nav nav-pills mb-3"
@@ -847,7 +849,7 @@ const InwardChallan1 = () => {
                                             <div className="col-md-12 text-center mt-4">
                                               <button
                                                 type="submit"
-                                                className="btn"
+                                                className="vndrbtn"
                                               >
                                                 DocTCUpload
                                               </button>
@@ -873,7 +875,7 @@ const InwardChallan1 = () => {
                     >
                       <div className="StoreSubconstatus1">
                         <div className="row ">
-                          <div className="col-md-8 mt-4">
+                          <div className="col-md-6 mt-4">
                             <div className="table-responsive">
                               <table className="table table-bordered">
                                 <thead>
@@ -899,7 +901,7 @@ const InwardChallan1 = () => {
                               </table>
                             </div>
                           </div>
-                          <div className="col-md-4">
+                          <div className="col-md-6">
                             <div className="Purchaseordertable">
                               <div className="row">
                                 <div className="col-md-6 text-start">
@@ -1038,7 +1040,7 @@ const InwardChallan1 = () => {
                                               colspan="2"
                                               className="text-start"
                                             >
-                                              <button className="btn">
+                                              <button className="vndrbtn">
                                                 DocTCUpload
                                               </button>
                                             </td>

@@ -37,38 +37,38 @@ const InprocessInspection = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="InprocessInspection mt-5">
-                <div className="InprocessInspection-header mb-4 text-start">
+              <div className="InprocessInspection">
+                <div className="InprocessInspection-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title">Inprocess Inspection </h5>
                     </div>
                     <div className="col-md-8 text-end">
-                      <button type="button" className="btn" to="#/">
+                      <button type="button" className="vndrbtn" to="#/">
                         Export Excel
                       </button>
                      </div>
                   </div>
                 </div>
-                <div className="InprocessInspection-filter mb-4 mt-5">
-                <div className="container-fluid">
+                <div className="InprocessInspection-filter mb-2">
+                     <div className="container-fluid">
                     <div className="row  g-3 text-start mt-2 mb-3 text-start">
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>Plant</label>
                         <select className="form-select">
                           <option value="SHARP">SHARP</option>
                           {/* Add more options as needed */}
                         </select>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>From Date</label>
                         <input type="date" className="form-control" />
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>To Date</label>
                         <input type="date" className="form-control" />
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>Operation :</label>
                         <select className="form-select">
                           <option>All</option>
@@ -79,7 +79,7 @@ const InprocessInspection = () => {
                           <option>Cust_Rework_In</option>
                         </select>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                        <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" />
                             <label htmlFor="machineUtilizeCheckbox" className="form-check-label"> Item Code: </label>
@@ -87,7 +87,7 @@ const InprocessInspection = () => {
                         <input type="text"  placeholder="Item Code" className="form-control"/>
                       </div>
 
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                       <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" />
                             <label htmlFor="machineUtilizeCheckbox" className="form-check-label">HeatCode: </label>
@@ -95,7 +95,7 @@ const InprocessInspection = () => {
                         <input type="text" placeholder="Heat Code" className="form-control" />
                       </div>
 
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" />
                             <label htmlFor="machineUtilizeCheckbox" className="form-check-label"> Prod No: </label>
@@ -104,12 +104,12 @@ const InprocessInspection = () => {
                       </div>
 
 
-                      <div className="col-6 col-md-1">
+                      <div className="col-6 col-md-2">
                       <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" />
                             <label htmlFor="machineUtilizeCheckbox" className="form-check-label"> BarCode: </label>
                         </div>
-                          <button type="button" className="btn btn-primary">
+                          <button type="button" className="vndrbtn">
                             Search
                           </button>
                         </div>
@@ -119,13 +119,13 @@ const InprocessInspection = () => {
                    
                   </div>
             
-                  <div className="AssemblyEntry-bottom mt-5">
+                  <div className="AssemblyEntry-bottom ">
                     <div className="AssemblyEntry-tabs">
                       <ul className="nav nav-tabs" id="" role="tablist" >
                        
                         <li className="nav-item" role="presentation">
                           <button
-                            className="nav-link"
+                            className="nav-link active"
                             id="rework-tab"
                             data-bs-toggle="tab"
                             data-bs-target="#rework"
@@ -138,7 +138,7 @@ const InprocessInspection = () => {
 
                         <li className="nav-item" role="presentation">
                           <button
-                            className="nav-link active"
+                            className="nav-link"
                             id="shift-tab"
                             data-bs-toggle="tab"
                             data-bs-target="#shift"
@@ -161,18 +161,6 @@ const InprocessInspection = () => {
                           </button>
                         </li>
                        
-                        {/* <li className="nav-item" role="presentation">
-                          <button
-                            className="nav-link"
-                            id="tool-die-tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#toolDie"
-                            type="button"
-                            role="tab"
-                          >
-                            Tool and Die Details
-                          </button>
-                        </li> */}
                       </ul>
                        <div className="tab-content mt-4" id="productionEntryTabsContent" >
                         {/* <div className="tab-pane fade show active" id="shift" role="tabpanel" >
@@ -406,7 +394,7 @@ const InprocessInspection = () => {
                                     <input type="text" />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <button type="button" className="btn">
+                                    <button type="button" className="vndrbtn">
                                       Add
                                     </button>
                                   </td>
@@ -490,7 +478,7 @@ const InprocessInspection = () => {
                                     />
                                   </td>
                                   <td className="border border-gray-300 p-2">
-                                    <button type="button" className="btn">
+                                    <button type="button" className="vndrbtn">
                                       Delete
                                     </button>
                                   </td>
@@ -503,40 +491,42 @@ const InprocessInspection = () => {
                         <div className="tab-pane fade" id="rework" role="tabpanel">
                          <div className="row">
                          <div className="col-md-4">
+
                             <div className="row">
                             <div className="col-md-3">
                                   <label>QC No :</label>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-6">
                                   <input type="text" placeholder="242523915" className="form-control" />
                             </div>
                             </div>
-                              <div className="row">    
-                                <div className="col-md-3">
+
+                              <div className="row mt-2">    
+                                <div className="col-md-2">
                                   <label>Rework</label>
                                 </div>
                                 <div className="col-md-3">
-                                  <select>
+                                  <select className="form-select">
                                     <option>Select</option>
                                   </select>
                                 </div>
                                 <div className="col-md-3">
                                   <input type="text" className="form-control" />
                                 </div>
-                                <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                <div className="col-md-2">
+                                  <button type="button" className="vndrbtn">
                                     Add
                                   </button>
                                 </div>
                                 <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                  <button type="button" className="vndrbtn">
                                     <Cached />
                                   </button>
                                 </div>
                               </div>
                               
                               <div className="table-responsive">
-                              <table className="table table-bordered table-striped">
+                                 <table className="table table-bordered table-striped">
                                     <thead>
                                       <tr>
                                         <th>Sr no.</th>
@@ -562,29 +552,29 @@ const InprocessInspection = () => {
                             <div className="col-md-3">
                                   <label>QC Date :</label>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-6">
                                   <input type="date" className="form-control" />
                             </div>
                             </div>
-                              <div className="row">    
-                                <div className="col-md-3">
+                              <div className="row mt-2">    
+                                <div className="col-md-2">
                                   <label>Rework</label>
                                 </div>
                                 <div className="col-md-3">
-                                  <select>
+                                  <select className="form-select">
                                     <option>Select</option>
                                   </select>
                                 </div>
                                 <div className="col-md-3">
                                   <input type="text" className="form-control" />
                                 </div>
-                                <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                <div className="col-md-2">
+                                  <button type="button" className="vndrbtn">
                                     Add
                                   </button>
                                 </div>
                                 <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                  <button type="button" className="vndrbtn">
                                     <Cached />
                                   </button>
                                 </div>
@@ -609,7 +599,7 @@ const InprocessInspection = () => {
                                       </tr>
                                     </tbody>
                                   </table>
-                              </div>
+                              </div> 
                          </div>
 
                          <div className="col-md-4">
@@ -617,7 +607,7 @@ const InprocessInspection = () => {
                                     <div className="col-md-4 mt-3">
                                           <label>QC Sample Pef. :</label>
                                     </div>
-                                    <div className="col-md-5">
+                                    <div className="col-md-6">
                                         <input type="text" className="form-control" />
                                     </div>
                                 </div>
@@ -625,7 +615,7 @@ const InprocessInspection = () => {
                                     <div className="col-md-4 mt-3">
                                           <label>QC Ssmple Qty. :</label>
                                     </div>
-                                    <div className="col-md-5">
+                                    <div className="col-md-6">
                                         <input type="text" className="form-control" />
                                     </div>
                                 </div>
@@ -633,17 +623,17 @@ const InprocessInspection = () => {
                                     <div className="col-md-4 mt-3">
                                           <label>QC Ssmple Remark. :</label>
                                     </div>
-                                    <div className="col-md-5">
+                                    <div className="col-md-6">
                                        <textarea className="form-control" rows="1" placeholder="Remark..."></textarea>
                                     </div>
                                 </div>
                          </div>
                           </div>
 
-                          <div className="row mt-4">
+                          <div className="row mt-2">
                              <div className="col-md-3">
                                <div className="row mt-4">
-                                    <div className="col-md-6 mt-3">
+                                    <div className="col-md-6">
                                           <label>Drawing Rev No. :</label>
                                     </div>
                                     <div className="col-md-6">
@@ -651,10 +641,9 @@ const InprocessInspection = () => {
                                     </div>
                                 </div>
                              </div>
-
                              <div className="col-md-3">
                              <div className="row mt-4">
-                                    <div className="col-md-6 mt-3">
+                                    <div className="col-md-6">
                                           <label>(IOS) Format No. :</label>
                                     </div>
                                     <div className="col-md-6">
@@ -664,7 +653,7 @@ const InprocessInspection = () => {
                              </div>
                              <div className="col-md-3">
                              <div className="row mt-4">
-                                    <div className="col-md-6 mt-3">
+                                    <div className="col-md-6">
                                           <label>(IOS) Rev No. :</label>
                                     </div>
                                     <div className="col-md-6">
@@ -674,7 +663,7 @@ const InprocessInspection = () => {
                              </div>
                              <div className="col-md-3">
                                 <div className="row mt-4">
-                                    <div className="col-md-6 mt-3">
+                                    <div className="col-md-6">
                                           <label>(IOS) Rev Date. :</label>
                                     </div>
                                     <div className="col-md-6">
@@ -695,7 +684,7 @@ const InprocessInspection = () => {
                               <input type="text" className="form-control" />
                             </div>
                             <div className="col-md-1">
-                              <button type="button" className="btn">
+                              <button type="button" className="vndrbtn">
                                 Add
                               </button>
                             </div>
@@ -744,10 +733,10 @@ const InprocessInspection = () => {
 
                        <div className="col-md-4 d-flex">
                         <div className="text-end s-4 d-flex">
-                          <button type="button" className="btn">
+                          <button type="button" className="vndrbtn">
                             Cancel
                           </button>
-                          <button type="button" className="btn">
+                          <button type="button" className="vndrbtn">
                             Save
                           </button>
                         </div>

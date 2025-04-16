@@ -33,8 +33,8 @@ const NewIdleMaster = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="NewIdleMaster mt-5">
-                  <div className="NewIdleMaster-header mb-4 text-start">
+                <div className="NewIdleMaster">
+                  <div className="NewIdleMaster-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">
@@ -42,7 +42,7 @@ const NewIdleMaster = () => {
                         </h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <Link type="button" className="btn" to="/MachineIdleTime">
+                        <Link type="button" className="vndrbtn" to="/MachineIdleTime">
                         New Idle Time
                         </Link>
                       </div>
@@ -51,13 +51,14 @@ const NewIdleMaster = () => {
 
                   <div className="NewIdleMaster-Main card p-4">
                     <form>
+
                       <div className="row text-start">
                         <div className="col-md-1 mb-3">
                           <label htmlFor="date" className="form-label">
                             Date Range
                           </label>
                         </div>
-                        <div className="col-md-1 mb-3">
+                        <div className="col-md-2 mb-3">
                           <input
                             type="date"
                             id="date"
@@ -65,6 +66,11 @@ const NewIdleMaster = () => {
                           />
                         </div>
                         <div className="col-md-1 mb-3">
+                          <label htmlFor="date" className="form-label">
+                            To
+                          </label>
+                        </div>
+                        <div className="col-md-2 mb-3">
                           <input
                             type="date"
                             id="date"
@@ -77,7 +83,7 @@ const NewIdleMaster = () => {
                             Shift
                           </label>
                         </div>
-                        <div className="col-md-1 mb-3">
+                        <div className="col-md-2 mb-3">
                           <select id="shift" className="form-select">
                             <option>ALL</option>
                             <option>FIRST 8HRS: 07:00 - 15:30</option>
@@ -90,7 +96,7 @@ const NewIdleMaster = () => {
                             Machine Name
                           </label>
                         </div>
-                        <div className="col-md-1 mb-3">
+                        <div className="col-md-2 mb-3">
                           <select id="machineType" className="form-select">
                             <option>ALL</option>
                             <option>Type 1</option>
@@ -103,7 +109,7 @@ const NewIdleMaster = () => {
                             Break Down
                           </label>
                         </div>
-                        <div className="col-md-1 mb-3">
+                        <div className="col-md-2 mb-3">
                           <select id="machineType" className="form-select">
                             <option>ALL</option>
                             <option>Type 1</option>
@@ -113,18 +119,18 @@ const NewIdleMaster = () => {
                         </div>
                        
 
-                        <div className="col-md-1 mt-2">
-                          <button type="button" className="btn">
+                        <div className="col-md-1 mt-1">
+                          <button type="button" className="vndrbtn">
                             Search
                           </button>
                         </div>
-                        <div className="col-md-1 mt-2">
-                          <button type="button" className="btn">
+                        <div className="col-md-1 mt-1">
+                          <button type="button" className="vndrbtn">
                             Refresh
                           </button>
                         </div>
-                        <div className="col-md-1 mt-2">
-                          <button type="button" className="btn">
+                        <div className="col-md-1 mt-1">
+                          <button type="button" className="vndrbtn">
                             Print
                           </button>
                         </div>
@@ -132,6 +138,7 @@ const NewIdleMaster = () => {
                    
                     </form>
                   </div>
+
                 </div>
               </main>
             </div>

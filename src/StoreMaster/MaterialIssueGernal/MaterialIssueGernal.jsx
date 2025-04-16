@@ -150,14 +150,14 @@ const MaterialIssueGernal = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="NewMaterialGernal-header mt-5">
+                <div className="NewMaterialGernal-header">
                   <div className="row flex-wrap align-items-center">
-                    <div className="col-md-3 col-sm-6">
+                    <div className="col-md-3">
                       <h5 className="header-title text-start">
                         New General Material Issue
                       </h5>
                     </div>
-                    <div className="col-md-9 col-sm-12 mt-4">
+                    <div className="col-md-9 mt-4">
                       <div className="row flex-nowrap align-items-center mb-3">
                         {/* Plant Label and Select */}
                         <div className="col-auto">
@@ -201,7 +201,7 @@ const MaterialIssueGernal = () => {
                         </div>
 
                         {/* Input Field */}
-                        <div className="col-2 mt-2 mt-sm-0">
+                        <div className="col-1 mt-2 mt-sm-0">
                           <input
                             type="text"
                             id="inputField"
@@ -214,7 +214,7 @@ const MaterialIssueGernal = () => {
                   </div>
                 </div>
 
-                <div className="NewMaterialGernal-main mt-5">
+                <div className="NewMaterialGernal-main mt-2">
                   <div className="container-fluid text-start">
                     <div className="row mt-4">
                       <div className="col-md-12">
@@ -412,7 +412,7 @@ const MaterialIssueGernal = () => {
                                     />
                                   </td>
                                   <td>
-                                    <button type="submit" className="pobtn">
+                                    <button type="submit" className="vndrbtn">
                                       {isEditing ? "Update" : "Add"}
                                     </button>
                                   </td>
@@ -426,7 +426,7 @@ const MaterialIssueGernal = () => {
                   </div>
 
                   <div className="NewMaterialGernaltable">
-                    <div className="container-fluid mt-4 text-start">
+                    <div className="container-fluid mt-2 text-start">
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>
@@ -440,7 +440,7 @@ const MaterialIssueGernal = () => {
                               <th>
                                 Machine{" "}
                                 <button
-                                  className="newbtn"
+                                  className="vndrbtn"
                                   onClick={handleModalOpen1}
                                 >
                                   Add
@@ -451,7 +451,7 @@ const MaterialIssueGernal = () => {
                               <th>
                                 Employee:{" "}
                                 <button
-                                  className="newbtn"
+                                  className="vndrbtn"
                                   onClick={handleModalOpen2}
                                 >
                                   See All
@@ -496,7 +496,6 @@ const MaterialIssueGernal = () => {
                           </tbody>
                         </table>
                       </div>
-                      {/* Models */}
                     </div>
 
                     <div
@@ -512,7 +511,7 @@ const MaterialIssueGernal = () => {
                             <h5 className="modal-title">Add Type</h5>
                             <button
                               type="button"
-                              className="btn-close"
+                              className="vndrbtn"
                               onClick={handleModalClose1}
                             >
                               X
@@ -535,12 +534,12 @@ const MaterialIssueGernal = () => {
                           <div className="modal-footer">
                             <button
                               type="button"
-                              className="newbtn1"
+                              className="vndrbtn"
                               onClick={handleModalClose1}
                             >
                               Close
                             </button>
-                            <button type="button" className="newbtn1">
+                            <button type="button" className="vndrbtn">
                               Save changes
                             </button>
                           </div>
@@ -560,7 +559,7 @@ const MaterialIssueGernal = () => {
                             <h5 className="modal-title">Add Type</h5>
                             <button
                               type="button"
-                              className="btn-close"
+                              className="vndrbtn"
                               onClick={handleModalClose2}
                             >
                               X
@@ -573,12 +572,12 @@ const MaterialIssueGernal = () => {
                           <div className="modal-footer">
                             <button
                               type="button"
-                              className="newbtn1"
+                              className="vndrbtn"
                               onClick={handleModalClose2}
                             >
                               Close
                             </button>
-                            <button type="button" className="newbtn1">
+                            <button type="button" className="vndrbtn">
                               Save changes
                             </button>
                           </div>
@@ -599,7 +598,7 @@ const MaterialIssueGernal = () => {
                             </div>
                             <div className="col-4 col-md-4">
                               <input
-                                className="form-control mb-2"
+                                className="form-control"
                                 placeholder="No"
                               />
                             </div>
@@ -613,24 +612,24 @@ const MaterialIssueGernal = () => {
                         </div>
 
                         {/* M Issue Date */}
-                        <div className="col-md-2">
+                        <div className="col-md-3">
                           <div className="row align-items-center">
-                            <div className="col-4 text-end">
+                            <div className="col-6 text-end">
                               <label>M Issue Date:</label>
                             </div>
-                            <div className="col-8">
+                            <div className="col-6">
                               <input type="date" className="form-control" />
                             </div>
                           </div>
                         </div>
 
                         {/* M Issue Time */}
-                        <div className="col-md-2">
+                        <div className="col-md-3">
                           <div className="row align-items-center">
-                            <div className="col-4 text-end">
+                            <div className="col-6 text-end">
                               <label>M Issue Time:</label>
                             </div>
-                            <div className="col-8">
+                            <div className="col-6">
                               <input
                                 type="text"
                                 className="form-control"
@@ -641,12 +640,12 @@ const MaterialIssueGernal = () => {
                         </div>
 
                         {/* Project */}
-                        <div className="col-md-2">
+                        <div className="col-md-3">
                           <div className="row align-items-center">
-                            <div className="col-4 text-end">
+                            <div className="col-6 text-end">
                               <label>Project:</label>
                             </div>
-                            <div className="col-8">
+                            <div className="col-6">
                               <select className="form-select">
                                 <option>Select</option>
                               </select>
@@ -656,14 +655,15 @@ const MaterialIssueGernal = () => {
 
                         {/* Save & Clear Buttons */}
                         <div className="col-md-2 d-flex justify-content-end align-items-center">
-                          <button className="pobtn w-100">Save Challan</button>
+                          <button className="vndrbtn w-100">Save Challan</button>
                         </div>
                         <div className="col-md-1 d-flex justify-content-end align-items-center">
-                          <button className="pobtn w-100">Clear</button>
+                          <button className="vndrbtn w-100">Clear</button>
                         </div>
                       </div>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

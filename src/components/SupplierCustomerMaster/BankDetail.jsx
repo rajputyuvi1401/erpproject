@@ -7,6 +7,8 @@ import {
   deleteBankDetail,
   updateBankDetail,
 } from "../../Service/Api.jsx";
+import "./SupplierCustomerMaster.css";
+
 
 // Helper function to capitalize the first letter of a string
 const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1);
@@ -158,7 +160,7 @@ const BankDetails = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="table-responsive">
-                <table className="table table-bordered">
+                <table className="table">
                   <thead>
                     <tr>
                       <th className="blue-th">Account Holder Name <span className="text-danger">*</span>:</th>
@@ -228,7 +230,7 @@ const BankDetails = () => {
                       </td>
                       <td>
                         <button
-                          className="bankbtn"
+                          className="bank  vndr  vndrbtn  "
                           onClick={handleAddOrUpdateBankDetail}
                         >
                           <i className="fas fa-plus"></i> {editingId ? "Update" : "Add"}
@@ -246,7 +248,7 @@ const BankDetails = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="table-responsive">
-                <table className="table table-bordered">
+                <table className="table">
                   <thead>
                     <tr>
                       <th className="blue-th">Account Holder Name</th>
@@ -267,13 +269,13 @@ const BankDetails = () => {
                         <td>{detail.IFSC_Code}</td>
                         <td>
                           <button
-                            className="bankbtn2"
+                            className="bank  vndr  vndrbtn  2"
                             onClick={() => handleDeleteBankDetail(detail.id)}
                           >
                             <i className="fas fa-trash-alt"></i>
                           </button>
                           <button
-                            className="bankbtn2"
+                            className="bank  vndr  vndrbtn  2"
                             onClick={() => handleEditBankDetail(detail)}
                           >
                             <i className="fas fa-edit"></i>

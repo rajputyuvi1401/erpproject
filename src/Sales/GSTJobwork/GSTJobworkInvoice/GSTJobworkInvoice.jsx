@@ -39,27 +39,27 @@ const GSTJobworkInvoice = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="GSTJobworkInvoice mt-5">
-                  <div className="GSTJobworkInvoice-header mb-4 text-start">
+                <div className="GSTJobworkInvoice">
+                  <div className="GSTJobworkInvoice-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">New Jobwork Invoice</h5>
                       </div>
                       <div className="col-md-1">Plant</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option>ProduLink</option>
                         </select>
                       </div>
                       <div className="col-md-1">Series</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option>Labour Invoice</option>
                         </select>
                       </div>
                       <div className="col-md-1">Type</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option>Labour Invoice</option>
                           <option>Labour Charges/Service/Tool (Challan)</option>
                           <option>Labour Invoice (BOM Consuption)</option>
@@ -67,7 +67,7 @@ const GSTJobworkInvoice = () => {
                       </div>
                       <div className="col-md-1">Type:</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option>GST</option>
                           <option>Stock Transfer</option>
                           <option>Direct Export</option>
@@ -76,18 +76,18 @@ const GSTJobworkInvoice = () => {
                         </select>
                       </div>
                       <div className="col-md-1">
-                        <input type="text" placeholder="InvoiceNo:" className="w-100" />
+                        <input className="form-control" type="text" placeholder="InvoiceNo:" />
                       </div>
 
                       <div className="col-md-1 text-end">
-                        <button type="button" className="btn" onClick={handleButtonClick}>
+                        <button type="button" className=" vndrbtn" onClick={handleButtonClick}>
                           DC
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="GSTJobworkInvoice-main mt-5">
+                  <div className="GSTJobworkInvoice-main">
                     <div className="GSTJobworkInvoice-tabs">
                    
                       <ul
@@ -150,10 +150,10 @@ const GSTJobworkInvoice = () => {
                                   <input type="text" placeholder="Enter Name.." className="form-control" />
                                 </div>
                                 <div className="col-2">
-                                 <button className="btn w-50">Search</button>
+                                 <button className=" vndrbtn w-100">Search</button>
                                 </div>
                           </div>
-                          <div className="row text-start">
+                          <div className="row text-start mt-2 ">
                                 <div className="col-2">
                                   <label htmlFor="prod-no">Select PO:</label>
                                 </div>
@@ -163,13 +163,13 @@ const GSTJobworkInvoice = () => {
                                         </select>
                                 </div>
                                 <div className="col-1">
-                                 <button className="btn w-100">Search</button>
+                                 <button className=" vndrbtn">Search</button>
                                 </div>
                                 <div className="col-2">
-                                 <button className="btn w-50"> View SO</button>
+                                 <button className=" vndrbtn "> View SO</button>
                                 </div>
                           </div>
-                          <div className="row text-start">
+                          <div className="row text-start mt-2">
                                 <div className="col-2">
                                   <label htmlFor="prod-no">Item Name :</label>
                                 </div>
@@ -177,10 +177,10 @@ const GSTJobworkInvoice = () => {
                                   <input type="text" placeholder="Enter Code No.." className="form-control" />
                                 </div>
                                 <div className="col-2">
-                                 <button className="btn w-50">Add</button>
+                                 <button className=" vndrbtn w-100">Add</button>
                                 </div>
                           </div>
-                          <div className="row text-start">
+                          <div className="row text-start mt-2">
                                 <div className="col-2">
                                   <label htmlFor="prod-no">Ref.Item :</label>
                                 </div>
@@ -188,13 +188,13 @@ const GSTJobworkInvoice = () => {
                                   <input type="text" placeholder=".." className="form-control" />
                                 </div>
                                 <div className="col-1">
-                                 <button className="btn w-50">Add</button>
-                                </div>
-                                <div className="col-4">
-                                 <button className="btn w-50">View Pendding Challan List</button>
+                                 <button className=" vndrbtn w-100">Add</button>
                                 </div>
                                 <div className="col-3">
-                                 <button className="btn w-50">View Bom Wise</button>
+                                 <button className=" vndrbtn">View Pendding Challan List</button>
+                                </div>
+                                <div className="col-3">
+                                 <button className=" vndrbtn w-100">View Bom Wise</button>
                                 </div>
                           </div>
                         </div>
@@ -209,8 +209,8 @@ const GSTJobworkInvoice = () => {
                             <div className="col-md-4">
                               {/* Prod. No */}
                               <div className="row mb-2">
-                                <div className="col-4">
-                                  <label htmlFor="invoice-no">Invoice No :</label>
+                                <div className="col-3">
+                                  <label htmlFor="invoice-no">Inv No :</label>
                                 </div>
                                 <div className="col-3">
                                   <input
@@ -225,7 +225,7 @@ const GSTJobworkInvoice = () => {
                                     className="form-control"
                                   />
                                 </div>
-                                <div className="col-2">
+                                <div className="col-3">
                                   <input
                                     id="invoice-no"
                                     className="form-control"
@@ -269,7 +269,7 @@ const GSTJobworkInvoice = () => {
                                     className="form-control"/>
                                   <button
                                     type="button"
-                                    className="btn btn-outline-secondary ml-2"
+                                    className=" vndrbtn ml-2"
                                   >
                                     Search
                                   </button>
@@ -286,7 +286,7 @@ const GSTJobworkInvoice = () => {
                                     className="form-control"/>
                                   <button
                                     type="button"
-                                    className="btn btn-outline-secondary ml-2"
+                                    className=" vndrbtn ml-2"
                                   >
                                     Search
                                   </button>
@@ -410,12 +410,12 @@ const GSTJobworkInvoice = () => {
                                   <select className="form-control flex-grow-1">
                                     <option>  Select  </option>
                                   </select>
-                                  <button type="button" className="btn">
+                                  <button type="button" className=" vndrbtn">
                                     <Cached />
                                   </button>
                                   <button
                                     type="button"
-                                    className="btn btn-outline-secondary ml-2"
+                                    className=" vndrbtn  ml-2"
                                   >
                                     <FaPlus />
                                   </button>
@@ -490,17 +490,17 @@ const GSTJobworkInvoice = () => {
                                             <label>Assessble Value</label>
                                             </div>
                                             <div className="col-md-4">
-                                                <input type="text" placeholder="0"/>
+                                                <input className="form-control" type="text" placeholder="0"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-md-3">
                                         <div className="row">
                                             <div className="col-md-8">
-                                            <label className="d-flex">Pack&Fwrd <input style={{width:"40px"}} type="text" className="w-5" placeholder="0"/>%</label>  
+                                            <label className="d-flex">Pack&Fwrd <input style={{width:"40px"}} type="text" className="form-control" placeholder="0"/>%</label>  
                                             </div>
                                             <div className="col-md-4">
-                                                <input type="text" placeholder="0"/>
+                                                <input className="form-control" type="text" placeholder="0"/>
                                             </div>
                                         </div>
                                     </div>
@@ -528,17 +528,17 @@ const GSTJobworkInvoice = () => {
                                             <label>CGST : 00.00%</label>
                                             </div>
                                             <div className="col-md-4">
-                                                <input type="text" placeholder="0"/>
+                                                <input className="form-control" type="text" placeholder="0"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-md-3">
                                         <div className="row">
                                             <div className="col-md-8">
-                                            <label className="d-flex">Transport Crg. <input style={{width:"40px"}} type="text" className="w-5" placeholder="0"/>%</label>
+                                            <label className="d-flex">Transport Crg. <input style={{width:"40px"}} type="text" className="form-control" placeholder="0"/>%</label>
                                             </div>
                                             <div className="col-md-4">
-                                                <input type="text" placeholder="0"/>
+                                                <input className="form-control" type="text" placeholder="0"/>
                                             </div>
                                         </div>
                                     </div>
@@ -565,17 +565,17 @@ const GSTJobworkInvoice = () => {
                                             <label>SGST : 00.00%</label>
                                             </div>
                                             <div className="col-md-4">
-                                                <input type="text" placeholder="0"/>
+                                                <input className="form-control" type="text" placeholder="0"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-md-3">
                                         <div className="row">
                                             <div className="col-md-8">
-                                            <label className="d-flex">Freight Crg. <input style={{width:"40px"}} type="text" className="w-5" placeholder="0"/>% </label>
+                                            <label className="d-flex">Freight Crg. <input style={{width:"40px"}} type="text" className="form-control" placeholder="0"/>% </label>
                                             </div>
                                             <div className="col-md-4">
-                                                <input type="text" placeholder="0"/>
+                                                <input className="form-control" type="text" placeholder="0"/>
                                             </div>
                                         </div>
                                     </div>
@@ -589,7 +589,7 @@ const GSTJobworkInvoice = () => {
                                     <div className="col-md-3">
                                     <div className="row">
                                             <div className="col-md-12">
-                                                <select name="" id="">
+                                                <select className="form-control" name="" id="">
                                                     <option value="">Bussiness To Bussiness</option>
                                                 </select>
                                             </div>
@@ -606,17 +606,17 @@ const GSTJobworkInvoice = () => {
                                             <label>IGST : 00.00%</label>
                                             </div>
                                             <div className="col-md-4">
-                                                <input type="text" placeholder="0"/>
+                                                <input className="form-control" type="text" placeholder="0"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-md-3">
                                         <div className="row">
                                             <div className="col-md-8">
-                                            <label className="d-flex">Other Crg. <input style={{width:"40px"}} type="text" className="w-5" placeholder="0"/>% </label>
+                                            <label className="d-flex">Other Crg. <input style={{width:"40px"}} type="text" className="form-control" placeholder="0"/>% </label>
                                             </div>
                                             <div className="col-md-4">
-                                                <input type="text" placeholder="0"/>
+                                                <input className="form-control" type="text" placeholder="0"/>
                                             </div>
                                         </div>
                                     </div>
@@ -641,7 +641,7 @@ const GSTJobworkInvoice = () => {
 
                           <div className="row">
                             <div className="col-md-3">
-                                <button className="btn btn-primary"> Generete JobWork Invoice </button>
+                                <button className=" vndrbtn"> Generete JobWork Invoice </button>
                             </div>
                           </div>
 
@@ -679,26 +679,26 @@ const GSTJobworkInvoice = () => {
                                         <td>Line No: <br /> Line PODt :</td>
                                         <td>So Line No :</td>
                                         <td></td>
-                                        <td><textarea name="" id=""></textarea> <br /> <span>HSN Code :</span> </td>
-                                        <td className="text-start"><input type="text" className="" /> <br />
+                                        <td><textarea className="form-control" name="" id=""></textarea> <br /> <span>HSN Code :</span> </td>
+                                        <td className="text-start"><input type="text" className="form-control" /> <br />
                                                
                                             <span style={{color:"blue"}}>Rate Type: </span>
-                                                <br /> <select name="" id="">
+                                                <br /> <select className="form-control" name="" id="">
                                                     <option value="">NOS</option>
                                                 </select>
                                         </td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="text" className="w-50"/> <br />
+                                        <td><input type="text" className="form-control"/> <br />
                                             Per Pcs Wt: <br />
-                                            <input type="text" className="w-50" placeholder="Weight" /><br />
+                                            <input type="text" className="form-control" placeholder="Weight" /><br />
                                             <span style={{color:"blue"}}>Per Unit: </span>
                                         </td>
-                                        <td><input type="text" className="w-50"/></td>
-                                        <td><textarea name="" id=""></textarea></td>
+                                        <td><input type="text" className="form-control"/></td>
+                                        <td><textarea className="form-control" name="" id=""></textarea></td>
                                         <td></td>
-                                        <td><input type="text" /></td>
-                                        <td><span style={{border:"1px solid black"}}>X</span></td>
+                                        <td><input className="form-control" type="text" /></td>
+                                        <td><span className="vndrbtn" style={{border:"1px solid black"}}>X</span></td>
                                     </tr>
                                 </tbody>
                                 </table>

@@ -7,43 +7,23 @@
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
   padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
-.Project1-header .header-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 0;
-}
 .Projectmaster {
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
   padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
-
-
 
 .ProjectMain {
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
   padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
-.Projectselect .btnProjectkk {
-  display: flex;
-  align-items: center;
-  border: none;
-  background-color: rgba(0, 0, 255, 0.692);
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.Projectselect .btn i {
-  margin-right: 5px;
-}
 
 @media (max-width: 767.98px) {
   .ProjectMain {
@@ -59,33 +39,167 @@
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
   padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
-.ProjectTable .table-responsive {
+
+.Project {
   width: 100%;
+  height: 100vh;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
+}
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.ProjectTable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
   overflow-x: auto;
 }
 
-.ProjectTable .table {
+.table {
   width: 100%;
-  white-space: nowrap;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
+  }
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
 }
 
 
-.ProjectTable .table .btn-tableww {
-  padding: 0.25rem 0.5rem;
-  align-items: center;
-  border: none;
-
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.ProjectTable .record-count {
-  margin-top: 10px;
-  text-align: right;
-}
 
 @media (max-width: 767.98px) {
   .ProjectTable {

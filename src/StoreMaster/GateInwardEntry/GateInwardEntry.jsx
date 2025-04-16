@@ -22,7 +22,7 @@ const GateInwardEntry = () => {
   }, [sideNavOpen]);
 
   return (
-    <div className="NewStoreGateInward1">
+    <div className="NewStoreGateInward">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -33,7 +33,7 @@ const GateInwardEntry = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="GateInward1-header  mb-4 text-start mt-5">
+                <div className="GateInward1-header  mb-4 text-start">
                     <div className="row align-items-center">
                     <div className="col-md-3">
                       <h5 className="header-title">
@@ -44,38 +44,38 @@ const GateInwardEntry = () => {
                     <div className="col-md-9 text-end">
                      
                        
-                          <Link className="btn" to={"/New-Gate-Entry"}>
+                          <Link className="vndrbtn" to={"/New-Gate-Entry"}>
                             New Gate Entry
                           </Link>
 
-                          <Link className="btn">Gate Inward Material Reg</Link>
+                          <Link className="vndrbtn">Gate Inward Material Reg</Link>
 
-                          <Link className="btn">Export Excel</Link>
+                          <Link className="vndrbtn">Export Excel</Link>
 
-                          <Link className="btn">Gate Entry Inward - Query</Link>
+                          <Link className="vndrbtn">Gate Entry Inward - Query</Link>
                         </div>
                   
                   </div>
                 </div>
-                <div className="GateInward-main1 mt-5">
+                <div className="GateInward-main1 mt-3">
                   <div className="container-fluid">
                     <div className="row mt-4">
                       <div className="col-md-12">
                         <form className="row g-3 text-start">
                           {/* From Date */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">From Date</label>
-                            <input type="date" className="form-control" />
+                            <input type="date" className="form-control mt-1" />
                           </div>
 
                           {/* To Date */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">To Date</label>
-                            <input type="date" className="form-control" />
+                            <input type="date" className="form-control mt-1" />
                           </div>
 
                           {/* Plant */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">Plant</label>
                             <select className="form-select">
                               <option value="Produlink">Produlink</option>
@@ -84,7 +84,7 @@ const GateInwardEntry = () => {
                           </div>
 
                           {/* Type */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">Type</label>
                             <select className="form-select">
                               <option value="">Select Type</option>
@@ -109,7 +109,7 @@ const GateInwardEntry = () => {
                           </div>
 
                           {/* Status */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">Status</label>
                             <select className="form-select">
                               <option value="">Select Status</option>
@@ -122,7 +122,7 @@ const GateInwardEntry = () => {
                             <label className="form-label">Supplier Name</label>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control mt-1"
                               placeholder="Enter Supplier Name"
                             />
                           </div>
@@ -148,8 +148,8 @@ const GateInwardEntry = () => {
                           </div>
 
                           {/* Search Button */}
-                          <div className="col-md-1 col-sm-6 mt-5 align-self-end">
-                            <button type="submit" className="pobtn">
+                          <div className="col-md-2 col-sm-6 mt-5 align-self-end">
+                            <button type="submit" className="vndrbtn">
                               Search
                             </button>
                           </div>

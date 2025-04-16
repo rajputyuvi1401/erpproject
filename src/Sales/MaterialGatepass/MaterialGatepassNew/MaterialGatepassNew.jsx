@@ -40,15 +40,15 @@ const MaterialGatepassNew = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="MaterialGatepassNew mt-5">
-                  <div className="MaterialGatepassNew-header mb-4 text-start">
+                <div className="MaterialGatepassNew">
+                  <div className="MaterialGatepassNew-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">New Material Gatepass </h5>
                       </div>
                 
                         <div className="col-md-8 text-end">
-                        <button type="button" className="btn" onClick={handleButtonClick}>
+                        <button type="button" className=" vndrbtn" onClick={handleButtonClick}>
                         Pending Material Gatepass List
                         </button>
                         </div>
@@ -120,7 +120,7 @@ const MaterialGatepassNew = () => {
                     </div>
 
 
-                  <div className="MaterialGatepassNew-main mt-5">
+                  <div className="MaterialGatepassNew-main mt-2">
                     <div className="MaterialGatepassNew-tabs">
 
                         <div className="row text-start">
@@ -147,12 +147,12 @@ const MaterialGatepassNew = () => {
                                 </div>
 
                                 <div className="col-6 col-md-1 mt-5">
-                                <button type="button" className="btn btn-primary">
+                                <button type="button" className=" vndrbtn">
                                     Search
                                 </button>
                                 </div>
                                 <div className="col-6 col-md-1 mt-5">
-                                <button type="button" className="btn btn-primary">
+                                <button type="button" className=" vndrbtn">
                                     Clear
                                 </button>
                                 </div>
@@ -168,14 +168,14 @@ const MaterialGatepassNew = () => {
                                 </div>
                              
                                 <div className="col-6 col-md-1 mt-5">
-                                <button type="button" className="btn btn-primary">
+                                <button type="button" className=" vndrbtn">
                                     Add
                                 </button>
                                 </div>
 
                         </div>
 
-                     <div className="row text-start">
+                     <div className="row mt-3 text-start">
                             <div className="col-5">
                                 <div className="table-responsive">
                                     <table className="table table-bordered">
@@ -227,19 +227,19 @@ const MaterialGatepassNew = () => {
                       </div>
                        
                        <div className="row">
-                            <div className="col-6 col-md-1 mt-5">
-                                <button type="button" className="btn btn-primary">
+                            <div className="col-6 col-md-1 mt-2">
+                                <button type="button" className=" vndrbtn">
                                     Add
                                 </button>
                           </div>
                        </div>
 
-                       <div className="row lastgray align-items-center mt-5"> 
+                       <div className="row lastblue align-items-center mt-2"> 
                             <div className="col-md-12 text-end">
-                                <button type="button" className="btn">
+                                <button type="button" className=" vndrbtn">
                                   Search
                                 </button>
-                                <button type="button" className="btn">
+                                <button type="button" className=" vndrbtn">
                                  Cancel
                                 </button>
                             </div>

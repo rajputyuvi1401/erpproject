@@ -39,8 +39,8 @@ const NewHotInspection = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="HotInspectionList mt-5">
-                  <div className="HotInspectionList-header mb-4 text-start">
+                <div className="HotInspectionList">
+                  <div className="HotInspectionList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-2 mt-3">
                         <h5 className="header-title"> Hot Inspection </h5>
@@ -55,7 +55,7 @@ const NewHotInspection = () => {
 
                      <div className="col-md-1">
                             <div class="checkbox-style">
-                               <input type="radio" id="option3" name="options" value="option3" />
+                               <input type="radio" className="mt-2" id="option3" name="options" value="option3" />
                                <label htmlFor=""> &nbsp;WorkOrder</label>
                             </div>
                      </div>
@@ -65,7 +65,7 @@ const NewHotInspection = () => {
                         </div>
 
                         <div className="col-md-1">
-                            <button type="button" className="btn">
+                            <button type="button" className="vndrbtn">
                                Search
                             </button>
                         </div>
@@ -75,7 +75,7 @@ const NewHotInspection = () => {
                         </div>
                         
                         <div className="col-md-1">
-                            <select>
+                            <select className="form-select">
                                 <option value="">SELECT</option>
                                 <option value="">With Invoice</option>
                                 <option value="">Without Invoice</option>
@@ -86,7 +86,7 @@ const NewHotInspection = () => {
                         </div>
 
                       <div className="col-md-4 text-end">
-                        <button type="button" className="btn" onClick={handleNavigate}>
+                        <button type="button" className="vndrbtn" onClick={handleNavigate}>
                           Hot Inspection List
                         </button>
                       </div>
@@ -95,7 +95,7 @@ const NewHotInspection = () => {
 
                   {/* Filter Section */}
 
-                  <div className="AssemblyEntry-bottom mt-5">
+                  <div className="AssemblyEntry-bottom">
                     <div className="AssemblyEntry-tabs">
                       <ul className="nav nav-tabs" id="productionEntryTabs1" role="tablist" >
                        
@@ -140,7 +140,7 @@ const NewHotInspection = () => {
                       </ul>
     
     
-                  <div className="WorkOrderEntry-table mt-4">
+                  <div className="WorkOrderEntry-table">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead className="table-light">
@@ -188,7 +188,7 @@ const NewHotInspection = () => {
                             <td><input type="text" className="form-control" placeholder="" /></td>
                             <td><input type="text" className="form-control" placeholder="" /></td>
                             <td><textarea className="form-control" rows="1" placeholder="Enter..."></textarea></td>
-                            <td><button>Add</button></td>
+                            <td><button className="vndrbtn">Add</button></td>
                           </tr>
                         </tbody>
                       </table>
@@ -247,7 +247,7 @@ const NewHotInspection = () => {
                             <td></td>
                             <td></td>
                           <td>
-                            <button className="btn btn-sm btn-light">
+                            <button className="vndrbtn">
                               <i className="fas fa-eye"></i>
                             </button>
                           </td>
@@ -284,12 +284,12 @@ const NewHotInspection = () => {
                                   <input type="text" className="form-control" />
                                 </div>
                                 <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                  <button type="button" className="vndrbtn">
                                     Add
                                   </button>
                                 </div>
                                 <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                  <button type="button" className="vndrbtn">
                                     <Cached />
                                   </button>
                                 </div>
@@ -339,12 +339,12 @@ const NewHotInspection = () => {
                                   <input type="text" className="form-control" />
                                 </div>
                                 <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                  <button type="button" className="vndrbtn">
                                     Add
                                   </button>
                                 </div>
                                 <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                  <button type="button" className="vndrbtn">
                                     <Cached />
                                   </button>
                                 </div>

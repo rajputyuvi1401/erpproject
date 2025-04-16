@@ -33,21 +33,21 @@ const OutwardChallan = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="OutwardChallan mt-5">
-                  <div className="OutwardChallan-header mb-4 text-start">
+                <div className="OutwardChallan">
+                  <div className="OutwardChallan-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">Outward Challan</h5>
                       </div>
                       <div className="col-md-1">Plant</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option>ProduLink</option>
                         </select>
                       </div>
                       <div className="col-md-1">Series</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option> Select </option>
                           <option> 57F5 </option>
                           <option> Rework </option>
@@ -58,7 +58,7 @@ const OutwardChallan = () => {
                         </select>
                       </div>
                       <div className="col-md-1">
-                        <input type="text" placeholder=" ## " className="w-50" />
+                        <input type="text" placeholder=" ## " className="form-control" />
                       </div>
                         <div className="col-md-1">
                         <label for="">Vender</label>
@@ -67,82 +67,94 @@ const OutwardChallan = () => {
                          <input type="text" placeholder="Enter Name" className="form-control" />
                         </div>
                         <div className="col-md-1">
-                        <button type="button" className="btn">
+                        <button type="button" className=" vndrbtn">
                           Select
                         </button>
                         </div>
                         <div className="col-md-1">
-                        <button type="button" className="btn">
+                        <button type="button" className=" vndrbtn">
                           Cancel
                         </button>
                         </div>
                     </div>
                   </div>
 
-                  <div className="OutwardChallan-main mt-5">
+                  <div className="OutwardChallan-main">
                     <div className="OutwardChallan-tabs">
                    
-                      <div className="tab-content mt-4" id="productionEntryTabsContent" >
+                      <div className="tab-content" id="productionEntryTabsContent" >
 
                           <div className="table-responsive">
-                                <table className="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th className="d-flex align-items-center">
-                                        Type
-                                        <input type="radio" id="fg" name="fav_language" value="FG" className="ms-2" />
-                                        <label for="fg" className="ms-1">FG</label>
-                                        <input type="radio" id="rm" name="fav_language" value="RM" className="ms-2" />
-                                        <label for="rm" className="ms-1">RM</label>
-                                        <input type="radio" id="itemmaster" name="fav_language" value="ITEMMASTER" className="ms-2" />
-                                        <label for="itemmaster" className="ms-1">ITEM MASTER</label>
-                                        </th>
-                                        <th>Item Desc.</th>
-                                        <th className="d-flex align-items-center">
-                                        <input type="radio" id="mainstore" name="fav_language" value="MainStore" className="ms-2" />
-                                        <label for="mainstore" className="ms-1">Main Store</label>
-                                        <input type="radio" id="reworkstore" name="fav_language" value="ReworkStore" className="ms-2" />
-                                        <label for="reworkstore" className="ms-1">Rework Store</label>
-                                        </th>
-                                        <th>Quantity</th>
-                                        <th>Process/Operation</th>
-                                        <th>Package</th>
-                                        <th>Value</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><input type="text" placeholder="Enter Name" className="form-control" /></td>
-                                        <td><textarea className="form-control"></textarea></td>
-                                        <td>
-                                        <select name="" className="form-control">
-                                            <option value="">NOS</option>
-                                        </select>
-                                        <br />
-                                        Supp. Ref. No :
-                                        <input type="text" className="form-control" />
-                                        </td>
-                                        <td>
-                                        No :
-                                        <input type="text" className="form-control" />
-                                        <br />
-                                        Kg :
-                                        <input type="text" className="form-control" />
-                                        </td>
-                                        <td><textarea className="form-control"></textarea></td>
-                                        <td><textarea className="form-control"></textarea></td>
-                                        <td>
-                                        W.Rate :
-                                        <input type="text" className="form-control" />
-                                        <br />
-                                        W.Value :
-                                        <input type="text" className="form-control" />
-                                        </td>
-                                        <td><button className="btn">Add</button></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                          
+                          <table className="table table-bordered">
+                              <thead>
+                                <tr>
+                                <th className="d-flex align-items-center">
+                                <span>Type</span>
+                                <input type="radio" id="fg" name="fav_language" value="FG" className="ms-2" />
+                                <label htmlFor="fg" className="ms-1">FG</label>
+                                <input type="radio" id="rm" name="fav_language" value="RM" className="ms-2" />
+                                <label htmlFor="rm" className="ms-1">RM</label>
+                                <input type="radio" id="itemmaster" name="fav_language" value="ITEMMASTER" className="ms-2" />
+                                <label htmlFor="itemmaster" className="ms-1">ITEM MASTER</label>
+                              </th>
+
+                                  <th>Item Desc.</th>
+                                  <th className="d-flex align-items-center">
+                                    <span>Store</span>
+                                    <input type="radio" id="mainstore" name="store" value="MainStore" className="ms-2" />
+                                    <label htmlFor="mainstore" className="ms-1">Main Store</label>
+                                    <input type="radio" id="reworkstore" name="store" value="ReworkStore" className="ms-2" />
+                                    <label htmlFor="reworkstore" className="ms-1">Rework Store</label>
+                                  </th>
+
+                                  <th>Quantity</th>
+                                  <th>Process/Operation</th>
+                                  <th>Package</th>
+                                  <th>Value</th>
+                                  <th></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td><input type="text" placeholder="Enter Name" className="form-control" /></td>
+                                  <td><textarea className="form-control"></textarea></td>
+                                  <td>
+                                    <select className="form-control mb-2">
+                                      <option value="">NOS</option>
+                                    </select>
+                                    <div>
+                                      <label>Supp. Ref. No:</label>
+                                      <input type="text" className="form-control" />
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div className="mb-2">
+                                      <label>No:</label>
+                                      <input type="text" className="form-control" />
+                                    </div>
+                                    <div>
+                                      <label>Kg:</label>
+                                      <input type="text" className="form-control" />
+                                    </div>
+                                  </td>
+                                  <td><textarea className="form-control"></textarea></td>
+                                  <td><textarea className="form-control"></textarea></td>
+                                  <td>
+                                    <div className="mb-2">
+                                      <label>W. Rate:</label>
+                                      <input type="text" className="form-control" />
+                                    </div>
+                                    <div>
+                                      <label>W. Value:</label>
+                                      <input type="text" className="form-control" />
+                                    </div>
+                                  </td>
+                                  <td><button className="vndrbtn">Add</button></td>
+                                </tr>
+                              </tbody>
+                          </table>
+
                           </div>
 
                             <div className="table-responsive">
@@ -229,7 +241,7 @@ const OutwardChallan = () => {
                                     <td><input type="date" className="form-control" /></td>
                                     <td>Rev.Ch.Amt:</td>
                                     <td><input type="text" className="form-control" /></td>
-                                    <td colSpan="2"> <button className="btn btn-primary">Save Challan</button> </td>
+                                    <td colSpan="2"> <button className="vndrbtn">Save Challan</button> </td>
                                   </tr>
                                 </tbody>
                               </table>

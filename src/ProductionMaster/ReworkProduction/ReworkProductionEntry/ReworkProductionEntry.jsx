@@ -318,15 +318,15 @@ const ReworkProductionEntry = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ReworkProductionEntry mt-5">
+                <div className="ReworkProductionEntry">
                   <form onSubmit={handleSubmit}>
                     <div className="ReworkProductionEntry-header mb-4 text-start">
                       <div className="row align-items-center">
-                        <div className="col-md-2">
+                        <div className="col-md-3">
                           <h5 className="header-title">Rework Production</h5>
                         </div>
-                        <div className="col-md-1">
-                          <select>
+                        <div className="col-md-2">
+                          <select className="form-select">
                             <option>Produlink</option>
                           </select>
                         </div>
@@ -414,7 +414,7 @@ const ReworkProductionEntry = () => {
 
                       <div className="row mt-4" style={{ justifyContent: "end" }}>
                         <div className="col-md-2 text-end">
-                          <button type="submit" className="btn btn-primary">
+                          <button type="submit" className="vndrbtn">
                             Save
                           </button>
                         </div>
@@ -450,6 +450,7 @@ const ProductionDetailsTab = ({
 }) => {
   return (
     <div className="ReworkProductionEntry-first">
+
       <div className="row mb-3 text-start">
         <div className="col-md-3">
           <label>Rework No:</label>
@@ -680,7 +681,7 @@ const ProductionDetailsTab = ({
           />
         </div>
         <div className="col-md-2 offset-md-10 text-end" style={{marginTop:"-35px"}}>
-          <button type="button" className="btn" onClick={handleAddItem}>
+          <button type="button" className="vndrbtn" onClick={handleAddItem}>
             Add
           </button>
         </div>
@@ -713,7 +714,7 @@ const ProductionDetailsTab = ({
                 <td>{row.reject_to_ok_qty}</td>
                 <td>{row.rework_to_reject_qty}</td>
                 <td>
-                  <button type="button" className="btn btn-danger btn-sm" onClick={() => handleDeleteItem(index)}>
+                  <button type="button" className="vndrbtn" onClick={() => handleDeleteItem(index)}>
                     X
                   </button>
                 </td>
@@ -777,7 +778,7 @@ const ConsumptionDetailsTab = ({
           />
         </div>
         <div className="col-md-2 mt-4">
-          <button type="button" className="btn btn-primary" onClick={handleAddConsumption}>
+          <button type="button" className="vndrbtn" onClick={handleAddConsumption}>
             Add
           </button>
         </div>
@@ -804,7 +805,7 @@ const ConsumptionDetailsTab = ({
                 <td>
                   <button
                     type="button"
-                    className="btn btn-danger btn-sm"
+                    className="vndrbtn"
                     onClick={() => handleDeleteConsumption(index)}
                   >
                     X

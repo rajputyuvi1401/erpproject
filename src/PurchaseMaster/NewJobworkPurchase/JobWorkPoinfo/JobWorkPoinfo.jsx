@@ -494,7 +494,7 @@ const JobWorkPoinfo = () => {
                         />
                       </div>
                       <div className="col-md-6">
-                        <button type="button" className="btn mt-4">
+                        <button type="button" className="vndrbtn mt-4">
                           Save
                         </button>
                       </div>
@@ -515,12 +515,12 @@ const JobWorkPoinfo = () => {
                           <td>1</td>
                           <td>Example Freight</td>
                           <td>
-                            <button className="btn">
+                            <button className="vndrbtn">
                               <FaEdit />
                             </button>
                           </td>
                           <td>
-                            <button className="btn">
+                            <button className="vndrbtn">
                               <FaTrash />
                             </button>
                           </td>
@@ -531,7 +531,7 @@ const JobWorkPoinfo = () => {
                   <div className="modal-footer">
                     <button
                       type="button"
-                      className="btn"
+                      className="vndrbtn"
                       onClick={handleCloseCard}
                     >
                       Close

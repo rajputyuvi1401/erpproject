@@ -4,11 +4,6 @@
   padding: 0;
 }
 
-body {
-  font-family: Arial, sans-serif;
-}
-
-
 .cusgstheader-header {
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
@@ -16,65 +11,116 @@ body {
   border-radius: 5px;
 }
 
-.cusgstheader-header .header-title {
+.header-title {
   font-size: 20px;
   font-weight: bold;
   margin: 0;
 }
 
-
-
-.custgat-btn {
+.vndrbtn {
   border: none;
-  border-radius: 10px;
-  padding: 10px;
   background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
   color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
 }
 
 .cusgstmain {
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
   padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  /* border-radius: 5px; */
   flex-grow: 1;
   padding: 20px;
-  margin-top: 40px;
+  margin-top: 20px;
+  font-size: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.input-group {
-  width: 100%; /* Ensure input group takes full width */
-}
 
-.input-group .form-control {
-  width: 100%; /* Ensure input field takes full width within input group */
-}
-.cusmainbtn,
-.cusmainniche {
-  border: none;
-  border-radius: 5px;
-  padding: 7px;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-}
-
-.cusmainniche {
-  margin-top: 200px;
-}
-
-@media (max-width: 768px) {
-  .cusgstheader {
-    flex-direction: column;
+/* Mobile devices (max-width: 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
     text-align: center;
   }
 
-  .cusgstheader .text-end {
-    margin-top: 10px;
+  .vndrbtn {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    font-size: 12px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
   }
 
   .cusgstmain {
-    margin-top: 20px;
+    padding: 10px;
+    font-size: 10px;
   }
 }
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .cusgstmain {
+    font-size: 11px;
+    padding: 15px;
+  }
+}
+
+/* Laptops and larger (769px and up) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
+
+  .vndrbtn {
+    font-size: 13px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
+
+  .cusgstmain {
+    font-size: 12px;
+  }
+}
+

@@ -58,62 +58,63 @@ const ReworkProductionReport = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ReworkProductionReport mt-5">
-                  <div className="ReworkProductionReport-header mb-4 text-start">
+                <div className="ReworkProductionReport">
+                  <div className="ReworkProductionReport-header text-start">
                     <div className="row align-items-start">
-                      <div className="col-md-10">
+                      <div className="col-md-8">
                         <h5 className="header-title">
                           Rework Production Report
                         </h5>
                       </div>
-                      <div className="col-md-1">
-                        <select>
+                      <div className="col-md-2">
+                        <select className="form-select">
                           <option>PDF</option>
                         </select>
                       </div>
-                      <div className="col-md-1">
-                        <button type="button" className="btn btn-primary">
+                      <div className="col-md-2">
+                        <button type="button" className="vndrbtn">
                           Print Report
                         </button>
                       </div>
                     </div>
                   </div>
-                  <div className="ReworkProductionReport-main mb-4  mt-5">
-                  <div className="row text-start">
-        <div className="col-md-2">
-          <label>From</label>
-          <input 
-            type="date" 
-            className="form-control" 
-            value={filters.from} 
-            onChange={(e) => setFilters({ ...filters, from: e.target.value })} 
-          />
-        </div>
-        <div className="col-md-2">
-          <label>To</label>
-          <input 
-            type="date" 
-            className="form-control" 
-            value={filters.to} 
-            onChange={(e) => setFilters({ ...filters, to: e.target.value })} 
-          />
-        </div>
-        <div className="col-md-2">
-          <label>Item</label>
-          <input 
-            type="text" 
-            className="form-control" 
-            value={filters.item} 
-            onChange={(e) => setFilters({ ...filters, item: e.target.value })} 
-          />
-        </div>
-        <div className="col-md-2">
-          <button type="button" className="btn btn-primary mt-4" onClick={handleSearch}>Search</button>
-        </div>
-      </div>
+
+                  <div className="ReworkProductionReport-main mt-2">
+                      <div className="row text-start">
+            <div className="col-md-2">
+              <label>From</label>
+              <input 
+                type="date" 
+                className="form-control" 
+                value={filters.from} 
+                onChange={(e) => setFilters({ ...filters, from: e.target.value })} 
+              />
+            </div>
+            <div className="col-md-2">
+              <label>To</label>
+              <input 
+                type="date" 
+                className="form-control" 
+                value={filters.to} 
+                onChange={(e) => setFilters({ ...filters, to: e.target.value })} 
+              />
+            </div>
+            <div className="col-md-2">
+              <label>Item</label>
+              <input 
+                type="text" 
+                className="form-control" 
+                value={filters.item} 
+                onChange={(e) => setFilters({ ...filters, item: e.target.value })} 
+              />
+            </div>
+            <div className="col-md-2">
+              <button type="button" className="vndrbtn  mt-4" onClick={handleSearch}>Search</button>
+            </div>
+                      </div>
                   </div>
 
-                  <div className="ReworkProductionReport-main mb-4 text-start mt-5">
+                  <div className="ReworkProductionReporttable mb-4 text-start mt-2">
                   <div className="table-responsive mt-4">
                     <table className="table table-bordered">
                       <thead>

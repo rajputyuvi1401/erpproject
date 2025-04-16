@@ -4,8 +4,6 @@
   padding: 0;
 }
 
-
-
 .taskheader-header {
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
@@ -38,35 +36,46 @@
   padding: 10px 15px; /* Padding around header */
   margin-top: 40px;
 }
-.taskmiddle .blue-th {
-  background-color: rgba(0, 0, 255, 0.558);
-  color: white;
-}
 
-.taskmiddle .table {
-  width: 100%;
-}
 
-.taskmiddle th,
-.taskmiddle td {
-  text-align: center;
-}
-
-.taskmiddle input[type="text"] {
-  width: 100%;
-}
-
-.taskmiddle .table-responsive {
+.table-responsive {
   overflow-x: auto;
 }
 
-.taskmiddle .tbbtn {
+.table {
   width: 100%;
-  border: none;
-  background-color: rgba(0, 0, 255, 0.558);
-  padding: 5px;
-  border-radius: 10px;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
 }
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
 /* Add your existing CSS styles here */
 
 /* Media queries for responsiveness */

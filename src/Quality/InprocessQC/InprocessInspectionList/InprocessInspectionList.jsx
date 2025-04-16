@@ -34,45 +34,45 @@ const InprocessInspectionList = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="InprocessInspectionList mt-5">
-                <div className="InprocessInspectionList-header mb-4 text-start">
+              <div className="InprocessInspectionList">
+                <div className="InprocessInspectionList-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title">Inprocess Inspection List </h5>
                     </div>
                     <div className="col-md-8 text-end">
-                      <button type="button" className="btn" to="#/">
+                      <button type="button" className="vndrbtn" to="#/">
                         Export Excel
                       </button>
-                      <button type="button" className="btn" to="#/">
+                      <button type="button" className="vndrbtn" to="#/">
                         Inprocess QC - Query
                       </button>
                      </div>
                   </div>
                 </div>
                
-                <div className="InprocessInspectionList-Main mt-5">
+                <div className="InprocessInspectionList-Main mt-2">
                     <div className="container-fluid">
-                  <div className="row g-3 text-start mt-3">
+                      <div className="row g-3 text-start">
 
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-3">
                           <label>Plant :</label>
                           <select className="form-select" style={{marginTop:"-1px"}}>
                              <option>SHARP</option>
                           </select>
                         </div>  
 
-                       <div className="col-sm-6 col-md-2 col-lg-1">
+                       <div className="col-sm-6 col-md-3 col-lg-3">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-3">
                           <label>To Date:</label>
                           <input type="date" className="form-control" />
                         </div>
                        
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-3">
                        <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label"> Item Code: </label>
@@ -80,7 +80,7 @@ const InprocessInspectionList = () => {
                         <input type="text"  placeholder="Item Code" className="form-control"/>
                       </div>
 
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-3">
                       <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label">Prod No: </label>
@@ -88,7 +88,7 @@ const InprocessInspectionList = () => {
                         <input type="text" placeholder="Production " className="form-control" />
                       </div>
 
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-3">
                         <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label"> Lot/Heat-No: </label>
@@ -102,7 +102,7 @@ const InprocessInspectionList = () => {
                             <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" />
                             <label htmlFor="machineUtilizeCheckbox" className="form-check-label"> LastOption: </label>
                         </div>
-                          <button type="button" className="btn btn-primary">
+                          <button type="button" className="vndrbtn w-100">
                             Search
                           </button>
                         </div>
@@ -112,7 +112,7 @@ const InprocessInspectionList = () => {
                     </div>
                   </div>
 
-             <div className="table-responsive mt-5">
+             <div className="InprocessInspectionListtable table-responsive mt-2">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>

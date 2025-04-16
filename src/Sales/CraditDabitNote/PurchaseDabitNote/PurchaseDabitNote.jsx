@@ -42,19 +42,19 @@ const PurchaseDabitNote = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PurchaseDabitNote mt-5">
-                  <div className="PurchaseDabitNote-header mb-4 text-start">
+                <div className="PurchaseDabitNote">
+                  <div className="PurchaseDabitNote-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">New DabitNote</h5>
                       </div>
                       <div className="col-md-2">
                           <div className="row">
-                              <div className="col-md-4">
+                              <div className="col-md-4 mt-1">
                                 <label htmlFor="">Type</label>
                               </div>
                               <div className="col-md-8">
-                                <select>
+                                <select className="form-control">
                                    <option>Select</option>
                                    <option>Direct</option>
                                    <option>GRN</option>
@@ -65,11 +65,11 @@ const PurchaseDabitNote = () => {
                       
                       <div className="col-md-2">
                       <div className="row">
-                              <div className="col-md-4">
+                              <div className="col-md-4 mt-1">
                                 <label htmlFor="">NoteType</label>
                               </div>
                               <div className="col-md-8">
-                                <select>
+                                <select className="form-control">
                                    <option>PurchaseReturn</option>
                                    <option>PurchaseRateDiff</option>
                                    <option>ShortQty</option>
@@ -80,10 +80,10 @@ const PurchaseDabitNote = () => {
                       </div>
                     
                         <div className="col-md-6 text-end">
-                        <button type="button" className="btn" onClick={handleButtonClick}>
+                        <button type="button" className="vndrbtn" onClick={handleButtonClick}>
                           Dabit Note List
                         </button>
-                        <button type="button" className="btn " onClick={handleBttnClick}>
+                        <button type="button" className="vndrbtn " onClick={handleBttnClick}>
                           DN-57F4out
                         </button>
                         </div>
@@ -95,7 +95,7 @@ const PurchaseDabitNote = () => {
                       <div className="row text-start">
                         <div className="col-3">
                            <div className="row">
-                               <div className="col-md-6">
+                               <div className="col-md-6 mt-2">
                                   <label htmlFor="">DabitNote NO:</label>
                                </div>
                                <div className="col-md-6">
@@ -105,7 +105,7 @@ const PurchaseDabitNote = () => {
                         </div>
                         <div className="col-3">
                            <div className="row">
-                               <div className="col-md-6">
+                               <div className="col-md-6 mt-2">
                                   <label htmlFor="">DabitNote Date:</label>
                                </div>
                                <div className="col-md-6">
@@ -115,7 +115,7 @@ const PurchaseDabitNote = () => {
                         </div>
                         <div className="col-3">  
                         <div className="row">
-                           <div className="col-md-6">
+                           <div className="col-md-6 mt-2">
                                   <label htmlFor="">Party Name:</label>
                                </div>
                                <div className="col-md-6">
@@ -123,16 +123,16 @@ const PurchaseDabitNote = () => {
                                </div>
                            </div>
                         </div>
-                          <div className="col-2"><button className="btn w-50">Search</button>
+                          <div className="col-2"><button className="vndrbtn ">Search</button>
                          </div>
                        </div>
                     </div>
 
 
-                  <div className="PurchaseDabitNote-main mt-5">
+                  <div className="PurchaseDabitNote-main mt-2">
                     <div className="PurchaseDabitNote-tabs">
                    
-                      <div className="tab-content mt-4" id="" >
+                      <div className="tab-content" id="" >
 
                           <div className="table-responsive">
                                 <table className="table table-bordered">
@@ -153,7 +153,7 @@ const PurchaseDabitNote = () => {
                                     <tr>
                                         <td>
                                             <input type="text" placeholder="Enter Name" className="form-control" /><br />
-                                            <button className="btn w-50">Search</button>
+                                            <button className="vndrbtn">Search</button>
                                         </td>
                                         <td></td>
                                         <td><textarea className="form-control"></textarea></td>
@@ -171,11 +171,11 @@ const PurchaseDabitNote = () => {
                                         </td>
                                         <td>
                                             <input type="text" className="form-control" />
-                                            <select name="" id="">
+                                            <select className="form-control" name="" id="">
                                                 <option value="">Select</option>
                                             </select>
                                         </td>
-                                        <td><button className="btn">Add</button></td>
+                                        <td><button className="vndrbtn">Add</button></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -214,7 +214,7 @@ const PurchaseDabitNote = () => {
                                                 <td></td>
                                                 <td><textarea name="" className="form-control" id=""></textarea></td>
                                                 <td>
-                                                    <select name="" id="">
+                                                    <select className="form-control" name="" id="">
                                                         <option value="">Select</option>
                                                     </select>
                                                 </td>
@@ -222,7 +222,7 @@ const PurchaseDabitNote = () => {
                                                 <td> <input type="text" className="form-control" /></td>
                                                 <td> <input type="text" className="form-control" /></td>
                                                 <td> <input type="text" className="form-control" /></td>
-                                                <td><span style={{border:"1px solid black"}}>X</span></td>
+                                                <td><span className="vndrbtn" style={{border:"1px solid black"}}>X</span></td>
                                             </tr>
                                         </tbody>
                                         </table>
@@ -233,111 +233,140 @@ const PurchaseDabitNote = () => {
                     </div>
                   </div>
 
-                    <div className="row mt-5">
-                            <div className="col-md-12">
-                                <div className="table-responsive">
-                                    <table className="table table-bordered">
-                                        <thead>
-                                            <th>Transport Charge</th>
-                                            <th>SubTotal</th>
-                                            <th colSpan="2">CGST</th>
-                                            <th colSpan="2">SGST</th>
-                                            <th colSpan="2">IGST</th>
-                                            <th colSpan="2">UTGST</th>
-                                            <th>TCS</th>
-                                            <th className="d-flex align-items-center">
-                                                <input type="radio" id="" name="fav_language" value="FG" className="" />
-                                                <label for="" className="">TDSOnBasic</label> <br />
-                                                    <input type="radio" id="" name="fav_language" value="RM" className="" />
-                                                    <label for="" className="">TDSOnGrandTotal</label>
-                                            </th>
-                                            <th>Grand Total</th>
-                                        </thead>
-
-                                        <tbody>
-                                        <td> <input type="text" className="form-control" placeholder="0" /> </td>
-                                        <td> <input type="text" className="form-control" placeholder="" /> </td>
-                                        <td> <input type="text" className="form-control" placeholder="00.00" /> %</td>
-                                        <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
-                                        <td> <input type="text" className="form-control" placeholder="00.00" /> %</td>
-                                        <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
-                                        <td> <input type="text" className="form-control" placeholder="00.00" /> %</td>
-                                        <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
-                                        <td> <input type="text" className="form-control" placeholder="00.00" /> %</td>
-                                        <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
-                                        <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
-                                        <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
-                                        <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
+                  <div className="PurchaseDabitNote-main mt-2">
+                                      <div className="row">
+                                              <div className="col-md-12">
+                                                  <div className="table-responsive">
+                                                      <table className="table table-bordered">
+                                                      <thead>
+                                                        <tr>
+                                                          <th>Transport Charge</th>
+                                                          <th>SubTotal</th>
+                                                          <th colSpan="2">CGST</th>
+                                                          <th colSpan="2">SGST</th>
+                                                          <th colSpan="2">IGST</th>
+                                                          <th colSpan="2">UTGST</th>
+                                                          <th>TCS</th>
+                                                          <th>
+                                                            <div className="d-flex align-items-center gap-2">
+                                                              <div className="form-check m-0">
+                                                                <input 
+                                                                  type="radio" 
+                                                                  id="tds-basic" 
+                                                                  name="fav_language" 
+                                                                  value="FG" 
+                                                                  className="form-check-input" 
+                                                                />
+                                                                <label htmlFor="tds-basic" className="form-check-label">
+                                                                  TDSOnBasic
+                                                                </label>
+                                                              </div>
+                                                              <div className="form-check m-0">
+                                                                <input 
+                                                                  type="radio" 
+                                                                  id="tds-grand" 
+                                                                  name="fav_language" 
+                                                                  value="RM" 
+                                                                  className="form-check-input" 
+                                                                />
+                                                                <label htmlFor="tds-grand" className="form-check-label">
+                                                                  TDSOnGrandTotal
+                                                                </label>
+                                                              </div>
+                                                            </div>
+                                                          </th>
+                                                          <th>Grand Total</th>
+                                                        </tr>
+                                                      </thead>
+                                                          <tbody>
+                                                          <td> <input type="text" className="form-control" placeholder="0" /> </td>
+                                                          <td> <input type="text" className="form-control" placeholder="" /> </td>
+                                                          <td> <input type="text" className="form-control" placeholder="00.00" /> %</td>
+                                                          <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
+                                                          <td> <input type="text" className="form-control" placeholder="00.00" /> %</td>
+                                                          <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
+                                                          <td> <input type="text" className="form-control" placeholder="00.00" /> %</td>
+                                                          <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
+                                                          <td> <input type="text" className="form-control" placeholder="00.00" /> %</td>
+                                                          <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
+                                                          <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
+                                                          <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
+                                                          <td> <input type="text" className="form-control" placeholder="00.00" /> </td>
+                                                          
+                                                          </tbody>
+                                                      </table>
+                                                  </div>
+                                              </div>
+                                        </div>
+                  </div>
+                  <div className="PurchaseDabitNote-main mt-2">
+                                        <div className="row text-start">
+                                            <div className="col-md-2">
+                                              <label htmlFor="">Modeof Transport</label>
+                                              <input type="text" className="form-control" placeholder="By Road" />
+                                            </div>
+                                            <div className="col-md-2">
+                                              <label htmlFor="">LR GC Note NO:</label>
+                                              <input type="text" className="form-control" placeholder="" />
+                                            </div>
+                                            <div className="col-md-2">
+                                              <label htmlFor="">Eway Bill No:</label>
+                                              <input type="text" className="form-control" placeholder="" />
+                                            </div>
+                                            <div className="col-md-2">
+                                              <label htmlFor="">Eway Bill Date:</label>
+                                              <input type="date" className="form-control" placeholder="" />
+                                            </div>
+                                            <div className="col-md-2">
+                                              <label htmlFor="">Vehicle No:</label>
+                                              <input type="text" className="form-control" placeholder="" />
+                                            </div>
+                                            <div className="col-md-2">
+                                              <label htmlFor="">Transpoter:</label>
+                                              <input type="text" className="form-control" placeholder="" />
+                                            </div>
+                                        </div>
                                         
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                      </div>
+                                        <div className="row mt-2 text-start">     
+                                            <div className="col-md-2">
+                                              <label htmlFor="">PO No:</label>
+                                              <input type="text" className="form-control" placeholder="" />
+                                            </div>
+                                            <div className="col-md-2">
+                                              <label htmlFor="">PO Date:</label>
+                                              <input type="date" className="form-control" placeholder="" />
+                                            </div>
+                                            <div className="col-md-2">
+                                              <label htmlFor="">Invice No:</label>
+                                              <input type="text" className="form-control" placeholder="" />
+                                            </div>
+                                            <div className="col-md-2">
+                                              <label htmlFor="">Invice Date:</label>
+                                              <input type="date" className="form-control" placeholder="" />
+                                            </div>
+                                            <div className="col-md-2">
+                                              <label htmlFor="">Remark</label>
+                                              <textarea name=""  className="form-control" id=""></textarea>
+                                            </div>
+                                            <div className="col-md-2 mt-4">
+                                              <select name="" className="form-control" id="">
+                                                  <option value="">Bussiness To Bussiness</option>
+                                              </select>
+                                            </div>
+                                        </div>
 
-                      <div className="row text-start">
-                          <div className="col-md-2">
-                             <label htmlFor="">Modeof Transport</label>
-                             <input type="text" className="form-control" placeholder="By Road" />
-                          </div>
-                          <div className="col-md-2">
-                             <label htmlFor="">LR GC Note NO:</label>
-                             <input type="text" className="form-control" placeholder="" />
-                          </div>
-                          <div className="col-md-2">
-                             <label htmlFor="">Eway Bill No:</label>
-                             <input type="text" className="form-control" placeholder="" />
-                          </div>
-                          <div className="col-md-2">
-                             <label htmlFor="">Eway Bill Date:</label>
-                             <input type="date" className="form-control" placeholder="" />
-                          </div>
-                          <div className="col-md-2">
-                             <label htmlFor="">Vehicle No:</label>
-                             <input type="text" className="form-control" placeholder="" />
-                          </div>
-                      </div>
-                      <div className="row text-start">
-                          <div className="col-md-2">
-                             <label htmlFor="">Transpoter:</label>
-                             <input type="text" className="form-control" placeholder="" />
-                          </div>
-                          <div className="col-md-2">
-                             <label htmlFor="">PO No:</label>
-                             <input type="text" className="form-control" placeholder="" />
-                          </div>
-                          <div className="col-md-2">
-                             <label htmlFor="">PO Date:</label>
-                             <input type="date" className="form-control" placeholder="" />
-                          </div>
-                          <div className="col-md-2">
-                             <label htmlFor="">Invice No:</label>
-                             <input type="text" className="form-control" placeholder="" />
-                          </div>
-                          <div className="col-md-2">
-                             <label htmlFor="">Invice Date:</label>
-                             <input type="date" className="form-control" placeholder="" />
-                          </div>
-                      </div>
-                      <div className="row text-start">
-                          <div className="col-md-2">
-                             <label htmlFor="">Remark</label>
-                             <textarea name=""  className="form-control" id=""></textarea>
-                          </div>
-                          <div className="col-md-2 mt-4">
-                             <select name="" className="form-control" id="">
-                                <option value="">Bussiness To Bussiness</option>
-                             </select>
-                          </div>
-                          <div className="col-md-2">
-                             <input type="checkbox" className="mt-5 " placeholder="" />
-                             <label htmlFor=""> IS Service DN</label>
-                          </div>
-                          <div className="col-md-2 mt-5">
-                            <button className="btn">Save Dabit Note</button>
-                            <button className="btn">Clear</button>
-                          </div>
-                      </div>
+                                        <div className="row mt-2 text-start">
+                                            
+                                            <div className="col-md-2">
+                                              <input type="checkbox" className=" " placeholder="" />
+                                              <label htmlFor=""> IS Service DN</label>
+                                            </div>
+                                            <div className="col-md-4">
+                                              <button className="vndrbtn">Save Dabit Note</button>
+                                              <button className="vndrbtn">Clear</button>
+                                            </div>
+                                        </div>
+                  </div>
 
                 </div>
               </main>

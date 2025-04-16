@@ -31,7 +31,7 @@ const PendingPo = () => {
               />
 
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="NewPendingpoMaster-header  text-start mt-5">
+              <div className="NewPendingpoMaster-header  text-start ">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">
@@ -44,26 +44,26 @@ const PendingPo = () => {
                     
                         <label className="mt-2">Ageing Days</label>
                     
-                      <button className="btn">
+                      <button className="vndrbtn">
                         [Under 0-7]:
                       </button>
-                      <button className="btn">
+                      <button className="vndrbtn">
                         [Under 8-15]:
                       </button>
-                      <button className="btn">
+                      <button className="vndrbtn">
                         [Under 16-30]:
                       </button>
-                      <button className="btn">
+                      <button className="vndrbtn">
                         [Under 31-60]:
                       </button>
-                      <button className="btn">
+                      <button className="vndrbtn">
                         [Above 60]:
                       </button>
                     </div>
                   </div>
                 </div>
-                <div className="Pendingpurchase mt-5">
-                  <div className="container-fluid mt-4">
+                <div className="Pendingpurchase mt-3">
+                  <div className="container-fluid mt-1">
 
                       <div className="table-responsive">
                         <table className="table table-bordered">
@@ -97,7 +97,7 @@ const PendingPo = () => {
                           <tbody>
                             <tr>
                               <td>
-                                <button className="pobtn ">
+                                <button className="vndrbtn ">
                                   View All Purchase
                                 </button>
                               </td>
@@ -142,7 +142,7 @@ const PendingPo = () => {
                                 </select>
                               </td>
                               <td>
-                                <button className="pobtn">Search</button>
+                                <button className="vndrbtn">Search</button>
                               </td>
                             </tr>
                           </tbody>

@@ -527,13 +527,13 @@ useEffect(() => {
                           </h5>
                         </div>
                         <div className="col-md-8 text-end">
-                          <Link to={"/Vender-List"} className="btn">
+                          <Link to={"/Vender-List"} className="  vndrbtn ">
                             Supplier/Customer List
                           </Link>
                         </div>
                     </div>
                   </div>
-                  <div className="Suppliermain mt-5">
+                  <div className="Suppliermain">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
@@ -585,6 +585,7 @@ useEffect(() => {
                               </button>
                             </li>
                           </ul>
+                          
                           <div className="tab-content" id="pills-tabContent" style={{border:"none"}}>
                             <div
                               className="tab-pane fade show active"
@@ -686,7 +687,7 @@ useEffect(() => {
                                                 *
                                               </span>
                                             </label>
-                                            <div className="col-sm-5">
+                                            <div className="col-sm-4">
                                               <select
                                                 id="Payment_Term"
                                                 name="Payment_Term"
@@ -708,9 +709,9 @@ useEffect(() => {
                                                 ))}
                                               </select>
                                             </div>
-                                            <div className="col-sm-1 mt-2">
+                                            <div className="col-sm-2 mt-2">
                                               <button
-                                                className="btn"
+                                                className="vndrbtn"
                                                 type="button"
                                                 onClick={toggleCardPayment}
                                               >
@@ -719,7 +720,7 @@ useEffect(() => {
                                             </div>
                                             <div className="col-sm-1 mt-2">
                                               <button
-                                                className="btn"
+                                                className="vndrbtn "
                                                 type="button"
                                                 onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
@@ -1604,7 +1605,7 @@ useEffect(() => {
                                             </div>
                                             <div className="col-sm-1 mt-2">
                                               <button
-                                                className="btn ms-1"
+                                                className="  vndrbtn  ms-1"
                                                 type="button"
                                                 onClick={toggleCardSector}
                                               >
@@ -1613,7 +1614,7 @@ useEffect(() => {
                                             </div>
                                             <div className="col-sm-1 mt-2">
                                               <button
-                                                className="btn"
+                                                className="  vndrbtn "
                                                 type="button"
                                                 onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
@@ -1654,7 +1655,7 @@ useEffect(() => {
                                             </div>
                                             <div className="col-sm-1 mt">
                                               <button
-                                                className="btn ms-1"
+                                                className="  vndrbtn  ms-1"
                                                 type="button"
                                                 onClick={toggleCardGroup}
                                               >
@@ -1663,7 +1664,7 @@ useEffect(() => {
                                             </div>
                                             <div className="col-sm-1">
                                               <button
-                                                className="btn"
+                                                className="  vndrbtn "
                                                 type="button"
                                                 onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
@@ -1891,7 +1892,7 @@ useEffect(() => {
                                             </div>
                                             <div className="col-sm-1">
                                               <button
-                                                className="btn ms-1"
+                                                className="  vndrbtn  ms-1"
                                                 type="button"
                                                 onClick={() =>
                                                   toggleCardQMSCCode()
@@ -1902,7 +1903,7 @@ useEffect(() => {
                                             </div>
                                             <div className="col-sm-1">
                                               <button
-                                                className="btn"
+                                                className="  vndrbtn "
                                                 type="button"
                                                 onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
@@ -2114,13 +2115,13 @@ useEffect(() => {
 
                                       <div className="row text-end">
                                         <div className="col-md-12">
-                                          <button type="submit" className="subGernalbtn1">
+                                          <button type="submit" className="subGernal  vndrbtn 1">
                                             SAVE
                                           </button>
 
                                           <button
                                             type="button"
-                                            className="subGernalbtn1"
+                                            className="subGernal  vndrbtn 1"
                                             onClick={handleClear}
                                           >
                                             CLEAR
@@ -2136,7 +2137,7 @@ useEffect(() => {
                                   <div className="card-header d-flex justify-content-between">
                                     <span>Add New Type</span>
                                     <button
-                                      className="btn-close"
+                                      className="  vndrbtn -close"
                                       onClick={toggleCard}
                                     >
                                       ×
@@ -2153,7 +2154,7 @@ useEffect(() => {
                                       Region Master
                                     </div>
                                     <button
-                                      className="btn-close"
+                                      className="  vndrbtn -close"
                                       onClick={toggleCardregion}
                                     >
                                       ×
@@ -2169,7 +2170,7 @@ useEffect(() => {
                                       State Master
                                     </div>
                                     <button
-                                      className="btn-close"
+                                      className="  vndrbtn -close"
                                       onClick={toggleCardStateCode}
                                     >
                                       ×
@@ -2185,7 +2186,7 @@ useEffect(() => {
                                       Payment Terms Master
                                     </div>
                                     <button
-                                      className="btn-close"
+                                      className="  vndrbtn -close"
                                       onClick={toggleCardPayment}
                                     >
                                       ×
@@ -2201,7 +2202,7 @@ useEffect(() => {
                                       Country Master
                                     </div>
                                     <button
-                                      className="btn-close"
+                                      className="  vndrbtn -close"
                                       onClick={toggleCardCountry}
                                     >
                                       ×
@@ -2217,7 +2218,7 @@ useEffect(() => {
                                       Currency Master
                                     </div>
                                     <button
-                                      className="btn-close"
+                                      className="  vndrbtn -close"
                                       onClick={toggleCardCurrency}
                                     >
                                       ×
@@ -2233,7 +2234,7 @@ useEffect(() => {
                                       City Master
                                     </div>
                                     <button
-                                      className="btn-close"
+                                      className="  vndrbtn -close"
                                       onClick={toggleCardCity}
                                     >
                                       ×
@@ -2249,7 +2250,7 @@ useEffect(() => {
                                       Sector Master
                                     </div>
                                     <button
-                                      className="btn-close"
+                                      className="  vndrbtn -close"
                                       onClick={toggleCardSector}
                                     >
                                       ×
@@ -2265,7 +2266,7 @@ useEffect(() => {
                                       Customer Group Master
                                     </div>
                                     <button
-                                      className="btn-close"
+                                      className="  vndrbtn -close"
                                       onClick={toggleCardGroup}
                                     >
                                       ×
@@ -2281,7 +2282,7 @@ useEffect(() => {
                                       QMSC_Code Master
                                     </div>
                                     <button
-                                      className="btn-close"
+                                      className="  vndrbtn -close"
                                       onClick={toggleCardQMSCCode}
                                     >
                                       ×

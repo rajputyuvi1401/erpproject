@@ -39,8 +39,8 @@ const Creditnoteto = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Creditnoteto mt-5">
-                  <div className="Creditnoteto-header mb-4 text-start">
+                <div className="Creditnoteto">
+                  <div className="Creditnoteto-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">New Credit Note (Sales Rate Diff.)</h5>
@@ -51,7 +51,7 @@ const Creditnoteto = () => {
                                 <label htmlFor="">Plant:</label>
                               </div>
                               <div className="col-md-8">
-                                <select>
+                                <select className="form-control">
                                    <option>Produlink</option>
                                 </select>
                               </div>
@@ -59,7 +59,7 @@ const Creditnoteto = () => {
                       </div>
                     
                         <div className="col-md-6 text-end">
-                        <button type="button" className="btn" onClick={handleButtonClick}>
+                        <button type="button" className="vndrbtn" onClick={handleButtonClick}>
                           Credit Note List
                         </button>
                         </div>
@@ -114,7 +114,7 @@ const Creditnoteto = () => {
                        </div>
                     </div>
 
-                    <div className="Creditnoteto-main mt-5">
+                    <div className="Creditnoteto-main mt-2">
                     <div className="Creditnoteto-tabs">
                       <ul
                         className="nav nav-tabs"
@@ -155,25 +155,25 @@ const Creditnoteto = () => {
                           role="tabpanel"
                         >
                              <div className="row text-start">
-                                 <div className="col-md-2">
+                                 <div className="col-md-3">
                                         <label htmlFor="contractor">
                                             From Date :
                                         </label>
                                           <input type="date" className="form-control"/>
                                  </div>
-                                 <div className="col-md-2">
+                                 <div className="col-md-3">
                                         <label htmlFor="contractor">
                                             To :
                                         </label>
                                           <input type="date" className="form-control"/>
                                  </div>
-                                 <div className="col-md-2">
+                                 <div className="col-md-3">
                                         <label htmlFor="contractor">
                                             Customer:
                                         </label>
                                           <input type="taxt" className="form-control"/>
                                  </div>
-                                 <div className="col-md-2">
+                                 <div className="col-md-3">
                                         <label htmlFor="contractor">
                                             Shift Add Code :
                                         </label>
@@ -181,7 +181,11 @@ const Creditnoteto = () => {
                                             <option value="">select</option>
                                           </select>
                                  </div>
-                                 <div className="col-md-2">
+                                
+                            </div>
+
+                                 <div className="row mt-3 text-start">
+                                 <div className="col-md-3">
                                         <label htmlFor="contractor">
                                             Type :
                                         </label>
@@ -191,17 +195,15 @@ const Creditnoteto = () => {
                                             <option value="">Credit Note Generated Inv</option>
                                           </select>
                                  </div>
-                            </div>
 
-                                 <div className="row text-start">
-                                 <div className="col-md-2">
+                                 <div className="col-md-3">
                                         <label htmlFor="customer-checkbox" className="ms-2">ItemCode:</label>
                                           <input type="name" placeholder="Code" className="form-control"/>
                                     </div>
 
                                   <div className="col-md-3">
                                 
-                                     <button className="btn mt-4">Search</button>
+                                     <button className="vndrbtn mt-4">Search</button>
                                  </div>
                                  </div>
                         </div>
@@ -247,13 +249,13 @@ const Creditnoteto = () => {
                                         <td><input type="text" className="form-control" /></td>
                                         <td><input type="text" className="form-control" /></td>
                                         <td><input type="date" className="form-control" /></td>
-                                        <td><button className="btn">X</button></td>
+                                        <td><button className="vndrbtn">X</button></td>
                                     </tr>
                                 </tbody>
                                 </table>
                              </div>
 
-                             <div className="row mt-5">
+                             <div className="row mt-2">
                                     <div className="col-md-12">
                                         <div className="table-responsive">
                                             <table className="table table-bordered">
@@ -332,8 +334,8 @@ const Creditnoteto = () => {
                                         <label htmlFor=""> IS Service Invoice</label>
                                     </div>
                                     <div className="col-md-2 mt-4">
-                                        <button className="btn">Save Dabit Note</button>
-                                        <button className="btn">Clear</button>
+                                        <button className="vndrbtn">Save Dabit Note</button>
+                                        <button className="vndrbtn">Clear</button>
                                     </div>
                              </div>
 

@@ -45,22 +45,25 @@ const NewSalesOrder = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="NewSalesOrder mt-5">
-                  <div className="NewSalesOrder-header mb-4 text-start">
+                <div className="NewSalesOrder">
+                  <div className="NewSalesOrder-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">New Sales Order</h5>
                       </div>
                       <div className="col-md-6 text-end">
-                        <button type="button" className="btn" onClick={togglePackMast} >
+                        <button type="button" className="vndrbtn" onClick={togglePackMast} >
                           PackingMaster
                         </button>
-                        <button type="button" className="btn" onClick={handleNavigate}>
+                        <button type="button" className="vndrbtn" onClick={handleNavigate}>
                           Order List
                         </button>
                       </div>
                     </div>
                   </div>
+
+
+{/* POPUP FORM  */}
 
    <div  className={`modal ${showModal ? "show" : ""}`}
   style={{ display: showModal ? "block" : "none" }}
@@ -68,13 +71,13 @@ const NewSalesOrder = () => {
   aria-labelledby="exampleModalLabel"
   aria-hidden={!showModal}
 >
-  <div className="modal-dialog modal-lg">
+  <div className="modal-dialog modal-lg" style={{marginTop:"170px"}}>
     <div className="modal-content">
         <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
                    Add New Packing Type  : 
                 </h5>
-                <button type="button" className="btn-close" onClick={togglePackMast} > <i class="fa fa-times" aria-hidden="true"></i> </button>        
+                <button type="button" className="vndrbtn" onClick={togglePackMast} > <i class="fa fa-times" aria-hidden="true">  </i> </button>        
         </div>
 
         <div className="modal-body">
@@ -96,7 +99,7 @@ const NewSalesOrder = () => {
              </div>
             
              <div className="col-md-2 mt-2">
-              <button type="button" className="btn btn-primary w-100">
+              <button type="button" className="vndrbtn w-100">
                     Save
               </button>
              </div>
@@ -114,18 +117,19 @@ const NewSalesOrder = () => {
       </div>
     </div>
   </div>
-</div>
+    </div>
 
 
-                  <div className="NewSalesOrder-main mt-5">
+                  <div className="NewSalesOrder-main">
                      <div className="row text-start">
-                     <div className="col-md-1">
+
+                     <div className="col-md-2">
                             <label htmlFor="">Plant:</label>
                             <select name="" id="" className="form-control">
                                <option value="">Sharp</option>
                            </select>
                       </div> 
-                     <div className="col-md-2">
+                     <div className="col-md-4">
                         <div className="row">
                             <label htmlFor="">Order Type:</label>
                             <div className="col-md-6"> 
@@ -143,55 +147,58 @@ const NewSalesOrder = () => {
                            </select>
                            </div>
                         </div>
-                      </div> 
-                  
-                    
-                      <div className="col-md-3">
+                      </div>                                   
+                     <div className="col-md-4">
                         <div className="row">
                        <label htmlFor="" className="">Customer:</label>
                         <div className="col-md-6">
                            <input type="text" placeholder="Name" className="form-control" />
                         </div>
                         <div className="col-md-3">
-                           <button type="button" className="btn btn-primary w-100" >
+                           <button type="button" className="vndrbtn  w-100" >
                               Search
                            </button> 
                         </div>
-                        <div className="col-md-2">
-                           <button type="button" className="btn btn-primary w-100" >
+                        <div className="col-md-3">
+                           <button type="button" className="vndrbtn  w-100" >
                               Save
                            </button> 
                         </div>
                         </div>
-                     </div>
-                     
-                      <div className="col-md-1">
+                     </div>                          
+
+                      </div>
+
+                      <div className="row text-start mt-2">
+
+                      <div className="col-md-2">
                              <label htmlFor="" className="">Cust Po:</label>
                             <input type="text" placeholder=" " className="form-control"/>
                       </div> 
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">Cust Date :</label>
                             <input type="date" className="form-control"/>
                       </div>
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="" className="">Pay Day:</label>
                             <input type="text" placeholder="" className="form-control"/>
                       </div> 
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="" className="">Pay Note:</label>
                             <input type="text" placeholder="" className="form-control"/>
                       </div> 
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">Valid Up :</label>
                             <input type="date" className="form-control"/>
                       </div>
-                      <div className="col-md-1 mt-4">
-                      <input type="file" id="myFile" name="filename"/>
+                      <div className="col-md-2 mt-4">
+                      <input type="file" id="myFile" className="form-control" name="filename"/>
                       </div>
+
                      </div>
                   </div>
 
-                  <div className="NewSalesOrder-main mt-5">
+                  <div className="NewSalesOrder-main mt-2">
                     <div className="NewSalesOrder-second">
                       <ul className="nav nav-tabs" id="NewSalesOrderTabs" role="tablist" >
                         <li className="nav-item" role="presentation">
@@ -233,37 +240,37 @@ const NewSalesOrder = () => {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                            <td><input type="text" className="w-50" placeholder="Enter Item Code" /> <button>Search</button> <br />  
+                                            <td><input type="text" className="form-control  " placeholder="Enter Item Code" /> <button className="vndrbtn">Search</button> <br />  
                                                Rev. No :
                                             </td>
-                                                <td> <input type="text" className="w-55" placeholder="  " /> <br />
-                                                Line No : <input type="text" className="w-50 mt-2" placeholder=" " /> <br /> PR No. :  <input type="text" className="w-50 mt-2" placeholder=" " />
+                                                <td> <input type="text" className="form-control w-55" placeholder="  " /> <br />
+                                                Line No : <input type="text" className="form-control   mt-2" placeholder=" " /> <br /> PR No. :  <input type="text" className="form-control   mt-2" placeholder=" " />
                                                 </td>
                                                 <td><textarea name="item" id="itemdesc"></textarea></td>
 
-                                                <td> <input type="text" className="w-60 mt-2" placeholder=" " /> <br />  <input type="text" className="w-50 mt-2" placeholder=" " /> %</td>
-                                                <td> <input type="text" className="w-60 mt-2" placeholder=" " /> <br />  <input type="text" className="w-50 mt-2" placeholder=" " />
+                                                <td> <input type="text" className="form-control   mt-2" placeholder=" " /> <br />  <input type="text" className="form-control   mt-2" placeholder=" " /> %</td>
+                                                <td> <input type="text" className="form-control   mt-2" placeholder=" " /> <br />  <input type="text" className="form-control   mt-2" placeholder=" " />
                                                 </td>
-                                                <td> <select name="" id="">
-                                                    <option value="">NOS</option>
-                                                    </select> <br /> <input type="text" className="w-60 mt-2" placeholder="Item Wt. " /> <br />  <input type="text" className="w-50 mt-2" placeholder="Per Unit " />
+                                                <td> <select className="form-select" name="" id="">
+                                                    <option  value="">NOS</option>
+                                                    </select> <br /> <input type="text" className="form-control   mt-2" placeholder="Item Wt. " /> <br />  <input type="text" className="form-control   mt-2" placeholder="Per Unit " />
                                                 </td>
-                                                <td> <input type="text" className="w-60 mt-2" placeholder=" 0 " /> <br />  <input type="text" className="w-60 mt-2" placeholder=" 0 " /></td>
-                                                <td> <input type="date" className="w-60 mt-2" placeholder=" " /> <br />  <input type="date" className="w-60 mt-2" placeholder=" " /></td>
+                                                <td> <input type="text" className="form-control   mt-2" placeholder=" 0 " /> <br />  <input type="text" className="form-control   mt-2" placeholder=" 0 " /></td>
+                                                <td> <input type="date" className="form-control   mt-2" placeholder=" " /> <br />  <input type="date" className="form-control   mt-2" placeholder=" " /></td>
                                                 <td>
-                                                <select name="" id="">
+                                                <select className="form-select" name="" id="">
                                                     <option value="">Select</option>
                                                     </select> <br /> 
                                                     <label htmlFor="">Item Category</label>
-                                                    <select name="" id="">
+                                                    <select className="form-select" name="" id="">
                                                     <option value="">RUGEL</option>
                                                     </select>
                                                 </td>
                                                 <td> <textarea name="" id=""></textarea>
-                                                    <br /><select name="" id="">
+                                                    <br /><select className="form-select" name="" id="">
                                                     <option value="">Select</option>
                                                     </select></td>
-                                                <td><button>ADD</button></td>
+                                                <td><button className="vndrbtn">ADD</button></td>
                                             </tr>
                                         </tbody>
                                         </table>
@@ -332,395 +339,469 @@ const NewSalesOrder = () => {
                         </div>
 
                         <div className="tab-pane fade" id="taxes" role="tabpanel" >
-                        <div className="NewSalesOrder-main">
-                           
-                            <div className="row text-start">
-                            {/* First Column */}
-                            <div className="col-md-4">
-                                <div className="row mb-2">
-                                <div className="col-4 mt-2">
-                                    <label htmlFor="prod-no">So Date  :</label>
+                     
+                            <div className="NewSalesOrder-main">
+                              
+                                <div className="row text-start">
+                                {/* First Column */}
+                                <div className="col-md-4">
+                                    <div className="row mb-2">
+                                    <div className="col-4 mt-2">
+                                        <label htmlFor="prod-no">So Date  :</label>
+                                    </div>
+                                    <div className="col-6 d-flex align-items-center">
+                                        <input type="date" className="form-control" />
+                                    </div>
+                                    </div>
                                 </div>
-                                <div className="col-6 d-flex align-items-center">
-                                    <input type="date" className="form-control" />
-                                </div>
-                                </div>
-                            </div>
 
-                            {/* Second Column */}
-                            <div className="col-md-4">
-                                <div className="row mb-2">
-                                <div className="col-3 mt-2">
-                                    <label htmlFor="">CCN No:</label>
+                                {/* Second Column */}
+                                <div className="col-md-4">
+                                    <div className="row mb-2">
+                                    <div className="col-3 mt-2">
+                                        <label htmlFor="">CCN No:</label>
+                                    </div>
+                                    <div className="col-6">
+                                        <input type="text"  className="form-control"/>
+                                    </div>
+                                    </div>
                                 </div>
-                                <div className="col-6">
+
+                                {/* Third Column */}
+                                <div className="col-md-4">
+                                    <div className="row mb-2">
+                                    <div className="col-2 mt-2">
+                                        <label htmlFor="shift">Shift:</label>
+                                    </div>
+                                    <div className="col-4">
                                     <input type="text"  className="form-control"/>
+                                    </div>
+                                    <div className="col-2 mt-2">
+                                        <label htmlFor="shift">Shift:</label>
+                                    </div>
+                                    <div className="col-4">
+                                    <input type="date" className="form-control" />
+                                    </div>
+                                    </div>
                                 </div>
                                 </div>
-                            </div>
 
-                            {/* Third Column */}
-                            <div className="col-md-4">
-                                <div className="row mb-2">
-                                <div className="col-3 mt-2">
-                                    <label htmlFor="shift">Shift :</label>
-                                </div>
-                                <div className="col-3">
-                                <input type="text"  className="form-control"/>
-                                </div>
-                                <div className="col-3 mt-2">
-                                    <label htmlFor="shift">Shift :</label>
-                                </div>
-                                <div className="col-3">
+                                <div className="row text-start">
+                          {/* First Column */}
+                          <div className="col-md-4">
+                            <div className="row mb-2">
+                              <div className="col-4 mt-2">
+                                <label htmlFor="prod-no">Po Rec Date  :</label>
+                              </div>
+                              <div className="col-6 d-flex align-items-center">
                                 <input type="date" className="form-control" />
-                                </div>
-                                </div>
+                              </div>
                             </div>
+                          </div>
+
+                          {/* Second Column */}
+                          <div className="col-md-4">
+                            <div className="row mb-2">
+                              <div className="col-3 mt-2">
+                                <label htmlFor="">Delivery Date:</label>
+                              </div>
+                              <div className="col-6">
+                                <input type="date"  className="form-control"/>
+                              </div>
                             </div>
+                          </div>
 
-                            <div className="row text-start">
-                      {/* First Column */}
-                      <div className="col-md-4">
-                        <div className="row mb-2">
-                          <div className="col-4 mt-2">
-                            <label htmlFor="prod-no">Po Rec Date  :</label>
-                          </div>
-                          <div className="col-6 d-flex align-items-center">
-                             <input type="date" className="form-control" />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Second Column */}
-                      <div className="col-md-4">
-                        <div className="row mb-2">
-                          <div className="col-3 mt-2">
-                            <label htmlFor="">Delivery Date:</label>
-                          </div>
-                          <div className="col-6">
-                            <input type="date"  className="form-control"/>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Third Column */}
-                      <div className="col-md-4">
-                        <div className="row mb-2">
-                          <div className="col-3 mt-2">
-                            <label htmlFor="shift">Plan Date :</label>
-                          </div>
-                          <div className="col-6">
-                          <input type="date"  className="form-control"/>
-                          </div>
-                        </div>
-                      </div>
-                           </div>
-
-                           <div className="row text-start">
-                            {/* First Column */}
-                            <div className="col-md-4">
-                                <div className="row mb-2">
-                                <div className="col-4 mt-2">
-                                    <label htmlFor="prod-no">Incoterms  :</label>
-                                </div>
-                                <div className="col-4 d-flex align-items-center">
-                                <select name=""  className="form-control"  id="">
-                                    <option value="">Select</option>
-                                </select>
-                                </div>
-                                <div className="col-md-1">
-                                  <button type="button" className="btn">
-                                    Add
-                                  </button>
-                                </div>
-                                <div className="col-md-1">
-                                  <button type="button" className="btn">
-                                    <Cached />
-                                  </button>
-                                </div>
-                                </div>
+                          {/* Third Column */}
+                          <div className="col-md-4">
+                            <div className="row mb-2">
+                              <div className="col-3 mt-2">
+                                <label htmlFor="shift">Plan Date:</label>
+                              </div>
+                              <div className="col-6">
+                              <input type="date"  className="form-control"/>
+                              </div>
                             </div>
+                          </div>
+                              </div>
 
-                            {/* Second Column */}
-                            <div className="col-md-4">
-                                <div className="row mb-2">
-                                <div className="col-9">
+                              <div className="row text-start">
+                                {/* First Column */}
+                                <div className="col-md-4">
+                                    <div className="row mb-2">
+                                    <div className="col-3 mt-2">
+                                        <label htmlFor="prod-no">Incoterms:</label>
+                                    </div>
+                                    <div className="col-4 d-flex align-items-center">
+                                    <select name=""  className="form-control"  id="">
+                                        <option value="">Select</option>
+                                    </select>
+                                    </div>
+                                    <div className="col-md-2">
+                                      <button type="button" className="vndrbtn">
+                                        Add
+                                      </button>
+                                    </div>
+                                    <div className="col-md-1">
+                                      <button type="button" className="vndrbtn">
+                                        <Cached />
+                                      </button>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                {/* Second Column */}
+                                <div className="col-md-4">
+                                    <div className="row mb-2">
+                                    <div className="col-9">
+                                        <input type="text"  className="form-control"/>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                {/* Third Column */}
+                                <div className="col-md-4">
+                                    <div className="row mb-2">
+                                    <div className="col-3 mt-2">
+                                        <label htmlFor="shift">L.C.No:</label>
+                                    </div>
+                                    <div className="col-3">
                                     <input type="text"  className="form-control"/>
+                                    </div>
+                                    <div className="col-3 mt-2">
+                                        <label htmlFor="shift">Sales Person:</label>
+                                    </div>
+                                    <div className="col-3">
+                                    <select name=""  className="form-control"  id="">
+                                        <option value="">Select</option>
+                                    </select>
+                                    </div>
+                                    </div>
                                 </div>
                                 </div>
-                            </div>
 
-                            {/* Third Column */}
-                            <div className="col-md-4">
-                                <div className="row mb-2">
-                                <div className="col-3 mt-2">
-                                    <label htmlFor="shift">L.C.No. :</label>
+                                <div className="row text-start">
+                                {/* First Column */}
+                                <div className="col-md-4">
+                                    <div className="row mb-2">
+                                    <div className="col-4 mt-2">
+                                        <label htmlFor="prod-no">Ship To  :</label>
+                                    </div>
+                                    <div className="col-5 d-flex align-items-center">
+                                        <input type="text" className="form-control" />
+                                    </div>
+                                    <div className="col-md-2">
+                                      <button type="button" className="vndrbtn">
+                                        Search
+                                      </button>
+                                    </div>
+                                    </div>
                                 </div>
-                                <div className="col-3">
-                                <input type="text"  className="form-control"/>
-                                </div>
-                                <div className="col-3 mt-2">
-                                    <label htmlFor="shift">Sales Person :</label>
-                                </div>
-                                <div className="col-3">
-                                <select name=""  className="form-control"  id="">
-                                    <option value="">Select</option>
-                                </select>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
 
-                            <div className="row text-start">
-                            {/* First Column */}
-                            <div className="col-md-4">
-                                <div className="row mb-2">
-                                <div className="col-4 mt-2">
-                                    <label htmlFor="prod-no">Ship To  :</label>
+                                {/* Second Column */}
+                                <div className="col-md-4">
+                                    <div className="row mb-2">
+                                    <div className="col-3 mt-2">
+                                        <label htmlFor="">Buyer Name:</label>
+                                    </div>
+                                    <div className="col-6">
+                                    <select name=""  className="form-control"  id="">
+                                        <option value=""> </option>
+                                    </select>
+                                    </div>
+                                    </div>
                                 </div>
-                                <div className="col-5 d-flex align-items-center">
-                                    <input type="text" className="form-control" />
-                                </div>
-                                <div className="col-md-2">
-                                  <button type="button" className="btn">
-                                    Search
-                                  </button>
-                                </div>
-                                </div>
-                            </div>
 
-                            {/* Second Column */}
-                            <div className="col-md-4">
-                                <div className="row mb-2">
-                                <div className="col-3 mt-2">
-                                    <label htmlFor="">Buyer Name:</label>
-                                </div>
-                                <div className="col-6">
-                                <select name=""  className="form-control"  id="">
-                                    <option value=""> </option>
-                                </select>
-                                </div>
-                                </div>
-                            </div>
-
-                            {/* Third Column */}
-                            <div className="col-md-4">
-                                <div className="row mb-2">
-                                <div className="col-4 mt-2">
-                                    <label htmlFor="shift">Site Name :</label>
-                                </div>
-                                <div className="col-6">
-                                <input type="text"  className="form-control"/>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-
-                            <div className="row text-start">
-                            {/* First Column */}
-                            <div className="col-md-4">
-                                <div className="row mb-2">
-                                <div className="col-4 mt-2">
-                                    <label htmlFor="shift">Side TO Add Code :</label>
-                                </div>
-                                <div className="col-3">
-                                   <select name="" className="form-control" id="">
-                                     <option value="">.</option>
-                                   </select>
-                                </div>
-                                <div className="col-3">
-                                <select name="" className="form-control" id="">
-                                     <option value="">.</option>
-                                   </select>
-                                </div>
-                                </div>
-                            </div>
-
-                            {/* Second Column */}
-                            <div className="col-md-4">
-                                <div className="row mb-2">
-                                <div className="col-3 mt-2">
-                                    <label htmlFor="">Packing:</label>
-                                </div>
-                                <div className="col-6">
+                                {/* Third Column */}
+                                <div className="col-md-4">
+                                    <div className="row mb-2">
+                                    <div className="col-4 mt-2">
+                                        <label htmlFor="shift">Site Name :</label>
+                                    </div>
+                                    <div className="col-6">
                                     <input type="text"  className="form-control"/>
+                                    </div>
+                                    </div>
                                 </div>
                                 </div>
+
+                                <div className="row text-start">
+                                {/* First Column */}
+                                <div className="col-md-4">
+                                    <div className="row mb-2">
+                                    <div className="col-4 mt-2">
+                                        <label htmlFor="shift">Side TO Add Code :</label>
+                                    </div>
+                                    <div className="col-3">
+                                      <select name="" className="form-control" id="">
+                                        <option value="">.</option>
+                                      </select>
+                                    </div>
+                                    <div className="col-3">
+                                    <select name="" className="form-control" id="">
+                                        <option value="">.</option>
+                                      </select>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                {/* Second Column */}
+                                <div className="col-md-4">
+                                    <div className="row mb-2">
+                                    <div className="col-3 mt-2">
+                                        <label htmlFor="">Packing:</label>
+                                    </div>
+                                    <div className="col-6">
+                                        <input type="text"  className="form-control"/>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                {/* Third Column */}
+                                <div className="col-md-4">
+                                    <div className="row mb-2">
+                                    <div className="col-3 mt-2">
+                                        <label htmlFor="prod-no">Project Name  :</label>
+                                    </div>
+                                    <div className="col-5 d-flex align-items-center">
+                                        <input type="date" className="form-control" />
+                                    </div>
+                                    <div className="col-md-2">
+                                      <button type="button" className="vndrbtn">
+                                        New
+                                      </button>
+                                    </div>
+                                    <div className="col-md-1">
+                                      <button type="button" className="vndrbtn">
+                                        <Cached />
+                                      </button>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div className="row text-start">
+                          {/* First Column */}
+                          <div className="col-md-4">
+                            <div className="row mb-2">
+                              <div className="col-4 mt-2">
+                                <label htmlFor="prod-no">Delivery AL  :</label>
+                              </div>
+                              <div className="col-8 d-flex align-items-center">
+                              <textarea name="" className="form-control" id=""></textarea>
+                              </div>
                             </div>
+                          </div>
 
-                            {/* Third Column */}
-                            <div className="col-md-4">
-                                <div className="row mb-2">
-                                <div className="col-3 mt-2">
-                                    <label htmlFor="prod-no">Project Name  :</label>
-                                </div>
-                                <div className="col-5 d-flex align-items-center">
-                                    <input type="date" className="form-control" />
-                                </div>
-                                <div className="col-md-2">
-                                  <button type="button" className="btn">
-                                    New
-                                  </button>
-                                </div>
-                                <div className="col-md-1">
-                                  <button type="button" className="btn">
-                                    <Cached />
-                                  </button>
-                                </div>
-                                </div>
+                          {/* Second Column */}
+                          <div className="col-md-4">
+        
+                          </div>
+
+                          {/* Third Column */}
+                          <div className="col-md-4">
+                            <div className="row mb-2">
+                              <div className="col-3 mt-2">
+                                <label htmlFor="shift">Terms :</label>
+                              </div>
+                              <div className="col-9">
+                                    <textarea name="" className="form-control" id=""></textarea>
+                              </div>
                             </div>
-                            </div>
-
-                            <div className="row text-start">
-                      {/* First Column */}
-                      <div className="col-md-4">
-                        <div className="row mb-2">
-                          <div className="col-4 mt-2">
-                            <label htmlFor="prod-no">Delivery AL  :</label>
                           </div>
-                          <div className="col-8 d-flex align-items-center">
-                          <textarea name="" className="form-control" id=""></textarea>
-                          </div>
-                        </div>
-                      </div>
+                              </div>
 
-                      {/* Second Column */}
-                      <div className="col-md-4">
-    
-                      </div>
+                              <div className="table-responsive">
+                                    <table className="table table-bordered table-striped">
+                                        <tbody>
+                                          <tr>
+                                          <td className="" style={{ whiteSpace: "nowrap", padding: "5px" }}>
+      <input 
+        type="checkbox" 
+        style={{ width: "12px", height: "12px", marginLeft: "5px", verticalAlign: "middle" }} 
+      />
+      <span style={{ margin: "0 5px" }}>(TOC)</span>
 
-                      {/* Third Column */}
-                      <div className="col-md-4">
-                        <div className="row mb-2">
-                          <div className="col-3 mt-2">
-                            <label htmlFor="shift">Terms :</label>
-                          </div>
-                          <div className="col-9">
-                                <textarea name="" className="form-control" id=""></textarea>
-                          </div>
-                        </div>
-                      </div>
-                           </div>
+      <input 
+        type="text"  
+        placeholder="Pack & Frwd Charges"  
+        className="form-control d-inline-block"
+        style={{ width: "150px", marginLeft: "5px" }} 
+      />
 
-                           <div className="table-responsive">
-                              <table className="table table-bordered table-striped">
-                                    <tbody>
-                                      <tr>
-                                      <td className="" style={{ width: "100px", marginLeft: "5px"}}>
-                                          <input type="checkbox" id="" name="" style={{ width: "50px", marginLeft: "5px" }}/>
-                                             (TOC)
-                                          <input type="text"  placeholder="Pack & Frwd Charges"  style={{ width: "150px", marginLeft: "5px" }}/>
-                                          <input type="text" placeholder="0" style={{ width: "50px", marginLeft: "5px" }}/> %
-                                      </td>
+      <input 
+        type="text" 
+        placeholder="0" 
+        className="form-control d-inline-block"
+        style={{ width: "50px", marginLeft: "5px" }} 
+      /> 
+      <span style={{ marginLeft: "2px" }}>%</span>
+    </td>
 
-                                        <td style={{ width: "200px", marginLeft: "5px"}}>
-                                            <input type="text" placeholder="0" style={{ width: "100px", marginLeft: "5px" }} /> 
-                                        </td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> Assessable Value </td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> 00 . 00</td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}></td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}></td>
-                                      </tr>
-                                    </tbody>
+
+                                            <td style={{ width: "200px", marginLeft: "5px"}}>
+                                                <input className="form-control" type="text" placeholder="0" style={{ width: "100px", marginLeft: "5px" }} /> 
+                                            </td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> Assessable Value </td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> 00 . 00</td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}></td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}></td>
+                                          </tr>
+                                        </tbody>
+                                        
+                                        <tbody>
+                                          <tr>
+                                          <td className="" style={{ whiteSpace: "nowrap", padding: "5px" }}>
+      <input 
+        type="checkbox" 
+        style={{ width: "12px", height: "12px", marginLeft: "5px", verticalAlign: "middle" }} 
+      />
+      <span style={{ margin: "0 5px" }}>(TOC)</span>
+
+      <input 
+        type="text"  
+        placeholder="Pack & Frwd Charges"  
+        className="form-control d-inline-block"
+        style={{ width: "150px", marginLeft: "5px" }} 
+      />
+
+      <input 
+        type="text" 
+        placeholder="0" 
+        className="form-control d-inline-block"
+        style={{ width: "50px", marginLeft: "5px" }} 
+      /> 
+      <span style={{ marginLeft: "2px" }}>%</span>
+    </td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}>
+                                                <input className="form-control" type="text" placeholder="0" style={{ width: "100px", marginLeft: "5px" }} /> 
+                                            </td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> CGST : 00.00 %  </td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> 00 . 00</td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}></td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}></td>
+                                          </tr>
+                                        </tbody>
+
+                                        <tbody>
+                                          <tr>
+                                          <td className="" style={{ whiteSpace: "nowrap", padding: "5px" }}>
+      <input 
+        type="checkbox" 
+        style={{ width: "12px", height: "12px", marginLeft: "5px", verticalAlign: "middle" }} 
+      />
+      <span style={{ margin: "0 5px" }}>(TOC)</span>
+
+      <input 
+        type="text"  
+        placeholder="Pack & Frwd Charges"  
+        className="form-control d-inline-block"
+        style={{ width: "150px", marginLeft: "5px" }} 
+      />
+
+      <input 
+        type="text" 
+        placeholder="0" 
+        className="form-control d-inline-block"
+        style={{ width: "50px", marginLeft: "5px" }} 
+      /> 
+
+      <span style={{ marginLeft: "2px" }}>%</span>
+    </td>
+
+
+                                            <td style={{ width: "200px", marginLeft: "5px"}}>
+                                                <input className="form-control" type="text" placeholder="0" style={{ width: "100px", marginLeft: "5px" }} /> 
+                                            </td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> SGST : 00.00 %  </td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> 00 . 00</td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> Third-Party Inspection (TPI) </td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}>
+                                                <select className="form-select" style={{ width: "100px", marginLeft: "5px"}} name="" id="">
+                                                    <option value="">No</option>      
+                                                </select>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+
+                                        <tbody>
+                                          <tr>
+                                          <td className="" style={{ whiteSpace: "nowrap", padding: "5px" }}>
+      <input 
+        type="checkbox" 
+        style={{ width: "12px", height: "12px", marginLeft: "5px", verticalAlign: "middle" }} 
+      />
+      <span style={{ margin: "0 5px" }}>(TOC)</span>
+
+      <input 
+        type="text"  
+        placeholder="Other Charges"  
+        className="form-control d-inline-block"
+        style={{ width: "150px", marginLeft: "5px" }} 
+      />
+
+      <input 
+        type="text" 
+        placeholder="0" 
+        className="form-control d-inline-block"
+        style={{ width: "50px", marginLeft: "5px" }} 
+      /> 
+
+      <span style={{ marginLeft: "2px" }}>%</span>
+    </td>
+
+
+                                            <td style={{ width: "200px", marginLeft: "5px"}}>
+                                                <input className="form-control" type="text" placeholder="0" style={{ width: "100px", marginLeft: "5px" }} /> 
+                                            </td>
+
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> IGST : 00.00 %  </td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> 00 . 00</td>
+                                            <td style={{ width: "200px", whiteSpace: "nowrap", padding: "5px" }}>
+      <input 
+        type="checkbox" 
+        style={{ width: "12px", height: "12px", marginLeft: "5px", verticalAlign: "middle" }} 
+      />
+      <span style={{ marginLeft: "5px" }}>Ref. Cust :</span>
+    </td>
+
+                                            <td style={{ width: "200px", marginLeft: "5px"}}>
+                                              <input type="text" className="form-control" placeholder="Enter Name"  style={{ width: "150px", marginLeft: "5px" }}/>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+
+                                        <tbody>
+                                          <tr>
+                                          <td className="" style={{ width: "100px", marginLeft: "5px"}}>
+                                                CR Name :  
+                                          </td>
+
+                                            <td style={{ width: "200px", marginLeft: "5px"}}>
+                                                <select className="form-select" style={{ width: "100px", marginLeft: "5px"}} name="" id="">
+                                                    <option value="">Select</option>      
+                                                </select> 
+                                            </td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> UTGST : 00.00 % </td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> 00 . 00</td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> GR. Total : </td>
+                                            <td style={{ width: "200px", marginLeft: "5px"}}> 00.00</td>
+                                          </tr>
+                                        </tbody>
+                                      
+                                      </table>
+                              </div>
+
+                              <div className="row text-start">
                                     
-                                    <tbody>
-                                      <tr>
-                                      <td className="" style={{ width: "100px", marginLeft: "5px"}}>
-                                          <input type="checkbox" id="" name=""  style={{ width: "50px", marginLeft: "5px" }}/>
-                                             (TOC)
-                                          <input type="text"  placeholder="Pack & Frwd Charges"  style={{ width: "150px", marginLeft: "5px" }}/>
-                                          <input type="text" placeholder="0" style={{ width: "50px", marginLeft: "5px" }}/> %
-                                      </td>
+                                    <div className="col-md-3">
+                                      <button type="button" className="vndrbtn ">
+                                        Save Order
+                                      </button>
+                                    </div>
+                            </div>
 
-                                        <td style={{ width: "200px", marginLeft: "5px"}}>
-                                            <input type="text" placeholder="0" style={{ width: "100px", marginLeft: "5px" }} /> 
-                                        </td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> CGST : 00.00 %  </td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> 00 . 00</td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}></td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}></td>
-                                      </tr>
-                                    </tbody>
+                            </div>
 
-                                    <tbody>
-                                      <tr>
-                                      <td className="" style={{ width: "100px", marginLeft: "5px"}}>
-                                          <input type="checkbox" id="" name="" style={{ width: "50px", marginLeft: "5px" }}/>
-                                             (TOC)
-                                          <input type="text"  placeholder="Pack & Frwd Charges"  style={{ width: "150px", marginLeft: "5px" }}/>
-                                          <input type="text" placeholder="0" style={{ width: "50px", marginLeft: "5px" }}/> %
-                                      </td>
-
-                                        <td style={{ width: "200px", marginLeft: "5px"}}>
-                                            <input type="text" placeholder="0" style={{ width: "100px", marginLeft: "5px" }} /> 
-                                        </td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> SGST : 00.00 %  </td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> 00 . 00</td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> Third-Party Inspection (TPI) </td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}>
-                                            <select style={{ width: "100px", marginLeft: "5px"}} name="" id="">
-                                                <option value="">No</option>      
-                                            </select>
-                                         </td>
-                                      </tr>
-                                    </tbody>
-
-                                    <tbody>
-                                      <tr>
-                                      <td className="" style={{ width: "100px", marginLeft: "5px"}}>
-                                          <input type="checkbox" id="" name="" style={{ width: "50px", marginLeft: "5px" }}/>
-                                             (TOC)
-                                          <input type="text"  placeholder="Other Charges"  style={{ width: "150px", marginLeft: "5px" }}/>
-                                          <input type="text" placeholder="0" style={{ width: "50px", marginLeft: "5px" }}/> %
-                                      </td>
-
-                                        <td style={{ width: "200px", marginLeft: "5px"}}>
-                                            <input type="text" placeholder="0" style={{ width: "100px", marginLeft: "5px" }} /> 
-                                        </td>
-
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> IGST : 00.00 %  </td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> 00 . 00</td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}>
-                                            <input type="checkbox" id="" name="" style={{ width: "50px", marginLeft: "5px" }}/>
-                                            Ref. Cust :
-                                        </td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}>
-                                          <input type="text"  placeholder="Enter Name"  style={{ width: "150px", marginLeft: "5px" }}/>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-
-                                    <tbody>
-                                      <tr>
-                                      <td className="" style={{ width: "100px", marginLeft: "5px"}}>
-                                             CR Name :  
-                                      </td>
-
-                                        <td style={{ width: "200px", marginLeft: "5px"}}>
-                                            <select style={{ width: "100px", marginLeft: "5px"}} name="" id="">
-                                                <option value="">Select</option>      
-                                            </select> 
-                                        </td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> UTGST : 00.00 % </td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> 00 . 00</td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> GR. Total : </td>
-                                        <td style={{ width: "200px", marginLeft: "5px"}}> 00.00</td>
-                                      </tr>
-                                    </tbody>
-                                   
-                                  </table>
-                          </div>
-
-                          <div className="row text-start">
-                                
-                                <div className="col-md-3">
-                                  <button type="button" className="btn ">
-                                    Save Order
-                                  </button>
-                                </div>
-                         </div>
-
-                        </div>
                         </div>
 
                     </div>

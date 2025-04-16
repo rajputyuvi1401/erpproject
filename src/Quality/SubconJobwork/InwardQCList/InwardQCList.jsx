@@ -35,17 +35,17 @@ const InwardQCList = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="InwardQCList mt-5">
-                <div className="InwardQCList-header mb-4 text-start">
+              <div className="InwardQCList">
+                <div className="InwardQCList-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title">Inward 57F4 QC List </h5>
                     </div>
                     <div className="col-md-8 text-end">
-                      <button type="button" className="btn" to="#/">
+                      <button type="button" className="vndrbtn" to="#/">
                         Jobwork QC Query
                       </button>
-                      <button type="button" className="btn" to="/PaddingQCInward">
+                      <button type="button" className="vndrbtn" to="/PaddingQCInward">
                         Padding QC List
                       </button>
                      </div>
@@ -53,28 +53,28 @@ const InwardQCList = () => {
                 </div>
 
                
-                <div className="InwardQCList-Main mt-5">
+                <div className="InwardQCList-Main">
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
 
-                       <div className="col-sm-6 col-md-2 col-lg-1">
+                       <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>To Date:</label>
                           <input type="date" className="form-control" />
                         </div>
 
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Plant :</label>
                           <select className="form-select" style={{marginTop:"-1px"}}>
                              <option>SHARP</option>
                           </select>
                         </div>                        
 
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>Type :</label>
                         <select className="form-select" style={{marginTop:"-1px"}}>
                           <option>All</option>
@@ -86,7 +86,7 @@ const InwardQCList = () => {
                         </select>
                       </div>
 
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>Status :</label>
                         <select className="form-select" style={{marginTop:"-1px"}}>
                           <option>All</option>
@@ -97,7 +97,7 @@ const InwardQCList = () => {
                         </select>
                       </div>
 
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>Item Group :</label>
                         <select className="form-select" style={{marginTop:"-1px"}}>
                           <option>Select</option>
@@ -118,31 +118,31 @@ const InwardQCList = () => {
                         </select>
                       </div>
                        
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label  type="checkbox"> Vendor Name:</label>
                         <input type="text"  placeholder="Enter Name" className="form-control"/>
                       </div>
 
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label type="checkbox">Item :</label>
                         <input type="text" placeholder="Enter Code" className="form-control" />
                       </div>
 
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label type="checkbox">Lot No :</label>
                         <input type="text" placeholder="" className="form-control" />
                       </div>
 
 
-                      <div className="col-6 col-md-1 mt-5">
-                          <button type="button" className="btn btn-primary">
+                      <div className="col-6 col-md-1">
+                          <button type="button" className="vndrbtn" style={{marginTop:"22px"}}>
                             Search
                           </button>
                         </div>
 
                       </div>
-<br/>
-                <div className="row g-3 text-start">
+
+                       <div className="row g-3 mt-3 text-start">
                             
                    <div className="col-sm-6 col-md-2 col-lg-2">                     
                       <select className="form-select" style={{marginTop:"-1px"}}>
@@ -157,15 +157,16 @@ const InwardQCList = () => {
                       </div>
                       
                     <div className="col-md-1">
-                    <button type="button" className="btn btn-primary w-100" style={{marginTop:"1px"}}>
+                    <button type="button" className="vndrbtn  w-100" style={{marginTop:"-1px"}}>
                         Search
                     </button> 
                     </div>
                       </div>
+
                     </div>
                   </div>
 
-             <div className="table-responsive mt-5">
+                  <div className="InwardQCListtable table-responsive mt-2">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -401,6 +402,7 @@ const InwardQCList = () => {
 
                     </table>
                   </div>
+
               </div>
             </main>
           </div>

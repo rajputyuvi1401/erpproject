@@ -39,8 +39,8 @@ const TestReportList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="TestReportList mt-5">
-                  <div className="TestReportList-header mb-4 text-start">
+                <div className="TestReportList">
+                  <div className="TestReportList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Test Report List : </h5>
@@ -48,7 +48,7 @@ const TestReportList = () => {
                       
                      
                       <div className="col-md-8  text-end">
-                        <button type="button" className="btn" onClick={handleTestReportNew} >
+                        <button type="button" className="vndrbtn" onClick={handleTestReportNew} >
                          Add New
                         </button>
                       </div>
@@ -56,7 +56,7 @@ const TestReportList = () => {
                     </div>
                   </div>
 
-                  <div className="TestReportList-main mt-5">
+                  <div className="TestReportList-main">
                      
                   <div className="row text-start">
                      
@@ -70,7 +70,7 @@ const TestReportList = () => {
                       </div> 
                     
                       <div className="col-md-1 mt-4">
-                           <button type="button" className="btn btn-primary w-100" >
+                           <button type="button" className="vndrbtn w-100" >
                               Search
                            </button> 
                         </div>

@@ -36,40 +36,51 @@ const SalesOrderAmendList    = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="SalesOrderAmendList mt-5">
-                <div className="SalesOrderAmendList-header mb-4 text-start">
+              <div className="SalesOrderAmendList">
+                <div className="SalesOrderAmendList-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title">Sales Order Amendment List </h5>
                     </div>
 
-                    <div className="col-md-8 d-flex text-end">
-                        <button type="button" className="btn" to="#/">
-                            SO Amendment Register
-                        </button>
-                        <div className="dropdown">
-                            <button className="btn dropdown-toggle" type="button" id="salesOrderDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Sales Order Amendment Menu
-                            </button>
-                            <ul className="dropdown-menu" aria-labelledby="salesOrderDropdown">
-                            <li>
-                                <button className="dropdown-item" type="button" to="/">
-                                    SO Amendment
-                                </button>
-                            </li>
-                            <li>
-                                <button className="dropdown-item" type="button" to="/">
-                                 Item Addition  (Regular)
-                                </button>
-                            </li>
-                            <li>
-                                <button className="dropdown-item" type="button" to="/">
-                                 Item Addition  (Export)
-                                </button>
-                            </li>
-                            </ul>
-                        </div>
+                    <div className="col-md-8 d-flex justify-content-end align-items-start gap-2">
+  {/* SO Amendment Button */}
+  <button type="button" className="vndrbtn">
+    SO Amendment Register
+  </button>
+
+  {/* Dropdown Menu */}
+  <div className="dropdown">
+    <button
+      className="vndrbtn dropdown-toggle"
+      type="button"
+      id="salesOrderDropdown"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Sales Order Amendment Menu
+    </button>
+
+    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="salesOrderDropdown">
+      <li>
+        <a className="dropdown-item" href="/so-amendment">
+          SO Amendment
+        </a>
+      </li>
+      <li>
+        <a className="dropdown-item" href="/item-addition-regular">
+          Item Addition (Regular)
+        </a>
+      </li>
+      <li>
+        <a className="dropdown-item" href="/item-addition-export">
+          Item Addition (Export)
+        </a>
+      </li>
+    </ul>
+  </div>
                     </div>
+
 
 
                   </div>
@@ -77,7 +88,7 @@ const SalesOrderAmendList    = () => {
                
                 <div className="SalesOrderAmendList-Main">
                     <div className="container-fluid">
-                  <div className="row g-3 text-start mt-3">  
+                  <div className="row g-3 text-start">  
 
                        <div className="col-sm-6 col-md-2 col-lg-1">
                           <label>From:</label>
@@ -105,14 +116,14 @@ const SalesOrderAmendList    = () => {
                         <input type="text" placeholder="Name" className="form-control" />
                       </div>
 
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-2 col-lg-2">
                         <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label"> Amd.No: </label>
                         </div>
                         <input type="text" placeholder="" className="form-control" />
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-2 col-lg-2">
                         <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label"> PO.No: </label>
@@ -121,12 +132,12 @@ const SalesOrderAmendList    = () => {
                       </div>
 
 
-                      <div className="col-6 col-md-1">
+                      <div className="col-6 col-md-2">
                       <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" />
                             <label htmlFor="machineUtilizeCheckbox" className="form-check-label"> LastOption: </label>
                         </div>
-                          <button type="button" className="btn btn-primary">
+                          <button type="button" className=" vndrbtn w-100">
                             Search
                           </button>
                         </div>
@@ -136,7 +147,7 @@ const SalesOrderAmendList    = () => {
                     </div>
                   </div>
 
-             <div className="table-responsive">
+             <div className="SalesOrderAmendListtable table-responsive">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>

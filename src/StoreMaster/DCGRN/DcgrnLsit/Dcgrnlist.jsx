@@ -34,7 +34,7 @@ const Dcgrnlist = () => {
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
               <div className="RMStock-header">
                 <div className="row flex-nowrap align-items-center">
-                  <div className="col-md-4">
+                  <div className="col-md-3">
                     <h5 className="header-title text-start">
                       DC GRN List
                     </h5>
@@ -42,10 +42,10 @@ const Dcgrnlist = () => {
 
                   <div className="col-md-9 text-end">
                     <div className="row justify-content-end">
-                      <div className="col-md-8 d-flex align-items-end">
+                      <div className="col-md-4 d-flex align-items-end">
                       
-                      <Link className="pobtn">Export To Excel</Link>
-                        <Link className="pobtn">DCGRN-Query</Link>
+                      <Link className="vndrbtn">Export To Excel</Link>
+                        <Link className="vndrbtn">DCGRN-Query</Link>
                       
                       
 
@@ -55,14 +55,14 @@ const Dcgrnlist = () => {
                   </div>
                 </div>
               </div>
-              <div className="RMStock-main">
+              <div className="RMStock-main mt-3">
                 <div className="container-fluid">
                   <div className="row mt-4">
                     <div className="col-md-12">
                       <form className="row g-3 text-start">
 
                          {/* Plant */}
-                         <div className="col-md-1 col-sm-6">
+                         <div className="col-md-2 col-sm-6">
                           <label className="form-label">Plant</label>
                           <select className="form-select">
                             <option value="Produlink">Produlink</option>
@@ -72,13 +72,13 @@ const Dcgrnlist = () => {
 
 
                         {/* From Date */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">From Date</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* To Date */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">To Date</label>
                           <input type="date" className="form-control" />
                         </div>
@@ -109,8 +109,8 @@ const Dcgrnlist = () => {
                        
 
                         {/* Search Button */}
-                        <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                          <button type="submit" className="pobtn w-100">
+                        <div className="col-md-2 col-sm-6 mt-1 align-self-end">
+                          <button type="submit" className="vndrbtn w-100">
                             Search
                           </button>
                          

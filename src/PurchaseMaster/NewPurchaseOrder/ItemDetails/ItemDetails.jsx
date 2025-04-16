@@ -208,7 +208,7 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
     <div className="container-fluid">
       <ToastContainer />
       <div className="row">
-        <div className="itemdetailsMain">
+        <div className="itemdetailsMain" style={{marginTop:"-30px"}}>
           <div className="item-details">
             <div className="table-container">
               <table className="table table-responsive">
@@ -375,7 +375,7 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
                       />
                     </td>
                     <td>
-                      <button type="button" className="btn" onClick={addItem}>
+                      <button type="button" className="vndrbtn" onClick={addItem}>
                         Add Item
                       </button>
                     </td>
@@ -422,7 +422,7 @@ const ItemDetails = ({ updateFormData, supplierCode }) => {
                       <td>{/* Schedule Line */}</td>
                       <td>
                         <button
-                          className="btn"
+                          className="vndrbtn"
                           onClick={() => handleDelete(item.id)}
                         >
                           <FaTrash />

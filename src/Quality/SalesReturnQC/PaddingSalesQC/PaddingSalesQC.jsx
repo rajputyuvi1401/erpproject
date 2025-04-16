@@ -33,14 +33,14 @@ const PaddingSalesQC = () => {
             />
     
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PaddingSalesQC mt-5">
-                  <div className="PaddingSalesQC-header mb-4 text-start">
+                <div className="PaddingSalesQC">
+                  <div className="PaddingSalesQC-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title">Pendding Sales Return QC List </h5>
                     </div>
                     <div className="col-md-8 text-end">
-                      <button type="button" className="btn" to="#/">
+                      <button type="button" className="vndrbtn" to="#/">
                         Export Excel
                       </button>
                      </div>
@@ -48,7 +48,7 @@ const PaddingSalesQC = () => {
                   </div>
 
                   {/* Filter Section */}
-                  <div className="PaddingSalesQC-filter mb-4 mt-5">
+                  <div className="PaddingSalesQC-filter">
                     <div className="row text-start">
                       
                     <div className="col-sm-6 col-md-2 col-lg-1">
@@ -58,12 +58,12 @@ const PaddingSalesQC = () => {
                           </select>
                         </div>  
 
-                       <div className="col-sm-6 col-md-2 col-lg-1" >
+                       <div className="col-sm-6 col-md-2 col-lg-2" >
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>To Date:</label>
                           <input type="date" className="form-control" />
                         </div>
@@ -95,7 +95,7 @@ const PaddingSalesQC = () => {
 
                       <div className="col-6 col-md-1 mt-4">
                     
-                          <button type="button" className="btn btn-primary">
+                          <button type="button" className="vndrbtn">
                             Search
                           </button>
                         </div>

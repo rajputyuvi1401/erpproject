@@ -32,8 +32,8 @@ const SalesQCList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="SalesQCList mt-5">
-                  <div className="SalesQCList-header mb-4 text-start">
+                <div className="SalesQCList">
+                  <div className="SalesQCList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title"> Sales Return QC List </h5>
@@ -45,10 +45,10 @@ const SalesQCList = () => {
                         </div>
                       </div>
                       <div className="col-md-4 text-end">
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           Export Excel
                         </button>
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           GST Sales Return QC-Query
                         </button>
                       </div>
@@ -56,21 +56,21 @@ const SalesQCList = () => {
                   </div>
 
                   {/* Filter Section */}
-                  <div className="SalesQCList-filter mb-4 mt-5">
+                  <div className="SalesQCList-filter">
                     <div className="row text-start">
                       
                       <div className="col-md-1">
                         <label>From Date</label>
-                        <input type="date" className="form-control" />
+                        <input type="date" className="form-control mt-2" />
                       </div>
                       <div className="col-md-1">
                         <label>To Date</label>
-                        <input type="date" className="form-control" />
+                        <input type="date" className="form-control mt-2" />
                       </div>
 
                       <div className="col-md-2">
                         <label>Plant</label>
-                        <select className="form-select" style={{marginTop:"1px"}}>
+                        <select className="form-select mt-2" style={{marginTop:"1px"}}>
                           <option value="SHARP">SHARP</option>
                           {/* Add more options as needed */}
                         </select>
@@ -94,7 +94,7 @@ const SalesQCList = () => {
             
                       <div className="col-md-2">
                         <label>Reject Reason</label>
-                        <select className="form-select" style={{marginTop:"1px"}}>
+                        <select className="form-select mt-2" style={{marginTop:"1px"}}>
                           <option value="ALL">ALL</option>
                           <option>ANGLE NOT OK</option>
                           <option>Assembled parts</option>
@@ -105,7 +105,7 @@ const SalesQCList = () => {
                       </div>
 
                       <div className="col-md-1">               
-                         <button className="btn btn-primary" style={{marginTop:"29px"}}>Search</button>          
+                         <button className="vndrbtn" style={{marginTop:"29px"}}>Search</button>          
                       </div>
 
                     </div>
@@ -113,7 +113,7 @@ const SalesQCList = () => {
                   </div>
 
                   {/* Table Section */}
-                  <div className="SalesQCList-Main mt-5">
+                  <div className="SalesQCList-Main mt-2">
                   <div className="table-responsive">
                     <table className="table table-bordered">
                       <thead>
@@ -162,7 +162,7 @@ const SalesQCList = () => {
                             <td></td>
                         
                           <td>
-                            <button className="btn btn-sm btn-light">
+                            <button className="vndrbtn">
                               <i className="fas fa-eye"></i>
                             </button>
                           </td>

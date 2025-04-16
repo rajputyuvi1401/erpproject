@@ -36,8 +36,8 @@ const NewListPDI = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PDIList mt-5">
-                  <div className="PDIList-header mb-4 text-start">
+                <div className="PDIList">
+                  <div className="PDIList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4 mt-3">
                         <h5 className="header-title">  PDI - Pre Dispatch Inspection </h5>
@@ -45,8 +45,8 @@ const NewListPDI = () => {
                       <div className="col-md-1">
                           <label>Series :</label>
                         </div>
-                        <div className="col-md-1">
-                            <select>
+                        <div className=" col-md-1">
+                            <select className="form-select">
                                 <option value="">SELECT</option>
                                 <option value="">With Invoice</option>
                                 <option value="">Without Invoice</option>
@@ -56,8 +56,8 @@ const NewListPDI = () => {
                             </select>
                         </div>
 
-                      <div className="col-md-4 text-end">
-                        <button type="button" className="btn">
+                      <div className="col-md-6 text-end">
+                        <button type="button" className="vndrbtn">
                           Export To Excel
                         </button>
                       </div>
@@ -65,7 +65,7 @@ const NewListPDI = () => {
                   </div>
 
                   {/* Filter Section */}
-                  <div className="PDIList-filter mb-4">
+                  <div className="PDIList-filter">
 
                     <div className="row text-start">
  
@@ -77,12 +77,13 @@ const NewListPDI = () => {
                         <input type="text" placeholder="Enter Name ... " className="form-control"/>
                       </div>
 
-                      <div className="col-md-1 mt-2">               
-                         <button className="btn btn-primary">Search</button>          
+                      <div className="col-md-1 mt-1">               
+                         <button className="vndrbtn">Search</button>          
                       </div>
 
                     </div>
-                    <div className="row text-start">
+
+                    <div className="row text-start mt-2">
  
                         <div className="col-md-2 mt-2">
                         <label>Select Item :</label>
@@ -92,14 +93,15 @@ const NewListPDI = () => {
                         <input type="text" placeholder="Enter Code No ... " className="form-control"/>
                         </div>
 
-                        <div className="col-md-1 mt-2">               
-                            <button className="btn btn-primary">Search</button>          
+                        <div className="col-md-1 mt-1">               
+                            <button className="vndrbtn">Search</button>          
                         </div>
 
                     </div>
+
                   </div>
 
-                  <div className="AssemblyEntry-bottom mt-5">
+                  <div className="AssemblyEntry-bottom mt-3">
                     <div className="AssemblyEntry-tabs">
                       <ul className="nav nav-tabs" id="productionEntryTabs1" role="tablist" >
                        
@@ -308,7 +310,7 @@ const NewListPDI = () => {
                             <td></td>
                             <td></td>
                           <td>
-                            <button className="btn btn-sm btn-light">
+                            <button className="vndrbtn">
                               <i className="fas fa-eye"></i>
                             </button>
                           </td>
@@ -345,12 +347,12 @@ const NewListPDI = () => {
                                   <input type="text" className="form-control" />
                                 </div>
                                 <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                  <button type="button" className="vndrbtn">
                                     Add
                                   </button>
                                 </div>
                                 <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                  <button type="button" className="vndrbtn">
                                     <Cached />
                                   </button>
                                 </div>
@@ -400,12 +402,12 @@ const NewListPDI = () => {
                                   <input type="text" className="form-control" />
                                 </div>
                                 <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                  <button type="button" className="vndrbtn">
                                     Add
                                   </button>
                                 </div>
                                 <div className="col-md-1">
-                                  <button type="button" className="btn">
+                                  <button type="button" className="vndrbtn">
                                     <Cached />
                                   </button>
                                 </div>
@@ -526,10 +528,10 @@ const NewListPDI = () => {
                       </div>
                        <div className="col-md-4 d-flex">
                         <div className="text-end s-4 d-flex">
-                          <button type="button" className="btn">
+                          <button type="button" className="vndrbtn">
                             Cancel
                           </button>
-                          <button type="button" className="btn">
+                          <button type="button" className="vndrbtn">
                             Save
                           </button>
                         </div>

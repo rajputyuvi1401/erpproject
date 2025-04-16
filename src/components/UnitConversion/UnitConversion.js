@@ -110,7 +110,7 @@ const UnitConversion = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
               
-                  <div className="UniConversion1-header mb-4 text-start mt-5">
+                  <div className="UniConversion1-header mb-4 text-start mt-1">
                       <div className="row align-items-center">
                         <div className="col-md-4">
                           <h5 className="header-title">
@@ -118,8 +118,8 @@ const UnitConversion = () => {
                           </h5>
                         </div>
                       </div>
-                
                   </div>
+
                   <div className="UnitMain">
                     <div className="container-fluid">
                       <div className="row text-start">
@@ -165,7 +165,7 @@ const UnitConversion = () => {
                         </div>
                         <div className="col-md-1 mb-3" style={{marginTop:"31px"}}>
                           <button
-                            className="btn"
+                            className=" vndrbtn"
                             onClick={handleSubmit}
                           >
                             Search
@@ -249,35 +249,35 @@ const UnitConversion = () => {
                         </div>
                         <div className="col-md-1 mb-3" style={{marginTop:"31px"}}>
                           <button
-                            className="btn"
+                            className=" vndrbtn"
                             onClick={handleSubmit}
                           >
                             Save
                           </button>
                         </div>
                         <div className="col-md-1 mb-3" style={{marginTop:"31px"}}>
-                          <button className="btn" onClick={handleClear}>
+                          <button className=" vndrbtn" onClick={handleClear}>
                             Clear
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="Unittable mt-5">
+
+                  <div className="Unittable mt-2">
                     <div className="container-fluid">
                     <div className="row">
-  <div className="table-responsive">
-    <table className="table table-striped mt-4">
-
-                          <thead>
-                            <tr>
-                              <th>SubGroup</th>
-                              <th>Item</th>
-                              <th>Unit</th>
-                              <th>StockQty</th>
-                              <th>StockUnit</th>
-                            </tr>
-                          </thead>
+                        <div className="table-responsive">
+                           <table className="table table-striped mt-3">
+                              <thead>
+                                <tr>
+                                  <th>SubGroup</th>
+                                  <th>Item</th>
+                                  <th>Unit</th>
+                                  <th>StockQty</th>
+                                  <th>StockUnit</th>
+                                </tr>
+                              </thead>
                           <tbody>
                             {data.length === 0 ? (
                               <tr>

@@ -48,7 +48,7 @@ const RMToTransaction = () => {
                   </div>
                 </div>
               </div>
-              <div className="RMToTransaction-main">
+              <div className="RMToTransaction-main mt-2">
                 <div className="container-fluid text-start">
                   <div className="row">
                     <div className="col-md-4">
@@ -56,7 +56,7 @@ const RMToTransaction = () => {
                         <div className="col-md-4">
                           <label>No:</label>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-8">
                           <input />
                         </div>
                         
@@ -65,7 +65,7 @@ const RMToTransaction = () => {
                         <div className="col-md-4">
                           <label>Date:</label>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-8">
                           <input type="date" />
                         </div>
                       </div>
@@ -88,7 +88,7 @@ const RMToTransaction = () => {
                     </div>
                   </div>
 
-                  <div className="RMToTransactionSelect">
+                  <div className="RMToTransactionSelect mt-4">
                     <div className="row flex-nowrap align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title text-start">
@@ -133,7 +133,7 @@ const RMToTransaction = () => {
                       </div>
                     </div>
 
-                    <div className="RMToTransaction1Select">
+                    <div className="RMToTransactionSelect mt-4">
                     <div className="row flex-nowrap align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title text-start">
@@ -194,7 +194,7 @@ const RMToTransaction = () => {
 
                   <div className="row text-end mt-4">
                     <div className="col-md-12">
-                      <button type="submit" className="pobtn">
+                      <button type="submit" className="vndrbtn">
                         Save
                       </button>
                     </div>

@@ -116,15 +116,15 @@ const Dcgrn = () => {
                     <div className="col-md-2">
                       <h5 className="header-title text-start">New DC GRN</h5>
                     </div>
-                    <div className="col-md-7">
+                    <div className="col-md-8">
                       <div className="row mb-3">
                         <div className="col-md-2">
-                          <select id="sharpSelect" className="form-select">
+                          <select id="sharpSelect" className="form-select mt-3">
                             <option selected>Produlink</option>
                           </select>
                         </div>
                         <div className="col-md-2">
-                          <input type="text" className="form-control" />
+                          <input type="text" className="form-control mt-3" />
                         </div>
                       </div>
                     </div>
@@ -132,7 +132,7 @@ const Dcgrn = () => {
                     <div className="col-md-2 text-end">
                       <div className="row justify-content-end">
                         <div className="col-md-8 d-flex align-items-end">
-                          <Link className="pobtn" to="/Dcgrnlist">
+                          <Link className="vndrbtn" to="/Dcgrnlist">
                             DC-GM-LIST
                           </Link>
                         </div>
@@ -140,11 +140,11 @@ const Dcgrn = () => {
                     </div>
                   </div>
                 </div>
-                <div className="Dcgrn-main">
+                <div className="Dcgrn-main mt-3">
                   <div className="container-fluid text-start">
                     {/* First Row */}
                     <div className="row align-items-center mb-3">
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                         <label>Type:</label>
                       </div>
                       <div className="col-md-3">
@@ -153,7 +153,7 @@ const Dcgrn = () => {
                             type="checkbox"
                             id="dc-grn"
                             name="dc-grn"
-                            className="form-check-input"
+                            className="form-check-input mt-1"
                           />
                           <label
                             htmlFor="dc-grn"
@@ -186,7 +186,7 @@ const Dcgrn = () => {
                         </select>
                       </div>
                       <div className="col-md-1">
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           <Cached />
                         </button>
                       </div>
@@ -214,7 +214,7 @@ const Dcgrn = () => {
                         />
                       </div>
                       <div className="col-md-1">
-                        <button type="button" className="pobtn">
+                        <button type="button" className="vndrbtn">
                           Search
                         </button>
                       </div>
@@ -228,7 +228,7 @@ const Dcgrn = () => {
                         </select>
                       </div>
                       <div className="col-md-1">
-                        <button type="button" className="pobtn">
+                        <button type="button" className="vndrbtn">
                           Cancel
                         </button>
                       </div>
@@ -247,19 +247,19 @@ const Dcgrn = () => {
                         />
                       </div>
                       <div className="col-md-1">
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           Add
                         </button>
                       </div>
                       <div className="col-md-3">
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           Pending Release DC Item
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="Dcgrnstatus">
+                  <div className="Dcgrnstatus mt-3">
                     <div className="container-fluid  text-start">
                       <div className="table-responsive">
                         <table className="table table-bordered">
@@ -390,7 +390,7 @@ const Dcgrn = () => {
 
                   <div
                     className="StoreInwardJobworkFooter"
-                    style={{ marginTop: "50px" }}
+                    style={{ marginTop: "30px" }}
                   >
                     <ul
                       className="nav nav-pills mb-3"
@@ -708,7 +708,7 @@ const Dcgrn = () => {
                                             >
                                               <button
                                                 type="submit"
-                                                className="btn"
+                                                className="vndrbtn"
                                               >
                                                 Save GRN
                                               </button>
@@ -719,13 +719,16 @@ const Dcgrn = () => {
                                     </div>
                                   </div>
                                 </div>
+
                               </div>
                             </form>
                           </div>
                         </div>
                       </div>
                     </div>
+                    
                   </div>
+
                 </div>
               </main>
             </div>

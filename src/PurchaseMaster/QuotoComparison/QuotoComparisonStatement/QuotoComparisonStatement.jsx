@@ -134,23 +134,23 @@ const QuotoComparisonStatement = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="QuoteStatement-header  text-start mt-5">
+              <div className="QuoteStatement-header  text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">
                         Quoto Comparision Statement
                       </h5>
                     </div>
-                    <div className="col-md-8 text-end">
-                     
-                          <button className="btn">
+                    
+                    <div className="col-md-8 text-end">                 
+                          <button className="vndrbtn">
                             Quote Comp Statement List
                           </button>
-                        
                     </div>
+
                   </div>
                 </div>
-                <div className="QuoteStatement-main mt-5">
+                <div className="QuoteStatement-main mt-1">
                   <ul
                     className="nav nav-pills mb-3"
                     id="pills-tab"
@@ -194,7 +194,7 @@ const QuotoComparisonStatement = () => {
                       tabindex="0"
                     >
                       <div className="QuoteStatementstatus">
-                        <div className="container-fluid mt-4">
+                        <div className="container-fluid">
                           <form>
                             <div className="row text-start">
                               <div className="col-md-4">
@@ -511,7 +511,7 @@ const QuotoComparisonStatement = () => {
                                     <div className="col-md-12 text-end">
                                       <button
                                         type="submit"
-                                        className="btn"
+                                        className="vndrbtn"
                                         onClick={handleSubmit}
                                       >
                                         Add
@@ -525,7 +525,7 @@ const QuotoComparisonStatement = () => {
                           </form>
                         </div>
                         <div className="Purchaseordertable">
-                          <div className="container-fluid mt-4">
+                          <div className="container-fluid mt-2">
                             <div className="table-responsive">
                             <table className="table table-bordered table-striped">
               <thead>
@@ -573,7 +573,7 @@ const QuotoComparisonStatement = () => {
                     <td>{quote.DeliveryTime}</td>
                     <td>
                       <button
-                        className="btn btn-sm"
+                        className="vndrbtn"
                         onClick={() => handleEdit(quote)}
                       >
                         <FaEdit/>
@@ -581,7 +581,7 @@ const QuotoComparisonStatement = () => {
                       </td>
                       <td>
                       <button
-                        className="btn  btn-sm"
+                        className="vndrbtn"
                         onClick={() => handleDelete(quote.id)}
                       >
                         <FaTrash/>
@@ -623,7 +623,7 @@ const QuotoComparisonStatement = () => {
                               />
                             </div>
                             <div className="col-md-4 d-flex justify-content-start align-items-start">
-                              <button className="btn">Search</button>
+                              <button className="vndrbtn">Search</button>
                             </div>
                           </div>
                         </div>

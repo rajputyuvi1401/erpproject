@@ -52,18 +52,20 @@ const Newindent = () => {
                   <div className="container-fluid">
                     <div className="col-md-12">
                       <div className="newindent1">
+
                         <div className="newindent-header mb-4 text-start">
                           <div className="row align-items-center">
                             <div className="col-md-4">
                               <h5 className="header-title">New Indent</h5>
                             </div>
                             <div className="col-md-8 text-end">
-                              <button className="btn">Indent List</button>
+                              <button className="vndrbtn">Indent List</button>
                             </div>
                           </div>
                         </div>
+                        
                       </div>
-                      <div className="newindent2">
+                      <div className="newindentmai">
                         <div className="container">
                           <div className="row text-start">
                             <div className="col-md-12">
@@ -78,7 +80,8 @@ const Newindent = () => {
                                     <option value="option2">Option 2</option>
                                   </select>
                                 </div>
-                                <div className="form-group col-md-1">
+
+                                <div className="form-group col-md-2">
                                   <label
                                     htmlFor="series"
                                     className="form-label"
@@ -91,6 +94,7 @@ const Newindent = () => {
                                     id="series"
                                   />
                                 </div>
+
                                 <div className="form-group col-md-1 ">
                                   <label
                                     htmlFor="purchase"
@@ -107,7 +111,8 @@ const Newindent = () => {
                                     <option value="option2">Option 2</option>
                                   </select>
                                 </div>
-                                <div className="form-group col-md-1 ">
+
+                                <div className="form-group col-md-2 ">
                                   <label
                                     htmlFor="indentNo"
                                     className="form-label"
@@ -126,25 +131,27 @@ const Newindent = () => {
                                     Date:
                                   </label>
                                    <input
-          type="date"
-          className="form-control"
-          id="date"
-          value={currentDate}
-          onChange={(e) => setCurrentDate(e.target.value)}
-        />
+                                      type="date"
+                                      className="form-control"
+                                      id="date"
+                                      value={currentDate}
+                                      onChange={(e) => setCurrentDate(e.target.value)}
+                                    />
                                 </div>
+
                                 <div className="form-group col-md-2 ">
                                   <label htmlFor="time" className="form-label">
                                     Time:
                                   </label>
                                   <input
-          type="time"
-          className="form-control"
-          id="time"
-          value={currentTime}
-          onChange={(e) => setCurrentTime(e.target.value)}
-        />
+                                    type="time"
+                                    className="form-control"
+                                    id="time"
+                                    value={currentTime}
+                                    onChange={(e) => setCurrentTime(e.target.value)}
+                                  />
                                 </div>
+
                                 <div className="form-group col-md-2 ">
                                   <label
                                     htmlFor="category"
@@ -171,19 +178,19 @@ const Newindent = () => {
                         <div className="container-fluid">
                           <div className="row">
                             <div className="col-md-12 text-start">
-                              <button className="newindentmainbtn">
+                              <button className="vndrbtn">
                                 Item Details
                               </button>
                             </div>
                           </div>
-                          <div className="newindenttable">
+                          <div className="newindenttable mt-3">
                             <div className="container-fluid">
                               <div className="row">
                                 <div className="table-responsive">
                                   <table className="table table-bordered">
                                     <thead>
                                       <tr>
-                                        <th>Select Item & CPC Code</th>
+                                        <th >Select Item & CPC Code</th>
                                         <th>Description</th>
                                         <th>Available Stock</th>
                                         <th>Unit</th>
@@ -211,7 +218,7 @@ const Newindent = () => {
                                               Item 2
                                             </option>
                                           </select>
-                                          <button className="btn">
+                                          <button className="vndrbtn">
                                             Search
                                           </button>
                                           <br />
@@ -307,10 +314,10 @@ const Newindent = () => {
                                           />
                                         </td>
                                         <td>
-                                          <button className="btn me-2">
+                                          <button className="vndrbtn me-2">
                                             <FaPlus />
                                           </button>
-                                          <button className="btn">
+                                          <button className="vndrbtn">
                                             <FaTrash />
                                           </button>
                                         </td>
@@ -321,7 +328,7 @@ const Newindent = () => {
                               </div>
                             </div>
                           </div>
-                          <div className="newindenttable1">
+                          <div className="newindenttable">
                             <div className="container-fluid">
                               <div className="row">
                                 <div className="table-responsive">
@@ -367,8 +374,10 @@ const Newindent = () => {
                               </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
+
                       <div className="newindentbottom">
                         <div className="container-fluid">
                           <div className="row text-start">
@@ -391,13 +400,14 @@ const Newindent = () => {
                               <input className="form-control" />
                             </div>
                             <div className="col-md-2">
-                              <button className="btn">
+                              <button className="vndrbtn">
                                 Save indent
                               </button>
                             </div>
                           </div>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>

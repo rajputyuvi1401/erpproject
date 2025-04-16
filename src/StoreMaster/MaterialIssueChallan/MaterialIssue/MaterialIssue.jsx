@@ -48,14 +48,14 @@ const MaterialIssue = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="MaterialIssueee-header mb-4 text-start mt-5">
+                <div className="MaterialIssueee-header mb-4 text-start">
                     <div className="row align-items-center">
-                    <div className="col-md-2">
+                    <div className="col-md-3">
                       <h5 className="header-title text-start">
                         New Material Issue
                       </h5>
                     </div>
-                    <div className="col-md-7 mt-4 text-start">
+                    <div className="col-md-6 mt-2 text-start">
                       <div className="row mb-3">
                         <div className="col-md-1">
                           <label htmlFor="seriesSelect" className="form-label">
@@ -80,7 +80,7 @@ const MaterialIssue = () => {
                     </div>
                     <div className="col-md-3 text-end">
                      
-                          <Link className="btn" to="/Work-Issue-Report">
+                          <Link className="vndrbtn" to="/Work-Issue-Report">
                             WorkOrder Material Issue Report
                           </Link>
                        
@@ -90,15 +90,15 @@ const MaterialIssue = () => {
 
                 <div className="MaterialIssueee-main">
                   <div className="container-fluid">
-                    <div className="row mt-4">
+                    <div className="row mt-2">
                       <div className="col-md-12">
                         <div className="row flex-nowrap align-items-center">
-                          <div className="col-md-9 mt-4">
+                          <div className="col-md-9">
                             <div className="row mb-3">
                               <div className="col-md-1">
                                 <label
                                   htmlFor="seriesSelect"
-                                  className="form-label"
+                                  className="form-label mt-2"
                                 >
                                   Series:
                                 </label>
@@ -117,7 +117,7 @@ const MaterialIssue = () => {
                               <div className="col-md-1">
                                 <label
                                   htmlFor="TypeSelect"
-                                  className="form-label"
+                                  className="form-label mt-2"
                                 >
                                   Type:
                                 </label>
@@ -146,7 +146,7 @@ const MaterialIssue = () => {
                   </div>
 
                   <div className="StoreMaterialIssueee">
-                    <div className="container-fluid mt-4 text-start">
+                    <div className="container-fluid mt-1 text-start">
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>
@@ -160,7 +160,7 @@ const MaterialIssue = () => {
                               <th>
                                 Qty{" "}
                                 <button
-                                  className="newbtn"
+                                  className="vndrbtn"
                                   onClick={handleModalOpen}
                                 >
                                   Add
@@ -169,7 +169,7 @@ const MaterialIssue = () => {
                               <th>
                                 Machine{" "}
                                 <button
-                                  className="newbtn"
+                                  className="vndrbtn"
                                   onClick={handleModalOpen1}
                                 >
                                   Add
@@ -179,7 +179,7 @@ const MaterialIssue = () => {
                               <th>
                                 MRN No:{" "}
                                 <button
-                                  className="newbtn"
+                                  className="vndrbtn"
                                   onClick={handleModalOpen1}
                                 >
                                   Add
@@ -189,7 +189,7 @@ const MaterialIssue = () => {
                               <th>
                                 Employee:{" "}
                                 <button
-                                  className="newbtn"
+                                  className="vndrbtn"
                                   onClick={handleModalOpen2}
                                 >
                                   See All
@@ -238,7 +238,7 @@ const MaterialIssue = () => {
                               <h5 className="modal-title">Search</h5>
                               <button
                                 type="button"
-                                className="btn-close"
+                                className="vndrbtn-close"
                                 onClick={handleModalClose}
                               >
                                 X
@@ -262,12 +262,12 @@ const MaterialIssue = () => {
                               </div>
                             </div>
                             <div className="modal-footer">
-                              <button type="button" className="newbtn1">
+                              <button type="button" className="vndrbtn">
                                 See ALL
                               </button>
                               <button
                                 type="button"
-                                className="newbtn1"
+                                className="vndrbtn"
                                 onClick={handleModalClose}
                               >
                                 Close
@@ -290,7 +290,7 @@ const MaterialIssue = () => {
                               <h5 className="modal-title">Add Type</h5>
                               <button
                                 type="button"
-                                className="btn-close"
+                                className="vndrbtn-close"
                                 onClick={handleModalClose1}
                               >
                                 X
@@ -314,12 +314,12 @@ const MaterialIssue = () => {
                               </div>
                             </div>
                             <div className="modal-footer">
-                              <button type="button" className="newbtn1">
+                              <button type="button" className="vndrbtn">
                                 Save
                               </button>
                               <button
                                 type="button"
-                                className="newbtn1"
+                                className="vndrbtn"
                                 onClick={handleModalClose1}
                               >
                                 Close
@@ -342,7 +342,7 @@ const MaterialIssue = () => {
                               <h5 className="modal-title">Search</h5>
                               <button
                                 type="button"
-                                className="btn-close"
+                                className="vndrbtn-close"
                                 onClick={handleModalClose2}
                               >
                                 X
@@ -366,12 +366,12 @@ const MaterialIssue = () => {
                               </div>
                             </div>
                             <div className="modal-footer">
-                              <button type="button" className="newbtn1">
+                              <button type="button" className="vndrbtn">
                                 See ALL
                               </button>
                               <button
                                 type="button"
-                                className="newbtn1"
+                                className="vndrbtn"
                                 onClick={handleModalClose2}
                               >
                                 Close

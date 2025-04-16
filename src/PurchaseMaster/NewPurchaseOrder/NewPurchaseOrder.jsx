@@ -315,7 +315,7 @@ const NewPurchaseOrder = () => {
                       )}
                         </div>
                         <div className="col-md-1">
-                          <button className="btn btn-primary mt-4" onClick={handleSelectSupplier} disabled={loading}>
+                          <button className="vndrbtn btn-primary mt-4" onClick={handleSelectSupplier} disabled={loading}>
                             {loading ? "Loading..." : "Select"}
                           </button>
                         </div>
@@ -331,10 +331,10 @@ const NewPurchaseOrder = () => {
                         </div>
 
                         <div className="col-md-1 mt-4">
-                          <button className="btn">Clear</button>
+                          <button className="vndrbtn">Clear</button>
                         </div>
                         <div className="col-md-1 mt-4">
-                          <Link to="/PoList" className="btn">
+                          <Link to="/PoList" className="vndrbtn">
                             PO List
                           </Link>
                         </div>
@@ -405,21 +405,22 @@ const NewPurchaseOrder = () => {
                       <div className="row"></div>
                       <div className="button-group mt-3 text-end">
                         {activeTab > 0 && (
-                          <button type="button" className="btn" onClick={handlePrevious}>
+                          <button type="button" className="vndrbtn" onClick={handlePrevious}>
                             Previous
                           </button>
                         )}
                         {activeTab < 5 ? (
-                          <button type="button" className="btn" onClick={handleNext}>
+                          <button type="button" className="vndrbtn" onClick={handleNext}>
                             Next
                           </button>
                         ) : (
-                          <button type="submit" className="btn btn-success">
+                          <button type="submit" className="vndrbtn btn-success">
                             Save Purchase Order
                           </button>
                         )}
                       </div>
                     </form>
+                    
                   </div>
                 </div>
               </main>

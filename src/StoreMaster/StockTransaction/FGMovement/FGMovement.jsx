@@ -40,16 +40,16 @@ const FGMovement = () => {
                     <div className="col-md-9 text-end">
                       <div className="row justify-content-end">
                         <div className="col-md-12 d-flex flex-wrap justify-content-end">
-                          <Link className="FGBtn" to="/AddNewFGMovent">
+                          <Link className="vndrbtn" to="/AddNewFGMovent">
                             Add New FG Movement
                           </Link>
-                          <Link className="FGBtn" to="/FGTOFGMovement">
+                          <Link className="vndrbtn" to="/FGTOFGMovement">
                             FG to FG Movement
                           </Link>
-                          <Link className="FGBtn" to="/ScrapMovement">
+                          <Link className="vndrbtn" to="/ScrapMovement">
                             Scrap To FG
                           </Link>
-                          <Link className="FGBtn" to="">
+                          <Link className="vndrbtn" to="">
                             Export To Excel
                           </Link>
                         </div>
@@ -57,7 +57,8 @@ const FGMovement = () => {
                     </div>
                   </div>
                 </div>
-                <div className="FGMovement-main">
+
+                <div className="FGMovement-main mt-2">
                   <div className="container-fluid text-start">
                     <div className="row mt-4">
                       <div className="col-md-12">
@@ -65,13 +66,13 @@ const FGMovement = () => {
                           {/* From Date */}
                           <div className="col-md-2 col-sm-6">
                             <label className="form-label">From Date:</label>
-                            <input type="date" className="form-control" />
+                            <input type="date" className="form-control mt-1" />
                           </div>
 
                           {/* To Date */}
                           <div className="col-md-2 col-sm-6">
                             <label className="form-label">To Date:</label>
-                            <input type="date" className="form-control" />
+                            <input type="date" className="form-control mt-1" />
                           </div>
 
                           {/* Plant */}
@@ -84,14 +85,14 @@ const FGMovement = () => {
                           </div>
 
                           {/* Item Name */}
-                          <div className="col-md-4 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">Item Name/Desc:</label>
-                            <input type="text" className="form-control" placeholder="Enter Item Name" />
+                            <input type="text" className="form-control mt-1" placeholder="Enter Item Name" />
                           </div>
 
                           {/* Search Button */}
-                          <div className="col-md-2 col-sm-6 d-flex align-items-end mt-1">
-                            <button type="submit" className="pobtn w-100">
+                          <div className="col-md-2 col-sm-6 mt-5">
+                            <button type="submit" className="vndrbtn w-100">
                               Search
                             </button>
                           </div>
@@ -101,7 +102,7 @@ const FGMovement = () => {
                   </div>
 
                   <div className="FGMovementtable">
-                    <div className="container-fluid mt-4 text-start">
+                    <div className="container-fluid mt-1 text-start">
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>
@@ -141,12 +142,12 @@ const FGMovement = () => {
                               <td><input type="text" className="form-control" /></td>
                               <td><input type="text" className="form-control" /></td>
                               <td>
-                                <button className="btn">
+                                <button className="vndrbtn">
                                   <FaEdit />
                                 </button>
                               </td>
                               <td>
-                                <button className="btn">
+                                <button className="vndrbtn">
                                   <FaTrash />
                                 </button>
                               </td>
@@ -156,6 +157,7 @@ const FGMovement = () => {
                       </div>
                     </div>
                   </div>
+                  
                 </div>
               </main>
             </div>

@@ -7,6 +7,8 @@ import {
   updateBuyerContactDetail,
   deleteBuyerContactDetail,
 } from "../../Service/Api";
+import "./SupplierCustomerMaster.css";
+
 
 const BuyerContactDetail = () => {
   const [formData, setFormData] = useState({
@@ -132,7 +134,7 @@ const BuyerContactDetail = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="table-responsive">
-                <table className="table table-bordered">
+                <table className="table">
                   <thead>
                     <tr>
                       <th className="blue-th" scope="col">
@@ -251,7 +253,7 @@ const BuyerContactDetail = () => {
                       </td>
                       <td>
                         <button
-                          className="bankbtn"
+                          className="bank  vndr  vndrbtn  "
                           onClick={handleAddBuyerContact}
                         >
                           {formData.id ? (
@@ -273,7 +275,7 @@ const BuyerContactDetail = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="table-responsive">
-                <table className="table table-bordered">
+                <table className="table">
                   <thead>
                     <tr>
                       <th className="blue-th" scope="col">
@@ -310,13 +312,13 @@ const BuyerContactDetail = () => {
                         <td>{contact.Birth_Date}</td>
                         <td>
                           <button
-                            className="bankbtn"
+                            className="bank  vndr  vndrbtn  "
                             onClick={() => handleEditBuyerContact(contact)}
                           >
                             <i className="fas fa-edit"></i> 
                           </button>
                           <button
-                            className="bankbtn"
+                            className="bank  vndr  vndrbtn  "
                             onClick={() => handleDeleteBuyerContact(contact.id)}
                           >
                             <i className="fas fa-trash"></i> 

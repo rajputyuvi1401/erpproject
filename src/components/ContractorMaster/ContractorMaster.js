@@ -36,7 +36,7 @@ const ContractorMaster = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="ContractorMaster1">
                   
-                  <div className="Contractor-header mb-4 text-start mt-5">
+                  <div className="Contractor-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Contractor Master</h5>
@@ -44,18 +44,18 @@ const ContractorMaster = () => {
                         <div className="col-md-6 col-12 text-end">
                           <Link
                             to={"/Addcontractor-master"}
-                            className="btn me-2 mb-2"
+                            className=" vndrbtn me-2 mb-2"
                           >
                             Add New Contractor
                           </Link>
-                          <Link className="btn mb-2">
+                          <Link className=" vndrbtn mb-2">
                             Export To Excel
                           </Link>
                         </div>
-                      </div>
-                    
+                     </div> 
                   </div>
-                  <div className="ContractorMain mt-5">
+
+                  <div className="ContractorMain mt-1">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12 text-start">
@@ -87,12 +87,12 @@ const ContractorMaster = () => {
                               />
                             </div>
                             <div className="col-md-3" style={{marginTop:"34px"}}>
-                              <button className="btn" type="button">
+                              <button className=" vndrbtn" type="button">
                                 Search
                               </button>
                             
                             
-                              <button className="btn" type="button">
+                              <button className=" vndrbtn" type="button">
                                 View All
                               </button>
                             </div>
@@ -101,7 +101,7 @@ const ContractorMaster = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="Contractortable mt-5">
+                  <div className="Contractortable mt-3">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12 text-start">
@@ -140,12 +140,12 @@ const ContractorMaster = () => {
                                 <td></td>
                                 <td></td>
                                 <td>
-                                  <button className="contractorbtnicon">
+                                  <button className="contractor vndrbtn">
                                     <i className="fas fa-edit"></i>
                                   </button>
                                 </td>
                                 <td>
-                                  <button className="contractorbtnicon">
+                                  <button className="contractor vndrbtn">
                                     <i className="fas fa-trash"></i>
                                   </button>
                                 </td>

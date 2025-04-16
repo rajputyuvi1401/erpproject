@@ -41,30 +41,30 @@ const NewinvoiceGST = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="NewinvoiceGST mt-5">
-                  <div className="NewinvoiceGST-header mb-4 text-start">
+                <div className="NewinvoiceGST">
+                  <div className="NewinvoiceGST-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">New Invoice</h5>
                       </div>
                       <div className="col-md-1">Plant</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option>ProduLink</option>
                         </select>
                       </div>
                       <div className="col-md-1">Series</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option>GST Invoice</option>
                         </select>
                       </div>
                       <div className="col-md-1">
-                        <input type="text" placeholder="InvoiceNo:" className="w-100" />
+                        <input type="text" placeholder="InvoiceNo:" className="form-control w-100" />
                       </div>
                       <div className="col-md-1">InvoiceType:</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option>GST</option>
                           <option>SCRAP</option>
                           <option>Stock Transfer</option>
@@ -78,7 +78,7 @@ const NewinvoiceGST = () => {
                     </div>
                   </div>
 
-                  <div className="NewinvoiceGST-main mt-5">
+                  <div className="NewinvoiceGST-main">
                    
                     <div className="NewinvoiceGST-tabs">
                       <ul
@@ -129,10 +129,10 @@ const NewinvoiceGST = () => {
                                   <input type="text" placeholder="Enter Name.." className="form-control" />
                                 </div>
                                 <div className="col-2">
-                                 <button className="btn w-50">Search</button>
+                                 <button className=" vndrbtn w-50">Search</button>
                                 </div>
                           </div>
-                          <div className="row text-start">
+                          <div className="row text-start mt-2">
                                 <div className="col-2">
                                   <label htmlFor="prod-no">Select PO:</label>
                                 </div>
@@ -142,13 +142,14 @@ const NewinvoiceGST = () => {
                                         </select>
                                 </div>
                                 <div className="col-1">
-                                 <button className="btn w-100">Clear</button>
+                                 <button className=" vndrbtn w-100">Clear</button>
                                 </div>
                                 <div className="col-2">
-                                 <button className="btn w-50"> View SO</button>
+                                 <button className=" vndrbtn w-50"> View SO</button>
                                 </div>
                           </div>
-                          <div className="row text-start">
+
+                          <div className="row text-start mt-2">
                                 <div className="col-2">
                                   <label htmlFor="prod-no">Select Item :</label>
                                 </div>
@@ -156,10 +157,11 @@ const NewinvoiceGST = () => {
                                   <input type="text" placeholder="Enter Item Code.." className="form-control" />
                                 </div>
                                 <div className="col-2">
-                                 <button className="btn w-50">Add</button>
+                                 <button className=" vndrbtn w-50">Add</button>
                                 </div>
                           </div>
-                          <div className="row text-start">
+
+                          <div className="row text-start mt-2">
                                 <div className="col-6">
                                    <div className="row">
                                         <div className="col-4">
@@ -176,12 +178,13 @@ const NewinvoiceGST = () => {
                                               <label htmlFor="prod-no">Invice Qty:</label>
                                           </div>
                                           <div className="col-6 d-flex">
-                                              <textarea type="text" placeholder=".." className="form-control" />
-                                              <button className="btn w-50" style={{height:"35px", marginTop:"5px"}}>Add</button>
+                                              <textarea  type="text" placeholder=".." className="form-control" />
+                                              <button className=" vndrbtn w-50" style={{height:"32px", marginTop:"5px"}}>Add</button>
                                           </div>
                                      </div>
                                  </div>
                           </div>
+
                         </div>
 
                         <div
@@ -241,25 +244,25 @@ const NewinvoiceGST = () => {
                                     Mode of Trans :
                                   </label>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-8">
                                   <input type="text" placeholder="By Road" id="modeoftrans"
                                     className="form-control"/>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-4 mt-3">
                                   <label htmlFor="unit-machine">
                                     Freight:
                                   </label>
                                 </div>
-                                <div className="col-4 d-flex align-items-center">
+                                <div className="col-8 mt-2 d-flex align-items-center">
                                   <select className="form-control flex-grow-1">
                                     <option>  Select  </option>
                                   </select>
-                                  <button type="button" className="btn">
+                                  <button type="button" className=" vndrbtn">
                                     <Cached />
                                   </button>
                                   <button
                                     type="button"
-                                    className="btn btn-outline-secondary ml-2"
+                                    className=" vndrbtn ml-2"
                                   >
                                     <FaPlus />
                                   </button>
@@ -276,7 +279,7 @@ const NewinvoiceGST = () => {
                                     className="form-control"/>
                                   <button
                                     type="button"
-                                    className="btn btn-outline-secondary ml-2"
+                                    className=" vndrbtn ml-2"
                                   >
                                     Search
                                   </button>
@@ -293,7 +296,7 @@ const NewinvoiceGST = () => {
                                     className="form-control"/>
                                   <button
                                     type="button"
-                                    className="btn btn-outline-secondary ml-2"
+                                    className=" vndrbtn ml-2"
                                   >
                                     Search
                                   </button>
@@ -332,25 +335,25 @@ const NewinvoiceGST = () => {
                                     PDI No :
                                   </label>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-8">
                                   <input type="text" placeholder="" id="modeoftrans"
                                     className="form-control"/>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-4 mt-3">
                                   <label htmlFor="unit-machine">
                                     Bank:
                                   </label>
                                 </div>
-                                <div className="col-4 d-flex align-items-center">
+                                <div className="col-8 mt-2 d-flex align-items-center">
                                   <select className="form-control flex-grow-1">
                                     <option>  Select  </option>
                                   </select>
-                                  <button type="button" className="btn">
+                                  <button type="button" className=" vndrbtn">
                                     <Cached />
                                   </button>
                                   <button
                                     type="button"
-                                    className="btn btn-outline-secondary ml-2"
+                                    className=" vndrbtn ml-2"
                                   >
                                     <FaPlus />
                                   </button>
@@ -401,7 +404,7 @@ const NewinvoiceGST = () => {
                                     id="vehicle"
                                     className="form-control"
                                   />
-                                   <button type="button" className="btn btn-outline-secondary">
+                                   <button type="button" className=" vndrbtn">
                                    <FaPlus />
                                   </button>
                                 </div>
@@ -416,7 +419,7 @@ const NewinvoiceGST = () => {
                                 <select className="form-control flex-grow-1">
                                     <option>   </option>
                                   </select>
-                                   <button type="button" className="btn btn-outline-secondary mb-4">
+                                   <button type="button" className=" vndrbtn mb-4">
                                    <FaRegCircleQuestion />
                                   </button>
                                 </div>
@@ -430,7 +433,7 @@ const NewinvoiceGST = () => {
                                 <select className="form-control flex-grow-1">
                                     <option>   </option>
                                   </select>
-                                   <button type="button" className="btn btn-outline-secondary mb-4">
+                                   <button type="button" className=" vndrbtn mb-4">
                                    <FaRegCircleQuestion />
                                   </button>
                                 </div>
@@ -498,7 +501,7 @@ const NewinvoiceGST = () => {
                                     id="transporter"
                                     className="form-control"
                                   />
-                                   <button type="button" className="btn btn-outline-secondary mb-3">
+                                   <button type="button" className=" vndrbtn mb-3">
                                    <FaPlus />
                                   </button>
                                 </div>
@@ -557,230 +560,237 @@ const NewinvoiceGST = () => {
                           </div>
 
                           <div className="table-container">
-                    <div className="row">
+                              <div className="row">
 
-                         <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label>Base Value</label>
-                                </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label>Assessble Value</label>
-                                </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label className="d-flex">Pack&Fwrd <input style={{width:"40px"}} type="text" className="w-5" placeholder="0"/>%</label>  
-                                </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-12">
-                                   <label>Total Amortisation : 0</label>
-                                </div>
-                            </div>
-                        </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-8">
+                                            <label>Base Value</label>
+                                          </div>
+                                          <div className="col-md-4">
+                                              <input type="text" placeholder="0"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-8">
+                                            <label>Assessble Value</label>
+                                          </div>
+                                          <div className="col-md-4">
+                                              <input type="text" placeholder="0"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-8">
+                                            <label className="d-flex">Pack&Fwrd <input style={{width:"40px"}} type="text" className="w-5" placeholder="0"/>%</label>  
+                                          </div>
+                                          <div className="col-md-4">
+                                              <input type="text" placeholder="0"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-12">
+                                            <label>Total Amortisation : 0</label>
+                                          </div>
+                                      </div>
+                                  </div>
 
-                    </div>
-                    <div className="row">
+                              </div>
+                              <div className="row">
 
-                         <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label>Disc Amt:</label>
-                                </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label>CGST : 00.00%</label>
-                                </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label className="d-flex">Transport Crg. <input style={{width:"40px"}} type="text" className="w-5" placeholder="0"/>%</label>
-                                </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-12">
-                                   <label>CGST : 0</label>
-                                </div>  
-                            </div>
-                        </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-8">
+                                            <label>Disc Amt:</label>
+                                          </div>
+                                          <div className="col-md-4">
+                                              <input type="text" placeholder="0"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-8">
+                                            <label>CGST : 00.00%</label>
+                                          </div>
+                                          <div className="col-md-4">
+                                              <input type="text" placeholder="0"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-8">
+                                            <label className="d-flex">Transport Crg. <input style={{width:"40px"}} type="text" className="w-5" placeholder="0"/>%</label>
+                                          </div>
+                                          <div className="col-md-4">
+                                              <input type="text" placeholder="0"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-12">
+                                            <label>CGST : 0</label>
+                                          </div>  
+                                      </div>
+                                  </div>
 
-                    </div>
-                    <div className="row">
+                              </div>
+                              <div className="row">
 
-                         <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label>Rev. Base Crg.</label>
-                                </div>
-                                <div className="col-md-4">
-                                   <select name="" id="">
-                                     <option value="">NO</option>
-                                   </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label>SGST : 00.00%</label>
-                                </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label className="d-flex">Freight Crg. <input style={{width:"40px"}} type="text" className="w-5" placeholder="0"/>% </label>
-                                </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-12">
-                                   <label>SGST : 0</label>
-                                </div>
-                            </div>
-                        </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-8">
+                                            <label>Rev. Base Crg.</label>
+                                          </div>
+                                          <div className="col-md-4">
+                                            <select name="" id="">
+                                              <option value="">NO</option>
+                                            </select>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-8">
+                                            <label>SGST : 00.00%</label>
+                                          </div>
+                                          <div className="col-md-4">
+                                              <input type="text" placeholder="0"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-8">
+                                            <label className="d-flex">Freight Crg. <input style={{width:"40px"}} type="text" className="w-5" placeholder="0"/>% </label>
+                                          </div>
+                                          <div className="col-md-4">
+                                              <input type="text" placeholder="0"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-12">
+                                            <label>SGST : 0</label>
+                                          </div>
+                                      </div>
+                                  </div>
 
-                    </div>
-                    <div className="row">
+                              </div>
+                              <div className="row">
 
-                         <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label>Rev Crg Amt</label>
-                                </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label>IGST : 00.00%</label>
-                                </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                <label className="d-flex">Other Crg. <input style={{width:"40px"}} type="text" className="w-5" placeholder="0"/>% </label>
-                                </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-12">
-                                   <label>IGST : 0</label>
-                                </div>
-                            </div>
-                        </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-8">
+                                            <label>Rev Crg Amt</label>
+                                          </div>
+                                          <div className="col-md-4">
+                                              <input type="text" placeholder="0"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-8">
+                                            <label>IGST : 00.00%</label>
+                                          </div>
+                                          <div className="col-md-4">
+                                              <input type="text" placeholder="0"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-8">
+                                          <label className="d-flex">Other Crg. <input style={{width:"40px"}} type="text" className="w-5" placeholder="0"/>% </label>
+                                          </div>
+                                          <div className="col-md-4">
+                                              <input type="text" placeholder="0"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                      <div className="row">
+                                          <div className="col-md-12">
+                                            <label>IGST : 0</label>
+                                          </div>
+                                      </div>
+                                  </div>
 
-                    </div>
-                    <div className="row">
+                              </div>
+                            <div className="row">
 
-                         <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label>TCS</label>
+                                <div className="col-md-3">
+                                    <div className="row">
+                                        <div className="col-md-8">
+                                          <label>TCS</label>
+                                        </div>
+                                        <div className="col-md-4">
+                                            <input type="text" placeholder="0"/>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
+                                <div className="col-md-3">
+                                    <div className="row">
+                                        <div className="col-md-8">
+                                          <label>UTGST : 00.00%</label>
+                                        </div>
+                                        <div className="col-md-4">
+                                            <input type="text" placeholder="0"/>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label>UTGST : 00.00%</label>
+                                <div className="col-md-3">
+                                    <div className="row">
+                                        <div className="col-md-8">
+                                          <label>Grand Total</label>
+                                        </div>
+                                        <div className="col-md-4">
+                                            <input type="text" placeholder="0"/>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
+                                <div className="col-md-3">
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                          <label>For E-Inv: Ser.inv.  .  . Inv.Type:</label>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-8">
-                                   <label>Grand Total</label>
-                                </div>
-                                <div className="col-md-4">
-                                    <input type="text" placeholder="0"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="col-md-12">
-                                   <label>For E-Inv: Ser.inv.  .  . Inv.Type:</label>
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
+                            </div>
                          </div>
 
-                          <div className="row">
-                            <div className="col-md-2">
-                                <button className="btn btn-primary"> Generete Invoice </button>
-                            </div>
-                            <div className="col-md-3 d-flex align-items-center">
-      <input
-        type="checkbox"
-        id="printRate"
-        checked={isChecked}
-        onChange={handleCheckboxChange}
-      />
-      <label htmlFor="printRate" className="ms-2">
-        PrintRate
-      </label>
-    </div>
+                         <div className="row mt-3">
+
+                          <div className="col-md-2">
+                              <button className=" vndrbtn"> Generete Invoice </button>
+                          </div>
+                          <div className="col-md-3 d-flex align-items-center">
+                              <input
+                                type="checkbox"
+                                id="printRate"
+                                checked={isChecked}
+                                onChange={handleCheckboxChange}
+                                style={{ width: "12px", height: "12px", verticalAlign: "middle" }}
+                              />
+                              <label
+                                htmlFor="printRate"
+                                className="ms-2"
+                                style={{ verticalAlign: "middle" }}
+                              >
+                                PrintRate
+                              </label>
+                          </div>
+
                           </div>
 
                         </div>
@@ -791,7 +801,7 @@ const NewinvoiceGST = () => {
 
                   </div>
 
-                       <div className="table-responsive">
+                       <div className="NewinvoiceGSTtable table-responsive">
                                 <table className="table table-bordered">
                                 <thead>
                                     <tr>
@@ -813,22 +823,22 @@ const NewinvoiceGST = () => {
                                         <td>1</td>
                                         <td>Pr No:</td>
                                         <td>Line No:</td>
-                                        <td><textarea name="" id=""></textarea> <br /> <span>HSN Code :</span> </td>
-                                        <td className="text-start"><input type="text" className="" /> <br />
+                                        <td><textarea className="form-control" name="" id=""></textarea> <br /> <span>HSN Code :</span> </td>
+                                        <td className="text-start"><input type="text" className="form-control" /> <br />
                                                 Disc:  <br />  Pkg Charges: <br />
                                                 Trans Charges: <br /> <span style={{color:"blue"}}>Rate Type: </span>
                                                 <br /> Amort Rate :
                                         </td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="text" className="w-50"/> <br />
+                                        <td><input type="text" className="form-control"/> <br />
                                             Per Pcs Wt: <br />
-                                            <input type="text" className="w-50" placeholder="Weight" /><br />
+                                            <input type="text" className="form-control" placeholder="Weight" /><br />
                                             <span style={{color:"blue"}}>Per Unit: </span>
                                         </td>
-                                        <td><input type="text" className="w-50"/></td>
-                                        <td><textarea name="" id=""></textarea></td>
-                                        <td><span style={{border:"1px solid black"}}>X</span></td>
+                                        <td><input type="text" className="form-control"/></td>
+                                        <td><textarea className="form-control" name="" id=""></textarea></td>
+                                        <td><span className="vndrbtn">X</span></td>
                                     </tr>
                                 </tbody>
                                 </table>

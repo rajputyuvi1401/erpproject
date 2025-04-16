@@ -165,7 +165,7 @@
 .blueside-Nav .side-nav {
   height: 100%;
   width: 250px;
-  background-color:#34495e;
+  background-color:#1E293b;
   color: #ecf0f1;
   position: fixed;
   top: 0;
@@ -272,6 +272,27 @@
   border-top: 1px solid #2c3e50;
   margin: 10px 0;
 }
+
+.blueside-Nav .side-nav {
+  height: 100%;
+  width: 250px;
+  background-color: #1E293b;
+  color: #ecf0f1;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  transition: left 0.3s;
+  padding-top: 60px;
+  z-index: 1000;
+  overflow-y: scroll; /* Allow scrolling */
+  -ms-overflow-style: none;  /* For Internet Explorer 10+ */
+  scrollbar-width: none;  /* For Firefox */
+}
+
+.blueside-Nav .side-nav::-webkit-scrollbar {
+  display: none;  /* For Chrome, Safari, and Opera */
+}
+
 
 /* Responsive Styles */
 @media (max-width: 1200px) {

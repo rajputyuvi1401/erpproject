@@ -54,43 +54,43 @@ const ProjectManagement = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Projectrmaster">
-                  <div className="Project1-header mb-4 text-start mt-5">
+                  <div className="Project1-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">Project List</h5>
                         </div>
                         <div className="col-md-10 text-md-end text-start mt-2 mt-md-0">
                           <button
-                            className="btn me-2"
+                            className="vndrbtn me-2"
                             onClick={handleInventoryStatusClick}
                           >
                             Project Inventory Status
                           </button>
                           <button
-                            className="btn  me-2"
+                            className="vndrbtn  me-2"
                             onClick={handleAddNewClick}
                           >
                             Add New
                           </button>
                           <button
-                            className="btn"
+                            className="vndrbtn"
                             onClick={handleViewAllClick}
                           >
                             View All
                           </button>
                           <button
-                            className="btn me-2"
+                            className="vndrbtn me-2"
                             onClick={handleSystemMasterClick}
                           >
                             System Master
                           </button>
                           <button
-                            className="btn  me-2"
+                            className="vndrbtn  me-2"
                             onClick={handleProjectQueryClick}
                           >
                             Project - Query
                           </button>
-                          <button className="btn">
+                          <button className="vndrbtn">
                             Export To Excel
                           </button>
                         </div>
@@ -160,6 +160,7 @@ const ProjectManagement = () => {
                       </div>
                     </div>
                   </div> */}
+
                   {showAddNewCard && (
                     <div className="Addcardoverlay">
                       <div className="card">
@@ -173,6 +174,7 @@ const ProjectManagement = () => {
                             &times;
                           </button>
                         </div>
+
                         <div className="card-body">
                           <div className="container text-start">
                             <div className="row">
@@ -196,14 +198,14 @@ const ProjectManagement = () => {
                               </div>
                               <div className="col-md-1 mb-3">
                                 <button
-                                  className="btn"
+                                  className="vndrbtn"
                                   onClick={handleAddNewClick1}
                                 >
                                   <i className="fas fa-plus"></i>
                                 </button>
                               </div>
                               <div className="col-md-2 mb-3">
-                                <button className="btn">
+                                <button className="vndrbtn">
                                   <i className="fas fa-sync-alt"></i>
                                 </button>
                               </div>
@@ -229,31 +231,33 @@ const ProjectManagement = () => {
                               </div>
                               <div className="col-md-1 mb-3">
                                 <button
-                                  className="btn"
+                                  className="vndrbtn"
                                   onClick={handleAddNewClick1}
                                 >
                                   <i className="fas fa-plus"></i>
                                 </button>
                               </div>
                               <div className="col-md-2 mb-3">
-                                <button className="btn">
+                                <button className="vndrbtn">
                                   <i className="fas fa-sync-alt"></i>
                                 </button>
                               </div>
                             </div>
                             <div className="row">
                               <div className="col-md-2 mb-3">
-                                <button className="btn">Save</button>
+                                <button className="vndrbtn">Save</button>
                               </div>
                               <div className="col-md-2 mb-3">
-                                <button className="btn">Clear</button>
+                                <button className="vndrbtn">Clear</button>
                               </div>
                             </div>
                           </div>
                         </div>
+
                       </div>
                     </div>
                   )}
+
                   {showAddNewCard1 && (
                     <div className="Addcard1overlay1">
                       <div className="card">
@@ -329,10 +333,10 @@ const ProjectManagement = () => {
                             </div>
                             <div className="row">
                               <div className="col-md-2 mb-3">
-                                <button className="btn">Save</button>
+                                <button className="vndrbtn">Save</button>
                               </div>
                               <div className="col-md-2 mb-3">
-                                <button className="btn">Clear</button>
+                                <button className="vndrbtn">Clear</button>
                               </div>
                             </div>
                           </div>
@@ -355,6 +359,7 @@ const ProjectManagement = () => {
                       </div>
                     </div>
                   )}
+
                   {showViewAllCard && (
                     <div className="viewalloverlay">
                       <div className="card">
@@ -374,6 +379,7 @@ const ProjectManagement = () => {
                       </div>
                     </div>
                   )}
+
                   {showSystemMasterCard && (
                     <div className="systemcardoverlay">
                       <div className="card">
@@ -387,7 +393,8 @@ const ProjectManagement = () => {
                             &times;
                           </button>
                         </div>
-                        <div className="card-body">
+
+                         <div className="card-body">
                           <div className="container">
                             <div className="row">
                               <div className="col-md-2 mb-3">
@@ -421,7 +428,7 @@ const ProjectManagement = () => {
                                 />
                               </div>
                               <div className="col-md-1 mb-3">
-                                <button className="btn">Save</button>
+                                <button className="vndrbtn">Save</button>
                               </div>
                             </div>
                           </div>
@@ -442,9 +449,11 @@ const ProjectManagement = () => {
                             </div>
                           </div>
                         </div>
+
                       </div>
                     </div>
                   )}
+
                   {showProjectQueryCard && (
                     <div className="Projectqueryoverlay">
                       <div className="card">
@@ -458,6 +467,7 @@ const ProjectManagement = () => {
                             &times;
                           </button>
                         </div>
+
                         <div className="card-body d-flex flex-column">
                           <div className="row flex-grow-1">
                             <div className="col-md-12  text-start overflow-auto">
@@ -671,7 +681,7 @@ const ProjectManagement = () => {
                                   </div>
                                   <div className="row">
                                     <div className="col-md-4">
-                                      <button type="submit" className="btn">
+                                      <button type="submit" className="vndrbtn">
                                         Execute
                                       </button>
                                     </div>
@@ -687,6 +697,7 @@ const ProjectManagement = () => {
                             </div>
                           </div>
                         </div>
+
                       </div>
                     </div>
                   )}
@@ -709,6 +720,7 @@ const ProjectManagement = () => {
                       </div>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

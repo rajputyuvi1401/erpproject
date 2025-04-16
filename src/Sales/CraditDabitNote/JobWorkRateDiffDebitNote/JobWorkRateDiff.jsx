@@ -39,15 +39,15 @@ const JobWorkRateDiff = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="JobWorkRateDiff mt-5">
-                  <div className="JobWorkRateDiff-header mb-4 text-start">
+                <div className="JobWorkRateDiff">
+                  <div className="JobWorkRateDiff-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">New Dabit Note (JobWork Rate Diff.)</h5>
                       </div>
                         
                         <div className="col-md-6 text-end">
-                        <button type="button" className="btn" onClick={handleButtonClick}>
+                        <button type="button" className="vndrbtn" onClick={handleButtonClick}>
                           Dabit Note List
                         </button>
                         </div>
@@ -80,129 +80,110 @@ const JobWorkRateDiff = () => {
                        </div>
                     </div>
 
-                    <div className="table-responsive mt-5"> 
-                                <table className="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th colSpan="5">  
-                                            <div className="row">
-                                               <div className="col-2">
-                                                   <div className="row">
-                                                       <div className="col-md-6">
-                                                          <label htmlFor="">Select Tax Invoice : From:</label>
-                                                       </div>
-                                                       <div className="col-md-6">
-                                                           <input type="date" className="form-control" placeholder=""/>
-                                                       </div>
-                                                   </div>
-                                                </div>
-                                                <div className="col-2">
-                                                   <div className="row">
-                                                       <div className="col-md-4">
-                                                          <label htmlFor="">TO:</label>
-                                                       </div>
-                                                       <div className="col-md-8">
-                                                           <input type="date" className="form-control" placeholder=""/>
-                                                       </div>
-                                                   </div>
-                                                </div>
-                                                <div className="col-2">
-                                                   <div className="row">
-                                                       <div className="col-md-4">
-                                                          <label htmlFor="">Cust:</label>
-                                                       </div>
-                                                       <div className="col-md-8">
-                                                           <input type="text" className="form-control" placeholder=""/>
-                                                       </div>
-                                                   </div>
-                                                </div>
-                                                <div className="col-2">
-                                                   <div className="row">
-                                                       <div className="col-md-4">
-                                                       <div className="form-check">
-                                                            <input type="checkbox" className="form-check-input" id="Checkbox" />
-                                                            <label htmlFor="Checkbox" className="form-check-label"> Item: </label>
-                                                        </div>
-                                                       </div>
-                                                       <div className="col-md-8">
-                                                           <input type="text" className="form-control" placeholder="item Code"/>
-                                                       </div>
-                                                   </div>
-                                                </div>
-                                                <div className="col-2">
-                                                   <div className="row">
-                                                       <div className="col-md-4">
-                                                       <div className="form-check">
-                                                            <input type="checkbox" className="form-check-input" id="Checkbox" />
-                                                            <label htmlFor="Checkbox" className="form-check-label"> InvNo: </label>
-                                                        </div>
-                                                       </div>
-                                                       <div className="col-md-8">
-                                                           <input type="text" className="form-control" placeholder=""/>
-                                                       </div>
-                                                   </div>
-                                                </div>
-                                                <div className="col-1">
-                                                <button type="button" className="btn btn-primary">
-                                                    Search
-                                                </button>
-                                                </div>
-                                            </div>
-                                        </th>
-                                     
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td colSpan="5">
-                                            NO DATA FOUND !
-                                        </td>
-                                        
-                                    </tr>
-                                    </tbody>
-                                </table>
+                  <div className="JobWorkRateDiff-main mt-2">
+                      <div className="table-responsive">
+                        <table className="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th colSpan="5">
+                                <div className="row gx-2 gy-2 align-items-end">
+                                  {/* From Date */}
+                                  <div className="col-md-2">
+                                    <label htmlFor="fromDate" className="form-label">Select Tax Invoice: From</label>
+                                    <input type="date" id="fromDate" className="form-control" />
+                                  </div>
+
+                                  {/* To Date */}
+                                  <div className="col-md-2">
+                                    <label htmlFor="toDate" className="form-label">To</label>
+                                    <input type="date" id="toDate" className="form-control" />
+                                  </div>
+
+                                  {/* Customer */}
+                                  <div className="col-md-2">
+                                    <label htmlFor="customer" className="form-label">Cust</label>
+                                    <input type="text" id="customer" className="form-control" placeholder="Customer Name" />
+                                  </div>
+
+                                  {/* Item Code with Checkbox */}
+                                  <div className="col-md-2">
+                                    <div className="form-check mb-1">
+                                      <input type="checkbox" className="form-check-input" id="itemCheckbox" style={{ width: '12px', height: '12px', cursor: 'pointer', marginTop: '2px' }}/>
+                                      <label htmlFor="itemCheckbox" className="form-check-label">Item</label>
+                                    </div>
+                                    <input type="text" className="form-control" placeholder="Item Code" />
+                                  </div>
+
+                                  {/* Invoice No with Checkbox */}
+                                  <div className="col-md-2">
+                                    <div className="form-check mb-1">
+                                      <input type="checkbox" className="form-check-input" id="invCheckbox"  style={{ width: '12px', height: '12px', cursor: 'pointer', marginTop: '2px' }} />
+                                      <label htmlFor="invCheckbox" className="form-check-label">Inv No</label>
+                                    </div>
+                                    <input type="text" className="form-control" placeholder="Invoice No" />
+                                  </div>
+
+                                  {/* Search Button */}
+                                  <div className="col-md-1">
+                                    <button type="button" className="vndrbtn w-100">
+                                      Search
+                                    </button>
+                                  </div>
+                                </div>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td colSpan="5" className="text-center">
+                                NO DATA FOUND!
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                    </div>
 
-                  <div className="JobWorkRateDiff-main mt-5">
+                  <div className="JobWorkRateDiff-main mt-3">
                     <div className="JobWorkRateDiff-tabs">
                    
-                      <div className="tab-content mt-4" id="" >
+                      <div className="tab-content" id="" >
                             <div className="table-responsive">
                                         <table className="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                            <th>No.</th>
-                                            <th>Inv No </th>
-                                            <th>Inv Date</th>
-                                            <th>HSN Code</th>
-                                            <th>Qty</th>
-                                            <th>Edit</th>
-                                            <th>Old Rate</th>
-                                            <th className="d-flex">NewRate <input type="text" className="form-control" /> <button className="btn"> SetAll </button></th>
-                                            <th>Diff</th>
-                                            <th>Diff Amt</th>
-                                            <th>GRIR  No.</th>
-                                            <th>GRIR Date</th>
-                                            <th>Del</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>Edit</td>
-                                                <td></td>
-                                                <td><input type="text" className="form-control" /></td>
-                                                <td> <input type="text" className="form-control" /></td>
-                                                <td> <input type="text" className="form-control" /></td>
-                                                <td> <input type="text" className="form-control" /></td>
-                                                <td> <input type="date" className="form-control" /></td>
-                                                <td><span style={{border:"1px solid black"}}>X</span></td>
-                                            </tr>
-                                        </tbody>
+                                            <thead>
+                                                <tr>
+                                                <th>No.</th>
+                                                <th>Inv No </th>
+                                                <th>Inv Date</th>
+                                                <th>HSN Code</th>
+                                                <th>Qty</th>
+                                                <th>Edit</th>
+                                                <th>Old Rate</th>
+                                                <th className="d-flex">NewRate <input type="text" className="form-control" /> <button className="vndrbtn"> SetAll </button></th>
+                                                <th>Diff</th>
+                                                <th>Diff Amt</th>
+                                                <th>GRIR  No.</th>
+                                                <th>GRIR Date</th>
+                                                <th>Del</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>Edit</td>
+                                                    <td></td>
+                                                    <td><input type="text" className="form-control" /></td>
+                                                    <td> <input type="text" className="form-control" /></td>
+                                                    <td> <input type="text" className="form-control" /></td>
+                                                    <td> <input type="text" className="form-control" /></td>
+                                                    <td> <input type="date" className="form-control" /></td>
+                                                    <td><span className="vndrbtn" style={{border:"1px solid black"}}>X</span></td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                             </div>
 
@@ -211,7 +192,8 @@ const JobWorkRateDiff = () => {
                     </div>
                   </div>
 
-                      <div className="row mt-5">
+                  <div className="JobWorkRateDiff-main mt-2">
+                      <div className="row mt-2">
                             <div className="col-md-12">
                                 <div className="table-responsive">
                                     <table className="table table-bordered">
@@ -252,22 +234,24 @@ const JobWorkRateDiff = () => {
                                 </div>
                             </div>
                       </div>
+                </div>
 
-
+                <div className="JobWorkRateDiff-main mt-2">
                       <div className="row text-start">
                           <div className="col-md-2">
                              <label htmlFor="">Remark</label>
                              <textarea name=""  className="form-control" id=""></textarea>
                           </div>
                           <div className="col-md-2">
-                             <input type="checkbox" className="mt-5 " placeholder="" />
+                             <input type="checkbox" className="mt-4 " placeholder="" />
                              <label htmlFor=""> IS Service Invoice</label>
                           </div>
-                          <div className="col-md-2 mt-5">
-                            <button className="btn">Save Dabit Note</button>
-                            <button className="btn">Cancel</button>
+                          <div className="col-md-4 mt-4">
+                            <button className="vndrbtn">Save Dabit Note</button>
+                            <button className="vndrbtn">Cancel</button>
                           </div>
                       </div>
+               </div>
 
                 </div>
               </main>

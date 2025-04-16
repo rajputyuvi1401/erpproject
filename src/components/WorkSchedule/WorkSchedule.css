@@ -4,103 +4,170 @@
   padding: 0px;
 }
 
-.Workschedule1-header {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+.Workschedule {
+  width: 100%;
+  height: 100vh;
 }
 
-.Workschedule1-header .header-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 0;
-}
-.Workschedulemaster .Workschedulebtn {
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.Workschedulebtn:hover {
-  background-color: #0057b38d;
+.Workschedule1-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
 }
 
 .WorkscheduleMain {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
 }
 
-
-
-.Workscheduleselect .btn i {
-  margin-right: 5px;
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
 }
 
-@media (max-width: 767.98px) {
-  .WorkscheduleMain {
-    padding: 10px;
-  }
-
-  .Workscheduleselect {
-    padding: 10px;
-  }
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
 }
 
-.WorkscheduleTable {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
 }
 
-.WorkscheduleTable .table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.WorkscheduleTable .table {
-  width: 100%;
-  white-space: nowrap;
-}
-
-.WorkscheduleTable .table-primary th {
-  background-color: #007bff;
+.vndrbtn:hover{
+  background-color: #16bfff;
   color: white;
 }
 
-.WorkscheduleTable .table th,
-.WorkscheduleTable .table td {
-  vertical-align: middle;
-  text-align: center;
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.WorkscheduleTable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
   padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
   border-top: 1px solid #dee2e6;
 }
 
-.WorkscheduleTable .table .Workscheduletableww {
-  padding: 0.25rem 0.5rem;
-  align-items: center;
-  border: none;
-
-  padding: 10px;
-  border-radius: 10px;
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
 }
 
-.WorkscheduleTable .record-count {
-  margin-top: 10px;
-  text-align: right;
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
 }
 
-@media (max-width: 767.98px) {
-  .WorkscheduleTable {
-    padding: 10px;
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
   }
 
-  .WorkscheduleTable .table-responsive {
-    overflow-x: auto;
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
+  }
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
   }
 }

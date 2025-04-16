@@ -33,7 +33,7 @@ const PendingIndent = () => {
               <main
                 className={`main-content ${sideNavOpen ? "shifted" : ""}`}
               >
-              <div className="PendingIndent-header  text-start mt-5">
+              <div className="PendingIndent-header  text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">
@@ -43,16 +43,14 @@ const PendingIndent = () => {
 
                     {/* Buttons */}
                     <div className="col-md-8  d-flex flex-wrap justify-content-end">
-                    
-                       
-                      <button className="btn">
+                      <button className="vndrbtn">
                         Export To Excel
                       </button>
                     </div>
                   </div>
                 </div>
-                <div className="Pendingindent mt-5">
-                  <div className="container-fluid mt-4">
+                <div className="Pendingindent mt-3">
+                  <div className="container-fluid mt-1">
                    
                       <div className="table-responsive">
                         <table className="table table-bordered">
@@ -95,7 +93,7 @@ const PendingIndent = () => {
                           <tbody>
                             <tr>
                               <td>
-                                <button className="pobtn ">
+                                <button className="vndrbtn ">
                                  All Pending Indent
                                 </button>
                               </td>
@@ -149,7 +147,7 @@ const PendingIndent = () => {
                                 </select>
                               </td>
                               <td>
-                                <button className="pobtn">Search</button>
+                                <button className="vndrbtn">Search</button>
                               </td>
                             </tr>
                           </tbody>

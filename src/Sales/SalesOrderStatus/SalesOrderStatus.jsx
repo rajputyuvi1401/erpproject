@@ -32,23 +32,24 @@ const SalesOrderStatus = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="SalesOrderStatus mt-5">
-                  <div className="SalesOrderStatus-header mb-4 text-start">
+                <div className="SalesOrderStatus">
+                  <div className="SalesOrderStatus-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Sales Order Status</h5>
                       </div>
                      
                       <div className="col-md-6 text-end">
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           Export To Excel
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="SalesOrderStatus-main mt-5">
+                  <div className="SalesOrderStatus-main">
                     <div className="SalesOrderStatus-tabs">
+                      
                       <ul
                         className="nav nav-tabs"
                         id="AssembleEntryTabs"
@@ -106,6 +107,7 @@ const SalesOrderStatus = () => {
 
 
                       <div className="tab-content mt-4" id="SalesOrderStatusTabsContent" >
+
                          <div
                           className="tab-pane fade show active"
                           id="query"
@@ -116,7 +118,7 @@ const SalesOrderStatus = () => {
                                     <div className="row mb-2">
                                         <div className="col-4">
                                         <label htmlFor="contractor">
-                                            From Date :
+                                            From Date:
                                         </label>
                                         </div>
                                         <div className="col-8">
@@ -141,7 +143,7 @@ const SalesOrderStatus = () => {
                             <div className="row text-start">
                                  <div className="col-md-3">
                                     <div className="row mb-2">
-                                        <div className="col-4 d-flex justify-content-center align-items-center">
+                                        <div className="col-4 d-flex justify-content-start align-items-center">
                                         <input type="checkbox" id="Item-checkbox" />
                                         <label htmlFor="customer-checkbox" className="ms-2">FromCust:</label>
                                         </div>
@@ -167,7 +169,7 @@ const SalesOrderStatus = () => {
                             <div className="row text-start">
                                  <div className="col-md-3">
                                     <div className="row mb-2">
-                                        <div className="col-4 d-flex justify-content-center align-items-center">
+                                        <div className="col-4 d-flex justify-content-start align-items-center">
                                         <input type="checkbox" id="Item-checkbox" />
                                         <label htmlFor="customer-checkbox" className="ms-2">ItemCode:</label>
                                         </div>
@@ -193,7 +195,7 @@ const SalesOrderStatus = () => {
                             <div className="row text-start">
                                  <div className="col-md-3">
                                     <div className="row mb-2">
-                                        <div className="col-4 d-flex justify-content-center align-items-center">
+                                        <div className="col-4 d-flex justify-content-start align-items-center">
                                         <input type="checkbox" id="Item-checkbox" />
                                         <label htmlFor="customer-checkbox" className="ms-2">CustPO:</label>
                                         </div>
@@ -219,15 +221,30 @@ const SalesOrderStatus = () => {
 
                             <div className="row text-start">
                                  <div className="col-md-3">
-                                    <div className="row mb-2">
-                                        <div className="col-4 d-flex justify-content-center align-items-center">
-                                        <input type="checkbox" id="Item-checkbox" />
-                                        <label htmlFor="customer-checkbox" className="ms-2">City:</label>
-                                        </div>
-                                        <div className="col-8">
-                                          <input type="name" placeholder="City.." className="form-control"/>
-                                        </div>
-                                    </div>
+                                 <div className="row mb-2">
+  <div className="col-4 d-flex justify-content-start align-items-center">
+    <input 
+      type="checkbox" 
+      id="city-checkbox"
+      style={{ width: "12px", height: "12px", verticalAlign: "middle" }}
+    />
+    <label 
+      htmlFor="city-checkbox" 
+      className="ms-2" 
+      style={{ verticalAlign: "middle" }}
+    >
+      City:
+    </label>
+  </div>
+
+  <div className="col-8">
+    <input 
+      type="text" 
+      placeholder="City.." 
+      className="form-control" 
+    />
+  </div>
+                                  </div>
                                  </div>               
                             </div>
 
@@ -273,7 +290,7 @@ const SalesOrderStatus = () => {
                           <div className="col-md-3">
                             </div>
                             <div className="col-md-3">
-                                <button className="btn  btn-primary w-50"> Execute </button>
+                                <button className="vndrbtn w-50"> Execute </button>
                             </div>
                             </div>
 
@@ -413,6 +430,7 @@ const SalesOrderStatus = () => {
                         </div>
 
                       </div>
+
                     </div>
                   </div>
 

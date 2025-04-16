@@ -4,9 +4,6 @@
   padding: 0;
 }
 
-
-
-
 .BillMaterialMain {
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
@@ -27,9 +24,9 @@
   border-radius: 5px;
 }
 
-.Billmaterialbtn,
-.materialbtn,
-.BOMBOttombtn {
+.Billmaterialvndrbtn,
+.materialvndrbtn,
+.BOMBOttomvndrbtn {
   border: none;
   padding: 5px;
   border-radius: 5px;
@@ -43,12 +40,12 @@
   .BillMaterialMain .text-end {
     text-align: center !important;
   }
-  .btn-group {
+  .vndrbtn-group {
     flex-direction: column;
   }
-  .Billmaterialbtn,
-  .materialbtn,
-  .BOMBOttombtn {
+  .Billmaterialvndrbtn,
+  .materialvndrbtn,
+  .BOMBOttomvndrbtn {
     display: block;
     width: 100%;
     margin-bottom: 10px;
@@ -115,9 +112,9 @@
   white-space: nowrap;
 }
 
-.Standard .Standardbtn,
+.Standard .Standardvndrbtn,
 .StandardButton,
-.Bomitem .Bomitembtn,
+.Bomitem .Bomitemvndrbtn,
 .BomitemButton {
   border: none;
   padding: 5px;
@@ -152,7 +149,7 @@
 .bomButton:hover {
   background-color: darkblue;
 }
-.Standardbtn {
+.Standardvndrbtn {
   background-color: blue;
   color: white;
   border: none;
@@ -161,7 +158,7 @@
   cursor: pointer;
 }
 
-.Standardbtn:hover {
+.Standardvndrbtn:hover {
   background-color: darkblue;
 }
 

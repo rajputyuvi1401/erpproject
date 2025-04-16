@@ -32,7 +32,7 @@ const ItemOther = ({ updateFormData, itemDetails = [] }) => {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-3">
-            <h3>Item Other Details</h3>
+            <h4>Item Other Details</h4>
             <table className="table table-bordered table-responsive">
               <thead>
                 <tr>

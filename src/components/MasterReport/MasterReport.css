@@ -4,159 +4,171 @@
   padding: 0px;
 }
 
-.Report1-header {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+.Report {
+  width: 100%;
+  height: 100vh;
 }
 
-.Report1-header .header-title {
+.Report1-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
+}
+
+.ReportMain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.header-title {
   font-size: 20px;
   font-weight: bold;
+  color: blue;
   margin: 0;
 }
 
-
-
-
-
-
-@media (max-width: 767.98px) {
-  .ReportMain {
-    padding: 10px;
-  }
-
-  .Reportselect1 {
-    padding: 10px;
-  }
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
 }
 
-.ReportTable1 {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
-
-}
-
-.ReportTable1 .table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.ReportTable1 .table {
-  width: 100%;
-  white-space: nowrap;
-}
-
-
-
-.ReportTable1 .table .btn-tableww {
-  padding: 0.25rem 0.5rem;
-  align-items: center;
+.vndrbtn {
   border: none;
-
-  padding: 10px;
-  border-radius: 10px;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
 }
 
-.ReportTable1 .recordbottom1 {
-  margin-top: 10px;
-  text-align: right;
-}
-
-@media (max-width: 767.98px) {
-  .ReportTable1 {
-    padding: 10px;
-  }
-
-  .ReportTable1 .table-responsive {
-    overflow-x: auto;
-  }
-}
-.ReportMain {
-  padding: 20px;
-}
-
-.Report .nav-tabs .nav-item .nav-link {
-  cursor: pointer;
-  border: none;
-}
-
-.Report .nav-tabs .nav-item .nav-link.active {
-  background-color: #007bff;
+.vndrbtn:hover{
+  background-color: #16bfff;
   color: white;
 }
 
-.Report .tab-content {
-  border: none;
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
 }
 
+label{
+  font-size: 12px;
+}
 
-
-.Reportselect2 .btnReportkk2 {
-  border: none;
-  background-color: rgba(235, 233, 233, 0.685);
-  color: black;
+.ReportTable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  margin-top: 5px;
   padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
 }
 
-.Reportselect2 .btn i {
-  margin-right: 5px;
-}
-
-@media (max-width: 767.98px) {
-  .ReportMain {
-    padding: 10px;
-  }
-
-  .Reportselect2 {
-    padding: 10px;
-  }
-}
-
-.ReportTable2 {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
-}
-
-.ReportTable2 .table-responsive {
-  width: 100%;
+.table-responsive {
   overflow-x: auto;
 }
 
-.ReportTable2 .table {
+.table {
   width: 100%;
-  white-space: nowrap;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
 }
 
-
-
-.ReportTable2 .table .btn-tableww {
-  padding: 0.25rem 0.5rem;
-  align-items: center;
-  border: none;
-
-  padding: 10px;
-  border-radius: 10px;
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
 }
 
-.ReportTable2 .recordbottom1 {
-  margin-top: 10px;
-  text-align: right;
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
 }
 
-@media (max-width: 767.98px) {
-  .ReportTable2 {
-    padding: 10px;
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
   }
 
-  .ReportTable2 .table-responsive {
-    overflow-x: auto;
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
+  }
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
   }
 }

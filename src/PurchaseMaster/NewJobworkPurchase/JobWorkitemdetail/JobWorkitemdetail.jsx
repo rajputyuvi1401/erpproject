@@ -157,7 +157,7 @@ const JobWorkitemdetail = () => {
                         onChange={handleChange}
                         placeholder="Search"
                       />
-                        <button type="button" className="btn">Search</button>
+                        <button type="button" className="vndrbtn">Search</button>
                       </td>
                       <td>
                       <textarea

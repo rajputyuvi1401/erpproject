@@ -1,101 +1,179 @@
-.ReworkProductionReport {
-  font-family: Arial, sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.ReworkProductionReportMaster {
+  width: 100%;
+  height: 100vh;
 }
 
 .ReworkProductionReport-header {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 15px; /* Padding around header */
-  border-radius: 5px;
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
 }
 
-.ReworkProductionReport-header .header-title {
-  font-size: 18px;
+.ReworkProductionReport-main {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
   margin: 0;
 }
 
-.ReworkProductionReport-header select,
-.ReworkProductionReport-header .btn {
-  width: 100%;
-}
-
-.ReworkProductionReport-main label {
-  font-weight: bold;
-  font-size: 14px;
-  margin-bottom: 5px;
+.vndrbtn {
   display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
 }
 
-.ReworkProductionReport-main input[type="date"],
-.ReworkProductionReport-main input[type="text"],
-.ReworkProductionReport-main select {
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+  height: 35px;
+  padding: 5px 10px;
+}
+.form-control{
+  font-size: 12px;
+  height: 35px;
+  padding: 5px 10px;
+  /* border: 1px solid #a6a8a9; */
+
+}
+
+label{
+  font-size: 12px;
+}
+
+.ReworkProductionReporttable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
   width: 100%;
-  padding: 5px;
-  font-size: 14px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
 }
 
-.ReworkProductionReport-main .btn {
-  width: 100%;
-  padding: 8px;
+.table th {
+  background-color: #16bfff;
+  color: white;
   font-size: 14px;
 }
 
-/* Responsive Styles */
-@media (max-width: 992px) {
-  .ReworkProductionReport-header .row .col-md-10,
-  .ReworkProductionReport-main .row .col-md-1 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
 
-  .ReworkProductionReport-header .row,
-  .ReworkProductionReport-main .row {
-    flex-direction: column;
-  }
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
 
-  .ReworkProductionReport-header .header-title {
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
     text-align: center;
   }
 
-  .ReworkProductionReport-main .btn {
-    margin-top: 10px;
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
   }
 
-  .table {
-    font-size: 12px;
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
   }
 }
 
-@media (max-width: 768px) {
-  .table-responsive {
-    overflow-x: auto;
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
   }
 
-  .ReworkProductionReport-main label {
-    font-size: 12px;
+  .vndrbtn {
+    padding: 5px 10px;
   }
 
-  .table tbody td {
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
     font-size: 11px;
   }
 }
 
-@media (max-width: 576px) {
-  .ReworkProductionReport {
-    padding: 10px;
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
   }
 
-  .ReworkProductionReport-header {
-    padding: 10px;
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
   }
 
-  .ReworkProductionReport-main {
-    padding: 10px;
-  }
-
-  .table tbody td {
-    font-size: 10px;
+  .table th,
+  .table td {
+    font-size: 12px;
   }
 }

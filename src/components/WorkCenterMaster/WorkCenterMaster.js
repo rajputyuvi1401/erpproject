@@ -143,7 +143,7 @@ const WorkCenterMaster = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="workcentermaster">
-                  <div className="workmain mt-5">
+                  <div className="workmain">
                     <div className="workmain-header mb-4 text-start">
                       <div className="row align-items-center">
                         <div className="col-md-6">
@@ -151,18 +151,18 @@ const WorkCenterMaster = () => {
                         </div>
                         <div className="col-md-6 text-md-end text-start mt-2 mt-md-0">
                           <button
-                            className="btn me-2"
+                            className="vndrbtn me-2"
                             onClick={handleAddNewClick}
                           >
                             Add New
                           </button>
                           <button
-                            className="btn  me-2"
+                            className="vndrbtn  me-2"
                             onClick={handleNewButtonWork}
                           >
                             Work Center Type
                           </button>
-                          <button className="btn">Export Report</button>
+                          <button className="vndrbtn">Export Report</button>
                         </div>
                       </div>
                     </div>
@@ -172,7 +172,7 @@ const WorkCenterMaster = () => {
                           <div className="card-header-work">
                             <h5>Add New Work Center</h5>
                             <button
-                              className="btn-close"
+                              className="vndrbtn"
                               onClick={handleCloseCard}
                             >
                               ×
@@ -183,93 +183,94 @@ const WorkCenterMaster = () => {
                         </div>
                       </div>
                     )}
-                {showNewCardWork && (
-  <div className="overlay-workcenter">
-    <div className="card-work">
-      <div className="card-header-work">
-        <h5 className="title">Machine Group Type</h5>
-        <button className="btn-close" onClick={handleNewButtonWork}>×</button>
-      </div>
-      <form onSubmit={handleSubmit2}>
-        <div className="card-body-work">
-          <h5 className="section-title">Work Center Type</h5>
-          <hr />
-          <div className="row mb-3">
-            <div className="col-md-4">
-              <label className="form-label">Enter Type Group:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="inputType"
-                name="typeGroup"
-                value={typeGroup}
-                onChange={(e) => setTypeGroup(e.target.value)}
-                placeholder="Work Center Type"
-              />
-              {errors.typeGroup && (
-                <div className="text-danger">{errors.typeGroup}</div>
-              )}
-            </div>
-            <div className="col-md-4">
-              <label className="form-label">Prod WT:</label>
-              <select
-                className="form-select"
-                id="inputProdWt"
-                name="prodWt"
-                value={prodWt}
-                onChange={(e) => setProdWt(e.target.value)}
-              >
-                <option value="Master">Master</option>
-                <option value="Master_Cut_WT">Master_Cut_WT</option>
-                <option value="Master_Cut">Master_Cut</option>
-              </select>
-              {errors.prodWt && (
-                <small className="text-danger">{errors.prodWt}</small>
-              )}
-            </div>
-            <div className="col-md-4 mt-5">
-              <button className="btn" type="submit">Save</button>
-            </div>
-          </div>
+                    {showNewCardWork && (
+                        <div className="overlay-workcenter">
+                          <div className="card-work">
+                            <div className="card-header-work">
+                              <h5 className="title">Machine Group Type</h5>
+                              <button className="vndrbtn-close" onClick={handleNewButtonWork}>×</button>
+                            </div>
+                            <form onSubmit={handleSubmit2}>
+                              <div className="card-body-work">
+                                <h5 className="section-title">Work Center Type</h5>
+                                <hr />
+                                <div className="row mb-3">
+                                  <div className="col-md-4">
+                                    <label className="form-label">Enter Type Group:</label>
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      id="inputType"
+                                      name="typeGroup"
+                                      value={typeGroup}
+                                      onChange={(e) => setTypeGroup(e.target.value)}
+                                      placeholder="Work Center Type"
+                                    />
+                                    {errors.typeGroup && (
+                                      <div className="text-danger">{errors.typeGroup}</div>
+                                    )}
+                                  </div>
+                                  <div className="col-md-4">
+                                    <label className="form-label">Prod WT:</label>
+                                    <select
+                                      className="form-select"
+                                      id="inputProdWt"
+                                      name="prodWt"
+                                      value={prodWt}
+                                      onChange={(e) => setProdWt(e.target.value)}
+                                    >
+                                      <option value="Master">Master</option>
+                                      <option value="Master_Cut_WT">Master_Cut_WT</option>
+                                      <option value="Master_Cut">Master_Cut</option>
+                                    </select>
+                                    {errors.prodWt && (
+                                      <small className="text-danger">{errors.prodWt}</small>
+                                    )}
+                                  </div>
+                                  <div className="col-md-4 mt-5">
+                                    <button className="vndrbtn" type="submit">Save</button>
+                                  </div>
+                                </div>
 
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Type</th>
-                <th>Item WT</th>
-                <th>User Group</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>cnc</td>
-                <td>0</td>
-                <td>0</td>
-                <td>
-                  <button className="btn">
-                    <i className="fas fa-edit"></i>
-                  </button>
-                </td>
-                <td>
-                  <button className="btn">
-                    <i className="fas fa-trash"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </form>
-    </div>
-  </div>
-)}
-
+                                <table className="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th>#</th>
+                                      <th>Type</th>
+                                      <th>Item WT</th>
+                                      <th>User Group</th>
+                                      <th>Edit</th>
+                                      <th>Delete</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>1</td>
+                                      <td>cnc</td>
+                                      <td>0</td>
+                                      <td>0</td>
+                                      <td>
+                                        <button className="vndrbtn">
+                                          <i className="fas fa-edit"></i>
+                                        </button>
+                                      </td>
+                                      <td>
+                                        <button className="vndrbtn">
+                                          <i className="fas fa-trash"></i>
+                                        </button>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      )}
                   </div>
-                  <div className="centerMain mt-5">
+
+                  <div className="centerMain">
                     <div className="container-fluid">
                       <div className="row text-start centerselect">
                         <div className="col-md-1 col-sm-3 mb-3 mb-sm-0">
@@ -325,7 +326,7 @@ const WorkCenterMaster = () => {
                           </select>
                         </div>
                         <div className="col-md-3 col-sm-12 text-sm-start mt-2">
-                          <button className="btn">
+                          <button className="vndrbtn">
                             <i className="bi bi-search"></i> Search
                           </button>
                         </div>
@@ -333,7 +334,7 @@ const WorkCenterMaster = () => {
                     </div>
                   </div>
 
-                  <div className="workTable mt-5">
+                  <div className="workTable mt-2">
                     <div className="container-fluid">
                       <div className="table-responsive">
                         <table className="table">
@@ -368,28 +369,30 @@ const WorkCenterMaster = () => {
                   <td>{item.PPM}</td>
                   <td>-</td>
                   <td>
-                    <button className="btn" onClick={() => handleEdit(item)}>
+                    <button className="vndrbtn" onClick={() => handleEdit(item)}>
                       <FaEdit/>
                     </button>
                   </td>
                   <td>
-                    <button className="btn" onClick={() => handleDelete(item.id)}>
+                    <button className="vndrbtn" onClick={() => handleDelete(item.id)}>
                       <FaTrash/>
                     </button>
                   </td>
                   <td>
-                    <button className="btn">Doc</button>
+                    <button className="vndrbtn">Doc</button>
                   </td>
                 </tr>
               ))}
             </tbody>
-          </table>
-        </div>
-        </div>
-      </div>
-      <div className="record-count text-start" style={{ color: "blue", padding: "10px" }}>
-        Total Records: {data.length}
-      </div>
+                      </table>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div className="record-count text-start" style={{ color: "blue", padding: "10px" }}>
+                    Total Records: {data.length}
+                  </div>
+                  
                 </div>
               </main>
             </div>

@@ -30,7 +30,7 @@ const SupplierWiseList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="SupplierWiseList-header text-start mt-5">
+                <div className="SupplierWiseList-header text-start">
                     <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title text-start">
@@ -63,16 +63,16 @@ const SupplierWiseList = () => {
                             <option>Type 3</option>
                           </select>
                         </div>
-                        <div className="col-md-2 d-flex align-items-end justify-content-end">
-                          <button className="pobtn">Execute</button>
+                        <div className="col-md-4 d-flex align-items-end justify-content-end">
+                          <button className="vndrbtn">Execute</button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="SupplierWiseListstatus mt-5">
-                  <div className="container-fluid mt-4">
+                <div className="SupplierWiseListstatus mt-3">
+                  <div className="container-fluid ">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>
@@ -144,7 +144,7 @@ const SupplierWiseList = () => {
                             </td>
 
                             <td>
-                              <button className="pobtn">Search</button>
+                              <button className="vndrbtn">Search</button>
                             </td>
                           </tr>
                         </tbody>
@@ -152,7 +152,7 @@ const SupplierWiseList = () => {
                     </div>
                   </div>
                   <div className="Purchaseordertable">
-                    <div className="container-fluid mt-4">
+                    <div className="container-fluid mt-2">
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>

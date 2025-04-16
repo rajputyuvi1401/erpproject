@@ -32,14 +32,14 @@ const CycleTime = () =>  { const [sideNavOpen, setSideNavOpen] = useState(false)
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="CycleTime mt-5">
-                  <div className="CycleTime-header mb-4 text-start">
+                <div className="CycleTime">
+                  <div className="CycleTime-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Cycle Time Report</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn" to="#/">
+                        <button type="button" className="vndrbtn" to="#/">
                            Export Report 
                         </button>
                         
@@ -52,21 +52,21 @@ const CycleTime = () =>  { const [sideNavOpen, setSideNavOpen] = useState(false)
                       <div className="row g-3 text-start">
 
                         {/* From Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         
                         {/* To Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>To :</label>
                           <input type="date" className="form-control" />
                         </div>
 
   
                         {/*   Machine */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label> Machine :</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -76,12 +76,12 @@ const CycleTime = () =>  { const [sideNavOpen, setSideNavOpen] = useState(false)
                         </div>
   
                           {/* Item */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Item :</label>
                           <input type="text" className="form-control" />
                         </div>
                         <div className="col-sm-2">
-                        <button type="button" className="btn" style={{marginTop:"34px"}} >
+                        <button type="button" className="vndrbtn" style={{marginTop:"22px"}} >
                             Search
                         </button>   
                         </div>

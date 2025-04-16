@@ -157,7 +157,7 @@ const Cutwise = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Cutwise1">
                  
-                  <div className="cutwiseheader-header mb-4 text-start mt-3">
+                  <div className="cutwiseheader-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">
@@ -165,18 +165,18 @@ const Cutwise = () => {
                       </h5>
                     </div>
                     <div className="col-md-6 text-end">
-                      <Link to="/" className="btn">
+                      <Link to="/" className="vndrbtn     ">
                         Export To Excel
                       </Link>
                     </div>
                   </div>
                   </div>
-                  <div className="cutwisemain mt-5">
+                  <div className="cutwisemain">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
                           <div className="table-responsive">
-                            <table className="table table-bordered">
+                            <table className="table">
                               <thead>
                                 <tr>
                                   <th>HSN/SAC Code<span className="text-danger">*</span></th>
@@ -350,14 +350,14 @@ const Cutwise = () => {
 
                                   <td>
                                     <button
-                                      className="btn"
+                                      className="vndrbtn     "
                                       onClick={handleSave}
                                     >
                                       {editMode ? "Update" : "Save"}
                                     </button>
                                     {editMode && (
                                       <button
-                                        className="btn"
+                                        className="vndrbtn     "
                                         onClick={() => setEditMode(false)}
                                       >
                                         Cancel
@@ -372,10 +372,10 @@ const Cutwise = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="Cutwisetable mt-5">
+                  <div className="Cutwisetable mt-2">
                     <div className="container-fluid">
                       <div className="table-responsive">
-                        <table className="table table-bordered">
+                        <table className="table">
                           <thead>
                             <tr>
                               <th>Sr.</th>
@@ -416,13 +416,13 @@ const Cutwise = () => {
                                 <td>{item.User}</td>
                                 <td>
                                   <button
-                                    className="btnwise"
+                                    className="vndrbtn     wise"
                                     onClick={() => handleEdit(item)}
                                   >
                                     <i className="fas fa-edit"></i>
                                   </button>
                                   <button
-                                    className="btnwise"
+                                    className="vndrbtn     wise"
                                     onClick={() => handleDelete(item.id)}
                                   >
                                     <i className="fas fa-trash"></i>

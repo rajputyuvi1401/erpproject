@@ -49,7 +49,7 @@ const ShopFloor = () => {
                   </div>
                 </div>
 
-                <div className="ShopFloor-main">
+                <div className="ShopFloor-main mt-2">
                   <div className="container-fluid text-start">
                     <div className="row">
                       <div className="col-md-4 col-12">
@@ -93,7 +93,7 @@ const ShopFloor = () => {
                             <input className="form-control" />
                           </div>
                           <div className="col-md-4 col-12 text-start">
-                            <button className="pobtn" type="button">
+                            <button className="vndrbtn" type="button">
                               Select
                             </button>
                           </div>
@@ -182,9 +182,9 @@ const ShopFloor = () => {
                       </div>
                     </div>
 
-                    <div className="row text-end mt-4">
+                    <div className="row text-start mt-3">
                       <div className="col-md-6">
-                        <button type="submit" className="pobtn">
+                        <button type="submit" className="vndrbtn">
                           Save
                         </button>
                       </div>

@@ -43,8 +43,8 @@ const RG1Register  = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="RG1Register mt-5">
-                <div className="RG1Register-header mb-4 text-start">
+              <div className="RG1Register">
+                <div className="RG1Register-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title">  RG1 Register </h5>
@@ -52,7 +52,7 @@ const RG1Register  = () => {
 
                     <div className="col-md-8 text-end">
                         
-                        <button type="button" className="btn" to="#/" onClick={handleButtonClick}>
+                        <button type="button" className=" vndrbtn" to="#/" onClick={handleButtonClick}>
                             
                         </button> 
                     </div>
@@ -63,7 +63,7 @@ const RG1Register  = () => {
                 <div className="RG1Register-Main">
                     <div className="container-fluid">
                       
-                        <div className="row g-3 text-start mt-3">  
+                        <div className="row g-3 text-start">  
 
                        <div className="col-sm-6 col-md-2 col-lg-1">
                           <label>From:</label>
@@ -111,15 +111,15 @@ const RG1Register  = () => {
 
       {/* Buttons in the same row */}
       <div className="d-flex gap-2 mb-4 flex-wrap ">
-  <button className="btn btn-outline-secondary">Print Rg1</button>
-  <button className="btn btn-secondary">Print CT-3</button>
-  <button className="btn btn-secondary">Print CT-1</button>
-  <button className="btn btn-secondary">Print UT-1</button>
+  <button className=" vndrbtn ">Print Rg1</button>
+  <button className=" vndrbtn ">Print CT-3</button>
+  <button className=" vndrbtn ">Print CT-1</button>
+  <button className=" vndrbtn ">Print UT-1</button>
 </div>
 
 
 
-    </div>
+                     </div>
 
                         </div>
 

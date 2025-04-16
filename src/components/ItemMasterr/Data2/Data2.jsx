@@ -620,7 +620,7 @@ const Data2 = () => {
                   </div>
                   <div className="col-sm-2">
                     <button
-                      className="btn"
+                      className="vndrbtn"
                       type="button"
                       onClick={handleNewButtonQtypack}
                     >
@@ -629,7 +629,7 @@ const Data2 = () => {
                   </div>
                   <div className="col-sm-1">
                     <button
-                      className="btn"
+                      className="vndrbtn"
                       type="button"
                       style={{ fontSize: "10px" }}
                     >
@@ -1290,11 +1290,11 @@ const Data2 = () => {
           </div>
           <div className="row mb-3 text-end">
             <div className="col-sm-12">
-              <button type="button" className="btn" onClick={handleSavedata}>
+              <button type="button" className="vndrbtn" onClick={handleSavedata}>
                 Save Data
               </button>
 
-              <button type="button" className="btn" onClick={handleCleardata}>
+              <button type="button" className="vndrbtn" onClick={handleCleardata}>
                 Clear Data
               </button>
             </div>
@@ -1315,7 +1315,7 @@ const Data2 = () => {
                     </div>
                     <div className="col-md-6 text-end">
                       <button
-                        className="btn-cl justify-content-end"
+                        className="vndrbtn-cl justify-content-end"
                         style={{
                           margin: "5px",
                           color: "gray",

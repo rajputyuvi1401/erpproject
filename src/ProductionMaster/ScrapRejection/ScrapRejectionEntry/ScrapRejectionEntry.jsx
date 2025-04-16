@@ -180,7 +180,7 @@ const ScrapRejectionEntry = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ScrapRejectionEntry mt-4">
+                <div className="ScrapRejectionEntry">
                   <form onSubmit={handleSubmit}>
                     <div className="ScrapRejectionEntry-header mb-3">
                       <div className="row align-items-center">
@@ -193,16 +193,16 @@ const ScrapRejectionEntry = () => {
                           <div className="row align-items-center">
                             <div className="col-md-2">
                             <select
-  id="seriesSelect"
-  className="form-select"
-  name="Plant"
-  value={formData.Plant}
-  onChange={handleInputChange}
->
-  <option value="">Select Plant</option>
-  <option value="Produlink">Produlink</option>
-  <option value="FactoryA">Factory A</option>
-</select>
+                                id="seriesSelect"
+                                className="form-select"
+                                name="Plant"
+                                value={formData.Plant}
+                                onChange={handleInputChange}
+                              >
+                                <option value="">Select Plant</option>
+                                <option value="Produlink">Produlink</option>
+                                <option value="FactoryA">Factory A</option>
+                              </select>
                             </div>
                           </div>
                         </div>
@@ -283,8 +283,6 @@ const ScrapRejectionEntry = () => {
                             onChange={handleInputChange}
                           />
                         </div>
-                      </div>
-                      <div className="row g-3 text-start">
                         <div className="col-md-2">
                           <label htmlFor="PartCode" className="form-label">
                             Part Code
@@ -300,6 +298,9 @@ const ScrapRejectionEntry = () => {
                             <option value="Option1">Option 1</option>
                           </select>
                         </div>
+                      </div>
+                      <div className="row g-3 mt-1 text-start">
+                        
 
                         <div className="col-md-2">
                           <label htmlFor="Stock" className="form-label">
@@ -360,10 +361,6 @@ const ScrapRejectionEntry = () => {
                             <option value="Option1">Option 1</option>
                           </select>
                         </div>
-                      </div>
-
-                      <div className="row g-3 text-start">
-                        
 
                         <div className="col-md-2">
                           <label htmlFor="ReworkScrapRemark" className="form-label">
@@ -377,6 +374,7 @@ const ScrapRejectionEntry = () => {
                             onChange={handleInputChange}
                           ></textarea>
                         </div>
+                        
                         <div className="col-md-2">
                           <label htmlFor="RejectScrapRemark" className="form-label">
                            Reject Scrap Remark
@@ -390,6 +388,10 @@ const ScrapRejectionEntry = () => {
 />
                         </div>
 
+                      </div>
+
+                      <div className="row g-3 mt-1 text-start">
+          
                         <div className="col-md-2">
                           <label htmlFor="ScrapItemCode" className="form-label">
                             Scrap Item Code
@@ -409,18 +411,18 @@ const ScrapRejectionEntry = () => {
                             Scrap WT
                           </label>
                           <textarea
-  className="form-control"
-  id="scrapWt"
-  name="ScrapWt"
-  value={formData.ScrapWt}
-  onChange={handleInputChange}
-></textarea>
+                          className="form-control"
+                          id="scrapWt"
+                          name="ScrapWt"
+                          value={formData.ScrapWt}
+                          onChange={handleInputChange}
+                        ></textarea>
 
                         </div>
 
-                        <div className="col-md-2 text-end" style={{marginTop:"49px"}}>
+                        <div className="col-md-2" style={{marginTop:"49px"}}>
                           <button
-                            className="btn btn-primary"
+                            className="vndrbtn w-100"
                             type="button"
                             onClick={handleAdd}
                           >
@@ -430,7 +432,7 @@ const ScrapRejectionEntry = () => {
                       </div>
                     </div>
 
-                    <div className="ScrapRejectionEntry-table mt-4">
+                    <div className="ScrapRejectionEntry-table mt-2">
                       <table className="table table-bordered table-striped">
                         <thead>
                           <tr>
@@ -459,7 +461,7 @@ const ScrapRejectionEntry = () => {
       <td>{item.Reason2}</td>
       <td>{item.ScrapWt}</td>
       <td>
-        <button className="btn" onClick={() => handleRemove(index)}><FaTrash/></button>
+        <button className="vndrbtn" onClick={() => handleRemove(index)}><FaTrash/></button>
       </td>
     </tr>
   ))}
@@ -471,14 +473,14 @@ const ScrapRejectionEntry = () => {
                     <div className="row mt-3 justify-content-end">
                       <div className="text-end col-auto d-flex gap-2">
                         {/* Save Entry Button */}
-                        <button type="submit" className="btn btn-primary">
+                        <button type="submit" className="vndrbtn">
                           Save Entry
                         </button>
 
                         {/* Clear Button */}
                         <button
                           type="button"
-                          className="btn btn-secondary"
+                          className="vndrbtn"
                          
                         >
                           Clear

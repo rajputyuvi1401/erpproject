@@ -33,17 +33,17 @@ const QualityPlan = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="QualityPlanList mt-5">
-                <div className="QualityPlanList-header mb-4 text-start">
+              <div className="QualityPlanList">
+                <div className="QualityPlanList-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title"> Quality Control Plan List </h5>
                     </div>
                     <div className="col-md-8 text-end">
-                      <button type="button" className="btn" to="/">
+                      <button type="button" className="vndrbtn" to="/">
                         New Plan
                       </button>
-                      <button type="button" className="btn" to="#/">
+                      <button type="button" className="vndrbtn" to="#/">
                         Export Report
                       </button>
                      </div>
@@ -54,7 +54,7 @@ const QualityPlan = () => {
                   <div className="container-fluid">
                     <div className="row g-3 text-start">
                         {/* Plant */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>Main Group :</label>
                         <select className="form-control" style={{marginTop:"1px"}}>
                           <option>Select</option>
@@ -76,23 +76,23 @@ const QualityPlan = () => {
                       </div>
 
                       {/* Item Name */}
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>Item Name:</label>
                         <input type="text" className="form-control"/>
                       </div>
 
-                      <div className="col-sm-2 col-md-2 col-lg-1 mt-5">
-                      <button type="button" className="btn btn-primary w-100" >
+                      <div className="col-sm-2 col-md-2 col-lg-1">
+                      <button type="button" className="vndrbtn  w-100" style={{marginTop:"22px"}} >
                           Search
                       </button> 
                       </div>
-                      <div className="col-sm-2 col-md-2 col-lg-1 mt-5">
-                      <button type="button" className="btn btn-primary w-100" >
+                      <div className="col-sm-2 col-md-2 col-lg-1">
+                      <button type="button" className="vndrbtn  w-100" style={{marginTop:"22px"}} >
                           Clear
                       </button> 
                       </div>
-                      <div className="col-sm-2 col-md-2 col-lg-1 mt-5">
-                      <button type="button" className="btn btn-primary w-100" >
+                      <div className="col-sm-2 col-md-2 col-lg-1" >
+                      <button type="button" className="vndrbtn w-100" style={{marginTop:"22px"}}>
                           View All
                       </button> 
                       </div>
@@ -101,7 +101,7 @@ const QualityPlan = () => {
                   </div>
                 </div>
 
-             <div className="table-responsive">
+                 <div className="ProQualityPlantable table-responsive">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>

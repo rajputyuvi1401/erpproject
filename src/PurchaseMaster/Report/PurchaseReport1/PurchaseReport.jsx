@@ -30,7 +30,7 @@ const PurchaseReport = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PurchaseReport-header text-start mt-5">
+                <div className="PurchaseReport-header text-start">
                     <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title text-start">
@@ -39,12 +39,12 @@ const PurchaseReport = () => {
                     </div>
                     <div className="col-md-8 text-end">
                       
-                          <button className="btn">Export To Excel</button>
+                          <button className="vndrbtn">Export To Excel</button>
                        
                     </div>
                   </div>
                 </div>
-                <div className="PurchaseReport-main111 mt-5">
+                <div className="PurchaseReport-main mt-3">
                   <ul
                     className="nav nav-pills mb-3"
                     id="pills-tab"
@@ -88,7 +88,7 @@ const PurchaseReport = () => {
                       tabindex="0"
                     >
                       <div className="PurchaseReportstatus">
-                        <div className="container-fluid mt-4">
+                        <div className="container-fluid">
                           <div className="table-responsive">
                             <table className="table table-bordered">
                               <thead>
@@ -123,7 +123,7 @@ const PurchaseReport = () => {
                                   </td>
 
                                   <td>
-                                    <button className="pobtn">Search</button>
+                                    <button className="vndrbtn">Search</button>
                                   </td>
                                 </tr>
                               </tbody>
@@ -131,7 +131,7 @@ const PurchaseReport = () => {
                           </div>
                         </div>
                         <div className="Purchaseordertable">
-                          <div className="container-fluid mt-4">
+                          <div className="container-fluid mt-2">
                             <div className="table-responsive">
                               <table className="table table-bordered">
                                 <thead>
@@ -152,6 +152,7 @@ const PurchaseReport = () => {
                         </div>
                       </div>
                     </div>
+
                     <div
                       className="tab-pane fade"
                       id="pills-GST-Details"
@@ -184,13 +185,13 @@ const PurchaseReport = () => {
                               />
                             </div>
                             <div className="col-md-4 d-flex justify-content-start align-items-start">
-                              <button className="pobtn">Search</button>
+                              <button className="vndrbtn">Search</button>
                             </div>
                           </div>
                         </div>
 
                         <div className="Purchaseordertable">
-                          <div className="container-fluid mt-4">
+                          <div className="container-fluid mt-2">
                             <div className="table-responsive">
                               <table className="table table-bordered">
                                 <thead>

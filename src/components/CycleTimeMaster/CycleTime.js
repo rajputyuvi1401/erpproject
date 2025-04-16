@@ -60,25 +60,25 @@ const CycleTime = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Cycletimermaster">
                   <div className="Cycletime">
-                    <div className="Cycletime-header mb-4 text-start mt-5">
+                    <div className="Cycletime-header mb-4 text-start ">
                       <div className="row align-items-center">
                         <div className="col-md-6">
                           <h5 className="header-title">Cycle Time Master</h5>
                         </div>
                         <div className="col-md-6 text-md-end text-start mt-2 mt-md-0">
                           <button
-                            className="btn me-2"
+                            className=" vndrbtn me-2"
                             onClick={handleAddNewCycleTime}
                           >
                             Add New Cycle Time
                           </button>
-                          <button className="btn me-2">Report</button>
-                          <button className="btn">Export Report</button>
+                          <button className=" vndrbtn me-2">Report</button>
+                          <button className=" vndrbtn">Export Report</button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="CycletimeMain mt-5">
+                  <div className="CycletimeMain">
                     <div className="container-fluid">
                       <div className="row text-start centerselect">
                         <div className="col-md-1 col-sm-3 mb-3 mb-sm-0">
@@ -98,15 +98,15 @@ const CycleTime = () => {
                           />
                         </div>
                         <div className="col-md-1 mt-1 text-md-start">
-                          <button className="btn">Search</button>
+                          <button className=" vndrbtn">Search</button>
                         </div>
                         <div className="col-md-1 mt-1  text-md-end">
-                          <button className="btn">View All</button>
+                          <button className=" vndrbtn">View All</button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="CycletimeTable mt-5">
+                  <div className="CycletimeTable mt-3">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="table-responsive">
@@ -134,17 +134,17 @@ const CycleTime = () => {
                                   <td>{record.Partcode}</td>
                                   <td>{record.Machinetype}</td>
                                   <td>
-                                    <button className="btn">
+                                    <button className=" vndrbtn">
                                       <i className="fas fa-trash"></i>
                                     </button>
                                   </td>
                                   <td>
-                                    <button className="btn">
+                                    <button className=" vndrbtn">
                                       <i className="fas fa-edit"></i>
                                     </button>
                                   </td>
                                   <td>
-                                    <button className="btn">
+                                    <button className=" vndrbtn">
                                       <i className="fas fa-eye"></i>
                                     </button>
                                   </td>

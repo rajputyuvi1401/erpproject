@@ -128,20 +128,20 @@ const PriceEntry = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="PriceentryMaster1">
-                <div className="Priceentry-header mb-4 text-start mt-5">
+                <div className="Priceentry-header mb-4 text-start">
                        <div className="row align-items-center">
                         <div className="col-md-6">
                          <h5 className="header-title">Price Entry Master</h5>
                         </div>
                         <div className="col-md-6 text-end">
-                          <button className="btn">
+                          <button className="vndrbtn">
                             Export To Excel
                           </button>
                         </div>
                       </div>
                   
                   </div>
-                  <div className="PriceentryMain mt-5">
+                  <div className="PriceentryMain mt-1">
                     <div className="container-fluid">
                       <div className="row text-start">
                         <div className="col-md-5">
@@ -162,7 +162,7 @@ const PriceEntry = () => {
                               </div>
                               <div className="col-sm-3">
                                 <button
-                                  className="btn"
+                                  className="vndrbtn"
                                   type="button"
                                 >
                                   Search
@@ -187,7 +187,7 @@ const PriceEntry = () => {
                               </div>
                               <div className="col-sm-3">
                                 <button
-                                  className="btn"
+                                  className="vndrbtn"
                                   type="button"
                                 >
                                   Search
@@ -212,7 +212,7 @@ const PriceEntry = () => {
                               </div>
                               <div className="col-sm-3">
                                 <button
-                                  className="btn"
+                                  className="vndrbtn"
                                   type="button"
                                 >
                                   Search
@@ -221,14 +221,15 @@ const PriceEntry = () => {
                             </div>
                           </div>
                         </div>
+
                         <div className="col-md-4">
                           <div className="row">
-                            <div className="col-md-6">
-                              <button className="btn">
+                            <div className="col-md-4">
+                              <button className="vndrbtn">
                                 Cancel
                               </button>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-8">
                               <div className="row">
                                 <div className="col-md-6">
                                   <div className="form-check">
@@ -263,7 +264,7 @@ const PriceEntry = () => {
                                   </div>
                                 </div>
                                 <div className="col-md-12 mt-3">
-                                  <button className="btn">
+                                  <button className="vndrbtn">
                                     Export to Excel
                                   </button>
                                 </div>
@@ -271,6 +272,7 @@ const PriceEntry = () => {
                             </div>
                           </div>
                         </div>
+
                         <div className="col-md-3">
                           <div className="row text-start">
                             <div className="col-md-4">
@@ -329,14 +331,15 @@ const PriceEntry = () => {
                               </select>
                             </div>
                           </div>
-                          <button className="btn">
+                          <button className="vndrbtn mt-3">
                             Upload Price List
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="Priceentrytable mt-5">
+
+                  <div className="Priceentrytable mt-3">
                     <table className="table table-bordered table-responsive">
                       <thead>
                         <tr>
@@ -520,16 +523,18 @@ const PriceEntry = () => {
                       </tbody>
                     </table>
                   </div>
-                  <div className="Priceentrybottom mt-5">
+
+                  <div className="Priceentrybottom mt-3">
                     <div className="row text-start">
                       <div className="col-6">
-                        <button className="btn">Save</button>
-                        <button className="btn">
+                        <button className="vndrbtn">Save</button>
+                        <button className="vndrbtn">
                           Price History
                         </button>
                       </div>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

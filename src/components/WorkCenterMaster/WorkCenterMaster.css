@@ -4,19 +4,107 @@
   padding: 0px;
 }
 
-.workmain-header {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+.work-center {
+  width: 100%;
+  height: 100vh;
 }
 
-.workmain-header .header-title {
+.workmain-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px;
+  /* border-radius: 5px; */
+}
+
+.centerMain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.header-title {
   font-size: 20px;
   font-weight: bold;
+  color: blue;
   margin: 0;
 }
 
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.workTable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
 
 
 
@@ -41,7 +129,7 @@
   margin-top: -100px;
   background: white;
   padding: 20px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   width: 800px;
   max-width: 90%;
   z-index: 1001;
@@ -53,10 +141,6 @@
   align-items: center;
   border-bottom: 1px solid #dee2e6;
   padding: 10px 20px;
-}
-
-.workmain .card-header h5 {
-  margin: 0;
 }
 
 .workmain .btn-close {
@@ -79,16 +163,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 12px;
   cursor: pointer;
   padding: 10px;
 }
 
-.centerMain {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
-}
+
 
 
 .centerselect .btn-workkk {
@@ -98,65 +178,13 @@
   background-color: rgba(0, 0, 255, 0.692);
   color: white;
   padding: 10px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 .centerselect .btn i {
   margin-right: 5px;
 }
 
-@media (max-width: 767.98px) {
-  .centerMain {
-    padding: 10px;
-  }
-
-  .centerselect {
-    padding: 10px;
-  }
-}
-
-.workTable {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
-}
-
-.workTable .table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.workTable .table {
-  width: 100%;
-  white-space: nowrap;
-}
-
-
-
-.workTable .table .btn-tableww {
-  padding: 0.25rem 0.5rem;
-  align-items: center;
-  border: none;
-
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.workTable .record-count {
-  margin-top: 10px;
-  text-align: right;
-}
-
-@media (max-width: 767.98px) {
-  .workTable {
-    padding: 10px;
-  }
-
-  .workTable .table-responsive {
-    overflow-x: auto;
-  }
-}
 /* machine card */
 .overlay-machine {
   position: fixed;
@@ -175,7 +203,7 @@
   margin-top: -100px;
   background: white;
   padding: 20px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   width: 800px;
   max-width: 90%;
   z-index: 1001;
@@ -188,14 +216,6 @@
   border-bottom: 1px solid #dee2e6;
 }
 
-.card-header-machine h5 {
-  margin: 0;
-}
-
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
 
 
 .card-body-machine {
@@ -203,9 +223,6 @@
   overflow-y: auto; /* Enable vertical scrolling */
 }
 
-/* Work Center  */
-
-/* Overlay styles */
 .overlay-workcenter {
   position: fixed;
   top: 0;
@@ -222,7 +239,7 @@
 /* Card container */
 .overlay-workcenter .card,.overlay-workcenter  .card-work {
   background-color: #fff;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 50%;
   max-height: 80%; /* Restrict height */
@@ -253,24 +270,134 @@
   cursor: pointer;
 }
 
-.btn-close:hover {
-  color: #000;
-}
-
 /* Card body */
 .overlay-workcenter .card-body-work {
   margin-top: 20px;
 }
 
 
+/* Default styles (for desktop) */
 
+/* Media Query for Mobile Devices (screens less than or equal to 600px) */
+@media (max-width: 600px) {
+  .work-center {
+    padding: 10px;
+  }
 
+  .workmain-header {
+    padding: 8px 12px;
+  }
 
+  .centerMain {
+    font-size: 10px;
+    padding: 5px;
+  }
 
+  .header-title {
+    font-size: 16px; /* Smaller font size */
+  }
 
-/* Responsive design */
-@media (max-width: 768px) {
- .overlay-workcenter  .card,.overlay-workcenter  .card-work {
-    width: 90%; /* Adjust width for smaller screens */
+  .vndrbtn {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.5rem;
+  }
+
+  .workmain .card {
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px;
+  }
+
+  .overlay-workcenter .card {
+    width: 90%; /* Make card width smaller for mobile */
+  }
+
+  .mst-btn {
+    padding: 8px 15px;
+  }
+
+  .addy {
+    padding: 6px;
+  }
+
+  .centerselect .btn-workkk {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .card-machine {
+    width: 90%;
+  }
+
+  .table-responsive {
+    overflow-x: scroll; /* Enable horizontal scrolling for small screens */
+  }
+}
+
+/* Media Query for Tablet Devices (screens between 600px and 1024px) */
+@media (max-width: 1024px) and (min-width: 601px) {
+  .header-title {
+    font-size: 18px; /* Adjust font size for tablets */
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .mst-btn {
+    padding: 8px 18px;
+  }
+
+  .overlay-workcenter .card {
+    width: 70%; /* Adjust card width for tablets */
+  }
+}
+
+/* Media Query for Larger Screens (screens greater than 1024px) */
+@media (min-width: 1025px) {
+  .workcenter {
+    padding: 20px;
+  }
+
+  .workmain-header {
+    padding: 15px 20px;
+  }
+
+  .header-title {
+    font-size: 22px; /* Larger font for larger screens */
+  }
+
+  .table th,
+  .table td {
+    font-size: 14px;
+  }
+
+  .mst-btn {
+    padding: 12px 25px;
+  }
+
+  .card-machine {
+    width: 800px;
+  }
+
+  .overlay-workcenter .card {
+    width: 50%; /* Default width for larger screens */
   }
 }

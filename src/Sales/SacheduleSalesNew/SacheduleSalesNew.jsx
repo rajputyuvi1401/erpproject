@@ -33,8 +33,8 @@ const SacheduleSalesNew = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="SacheduleSalesNew mt-5">
-                  <div className="SacheduleSalesNew-header mb-4 text-start">
+                <div className="SacheduleSalesNew">
+                  <div className="SacheduleSalesNew-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Schedule Sales Order New</h5>
@@ -42,7 +42,7 @@ const SacheduleSalesNew = () => {
                     </div>
                   </div>
 
-                  <div className="SacheduleSalesNew-main mt-5">
+                  <div className="SacheduleSalesNew-main">
                      <div className="row text-start">
 
                      <div className="col-md-2">
@@ -66,14 +66,14 @@ const SacheduleSalesNew = () => {
                      </div>
 
                      <div className="col-md-2 mt-4">
-                           <button type="button" className="btn btn-primary w-100" >
+                           <button type="button" className=" vndrbtn w-100" >
                               Search
                            </button> 
                         </div>
 
                      </div>
 
-                      <div className="row text-start">
+                      <div className="row text-start mt-3">
 
                       <div className="col-md-2">
                             <label htmlFor="">Price List :</label>
@@ -82,12 +82,21 @@ const SacheduleSalesNew = () => {
                            </select>
                       </div> 
                       <div className="col-md-2">
-                      <div className="d-flex justify-content-center align-items-center">
-                            <input type="checkbox" id="Item-checkbox" />
-                             <label htmlFor="Item-checkbox" className="ms-1">Item:</label>
-                        </div>
-                            <input type="text" placeholder="Enter Item No " className="form-control"/>
-                      </div> 
+  <div className="d-flex justify-content-start align-items-center">
+    <input 
+      type="checkbox" 
+      id="Item-checkbox" 
+      style={{ width: "12px", height: "12px", verticalAlign: "middle" }} // Smaller checkbox
+    />
+    <label htmlFor="Item-checkbox" className="ms-1" style={{ verticalAlign: "middle" }}>Item:</label>
+  </div>
+  <input 
+    type="text" 
+    placeholder="Enter Item No" 
+    className="form-control" // Margin top to separate the text field
+  />
+                      </div>
+
                       <div className="col-md-2">
                             <label htmlFor="">Plan Date :</label>
                             <input type="date" className="form-control"/>
@@ -97,14 +106,14 @@ const SacheduleSalesNew = () => {
                             <input type="date" className="form-control"/>
                       </div> 
                       <div className="col-md-1 mt-4">
-                           <button type="button" className="btn btn-primary w-100" >
+                           <button type="button" className=" vndrbtn w-100" >
                               Add
                            </button> 
                         </div>
                      </div>
                   </div>
 
-                  <div className="table-responsive">
+                  <div className="SacheduleSalesNewtable table-responsive">
                     <table className="table table-bordered">
                       <thead>
                         <tr>
@@ -135,15 +144,15 @@ const SacheduleSalesNew = () => {
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><input type="text" /> <br /> <input type="date" /></td>
+                            <td><input className="form-control" type="text" /> <br /> <input className="form-control" type="date" /></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><input type="text" /></td>
+                            <td><input className="form-control" type="text" /></td>
                             <td></td>
-                            <td><input type="date" /> <br /> <input type="date" /></td>
+                            <td><input className="form-control" type="date" /> <br /> <input className="form-control" type="date" /></td>
                             <td>CGST : % <br /> SGST : % <br /> IGST : %</td>
                             <td></td>
                         </tr>
@@ -151,7 +160,7 @@ const SacheduleSalesNew = () => {
                     </table>
                     </div>
 
-                    <div className="SacheduleSalesNew-main mt-5">
+                    <div className="SacheduleSalesNew-main mt-3">
                     <div className="table-responsive">
                     <table className="table table-bordered">
                       <thead>
@@ -167,17 +176,17 @@ const SacheduleSalesNew = () => {
                       </thead>
                       <tbody>
                         <tr>
-                          <td><input type="date" /></td>
-                            <td><input type="text" /> <br /> <button>Search</button> </td>
-                            <td> <select name="" id=""> 
+                          <td><input className="form-control" type="date" /></td>
+                            <td><input className="form-control" type="text" /> <br /> <button className="vndrbtn">Search</button> </td>
+                            <td> <select className="form-select" name="" id=""> 
                                         <option value=""></option>
                                  </select> </td>
-                            <td> <input type="text" /> <br /> <button>Search</button> </td>
-                            <td><select name="" id=""> 
+                            <td> <input className="form-control" type="text" /> <br /> <button className="vndrbtn">Search</button> </td>
+                            <td><select className="form-select" name="" id=""> 
                                         <option value=""></option>
                                  </select> </td>
-                            <td><input type="text" /> <br /> Days</td>
-                            <td><button>Save</button> <br /> <button>Clear</button></td>
+                            <td><input className="form-control" type="text" /> <br /> Days</td>
+                            <td><button className="vndrbtn">Save</button> <br /> <button className="vndrbtn">Clear</button></td>
                         </tr>
                       </tbody>
                     </table>

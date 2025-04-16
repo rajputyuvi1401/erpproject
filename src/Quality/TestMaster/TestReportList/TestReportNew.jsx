@@ -38,19 +38,19 @@ const TestReportNew = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="TestReportList mt-5">
-                  <div className="TestReportList-header mb-4 text-start">
+                <div className="TestReportList">
+                  <div className="TestReportList-header mb-2 text-start">
                     <div className="row align-items-center">
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                         <h5 className="header-title">Test Report New : </h5>
                       </div>
-                      <div className="col-md-1">
-                        <input type="text" placeholder="Test No 1" />
+                      <div className="col-md-2">
+                        <input type="text" className="form-control" placeholder="Test No 1" />
                       </div>
                       
                      
-                      <div className="col-md-8  text-end">
-                        <button type="button" className="btn" onClick={handleTestReportList} >
+                      <div className="col-md-6  text-end">
+                        <button type="button" className="vndrbtn" onClick={handleTestReportList} >
                           Test List
                         </button>
                        
@@ -59,7 +59,7 @@ const TestReportNew = () => {
                     </div>
                   </div>
 
-                  <div className="TestReportList-main mt-5">
+                  <div className="TestReportList-main ">
                      
                   <div className="row text-start">
                       <div className="col-md-4">
@@ -444,10 +444,10 @@ const TestReportNew = () => {
 
                     <div className="row text-start">
                     <div className="col-md-8  text-end">
-                        <button type="button" className="btn" >
+                        <button type="button" className="vndrbtn" >
                          Save
                         </button>
-                        <button type="button" className="btn" >
+                        <button type="button" className="vndrbtn" >
                          Clear
                         </button>
                       </div>

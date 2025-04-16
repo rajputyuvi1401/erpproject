@@ -88,8 +88,8 @@ const VenderList = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="VenderList1">
                 
-                  <div className="VenderList2List-header mb-4 text-start mt-5">
-                    <div className="row align-items-center">
+                    <div className="VenderList2List-header mb-4 text-start">
+                        <div className="row align-items-center">
                         <div className="col-md-4">
                           <h5 className="header-title">
                             Supplier / Customer / Vendor-List
@@ -98,76 +98,79 @@ const VenderList = () => {
                         <div className="col-md-8 text-end">
                           <Link
                             to={"/Supplier-Customer-Master"}
-                            className="venbtn"
+                            className="vndrbtn"
                           >
                             Add New
                           </Link>
-                          <Link className="venbtn">Customer - Query</Link>
+                          <Link className="vndrbtn">Customer - Query</Link>
                         </div>
-                      </div>
+                        </div>
                     </div>
+
                   </div>
                   <div className="VenderListMain">
-                    <div className="container-fluid mt-5">
-                      <div className="row text-start">
-                        <div className="row mb-3 text-start mt-4">
-                          <label
-                            htmlFor="Type"
-                            className="col-sm-1 col-form-label"
-                          >
-                            Type
-                          </label>
-                          <div className="col-sm-2">
-                            <select
-                              className="form-select"
-                              aria-label="Default select example"
-                              value={searchType}
-                              onChange={(e) => setSearchType(e.target.value)}
-                            >
-                              <option value="">Select..</option>
-                              <option value="Customer">Customer</option>
-                              <option value="Supplier">Supplier</option>
-                              <option value="Job Work">Job Work</option>
-                              <option value="WCSJW">CSJW</option>
-                            </select>
-                          </div>
-                          <label
-                            htmlFor="SearchName"
-                            className="col-sm-2 col-form-label"
-                          >
-                            Search Name
-                          </label>
-                          <div className="col-sm-3">
-                          <input
-                type="text"
-                className="form-control"
-                id="SearchQuery"
-                placeholder="Search by name or number"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
+                      <div className="container-fluid">
+                          <div className="row text-start">
+                            <div className="row mb-3 text-start mt-4">
+                              <label
+                                htmlFor="Type"
+                                className="col-sm-1 col-form-label"
+                              >
+                                Type :
+                              </label>
+                              <div className="col-sm-2">
+                                <select
+                                  className="form-select"
+                                  aria-label="Default select example"
+                                  value={searchType}
+                                  onChange={(e) => setSearchType(e.target.value)}
+                                >
+                                  <option value="">Select..</option>
+                                  <option value="Customer">Customer</option>
+                                  <option value="Supplier">Supplier</option>
+                                  <option value="Job Work">Job Work</option>
+                                  <option value="WCSJW">CSJW</option>
+                                </select>
+                              </div>
+                              <label
+                                htmlFor="SearchName"
+                                className="col-sm-2 col-form-label"
+                              >
+                                Search Name :
+                              </label>
+                              <div className="col-sm-3">
+                              <input
+                    type="text"
+                    className="form-control"
+                    id="SearchQuery"
+                    placeholder="Search by name or number"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
 
+                              </div>
+                              
+                              <div className="col-sm-4">
+                                <button
+                                  className="vndrbtn"
+                                  onClick={handleSearch}
+                                >
+                                  Search
+                                </button>
+                                <button
+                                  className="vndrbtn"
+                                  onClick={handleViewAll}
+                                >
+                                  View All
+                                </button>
+                              </div>
+                            </div>
                           </div>
-                          <div className="col-sm-4">
-                            <button
-                              className="btn"
-                              onClick={handleSearch}
-                            >
-                              Search
-                            </button>
-                            <button
-                              className="btn"
-                              onClick={handleViewAll}
-                            >
-                              View All
-                            </button>
-                          </div>
-                        </div>
                       </div>
-                    </div>
                   </div>
+
                   {showData && ( // Conditionally render the table based on showData
-                    <div className="Vender3table">
+                    <div className="Vender3table mt-3">
                       <div className="Container-fluid">
                         <div className="row">
                           <div className="col-md-12">
@@ -175,55 +178,55 @@ const VenderList = () => {
                               <table className="table">
                                 <thead>
                                   <tr>
-                                    <th className="blue-th" scope="col">
+                                    <th scope="col">
                                       Sr.
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       Type
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       Code No.
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       Name
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       Contact No.
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       Email
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       Vendor Code
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       Payment term
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       Gst Type
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       GST No.
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       GST Tax Code
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       Auth
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       User
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       Rev
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       Edit
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       View1
                                     </th>
-                                    <th className="blue-th" scope="col">
+                                    <th     scope="col">
                                       View2
                                     </th>
                                   </tr>
@@ -265,38 +268,39 @@ const VenderList = () => {
                   )}
 
                   {/* Pagination Controls */}
-                  <nav className="text-end mt-5">
-            <ul className="pagination">
-              <li className="page-item">
-                <button
-                  className="page-link"
-                  onClick={() => setCurrentPage(currentPage - 1)}
-                  disabled={currentPage === 1}
-                >
-                  Previous
-                </button>
-              </li>
-              {pageNumbers.map((number) => (
-                <li
-                  key={number}
-                  className={`page-item ${currentPage === number ? "active" : ""}`}
-                >
-                  <button className="page-link" onClick={() => setCurrentPage(number)}>
-                    {number}
-                  </button>
-                </li>
-              ))}
-              <li className="page-item">
-                <button
-                  className="page-link"
-                  onClick={() => setCurrentPage(currentPage + 1)}
-                  disabled={currentPage === pageNumbers.length}
-                >
-                  Next
-                </button>
-              </li>
-            </ul>
+                  <nav className="d-flex justify-content-center mt-3">
+                      <ul className="pagination">
+                        <li className="page-item">
+                          <button
+                            className="page-link"
+                            onClick={() => setCurrentPage(currentPage - 1)}
+                            disabled={currentPage === 1}
+                          >
+                            Previous
+                          </button>
+                        </li>
+                        {pageNumbers.map((number) => (
+                          <li
+                            key={number}
+                            className={`page-item ${currentPage === number ? "active" : ""}`}
+                          >
+                            <button className="page-link" onClick={() => setCurrentPage(number)}>
+                              {number}
+                            </button>
+                          </li>
+                        ))}
+                        <li className="page-item">
+                          <button
+                            className="page-link"
+                            onClick={() => setCurrentPage(currentPage + 1)}
+                            disabled={currentPage === pageNumbers.length}
+                          >
+                            Next
+                          </button>
+                        </li>
+                      </ul>
                   </nav>
+
 
                   <div className="vender-bottom">
                     <div className="row" style={{ color: "blue" }}>

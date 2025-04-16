@@ -43,26 +43,26 @@ const ProjectInventory = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="ProjectInventorymaster">
                   <div className="ProjectInventory1">
-                  <div className="ProjectInventory1-header mb-4 text-start mt-5">
+                  <div className="ProjectInventory1-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-3">
                         <h5 className="header-title">Project Inventory Status</h5>
                         </div>
                         <div className="col-md-9 text-md-end text-start mt-2 mt-md-0">
                           <button
-                            className="btn me-2"
+                            className="vndrbtn me-2"
                             onClick={handleStatusUpdateClick}
                           >
                             Project Status Update
                           </button>
                           <button
-                            className="btn me-2"
+                            className="vndrbtn me-2"
                             onClick={handlePrintStatusClick}
                           >
                             Print Project Status
                           </button>
                           <button
-                            className="btn"
+                            className="vndrbtn"
                             onClick={handleInventoryStatusClick}
                           >
                             Project List
@@ -149,7 +149,7 @@ const ProjectInventory = () => {
                       </div>
                     </div>
                   )}
-                  <div className="ProjectInventoryMain mt-5">
+                  <div className="ProjectInventoryMain mt-2">
                     <div className="container-fluid">
                       <div className="row text-start ProjectInventoryselect">
                         <div className="col-md-2 col-sm-3 mb-3 mb-sm-0">
@@ -168,13 +168,14 @@ const ProjectInventory = () => {
                           />
                         </div>
                         <div className="col-md-1 col-sm-12 text-sm-start text-md-end mt-1">
-                          <button className="btn">
+                          <button className="vndrbtn">
                             Search
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
+                  
                 </div>
               </main>
             </div>

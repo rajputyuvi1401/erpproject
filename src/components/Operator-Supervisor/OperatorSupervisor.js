@@ -93,7 +93,7 @@ const OperatorSupervisor = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="OperatorSupervisor1">
-                  <div className="Operator mt-5">
+                  <div className="Operator">
                   <div className="Operator-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-5">
@@ -102,21 +102,21 @@ const OperatorSupervisor = () => {
                           </h5>
                         </div>
                         <div className="col-md-7 col-12 text-md-end text-start mt-3 mt-md-0">
-                          <Link to={"/Supervisor"} className="btn me-2">
+                          <Link to={"/Supervisor"} className=" vndr vndrbtn me-2">
                             Add New Operator/Supervisor
                           </Link>
                           <Link
                             to={"/Department-Head"}
-                            className="btn me-2"
+                            className=" vndr vndrbtn me-2"
                           >
                             Department Head
                           </Link>
-                          <Link className="btn">Export Report</Link>
+                          <Link className=" vndr vndrbtn">Export Report</Link>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="OperatorMain mt-5">
+                  <div className="OperatorMain mt-1">
                     <div className="container-fluid">
                       <div className="row gy-3 text-start">
                         <div className="col-md-1 col-6">
@@ -145,6 +145,7 @@ const OperatorSupervisor = () => {
                             id="description"
                             className="form-control"
                             placeholder="Operator Name"
+                            style={{marginTop:"-4px"}}
                           />
                         </div>
                         <div className="col-md-2 col-6">
@@ -199,7 +200,7 @@ const OperatorSupervisor = () => {
                         </div>
                         <div className="col-md-1 col-12">
                           
-                          <button className="btn" style={{marginTop:"31px"}}>
+                          <button className=" vndr vndrbtn" style={{marginTop:"31px"}}>
                             Search
                           </button>
                         </div>
@@ -207,7 +208,7 @@ const OperatorSupervisor = () => {
                     </div>
                   </div>
 
-                  <div className="Operatortable mt-5">
+                  <div className="Operatortable mt-3">
                     <div className="container-fluid">
                       <div className="row gy-3 text-start">
                         <div className="table-responsive">
@@ -249,7 +250,7 @@ const OperatorSupervisor = () => {
                                     <i className="fas fa-trash-alt"></i>
                                   </td>
                                   <td>
-                                    <button className="btn">
+                                    <button className="vndrbtn">
                                       Action
                                     </button>
                                   </td>

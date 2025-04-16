@@ -33,73 +33,76 @@ const DebitNote = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="DebitNote mt-5">
-                  <div className="DebitNote-header mb-4 text-start">
+                <div className="DebitNote">
+                  <div className="DebitNote-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Pending Debit Note List For E-Invoice</h5>
                       </div>
-                      <div className="col-md-2  generateirn">
-                        <input type="radio" id="GenerateIRN" name="brand" value="GenerateIRN"/>
-                        <label for="GenerateIRN">GenerateIRN</label>
-                      </div>
-                      <div className="col-md-1 cancelirn">       
-                      <input type="radio" id="CancelIRN" name="brand" value="CancelIRN"/>
-                        <label for="CancelIRN">CancelIRN</label>
-                      </div>
+                     
+                      <div className="col-md-1 generateirn" style={{ display: 'flex', alignItems: 'center' }}>
+                          <input type="radio" id="GenerateIRN" name="brand" value="GenerateIRN" />
+                          <label htmlFor="GenerateIRN" style={{ marginLeft: '5px' }}>GenerateIRN</label>
+                        </div>
+                        <div className="col-md-1 cancelirn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <input type="radio" id="CancelIRN" name="brand" value="CancelIRN" />
+                    <label htmlFor="CancelIRN" style={{ marginLeft: '5px' }}>CancelIRN</label>
+                  </div>
+
                     </div>
                   </div>
 
-                  <div className="DebitNote-main mt-5">
+                  <div className="DebitNote-main">
                      <div className="row text-start">
 
                      <div className="col-md-1">
+                            <label htmlFor="">Plant:</label>
+                            <select name="" id="" className="form-control">
+                               <option value="">Sharp</option>
+                           </select>
+                      </div> 
+                     <div className="col-md-2">
                             <label htmlFor="">Type:</label>
                             <select name="" id="" className="form-control">
                                <option value="">Sales DN</option>
                                <option value="">Purchase DN</option>
                            </select>
                       </div> 
-                     <div className="col-md-1">
+                     <div className="col-md-2">
                             <label htmlFor="">From :</label>
                             <input type="date" className="form-control"/>
                       </div>
-                      <div className="col-md-1">
-                            <label htmlFor="">Plant:</label>
-                            <select name="" id="" className="form-control">
-                               <option value="">Sharp</option>
-                           </select>
-                      </div> 
-                      <div className="col-md-1">
-                         <div className="d-flex  justify-content-center align-items-center">
+                      
+                      <div className="col-md-2">
+                         <div className="d-flex   justify-content-start align-items-center">
                             <input type="checkbox" id="customer-checkbox" />
                              <label htmlFor="customer-checkbox" className="ms-2">Customer:</label>
                         </div>
                         <input type="text" placeholder="Name" className="form-control" />
                      </div>
 
-                      <div className="col-md-1">
-                      <div className="d-flex justify-content-center align-items-center">
+                      <div className="col-md-2">
+                      <div className="d-flex  justify-content-start align-items-center">
                             <input type="checkbox" id="Item-checkbox" />
                              <label htmlFor="Item-checkbox" className="ms-1">Item:</label>
                         </div>
                             <input type="text" placeholder="Enter Code | Name" className="form-control"/>
                       </div> 
-                      <div className="col-md-1">
-                               <div className="d-flex justify-content-center align-items-center">
+                      <div className="col-md-2">
+                               <div className="d-flex  justify-content-start align-items-center">
                                   <input type="checkbox" id="Invoice-checkbox" />
                                   <label htmlFor="Invoice-checkbox" className="ms-2">Invoice:</label>
                               </div>  
                             <input type="text" placeholder="No" className="form-control"/>
                       </div> 
                       <div className="col-md-1 mt-4">
-                           <button type="button" className="btn btn-primary w-100" >
+                           <button type="button" className="vndrbtn w-100" >
                               Search
                            </button> 
                         </div>
                      </div>
                   </div>
-                  <div className="DebitNote-main mt-5">
+                  <div className="DebitNote-main mt-2">
                     <div className="DebitNote-second">
                       <ul className="nav nav-tabs" id="DebitNoteTabs" role="tablist" >
                         <li className="nav-item" role="presentation">
@@ -168,17 +171,17 @@ const DebitNote = () => {
                                     </div>
 
                                     <div className="row align-items-center mt-4">  
-                                       <div className="col-md-1">
-                                        <button type="button" className="btn btn-primary w-100" >
+                                       <div className="col-md-2">
+                                        <button type="button" className="vndrbtn w-100" >
                                             Generate IRN
                                         </button> 
                                         </div>
                                    </div>
 
                                    <div className="row align-items-center mt-4">  
-                                       <div className="col-md-12">
+                                       <div className="col-md-3">
                                          <label htmlFor="">Result</label>
-                                         <textarea name="result" id="result"></textarea>
+                                         <textarea name="result" className="form-control" id="result"></textarea>
                                         </div>
                                    </div>
                              </div>

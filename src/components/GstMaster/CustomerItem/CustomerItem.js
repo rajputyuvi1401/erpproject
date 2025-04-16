@@ -64,19 +64,19 @@ const CustomerItem = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="cusgst">
                
-                  <div className="cusgstheader-header mb-4 text-start mt-3">
+                  <div className="cusgstheader-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Customer-Item Wise -GST Rate Excel Upload</h5>
                     </div>
                     <div className="col-md-6 text-end">
-                      <button className="btn">
+                      <button className="vndrbtn">
                         Download Excel Template
                       </button>
                     </div>
                     </div>
                   </div>
-                  <div className="cusgstmain mt-5">
+                  <div className="cusgstmain">
                     <div className="container-fluid">
                       <div className="row mb-3 text-start">
                         <label
@@ -97,7 +97,7 @@ const CustomerItem = () => {
                         </div>
                         <div className="col-sm-2">
                           <button
-                            className="cusmainbtn"
+                            className="vndrbtn"
                             onClick={handleFileUpload}
                           >
                             Submit
@@ -106,12 +106,12 @@ const CustomerItem = () => {
                       </div>
                       <div className="row text-start">
                         <div className="col-sm-2">
-                          <button className="cusmainniche">Upload</button>
+                          <button className="vndrbtn">Upload</button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="row text-start" style={{ marginTop: "5px" }}>
+                  <div className="row text-start" style={{ marginTop: "5px", fontSize:"14px" }}>
                     <div className="col-md-12">
                       <h5 style={{ color: "blue" }}>
                         Customer Gst Rate Upload Result:

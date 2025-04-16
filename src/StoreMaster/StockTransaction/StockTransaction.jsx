@@ -38,36 +38,36 @@ const StockTransaction = () => {
                   <div className="col-md-10 text-end">
                     <div className="row justify-content-end">
                       <div className="col-md-9 d-flex align-items-end">
-                        <Link className="pobtn">[Pending Auth]:</Link>
-                        <Link className="pobtn" to="/ShopFloor">ShopFloor -to-Store</Link>
-                        <Link className="pobtn" to="/ShopFloorStock">All Shop Floor Stock</Link>
-                        <Link className="pobtn">Export To Excel</Link>
-                        <Link className="pobtn">Stock Transfer Query</Link>
+                        <Link className="vndrbtn">[Pending Auth]:</Link>
+                        <Link className="vndrbtn" to="/ShopFloor">ShopFloor -to-Store</Link>
+                        <Link className="vndrbtn" to="/ShopFloorStock">All Shop Floor Stock</Link>
+                        <Link className="vndrbtn">Export To Excel</Link>
+                        <Link className="vndrbtn">Stock Transfer Query</Link>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
   
-              <div className="StockTranscation-main">
+              <div className="StockTranscation-main mt-2">
                 <div className="container-fluid">
                   <div className="row mt-4">
                     <div className="col-md-12">
                       <form className="row g-3 text-start">
                         {/* From Date */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">From Date</label>
-                          <input type="date" className="form-control" />
+                          <input type="date" className="form-control mt-1" />
                         </div>
   
                         {/* To Date */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">To Date</label>
-                          <input type="date" className="form-control" />
+                          <input type="date" className="form-control mt-1" />
                         </div>
   
                         {/* Plant */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">Plant</label>
                           <select className="form-select">
                             <option value="">Produlink</option>
@@ -75,7 +75,7 @@ const StockTransaction = () => {
                         </div>
   
                         {/* Operation */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">Operation</label>
                           <select className="form-select">
                             <option value="">ALL</option>
@@ -96,7 +96,7 @@ const StockTransaction = () => {
                         </div>
   
                         {/* Main Group */}
-                        <div className="col-md-1 col-sm-6">
+                        <div className="col-md-2 col-sm-6">
                           <label className="form-label">Main Group</label>
                           <select className="form-select">
                               <option value="">ALL</option>
@@ -142,7 +142,7 @@ const StockTransaction = () => {
                           <label className="form-label">Item Code</label>
                           <input
                             type="text"
-                            className="form-control"
+                            className="form-control mt-1"
                             placeholder="Enter Item Code"
                           />
                         </div>
@@ -158,8 +158,8 @@ const StockTransaction = () => {
                         </div>
   
                         {/* Search Button */}
-                        <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                          <button type="submit" className="pobtn w-100">
+                        <div className="col-md-1 col-sm-6 mt-5">
+                          <button type="submit" className="vndrbtn w-100">
                             Search
                           </button>
                         </div>

@@ -45,8 +45,8 @@ const CustomerComplaintList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="CustomerComplaintList mt-5">
-                  <div className="CustomerComplaintList-header mb-4 text-start">
+                <div className="CustomerComplaintList">
+                  <div className="CustomerComplaintList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Customer Complaint List : </h5>
@@ -55,7 +55,7 @@ const CustomerComplaintList = () => {
                      
                       <div className="col-md-6  text-end">
                           <div className="dropdown">
-                            <button type="button" className="btn" onClick={toggleDropdown}>
+                            <button type="button" className="vndrbtn" onClick={toggleDropdown}>
                                 CAPA Report
                             </button>
 
@@ -71,32 +71,32 @@ const CustomerComplaintList = () => {
                             </div>
                       </div>
                       <div className="col-md-2">
-                      <button type="button" className="btn" onClick={handleCoustoterComplaintEntry} >
+                      <button type="button" className="vndrbtn" onClick={handleCoustoterComplaintEntry} >
                         Customer Complaint New
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="CustomerComplaintList-main mt-5">
+                  <div className="CustomerComplaintList-main">
                      
                   <div className="row text-start">
                      
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">Plant :</label>
                             <select name="" id="" className="form-control">
                                 <option value="">Sharp</option>
                             </select>
                       </div>
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">From :</label>
                             <input type="date" className="form-control"/>
                       </div>
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">To :</label>
                             <input type="date" className="form-control"/>
                       </div>
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">Series :</label>
                             <select name="" id="" className="form-control">
                                 <option value="">All</option>
@@ -105,7 +105,7 @@ const CustomerComplaintList = () => {
                                 <option value="">Subcon</option>
                             </select>
                       </div>
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">Type :</label>
                             <select name="" id="" className="form-control">
                                 <option value="">All</option>
@@ -113,7 +113,7 @@ const CustomerComplaintList = () => {
                                 <option value="">External</option>
                             </select>
                       </div>
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">Status :</label>
                             <select name="" id="" className="form-control">
                                 <option value="">All</option>
@@ -122,16 +122,16 @@ const CustomerComplaintList = () => {
                                 <option value="">Completed</option>
                             </select>
                       </div>
-                      <div className="col-md-1">
+                      <div className="col-md-2 mt-3">
                             <label htmlFor="">CustName :</label>
                             <input type="text" placeholder="Enter Name" className="form-control"/>
                       </div>
-                      <div className="col-md-1">
+                      <div className="col-md-2 mt-3">
                             <label htmlFor="">Item :</label>
                             <input type="text" placeholder="Select Item" className="form-control"/>
                       </div>
-                      <div className="col-md-1 mt-4">
-                           <button type="button" className="btn btn-primary w-100" >
+                      <div className="col-md-2">
+                           <button type="button" className="vndrbtn w-100" style={{marginTop:"35px"}} >
                               Save
                            </button> 
                         </div>

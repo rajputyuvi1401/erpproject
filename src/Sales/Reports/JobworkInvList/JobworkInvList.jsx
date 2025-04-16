@@ -43,18 +43,18 @@ const JobworkInvList  = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="JobworkInvList mt-5">
-                <div className="JobworkInvList-header mb-4 text-start">
+              <div className="JobworkInvList">
+                <div className="JobworkInvList-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title"> Jobwork Invoice List </h5>
                     </div>
 
                     <div className="col-md-8 text-end">
-                        <button type="button" className="btn" to="#/">
+                        <button type="button" className=" vndrbtn" to="#/">
                             JobWork Inv Report
                         </button> 
-                        <button type="button" className="btn" to="#/" onClick={handleButtonClick}>
+                        <button type="button" className=" vndrbtn" to="#/" onClick={handleButtonClick}>
                             Jobwork Inv Query
                         </button> 
                     </div>
@@ -65,38 +65,38 @@ const JobworkInvList  = () => {
                 <div className="JobworkInvList-Main">
                     <div className="container-fluid">
                       
-                        <div className="row g-3 text-start mt-3">  
+                        <div className="row g-3 text-start">  
 
-                       <div className="col-sm-6 col-md-2 col-lg-1">
+                       <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>To:</label>
                           <input type="date" className="form-control" />
                         </div>
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                         <label htmlFor="">Plant:</label>
                         <select name="" className="form-control" style={{marginTop:"-0px"}} id="">
                             <option value="">Produlink</option>
                         </select>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                        <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label">Customer Name: </label>
                         </div>
                         <input type="text"  placeholder="Name" className="form-control"/>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                        <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label">Inv No: </label>
                         </div>
                         <input type="text"  placeholder="No" className="form-control"/>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                        <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label">Item Grp: </label>
@@ -105,14 +105,14 @@ const JobworkInvList  = () => {
                             <option value="">Select</option>
                         </select>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                        <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label">Inv No / Desc: </label>
                         </div>
                         <input type="text"  placeholder="No" className="form-control"/>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label htmlFor="">Cancel:</label>
                         <select name="" className="form-control" style={{marginTop:"-0px"}} id="">
                             <option value="">All</option>
@@ -120,7 +120,7 @@ const JobworkInvList  = () => {
                             <option value="">No</option>
                         </select>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label htmlFor="">Ackn:</label>
                         <select name="" className="form-control" style={{marginTop:"-0px"}} id="">
                             <option value="">All</option>
@@ -129,8 +129,8 @@ const JobworkInvList  = () => {
                         </select>
                       </div>
                         
-                       <div className="col-6 col-md-2 align-items-center mt-5">
-                          <button type="button" className="btn btn-primary">
+                       <div className="col-6 col-md-2 col-lg-2 align-items-center" style={{marginTop:"38px"}}>
+                          <button type="button" className=" vndrbtn">
                             Search
                           </button>
                         </div>
@@ -140,7 +140,7 @@ const JobworkInvList  = () => {
                     </div>
                   </div>
 
-             <div className="table-responsive">
+             <div className="JobworkInvList-Main mt-2 table-responsive">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>

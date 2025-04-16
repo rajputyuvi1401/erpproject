@@ -71,7 +71,7 @@ const ProductionEntryList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ProductionEntryList mt-5">
+                <div className="ProductionEntryList">
                   <div className="ProductionEntryList-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
@@ -80,13 +80,13 @@ const ProductionEntryList = () => {
                         </h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn" to="/AddQuater">
+                        <button type="button" className="vndrbtn" to="/AddQuater">
                           Production Report
                         </button>
 
                         <button
                           type="button"
-                          className="btn"
+                          className="vndrbtn"
                           to="/Companysetup"
                         >
                           Production Query
@@ -94,11 +94,11 @@ const ProductionEntryList = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="ProductionEntryList-Main">
+                  <div className="ProductionEntryList-Main mt-2">
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
                         {/* Plant */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>Plant:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -107,19 +107,19 @@ const ProductionEntryList = () => {
                         </div>
 
                         {/* From Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* To Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>To Date:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* Series */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>Series:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -128,7 +128,7 @@ const ProductionEntryList = () => {
                         </div>
 
                         {/* Series */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>Shift:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -139,8 +139,8 @@ const ProductionEntryList = () => {
                         <div className="col-sm-2 col-md-2 col-lg-1 mt-4">
                           <button
                             type="button"
-                            className="btn w-100"
-                            style={{ marginTop: "29px" }}
+                            className="vndrbtn w-100"
+                            style={{ marginTop: "15px" }}
                           >
                             Search
                           </button>
@@ -148,7 +148,8 @@ const ProductionEntryList = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="ProductionEntryList-table mt-5">
+
+                  <div className="ProductionEntryList-table mt-2">
                     <div className="table-responsive">
                       <table className="table table-bordered table-striped">
                         <thead>
@@ -175,7 +176,8 @@ const ProductionEntryList = () => {
                             <th scope="col">User</th>
 
                             <th scope="col">View</th>
-                            <th scope="col">Act</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -207,10 +209,10 @@ const ProductionEntryList = () => {
                                 <td>{entry.r_time || "N/A"}</td>
                                 <td>{entry.user || "N/A"}</td>
                                 <td>
-                                  <button className="btn btn-info">View</button>
+                                  <button className="vndrbtn">View</button>
                                 </td>
                                 <td>
-                                  <button className="btn btn-warning">
+                                  <button className="vndrbtn ">
                                     Edit
                                   </button>
                                 </td>
@@ -229,26 +231,26 @@ const ProductionEntryList = () => {
 
                      {/* Pagination Controls */}
                      <div className="d-flex justify-content-end mt-3">
-  <nav>
-    <ul className="pagination">
-      <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-        <button className="page-link" onClick={handlePrevPage}>Previous</button>
-      </li>
+                        <nav>
+                          <ul className="pagination">
+                            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+                              <button className="page-link" onClick={handlePrevPage}>Previous</button>
+                            </li>
 
-      {Array.from({ length: totalPages }, (_, i) => (
-        <li key={i} className={`page-item ${currentPage === i + 1 ? "active" : ""}`}>
-          <button className="page-link" onClick={() => setCurrentPage(i + 1)}>
-            {i + 1}
-          </button>
-        </li>
-      ))}
+                            {Array.from({ length: totalPages }, (_, i) => (
+                              <li key={i} className={`page-item ${currentPage === i + 1 ? "active" : ""}`}>
+                                <button className="page-link" onClick={() => setCurrentPage(i + 1)}>
+                                  {i + 1}
+                                </button>
+                              </li>
+                            ))}
 
-      <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
-        <button className="page-link" onClick={handleNextPage}>Next</button>
-      </li>
-    </ul>
-  </nav>
-</div>
+                            <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+                              <button className="page-link" onClick={handleNextPage}>Next</button>
+                            </li>
+                          </ul>
+                        </nav>
+                      </div>
 
                   </div>
                 </div>

@@ -35,8 +35,8 @@ const BomRouting = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="BomRouting1">
                   
-                  <div className="BomRoutingheading mb-4 text-start mt-5">
-                    <div className="row align-items-center">
+                  <div className="BomRoutingheading mb-4 text-start">
+                      <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">
                             BOM And Routing List
@@ -47,18 +47,18 @@ const BomRouting = () => {
                         </div>
 
                         <div className="col-sm-9 text-end">
-                          <button className="BOMRoutingbtn">FG:548</button>
-                          <button className="BOMRoutingbtn">SFG:1</button>
-                          <button className="BOMRoutingbtn">RM:44</button>
-                          <button className="BOMRoutingbtn">NPD:0</button>
-                          <button className="BOMRoutingbtn">Total:593</button>
-                          <button className="BOMRoutingbtn">Un-Auth:2</button>
-                          <button className="BOMRoutingbtn">Auth:591</button>
+                          <button className="BOMRouting  vndrbtn">FG:548</button>
+                          <button className="BOMRouting  vndrbtn">SFG:1</button>
+                          <button className="BOMRouting  vndrbtn">RM:44</button>
+                          <button className="BOMRouting  vndrbtn">NPD:0</button>
+                          <button className="BOMRouting  vndrbtn">Total:593</button>
+                          <button className="BOMRouting  vndrbtn">Un-Auth:2</button>
+                          <button className="BOMRouting  vndrbtn">Auth:591</button>
 
                           
                           
                             <button  style={{marginLeft:"3px", padding:'5px'}}
-                              className="BOMRoutingbtn dropdown-toggle"
+                              className="BOMRouting  vndrbtn dropdown-toggle"
                               type="button"
                               id="dropdownMenuButton"
                               data-bs-toggle="dropdown"
@@ -104,17 +104,17 @@ const BomRouting = () => {
                           
                           <Link
                             to={"/bill-material"}
-                            className="BOMRoutingbtn"
+                            className="BOMRouting  vndrbtn"
                             style={{ padding: "8px" }}
                           >
                             New / Modify BOM
                           </Link>
-                          <button className="BOMRoutingbtn">BOM:Query</button>
+                          <button className="BOMRouting  vndrbtn">BOM:Query</button>
                         </div>
                       </div>
                     </div>
               
-                  <div className="BomRoutingMain mt-5">
+                  <div className="BomRoutingMain">
                     <div className="Container-fluid">
                       <div className="row mb-3 text-start">
                         <div className="col-md-1 mt-1">
@@ -159,20 +159,21 @@ const BomRouting = () => {
                           </select>
                         </div>
                         <div className="col-md-6 mt-2">
-                          <button className="btn">Search</button>
-                          <button className="btn">View All</button>
-                          <button className="btn">
+                          <button className="  vndrbtn">Search</button>
+                          <button className="  vndrbtn">View All</button>
+                          <button className="  vndrbtn">
                             Export Excel (Routing)
                           </button>
-                          <button className="btn">
+                          <button className="  vndrbtn">
                             Export Excel (BOM)
                           </button>
-                          <button className="btn">Excel(Routing)</button>
+                          <button className="  vndrbtn">Excel(Routing)</button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="BomRoutingTable mt-5">
+
+                  <div className="BomRoutingTable mt-4">
                     <div className="row">
                       <div className="col-md-12">
                         <div className="table-responsive">

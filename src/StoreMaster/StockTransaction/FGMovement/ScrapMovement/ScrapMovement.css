@@ -1,123 +1,175 @@
-/* General Styles */
-.NewStoreScrapMovement {
-    background-color: white;
-    height: auto;
-    font-family: Arial, sans-serif;
-}
-
-.ScrapMovement-header {
-    margin-top: 20px;
-    background-color: aliceblue;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.ScrapMovement-main {
-    background-color: aliceblue;
-    padding: 20px;
-    margin-top: 20px;
-    height: auto;
-}
-
-.ScrapMovement-background {
-    background-color: white;
-    padding: 10px;
-    margin: 20px;
-    height: auto;
-}
-
-.ScrapMovementtable {
-    background-color: aliceblue;
-    padding: 10px;
-    margin-top: 20px;
-}
-
-.FGBtn {
-    display: inline-block;
-    padding: 8px 8px;
-    margin: 0 5px;
-    font-size: 0.875rem;
-    text-decoration: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    color: #fff;
-    background-color: #0056b3;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.FGBtn:hover {
-    background-color: #2c1a80;
-    border-color: #2c1a80;
-}
-
-.ScrapMovementtable .table-responsive {
-    overflow-x: auto;
-}
-
-.ScrapMovementtable .table {
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  .NewStoreScrapMovement {
     width: 100%;
-    border-collapse: collapse;
-}
-
-
-
-.ScrapMovementtable .table td {
-    vertical-align: middle;
-}
-.btn{
-    padding: 5px;
-    margin-left: 10px;
-}
-
-/* Responsive Styles */
-@media (max-width: 992px) {
-    .ScrapMovement-header .col-md-9 {
-        margin-top: 10px;
+    height: 100vh;
+  }
+  
+  .ScrapMovement-header {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    padding: 10px 15px; 
+  }
+  
+  .ScrapMovement-main {
+    background-color: #f8f9fa;
+    font-size: 12px;
+    padding: 10px;
+  }
+  
+  .header-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
+    margin: 0;
+  }
+  
+  .vndrbtn {
+    display: inline-block;
+    background-color: rgba(235, 233, 233, 0.685);
+    padding: 5px 10px; 
+    margin-left: 5px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .vndrbtn {
+    border: none;
+    background-color: rgba(235, 233, 233, 0.685);
+    text-decoration: none;
+    color: black;
+  }
+  
+  .vndrbtn:hover{
+    background-color: #16bfff;
+    color: white;
+  }
+  
+  .form-select{
+    font-size: 12px;
+  }
+  .form-control{
+    font-size: 12px;
+    /* height: 25px; */
+  }
+  
+  label{
+    font-size: 12px;
+  }
+  
+  .StoreGateInward1 {
+    background-color: #f8f9fa;
+    font-size: 12px;
+    padding: 10px;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+  }
+  
+  .table th {
+    background-color: #16bfff;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    font-size: 12px;
+    border-top: 1px solid #dee2e6;
+  }
+  
+  .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+  }
+  
+  .table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+  }
+  
+  .table-sm th,
+  .table-sm td {
+    padding: 0.3rem;
+  }
+  
+  /* Mobile devices (up to 576px) */
+  @media (max-width: 576px) {
+    .header-title {
+      font-size: 16px;
+      text-align: center;
     }
-
-    .FGBtn {
-        font-size: 0.75rem;
-        padding: 8px 12px;
+  
+    .vndrbtn {
+      padding: 4px 8px;
+      margin: 5px 0;
+      text-align: center;
+      display: block;
+      width: 100%;
     }
-}
-
-@media (max-width: 768px) {
-    .ScrapMovement-header .col-md-3 {
-        margin-bottom: 10px;
+  
+    .form-select,
+    .form-control,
+    label {
+      font-size: 10px;
     }
-
-    .ScrapMovement-header .col-md-9 {
-        text-align: center;
+  
+    .table th,
+    .table td {
+      font-size: 10px;
+      padding: 0.4rem;
     }
-
-    .ScrapMovement-main {
-        padding: 15px;
+  }
+  
+  /* Tablets (577px to 768px) */
+  @media (min-width: 577px) and (max-width: 768px) {
+    .header-title {
+      font-size: 18px;
     }
-
-    .ScrapMovementtable .table-responsive {
-        margin-top: 15px;
+  
+    .vndrbtn {
+      padding: 5px 10px;
     }
-
-    .ScrapMovementtable  .table th, .table td {
-        font-size: 0.875rem;
-        padding: 8px;
+  
+    .form-select,
+    .form-control,
+    label {
+      font-size: 11px;
     }
-
-    .FGBtn {
-        display: block;
-        width: 100%;
-        margin-bottom: 10px;
+  
+    .table th,
+    .table td {
+      font-size: 11px;
     }
-}
-
-@media (max-width: 576px) {
-    .FGBtn {
-        font-size: 0.675rem;
-        padding: 6px 10px;
+  }
+  
+  /* Laptops and desktops (769px and above) */
+  @media (min-width: 769px) {
+    .header-title {
+      font-size: 20px;
     }
-
-    .ScrapMovementtable  .table th, .table td {
-        font-size: 0.75rem;
-        padding: 6px;
+  
+    .form-select,
+    .form-control,
+    label {
+      font-size: 12px;
     }
-}
+  
+    .table th,
+    .table td {
+      font-size: 12px;
+    }
+  }
+  

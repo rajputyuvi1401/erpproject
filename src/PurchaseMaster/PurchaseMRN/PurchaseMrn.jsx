@@ -29,7 +29,7 @@ const PurchaseMrn = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="Purchasemrn-header  text-start mt-5">
+              <div className="Purchasemrn-header  text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">
@@ -38,8 +38,8 @@ const PurchaseMrn = () => {
                     </div>
                   </div>
                 </div>
-                <div className="Purchasemrn mt-5">
-                  <div className="container-fluid mt-4">
+                <div className="Purchasemrn mt-3">
+                  <div className="container-fluid mt-1">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>
@@ -110,7 +110,7 @@ const PurchaseMrn = () => {
                               </select>
                             </td>
                             <td>
-                              <button className="pobtn">Search</button>
+                              <button className="vndrbtn">Search</button>
                             </td>
                           </tr>
                         </tbody>

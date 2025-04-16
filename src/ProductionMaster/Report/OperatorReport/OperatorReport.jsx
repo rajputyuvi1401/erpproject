@@ -32,8 +32,8 @@ const OperatorReport = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="OperatorReport mt-5">
-                  <div className="OperatorReport-header mb-4 text-start">
+                <div className="OperatorReport">
+                  <div className="OperatorReport-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">
@@ -41,24 +41,24 @@ const OperatorReport = () => {
                         </h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn" to="#/">
+                        <button type="button" className="vndrbtn" to="#/">
                           Export Report
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="OperatorReport-Main mt-5">
+                  <div className="OperatorReport-Main">
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
                         {/* From Date */}
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* To Date */}
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <label>To :</label>
                           <input type="date" className="form-control" />
                         </div>
@@ -70,7 +70,7 @@ const OperatorReport = () => {
                         </div>
 
                         {/*   Machine */}
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <label> Machine :</label>
                           <select
                             className="form-select"
@@ -91,8 +91,8 @@ const OperatorReport = () => {
                         <div className="col-sm-2">
                           <button
                             type="button"
-                            className="btn"
-                            style={{ marginTop: "34px" }}
+                            className="vndrbtn"
+                            style={{ marginTop: "22px" }}
                           >
                             Search
                           </button>
@@ -113,7 +113,7 @@ const OperatorReport = () => {
                         {/* <div className="col-sm-2">
                           <button
                             type="button"
-                            className="btn"
+                            className="vndrbtn"
                             style={{ marginTop: "34px" }}
                           >
                             Search
@@ -123,8 +123,8 @@ const OperatorReport = () => {
                     </div>
                   </div>
 
-                  <div className="table-responsive mt-5">
-                    <table className="table table-striped table-bordered table-hover">
+                  <div className="table-responsive mt-3">
+                    <table className="table table-striped table-hover">
                       <thead>
                         <tr className="clr">
                           <th>Sr</th>
@@ -223,6 +223,7 @@ const OperatorReport = () => {
                       </tbody>
                     </table>
                   </div>
+
                 </div>
               </main>
             </div>

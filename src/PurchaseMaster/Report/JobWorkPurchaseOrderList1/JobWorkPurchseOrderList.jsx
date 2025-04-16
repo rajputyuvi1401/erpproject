@@ -31,7 +31,7 @@ const JobWorkPurchseOrderList = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="JobWorkPurchseOrderList-header  text-start mt-5">
+              <div className="JobWorkPurchseOrderList-header  text-start">
                     <div className="row align-items-center">
                   <div className="col-md-4">
                     <h5 className="header-title">
@@ -40,13 +40,13 @@ const JobWorkPurchseOrderList = () => {
                   </div>
                   <div className="col-md-8 text-end">
                     
-                        <button className="pobtn">JobWork PO - Query</button>
+                        <button className="vndrbtn">JobWork PO - Query</button>
                     
                   </div>
                 </div>
               </div>
-              <div className="JobWorkPurchse-main mt-5">
-                <div className="container-fluid mt-4">
+              <div className="JobWorkPurchse-main mt-3">
+                <div className="container-fluid">
                   <div className="table-responsive">
                     <table className="table table-bordered">
                       <thead>
@@ -137,7 +137,7 @@ const JobWorkPurchseOrderList = () => {
                             <input type="text" className="form-control" />
                           </td>
                           <td>
-                            <button className="pobtn">Search</button>
+                            <button className="vndrbtn">Search</button>
                           </td>
                         </tr>
                       </tbody>

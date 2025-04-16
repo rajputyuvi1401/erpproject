@@ -32,7 +32,7 @@ const PendingAsnList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ArnList-header mb-4 text-start mt-5">
+                <div className="ArnList-header mb-4 text-start">
                     <div className="row align-items-center">
                     <div className="col-md-2">
                       <h5 className="header-title text-start">ASN List</h5>
@@ -40,36 +40,37 @@ const PendingAsnList = () => {
 
                     <div className="col-md-10 text-end">
                       
-                          <Link className="btn" to="/PDL-List">
+                          <Link className="vndrbtn" to="/PDL-List">
                             PDI List
                           </Link>
 
-                          <Link className="btn" to="/Vendor-Bill-List">
+                          <Link className="vndrbtn" to="/Vendor-Bill-List">
                             Bill List
                           </Link>
 
-                          <Link className="btn">Export To Excel</Link>
+                          <Link className="vndrbtn">Export To Excel</Link>
 
-                          <Link className="btn">Short Qty Report</Link>
+                          <Link className="vndrbtn">Short Qty Report</Link>
 
-                          <Link className="btn" to="/Vendor-Asn-List">
+                          <Link className="vndrbtn" to="/Vendor-Asn-List">
                             ASN Modify Logs
                           </Link>
 
-                          <Link className="btn" to="/ASN-Report">
+                          <Link className="vndrbtn" to="/ASN-Report">
                             ASN Report
                           </Link>
                       
                     </div>
                   </div>
                 </div>
-                <div className="ArnList-main mt-5">
+
+                <div className="ArnList-main mt-1">
                   <div className="container-fluid">
                     <div className="row mt-4">
                       <div className="col-md-12">
                         <form className="row g-3 text-start">
                           {/* Plant */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-3 col-sm-6">
                             <label className="form-label">Plant</label>
                             <select className="form-select">
                               <option value="Produlink">Produlink</option>
@@ -78,29 +79,29 @@ const PendingAsnList = () => {
                           </div>
 
                           {/* From Date */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-3 col-sm-6">
                             <label className="form-label">From Date</label>
-                            <input type="date" className="form-control" />
+                            <input type="date" className="form-control mt-1" />
                           </div>
 
                           {/* To Date */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-3 col-sm-6">
                             <label className="form-label">To Date</label>
-                            <input type="date" className="form-control" />
+                            <input type="date" className="form-control mt-1" />
                           </div>
 
                           {/* Supplier Name */}
-                          <div className="col-md-2 col-sm-6">
+                          <div className="col-md-3 col-sm-6">
                             <label className="form-label">Vendor Name</label>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control mt-1"
                               placeholder="Enter Name"
                             />
                           </div>
 
                           {/* Item Name */}
-                          <div className="col-md-2 col-sm-6">
+                          <div className="col-md-3 col-sm-6">
                             <label className="form-label">Challan Number</label>
                             <input
                               type="text"
@@ -110,7 +111,7 @@ const PendingAsnList = () => {
                           </div>
 
                           {/* Gate Entry No. */}
-                          <div className="col-md-2 col-sm-6">
+                          <div className="col-md-3 col-sm-6">
                             <label className="form-label">In-Bound No.</label>
                             <input
                               type="text"
@@ -121,12 +122,12 @@ const PendingAsnList = () => {
 
                           {/* Search Button */}
                           <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                            <button type="submit" className="btn" style={{marginTop:"-39px"}}>
+                            <button type="submit" className="vndrbtn" style={{marginTop:"-39px"}}>
                               Search
                             </button>
                           </div>
                           <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                            <button type="submit" className="btn" style={{marginTop:"-39px"}}>
+                            <button type="submit" className="vndrbtn" style={{marginTop:"-39px"}}>
                               View All
                             </button>
                           </div>
@@ -149,7 +150,7 @@ const PendingAsnList = () => {
                       </div>
                     </div>
 
-                    <div className="container-fluid mt-4 text-start">
+                    <div className="container-fluid mt-2 text-start">
                       <div className="row">
                         <div className="col-md-3">
                           <p>Total Records:0</p>

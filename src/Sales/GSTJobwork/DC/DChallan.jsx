@@ -37,25 +37,25 @@ const DChallan = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="DChallan mt-5">
-                  <div className="DChallan-header mb-4 text-start">
+                <div className="DChallan">
+                  <div className="DChallan-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Delivery Challan</h5>
                       </div>
 
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn" onClick={handleButtonClick}>
+                        <button type="button" className=" vndrbtn" onClick={handleButtonClick}>
                           DC List
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="DChallan-main mt-5">
+                  <div className="DChallan-main">
                     <div className="DChallan-tabs">
 
-                      <div className="tab-content mt-4" >
+                      <div className="tab-content" >
                         <div className="tab-pane fade show active" role="tabpanel" >
                           <div className="row text-start">
                                 <div className="col-4">
@@ -65,7 +65,7 @@ const DChallan = () => {
                                             </div>
                                             <div className="col-md-8 d-flex">
                                                 <input type="text"  className="form-control" placeholder="0"/>
-                                                <button style={{marginBottom:"15px"}} className="btn w-50">Search</button>
+                                                <button style={{marginBottom:"15px"}} className=" vndrbtn w-50">Search</button>
                                             </div>
                                      </div>
                                 </div>
@@ -91,7 +91,7 @@ const DChallan = () => {
                                 </div>
                           </div>
 
-                          <div className="row text-start">
+                          <div className="row text-start mt-2">
                                 <div className="col-4">
                                     <div className="row">
                                             <div className="col-md-4">
@@ -125,7 +125,7 @@ const DChallan = () => {
                           </div>
                         </div>
 
-                        <div className="table-responsive">
+                        <div className="table-responsive mt-2">
                                 <table className="table table-bordered">
                                 <thead>
                                     <tr>
@@ -143,22 +143,22 @@ const DChallan = () => {
                                         <td>
                                            <div className="row">
                                             <div className="col-md-4">
-                                              <select name="" id="">
+                                              <select className="form-control" name="" id="">
                                                 <option value=""></option>
                                               </select>
                                             </div>
                                             <div className="col-md-8 d-flex">
                                                 <input type="text"  className="form-control" placeholder="enter Name"/>
-                                                <button className="btn mb-20">Search</button>
+                                                <button className=" vndrbtn mb-20">Search</button>
                                             </div>
                                            </div>
                                      </td>
-                                        <td><textarea name="" id=""></textarea></td>
+                                        <td><textarea className="form-control" name="" id=""></textarea></td>
                                         <td><input type="text" className="form-control" /></td>
                                         <td><input type="text" className="form-control" /></td>
                                         <td><input type="text" className="form-control" /></td>
                                         <td><input type="text" className="form-control" /></td>
-                                        <td><button className="btn">Add</button></td>
+                                        <td><button className=" vndrbtn">Add</button></td>
                                     </tr>
                                 </tbody>
                                 </table>
@@ -189,7 +189,7 @@ const DChallan = () => {
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><button className="btn">X</button></td>
+                                        <td><button className=" vndrbtn">X</button></td>
                                     </tr>
                                 </tbody>
                                 </table>

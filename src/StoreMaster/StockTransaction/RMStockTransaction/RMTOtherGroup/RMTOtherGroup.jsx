@@ -48,7 +48,7 @@ const RMTOtherGroup = () => {
                   </div>
                 </div>
               </div>
-              <div className="RMToOther-main">
+              <div className="RMToOther-main mt-2">
                 <div className="container-fluid text-start">
                   <div className="row">
                     <div className="col-md-4">
@@ -56,7 +56,7 @@ const RMTOtherGroup = () => {
                         <div className="col-md-4">
                           <label>To:</label>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-8">
                           <input />
                         </div>
                         
@@ -65,7 +65,7 @@ const RMTOtherGroup = () => {
                         <div className="col-md-4">
                           <label>Date:</label>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-8">
                           <input type="date" />
                         </div>
                       </div>
@@ -84,7 +84,7 @@ const RMTOtherGroup = () => {
                     </div>
                   </div>
 
-                  <div className="RMToOtherSelect">
+                  <div className="RMToOtherSelect mt-4">
                     <div className="row flex-nowrap align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title text-start">
@@ -129,7 +129,7 @@ const RMTOtherGroup = () => {
                       </div>
                     </div>
 
-                    <div className="RMToOther1Select">
+                    <div className="RMToOther1Select mt-4">
                     <div className="row flex-nowrap align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title text-start">
@@ -177,7 +177,7 @@ const RMTOtherGroup = () => {
 
                   <div className="row text-end mt-4">
                     <div className="col-md-12">
-                      <button type="submit" className="pobtn">
+                      <button type="submit" className="vndrbtn">
                         Save
                       </button>
                     </div>

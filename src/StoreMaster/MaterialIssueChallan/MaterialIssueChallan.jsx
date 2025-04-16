@@ -146,9 +146,9 @@ const MaterialIssueChallan = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="NewMaterialIssue-header mb-4 text-start mt-5">
+                <div className="NewMaterialIssue-header mb-4 text-start">
                     <div className="row align-items-center">
-                    <div className="col-md-2 col-sm-6">
+                    <div className="col-md-3 col-sm-6">
                       <h5 className="header-title text-start">
                         New Material Issue
                       </h5>
@@ -175,17 +175,19 @@ const MaterialIssueChallan = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-6 col-sm-12 text-end">
+
+                    <div className="col-md-5 col-sm-12 text-end">
                      
-                          <Link className="btn" to="/Work-Order-Material">
+                          <Link className="vndrbtn" to="/Work-Order-Material">
                             WorkOrder Material Issue Report
                           </Link>
 
-                          <Link className="btn" to="/Material-Issue">
+                          <Link className="vndrbtn" to="/Material-Issue">
                             Material Issue WorkOrder Only
                           </Link>
                         
                     </div>
+
                   </div>
                 </div>
 
@@ -194,7 +196,7 @@ const MaterialIssueChallan = () => {
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-1 col-sm-2">
-                          <label htmlFor="seriesSelect" className="form-label">
+                          <label htmlFor="seriesSelect" className="form-label mt-2">
                             Series:
                           </label>
                         </div>
@@ -205,7 +207,7 @@ const MaterialIssueChallan = () => {
                           </select>
                         </div>
                         <div className="col-md-1 col-sm-2">
-                          <label htmlFor="typeSelect" className="form-label">
+                          <label htmlFor="typeSelect" className="form-label mt-2">
                             Type:
                           </label>
                         </div>
@@ -249,7 +251,7 @@ const MaterialIssueChallan = () => {
                                       onChange={handleChange}
                                       className="form-control"
                                     />
-                                    <button className="pobtn ms-2">
+                                    <button className="vndrbtn ms-2">
                                       Search
                                     </button>
                                   </td>
@@ -345,7 +347,7 @@ const MaterialIssueChallan = () => {
                                     </select>
                                   </td>
                                   <td>
-                                    <button type="submit" className="pobtn">
+                                    <button type="submit" className="vndrbtn">
                                       {isEditing ? "Update" : "Add"}
                                     </button>
                                   </td>
@@ -373,7 +375,7 @@ const MaterialIssueChallan = () => {
                               <th>
                                 Qty{" "}
                                 <button
-                                  className="newbtn"
+                                  className="vndrbtn"
                                   onClick={handleModalOpen}
                                 >
                                   Add
@@ -382,7 +384,7 @@ const MaterialIssueChallan = () => {
                               <th>
                                 Machine{" "}
                                 <button
-                                  className="newbtn"
+                                  className="vndrbtn"
                                   onClick={handleModalOpen1}
                                 >
                                   Add
@@ -392,7 +394,7 @@ const MaterialIssueChallan = () => {
                               <th>
                                 MRN No:{" "}
                                 <button
-                                  className="newbtn"
+                                  className="vndrbtn"
                                   onClick={handleModalOpen1}
                                 >
                                   Add
@@ -402,7 +404,7 @@ const MaterialIssueChallan = () => {
                               <th>
                                 Employee:{" "}
                                 <button
-                                  className="newbtn"
+                                  className="vndrbtn"
                                   onClick={handleModalOpen2}
                                 >
                                   See All
@@ -451,6 +453,7 @@ const MaterialIssueChallan = () => {
                       </div>
                       {/* Models */}
                     </div>
+
                     <div
                       className={`modal fade ${
                         showModal ? "show d-block" : ""
@@ -464,7 +467,7 @@ const MaterialIssueChallan = () => {
                             <h5 className="modal-title">Search</h5>
                             <button
                               type="button"
-                              className="btn-close"
+                              className="vndrbtn"
                               onClick={handleModalClose}
                             >
                               X
@@ -486,12 +489,12 @@ const MaterialIssueChallan = () => {
                           </div>
 
                           <div className="modal-footer">
-                            <button type="button" className="newbtn1">
+                            <button type="button" className="vndrbtn">
                               See ALL
                             </button>
                             <button
                               type="button"
-                              className="newbtn1"
+                              className="vndrbtn"
                               onClick={handleModalClose}
                             >
                               Close
@@ -500,6 +503,7 @@ const MaterialIssueChallan = () => {
                         </div>
                       </div>
                     </div>
+
                     <div
                       className={`modal fade ${
                         showModal1 ? "show d-block" : ""
@@ -513,7 +517,7 @@ const MaterialIssueChallan = () => {
                             <h5 className="modal-title">Add Type</h5>
                             <button
                               type="button"
-                              className="btn-close"
+                              className="vndrbtn"
                               onClick={handleModalClose1}
                             >
                               X
@@ -536,18 +540,19 @@ const MaterialIssueChallan = () => {
                           <div className="modal-footer">
                             <button
                               type="button"
-                              className="newbtn1"
+                              className="vndrbtn"
                               onClick={handleModalClose1}
                             >
                               Close
                             </button>
-                            <button type="button" className="newbtn1">
+                            <button type="button" className="vndrbtn">
                               Save changes
                             </button>
                           </div>
                         </div>
                       </div>
                     </div>
+
                     <div
                       className={`modal fade ${
                         showModal2 ? "show d-block" : ""
@@ -561,7 +566,7 @@ const MaterialIssueChallan = () => {
                             <h5 className="modal-title">Add Type</h5>
                             <button
                               type="button"
-                              className="btn-close"
+                              className="vndrbtn"
                               onClick={handleModalClose2}
                             >
                               X
@@ -574,12 +579,12 @@ const MaterialIssueChallan = () => {
                           <div className="modal-footer">
                             <button
                               type="button"
-                              className="newbtn1"
+                              className="vndrbtn"
                               onClick={handleModalClose2}
                             >
                               Close
                             </button>
-                            <button type="button" className="newbtn1">
+                            <button type="button" className="vndrbtn">
                               Save changes
                             </button>
                           </div>
@@ -607,14 +612,14 @@ const MaterialIssueChallan = () => {
                       {/* Input Fields */}
                       <div className="row g-3">
                         {/* M Issue No */}
-                        <div className="col-md-2">
+                        <div className="col-md-3">
                           <div className="row align-items-center">
                             <div className="col-4 col-md-4 text-end">
                               <label>M Issue No:</label>
                             </div>
                             <div className="col-4 col-md-4">
                               <input
-                                className="form-control mb-2"
+                                className="form-control"
                                 placeholder="No"
                               />
                             </div>
@@ -628,24 +633,24 @@ const MaterialIssueChallan = () => {
                         </div>
 
                         {/* M Issue Date */}
-                        <div className="col-md-2">
+                        <div className="col-md-3">
                           <div className="row align-items-center">
-                            <div className="col-4 text-end">
+                            <div className="col-6 text-end">
                               <label>M Issue Date:</label>
                             </div>
-                            <div className="col-8">
+                            <div className="col-6">
                               <input type="date" className="form-control" />
                             </div>
                           </div>
                         </div>
 
                         {/* M Issue Time */}
-                        <div className="col-md-2">
+                        <div className="col-md-3">
                           <div className="row align-items-center">
-                            <div className="col-4 text-end">
+                            <div className="col-6 text-end">
                               <label>M Issue Time:</label>
                             </div>
-                            <div className="col-8">
+                            <div className="col-6">
                               <input
                                 type="text"
                                 className="form-control"
@@ -656,7 +661,7 @@ const MaterialIssueChallan = () => {
                         </div>
 
                         {/* Project */}
-                        <div className="col-md-1">
+                        <div className="col-md-3">
                           <div className="row align-items-center">
                             <div className="col-4 text-end">
                               <label>Project:</label>
@@ -670,7 +675,7 @@ const MaterialIssueChallan = () => {
                         </div>
 
                         {/* Contractor */}
-                        <div className="col-md-2">
+                        <div className="col-md-3">
                           <div className="row align-items-center">
                             <div className="col-4 text-end">
                               <label>Contractor:</label>
@@ -685,12 +690,13 @@ const MaterialIssueChallan = () => {
 
                         {/* Save & Clear Buttons */}
                         <div className="col-md-2 d-flex justify-content-end align-items-center">
-                          <button className="btn w-100">Save Challan</button>
+                          <button className="vndrbtn w-100">Save Challan</button>
                         </div>
                         <div className="col-md-1 d-flex justify-content-end align-items-center">
-                          <button className="btn w-100">Clear</button>
+                          <button className="vndrbtn w-100">Clear</button>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>

@@ -33,66 +33,68 @@ const JobWorkSales = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="JobWorkSales mt-5">
-                  <div className="JobWorkSales-header mb-4 text-start">
+                <div className="JobWorkSales">
+                  <div className="JobWorkSales-header mb-2 text-start">
                     <div className="row align-items-center">
-                      <div className="col-md-4">
+                      <div className="col-md-5">
                         <h5 className="header-title">Pending JobWork Invoice List For E-Invoice</h5>
                       </div>
-                      <div className="col-md-2  generateirn">
-                        <input type="radio" id="GenerateIRN" name="brand" value="GenerateIRN"/>
-                        <label for="GenerateIRN">GenerateIRN</label>
-                      </div>
-                      <div className="col-md-1 cancelirn">       
-                      <input type="radio" id="CancelIRN" name="brand" value="CancelIRN"/>
-                        <label for="CancelIRN">CancelIRN</label>
-                      </div>
+                      <div className="col-md-1 generateirn" style={{ display: 'flex', alignItems: 'center' }}>
+                          <input type="radio" id="GenerateIRN" name="brand" value="GenerateIRN" />
+                          <label htmlFor="GenerateIRN" style={{ marginLeft: '5px' }}>GenerateIRN</label>
+                        </div>
+                        <div className="col-md-1 cancelirn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <input type="radio" id="CancelIRN" name="brand" value="CancelIRN" />
+                    <label htmlFor="CancelIRN" style={{ marginLeft: '5px' }}>CancelIRN</label>
+                  </div>
                     </div>
                   </div>
 
-                  <div className="JobWorkSales-main mt-5">
+                  <div className="JobWorkSales-main">
                      <div className="row text-start">
         
-                     <div className="col-md-1">
+                     <div className="col-md-2">
                             <label htmlFor="">From :</label>
-                            <input type="date" className="form-control"/>
+                            <input type="date" className="form-control mt-2"/>
                       </div>
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor="">Plant:</label>
-                            <select name="" id="" className="form-control">
+                            <select name="" id="" className="form-control mt-2">
                                <option value="">Sharp</option>
                            </select>
                       </div> 
-                      <div className="col-md-1">
-                         <div className="d-flex  justify-content-center align-items-center">
-                            <input type="checkbox" id="customer-checkbox" />
-                             <label htmlFor="customer-checkbox" className="ms-2">Customer:</label>
-                        </div>
-                        <input type="text" placeholder="Name" className="form-control" />
-                     </div>
+                      <div className="col-md-2">
+  <div className="d-flex justify-content-start align-items-center">
+    <input type="checkbox" id="customer-checkbox" />
+    <label htmlFor="customer-checkbox" className="ms-2">Customer:</label>
+  </div>
+  <input type="text" placeholder="Name" className="form-control" />
+</div>
 
-                      <div className="col-md-1">
-                      <div className="d-flex justify-content-center align-items-center">
+
+                      <div className="col-md-2">
+                      <div className="d-flex  justify-content-start align-items-center">
                             <input type="checkbox" id="Item-checkbox" />
                              <label htmlFor="Item-checkbox" className="ms-1">Item:</label>
                         </div>
                             <input type="text" placeholder="Enter Code | Name" className="form-control"/>
                       </div> 
-                      <div className="col-md-1">
-                               <div className="d-flex justify-content-center align-items-center">
+                      <div className="col-md-2">
+                               <div className="d-flex  justify-content-start align-items-center">
                                   <input type="checkbox" id="Invoice-checkbox" />
                                   <label htmlFor="Invoice-checkbox" className="ms-2">Invoice:</label>
                               </div>  
                             <input type="text" placeholder="No" className="form-control"/>
                       </div> 
                       <div className="col-md-1 mt-4">
-                           <button type="button" className="btn btn-primary w-100" >
+                           <button type="button" className="vndrbtn w-100" >
                               Search
                            </button> 
                         </div>
                      </div>
                   </div>
-                  <div className="JobWorkSales-main mt-5">
+                  
+                  <div className="JobWorkSales-main mt-2">
                     <div className="JobWorkSales-second">
                       <ul className="nav nav-tabs" id="JobWorkSalesTabs" role="tablist" >
                         <li className="nav-item" role="presentation">
@@ -110,48 +112,48 @@ const JobWorkSales = () => {
                       <div className="tab-content mt-4"  id="JobWorkSalesTabsContent">
 
                         <div  className="tab-pane fade show active" id="shift" role="tabpanel" >
-                        <div className="HeatCodeRegister-Main">
-                  <div className="table-responsive">
-                    <table className="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>Sr.</th>
-                          <th>Year </th>
-                          <th>##</th>
-                          <th>Invoice No</th>
-                          <th>Cust Po No</th>
-                          <th>Cust Code</th>
-                          <th>Cust Name</th>
-                          <th>Item Qty | Desc</th>
-                          <th>AssAmt</th>
-                          <th>Total</th>
-                          <th>USers</th>
-                          <th>View</th>
-                          <th>JSON</th>
-                          <th>Act</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    </div>
-                  </div>  
+                              <div className="HeatCodeRegister-Main">
+                                  <div className="table-responsive">
+                                      <table className="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>Sr.</th>
+                                            <th>Year </th>
+                                            <th>##</th>
+                                            <th>Invoice No</th>
+                                            <th>Cust Po No</th>
+                                            <th>Cust Code</th>
+                                            <th>Cust Name</th>
+                                            <th>Item Qty | Desc</th>
+                                            <th>AssAmt</th>
+                                            <th>Total</th>
+                                            <th>USers</th>
+                                            <th>View</th>
+                                            <th>JSON</th>
+                                            <th>Act</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  </div>
+                            </div>  
                         </div>
 
                          <div className="tab-pane fade" id="machineIdle" role="tabpanel" >
@@ -163,17 +165,17 @@ const JobWorkSales = () => {
                                     </div>
 
                                     <div className="row align-items-center mt-4">  
-                                       <div className="col-md-1">
-                                        <button type="button" className="btn btn-primary w-100" >
+                                       <div className="col-md-2">
+                                        <button type="button" className="vndrbtn w-100" >
                                             Generate IRN
                                         </button> 
                                         </div>
                                    </div>
 
                                    <div className="row align-items-center mt-4">  
-                                       <div className="col-md-12">
+                                       <div className="col-md-4">
                                          <label htmlFor="">Result</label>
-                                         <textarea name="result" id="result"></textarea>
+                                         <textarea name="result" className="form-control" id="result"></textarea>
                                         </div>
                                    </div>
                              </div>

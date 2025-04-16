@@ -34,20 +34,20 @@ const ProductionPlanList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ProductionPlanList mt-5">
+                <div className="ProductionPlanList">
                   <div className="ProductionPlanList-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Work Order List</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn" to="/AddQuater">
+                        <button type="button" className="vndrbtn" to="/AddQuater">
                           Work Order Report
                         </button>
 
                         <button
                           type="button"
-                          className="btn"
+                          className="vndrbtn"
                           to="/Companysetup"
                         >
                           Work Order - Query
@@ -56,25 +56,35 @@ const ProductionPlanList = () => {
                     </div>
                   </div>
 
-                  <div className="ProductionPlanList-Main">
+                  <div className="ProductionPlanList-Main mt-2">
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
                         {/* From Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-3">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* To Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-3">
                           <label>To Date:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                        
+                    {/* Customer Name */}
+                      <div className="col-sm-6 col-md-1 col-lg-3">
+                          <label>Customer Name:</label>
+                          <input type="text" className="form-control" />
+                        </div>
 
+                        {/* Item Name */}
+                        <div className="col-sm-6 col-md-1 col-lg-3">
+                          <label>Item Name:</label>
+                          <input type="text" className="form-control" />
+                        </div>
                         {/* Status */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-3">
                           <label>Status:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -84,7 +94,7 @@ const ProductionPlanList = () => {
                        
 
                         {/* Series */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-3">
                           <label>Series:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -93,31 +103,21 @@ const ProductionPlanList = () => {
 
                        
 
-                        {/* Customer Name */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
-                          <label>Customer Name:</label>
-                          <input type="text" className="form-control" />
-                        </div>
-
-                        {/* Item Name */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
-                          <label>Item Name:</label>
-                          <input type="text" className="form-control" />
-                        </div>
+                       
 
                         {/* Wo No */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
+                        <div className="col-sm-6 col-md-1 col-lg-3">
                           <label>All:</label>
                           <select className="form-select">
                             <option>Select All</option>
                           </select>
                         </div>
 
-                        <div className="col-sm-2 col-md-2 col-lg-1 mt-4">
+                        <div className="col-sm-2 col-md-2 col-lg-3 mt-4">
                           <label></label>
                         <button
                             type="button"
-                            className="btn btn-primary w-100"
+                            className="vndrbtn w-100"
                           >
                             Search
                           </button>
@@ -169,12 +169,12 @@ const ProductionPlanList = () => {
                           <td>2024</td>
                           <td>2024</td>
                           <td>
-                            <button className="btn btn-link">
+                            <button className="vndrbtn ">
                               <FaEdit />
                             </button>
                           </td>
                           <td>
-                            <button className="btn btn-link text-danger">
+                            <button className="vndrbtn  text-danger">
                               <FaTrash />
                             </button>
                           </td>
@@ -183,6 +183,7 @@ const ProductionPlanList = () => {
                       </tbody>
                     </table>
                   </div>
+
                 </div>
               </main>
             </div>

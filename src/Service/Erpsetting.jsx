@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const BASE_URL = "http://13.201.136.34:8000/Settings/";
-const BASE_URL = "api/Settings/";
+const BASE_URL = "http://3.7.91.234:8000/Settings/";
+// const BASE_URL = "api/Settings/";
 
 // Fetch all users
 export const getUsers = async () => {

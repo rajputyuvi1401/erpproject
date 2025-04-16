@@ -1,101 +1,174 @@
-/* General Styles */
-.NewStoreStockTranscation {
-    background-color: white;
-    height: auto;
-    font-family: Arial, sans-serif;
-}
-
-.StockTranscation-header {
-    margin-top: 20px;
-    background-color: aliceblue;
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  .NewStoreStockTranscation {
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .StockTranscation-header {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    padding: 10px 15px; 
+  }
+  
+  .StockTranscation-main {
+    background-color: #f8f9fa;
+    font-size: 12px;
     padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.StockTranscation-main {
-    background-color: aliceblue;
-    padding: 20px;
-    margin-top: 20px;
-    height: auto;
-}
-
-/* Buttons */
-.pobtn {
-    background-color: #007bff;
-    color: white;
+  }
+  
+  .header-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
+    margin: 0;
+  }
+  
+  .vndrbtn {
+    display: inline-block;
+    background-color: rgba(235, 233, 233, 0.685);
+    padding: 5px 10px; 
+    margin-left: 5px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .vndrbtn {
     border: none;
-    padding: 5px 15px;
-    text-align: center;
-    font-size: 14px;
-    margin-left: 10px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.pobtn:hover {
-    background-color: #0056b3;
-}
-
-/* Form Labels */
-.StockTranscation-main .form-label {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-/* Responsive Table */
-.StockTranscation-main .table-responsive {
+    background-color: rgba(235, 233, 233, 0.685);
+    text-decoration: none;
+    color: black;
+  }
+  
+  .vndrbtn:hover{
+    background-color: #16bfff;
+    color: white;
+  }
+  
+  .form-select{
+    font-size: 12px;
+  }
+  .form-control{
+    font-size: 12px;
+  }
+  
+  label{
+    font-size: 12px;
+  }
+  
+  .StoreStockTranscation {
+    background-color: #f8f9fa;
+    font-size: 12px;
+    padding: 10px;
+  }
+  
+  .table-responsive {
     overflow-x: auto;
-}
-
-.StockTranscation-main .table thead th {
-    
-    font-weight: bold;
-}
-
-.StockTranscation-main .table-bordered {
-    border: 1px solid #dee2e6;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-    .pobtn {
-        font-size: 12px;
-        padding: 5px 10px;
+  }
+  
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+  }
+  
+  .table th {
+    background-color: #16bfff;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    font-size: 12px;
+    border-top: 1px solid #dee2e6;
+  }
+  
+  .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+  }
+  
+  .table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+  }
+  
+  .table-sm th,
+  .table-sm td {
+    padding: 0.3rem;
+  }
+  
+  /* Mobile devices (up to 576px) */
+  @media (max-width: 576px) {
+    .header-title {
+      font-size: 16px;
+      text-align: center;
     }
-
-    .StockTranscation-main .form-label {
-        font-size: 12px;
+  
+    .vndrbtn {
+      padding: 4px 8px;
+      margin: 5px 0;
+      text-align: center;
+      display: block;
+      width: 100%;
     }
-
-    .StockTranscation-main .col-md-1, .col-md-2 {
-        width: 100%;
-        padding: 5px 0;
+  
+    .form-select,
+    .form-control,
+    label {
+      font-size: 10px;
     }
-
-    .StockTranscation-header h5 {
-        font-size: 16px;
+  
+    .table th,
+    .table td {
+      font-size: 10px;
+      padding: 0.4rem;
     }
-
-    .StockTranscation-main  .table thead th, .table tbody td {
-        font-size: 12px;
+  }
+  
+  /* Tablets (577px to 768px) */
+  @media (min-width: 577px) and (max-width: 768px) {
+    .header-title {
+      font-size: 18px;
     }
-}
-
-@media (max-width: 576px) {
-    .pobtn {
-        font-size: 10px;
-        padding: 5px 8px;
+  
+    .vndrbtn {
+      padding: 5px 10px;
     }
-
-    .StockTranscation-main .form-label {
-        font-size: 10px;
+  
+    .form-select,
+    .form-control,
+    label {
+      font-size: 11px;
     }
-
-    .StockTranscation-header h5 {
-        font-size: 14px;
+  
+    .table th,
+    .table td {
+      font-size: 11px;
     }
-
-    .table thead th, .table tbody td {
-        font-size: 10px;
+  }
+  
+  /* Laptops and desktops (769px and above) */
+  @media (min-width: 769px) {
+    .header-title {
+      font-size: 20px;
     }
-}
+  
+    .form-select,
+    .form-control,
+    label {
+      font-size: 12px;
+    }
+  
+    .table th,
+    .table td {
+      font-size: 12px;
+    }
+  }
+  

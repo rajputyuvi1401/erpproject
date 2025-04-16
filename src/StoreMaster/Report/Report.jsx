@@ -43,39 +43,31 @@ const Report = () => {
 
                     <div className="col-md-9 text-end">
                       <div className="row justify-content-end">
-                        <div className="col-md-9 d-flex align-items-end">
-                          <Link className="pobtn">GRN Report</Link>
+                        <div className="col-md-3 d-flex align-items-end">
+                          <Link className="vndrbtn">GRN Report</Link>
 
-                          <Link className="pobtn">GRN Query</Link>
+                          <Link className="vndrbtn">GRN Query</Link>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="GateInward-main">
+                
+                <div className="GateInward-main mt-3">
                   <div className="container-fluid">
                     <div className="row mt-4">
                       <div className="col-md-12">
                         <form className="row g-3 text-start">
                           {/* From Date */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">From Date</label>
                             <input type="date" className="form-control" />
                           </div>
 
                           {/* To Date */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">To Date</label>
                             <input type="date" className="form-control" />
-                          </div>
-
-                          {/* Plant */}
-                          <div className="col-md-1 col-sm-6">
-                            <label className="form-label">Plant</label>
-                            <select className="form-select">
-                              <option value="Produlink">Produlink</option>
-                              {/* Add more options here */}
-                            </select>
                           </div>
 
                           {/* Supplier Name */}
@@ -98,15 +90,6 @@ const Report = () => {
                             />
                           </div>
 
-
-                          <div className="col-md-1 col-sm-6">
-                            <label className="form-label">Main Group</label>
-                            <select className="form-select">
-                              <option value="">ALL</option>
-                              {/* Add more options here */}
-                            </select>
-                          </div>
-
                           {/* Gate Entry No. */}
                           <div className="col-md-2 col-sm-6">
                             <label className="form-label">GRN No.</label>
@@ -127,9 +110,26 @@ const Report = () => {
                             />
                           </div>
 
+                            {/* Plant */}
+                            <div className="col-md-2 col-sm-6">
+                            <label className="form-label">Plant</label>
+                            <select className="form-select">
+                              <option value="Produlink">Produlink</option>
+                              {/* Add more options here */}
+                            </select>
+                          </div>
+
+                          <div className="col-md-2 col-sm-6">
+                            <label className="form-label">Main Group</label>
+                            <select className="form-select">
+                              <option value="">ALL</option>
+                              {/* Add more options here */}
+                            </select>
+                          </div>
+
                           {/* Search Button */}
-                          <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                            <button type="submit" className="pobtn w-100">
+                          <div className="col-md-2 col-sm-6 mt-1 align-self-end">
+                            <button type="submit" className="vndrbtn w-100">
                               Search
                             </button>
                           </div>

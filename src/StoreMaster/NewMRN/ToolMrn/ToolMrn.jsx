@@ -32,21 +32,21 @@ const ToolMrn = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ToolMRn-header mb-4 text-start mt-5">
+                <div className="ToolMRn-header mb-4 text-start">
                     <div className="row align-items-center">
                     <div className="col-md-2">
                       <h5 className="header-title text-start">New MRN</h5>
                     </div>
-                    <div className="col-md-9 mt-4">
+                    <div className="col-md-9">
                       <div className="row mb-3">
                         {/* Label: Series and Series Select Option */}
                         <div className="col-md-1">
-                          <label htmlFor="seriesSelect" className="form-label">
+                          <label htmlFor="seriesSelect" className="form-label mt-3">
                             Series:
                           </label>
                         </div>
                         <div className="col-md-2">
-                          <select id="seriesSelect" className="form-select">
+                          <select id="seriesSelect" className="form-select mt-2">
                             <option selected>Select</option>
                             <option value="MRN">MRN</option>
                             
@@ -54,7 +54,7 @@ const ToolMrn = () => {
                         </div>
 
                         <div className="col-md-1">
-                          <label htmlFor="seriesSelect" className="form-label">
+                          <label htmlFor="seriesSelect" className="form-label mt-3">
                             MRN No:
                           </label>
                         </div>
@@ -63,7 +63,7 @@ const ToolMrn = () => {
                           <input
                             type="text"
                             id="inputField"
-                            className="form-control"
+                            className="form-control mt-2"
                             placeholder="Enter value"
                           />
                         </div>
@@ -159,7 +159,7 @@ const ToolMrn = () => {
                                   ></textarea>
                                 </td>
                                 <td>
-                                  <button className="btn">
+                                  <button className="vndrbtn">
                                     <FaTrash />
                                   </button>
                                 </td>

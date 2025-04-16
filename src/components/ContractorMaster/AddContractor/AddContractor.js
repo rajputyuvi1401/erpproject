@@ -99,7 +99,7 @@ const AddContractor = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="AddContractorMaster1">
                   
-                   <div className="AddContractor-header mb-4 text-start mt-5">
+                   <div className="AddContractor-header mb-4 text-start">
                      <div className="row align-items-center">
                         <div className="col-md-4">
                           <h5 className="header-title">
@@ -109,7 +109,7 @@ const AddContractor = () => {
                       </div>
                     </div>
                   
-                  <div className="AddContractorMain mt-5">
+                  <div className="AddContractorMain mt-2">
                     <div className="container-fluid">
                       <div className="row text-start mt-4">
                         <div className="col-md-6">
@@ -362,13 +362,13 @@ const AddContractor = () => {
                         <div className="row">
                           <div className="col-md-12 text-end">
                             <button
-                              className="btn"
+                              className=" vndrbtn"
                               onClick={handleSubmit}
                             >
                               Save
                             </button>
                             <button
-                              className="btn"
+                              className=" vndrbtn"
                               onClick={handleClear}
                             >
                               Clear

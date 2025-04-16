@@ -43,24 +43,24 @@ const TaxInvoiceList    = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="TaxInvoiceList mt-5">
-                <div className="TaxInvoiceList-header mb-4 text-start">
+              <div className="TaxInvoiceList">
+                <div className="TaxInvoiceList-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title"> Tax Invoice List </h5>
                     </div>
 
                     <div className="col-md-8 text-end">
-                        <button type="button" className="btn" to="#/" onClick={handleButtonClick}>
+                        <button type="button" className=" vndrbtn" to="#/" onClick={handleButtonClick}>
                          Send Email
                         </button>
-                        <button type="button" className="btn" to="#/">
+                        <button type="button" className=" vndrbtn" to="#/">
                             Vender File
                         </button> 
-                        <button type="button" className="btn" to="#/">
+                        <button type="button" className=" vndrbtn" to="#/">
                             Invoice - Report
                         </button>             
-                        <button type="button" className="btn" to="#/">
+                        <button type="button" className=" vndrbtn" to="#/">
                              Sales Invoice - Query
                         </button> 
                     </div>
@@ -71,45 +71,45 @@ const TaxInvoiceList    = () => {
                 <div className="TaxInvoiceList-Main">
                     <div className="container-fluid">
                       
-                        <div className="row g-3 text-start mt-3">  
+                        <div className="row g-3 text-start">  
 
-                       <div className="col-sm-6 col-md-2 col-lg-1">
+                       <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>To:</label>
                           <input type="date" className="form-control" />
                         </div>
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                         <label htmlFor="">Plant:</label>
                         <select name="" className="form-control" style={{marginTop:"-0px"}} id="">
                             <option value="">Produlink</option>
                         </select>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label htmlFor="">Series:</label>
                         <select name="" className="form-control" style={{marginTop:"-0px"}} id="">
                             <option value="">All</option>
                             <option value="">GST Invoice</option>
                         </select>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                        <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label">Customer Name: </label>
                         </div>
                         <input type="text"  placeholder="Name" className="form-control"/>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                        <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label">Inv No: </label>
                         </div>
                         <input type="text"  placeholder="No" className="form-control"/>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label htmlFor="">Cancel:</label>
                         <select name="" className="form-control" style={{marginTop:"-0px"}} id="">
                             <option value="">All</option>
@@ -117,20 +117,20 @@ const TaxInvoiceList    = () => {
                             <option value="">No</option>
                         </select>
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-2">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label htmlFor="">User:</label>
                         <select name="" className="form-control" style={{marginTop:"-0px"}} id="">
                             <option value="">All</option>
                         </select>
                       </div>
                     
-                       <div className="col-6 col-md-1 align-items-center mt-5">
-                          <button type="button" className="btn btn-primary">
+                       <div className="col-sm-6 col-md-3 col-lg-1 align-items-center" style={{marginTop:"39px"}}>
+                          <button type="button" className=" vndrbtn">
                             Search
                           </button>
                         </div>
-                        <div className="col-6 col-md-2 align-items-center mt-5">
-                          <button type="button" className="btn btn-primary">
+                        <div className="col-sm-6 col-md-3 col-lg-2 align-items-center" style={{marginTop:"39px"}}>
+                          <button type="button" className=" vndrbtn">
                             Search Option
                           </button>
                         </div>
@@ -140,7 +140,7 @@ const TaxInvoiceList    = () => {
                     </div>
                   </div>
 
-             <div className="table-responsive">
+             <div className="TaxInvoiceList-Main mt-2 table-responsive">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>

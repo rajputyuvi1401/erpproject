@@ -99,35 +99,35 @@ const PriceListMaster = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="PriceListMaster1">
                  
-                     <div className="PriceList-header mb-4 text-start mt-5">
+                     <div className="PriceList-header mb-4 text-start mt-1">
                        <div className="row align-items-center">
                         <div className="col-md-3">
                          <h5 className="header-title">Price List Master</h5>
                         </div>
                         <div className="col-md-9 col-sm-6 text-end">
                           <button
-                            className="btn"
+                            className=" vndrbtn"
                             onClick={toggleAddCard}
                           >
                             Add Price List
                           </button>
                           <button
-                            className="btn"
+                            className=" vndrbtn"
                             onClick={toggleAddCardItemRate}
                           >
                             Item Rate Rev Report
                           </button>
                           <button
-                            className="btn"
+                            className=" vndrbtn"
                             onClick={toggleAddCardPricereport}
                           >
                             Price List Report
                           </button>
-                          <button className="btn">
+                          <button className=" vndrbtn">
                             Price List Query
                           </button>
                           <button
-                            className="btn"
+                            className=" vndrbtn"
                            
                           >
                             <div className="form-check">
@@ -137,19 +137,19 @@ const PriceListMaster = () => {
                                 value=""
                                 id="flexCheckDefault"
                               />
-                               <button className="btn">
+                               <button className=" vndrbtn">
                              With Company
                               </button>
                               
                             </div>
                           </button>
-                          <button className="btn">
+                          <button className=" vndrbtn">
                             Export To Excel
                           </button>
                         </div>
-                      </div>
-                    
-                  </div>
+                      </div> 
+                     </div>
+
                   {showAddCard && (
                     <div className="Add-price overlay">
                       <div className="AddPriceListCard card">
@@ -158,7 +158,7 @@ const PriceListMaster = () => {
                             Price List New
                           </h5>
                           <button
-                            className="Closepricebtn"
+                            className="Closeprice vndrbtn"
                             onClick={toggleAddCard}
                           >
                             X
@@ -186,7 +186,7 @@ const PriceListMaster = () => {
                                 </div>
                                 <div className="col-sm-3">
                                   <button
-                                    className="PriceListcardbtn"
+                                    className="PriceListcard vndrbtn"
                                     type="button"
                                   >
                                     Search
@@ -214,7 +214,7 @@ const PriceListMaster = () => {
                                 </div>
                                 <div className="col-sm-4">
                                   <button
-                                    className="PriceListcardbtn"
+                                    className="PriceListcard vndrbtn"
                                     type="button"
                                   >
                                     Search
@@ -283,7 +283,7 @@ const PriceListMaster = () => {
                                 <div className="col-sm-4">
                                   <button
                                     type="submit"
-                                    className="PriceListcardbtn"
+                                    className="PriceListcard vndrbtn"
                                   >
                                     Save
                                   </button>
@@ -295,6 +295,7 @@ const PriceListMaster = () => {
                       </div>
                     </div>
                   )}
+                  
                   {showAddCardItemRate && (
                     <div className="Itemrate-overlay">
                       <div className="ItemRate-card card">
@@ -303,7 +304,7 @@ const PriceListMaster = () => {
                             Item Rate Report
                           </h5>
                           <button
-                            className="CloseItemRatebtn"
+                            className="CloseItemRate vndrbtn"
                             onClick={toggleAddCardItemRate}
                           >
                             X
@@ -408,7 +409,7 @@ const PriceListMaster = () => {
                                   <div className="row text-start">
                                     <div className="col-sm-3">
                                       <button
-                                        className="PriceListcardbtn"
+                                        className="PriceListcard vndrbtn"
                                         type="button"
                                       >
                                         Execute
@@ -428,7 +429,7 @@ const PriceListMaster = () => {
                             >
                               <div className="row text-start">
                                 <div className="col-md-4">
-                                  <button className="itemratetablebtn">
+                                  <button className="itemratetable vndrbtn">
                                     Export To Excel
                                   </button>
                                 </div>
@@ -495,6 +496,7 @@ const PriceListMaster = () => {
                       </div>
                     </div>
                   )}
+                  
                   {showAddCardPricereport && (
                     <div className="Pricereport-overlay overlay">
                       <div className="Pricereport-card card">
@@ -503,7 +505,7 @@ const PriceListMaster = () => {
                             Price Rate Report
                           </h5>
                           <button
-                            className="ClosePricereportbtn"
+                            className="ClosePricereport vndrbtn"
                             onClick={toggleAddCardPricereport}
                           >
                             X
@@ -829,7 +831,7 @@ const PriceListMaster = () => {
                                   <div className="col-sm-6">
                                     <button
                                       type="submit"
-                                      className="PriceListcardbtn"
+                                      className="PriceListcard vndrbtn"
                                     >
                                       Execute
                                     </button>
@@ -837,7 +839,7 @@ const PriceListMaster = () => {
                                   <div className="col-sm-6">
                                     <button
                                       type="submit"
-                                      className="PriceListcardbtn"
+                                      className="PriceListcard vndrbtn"
                                     >
                                       Execute V2
                                     </button>
@@ -855,7 +857,7 @@ const PriceListMaster = () => {
                             >
                               <div className="row text-start">
                                 <div className="col-md-4">
-                                  <button className="itemratetablebtn">
+                                  <button className="itemratetable vndrbtn">
                                     Export To Excel
                                   </button>
                                 </div>
@@ -927,7 +929,7 @@ const PriceListMaster = () => {
                             >
                               <div className="row text-start">
                                 <div className="col-md-4">
-                                  <button className="itemratetablebtn">
+                                  <button className="itemratetable vndrbtn">
                                     Export To Excel
                                   </button>
                                 </div>
@@ -995,7 +997,7 @@ const PriceListMaster = () => {
                     </div>
                   )}
 
-                  <div className="PriceListMain mt-5">
+                  <div className="PriceListMain mt-1">
                     <div className="container-fluid">
                       <div className="row text-start">
                         <div className="col-md-3 col-sm-6">
@@ -1067,13 +1069,14 @@ const PriceListMaster = () => {
                         </div>
                         <div className="col-md-3 col-sm-6 text-start mt-4">
                           <div className="mb-3">
-                            <button className="btn">Search</button>
+                            <button className=" vndrbtn">Search</button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="PriceListtable mt-5">
+
+                  <div className="PriceListtable mt-3">
                     <div className="table-striped table-responsive">
                      
                           <table className="table">
@@ -1111,6 +1114,7 @@ const PriceListMaster = () => {
                       
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

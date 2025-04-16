@@ -38,22 +38,23 @@ const NewSetupApproval = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="NewSetupApproval mt-5">
-                  <div className="NewSetupApproval-header mb-4 text-start">
+                <div className="NewSetupApproval">
+                  <div className="NewSetupApproval-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">New Set Up Approval</h5>
                       </div>
                      
                       <div className="col-md-6 text-end">
-                        <button type="button" className="btn" onClick={handleNavigate}>
+                        <button type="button" className="vndrbtn" onClick={handleNavigate}>
                           Approval List
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="NewSetupApproval-main mt-5">
+                  <div className="NewSetupApproval-main">
+
                     <div className="row text-start">
                       {/* First Column */}
                       <div className="col-md-3">
@@ -91,7 +92,7 @@ const NewSetupApproval = () => {
                       </div>
                     </div>
 
-                    <div className="row text-start">
+                    <div className="row mt-3 text-start">
                       {/* First Column */}
                       <div className="col-md-3">
                         {/* Prod. No */}
@@ -147,7 +148,7 @@ const NewSetupApproval = () => {
                           <input type="text" placeholder=" "  className="form-control"/>
                           </div>
                           <div className="col-md-4 mt-1">               
-                         <button className="btn btn-outline-secondary btn-primary">Search</button>          
+                         <button className="vndrbtn">Search</button>          
                        </div>
                         </div>
                       </div>
@@ -166,49 +167,49 @@ const NewSetupApproval = () => {
                       </div>
                     </div>
 
-                    <div className="row g-3 text-start">
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                    <div className="row mt-2 g-3 text-start">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>Check Point :</label>
                         <input type="text" className="form-control" />
                       </div>
 
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Specification:</label>
                           <input type="text" className="form-control" />
                         </div>
 
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Observation:</label>
                           <input type="text" className="form-control" />
                         </div>
 
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>Reason :</label>
                         <input type="text" className="form-control" />
                       </div>
                        
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                         <label  type="checkbox">Action:</label>
                        <input type="text"  placeholder=" " className="form-control"/>
                       </div>
 
                          {/* Supplier Name */}
-                       <div className="col-sm-6 col-md-2 col-lg-1">
+                       <div className="col-sm-6 col-md-3 col-lg-2">
                         <label type="checkbox">Responsibility:</label>
                         <input type="text" placeholder=" " className="form-control" />
                       </div>
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label type="checkbox">Target Date:</label>
                         <input type="text" placeholder=" " className="form-control" />
                       </div>
 
-                   <div className="col-sm-6 col-md-2 col-lg-2">                     
+                   <div className="col-sm-6 col-md-3 col-lg-2">                     
                       <label htmlFor="">Remark</label>                    
                      <input type="text" placeholder=" " className="form-control"/>
                     </div>
 
-                    <div className="col-6 col-md-1 mt-5">
-                    <button type="button" className="btn btn-primary w-100" >
+                    <div className="col-6 col-md-2">
+                    <button type="button" className="vndrbtn w-100" style={{marginTop:"23px"}}>
                         Search
                     </button> 
                     </div>
@@ -217,7 +218,7 @@ const NewSetupApproval = () => {
                   </div>
                 </div>
 
-                <div className="table-responsive">
+                <div className="NewSetupApprovaltable table-responsive">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -249,7 +250,8 @@ const NewSetupApproval = () => {
                         </tr>
                       </tbody>
                     </table>
-              </div>
+                </div>
+
             </main>
          </div>
           </div>

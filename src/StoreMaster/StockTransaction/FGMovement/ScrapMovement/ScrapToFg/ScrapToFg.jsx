@@ -51,7 +51,7 @@ const ScrapToFg = () => {
                     </div>
                   </div>
                 </div>
-                <div className="scrapMoventStock-main">
+                <div className="scrapMoventStock-main mt-3">
                   <div className="container-fluid text-start">
                     <div className="row">
                       <div className="col-md-4">
@@ -60,7 +60,7 @@ const ScrapToFg = () => {
                             <label>Trn No:</label>
                           </div>
                           <div className="col-md-4">
-                            <input />
+                            <input className="form-control" />
                           </div>
                           <div className="col-md-4">
                             <Cached />
@@ -71,7 +71,7 @@ const ScrapToFg = () => {
                             <label>Tran. Date:</label>
                           </div>
                           <div className="col-md-4">
-                            <input type="date" />
+                            <input className="form-control" type="date" />
                           </div>
                         </div>
                         <div className="row mt-4">
@@ -79,7 +79,7 @@ const ScrapToFg = () => {
                             <label>RM Item Code:</label>
                           </div>
                           <div className="col-md-8">
-                            <input />
+                            <input className="form-control" />
                           </div>
                         </div>
                         <div className="row mt-4">
@@ -87,7 +87,7 @@ const ScrapToFg = () => {
                             <label>Heat No:</label>
                           </div>
                           <div className="col-md-8">
-                            <select>
+                            <select className="form-select">
                               <option></option>
                             </select>
                           </div>
@@ -97,13 +97,13 @@ const ScrapToFg = () => {
                             <label>Scrap Qty (Dr):</label>
                           </div>
                           <div className="col-md-8">
-                            <input type="text"></input>
+                            <input className="form-control" type="text"/>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="scrapMoventStockSelect">
+                    <div className="scrapMoventStockSelect mt-4">
                       <div className="row flex-nowrap align-items-center">
                         <div className="col-md-4">
                           <h5 className="header-title text-start">
@@ -119,7 +119,7 @@ const ScrapToFg = () => {
                               <label>Item Code:</label>
                             </div>
                             <div className="col-md-8">
-                              <input />
+                              <input className="form-control" />
                             </div>
                           </div>
                           <div className="row mt-4">
@@ -127,7 +127,7 @@ const ScrapToFg = () => {
                               <label>Part Code:</label>
                             </div>
                             <div className="col-md-8">
-                              <select>
+                              <select className="form-select">
                                 <option></option>
                               </select>
                             </div>
@@ -137,7 +137,7 @@ const ScrapToFg = () => {
                               <label>Heat No:</label>
                             </div>
                             <div className="col-md-8">
-                              <select>
+                              <select className="form-select">
                                 <option></option>
                               </select>
                             </div>
@@ -147,7 +147,7 @@ const ScrapToFg = () => {
                               <label>Transfer Qty:</label>
                             </div>
                             <div className="col-md-4">
-                              <input />
+                              <input className="form-control" />
                             </div>
                             <div className="col-md-4">
                               <label>BOM WIP WT: = </label>
@@ -159,7 +159,7 @@ const ScrapToFg = () => {
                               <label>Remark:</label>
                             </div>
                             <div className="col-md-8">
-                              <textarea></textarea>
+                              <textarea className="form-control"></textarea>
                             </div>
                             
                             
@@ -171,7 +171,7 @@ const ScrapToFg = () => {
 
                     <div className="row text-end mt-4">
                       <div className="col-md-12">
-                        <button type="submit" className="pobtn">
+                        <button type="submit" className="vndrbtn">
                           Save
                         </button>
                       </div>

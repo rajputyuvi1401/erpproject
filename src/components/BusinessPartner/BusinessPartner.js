@@ -241,7 +241,7 @@ const BusinessPartner = () => {
                         <h5 className="header-title">Business Partner</h5>
                         </div>
                         <div className="col-md-6 text-end">
-                          <button className="btn">
+                          <button className="vndrbtn">
                             Customer Supplier List
                           </button>
                         </div>
@@ -249,7 +249,7 @@ const BusinessPartner = () => {
                     </div>
                     </div>
                   </div>
-                  <div className="bussiness-main mt-5">
+                  <div className="bussiness-main">
                     <div className="container-fluid">
                       <form onSubmit={handleSubmit} autoComplete="off">
                         <div className="row mt-4">
@@ -278,7 +278,7 @@ const BusinessPartner = () => {
                                 )}
                               </div>
                               <div className="col-md-2">
-                                <button type="button" className="btn" onClick={handleSearch}>
+                                <button type="button" className="vndrbtn" onClick={handleSearch}>
                                   Search
                                 </button>
                               </div>
@@ -706,14 +706,14 @@ const BusinessPartner = () => {
                           
                               <div className="row mb-3 text-end">
                               <div className="col-sm-10">
-                                <button type="submit" className="btn">
+                                <button type="submit" className="vndrbtn">
                                   Save
                                 </button>
                               </div>
                               <div className="col-sm-2">
                                 <button
                                   type="button"
-                                  className="btn"
+                                  className="vndrbtn"
                                   onClick={handleClear}
                                 >
                                   Clear
@@ -733,6 +733,7 @@ const BusinessPartner = () => {
                           </div>
                         )}
                       </form>
+
                       <table className="table table-bordered table-striped mt-4">
                         <thead>
                           <tr>
@@ -846,7 +847,7 @@ const BusinessPartner = () => {
                           />
                         </div>
                         <div className="col-sm-3">
-                          <button className="btn">Search</button>
+                          <button className="vndrbtn">Search</button>
                         </div>
                       </div>
                     </div>

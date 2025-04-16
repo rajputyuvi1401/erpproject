@@ -43,11 +43,11 @@ const RMStockTransaction = () => {
                         <div className="col-md-8 d-flex align-items-end">
                         
                          
-                          <Link className="pobtn">Export To Excel</Link>
+                          <Link className="vndrbtn">Export To Excel</Link>
                         
-                          <Link className="pobtn" to="/RMTOtherGroup">RM To Other Group</Link>
+                          <Link className="vndrbtn" to="/RMTOtherGroup">RM To Other Group</Link>
 
-                          <Link className="pobtn" to="/RMToTransaction" >RM To RM Transaction</Link>
+                          <Link className="vndrbtn" to="/RMToTransaction" >RM To RM Transaction</Link>
 
 
                         </div>
@@ -57,25 +57,25 @@ const RMStockTransaction = () => {
                 </div>
                 <div className="RMStock-main">
                   <div className="container-fluid">
-                    <div className="row mt-4">
+                    <div className="row mt-2">
                       <div className="col-md-12">
                         <form className="row g-3 text-start">
 
                           
                           {/* From Date */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">From Date</label>
-                            <input type="date" className="form-control" />
+                            <input type="date" className="form-control mt-1" />
                           </div>
 
                           {/* To Date */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">To Date</label>
-                            <input type="date" className="form-control" />
+                            <input type="date" className="form-control mt-1" />
                           </div>
 
                           {/* Plant */}
-                          <div className="col-md-1 col-sm-6">
+                          <div className="col-md-2 col-sm-6">
                             <label className="form-label">Plant</label>
                             <select className="form-select">
                               <option value="Produlink">Produlink</option>
@@ -88,7 +88,7 @@ const RMStockTransaction = () => {
                           {/* Series */}
                           <div className="col-md-2 col-sm-6">
                             <label className="form-label">Series</label>
-                            <select className="form-select">
+                            <select className="form-select mt-1">
                               <option value="">All</option>
                               <option value="Scrap">Scrap</option>
                               <option value="Rejection">Rejection</option>
@@ -105,7 +105,7 @@ const RMStockTransaction = () => {
                             <label className="form-label">Search Item Code</label>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control mt-1"
                               placeholder="Enter Item Name"
                             />
                           </div>
@@ -114,7 +114,7 @@ const RMStockTransaction = () => {
 
                           {/* Search Button */}
                           <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                            <button type="submit" className="pobtn w-100">
+                            <button type="submit" className="vndrbtn w-100">
                               Search
                             </button>
                            
@@ -126,7 +126,7 @@ const RMStockTransaction = () => {
                   </div>
 
                   <div className="StoreRMStock">
-                    <div className="container-fluid mt-4 text-start">
+                    <div className="container-fluid mt-2 text-start">
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>

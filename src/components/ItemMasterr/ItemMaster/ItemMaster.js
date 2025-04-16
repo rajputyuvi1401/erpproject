@@ -111,30 +111,24 @@ const ItemMaster = () => {
               />
 
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="itemaamain mt-5">
+                <div className="itemaamain">
                 <div className="itemaamain-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Item List</h5>
                       </div>
                       <div className="col-md-6 col-12 text-end text-md-end text-center">
-                        {/* <button
-                          className="btn12 me-2"
-                          onClick={handleAddNewItemClick}
-                        >
-                          Add New Item
-                        </button> */}
-                        <Link to={"/item-master-gernal"} className="btn12">
+                        <Link to={"/item-master-gernal"} className="vndrbtn ">
                           Add New Item
                         </Link>
-                        <Link to={"/item-master-query"} className="btn12">
+                        <Link to={"/item-master-query"} className="vndrbtn ">
                           Item Query
                         </Link>
                       </div>
                     </div>
                   </div>
 
-                  <div className="search-row mt-5">
+                  <div className="itemListMain search-row">
                     <div className="row align-items-center">
                       <div className="col-md-1">
                         <input
@@ -143,7 +137,7 @@ const ItemMaster = () => {
                           id="itemCheckbox"
                         />
                       </div>
-                      <div className="col-md-2" style={{ marginLeft: "-90px" }}>
+                      <div className="col-md-2" style={{ marginLeft: "-75px" }}>
                         <label htmlFor="itemSearch">Item Search</label>
                       </div>
                       <div className="col-md-2" style={{ marginLeft: "-20px" }}>
@@ -207,21 +201,21 @@ const ItemMaster = () => {
                         </select>
                       </div>
                       <div className="col-md-2 text-end">
-                        <button className="ser-btn m-2" onClick={handleSearch}>
+                        <button className="  vndrbtn  m-2" onClick={handleSearch}>
                           Search
                         </button>
-                        <button className="ser-btn" onClick={handleViewAll}>
+                        <button className="  vndrbtn " onClick={handleViewAll}>
                           All Items
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="search-table mt-5">
+                  <div className="search-table mt-1">
                     <div className="container-fluid">
                     <div className="row">
-  <div className="table-responsive">
-    <table className="table table-striped mt-4">
+                      <div className="table-responsive">
+                        <table className="table table-striped mt-3">
 
                             <thead>
                               <tr>
@@ -272,39 +266,38 @@ const ItemMaster = () => {
                   </div>
 
                   <div className="row">
-        <div className="col-md-6 text-start" style={{ color: 'blue' }}>
-          <label>Total Records: {filteredItems.length}</label>
-        </div>
-        <div className="col-md-6 text-end" style={{ color: 'blue' }}>
-          <label>Total Pending BOM FG=8 SFG=2</label>
-        </div>
-      </div>
+                      <div className="col-md-6 text-start" style={{ color: 'blue' }}>
+                        <label>Total Records: {filteredItems.length}</label>
+                      </div>
+                      <div className="col-md-6 text-end" style={{ color: 'blue' }}>
+                        <label>Total Pending BOM FG=8 SFG=2</label>
+                      </div>
+                  </div>
 
                   <div className="pagination-container">
-          <div className="row text-end">
-            <div className="col-md-12 text-end">
-              <nav aria-label="Page navigation">
-                <ul className="pagination">
-                  {Array.from({ length: totalPages }, (_, index) => (
-                    <li
-                      key={index + 1}
-                      className={`page-item ${
-                        currentPage === index + 1 ? 'active' : ''
-                      }`}
-                    >
-                      <button
-                        className="page-link"
-                        onClick={() => setCurrentPage(index + 1)}
-                      >
-                        {index + 1}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
+                    <div className="row justify-content-center">
+                      <div className="col-auto">
+                        <nav aria-label="Page navigation">
+                          <ul className="pagination">
+                            {Array.from({ length: totalPages }, (_, index) => (
+                              <li
+                                key={index + 1}
+                                className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}
+                              >
+                                <button
+                                  className="page-link"
+                                  onClick={() => setCurrentPage(index + 1)}
+                                >
+                                  {index + 1}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </nav>
+                      </div>
+                    </div>
+                  </div>
+
 
                 </div>
               </main>

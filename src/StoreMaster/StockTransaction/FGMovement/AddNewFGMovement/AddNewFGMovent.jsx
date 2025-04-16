@@ -41,7 +41,7 @@ const AddNewFGMovent = () => {
                     </div>
                     <div className="col-md-2 text-end">
                       <div className="row justify-content-end">
-                        <div className="col-md-2 d-flex flex-wrap justify-content-end">
+                        <div className="col-md-12 d-flex flex-wrap justify-content-end">
                           <select>
                             <option>Produlink</option>
                           </select>
@@ -51,10 +51,10 @@ const AddNewFGMovent = () => {
                     <div className="col-md-8 text-end">
                       <div className="row justify-content-end">
                         <div className="col-md-12 d-flex flex-wrap justify-content-end">
-                          <Link className="FGBtn" to="/FGToFGStock">
+                          <Link className="vndrbtn" to="/FGToFGStock">
                             New FG TO FG Movement (ShopFloor)
                           </Link>
-                          <Link className="FGBtn" to="/FG-Movement">
+                          <Link className="vndrbtn" to="/FG-Movement">
                             FG Movement Report
                           </Link>
                         </div>
@@ -62,7 +62,7 @@ const AddNewFGMovent = () => {
                     </div>
                   </div>
                 </div>
-                <div className="FgMoventAdd-main">
+                <div className="FgMoventAdd-main mt-2">
                   <div className="container-fluid text-start">
                     <div className="row">
                       <div className="col-md-4">
@@ -71,7 +71,7 @@ const AddNewFGMovent = () => {
                             <label>Trn No:</label>
                           </div>
                           <div className="col-md-4">
-                            <input />
+                            <input className=" form-control" />
                           </div>
                           <div className="col-md-4">
                             <Cached />
@@ -82,10 +82,10 @@ const AddNewFGMovent = () => {
                             <label>FG Item:</label>
                           </div>
                           <div className="col-md-4">
-                            <input />
+                            <input className=" form-control" />
                           </div>
                           <div className="col-md-4">
-                            <button type="button" className="pobtn">
+                            <button type="button" className="vndrbtn">
                               Select
                             </button>
                           </div>
@@ -95,7 +95,7 @@ const AddNewFGMovent = () => {
                             <label>Operation:</label>
                           </div>
                           <div className="col-md-8">
-                            <input />
+                            <input className=" form-control" />
                           </div>
                         </div>
                         <div className="row mt-4">
@@ -103,7 +103,7 @@ const AddNewFGMovent = () => {
                             <label>Ok Qty:</label>
                           </div>
                           <div className="col-md-8">
-                            <input />
+                            <input className=" form-control" />
                           </div>
                         </div>
                         <div className="row mt-4">
@@ -111,7 +111,7 @@ const AddNewFGMovent = () => {
                             <label>Rework Qty:</label>
                           </div>
                           <div className="col-md-8">
-                            <input />
+                            <input className=" form-control" />
                           </div>
                         </div>
                         <div className="row mt-4">
@@ -119,7 +119,7 @@ const AddNewFGMovent = () => {
                             <label>Reject Qty:</label>
                           </div>
                           <div className="col-md-8">
-                            <input />
+                            <input className=" form-control" />
                           </div>
                         </div>
                         <div className="row mt-4">
@@ -137,7 +137,7 @@ const AddNewFGMovent = () => {
                             <label>Date:</label>
                           </div>
                           <div className="col-md-8">
-                            <input type="date" />
+                            <input className=" form-control" type="date" />
                           </div>
                         </div>
                         <div className="row mt-4">
@@ -145,7 +145,7 @@ const AddNewFGMovent = () => {
                             <label>...</label>
                           </div>
                           <div className="col-md-8">
-                            <select>
+                            <select className="form-select">
                               <option></option>
                             </select>
                           </div>
@@ -157,7 +157,7 @@ const AddNewFGMovent = () => {
                             <label>Stock View:</label>
                           </div>
                           <div className="col-md-8">
-                            <select>
+                            <select className="form-select"> 
                               <option>All</option>
                             </select>
                           </div>
@@ -167,7 +167,7 @@ const AddNewFGMovent = () => {
                             <label>Heat Code:</label>
                           </div>
                           <div className="col-md-8">
-                            <select>
+                            <select className="form-select">
                               <option>All</option>
                             </select>
                           </div>
@@ -177,7 +177,7 @@ const AddNewFGMovent = () => {
 
                     <div className="row text-end mt-4">
                       <div className="col-md-12">
-                        <button type="submit" className="pobtn">
+                        <button type="submit" className="vndrbtn">
                           Save
                         </button>
                       </div>

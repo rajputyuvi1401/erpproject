@@ -132,26 +132,26 @@ const TaskMaster = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="taskmaster1 mt-5">
+                <div className="taskmaster1 ">
                 <div className="taskheader-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Tax Code Master</h5>
                     </div>
                     <div className="col-md-8 text-end">
-                      <Link to="/gst-rate-master" className="btn">
+                      <Link to="/gst-rate-master" className="  vndrbtn ">
                         GST Rate Master
                       </Link>
-                      <Link to="/" className="btn">
+                      <Link to="/" className="  vndrbtn ">
                         Export To Excel
                       </Link>
                     </div>
                   </div>
                   </div>
-                  <div className="taskmain mt-5">
+                  <div className="taskmain">
                     <div className="container-fluid">
                       <div className="table-responsive mt-3">
-                        <table className="table table-bordered">
+                        <table className="table">
                           <thead>
                             <tr>
                               <th>Tax Code</th>
@@ -162,7 +162,7 @@ const TaskMaster = () => {
                               <th>SGST (%)</th>
                               <th>IGST (%)</th>
                               <th>Cess (%)</th>
-                              <th></th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -247,13 +247,13 @@ const TaskMaster = () => {
                               <td>
                                 <button
                                   onClick={handleSave}
-                                  className="maintaskbtn"
+                                  className="maintask  vndrbtn "
                                 >
                                   {editMode ? "Update" : "Save"}
                                 </button>
                                 <button
                                   onClick={handleCancel}
-                                  className="maintaskbtn"
+                                  className="maintask mt-2 vndrbtn "
                                 >
                                   Cancel
                                 </button>
@@ -268,7 +268,7 @@ const TaskMaster = () => {
                         <div className="row">
                           <div className="col-md-12">
                             <div className="table-responsive">
-                              <table className="table table-bordered">
+                              <table className="table">
                                 <thead>
                                   <tr>
                                     <th className="blue-th">Sr</th>
@@ -299,7 +299,7 @@ const TaskMaster = () => {
                                       <td>
                                         <button
                                           onClick={() => handleEdit(item)}
-                                          className="btn"
+                                          className="  vndrbtn "
                                         >
                                           <i className="fas fa-edit"></i>
                                         </button>
@@ -307,7 +307,7 @@ const TaskMaster = () => {
                                       <td>
                                         <button
                                           onClick={() => handleDelete(item.id)}
-                                          className="btn"
+                                          className="  vndrbtn "
                                         >
                                           <i className="fas fa-trash"></i>
                                         </button>

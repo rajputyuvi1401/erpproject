@@ -37,14 +37,14 @@ const InwardTestCertificate = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="InwardTestCertificate mt-3">
-                <div className="InwardTestCertificate-header mb-4 text-start">
+              <div className="InwardTestCertificate">
+                <div className="InwardTestCertificate-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-4">
                       <h5 className="header-title"> Inward Test Certificate List </h5>
                     </div>
                     <div className="col-md-8 text-end">
-                      <button type="button" className="btn" onClick={toggleModal} to="#/">
+                      <button type="button" className="vndrbtn" onClick={toggleModal} to="#/">
                       Inward Test Cert. - Query
                       </button>
                      </div>
@@ -61,7 +61,7 @@ const InwardTestCertificate = () => {
   aria-labelledby="exampleModalLabel"
   aria-hidden={!showModal}
 >
-  <div className="modal-dialog modal-lg"> {/* Use modal-lg for larger modal */}
+  <div className="modal-dialog modal-lg" style={{marginTop:"170px"}}> {/* Use modal-lg for larger modal */}
     <div className="modal-content">
       <div className="modal-header">
         <h5 className="modal-title" id="exampleModalLabel">
@@ -69,7 +69,7 @@ const InwardTestCertificate = () => {
         </h5>
         <button
           type="button"
-          className="btn-close"
+          className="vndrbtn"
           onClick={toggleModal} // Close the modal on button click
           aria-label="Close"
         >X</button>
@@ -163,8 +163,8 @@ const InwardTestCertificate = () => {
           </div>
 
           <div className="row">
-            <div className="col-12 mb-3">
-              <button type="button" className="btn btn-primary w-100">
+            <div className="col-6 mb-3">
+              <button type="button" className="vndrbtn w-100">
                 Execute - Export Report
               </button>
             </div>
@@ -178,122 +178,122 @@ const InwardTestCertificate = () => {
 
 
 
-<div className="InwardTestCertificate-Main mt-5">
-  <div className="container-fluid">
-    {/* First Search Form */}
-    <div className="row g-3 text-start">
-      {/* From Date */}
-      <div className="col-sm-6 col-md-3 col-lg-2">
-        <label htmlFor="fromDate">From:</label>
-        <input type="date" id="fromDate" className="form-control" />
-      </div>
+                  <div className="InwardTestCertificate-Main">
+                    <div className="container-fluid">
+                      {/* First Search Form */}
+                      <div className="row g-3 text-start">
+                        {/* From Date */}
+                        <div className="col-sm-6 col-md-3 col-lg-2">
+                          <label htmlFor="fromDate">From:</label>
+                          <input type="date" id="fromDate" className="form-control" />
+                        </div>
 
-      {/* To Date */}
-      <div className="col-sm-6 col-md-3 col-lg-2">
-        <label htmlFor="toDate">To Date:</label>
-        <input type="date" id="toDate" className="form-control" />
-      </div>
+                        {/* To Date */}
+                        <div className="col-sm-6 col-md-3 col-lg-2">
+                          <label htmlFor="toDate">To Date:</label>
+                          <input type="date" id="toDate" className="form-control" />
+                        </div>
 
-      {/* Plant */}
-      <div className="col-sm-6 col-md-3 col-lg-2">
-        <label htmlFor="plant">Plant :</label>
-        <select id="plant" className="form-select" style={{marginTop:"-2px"}}>
-          <option>SHARP</option>
-        </select>
-      </div>
+                        {/* Plant */}
+                        <div className="col-sm-6 col-md-3 col-lg-2">
+                          <label htmlFor="plant">Plant :</label>
+                          <select id="plant" className="form-select" style={{marginTop:"-2px"}}>
+                            <option>SHARP</option>
+                          </select>
+                        </div>
 
-      {/* Supplier Name */}
-      <div className="col-sm-6 col-md-3 col-lg-2">
-        <label htmlFor="supplierName">Supplier Name:</label>
-        <input type="text" id="supplierName" placeholder="Name..." className="form-control" />
-      </div>
+                        {/* Supplier Name */}
+                        <div className="col-sm-6 col-md-3 col-lg-2">
+                          <label htmlFor="supplierName">Supplier Name:</label>
+                          <input type="text" id="supplierName" placeholder="Name..." className="form-control" />
+                        </div>
 
-      {/* Item Group */}
-      <div className="col-sm-6 col-md-3 col-lg-2">
-        <label htmlFor="itemGroup">Item Group :</label>
-        <select id="itemGroup" className="form-select" style={{marginTop:"-2px"}}>
-          <option>Select</option>
-          <option>FG</option>
-          <option>RM</option>
-          <option>Tools</option>
-          <option>Instrument</option>
-          <option>Machine</option>
-          <option>Consumable</option>
-          <option>Safety Equ</option>
-          <option>Service</option>
-          <option>Asset</option>
-          <option>F4</option>
-          <option>Scrap</option>
-          <option>SF</option>
-          <option>BO</option>
-          <option>DI</option>
-        </select>
-      </div>
+                        {/* Item Group */}
+                        <div className="col-sm-6 col-md-3 col-lg-2">
+                          <label htmlFor="itemGroup">Item Group :</label>
+                          <select id="itemGroup" className="form-select" style={{marginTop:"-2px"}}>
+                            <option>Select</option>
+                            <option>FG</option>
+                            <option>RM</option>
+                            <option>Tools</option>
+                            <option>Instrument</option>
+                            <option>Machine</option>
+                            <option>Consumable</option>
+                            <option>Safety Equ</option>
+                            <option>Service</option>
+                            <option>Asset</option>
+                            <option>F4</option>
+                            <option>Scrap</option>
+                            <option>SF</option>
+                            <option>BO</option>
+                            <option>DI</option>
+                          </select>
+                        </div>
 
-      {/* Item */}
-      <div className="col-sm-6 col-md-3 col-lg-2">
-        <label htmlFor="item">Item :</label>
-        <input type="text" id="item" placeholder="Enter Code | Name..." className="form-control" />
-      </div>
+                        {/* Item */}
+                        <div className="col-sm-6 col-md-3 col-lg-2">
+                          <label htmlFor="item">Item :</label>
+                          <input type="text" id="item" placeholder="Enter Code | Name..." className="form-control" />
+                        </div>
 
-      {/* QC Type */}
-      <div className="col-sm-6 col-md-3 col-lg-2">
-        <label htmlFor="qcType">QC Type:</label>
-        <select id="qcType" className="form-select" style={{marginTop:"-2px"}}>
-          <option>All</option>
-          <option>Regular</option>
-          <option>HoldToDk</option>
-        </select>
-      </div>
+                        {/* QC Type */}
+                        <div className="col-sm-6 col-md-3 col-lg-2">
+                          <label htmlFor="qcType">QC Type:</label>
+                          <select id="qcType" className="form-select" style={{marginTop:"-2px"}}>
+                            <option>All</option>
+                            <option>Regular</option>
+                            <option>HoldToDk</option>
+                          </select>
+                        </div>
 
-      {/* Lot Status */}
-      <div className="col-sm-6 col-md-3 col-lg-2">
-        <label htmlFor="lotStatus">Lot Status :</label>
-        <select id="lotStatus" className="form-select" style={{marginTop:"-2px"}}>
-          <option>All</option>
-          <option>Accept</option>
-          <option>Reject</option>
-          <option>Hold</option>
-        </select>
-      </div>
+                        {/* Lot Status */}
+                        <div className="col-sm-6 col-md-3 col-lg-2">
+                          <label htmlFor="lotStatus">Lot Status :</label>
+                          <select id="lotStatus" className="form-select" style={{marginTop:"-2px"}}>
+                            <option>All</option>
+                            <option>Accept</option>
+                            <option>Reject</option>
+                            <option>Hold</option>
+                          </select>
+                        </div>
 
-      {/* Search Button */}
-      <div className="col-md-2">
-        <button type="button" className="btn btn-primary " style={{marginTop:"29px"}}>
-          Search
-        </button>
-      </div>
+                        {/* Search Button */}
+                        <div className="col-md-2">
+                          <button type="button" className="vndrbtn" style={{marginTop:"22px"}}>
+                            Search
+                          </button>
+                        </div>
 
-        {/* Search By */}
-        <div className="col-sm-6 col-md-3 col-lg-2">
-        <label htmlFor="searchBy">Search By :</label>
-        <select id="searchBy" className="form-select" style={{marginTop:"-2px"}}>
-          <option>All</option>
-          <option>IIR No</option>
-          <option>GRN No</option>
-          <option>LOT No</option>
-          <option>HEAT Code No</option>
-        </select>
-      </div>
+                          {/* Search By */}
+                          <div className="col-sm-6 col-md-3 col-lg-2">
+                          <label htmlFor="searchBy">Search By :</label>
+                          <select id="searchBy" className="form-select" style={{marginTop:"-2px"}}>
+                            <option>All</option>
+                            <option>IIR No</option>
+                            <option>GRN No</option>
+                            <option>LOT No</option>
+                            <option>HEAT Code No</option>
+                          </select>
+                        </div>
 
-      {/* No */}
-      <div className="col-sm-6 col-md-3 col-lg-2">
-        <label htmlFor="no">No :</label>
-        <input type="text" id="no" placeholder="No..." className="form-control" style={{marginTop:"-2px"}} />
-      </div>
+                        {/* No */}
+                        <div className="col-sm-6 col-md-3 col-lg-2">
+                          <label htmlFor="no">No :</label>
+                          <input type="text" id="no" placeholder="No..." className="form-control" style={{marginTop:"-2px"}} />
+                        </div>
 
-      {/* Search Button */}
-      <div className="col-md-2">
-        <button type="button" className="btn btn-primary" style={{marginTop:"29px"}}>
-          Search
-        </button>
-      </div>
-    </div>
-    </div>
-</div>
-<br/>
+                        {/* Search Button */}
+                        <div className="col-md-2">
+                          <button type="button" className="vndrbtn" style={{marginTop:"22px"}}>
+                            Search
+                          </button>
+                        </div>
+                      </div>
 
-                 <div className="table-responsive">
+                      </div>
+                  </div>
+
+                 <div className="InwardTestCertificatetable table-responsive">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -367,6 +367,7 @@ const InwardTestCertificate = () => {
                       </tbody>
                     </table>
                   </div>
+
               </div>
             </main>
           </div>

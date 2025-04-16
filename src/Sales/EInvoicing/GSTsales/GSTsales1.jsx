@@ -38,32 +38,35 @@ const GSTsales1 = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="GSTsales mt-5">
-                  <div className="GSTsales-header mb-4 text-start">
+                <div className="GSTsales">
+                  <div className="GSTsales-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-3">
                         <h5 className="header-title">Pending Invoice List For E-Invoice</h5>
                       </div>
-                      <div className="col-md-1 generateirn">
-                        <input type="radio" id="GenerateIRN" name="brand" value="GenerateIRN"/>
-                        <label for="GenerateIRN">GenerateIRN</label>
-                      </div>
-                      <div className="col-md-2">
-                        <label className="checkbox-label">
+                      <div className="col-md-1 generateirn" style={{ display: 'flex', alignItems: 'center' }}>
+                          <input type="radio" id="GenerateIRN" name="brand" value="GenerateIRN" />
+                          <label htmlFor="GenerateIRN" style={{ marginLeft: '5px' }}>GenerateIRN</label>
+                        </div>
+
+                        <div className="col-md-2" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <label className="checkbox-label" style={{ display: 'flex', alignItems: 'center' }}>
                           <input type="checkbox" id="general" />
-                          IRN WIth Eway
+                          <span style={{ marginLeft: '5px' }}>IRN With Eway</span>
                         </label>
                       </div>
-                      <div className="col-md-1 cancelirn">       
-                      <input type="radio" id="CancelIRN" name="brand" value="CancelIRN"/>
-                        <label for="CancelIRN">CancelIRN</label>
-                      </div>
+
+                      <div className="col-md-1 cancelirn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <input type="radio" id="CancelIRN" name="brand" value="CancelIRN" />
+                    <label htmlFor="CancelIRN" style={{ marginLeft: '5px' }}>CancelIRN</label>
+                  </div>
+
 
                       <div className="col-md-4 text-end">
-                        <button type="button" className="btn"  onClick={toggleModal}>
+                        <button type="button" className="vndrbtn"  onClick={toggleModal}>
                           Einvoice Log
                         </button>
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           IRN Lookup Table
                         </button>
                       </div>
@@ -71,86 +74,88 @@ const GSTsales1 = () => {
                   </div>
 
 
- <div  className={`modal ${showModal ? "show" : ""}`} style={{ display: showModal ? "block" : "none" }} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden={!showModal} >
-  <div className="modal-dialog modal-lg">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">
-           E Invoice Logs  :
-        </h5>
-          <button type="button" className="btn-close" onClick={toggleModal} > <i class="fa fa-times" aria-hidden="true"></i> </button>        
-      </div>
+                {/* POPUP FORM */}
 
-      <div className="modal-body">
-        <form>
-        <div className="GSTsales-header mb-4 text-start">
-        <div className="row align-items-center">
-            {/* Plant */}
-             <div className="col-md-2 mb-3">
-                       <label htmlFor="" className="">From : </label>    
-                       <input type="date"  placeholder=" " className="form-control"/>
-             </div>
-             <div className="col-md-2 mb-3">
-                       <label htmlFor="" className="">To : </label>    
-                       <input type="date"  placeholder=" " className="form-control"/>
-             </div>
-             
-             <div className="col-md-2">
-                     <button type="button" className="btn btn-primary w-100">
-                       Search
-                    </button>
-             </div>
-          </div>
-          </div>
-          </form>
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-      </div>
-    </div>
-  </div>
-</div>
+                <div  className={`modal ${showModal ? "show" : ""}`} style={{ display: showModal ? "block" : "none" }} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden={!showModal} >
+                  <div className="modal-dialog modal-lg" style={{marginTop:"170px"}}>
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">
+                          E Invoice Logs  :
+                        </h5>
+                          <button type="button" className="vndrbtn" onClick={toggleModal} > <i class="fa fa-times" aria-hidden="true"></i> </button>        
+                      </div>
 
-                  <div className="GSTsales-main mt-5">
+                      <div className="modal-body">
+                        <form>
+                        <div className="GSTsales-header mb-4 text-start">
+                        <div className="row align-items-center">
+                            {/* Plant */}
+                            <div className="col-md-3 mb-3">
+                                      <label htmlFor="" className="">From : </label>    
+                                      <input type="date"  placeholder=" " className="form-control"/>
+                            </div>
+                            <div className="col-md-3 mb-3">
+                                      <label htmlFor="" className="">To : </label>    
+                                      <input type="date"  placeholder=" " className="form-control"/>
+                            </div>
+                            
+                            <div className="col-md-2">
+                                    <button type="button" className="vndrbtn  w-100">
+                                      Search
+                                    </button>
+                            </div>
+                          </div>
+                          </div>
+                          </form>
+                                
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                  <div className="GSTsales-main">
+
                      <div className="row text-start">
                      <div className="col-md-1">
-                            <label htmlFor="">Type:</label>
-                            <select name="" id="" className="form-control">
-                               <option value="">Domestic</option>
-                           </select>
-                      </div> 
-                     <div className="col-md-1">
-                            <label htmlFor="">From :</label>
-                            <input type="date" className="form-control"/>
-                      </div>
-                      <div className="col-md-1">
                             <label htmlFor="">Plant:</label>
                             <select name="" id="" className="form-control">
                                <option value="">Sharp</option>
                            </select>
                       </div> 
-                      <div className="col-md-1">
+                     <div className="col-md-2">
+                            <label htmlFor="">Type:</label>
+                            <select name="" id="" className="form-control">
+                               <option value="">Domestic</option>
+                           </select>
+                      </div> 
+                     <div className="col-md-2">
+                            <label htmlFor="">From :</label>
+                            <input type="date" className="form-control"/>
+                      </div>
+                     
+                      <div className="col-md-2">
                             <label htmlFor=" " className=" "> Customer : </label>                        
                             <input type="text" placeholder="Name" className="form-control"/>
                       </div> 
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor=" " className=" "> Item : </label>                        
                             <input type="text" placeholder="Enter Code | Name" className="form-control"/>
                       </div> 
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                             <label htmlFor=" " className=" "> Invoice : </label>                        
                             <input type="text" placeholder="No" className="form-control"/>
                       </div> 
                       <div className="col-md-1 mt-4">
-                           <button type="button" className="btn btn-primary w-100" >
+                           <button type="button" className="vndrbtn  w-100" >
                               Search
                            </button> 
                         </div>
                      </div>
+
                   </div>
-                  <div className="GSTsales-main mt-5">
+
+                  <div className="GSTsales-main mt-2">
                     <div className="GSTsales-second">
                       <ul className="nav nav-tabs" id="GSTsalesTabs" role="tablist" >
                         <li className="nav-item" role="presentation">
@@ -250,23 +255,23 @@ const GSTsales1 = () => {
                         <div className="tab-pane fade" id="machineIdle" role="tabpanel" >
                               <div className="GSTsales-header mb-4 text-start">
                                     <div className="row align-items-center">
-                                        <div className="col-md-3">
+                                        <div className="col-md-4">
                                         <h5 className="header-title cllllr">Pending Invoice List For E-Invoice</h5>
                                         </div>     
                                     </div>
 
                                     <div className="row align-items-center mt-4">  
-                                       <div className="col-md-1">
-                                        <button type="button" className="btn btn-primary w-100" >
+                                       <div className="col-md-2">
+                                        <button type="button" className="vndrbtn w-100" >
                                             Generate IRN
                                         </button> 
                                         </div>
                                    </div>
 
                                    <div className="row align-items-center mt-4">  
-                                       <div className="col-md-12">
+                                       <div className="col-md-4">
                                          <label htmlFor="">Result</label>
-                                         <textarea name="result" id="result"></textarea>
+                                         <textarea name="result" className="form-control" id="result"></textarea>
                                         </div>
                                    </div>
 

@@ -111,7 +111,7 @@ const JobworkInwardChallan = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="InwardJobwork-header mb-4 text-start mt-5">
+                <div className="InwardJobwork-header mb-4 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-2">
                       <h5 className="header-title text-start">
@@ -151,6 +151,7 @@ const JobworkInwardChallan = () => {
                             placeholder="Enter value"
                           />
                         </div>
+
                         <div className="col-md-2 mt-2">Gate Entry No:</div>
                         <div className="col-md-1">
                           <select id="routingSelect" className="form-select">
@@ -177,12 +178,12 @@ const JobworkInwardChallan = () => {
                           />
                         </div>
                         <div className="col-md-1 mt-1">
-                          <button type="button" className="btn">
+                          <button type="button" className="vndrbtn">
                             Search
                           </button>
                         </div>
                         <div className="col-md-1 mt-1">
-                          <button type="button" className="btn">
+                          <button type="button" className="vndrbtn">
                             Cancel
                           </button>
                         </div>
@@ -190,7 +191,7 @@ const JobworkInwardChallan = () => {
                     </div>
                   </div>
                 </div>
-                <div className="InwardJobwork-main mt-5">
+                <div className="InwardJobwork-main mt-2">
                   <div className="container-fluid text-start">
                     <div className="container-fluid">
                       <div className="row">
@@ -244,7 +245,7 @@ const JobworkInwardChallan = () => {
                                         className="form-control"
                                         value={formData.ItemCode}
                                       />
-                                      <button className="pobtn">Search</button>
+                                      <button className="vndrbtn">Search</button>
                                     </div>
                                     <div className="d-flex">
                                       <label>FG Part Code:</label>
@@ -296,7 +297,7 @@ const JobworkInwardChallan = () => {
                                     <textarea className="form-control"></textarea>
                                   </td>
                                   <td>
-                                    <button type="submit" className="pobtn">
+                                    <button type="submit" className="vndrbtn">
                                       ADD
                                     </button>
                                   </td>
@@ -408,10 +409,9 @@ const JobworkInwardChallan = () => {
                       </div>
                     </div>
                   </div>
-
-                 
                 </div>
-                <div
+
+                  <div
                     className="StoreInwardJobworkFooter"
                     
                   >
@@ -448,7 +448,7 @@ const JobworkInwardChallan = () => {
                             <form onSubmit={handleSubmit}>
                               <div className="row">
                                 <div className="col-md-4 text-start">
-                                  <div className="container-fluid">
+                                  <div className="container-fluid mt-4">
                                     <div className="table-responsive">
                                       <table className="table table-bordered">
                                         <tbody>
@@ -876,7 +876,7 @@ const JobworkInwardChallan = () => {
                                             >
                                               <button
                                                 type="submit"
-                                                className="btn"
+                                                className="vndrbtn"
                                               >
                                                 Save Challan
                                               </button>
@@ -891,9 +891,12 @@ const JobworkInwardChallan = () => {
                             </form>
                           </div>
                         </div>
+
                       </div>
                     </div>
+
                   </div>
+
               </main>
             </div>
           </div>

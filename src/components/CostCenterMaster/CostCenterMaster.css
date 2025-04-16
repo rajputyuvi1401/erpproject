@@ -8,24 +8,15 @@
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
   padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
-
-.Costcenter-header .header-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 0;
-}
-
-
-
 
 
 .CostcenterMain {
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
   padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 
@@ -33,7 +24,7 @@
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
   padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 .CostcenterTable .table-responsive {
@@ -44,22 +35,6 @@
 .CostcenterTable .table {
   width: 100%;
   white-space: nowrap;
-}
-
-
-
-
-
-.CostcenterTable .table .Costcentertableww {
-  padding: 0.25rem 0.5rem;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.CostcenterTable .record-count {
-  margin-top: 10px;
-  text-align: right;
 }
 
 @media (max-width: 767.98px) {

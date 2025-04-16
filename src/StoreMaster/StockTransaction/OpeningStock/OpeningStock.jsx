@@ -39,9 +39,10 @@ const OpeningStock = () => {
                     </div>
                   </div>
                 </div>
-                <div className="OpeningStock-main">
-                  <div className="container-fluid text-start">
+                <div className="OpeningStock-main mt-2">
+                  <div className="container-fluid text-start mt-4">
                     <div className="row">
+
                       <div className="col-md-3">
                         <div className="card text-start">
                           <div className="card-header">
@@ -61,7 +62,7 @@ const OpeningStock = () => {
                             </Link>
                             <br/>
 
-                            <button>Download Opening Stock Upload Template</button>
+                            <button className="vndrbtn">Download Opening Stock Upload Template</button>
 
                             <div className="row mt-3">
                                 <div className="col-4">
@@ -81,7 +82,7 @@ const OpeningStock = () => {
                                 </select>
                               </div>
                               <div className="col-4 d-flex align-items-end">
-                                <Link className="Openingbtn1">
+                                <Link className="vndrbtn">
                                   Download
                                 </Link>
                               </div>
@@ -89,6 +90,7 @@ const OpeningStock = () => {
                           </div>
                         </div>
                       </div>
+
                       <div className="col-md-3">
                         <div className="card">
                           <div className="card-header">
@@ -108,7 +110,7 @@ const OpeningStock = () => {
                             </Link>
                             <br/>
 
-                            <button>Download Opening Stock Upload Template</button>
+                            <button className="vndrbtn">Download Opening Stock Upload Template</button>
 
                             <div className="row mt-3">
                                 <div className="col-4">
@@ -131,14 +133,16 @@ const OpeningStock = () => {
                                 </select>
                               </div>
                               <div className="col-4 d-flex align-items-end">
-                                <Link className="Openingbtn1">
+                                <Link className="vndrbtn">
                                   Download
                                 </Link>
                               </div>
                             </div>
+
                           </div>
                         </div>
                       </div>
+
                       <div className="col-md-3">
                         <div className="card">
                           <div className="card-header">
@@ -160,6 +164,7 @@ const OpeningStock = () => {
                           </div>
                         </div>
                       </div>
+
                       <div className="col-md-3">
                         <div className="card">
                           <div className="card-header">
@@ -181,6 +186,7 @@ const OpeningStock = () => {
                           </div>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>

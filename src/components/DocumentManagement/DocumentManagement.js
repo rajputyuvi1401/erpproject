@@ -51,20 +51,20 @@ const DocumentManagement = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Documentrmaster">
-                <div className="Document1-header mb-4 text-start mt-5">
+                <div className="Document1-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Document Management</h5>
                         </div>
                         <div className="col-md-6 text-md-end text-start mt-2 mt-md-0">
-                          <button className="btn">
+                          <button className="vndrbtn">
                             Export To Excel
                           </button>
                         </div>
                       </div>
                     </div>
                
-                  <div className="DocumentMain mt-5">
+                  <div className="DocumentMain mt-1">
                     <div className="container-fluid">
                       <div className="DocumentMain">
                         <table className="table table-bordered">
@@ -75,7 +75,7 @@ const DocumentManagement = () => {
                                 Category{" "}
                                 <span>
                                   <button
-                                    className="btn"
+                                    className="vndrbtn"
                                     onClick={() => setShowCategoryOverlay(true)}
                                   >
                                     Add
@@ -128,7 +128,7 @@ const DocumentManagement = () => {
                                   />
                                   <button
                                     type="button"
-                                    className="btn ms-2"
+                                    className="vndrbtn ms-2"
                                     // onClick={() => setFile(null)}
                                   >
                                     Clear
@@ -181,14 +181,14 @@ const DocumentManagement = () => {
                               <td>
                                 <button
                                   type="button"
-                                  className="btn"
+                                  className="vndrbtn"
                                   onClick={handleSave}
                                 >
                                   Save Doc
                                 </button>
                                 <button
                                   type="button"
-                                  className="btn ms-2"
+                                  className="vndrbtn ms-2"
                                   onClick={handleClear}
                                 >
                                   Clear
@@ -200,6 +200,7 @@ const DocumentManagement = () => {
                       </div>
                     </div>
                   </div>
+
                   {showCategoryOverlay && (
                     <div className="cateoverlay">
                       <div className="card">
@@ -223,14 +224,14 @@ const DocumentManagement = () => {
                                 <input type="text" className="form-control" />
                               </div>
                               <div className="col-sm-3">
-                                <button type="button" className="btn">
+                                <button type="button" className="vndrbtn">
                                   Save
                                 </button>
                               </div>
                             </div>
                           </div>
                           <div className="container">
-                            <div className="row text-start">
+                            <div className="table row text-start">
                               <table>
                                 <thead>
                                   <tr>
@@ -242,7 +243,7 @@ const DocumentManagement = () => {
                           </div>
                           <button
                             type="button"
-                            className="btn mt-3"
+                            className="vndrbtn mt-3"
                             onClick={() => setShowCategoryOverlay(false)}
                           >
                             Close
@@ -251,7 +252,8 @@ const DocumentManagement = () => {
                       </div>
                     </div>
                   )}
-                  <div className="DocumentTable mt-5">
+
+                  <div className="DocumentTable mt-2">
                     <div className="container-fluid">
                       <div className="table-responsive">
                         <table className="table">

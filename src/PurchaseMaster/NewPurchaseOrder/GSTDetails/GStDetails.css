@@ -1,119 +1,119 @@
+ 
+  
 .GStDetails {
-    padding: 15px 15px;
-    background-color: white;
-    margin: 10px 10px;
-  }  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  .table td input {
-    width: 100%;
-    box-sizing: border-box; /* Ensure padding does not exceed cell width */
-  }
-  
-  .table td div {
-    margin-bottom: 5px;
-  }
-  
-  .table-responsive {
-    overflow-x: auto;
-  }
-  
-  @media (max-width: 768px) {
-    .table th, .table td {
-      padding: 4px;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .table th, .table td {
-      font-size: 12px;
-      padding: 2px;
-    }
-  }
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
 
+.table-responsive {
+  overflow-x: auto;
+}
 
-   .gsttable {
-    padding: 15px;
-  }
-
-  .gsttable .table-responsive {
-    overflow-x: auto; /* Horizontal scrolling */
-  }
-  
-  
-  .gsttable .table {
-    width: 100%;
+.table {
+  width: 100%;
   max-width: 100%;
   margin-bottom: 1rem;
   background-color: transparent;
-  } 
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
   
-   .gsttable  .table td {
-    text-align: left;
-    padding: 8px;
-    border: 1px solid #dee2e6;
+
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
   }
-  
-  .gsttable .table input[type="text"] {
-    width: 150%;
-    box-sizing: border-box; 
-  }
-  
-  .gsttable .table input[type="checkbox"] {
-    margin-right: 5px;
-  }
-  
-  .gsttable .table label {
-    margin-left: 5px;
-  }
-  
-  .gsttable .table-responsive {
-    overflow-x: auto;
-  }
-  .gsttable  .table .form-control {
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
     width: 100%;
-    padding: 0.5rem;
-    box-sizing: border-box;
   }
-  .gsttable  input.form-control {
-    width: 100%; /* Ensures it fills the entire column width */
-    height: 40px; /* Adjust the height for bigger inputs */
-    font-size: 16px; /* Increase font size */
-    padding: 10px; /* Add padding for better readability */
-    box-sizing: border-box; /* Prevent overflow */
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
   }
-  
-  /* Optional: Increase the height of the table rows */
-  .gsttable  table td {
-    vertical-align: middle; /* Vertically center the content in each cell */
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
   }
-  
-  
-  /* Wrapper for the table to make it scrollable */
-  .gsttable .table-wrapper {
-  overflow-x: auto; /* Enable horizontal scroll */
-  -webkit-overflow-scrolling: touch; /* For smoother scrolling on mobile */
-  max-width: 100%; /* Ensure it fills available space */
 }
 
-/* Optionally, set a max height for the table to make it vertically scrollable as well */
-.gsttable .table-wrapper table {
-  width: 100%; /* Ensure the table width takes the full container width */
-  min-width: 1200px; /* Ensure the table is wide enough, adjust if needed */
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
 }
 
-  @media (max-width: 768px) {
-    .gsttable  .table td {
-      padding: 4px;
-    }
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
   }
-  
-  @media (max-width: 576px) {
-  .gsttable   .table td {
-      font-size: 12px;
-      padding: 2px;
-    }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
   }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+}
+
+
+
    

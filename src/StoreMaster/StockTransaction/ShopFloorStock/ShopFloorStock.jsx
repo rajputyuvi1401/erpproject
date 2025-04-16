@@ -36,11 +36,11 @@ const ShopFloorStock = () => {
                       Shop Floor Stock Report
                     </h5>
                   </div>
-                  <div className="col-md-10 text-end">
+                  <div className="col-md-8 text-end">
                     <div className="row justify-content-end">
-                      <div className="col-md-9 d-flex align-items-end">
+                      <div className="col-md-3 d-flex align-items-end">
                         
-                        <Link className="pobtn">Export To Excel</Link>
+                        <Link className="vndrbtn">Export To Excel</Link>
                       
                       </div>
                     </div>
@@ -48,14 +48,11 @@ const ShopFloorStock = () => {
                 </div>
               </div>
 
-              <div className="ShopFloorStock-main">
+              <div className="ShopFloorStock-main mt-2">
                 <div className="container-fluid text-start">
                 <div className="row mt-4">
                     <div className="col-md-12">
                       <form className="row g-3 text-start">
-                        
-                        
-  
                         {/* Main Group */}
                         <div className="col-md-3 col-sm-6">
                           <label className="form-label">Main Group</label>
@@ -77,9 +74,6 @@ const ShopFloorStock = () => {
                               <option value="DI">DI</option>
                             </select>
                         </div>
-  
-                    
-  
                         {/* Item Code */}
                         <div className="col-md-2 col-sm-6">
                           <label className="form-label">Item Code</label>
@@ -96,11 +90,10 @@ const ShopFloorStock = () => {
                             <option value="3">FIXCTURE</option>
                           </select>
                         </div>
-  
-                       
+                        
                         {/* Search Button */}
-                        <div className="col-md-1 col-sm-6 mt-1 align-self-end">
-                          <button type="submit" className="pobtn w-100">
+                        <div className="col-md-1 col-sm-6 mt-5">
+                          <button type="submit" className="vndrbtn w-100">
                             Search
                           </button>
                         </div>

@@ -11,6 +11,7 @@ const ProductionReport = () => {
   const toggleSideNav = () => {
     setSideNavOpen((prevState) => !prevState);
   };
+  
 
   useEffect(() => {
     if (sideNavOpen) {
@@ -32,17 +33,17 @@ const ProductionReport = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ProductionReport mt-5">
+                <div className="ProductionReport mt-1">
                   <div className="ProductionReport-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Daily Production Report</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           Production Report
                         </button>
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           Production - Query
                         </button>
                       </div>
@@ -50,7 +51,7 @@ const ProductionReport = () => {
                   </div>
 
                   {/* Filter Section */}
-                  <div className="ProductionReport-filter mb-4">
+                  <div className="ProductionReport-filter">
                     <div className="row text-start">
                       <div className="col-md-2">
                         <label>Plant</label>
@@ -84,16 +85,15 @@ const ProductionReport = () => {
                       </div>
                       <div className="col-md-2 mt-4">
                       
-                      <button className="btn btn-primary">Search</button>
+                      <button className="vndrbtn">Search</button>
                       
                    
                     </div>
-                    </div>
-                   
+                    </div>              
                   </div>
 
                   {/* Table Section */}
-                  <div className="ProductionReport-Main">
+                  <div className="ProductionReport-Main mt-2">
                   <div className="table-responsive">
                     <table className="table table-bordered">
                       <thead>
@@ -144,7 +144,7 @@ const ProductionReport = () => {
                           <td>08:00</td>
                           <td>Togre</td>
                           <td>
-                            <button className="btn btn-sm btn-light">
+                            <button className="vndrbtn">
                               <i className="fas fa-eye"></i>
                             </button>
                           </td>

@@ -35,13 +35,13 @@ const DepartmentHead = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Department1">
                  
-                  <div className="Departmentupper-header mb-4 text-start mt-5">
+                  <div className="Departmentupper-header mb-4 text-start">
                      <div className="row align-items-center">
                         <div className="col-md-6">
                         <h5 className="header-title">Department Master</h5>
                         </div>
                         <div className="col-md-6  text-end">
-                          <button className="btn">
+                          <button className=" vndrbtn">
                             Export To Excel
                           </button>
                         </div>

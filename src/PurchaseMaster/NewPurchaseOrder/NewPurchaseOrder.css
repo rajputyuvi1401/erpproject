@@ -1,88 +1,173 @@
-.NewPurchaseMaster
- {
-  margin-top: 20px;
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
-/* Header Styling */
+.NewPurchaseMaster {
+  width: 100%;
+  height: 100vh;
+}
+
 .NewPurchse-header {
-  background-color: #f8f9fa; /* Light background for header */
-  border-bottom: 1px solid #dee2e6; /* Border for header */
-  padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
 }
 
-.NewPurchse-header .header-title {
+.new-purchase-main {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.header-title {
   font-size: 20px;
   font-weight: bold;
+  color: blue;
   margin: 0;
 }
 
-/* .newpirchase-main {
-  background-color: #f8f9fa;
-  padding: 10px;
-  margin-top:20px;
-  height: auto;
-} */
-/* Main container styling */ .NewPurchaseMaster
-.newpirchase-main {
-  padding: 10px;
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
 }
 
-/* Remove borders from the nav-pills */ .NewPurchaseMaster
-.nav-pills .NewPurchaseMaster .nav-link {
+.vndrbtn {
   border: none;
-  border-radius: 0;
-  font-size: 16px;
-  padding: 10px 20px;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
 }
 
-/* Active tab styling */ .NewPurchaseMaster
-.nav-pills .NewPurchaseMaster .nav-link.active {
-  background-color: #007bff;
+.vndrbtn:hover{
+  background-color: #16bfff;
   color: white;
 }
 
-/* Responsive tab styling */
-@media (max-width: 576px) {
-  .NewPurchaseMaster .nav-pills .NewPurchaseMaster .nav-link {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
 
-  .NewPurchaseMaster .nav-pills {
-    display: block;
+label{
+  font-size: 12px;
+}
+/* 
+.CommodityTable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+} */
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
     text-align: center;
   }
 
-  .tab-content {
-    margin-top: 20px;
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
   }
 }
 
-@media (min-width: 576px) and (max-width: 768px) {
-  .NewPurchaseMaster .nav-pills .NewPurchaseMaster .nav-link {
-    font-size: 15px;
-    padding: 10px 18px;
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
   }
 }
 
-@media (min-width: 768px) {
-  .NewPurchaseMaster .nav-pills .NewPurchaseMaster .nav-link {
-    font-size: 16px;
-    padding: 10px 20px;
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
   }
-}
 
-.NewPurchaseMaster .tab-content {
-  padding: 10px;
-  border: none;
-  
-}
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
 
-.NewPurchaseMaster .tab-pane {
-  display: none;
-}
-
-.NewPurchaseMaster .tab-pane.show {
-  display: block;
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
 }

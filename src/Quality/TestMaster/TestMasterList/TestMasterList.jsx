@@ -32,24 +32,24 @@ const TestMasterList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="TestMasterList mt-5">
-                  <div className="TestMasterList-header mb-4 text-start">
+                <div className="TestMasterList">
+                  <div className="TestMasterList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Test Master List : </h5>
                       </div>
                        
                       <div className="col-md-8  text-end">
-                        <button type="button" className="btn" >
+                        <button type="button" className="vndrbtn" >
                           Export To Excel
                         </button>
                       </div>             
                     </div>
                   </div>
 
-                  <div className="TestMasterList-main mt-5">
+                  <div className="TestMasterList-main">
                      
-                  <div className="row text-start">
+                    <div className="row text-start">
                      
                       <div className="col-md-2">
                             <label htmlFor="">From :</label>
@@ -61,7 +61,7 @@ const TestMasterList = () => {
                       </div> 
                     
                       <div className="col-md-1 mt-4">
-                           <button type="button" className="btn btn-primary w-100" >
+                           <button type="button" className="vndrbtn w-100" >
                               Search
                            </button> 
                         </div>

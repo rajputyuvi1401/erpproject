@@ -33,14 +33,14 @@ const PaddingQCInward = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="PaddingQCInward mt-5">
-                <div className="PaddingQCInward-header mb-4 text-start">
+              <div className="PaddingQCInward">
+                <div className="PaddingQCInward-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-6">
                       <h5 className="header-title"> <span  className="purch">Subcon / Jobwork Inward : </span> Pending QC List </h5>
                     </div>
                     <div className="col-md-6 text-end">
-                      <button type="button" className="btn" to="#/">
+                      <button type="button" className="vndrbtn" to="#/">
                         Export Report
                       </button>
                      </div>
@@ -48,17 +48,17 @@ const PaddingQCInward = () => {
                 </div>
 
                
-                <div className="PaddingQCInward-Main mt-5">
+                <div className="PaddingQCInward-Main">
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
-                      <div className="col-sm-6 col-md-2 col-lg-1">
+                      <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>Plant :</label>
                         <select className="form-select" style={{marginTop:"-2px"}}>
                           <option>SHARP</option>
                         </select>
                       </div>
 
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
@@ -68,7 +68,7 @@ const PaddingQCInward = () => {
                           <input type="date" className="form-control" />
                         </div>
 
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                         <label>57F4 Type :</label>
                         <select className="form-select"  style={{marginTop:"-2px"}}>
                           <option>Select</option>
@@ -77,18 +77,18 @@ const PaddingQCInward = () => {
                         </select>
                       </div>
                        
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                         <label  type="checkbox">Select Vendar:</label>
                        <input type="text"  placeholder="Enter Name" className="form-control"/>
                       </div>
 
                          {/* Supplier Name */}
-                       <div className="col-sm-6 col-md-2 col-lg-1">
+                       <div className="col-sm-6 col-md-3 col-lg-2">
                         <label type="checkbox">Select Item:</label>
                         <input type="text" placeholder="Name..." className="form-control" />
                       </div>
-                      <div className="col-6 col-md-1 mt-5">
-                          <button type="button" className="btn btn-primary">
+                      <div className="col-6 col-md-1 ">
+                          <button type="button" className="vndrbtn" style={{marginTop:"22px"}}>
                             Search
                           </button>
                         </div>
@@ -102,8 +102,8 @@ const PaddingQCInward = () => {
                      <input type="text" placeholder="Name..." className="form-control"/>
                     </div>
 
-                    <div className="col-6 col-md-1 mt-5">
-                    <button type="button" className="btn btn-primary w-100" >
+                    <div className="col-6 col-md-1">
+                    <button type="button" className="vndrbtn w-100" style={{marginTop:"20px"}} >
                         Search
                     </button> 
                     </div>
@@ -111,7 +111,7 @@ const PaddingQCInward = () => {
                     </div>
                   </div>
 
-             <div className="table-responsive mt-5">
+             <div className="PaddingQCInwardtable table-responsive mt-2">
               <div className="table-striped">
                     <table className="table">
                       <thead>

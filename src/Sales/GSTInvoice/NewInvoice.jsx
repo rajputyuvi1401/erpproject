@@ -45,30 +45,30 @@ const NewInvoice = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="NewInvoice mt-5">
-                  <div className="NewInvoice-header mb-4 text-start">
+                <div className="NewInvoice">
+                  <div className="NewInvoice-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">New Invoice</h5>
                       </div>
                       <div className="col-md-1">Plant</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option>ProduLink</option>
                         </select>
                       </div>
                       <div className="col-md-1">Series</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-control">
                           <option>GST Invoice</option>
                         </select>
                       </div>
                       <div className="col-md-1">
-                        <input type="text" placeholder="InvoiceNo:" className="w-100" />
+                        <input className="form-control" type="text" placeholder="InvoiceNo:"  />
                       </div>
                       <div className="col-md-1">InvoiceType:</div>
                       <div className="col-md-1">
-                        <select>
+                        <select className="form-select">
                           <option>GST</option>
                           <option>SCRAP</option>
                           <option>Stock Transfer</option>
@@ -81,15 +81,16 @@ const NewInvoice = () => {
                       </div>
 
                       <div className="col-md-3 text-end">
-                        <button type="button" className="btn" onClick={handleButtonClick}>
+                        <button type="button" className=" vndrbtn" onClick={handleButtonClick}>
                           Invoice V2
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="NewInvoice-main mt-5">
+                  <div className="NewInvoice-main">
                     <div className="NewInvoice-tabs">
+
                       <ul
                         className="nav nav-tabs"
                         id="AssembleEntryTabs"
@@ -120,6 +121,7 @@ const NewInvoice = () => {
                           </button>
                         </li>
                       </ul>
+
                       <div
                         className="tab-content mt-4"
                         id="productionEntryTabsContent"
@@ -129,6 +131,7 @@ const NewInvoice = () => {
                           id="itemdetails"
                           role="tabpanel"
                         >
+
                           <div className="row text-start">
                                 <div className="col-2">
                                   <label htmlFor="prod-no">Select Cust:</label>
@@ -137,10 +140,10 @@ const NewInvoice = () => {
                                   <input type="text" placeholder="Enter Name.." className="form-control" />
                                 </div>
                                 <div className="col-2">
-                                 <button className="btn w-50">Search</button>
+                                 <button className=" vndrbtn w-50">Search</button>
                                 </div>
                           </div>
-                          <div className="row text-start">
+                          <div className="row text-start mt-2">
                                 <div className="col-2">
                                   <label htmlFor="prod-no">Select PO:</label>
                                 </div>
@@ -150,13 +153,13 @@ const NewInvoice = () => {
                                         </select>
                                 </div>
                                 <div className="col-1">
-                                 <button className="btn w-100">Clear</button>
+                                 <button className=" vndrbtn w-100">Clear</button>
                                 </div>
                                 <div className="col-2">
-                                 <button className="btn w-50"> View SO</button>
+                                 <button className=" vndrbtn w-100"> View SO</button>
                                 </div>
                           </div>
-                          <div className="row text-start">
+                          <div className="row text-start mt-2">
                                 <div className="col-2">
                                   <label htmlFor="prod-no">Select Item :</label>
                                 </div>
@@ -164,9 +167,10 @@ const NewInvoice = () => {
                                   <input type="text" placeholder="Enter Item Code.." className="form-control" />
                                 </div>
                                 <div className="col-2">
-                                 <button className="btn w-50">Add</button>
+                                 <button className=" vndrbtn w-100">Add</button>
                                 </div>
                           </div>
+
                         </div>
 
                         <div
@@ -232,26 +236,27 @@ const NewInvoice = () => {
                                     Mode of Trans :
                                   </label>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-8">
                                   <input type="text" placeholder="By Road" id="modeoftrans"
                                     className="form-control"/>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-4">
                                   <label htmlFor="unit-machine">
                                     Freight:
                                   </label>
                                 </div>
-                                <div className="col-4 d-flex align-items-center">
-                                  <select className="form-control flex-grow-1">
+                                <div className="col-8 d-flex align-items-center">
+                                  <select className="form-control flex-grow-1" style={{marginLeft:"5px"}}>
                                     <option>  Select  </option>
                                   </select>
-                                  <button type="button" className="btn">
+                                  <button type="button" className=" vndrbtn">
                                     <Cached />
                                   </button>
                                   <button
                                     type="button"
-                                    className="btn btn-outline-secondary ml-2"
+                                    className=" vndrbtn ml-2"
                                   >
+                                  
                                     <FaPlus />
                                   </button>
                                 </div>
@@ -267,7 +272,7 @@ const NewInvoice = () => {
                                     className="form-control"/>
                                   <button
                                     type="button"
-                                    className="btn btn-outline-secondary ml-2"
+                                    className=" vndrbtn ml-2"
                                   >
                                     Search
                                   </button>
@@ -284,7 +289,7 @@ const NewInvoice = () => {
                                     className="form-control"/>
                                   <button
                                     type="button"
-                                    className="btn btn-outline-secondary ml-2"
+                                    className=" vndrbtn  ml-2"
                                   >
                                     Search
                                   </button>
@@ -323,25 +328,25 @@ const NewInvoice = () => {
                                     PDI No :
                                   </label>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-8">
                                   <input type="text" placeholder="" id="modeoftrans"
                                     className="form-control"/>
                                 </div>
-                                <div className="col-2">
+                                <div className="col-4">
                                   <label htmlFor="unit-machine">
                                     Bank:
                                   </label>
                                 </div>
-                                <div className="col-4 d-flex align-items-center">
+                                <div className="col-8 d-flex align-items-center">
                                   <select className="form-control flex-grow-1">
                                     <option>  Select  </option>
                                   </select>
-                                  <button type="button" className="btn">
+                                  <button type="button" className=" vndrbtn">
                                     <Cached />
                                   </button>
                                   <button
                                     type="button"
-                                    className="btn btn-outline-secondary ml-2"
+                                    className=" vndrbtn  ml-2"
                                   >
                                     <FaPlus />
                                   </button>
@@ -392,7 +397,7 @@ const NewInvoice = () => {
                                     id="vehicle"
                                     className="form-control"
                                   />
-                                   <button type="button" className="btn btn-outline-secondary">
+                                   <button type="button" className=" vndrbtn">
                                    <FaPlus />
                                   </button>
                                 </div>
@@ -407,7 +412,7 @@ const NewInvoice = () => {
                                 <select className="form-control flex-grow-1">
                                     <option>   </option>
                                   </select>
-                                   <button type="button" className="btn btn-outline-secondary mb-4">
+                                   <button type="button" className=" vndrbtn mb-4">
                                    <FaRegCircleQuestion />
                                   </button>
                                 </div>
@@ -421,7 +426,7 @@ const NewInvoice = () => {
                                 <select className="form-control flex-grow-1">
                                     <option>   </option>
                                   </select>
-                                   <button type="button" className="btn btn-outline-secondary mb-4">
+                                   <button type="button" className=" vndrbtn mb-4">
                                    <FaRegCircleQuestion />
                                   </button>
                                 </div>
@@ -489,7 +494,7 @@ const NewInvoice = () => {
                                     id="transporter"
                                     className="form-control"
                                   />
-                                   <button type="button" className="btn btn-outline-secondary mb-3">
+                                   <button type="button" className=" vndrbtn mb-3">
                                    <FaPlus />
                                   </button>
                                 </div>
@@ -757,30 +762,38 @@ const NewInvoice = () => {
                     </div>
                          </div>
 
-                          <div className="row">
+                          <div className="row mt-3">
+
                             <div className="col-md-2">
-                                <button className="btn btn-primary"> Generete Invoice </button>
+                                <button className=" vndrbtn"> Generete Invoice </button>
                             </div>
                             <div className="col-md-3 d-flex align-items-center">
-      <input
-        type="checkbox"
-        id="printRate"
-        checked={isChecked}
-        onChange={handleCheckboxChange}
-      />
-      <label htmlFor="printRate" className="ms-2">
-        PrintRate
-      </label>
-    </div>
+                                <input
+                                  type="checkbox"
+                                  id="printRate"
+                                  checked={isChecked}
+                                  onChange={handleCheckboxChange}
+                                  style={{ width: "12px", height: "12px", verticalAlign: "middle" }}
+                                />
+                                <label
+                                  htmlFor="printRate"
+                                  className="ms-2"
+                                  style={{ verticalAlign: "middle" }}
+                                >
+                                  PrintRate
+                                </label>
+                            </div>
+
                           </div>
 
                         </div>
+
                       </div>
 
                     </div>
                   </div>
 
-                       <div className="table-responsive">
+                       <div className="NewInvoicetable table-responsive">
                                 <table className="table table-bordered">
                                 <thead>
                                     <tr>
@@ -802,8 +815,8 @@ const NewInvoice = () => {
                                         <td>1</td>
                                         <td>Pr No:</td>
                                         <td>Line No:</td>
-                                        <td><textarea name="" id=""></textarea> <br /> <span>HSN Code :</span> </td>
-                                        <td className="text-start"><input type="text" className="" /> <br />
+                                        <td><textarea className="form-control" name="" id=""></textarea> <br /> <span>HSN Code :</span> </td>
+                                        <td className="text-start"><input type="text" className="form-control" /> <br />
                                                 Disc:  <br />  Pkg Charges: <br />
                                                 Trans Charges: <br /> <span style={{color:"blue"}}>Rate Type: </span>
                                                 <br /> Amort Rate :
@@ -812,12 +825,12 @@ const NewInvoice = () => {
                                         <td></td>
                                         <td><input type="text" className="w-50"/> <br />
                                             Per Pcs Wt: <br />
-                                            <input type="text" className="w-50" placeholder="Weight" /><br />
+                                            <input type="text" className="form-control w-50" placeholder="Weight" /><br />
                                             <span style={{color:"blue"}}>Per Unit: </span>
                                         </td>
-                                        <td><input type="text" className="w-50"/></td>
-                                        <td><textarea name="" id=""></textarea></td>
-                                        <td><span style={{border:"1px solid black"}}>X</span></td>
+                                        <td><input type="text" className="form-control w-50"/></td>
+                                        <td><textarea className="form-control" name="" id=""></textarea></td>
+                                        <td><span className="vndrbtn" style={{border:"1px solid black"}}>X</span></td>
                                     </tr>
                                 </tbody>
                                 </table>

@@ -34,8 +34,8 @@ const SamplingPlan = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="SamplingPlan mt-5">
-                  <div className="SamplingPlan-header mb-4 text-start">
+                <div className="SamplingPlan">
+                  <div className="SamplingPlan-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Sampling Plan</h5>
@@ -48,7 +48,7 @@ const SamplingPlan = () => {
                     </div>
                   </div>
 
-                  <div className="SamplingPlan-main mt-5">
+                  <div className="SamplingPlan-main">
         
                     <div className="row g-3 text-start">
 
@@ -93,8 +93,8 @@ const SamplingPlan = () => {
                        <input type="text"  placeholder=" " className="form-control"/>
                       </div>
 
-                    <div className="col-6 col-md-1 mt-5">
-                    <button type="button" className="btn btn-primary w-100" >
+                    <div className="col-6 col-md-1">
+                    <button type="button" className="vndrbtn w-100" style={{marginTop:"26px"}}>
                         Save
                     </button> 
                     </div>

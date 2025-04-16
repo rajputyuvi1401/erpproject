@@ -159,23 +159,23 @@ const VendorPage = () => {
                 >
                   <div className="Vendorpage1">
                     <div className="container-fluid">
-                    <div className="Vender-header mb-4 text-start">
+                    <div className="Vender-header mb-2 text-start">
                     <div className="row align-items-center">
                      
                       <div className="col-md-8 text-start">
-                      <button className="btn" type="button">
+                      <button className="vndrbtn" type="button">
                               Company Setup
                             </button>
-                            <button className="btn" type="button">
+                            <button className="vndrbtn" type="button">
                               Last Updated By Admin
                             </button>
-                            <button className="btn" type="button">
+                            <button className="vndrbtn" type="button">
                               On D1 12/07/2022 2:57 PM
                             </button>
                       </div>
                      
                       <div className="col-md-4 col-12 text-end">
-                            <button className="btn">General Setting</button>
+                            <button className="vndrbtn">General Setting</button>
                           </div>
                      
                     </div>

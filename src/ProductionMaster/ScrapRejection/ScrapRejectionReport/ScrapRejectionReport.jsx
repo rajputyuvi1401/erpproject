@@ -33,7 +33,7 @@ const ScrapRejectionReport = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ScrapRejection mt-5">
+                <div className="ScrapRejection">
                   <div className="ScrapRejection-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
@@ -42,13 +42,13 @@ const ScrapRejectionReport = () => {
                         </h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn" to="/AddQuater">
+                        <button type="button" className="vndrbtn" to="/AddQuater">
                           Rejection Report
                         </button>
 
                         <button
                           type="button"
-                          className="btn"
+                          className="vndrbtn"
                           to="/Companysetup"
                         >
                           Export To Excel
@@ -57,11 +57,11 @@ const ScrapRejectionReport = () => {
                     </div>
                   </div>
 
-                  <div className="ScrapRejection-Main">
+                  <div className="ScrapRejection-Main mt-2">
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
                         {/* Plant */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Plant:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -69,19 +69,19 @@ const ScrapRejectionReport = () => {
                         </div>
 
                         {/* From Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* To Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>To Date:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* Type */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Tm Type:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -97,7 +97,7 @@ const ScrapRejectionReport = () => {
                         </div>
 
                         {/* Series */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Series:</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -108,25 +108,25 @@ const ScrapRejectionReport = () => {
                         </div>
 
                         {/* Item Name */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Item Name:</label>
                           <input type="text" className="form-control" />
                         </div>
 
                         {/* Customer Name */}
-                        <div className="col-sm-6 col-md-1 col-lg-2">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Customer Name:</label>
                           <input type="text" className="form-control" />
                         </div>
 
                         {/* Wo No */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Doc No:</label>
                           <input type="text" className="form-control" />
                         </div>
 
                         {/* User */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>User:</label>
                           <input type="text" className="form-control" />
                         </div>
@@ -135,7 +135,7 @@ const ScrapRejectionReport = () => {
                           <label></label>
                           <button
                             type="button"
-                            className="btn btn-primary w-100"
+                            className="vndrbtn w-100"
                           >
                             Search
                           </button>
@@ -144,7 +144,7 @@ const ScrapRejectionReport = () => {
                     </div>
                   </div>
 
-                  <div className="table-responsive">
+                  <div className="ScrapRejectiontable table-responsive">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -192,12 +192,12 @@ const ScrapRejectionReport = () => {
                           <td></td>
                           <td></td>
                           <td>
-                            <button className="btn btn-link">
+                            <button className="vndrbtn">
                               <FaEdit />
                             </button>
                           </td>
                           <td>
-                            <button className="btn btn-link text-danger">
+                            <button className="vndrbtn text-danger">
                               <FaTrash />
                             </button>
                           </td>
@@ -206,6 +206,7 @@ const ScrapRejectionReport = () => {
                       </tbody>
                     </table>
                   </div>
+
                 </div>
               </main>
             </div>

@@ -32,14 +32,14 @@ const BreakdownAnalysis = () =>  { const [sideNavOpen, setSideNavOpen] = useStat
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="BreakdownAnalysis mt-5">
-                  <div className="BreakdownAnalysis-header mb-4 text-start">
+                <div className="BreakdownAnalysis">
+                  <div className="BreakdownAnalysis-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Breakdown Analysis</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn" to="#/">
+                        <button type="button" className="vndrbtn" to="#/">
                            Export To Excel
                         </button>
                         
@@ -51,7 +51,7 @@ const BreakdownAnalysis = () =>  { const [sideNavOpen, setSideNavOpen] = useStat
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
                          {/* Plant */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Plant :</label>
                           <select className="form-select">
                             <option>Produlink</option>
@@ -62,21 +62,21 @@ const BreakdownAnalysis = () =>  { const [sideNavOpen, setSideNavOpen] = useStat
                         </div>
 
                         {/* From Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         
                         {/* To Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>To :</label>
                           <input type="date" className="form-control" />
                         </div>
 
   
                         {/*   Machine */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label> Machine :</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -86,7 +86,7 @@ const BreakdownAnalysis = () =>  { const [sideNavOpen, setSideNavOpen] = useStat
                         </div>
   
                         <div className="col-sm-2">
-                        <button type="button" className="btn" style={{marginTop:"34px"}}>
+                        <button type="button" className="vndrbtn" style={{marginTop:"22px"}}>
                             Search
                         </button>   
                         </div>

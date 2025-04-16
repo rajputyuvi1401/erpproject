@@ -205,7 +205,7 @@ const CostCenterMaster = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="CostcenterMaster1">
-                  <div className="Costcenter mt-5">
+                  <div className="Costcenter ">
                     <div className="Costcenter-header mb-4 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
@@ -213,19 +213,20 @@ const CostCenterMaster = () => {
                         </div>
                         <div className="col-md-8 text-md-end text-start mt-2 mt-md-0">
                           <button
-                            className="btn"
+                            className="vndrbtn"
                             onClick={toggleAddForm}
                           >
                             Add New
                           </button>
-                          <button className="btn">
+                          <button className="vndrbtn">
                             Export Report
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="CostcenterMain mt-5">
+
+                  <div className="CostcenterMain mt-1">
                     <div className="container-fluid">
                       <div className="row text-start centerselect">
                         <div className="col-md-2 col-sm-3 mb-3 mb-sm-0">
@@ -247,15 +248,16 @@ const CostCenterMaster = () => {
                             <option value="3">Three</option>
                           </select>
                         </div>
-                        <div className="col-md-1 col-sm-12 text-sm-start text-md-start mt-2">
-                          <button className="btn">
+                        <div className="col-md-1 col-sm-12 text-sm-start text-md-start mt-1">
+                          <button className="vndrbtn">
                           Search
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="CostcenterTable mt-5">
+
+                  <div className="CostcenterTable mt-3">
                     <div className="container-fluid">
                       <div className="table-responsive">
                         <table className="table table-bordered table-striped">
@@ -277,13 +279,13 @@ const CostCenterMaster = () => {
                                 <td>{costCenter.Category_Code}</td>
                                 {/* <td>
                                   <button
-                                    className="card-btn"
+                                    className="card-vndrbtn"
                                     onClick={() => handleEdit(costCenter.id)}
                                   >
                                     <FaEdit />
                                   </button>
                                   <button
-                                    className="card-btn"
+                                    className="card-vndrbtn"
                                     onClick={() => handleDelete(costCenter.id)}
                                   >
                                     <FaTrash />
@@ -296,12 +298,14 @@ const CostCenterMaster = () => {
                       </div>
                     </div>
                   </div>
+
                   <div
                     className="record-count text-start"
                     style={{ color: "blue", padding: "10px" }}
                   >
                     Total Records: {costCenterData.length}
                   </div>
+
                   {showAddForm && (
                     <div className="costtype-overlay">
                       <ToastContainer />
@@ -312,7 +316,7 @@ const CostCenterMaster = () => {
                           </div>
                           <div className="col-md-2 text-end">
                             <button
-                              className="btn"
+                              className="vndrbtn"
                               onClick={toggleAddForm}
                             >
                               X
@@ -347,14 +351,14 @@ const CostCenterMaster = () => {
                                 </div>
                                 <div className="col-sm-1"    style={{marginTop:"-1px"}}>
                                   <button
-                                    className="btn"
+                                    className="vndrbtn"
                                     onClick={toggleAddFormsecond}
                                   >
                                     New
                                   </button>
                                 </div>
                                 <div className="col-sm-1 ms-4">
-                                  <button className="btn"    style={{marginTop:"-1px"}}>
+                                  <button className="vndrbtn"    style={{marginTop:"-1px"}}>
                                     <CachedIcon />
                                   </button>
                                 </div>
@@ -404,7 +408,7 @@ const CostCenterMaster = () => {
                             </div>
                             <div className="col-md-1 col-sm-12 text-sm-start text-md-start mt-2">
                               <button
-                                className="btn"
+                                className="vndrbtn"
                                 style={{ marginTop: "29px" }}
                                 onClick={handleSave}
                               >
@@ -473,6 +477,7 @@ const CostCenterMaster = () => {
                       </div>
                     </div>
                   )}
+
                   {showAddFormsecond && (
                     <div className="costtype2-overlay">
                       <div className="new-card">
@@ -482,7 +487,7 @@ const CostCenterMaster = () => {
                           </div>
                           <div className="col-md-2 text-end">
                             <button
-                              className="btn"
+                              className="vndrbtn"
                               onClick={toggleAddFormsecond}
                             >
                               X
@@ -542,7 +547,7 @@ const CostCenterMaster = () => {
 
                             <div className="col-md-1 text-start">
                               <button
-                                className="btn"
+                                className="vndrbtn"
                                 style={{ marginTop: "38px" }}
                                 onClick={handleSave1}
                               >
@@ -550,6 +555,7 @@ const CostCenterMaster = () => {
                               </button>
                             </div>
                           </div>
+
                           <div className="CostaddnewTable">
                             <div className="container-fluid">
                               <div className="table-responsive">
@@ -599,10 +605,12 @@ const CostCenterMaster = () => {
                               </div>
                             </div>
                           </div>
+
                         </div>
                       </div>
                     </div>
                   )}
+                    
                 </div>
               </main>
             </div>

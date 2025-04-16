@@ -161,7 +161,7 @@ const JobWorkShiptoadd = () => {
             <div className="row text-end">
               <div className="col-md-11">
                 <button
-                  className="btn  "
+                  className="vndrbtn  "
                   onClick={handleSave}
                 >
                   Save
@@ -169,7 +169,7 @@ const JobWorkShiptoadd = () => {
               </div>
               <div className="col-md-1">
                 <button
-                  className="btn "
+                  className="vndrbtn "
                   onClick={handleClear}
                 >
                   Clear

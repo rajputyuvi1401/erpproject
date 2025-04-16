@@ -40,7 +40,7 @@ const FGTOFGMovement = () => {
                   <div className="col-md-8 text-start">
                     <div className="row">
                       <div className="col-md-2 d-flex flex-wrap">
-                        <select>
+                        <select className="form-select">
                           <option>Produlink</option>
                         </select>
                       </div>
@@ -48,7 +48,7 @@ const FGTOFGMovement = () => {
                   </div>
                 </div>
               </div>
-              <div className="FgMoventStock-main">
+              <div className="FgMoventStock-main mt-4">
                 <div className="container-fluid text-start">
                   <div className="row">
                     <div className="col-md-4">
@@ -56,10 +56,10 @@ const FGTOFGMovement = () => {
                         <div className="col-md-4">
                           <label>Trn No:</label>
                         </div>
-                        <div className="col-md-4">
-                          <input />
+                        <div className="col-md-6">
+                          <input className="form-control" />
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-2">
                           <Cached />
                         </div>
                       </div>
@@ -67,8 +67,8 @@ const FGTOFGMovement = () => {
                         <div className="col-md-4">
                           <label>Tran. Date:</label>
                         </div>
-                        <div className="col-md-4">
-                          <input type="date" />
+                        <div className="col-md-8">
+                          <input className="form-control" type="date" />
                         </div>
                       </div>
                       <div className="row mt-4">
@@ -76,7 +76,7 @@ const FGTOFGMovement = () => {
                           <label>Item Code:</label>
                         </div>
                         <div className="col-md-8">
-                          <input />
+                          <input className="form-control" />
                         </div>
                       </div>
                       <div className="row mt-4">
@@ -84,7 +84,7 @@ const FGTOFGMovement = () => {
                           <label>Part Code:</label>
                         </div>
                         <div className="col-md-8">
-                          <select>
+                          <select className="form-select">
                             <option></option>
                           </select>
                         </div>
@@ -94,7 +94,7 @@ const FGTOFGMovement = () => {
                           <label>Heat No:</label>
                         </div>
                         <div className="col-md-8">
-                          <select>
+                          <select className="form-select">
                             <option></option>
                           </select>
                         </div>
@@ -102,7 +102,7 @@ const FGTOFGMovement = () => {
                     </div>
                   </div>
 
-                  <div className="FGMovementSelect">
+                  <div className="FGMovementSelect mt-4">
                     <div className="row flex-nowrap align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title text-start">
@@ -118,7 +118,7 @@ const FGTOFGMovement = () => {
                             <label>Item Code:</label>
                           </div>
                           <div className="col-md-8">
-                            <input />
+                            <input className="form-control" />
                           </div>
                         </div>
                         <div className="row mt-4">
@@ -126,7 +126,7 @@ const FGTOFGMovement = () => {
                             <label>Part Code:</label>
                           </div>
                           <div className="col-md-8">
-                            <select>
+                            <select className="form-select">
                               <option></option>
                             </select>
                           </div>
@@ -136,7 +136,7 @@ const FGTOFGMovement = () => {
                             <label>Heat No:</label>
                           </div>
                           <div className="col-md-4">
-                            <select>
+                            <select className="form-select"> 
                               <option></option>
                             </select>
                           </div>
@@ -148,8 +148,8 @@ const FGTOFGMovement = () => {
                           <div className="col-md-4">
                             <label>Transfer Qty:</label>
                           </div>
-                          <div className="col-md-4">
-                            <input />
+                          <div className="col-md-8">
+                            <input className="form-control" />
                           </div>
                           
                           
@@ -159,7 +159,7 @@ const FGTOFGMovement = () => {
                             <label>Remark:</label>
                           </div>
                           <div className="col-md-8">
-                            <textarea></textarea>
+                            <textarea className="form-control"></textarea>
                           </div>
                           
                           

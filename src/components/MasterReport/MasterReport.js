@@ -26,15 +26,15 @@ const MasterReport = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Reportrmaster">
-                <div className="Report1-header mb-4 text-start mt-5">
-                    <div className="row align-items-center">
+                    <div className="Report1-header mb-4 text-start">
+                        <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Master Report</h5>
                         </div>
-                      </div>
+                        </div>
                     </div>
                   
-                  <div className="ReportMain mt-5">
+                  <div className="ReportMain">
                     <div className="container-fluid">
                       <ul className="nav nav-tabs">
                         <li className="nav-item">
@@ -122,18 +122,18 @@ const MasterReport = () => {
                                   </select>
                                 </div>
                                 <div className="col-md-1 col-sm-12 text-sm-start text-md-end">
-                                  <button className="btn">
+                                  <button className="vndrbtn">
                                      Search
                                   </button>
                                 </div>
                                 <div className="col-md-2 col-sm-12 text-sm-start text-md-end">
-                                  <button className="btn">
+                                  <button className="vndrbtn">
                                      Export Report
                                   </button>
                                 </div>
                               </div>
                             </div>
-                            <div className="ReportTable1">
+                            <div className="ReportTable">
                               <div className="row">
                                 <div className="col-md-12">
                                   <table className="table">
@@ -235,18 +235,18 @@ const MasterReport = () => {
                                   </select>
                                 </div>
                                 <div className="col-md-1 col-sm-12 text-sm-start text-md-end">
-                                  <button className="btn">
+                                  <button className="vndrbtn">
                                      Search
                                   </button>
                                 </div>
                                 <div className="col-md-2 col-sm-12 text-sm-start text-md-end">
-                                  <button className="btn">
+                                  <button className="vndrbtn">
                                      Export Report
                                   </button>
                                 </div>
                               </div>
                             </div>
-                            <div className="ReportTable2">
+                            <div className="ReportTable">
                               <div className="row">
                                 <div className="col-md-12">
                                   <table className="table">

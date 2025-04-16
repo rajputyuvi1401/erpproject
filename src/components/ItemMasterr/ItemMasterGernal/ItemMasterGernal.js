@@ -548,7 +548,7 @@ const ItemMasterGernal = () => {
               />
 
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="axcv mt-5">
+                <div className="axcv">
                   <ToastContainer />
                   <div className="top-but3-header mb-4 text-start">
                     <div className="row align-items-center">
@@ -561,18 +561,19 @@ const ItemMasterGernal = () => {
                             Search Item For Copy
                           </label>
                           <input type="text" id="input" className="me-2" />
-                          <button className="btn-uper me-2">Copy Item</button>
-                          <button className="btn-uper me-2">
+                          <button className="vndrbtn me-2">Copy Item</button>
+                          <button className="vndrbtn me-2">
                             Section Group Master
                           </button>
-                          <Link to={"/item-master"} className="btn-uper">
+                          <Link to={"/item-master"} className="vndrbtn">
                             Item List
                           </Link>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="itemmastergernal mt-5">
+                  
+                  <div className="itemmastergernal mt-1">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
@@ -703,7 +704,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   onClick={
                                                     handleNewCardMainGroup
                                                   }
@@ -713,7 +714,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-1">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   style={{ fontSize: "10px" }}
                                                 >
                                                   <CachedIcon />
@@ -825,7 +826,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   onClick={handleNewButtonTDC}
                                                 >
                                                   New
@@ -833,7 +834,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-1">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   style={{ fontSize: "10px" }}
                                                 >
                                                   <CachedIcon />
@@ -1187,7 +1188,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   onClick={
                                                     handleNewButtonModelType
                                                   }
@@ -1197,7 +1198,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-1">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   style={{ fontSize: "10px" }}
                                                 >
                                                   <CachedIcon />
@@ -1272,7 +1273,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   onClick={
                                                     handleNewButtonItemgroup
                                                   }
@@ -1282,7 +1283,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-1">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   style={{ fontSize: "10px" }}
                                                 >
                                                   <CachedIcon />
@@ -1364,7 +1365,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   onClick={
                                                     handleNewButtonStoreLocation
                                                   }
@@ -1374,7 +1375,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-1">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   style={{ fontSize: "10px" }}
                                                 >
                                                   <CachedIcon />
@@ -1419,7 +1420,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   onClick={handleNewButtonRoute}
                                                 >
                                                   New
@@ -1427,7 +1428,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-1">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   style={{ fontSize: "10px" }}
                                                 >
                                                   <CachedIcon />
@@ -1475,7 +1476,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   onClick={
                                                     handleNewButtonParentFg
                                                   }
@@ -1485,7 +1486,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-1">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   style={{ fontSize: "10px" }}
                                                 >
                                                   <CachedIcon />
@@ -1557,7 +1558,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   onClick={
                                                     handleNewButtonSector
                                                   }
@@ -1567,7 +1568,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-1">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   style={{ fontSize: "10px" }}
                                                 >
                                                   <CachedIcon />
@@ -1647,7 +1648,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   onClick={
                                                     handleNewButtonSector
                                                   }
@@ -1657,7 +1658,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-1">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   style={{ fontSize: "10px" }}
                                                 >
                                                   <CachedIcon />
@@ -1927,7 +1928,7 @@ const ItemMasterGernal = () => {
 
                                               <div className="col-sm-2">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   onClick={handleNewButtonGrade}
                                                 >
                                                   New
@@ -1935,7 +1936,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-1">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   style={{ fontSize: "10px" }}
                                                 >
                                                   <CachedIcon />
@@ -1978,7 +1979,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-2">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   onClick={
                                                     handleNewButtonGradeMaster
                                                   }
@@ -1988,7 +1989,7 @@ const ItemMasterGernal = () => {
                                               </div>
                                               <div className="col-sm-1">
                                                 <button
-                                                  className="btn"
+                                                  className="vndrbtn"
                                                   style={{ fontSize: "10px" }}
                                                 >
                                                   <CachedIcon />
@@ -2357,8 +2358,10 @@ const ItemMasterGernal = () => {
                                       </div>
 
                                       <div className="row">
+
                                         <div className="col-md-3">
                                           <div className="row">
+
                                             <div className="col-md-4 text-start">
                                               <label
                                                 className="form-check-label"
@@ -2367,6 +2370,7 @@ const ItemMasterGernal = () => {
                                                 Active:
                                               </label>
                                             </div>
+
                                             <div className="col-md-4 text-start">
                                               <div className="form-check">
                                                 <input
@@ -2400,6 +2404,7 @@ const ItemMasterGernal = () => {
                                                 </label>
                                               </div>
                                             </div>
+
                                           </div>
                                         </div>
 
@@ -2407,13 +2412,13 @@ const ItemMasterGernal = () => {
                                           <div className="row mb-3">
                                             <div className="col-sm-12 text-end">
                                               <button
-                                                className="btn me-2"
+                                                className="vndrbtn me-2"
                                                 onClick={handleSaveitem}
                                               >
                                                 Save
                                               </button>
                                               <button
-                                                className="btn"
+                                                className="vndrbtn"
                                                 onClick={handleClear}
                                               >
                                                 Clear
@@ -2421,80 +2426,82 @@ const ItemMasterGernal = () => {
                                             </div>
                                           </div>
                                         </div>
+
                                       </div>
+
                                     </form>
                                   </div>
                                 </div>
                               </div>
 
                               {showNewCardMainGroup && (
-  <div
-    className="new-card-overlay"
-    style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      zIndex: 1050,
-    }}
-  >
-    <div
-      className="new-card"
-      style={{
-        width: "50%",
-        maxHeight: "80%", // Restrict the height to enable vertical scrolling
-        overflowY: "auto", // Enable vertical scrolling
-        backgroundColor: "#fff",
-        borderRadius: "8px",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-        padding: "20px",
-      }}
-    >
-      <div className="card">
-        <div className="card-header">
-          <div className="row">
-            <div className="col-md-6 text-start">
-              <h5
-                className="card-title text-start"
-                style={{ color: "blue" }}
-              >
-                Item Unit Master
-              </h5>
-            </div>
-            <div className="col-md-6 text-end">
-              <button
-                className="btn-cl"
-                style={{
-                  margin: "5px",
-                  color: "gray",
-                  border: "none",
-                  padding: "10px",
-                }}
-                onClick={handleNewCardMainGroup}
-              >
-                X
-              </button>
-            </div>
-          </div>
-        </div>
-        <div
-          className="card-body"
-          style={{
-            maxHeight: "calc(80vh - 100px)", // Adjust height for header/footer
-            overflowY: "auto", // Enable scrolling for content
-          }}
-        >
-          <NewCardMainGroup />
-        </div>
-      </div>
-    </div>
-  </div>
-)}
+                                  <div
+                                    className="new-card-overlay"
+                                    style={{
+                                      position: "fixed",
+                                      top: 0,
+                                      left: 0,
+                                      width: "100%",
+                                      height: "100%",
+                                      backgroundColor: "rgba(0, 0, 0, 0.5)",
+                                      display: "flex",
+                                      justifyContent: "center",
+                                      alignItems: "center",
+                                      zIndex: 1050,
+                                    }}
+                                  >
+                                    <div
+                                      className="new-card"
+                                      style={{
+                                        width: "50%",
+                                        maxHeight: "80%", // Restrict the height to enable vertical scrolling
+                                        overflowY: "auto", // Enable vertical scrolling
+                                        backgroundColor: "#fff",
+                                        borderRadius: "8px",
+                                        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                                        padding: "20px",
+                                      }}
+                                    >
+                                      <div className="card">
+                                        <div className="card-header">
+                                          <div className="row">
+                                            <div className="col-md-6 text-start">
+                                              <h5
+                                                className="card-title text-start"
+                                                style={{ color: "blue" }}
+                                              >
+                                                Item Unit Master
+                                              </h5>
+                                            </div>
+                                            <div className="col-md-6 text-end">
+                                              <button
+                                                className="vndrbtn"
+                                                style={{
+                                                  margin: "5px",
+                                                  color: "gray",
+                                                  border: "none",
+                                                  padding: "10px",
+                                                }}
+                                                onClick={handleNewCardMainGroup}
+                                              >
+                                                X
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div
+                                          className="card-body"
+                                          style={{
+                                            maxHeight: "calc(80vh - 100px)", // Adjust height for header/footer
+                                            overflowY: "auto", // Enable scrolling for content
+                                          }}
+                                        >
+                                          <NewCardMainGroup />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
 
                               {showNewCardUnit && (
                                 <div className="new-card-overlay">
@@ -2512,7 +2519,7 @@ const ItemMasterGernal = () => {
                                           </div>
                                           <div className="col-md-6 text-end">
                                             <button
-                                              className="btn-cl"
+                                              className="vndrbtn"
                                               style={{
                                                 margin: "5px",
                                                 color: "gray",
@@ -2546,7 +2553,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                             <div className="col-md-6 text-end">
                                               <button
-                                                className="btn-cl justify-content-end"
+                                                className="vndrbtn justify-content-end"
                                                 style={{
                                                   margin: "5px",
                                                   color: "gray",
@@ -2579,7 +2586,7 @@ const ItemMasterGernal = () => {
                                           </div>
                                           <div className="col-md-6 text-end">
                                             <button
-                                              className="btn-cl justify-content-end"
+                                              className="vndrbtn justify-content-end"
                                               style={{
                                                 margin: "5px",
                                                 color: "gray",
@@ -2614,7 +2621,7 @@ const ItemMasterGernal = () => {
                                           </div>
                                           <div className="col-md-6 text-end">
                                             <button
-                                              className="btn-cl"
+                                              className="vndrbtn"
                                               style={{
                                                 margin: "5px",
                                                 color: "gray",
@@ -2650,7 +2657,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                             <div className="col-md-6 text-end">
                                               <button
-                                                className="btn-cl"
+                                                className="vndrbtn"
                                                 style={{
                                                   margin: "5px",
                                                   color: "gray",
@@ -2685,7 +2692,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                             <div className="col-md-6 text-end">
                                               <button
-                                                className="btn-cl justify-content-end"
+                                                className="vndrbtn justify-content-end"
                                                 style={{
                                                   margin: "5px",
                                                   color: "gray",
@@ -2720,7 +2727,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                             <div className="col-md-6 text-end">
                                               <button
-                                                className="btn-cl justify-content-end"
+                                                className="vndrbtn justify-content-end"
                                                 style={{
                                                   margin: "5px",
                                                   color: "gray",
@@ -2755,7 +2762,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                             <div className="col-md-6 text-end">
                                               <button
-                                                className="btn-cl justify-content-end"
+                                                className="vndrbtn justify-content-end"
                                                 style={{
                                                   margin: "5px",
                                                   color: "gray",
@@ -2792,7 +2799,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                             <div className="col-md-6 text-end">
                                               <button
-                                                className="btn-cl justify-content-end"
+                                                className="vndrbtn justify-content-end"
                                                 style={{
                                                   margin: "5px",
                                                   color: "gray",
@@ -2829,7 +2836,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                             <div className="col-md-6 text-end">
                                               <button
-                                                className="btn-cl justify-content-end"
+                                                className="vndrbtn justify-content-end"
                                                 style={{
                                                   margin: "5px",
                                                   color: "gray",
@@ -2866,7 +2873,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                             <div className="col-md-6 text-end">
                                               <button
-                                                className="btn-cl justify-content-end"
+                                                className="vndrbtn justify-content-end"
                                                 style={{
                                                   margin: "5px",
                                                   color: "gray",
@@ -2889,6 +2896,7 @@ const ItemMasterGernal = () => {
                                 </div>
                               )}
                             </div>
+                            
                             <div
                               className="tab-pane fade"
                               id="pills-profile"

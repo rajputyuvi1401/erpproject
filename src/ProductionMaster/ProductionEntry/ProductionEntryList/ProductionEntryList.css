@@ -1,76 +1,179 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.ProductionEntryMasterList {
+  width: 100%;
+  height: 100vh;
+}
+
+.ProductionEntryList-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
+}
+
+.ProductionEntryList-Main {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
+}
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+  height: 35px;
+  padding: 5px 10px;
+}
+.form-control{
+  font-size: 12px;
+  height: 35px;
+  padding: 5px 10px;
+  /* border: 1px solid #a6a8a9; */
+
+}
+
+label{
+  font-size: 12px;
+}
+
+.ProductionEntryList-table {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
   }
-  
-  /* Header Styling */
-  .ProductionEntryList-header {
-    background-color: #f8f9fa; /* Light background for header */
-    border-bottom: 1px solid #dee2e6; /* Border for header */
-    padding: 10px 15px; /* Padding around header */
-    border-radius: 5px;
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
   }
-  
-  .ProductionEntryList-header .header-title {
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
+  }
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
     font-size: 20px;
-    font-weight: bold;
-    margin: 0;
   }
-  
-  .ProductionEntryList-Main {
-    background-color: #f8f9fa; /* Light background for header */
-    border-bottom: 1px solid #dee2e6; /* Border for header */
-    padding: 10px 15px; /* Padding around header */
-    border-radius: 5px;
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
   }
-  
-  .ProductionEntryList-table {
-    background-color: #f8f9fa; /* Light background for header */
-    border-bottom: 1px solid #dee2e6; /* Border for header */
-    padding: 10px 15px; /* Padding around header */
-    border-radius: 5px;
-    overflow-x: auto;
+
+  .table th,
+  .table td {
+    font-size: 12px;
   }
-  
-  .ProductionEntryList-table .table-responsive {
-    max-height: 400px; /* Adjust height as needed */
-    overflow-y: auto;
-  }
-  
-  .ProductionEntryList-table .table th,
-  .ProductionEntryList-table .table td {
-    white-space: nowrap;
-  }
-  .ProductionEntryList-btnicon {
-    border: none;
-  }
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .ProductionEntryList-btn {
-      margin-top: 10px;
-      width: 100%;
-    }
-  
-    .ProductionEntryList-Mainbtn {
-      margin-top: 10px;
-      width: 100%;
-    }
-  
-    .ProductionEntryList-Main .row {
-      flex-direction: column;
-    }
-  
-    .ProductionEntryList-Main .col-md-3,
-    .ProductionEntryList-Main .col-md-6,
-    .ProductionEntryList-Main .col-md-1,
-    .ProductionEntryList-Main .col-md-2 {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  
-    .ProductionEntryList-Main .col-md-6 input {
-      width: 100%;
-    }
-  }
-  
+}

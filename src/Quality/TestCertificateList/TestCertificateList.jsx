@@ -32,14 +32,14 @@ const TestCertificateList = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="TestCertificateList mt-5">
-                  <div className="TestCertificateList-header mb-4 text-start">
+                <div className="TestCertificateList">
+                  <div className="TestCertificateList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title"> (TC) Test CertificateList List </h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           New TC
                         </button>
                       </div>
@@ -47,16 +47,16 @@ const TestCertificateList = () => {
                   </div>
 
                   {/* Filter Section */}
-                  <div className="TestCertificateList-filter mb-4">
+                  <div className="TestCertificateList-filter">
                     <div className="row text-start">
                       
                       <div className="col-md-1">
                         <label>From Date</label>
-                        <input type="date" className="form-control" />
+                        <input type="date" className="form-control mt-2" />
                       </div>
                       <div className="col-md-1">
                         <label>To Date</label>
-                        <input type="date" className="form-control" />
+                        <input type="date" className="form-control mt-2" />
                       </div>
 
                       <div className="col-md-2">
@@ -90,11 +90,9 @@ const TestCertificateList = () => {
                         </div>
                         <input type="text" placeholder=" " className="form-control" />
                       </div>   
-            
-                
 
                       <div className="col-md-1 mt-4">               
-                         <button className="btn btn-primary">Search</button>          
+                         <button className="vndrbtn">Search</button>          
                       </div>
 
                     </div>
@@ -145,7 +143,7 @@ const TestCertificateList = () => {
                             <td></td>
                         
                           <td>
-                            <button className="btn btn-sm btn-light">
+                            <button className="vndrbtn">
                               <i className="fas fa-eye"></i>
                             </button>
                           </td>
@@ -155,6 +153,7 @@ const TestCertificateList = () => {
                     </table>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

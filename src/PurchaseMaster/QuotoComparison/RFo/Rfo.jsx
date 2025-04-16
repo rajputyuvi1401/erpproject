@@ -33,7 +33,7 @@ const Rfo = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-            <div className="RFO-header  text-start mt-5">
+            <div className="RFO-header  text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">
@@ -42,13 +42,13 @@ const Rfo = () => {
                   </div>
                   <div className="col-md-8 text-end">
                    
-                        <button className="btn">RFO New</button>
+                        <button className="vndrbtn">RFO New</button>
                      
                   </div>
                 </div>
               </div>
-              <div className="RFO-main mt-5">
-                <div className="container-fluid mt-4">
+              <div className="RFO-main mt-3">
+                <div className="container-fluid">
                   <div className="table-responsive">
                     <table className="table table-bordered">
                       <thead>
@@ -58,12 +58,7 @@ const Rfo = () => {
                           <th>Status</th>
                           <th>Item</th>
                           <th>User</th>
-                          
-                        
-                        
-                          <th>
-                           
-                          </th>
+                          <th>    </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -93,7 +88,7 @@ const Rfo = () => {
                           </td>
                           
                           <td>
-                            <button className="btn">Search</button>
+                            <button className="vndrbtn">Search</button>
                           </td>
                         </tr>
                       </tbody>

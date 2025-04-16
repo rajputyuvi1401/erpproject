@@ -42,8 +42,8 @@ const GSTSalesReturn = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="GSTSalesReturn mt-5">
-                  <div className="GSTSalesReturn-header mb-4 text-start">
+                <div className="GSTSalesReturn">
+                  <div className="GSTSalesReturn-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">New GST Sales Return</h5>
@@ -51,7 +51,7 @@ const GSTSalesReturn = () => {
                     
                     
                         <div className="col-md-8 text-end">
-                        <button type="button" className="btn" onClick={handleButtonClick}>
+                        <button type="button" className=" vndrbtn" onClick={handleButtonClick}>
                         GST Sales Return List
                         </button>
                         </div>
@@ -60,7 +60,7 @@ const GSTSalesReturn = () => {
 
 
                     <div className="GSTSalesReturn-main">
-                    <div className="table-responsive">
+                          <div className="table-responsive">
                                 <table className="table table-bordered">
                                     <thead>
                                     <tr>
@@ -84,7 +84,7 @@ const GSTSalesReturn = () => {
                                              <select name=""  className="form-control" id="">
                                                 <option value="">Select</option>
                                             </select>
-                                            <button type="button" className="btn">
+                                            <button type="button" className=" vndrbtn">
                                                 <Cached />
                                             </button>
                                         </td>
@@ -97,7 +97,7 @@ const GSTSalesReturn = () => {
                                         <select name=""  className="form-control" id="">
                                                 <option value="">Select</option>
                                             </select>
-                                            <button type="button" className="btn">
+                                            <button type="button" className=" vndrbtn">
                                                 <Cached />
                                             </button>
                                         </td>
@@ -109,7 +109,7 @@ const GSTSalesReturn = () => {
                                         </td>
                                         <td>
                                             <input type="text" className="form-control" placeholder="Name..." />
-                                            <button className="btn">Search</button>
+                                            <button className=" vndrbtn">Search</button>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -118,10 +118,10 @@ const GSTSalesReturn = () => {
                     </div>
 
 
-                  <div className="GSTSalesReturn-main mt-5">
+                  <div className="GSTSalesReturn-main mt-2">
                     <div className="GSTSalesReturn-tabs">
                    
-                      <div className="tab-content mt-4" id="" >
+                      <div className="tab-content" id="" >
 
                           <div className="table-responsive">
                                 <table className="table table-bordered">
@@ -148,7 +148,7 @@ const GSTSalesReturn = () => {
                                         <td> <input type="date" placeholder="" className="form-control" /></td>
                                         <td>
                                             <input type="text" placeholder="Enter Code" className="form-control" />
-                                            <button className="btn w-50">Search</button>
+                                            <button className=" vndrbtn">Search</button>
                                         </td>
                                         <td><textarea className="form-control"></textarea></td>
                                         <td><textarea className="form-control"></textarea></td>
@@ -166,11 +166,11 @@ const GSTSalesReturn = () => {
                                         </td>
                                         <td>
                                             <input type="text" className="form-control" />
-                                            <select name="" id="">
+                                            <select className="form-control" name="" id="">
                                                 <option value="">Select</option>
                                             </select>
                                         </td>
-                                        <td><button className="btn">Add</button></td>
+                                        <td><button className=" vndrbtn">Add</button></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -214,10 +214,10 @@ const GSTSalesReturn = () => {
                                                 <td>Edit</td>
                                                 <td> <input type="text" className="form-control" /></td>
                                                 <td> <input type="text" className="form-control" /></td>
-                                                <td> <textarea name=""  id=""></textarea></td>
+                                                <td> <textarea className="form-control" name=""  id=""></textarea></td>
                                                 <td> <input type="text" className="form-control" /></td>
                                                 <td> <input type="date" className="form-control" /></td>
-                                                <td><button className="btn"> X </button></td>
+                                                <td><button className=" vndrbtn"> X </button></td>
                                             </tr>
                                         </tbody>
                                         </table>
@@ -225,7 +225,7 @@ const GSTSalesReturn = () => {
 
                       </div>
 
-                       <div className="row mt-5">
+                       <div className="row">
                             <div className="col-md-12">
                                 <div className="table-responsive">
                                     <table className="table table-bordered">
@@ -268,7 +268,7 @@ const GSTSalesReturn = () => {
                        </div>
 
 
-                       <div className="row text-start">
+                       <div className="row mt-2 text-start">
                           <div className="col-md-2">
                              <label htmlFor="">Invoice Challan No</label>
                              <input type="text" className="form-control" placeholder="" />
@@ -294,7 +294,7 @@ const GSTSalesReturn = () => {
                              <input type="text" className="form-control" placeholder="" />
                           </div>
                       </div>
-                      <div className="row text-start">
+                      <div className="row mt-3 text-start">
                           <div className="col-md-2">
                              <label htmlFor="">Remark</label>
                              <textarea name=""  className="form-control" id=""></textarea>
@@ -306,19 +306,20 @@ const GSTSalesReturn = () => {
                              </select>
                           </div>
                           <div className="col-md-2" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
-                            <input type="checkbox" placeholder="" />
-                            <label htmlFor=""> ISService</label>
-                            </div>
+                          <input type="checkbox" id="isService" style={{ marginRight: '5px' }} />
+                          <label htmlFor="isService">ISService</label>
+                        </div>
+
 
                             <div className="col-2 mt-4">
                                 <input type="file" id="file-upload" style={{ display: 'none' }} />
-                                <label htmlFor="file-upload" style={{ padding: '10px 20px', backgroundColor: 'gray', color: 'white', borderRadius: '5px', cursor: 'pointer' }}>
+                                <label htmlFor="file-upload" style={{ padding: '10px 20px', border:"1px solid  gray", borderRadius: '5px', cursor: 'pointer' }}>
                                     DooTC Upload 
                                 </label>
                             </div>
-                          <div className="col-md-2 mt-4">
-                            <button className="btn">Save Dabit Note</button>
-                            <button className="btn">Clear</button>
+                          <div className="col-md-4 mt-4">
+                            <button className=" vndrbtn">Save Dabit Note</button>
+                            <button className=" vndrbtn">Clear</button>
                           </div>
 
                       </div>

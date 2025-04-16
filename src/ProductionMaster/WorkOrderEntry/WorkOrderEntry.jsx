@@ -276,8 +276,7 @@ const WorkOrderEntry = () => {
     setDropdownVisibleShift(null);
   };
   
-
-
+  
   return (
     <div className="ProductionWorkOrderEntry">
       <ToastContainer />
@@ -294,47 +293,52 @@ const WorkOrderEntry = () => {
                 
                 {/* Header Section */}
                 <div className="WorkOrderEntry-header mb-4">
-                  <div className="row align-items-center">
+                  <div className="workentryorder  row align-items-center">
+
                     <div className="col-md-2">
                       <h5 className="header-title text-start">
                         New Work Order
-                      </h5>
+                      </h5> 
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-2">
                       <div className="row align-items-center">
                         <label
                           htmlFor="seriesSelect"
-                          className="col-md-3 form-label"
+                          className="col-md-3 form-label mt-2"
                         >
                           Plant:
                         </label>
-                        <div className="col-md-2">
+
+                        <div className="col-md-8">
                           <select id="seriesSelect" className="form-select">
                             <option>Produlink</option>
                           </select>
                         </div>
+
                       </div>
                     </div>
-                    <div className="col-md-2 text-end">
-                      <Link to="/WorkOrderList" className="btn">WorkOrder List</Link>
+                    <div className="col-md-8 text-end">
+                      <Link to="/WorkOrderList" className="vndrbtn">Work Order List</Link>
                     </div>
+
                   </div>
                 </div>
+                
 
                 {/* Form Section */}
-                <div className="WorkOrderEntry-main">
+                <div className="WorkOrderEntry-main mt-3">
                   <div className="row text-start">
                     <div className="col-md-2">
                       <label className="form-label">WO Series:</label>
-                      <select className="form-select" name="wo_series" value={formData.wo_series} onChange={handleChange}>
-            <option value="">Select</option>
-            <option value="WorkOrder">WorkOrder</option>
-          </select>
+                      <select className="form-select workorderselect" name="wo_series" value={formData.wo_series} onChange={handleChange}>
+                      <option value="">Select</option>
+                      <option value="WorkOrder">WorkOrder</option>
+                      </select>
                     </div>
                     <div className="col-md-2">
-                      <label className="form-label">WO Type:</label>
+                      <label className="form-label ">WO Type:</label>
                       <select
-                        className="form-select"
+                        className="form-select workorderselect"
                         name="wo_type"
                         value={formData.wo_type}
                         onChange={handleChange}
@@ -380,7 +384,7 @@ const WorkOrderEntry = () => {
                     </div>
                   </div>
 
-                  <div className="row text-start">
+                  <div className="row text-start mt-3">
                     <div className="col-md-2">
                       <label className="form-label">Select Customer:</label>
                       <input
@@ -412,17 +416,17 @@ const WorkOrderEntry = () => {
                         onChange={handleChange}
                       />
                     </div>
-                    <div className="col-md-2" style={{ marginTop: "30px" }}>
-                    <button className="btn" onClick={handleAddToTable} disabled={loading}>
-            {loading ? "Processing..." : editIndex !== null ? "Update Work Order" : "Add"}
-          </button>
+                    <div className="col-md-1" style={{ marginTop: "30px" }}>
+                    <button className="vndrbtn" onClick={handleAddToTable} disabled={loading}>
+                      {loading ? "Processing..." : editIndex !== null ? "Update Work Order" : "Add"}
+                    </button>
 
                     </div>
-                    <div className="col-md-4 d-flex mt-4 justify-content-between">
-                      <button className="btn ms-2">
+                    <div className="col-md-5 d-flex mt-4 justify-content-between">
+                      <button className="vndrbtn">
                         Pending CustPO For WorkOrder
                       </button>
-                      <button className="btn ms-2">
+                      <button className="vndrbtn ms-2">
                         Production From Existing Stock
                       </button>
                     </div>
@@ -438,7 +442,7 @@ const WorkOrderEntry = () => {
                     <p>Loading...</p>
                   ) : (
                     <div className="table-responsive">
-                      <table className="table table-bordered">
+                      <table className="table">
                         <thead className="table-light">
                           <tr>
                             <th>Sr No.</th>
@@ -616,7 +620,7 @@ const WorkOrderEntry = () => {
       </tr>
     ))
   )}
-</tbody>
+                    </tbody>
 
                       </table>
                     </div>
@@ -625,8 +629,9 @@ const WorkOrderEntry = () => {
 
                 {/* Save Button */}
                 <div className="text-end mt-4">
-                <button className="btn btn-success" onClick={handleSubmit} disabled={loading}>{loading ? "Submitting..." : "Submit Work Orders"}</button>
+                <button className="vndrbtn " onClick={handleSubmit} disabled={loading}>{loading ? "Submitting..." : "Submit Work Orders"}</button>
                 </div>
+
               </main>
             </div>
           </div>
