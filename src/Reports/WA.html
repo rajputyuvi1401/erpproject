@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Order Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            font-size: 12px;
+            /* border: 1px solid #000; */
+        }
+
+        .container {
+            width: 210mm; /* A4 width */
+            height: 250mm; /* A4 height */
+            margin: 20px auto;
+            padding: 10mm;
+            position: relative;
+            page-break-after: always;
+            border: 2px solid #000;
+
+        }
+
+        .header {
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+        }
+
+        .company-info {
+            margin-bottom: 10px;
+            border-bottom: 2px solid black;
+        }
+
+        .manufacturer-text {
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .product-list {
+            line-height: 1.2;
+        }
+
+        .address p {
+            line-height: 1.2;
+            margin-bottom: 2px;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+
+        }
+
+        .order-title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+            margin: 12px 0;
+        }
+
+        .items-table {
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            border: 1px solid #000;
+            padding: 4px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f2f2f2;
+            font-size: 11px;
+        }
+
+        table td {
+            font-size: 11px;
+        }
+
+        .order-details {
+            margin-bottom: 10px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .detail-item {
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+        }
+
+        .detail-item label {
+            font-weight: bold;
+            margin-right: 3px;
+            white-space: nowrap;
+        }
+
+        .detail-item span {
+            min-height: 14px;
+            /* border-bottom: 1px dotted #ccc; */
+            flex-grow: 1;
+            padding: 0 3px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            /* gap: 10px; */
+            position: absolute;
+            /* bottom: 10mm; */
+            /* right: 10mm; */
+        }
+
+        button {
+            padding: 6px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #clearBtn {
+            background-color: #f44336;
+        }
+
+        #clearBtn:hover {
+            background-color: #d32f2f;
+        }
+
+        #saveBtn {
+            background-color: #2196F3;
+        }
+
+        #saveBtn:hover {
+            background-color: #0b7dda;
+        }
+
+        /* Editable fields styling */
+        [contenteditable="true"]:focus {
+            outline: 1px solid #2196F3;
+            background-color: #f0f8ff;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .container {
+                width: 100%;
+                height: 100%;
+                padding: 5mm;
+                border: none;
+            }
+            
+            .actions {
+                display: none;
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 210mm) {
+            .container {
+                width: 100%;
+                height: auto;
+                padding: 10px;
+            }
+            
+            .detail-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .actions {
+                position: static;
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="company-info">
+                <p class="manufacturer-text">Manufacturers of</p>
+                <p class="product-list">
+                    * Gate * Globe* Check Valves in G.M., * C.I., * C.S.(IBR/Non IBR) * <br> 
+                    Gauge Glass Valves , * Blow Down Valves, * Fusible Plug * <br>
+                    Ferrous & Non Ferrous Castings , * Boiler Casting
+                </p>
+            </div>
+            <div class="address">
+                <p><strong>Regd. Office & Factory :</strong> W –S –BLOCK, M.I.D.C., BHOSARI, PUNE 411026.</p>
+                <p><b>Tel. :-</b> (020) 27111138, <b>Mob No :-</b>  9370647462  <b>Fax :-</b> 0241-2778211 </p>
+                <p><b>Email :-</b> caspro@gmail.com <b>Web :-</b> www.casprogroup.com</p>
+            </div>
+            <h1 class="order-title">ORDER ACCEPTANCE</h1>
+        </div>
+
+        <div class="order-details">
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <label>W.O. No :</label>
+                    <span>101010i89 / 08/ 19-20</span>
+                </div>
+                <div class="detail-item">
+                    <label>Date :</label>
+                    <span>29/08/2019</span>
+                </div>
+                <div class="detail-item">
+                    <label>Customer Name :</label>
+                    <span>KOtkar Unit 2</span>
+                </div>
+                <div class="detail-item">
+                    <label>Contact No:</label>
+                    <span>2</span>
+                </div>
+                <div class="detail-item">
+                    <label>Vendor Code :</label>
+                    <span>4</span>
+                </div>
+                <div class="detail-item">
+                    <label>Kind Att. :</label>
+                    <span></span>
+                </div>
+                <div class="detail-item">
+                    <label>Email Id :</label>
+                    <span>0</span>
+                </div>
+            </div>
+        </div>
+
+
+        <table>
+            <tr>
+              <td class="bold">W.O. Status :</td>
+              <td class="bold" colspan="2">New</td>
+            </tr>
+            <tr>
+              <td>P.O. No :  101010i89</td>
+              <td>P.O. Date : 29/08/2019</td>
+              <td>Payment Terms : 1</td>
+            </tr>
+            <tr>
+              <td colspan="3">Consignee :</td>
+            </tr>
+          </table>
+
+          <style>
+            table {
+              border-collapse: collapse;
+              width: 100%;
+              font-family: Arial, sans-serif;
+            }
+            td {
+              border: 1px solid #000;
+              padding: 8px;
+              vertical-align: top;
+            }
+            .bold {
+              font-weight: bold;
+            }
+            .no-border {
+              border: none;
+            }
+          </style>
+
+        <div class="items-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr.</th>
+                        <th>Item Particular</th>
+                        <th>Drawing No.</th>
+                        <th>Qty</th>
+                        <th>Delivery Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2117 NEW PART CODE LIFT ARM</td>
+                        <td></td>
+                        <td>1 NOS</td>
+                        <td>29/08/2019</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- <div class="actions">
+            <button id="printBtn">Print</button>
+            <button id="saveBtn">Save</button>
+            <button id="clearBtn">Clear</button>
+        </div> -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Print functionality
+            document.getElementById('printBtn').addEventListener('click', function() {
+                window.print();
+            });
+            
+            // Save functionality (as JSON in this example)
+            document.getElementById('saveBtn').addEventListener('click', function() {
+                // Collect form data
+                const formData = {
+                    itemParticular: document.querySelector('tbody tr td:nth-child(2)').textContent,
+                    drawingNo: document.querySelector('tbody tr td:nth-child(3)').textContent,
+                    qty: document.querySelector('tbody tr td:nth-child(4)').textContent,
+                    deliveryDate: document.querySelector('tbody tr td:nth-child(5)').textContent,
+                    woNo: document.querySelector('.detail-item:nth-child(1) span').textContent,
+                    date: document.querySelector('.detail-item:nth-child(2) span').textContent,
+                    customerName: document.querySelector('.detail-item:nth-child(3) span').textContent,
+                    // Add more fields as needed
+                };
+                
+                // Convert to JSON string
+                const jsonData = JSON.stringify(formData, null, 2);
+                
+                // Create a download link
+                const blob = new Blob([jsonData], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'work_order_' + new Date().getTime() + '.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                alert('Work Order saved successfully!');
+            });
+            
+            // Clear functionality
+            document.getElementById('clearBtn').addEventListener('click', function() {
+                if (confirm('Are you sure you want to clear all data?')) {
+                    // Clear table data
+                    const cells = document.querySelectorAll('tbody td');
+                    cells.forEach(cell => {
+                        if (cell.cellIndex !== 0) { // Don't clear the Sr. No.
+                            cell.textContent = '';
+                        }
+                    });
+                    
+                    // Clear form data
+                    const spans = document.querySelectorAll('.detail-item span');
+                    spans.forEach(span => {
+                        span.textContent = '';
+                    });
+                    
+                    alert('Form cleared successfully!');
+                }
+            });
+            
+            // Make the form editable
+            const editableCells = document.querySelectorAll('tbody td:not(:first-child), .detail-item span');
+            editableCells.forEach(cell => {
+                cell.setAttribute('contenteditable', 'true');
+                cell.addEventListener('focus', function() {
+                    this.classList.add('editing');
+                });
+                cell.addEventListener('blur', function() {
+                    this.classList.remove('editing');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

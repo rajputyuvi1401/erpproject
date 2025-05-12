@@ -86,23 +86,23 @@ const PDIList = () => {
         <form>
           <div className="row">
             {/* Plant */}
-            <div className="col-md-12 mb-3">
+            <div className="col-md-4 mb-3">
               <label htmlFor="plant" className="form-label">
                 Plant:
               </label>
               <select className="form-select" id="plant">
-                <option>SHARP</option>
+                <option>Produlink</option>
               </select>
             </div>
 
             {/* From Date & To Date in one line */}
-            <div className="col-md-6 mb-3">
+            <div className="col-md-4 mb-3">
               <label htmlFor="from" className="form-label">
                 From:
               </label>
               <input type="date" className="form-control" id="from" />
             </div>
-            <div className="col-md-6 mb-3">
+            <div className="col-md-4 mb-3">
               <label htmlFor="to" className="form-label">
                 To:
               </label>
@@ -112,24 +112,21 @@ const PDIList = () => {
 
           <div className="row">
             {/* Supplier Name */}
-            <div className="col-md-12 mb-3">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+            <div className="col-md-4 mb-3">
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label"> Item Name: </label>
                         </div>
                         <input type="text"  placeholder="Item Name" className="form-control"/>
              </div> 
-         </div>
-           
-          <div className="row">
-          <div className="col-md-12 mb-3">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+             <div className="col-md-4 mb-3">
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label"> Cust Name: </label>
                         </div>
                         <input type="text"  placeholder="Cust Name" className="form-control"/>
              </div>
-          </div>
+         </div>
 
           <div className="row">
             <div className="col-4 mb-3">
@@ -173,32 +170,32 @@ const PDIList = () => {
                       </div>
 
                       <div className="col-md-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label"> Cust Name: </label>
                         </div>
                         <input type="text"  placeholder="Cust Name" className="form-control"/>
                       </div>
 
                       <div className="col-sm-6 col-md-3 col-lg-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label">Item Code: </label>
                         </div>
                         <input type="text" placeholder="Item Code " className="form-control" />
                       </div>
 
                       <div className="col-sm-6 col-md-3 col-lg-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label">PDI No: </label>
                         </div>
                         <input type="text" placeholder=" " className="form-control" />
                       </div>
 
-                      <div className="col-sm-6 col-md-3 col-lg-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                      <div className="col-sm-6 col-md-3 mt-2 col-lg-2">
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label">Inv. No: </label>
                         </div>
                         <input type="text" placeholder=" " className="form-control" />
@@ -266,9 +263,7 @@ const PDIList = () => {
                             <td></td>
                         
                           <td>
-                            <button className="vndrbtn">
                               <i className="fas fa-eye"></i>
-                            </button>
                           </td>
                         </tr>
                         {/* Additional rows can be added dynamically here */}

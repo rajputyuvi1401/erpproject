@@ -23,18 +23,18 @@ const MaterialIssue = () => {
   }, [sideNavOpen]);
 
   // Models
-  const [showModal, setShowModal] = useState(false);
-  const [showModal1, setShowModal1] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
+  // const [showModal1, setShowModal1] = useState(false);
+  // const [showModal2, setShowModal2] = useState(false);
 
-  const handleModalClose = () => setShowModal(false);
-  const handleModalOpen = () => setShowModal(true);
+  // const handleModalClose = () => setShowModal(false);
+  // const handleModalOpen = () => setShowModal(true);
 
-  const handleModalClose1 = () => setShowModal1(false);
-  const handleModalOpen1 = () => setShowModal1(true);
+  // const handleModalClose1 = () => setShowModal1(false);
+  // const handleModalOpen1 = () => setShowModal1(true);
 
-  const handleModalClose2 = () => setShowModal2(false);
-  const handleModalOpen2 = () => setShowModal2(true);
+  // const handleModalClose2 = () => setShowModal2(false);
+  // const handleModalOpen2 = () => setShowModal2(true);
 
   return (
     <div className="NewStoreMaterialIssueee">
@@ -159,41 +159,41 @@ const MaterialIssue = () => {
 
                               <th>
                                 Qty{" "}
-                                <button
+                                {/* <button
                                   className="vndrbtn"
                                   onClick={handleModalOpen}
                                 >
                                   Add
-                                </button>
+                                </button> */}
                               </th>
                               <th>
                                 Machine{" "}
-                                <button
+                                {/* <button
                                   className="vndrbtn"
                                   onClick={handleModalOpen1}
                                 >
                                   Add
-                                </button>
+                                </button> */}
                               </th>
                               <th>Nature of Work</th>
                               <th>
                                 MRN No:{" "}
-                                <button
+                                {/* <button
                                   className="vndrbtn"
                                   onClick={handleModalOpen1}
                                 >
                                   Add
-                                </button>
+                                </button> */}
                                 Cail No:
                               </th>
                               <th>
                                 Employee:{" "}
-                                <button
+                                {/* <button
                                   className="vndrbtn"
                                   onClick={handleModalOpen2}
                                 >
                                   See All
-                                </button>
+                                </button> */}
                               </th>
 
                               <th>Edit</th>
@@ -202,16 +202,16 @@ const MaterialIssue = () => {
                           </thead>
                           <tbody>
                             <tr>
-                              <td><input/></td>
-                              <td><input/></td>
-                              <td><input/></td>
-                              <td><input/></td>
-                              <td><input/></td>
-                              <td><input/></td>
-                              <td><input/></td>
-                              <td><input/></td>
-                              <td><input/></td>
-                              <td><input/></td>
+                              <td><input className="form-control"/></td>
+                              <td><input className="form-control"/></td>
+                              <td><input className="form-control"/></td>
+                              <td><input className="form-control"/></td>
+                              <td><input className="form-control"/></td>
+                              <td><input className="form-control"/></td>
+                              <td><input className="form-control"/></td>
+                              <td><input className="form-control"/></td>
+                              <td><input className="form-control"/></td>
+                              <td><input className="form-control"/></td>
 
                               <td>
                                 <FaEdit className="text-primary" />
@@ -225,7 +225,7 @@ const MaterialIssue = () => {
                       </div>
 
                       {/* Modal Components */}
-                      <div
+                      {/* <div
                         className={`modal fade ${
                           showModal ? "show d-block" : ""
                         }`}
@@ -275,9 +275,9 @@ const MaterialIssue = () => {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
 
-                      <div
+                      {/* <div
                         className={`modal fade ${
                           showModal1 ? "show d-block" : ""
                         }`}
@@ -327,9 +327,9 @@ const MaterialIssue = () => {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
 
-                      <div
+                      {/* <div
                         className={`modal fade ${
                           showModal2 ? "show d-block" : ""
                         }`}
@@ -379,7 +379,7 @@ const MaterialIssue = () => {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

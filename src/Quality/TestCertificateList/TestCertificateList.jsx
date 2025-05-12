@@ -60,35 +60,35 @@ const TestCertificateList = () => {
                       </div>
 
                       <div className="col-md-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label"> Cust Name: </label>
                         </div>
-                        <input type="text"  placeholder="Cust Name" className="form-control"/>
+                        <input type="text"  placeholder="Cust Name" className="form-control mt-2"/>
                       </div>
 
                       <div className="col-sm-6 col-md-2 col-lg-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label">Item Code: </label>
                         </div>
-                        <input type="text" placeholder="Item Code " className="form-control" />
+                        <input type="text" placeholder="Item Code " className="form-control mt-2" />
                       </div>
 
                       <div className="col-sm-6 col-md-2 col-lg-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label">TC No: </label>
                         </div>
-                        <input type="text" placeholder="No " className="form-control" />
+                        <input type="text" placeholder="No " className="form-control mt-2" />
                       </div>
 
                       <div className="col-sm-6 col-md-2 col-lg-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label">PO No: </label>
                         </div>
-                        <input type="text" placeholder=" " className="form-control" />
+                        <input type="text" placeholder=" " className="form-control mt-2" />
                       </div>   
 
                       <div className="col-md-1 mt-4">               
@@ -141,11 +141,10 @@ const TestCertificateList = () => {
                             <td></td>
                             <td></td>
                             <td></td>
+                            
                         
                           <td>
-                            <button className="vndrbtn">
                               <i className="fas fa-eye"></i>
-                            </button>
                           </td>
                         </tr>
                         {/* Additional rows can be added dynamically here */}

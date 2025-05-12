@@ -73,14 +73,14 @@ const DocumentManagement = () => {
                               <th>Date</th>
                               <th>
                                 Category{" "}
-                                <span>
+                                {/* <span>
                                   <button
                                     className="vndrbtn"
                                     onClick={() => setShowCategoryOverlay(true)}
                                   >
                                     Add
                                   </button>
-                                </span>
+                                </span> */}
                               </th>
                               <th>Doc. Name</th>
                               <th>Spec. No</th>

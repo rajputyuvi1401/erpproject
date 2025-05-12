@@ -38,13 +38,13 @@ const SalesQCList = () => {
                       <div className="col-md-6">
                         <h5 className="header-title"> Sales Return QC List </h5>
                       </div>
-                      <div className="col-md-2">
+                      {/* <div className="col-md-2">
                         <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="Checkbox" />
                             <label htmlFor="Checkbox" className="form-check-label"> With Company Header </label>
                         </div>
-                      </div>
-                      <div className="col-md-4 text-end">
+                      </div> */}
+                      <div className="col-md-6 text-end">
                         <button type="button" className="vndrbtn">
                           Export Excel
                         </button>
@@ -77,16 +77,16 @@ const SalesQCList = () => {
                       </div>
 
                       <div className="col-md-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label"> Cust Name: </label>
                         </div>
                         <input type="text"  placeholder="Cust Name" className="form-control"/>
                       </div>
 
                       <div className="col-sm-6 col-md-2 col-lg-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label">Item Code: </label>
                         </div>
                         <input type="text" placeholder="Item Code " className="form-control" />
@@ -162,9 +162,8 @@ const SalesQCList = () => {
                             <td></td>
                         
                           <td>
-                            <button className="vndrbtn">
                               <i className="fas fa-eye"></i>
-                            </button>
+                           
                           </td>
                         </tr>
                         {/* Additional rows can be added dynamically here */}

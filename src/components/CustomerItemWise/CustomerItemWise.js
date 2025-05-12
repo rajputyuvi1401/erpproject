@@ -110,22 +110,23 @@ const CustomerItemWise = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Itemwisseee">
-                  <div className="Itemwise1">
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6 text-start">
-                          <h5 style={{ color: "blue" }}>
+
+                 <div className="Itemwise-header text-start">
+                      <div className="row align-items-center">
+                        <div className="col-md-6">
+                        <h5 className="header-title">
                             Customer Item Wise Value Addition Rate
                           </h5>
                         </div>
                         <div className="col-md-6 text-end">
-                          <button className="wie-btn">Export to Excel</button>
+                          <button className="vndrbtn">Export To Excel</button>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="rateewise">
+
+                  <div className="rateewise mt-2">
                     <div className="container-fluid">
+
                       <div className="row">
                         <div className="col-md-12">
                           <ul
@@ -162,7 +163,9 @@ const CustomerItemWise = () => {
                               </button>
                             </li>
                           </ul>
+
                           <div className="tab-content" id="pills-tabContent">
+
                             <div
                               className="tab-pane fade show active"
                               id="pills-home"
@@ -170,11 +173,14 @@ const CustomerItemWise = () => {
                               aria-labelledby="pills-home-tab"
                               tabIndex="0"
                             >
+
                               <div className="rate-wise">
                                 <div className="container-fluid">
+
                                   <div className="row">
                                     <form onClick={handleSubmit}>
                                       <div className="col-md-6">
+
                                         <div className="row mb-3 text-start">
                                           <label
                                             htmlFor="Cust_Supp_Name"
@@ -199,13 +205,14 @@ const CustomerItemWise = () => {
                                           </div>
                                           <div className="col-sm-2">
                                             <button
-                                              className="vai-btn"
+                                              className="vndrbtn"
                                               onClick={handleSubmit}
                                             >
                                               Search
                                             </button>
                                           </div>
                                         </div>
+
                                         <div className="row mb-3 text-start">
                                           <div className="form-check col-sm-3">
                                             <input
@@ -244,11 +251,12 @@ const CustomerItemWise = () => {
                                             </div>
                                           </div>
                                         </div>
+
                                         <div className="row mb-3 text-start">
                                           <div className="row mb-3">
                                             <label
                                               htmlFor="VARate1"
-                                              className="col-sm-3 col-form-label"
+                                              className="col-sm-2 col-form-label"
                                             >
                                               VA Rate1:
                                             </label>
@@ -287,13 +295,13 @@ const CustomerItemWise = () => {
                                               )}
                                             </div>
                                             <div className="col-sm-1">
-                                              <button className="rate1-btn">
+                                              <button className="vndrbtn">
                                                 Save
                                               </button>
                                             </div>
                                             <div className="col-sm-1">
                                               <button
-                                                className="rate1-btn"
+                                                className="vndrbtn"
                                                 onClick={handleClear}
                                               >
                                                 Clear
@@ -301,47 +309,16 @@ const CustomerItemWise = () => {
                                             </div>
                                           </div>
                                         </div>
+
                                       </div>
                                     </form>
                                   </div>
+
                                 </div>
                               </div>
-                              <div className="table-container">
-                                <table className="rate-table">
-                                  <thead>
-                                    <tr>
-                                      <th>SR</th>
-                                      <th>Cust Code</th>
-                                      <th>Cust Name</th>
-                                      <th>Item Code</th>
-                                      <th>Item Desc</th>
-                                      <th>VA1</th>
-                                      <th>VA2</th>
-                                      <th>Action</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td data-label="SR">1</td>
-                                      <td data-label="Cust Code">001</td>
-                                      <td data-label="Cust Name">John Doe</td>
-                                      <td data-label="Item Code">1234</td>
-                                      <td data-label="Item Desc">
-                                        Sample Item
-                                      </td>
-                                      <td data-label="VA1">Value 1</td>
-                                      <td data-label="VA2">Value 2</td>
-                                      <td data-label="Delete">
-                                        <button style={{ border: "none" }}>
-                                          <i className="fas fa-trash"></i>
-                                        </button>
-                                      </td>
-                                    </tr>
-                                    {/* Add more rows as needed */}
-                                  </tbody>
-                                </table>
-                              </div>
+
                             </div>
+
                             <div
                               className="tab-pane fade"
                               id="pills-profile"
@@ -349,13 +326,143 @@ const CustomerItemWise = () => {
                               aria-labelledby="pills-profile-tab"
                               tabIndex="0"
                             >
-                              Add item
+                              
+                              <form>
+
+                                  <div className="row mb-3 text-start">
+                                    <div className="col-md-2">
+                                      <div className="form-check">
+                                        {/* <input
+                                          className="form-check-input"
+                                          type="checkbox"
+                                          id="customerSupplierCheck"
+                                          name="isCustomerSupplierChecked"
+                                          checked={
+                                            formData.isCustomerSupplierChecked
+                                          }
+                                          onChange={handleChange}
+                                        /> */}
+                                        <label
+                                          className="form-check-label"
+                                          htmlFor="customerSupplierCheck"
+                                        >
+                                          Customer/Supplier Name
+                                        </label>
+                                      </div>
+                                    </div>
+                                    <div className="col-md-3" style={{marginTop:"-7px"}}>
+                                      <input
+                                        type="text"
+                                        className="form-control mt-2"
+                                        name="customerSupplierName"
+                                        placeholder="Enter Customer/Supplier Name"
+                                        value={formData.customerSupplierName}
+                                        onChange={handleChange}
+                                      />
+
+                                      {errors.customerSupplierName && (
+                                        <div className="text-danger">
+                                          {errors.customerSupplierName}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3 text-start">
+                                    <div className="col-md-2">
+                                      <div className="form-check">
+                                        {/* <input
+                                          className="form-check-input"
+                                          type="checkbox"
+                                          id="itemNameCheck"
+                                          name="isItemNameChecked"
+                                          checked={formData.isItemNameChecked}
+                                          onChange={handleChange}
+                                        /> */}
+                                        <label
+                                          className="form-check-label"
+                                          htmlFor="itemNameCheck"
+                                        >
+                                          Item Name
+                                        </label>
+                                      </div>
+                                    </div>
+                                    <div className="col-md-3" style={{marginTop:"-7px"}}>
+                                      <input
+                                        type="text"
+                                        className="form-control mt-2"
+                                        name="itemName"
+                                        placeholder="Enter Item Name"
+                                        value={formData.itemName}
+                                        onChange={handleChange}
+                                      />
+
+                                      {errors.itemName && (
+                                        <div className="text-danger">
+                                          {errors.itemName}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className="row mb-3 text-end">
+                                    <div className="col-md-5">
+                                      <button type="submit" className="vndrbtn">
+                                        Search
+                                      </button>
+                                    </div>
+                                  </div>
+
+                                </form>
+
                             </div>
+
                           </div>
+
                         </div>
                       </div>
+
                     </div>
                   </div>
+
+                  <div className="rateewise mt-2">
+                      <div className="table-container">
+                          <table className="table">
+                              <thead>
+                                          <tr>
+                                            <th>SR</th>
+                                            <th>Cust Code</th>
+                                            <th>Cust Name</th>
+                                            <th>Item Code</th>
+                                            <th>Item Desc</th>
+                                            <th>VA1</th>
+                                            <th>VA2</th>
+                                            <th>Action</th>
+                                          </tr>
+                              </thead>
+                              <tbody>
+                                          <tr>
+                                            <td data-label="SR">1</td>
+                                            <td data-label="Cust Code">001</td>
+                                            <td data-label="Cust Name">John Doe</td>
+                                            <td data-label="Item Code">1234</td>
+                                            <td data-label="Item Desc">
+                                              Sample Item
+                                            </td>
+                                            <td data-label="VA1">Value 1</td>
+                                            <td data-label="VA2">Value 2</td>
+                                            <td data-label="Delete">
+                                              <button style={{ border: "none" }}>
+                                                <i className="fas fa-trash"></i>
+                                              </button>
+                                            </td>
+                                          </tr>
+                                          {/* Add more rows as needed */}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+
                   <div className="ratebottom">
                     <div className="row">
                       <div className="col-md-12 text-start">
@@ -370,6 +477,7 @@ const CustomerItemWise = () => {
                       </div>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

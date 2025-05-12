@@ -7,6 +7,7 @@ import SideNav from "../../SideNav/SideNav";
 import "./PriceListMaster.css";
 import { ToastContainer, toast } from "react-toastify";
 import { savePriceList } from "../../Service/Api.jsx";
+import { Link } from "react-router-dom";
 
 const PriceListMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -123,16 +124,16 @@ const PriceListMaster = () => {
                           >
                             Price List Report
                           </button>
-                          <button className=" vndrbtn">
+                          <Link to={"/PriceListQueryMaster"} className=" vndrbtn">
                             Price List Query
-                          </button>
-                          <button
+                          </Link>
+                          {/* <button
                             className=" vndrbtn"
                            
                           >
-                            <div className="form-check">
+                            <div className=" ">
                               <input
-                                className="form-check-input"
+                                className=" -input"
                                 type="checkbox"
                                 value=""
                                 id="flexCheckDefault"
@@ -142,7 +143,7 @@ const PriceListMaster = () => {
                               </button>
                               
                             </div>
-                          </button>
+                          </button> */}
                           <button className=" vndrbtn">
                             Export To Excel
                           </button>
@@ -381,15 +382,15 @@ const PriceListMaster = () => {
                                 <div className="mb-3">
                                   <div className="row text-start">
                                     <div className="col-sm-4">
-                                      <div className="form-check">
-                                        <input
-                                          className="form-check-input"
+                                      <div className=" ">
+                                        {/* <input
+                                          className=" -input"
                                           type="checkbox"
                                           value=""
                                           id="flexCheckDefault"
-                                        />
+                                        /> */}
                                         <label
-                                          className="form-check-label"
+                                          className=" -label"
                                           htmlFor="flexCheckDefault"
                                         >
                                           From Customer:
@@ -588,15 +589,15 @@ const PriceListMaster = () => {
                                     <div className="mb-3">
                                       <div className="row text-start">
                                         <div className="col-md-4">
-                                          <div className="form-check">
-                                            <input
-                                              className="form-check-input"
+                                          <div className=" ">
+                                            {/* <input
+                                              className=" -input"
                                               type="checkbox"
                                               value=""
                                               id="flexCheckDefault"
-                                            />
+                                            /> */}
                                             <label
-                                              className="form-check-label"
+                                              className=" -label"
                                               htmlFor="flexCheckDefault"
                                             >
                                               Eff Date:
@@ -615,15 +616,15 @@ const PriceListMaster = () => {
                                     <div className="mb-3">
                                       <div className="row text-start">
                                         <div className="col-md-4">
-                                          <div className="form-check">
-                                            <input
-                                              className="form-check-input"
+                                          <div className=" ">
+                                            {/* <input
+                                              className=" -input"
                                               type="checkbox"
                                               value=""
                                               id="flexCheckDefault"
-                                            />
+                                            /> */}
                                             <label
-                                              className="form-check-label"
+                                              className=" -label"
                                               htmlFor="flexCheckDefault"
                                             >
                                               From Customer:
@@ -642,15 +643,15 @@ const PriceListMaster = () => {
                                     <div className="mb-3">
                                       <div className="row text-start">
                                         <div className="col-md-4">
-                                          <div className="form-check">
-                                            <input
-                                              className="form-check-input"
+                                          <div className=" ">
+                                            {/* <input
+                                              className=" -input"
                                               type="checkbox"
                                               value=""
                                               id="flexCheckDefault"
-                                            />
+                                            /> */}
                                             <label
-                                              className="form-check-label"
+                                              className=" -label"
                                               htmlFor="flexCheckDefault"
                                             >
                                               Add Code:
@@ -669,15 +670,15 @@ const PriceListMaster = () => {
                                     <div className="mb-3">
                                       <div className="row text-start">
                                         <div className="col-md-4">
-                                          <div className="form-check">
-                                            <input
-                                              className="form-check-input"
+                                          <div className=" ">
+                                            {/* <input
+                                              className=" -input"
                                               type="checkbox"
                                               value=""
                                               id="flexCheckDefault"
-                                            />
+                                            /> */}
                                             <label
-                                              className="form-check-label"
+                                              className=" -label"
                                               htmlFor="flexCheckDefault"
                                             >
                                               Price List Code:
@@ -696,15 +697,15 @@ const PriceListMaster = () => {
                                     <div className="mb-3">
                                       <div className="row text-start">
                                         <div className="col-md-4">
-                                          <div className="form-check">
-                                            <input
-                                              className="form-check-input"
+                                          <div className=" ">
+                                            {/* <input
+                                              className=" -input"
                                               type="checkbox"
                                               value=""
                                               id="flexCheckDefault"
-                                            />
+                                            /> */}
                                             <label
-                                              className="form-check-label"
+                                              className=" -label"
                                               htmlFor="flexCheckDefault"
                                             >
                                               Item Name:
@@ -723,15 +724,15 @@ const PriceListMaster = () => {
                                     <div className="mb-3">
                                       <div className="row text-start">
                                         <div className="col-md-4">
-                                          <div className="form-check">
-                                            <input
-                                              className="form-check-input"
+                                          <div className=" ">
+                                            {/* <input
+                                              className=" -input"
                                               type="checkbox"
                                               value=""
                                               id="flexCheckDefault"
-                                            />
+                                            /> */}
                                             <label
-                                              className="form-check-label"
+                                              className=" -label"
                                               htmlFor="flexCheckDefault"
                                             >
                                               History:
@@ -1002,15 +1003,15 @@ const PriceListMaster = () => {
                       <div className="row text-start">
                         <div className="col-md-3 col-sm-6">
                           <div className="mb-3">
-                            <div className="form-check">
-                              <input
-                                className="form-check-input"
+                            <div className=" ">
+                              {/* <input
+                                className=" -input"
                                 type="checkbox"
                                 value=""
                                 id="flexCheckDefault"
-                              />
+                              /> */}
                               <label
-                                className="form-check-label"
+                                className=" -label"
                                 htmlFor="flexCheckDefault"
                               >
                                 Customer Name:
@@ -1024,15 +1025,15 @@ const PriceListMaster = () => {
                           </div>
                         </div>
                         <div className="col-md-3 col-sm-6">
-                          <div className="form-check">
-                            <input
-                              className="form-check-input"
+                          <div className=" ">
+                            {/* <input
+                              className=" -input"
                               type="checkbox"
                               value=""
                               id="flexCheckDefault"
-                            />
+                            /> */}
                             <label
-                              className="form-check-label"
+                              className=" -label"
                               htmlFor="flexCheckDefault"
                             >
                               Address code:
@@ -1046,15 +1047,15 @@ const PriceListMaster = () => {
                         </div>
                         <div className="col-md-3 col-sm-6">
                           <div className="mb-3">
-                            <div className="form-check">
-                              <input
-                                className="form-check-input"
+                            <div className=" ">
+                              {/* <input
+                                className=" -input"
                                 type="checkbox"
                                 value=""
                                 id="flexCheckDefault"
-                              />
+                              /> */}
                               <label
-                                className="form-check-label"
+                                className=" -label"
                                 htmlFor="flexCheckDefault"
                               >
                                 Item:

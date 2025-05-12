@@ -56,21 +56,21 @@ const DisableUserList = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="DisableUser mt-5">
+                <div className="DisableUser">
                   
                     <div className="row">
                       <div className="col-md-4">
                         <h5 className="header-title text-start">Disable User List</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <Link to="/ErpSetting" className="btn btn-primary">
+                        <Link to="/ErpSetting" className="vndrbtn">
                           User Management
                         </Link>
                       </div>
                  
                   </div>
 
-                  <div className="DisableMain mt-5">
+                  <div className="DisableMain mt-2">
                     <div className="table-responsive">
                     <table className="table table-bordered table-responsive-md">
                       <thead>
@@ -104,7 +104,7 @@ const DisableUserList = () => {
                             <td>{user.password}</td>
                             <td>{user.disableDate || "N/A"}</td>
                             <td>
-                              <button className="btn btn-success">
+                              <button className="vndrbtn btn-success">
                                 {user.action}
                               </button>
                             </td>

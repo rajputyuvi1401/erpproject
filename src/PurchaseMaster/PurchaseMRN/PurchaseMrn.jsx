@@ -46,26 +46,26 @@ const PurchaseMrn = () => {
                           <tr>
                             <th>Plant</th>
                             <th>
-                              <input type="checkbox" id="supplierNameCheck" />
+                              {/* <input type="checkbox" id="supplierNameCheck" /> */}
                               <label htmlFor="supplierNameCheck" className="ml-2">
                                 From Date
                               </label>
                             </th>
                             <th>To Date</th>
                             <th>
-                              <input type="checkbox" id="supplierNameCheck" />
+                              {/* <input type="checkbox" id="supplierNameCheck" /> */}
                               <label htmlFor="supplierNameCheck" className="ml-2">
                                 MRN
                               </label>
                             </th>
                             <th>
-                              <input type="checkbox" id="supplierNameCheck" />
+                              {/* <input type="checkbox" id="supplierNameCheck" /> */}
                               <label htmlFor="supplierNameCheck" className="ml-2">
                                 Item
                               </label>
                             </th>
                             <th>
-                              <input type="checkbox" id="supplierNameCheck" />
+                              {/* <input type="checkbox" id="supplierNameCheck" /> */}
                               <label htmlFor="supplierNameCheck" className="ml-2">
                                 Type
                               </label>

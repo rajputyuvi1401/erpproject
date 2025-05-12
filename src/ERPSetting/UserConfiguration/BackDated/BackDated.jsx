@@ -32,8 +32,8 @@ const BackDated = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="backdated mt-5">
-                  <div className="back-header mb-4 text-start">
+                <div className="backdated">
+                  <div className="back-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">
@@ -41,7 +41,7 @@ const BackDated = () => {
                         </h5>
                       </div>
                       <div className="col-md-6 text-end">
-                        <button type="button" className="btn export-btn">
+                        <button type="button" className="vndrbtn">
                           Export To Excel
                         </button>
                       </div>
@@ -80,8 +80,8 @@ const BackDated = () => {
                         <input type="text" className="form-control" />
                       </div>
                       <div className="col-md-2 text-end">
-                        <button className="btn  me-2">Set To All</button>
-                        <button className="btn">Apply</button>
+                        <button className="vndrbtn  me-2">Set To All</button>
+                        <button className="vndrbtn">Apply</button>
                       </div>
                     </div>
                   </div>

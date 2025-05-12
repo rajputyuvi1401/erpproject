@@ -68,31 +68,31 @@ const PurchseOrderStatus = () => {
                             <th>PO Status</th>
                             <th>PO Approve</th>
                             <th>
-                              <input type="checkbox" id="supplier" />
+                              {/* <input type="checkbox" id="supplier" /> */}
                               <label htmlFor="supplier" className="ml-2">
                                 Supplier
                               </label>
                             </th>
                             <th>
-                              <input type="checkbox" id="item" />
+                              {/* <input type="checkbox" id="item" /> */}
                               <label htmlFor="item" className="ml-2">
                                 Item
                               </label>
                             </th>
                             <th>
-                              <input type="checkbox" id="poNo" />
+                              {/* <input type="checkbox" id="poNo" /> */}
                               <label htmlFor="poNo" className="ml-2">
                                 PO No
                               </label>
                             </th>
                             <th>
-                              <input type="checkbox" id="itemGroup" />
+                              {/* <input type="checkbox" id="itemGroup" /> */}
                               <label htmlFor="itemGroup" className="ml-2">
                                 Item Group POWise
                               </label>
                             </th>
                             <th>
-                              <input type="checkbox" id="supportETA" />
+                              {/* <input type="checkbox" id="supportETA" /> */}
                               <label htmlFor="supportETA" className="ml-2">
                                 Support By ETA Days
                               </label>
@@ -152,11 +152,7 @@ const PurchseOrderStatus = () => {
                               <input type="text" className="form-control" />
                             </td>
                             <td>
-                              <input
-                                type="checkbox"
-                                id="snowBalQty"
-                                className="text-start"
-                              />
+                              {/* <input type="checkbox" id="snowBalQty"  className="text-start"/> */}
                               <label
                                 htmlFor="snowBalQty"
                                 type="text"

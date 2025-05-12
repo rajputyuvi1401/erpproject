@@ -8,7 +8,7 @@
     background-color: #f8f9fa; /* Light background for header */
     border-bottom: 1px solid #dee2e6; /* Border for header */
     padding: 10px 15px; /* Padding around header */
-    border-radius: 5px;
+    /* border-radius: 5px; */
   }
   /* Header section */
   .DeleteManagement .header-title {
@@ -16,7 +16,12 @@
     font-weight: bold;
     margin-bottom: 20px;
   }
-  
+  .DeleteRecord-main {
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border for header */
+    padding: 10px 15px; /* Padding around header */
+    /* border-radius: 5px; */
+  }
   /* Buttons */
   .DeleteManagement .Deletbtn {
     padding: 8px 10px;

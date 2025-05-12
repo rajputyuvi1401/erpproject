@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOStatus</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            font-size: 12px;
+        }
+
+        .container {
+            width: 210mm;
+            height: auto;
+            margin: 20px auto;
+            padding: 10mm;
+            position: relative;
+            page-break-after: always;
+            border: 2px solid #000;
+        }
+
+        .header {
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid black;
+
+        }
+
+        .company-info {
+            margin-bottom: 10px;
+            border-bottom: 2px solid black;
+        }
+
+        .manufacturer-text {
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .product-list {
+            line-height: 1.2;
+        }
+
+        .address p {
+            line-height: 1.2;
+            margin-bottom: 2px;
+            text-align: center;
+        }
+
+        .order-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            /* border-top: 2px solid black; */
+            /* border-bottom: 2px solid black; */
+            /* margin: 12px 0; */
+        }
+
+        .order-details {
+            margin-bottom: 10px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .detail-item {
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+        }
+
+        .detail-item label {
+            font-weight: bold;
+            margin-right: 3px;
+            white-space: nowrap;
+        }
+
+        .detail-item span {
+            min-height: 14px;
+            flex-grow: 1;
+            padding: 0 3px;
+        }
+
+        table th, table td {
+            font-size: 11px;
+        }
+
+        [contenteditable="true"]:focus {
+            outline: 1px solid #2196F3;
+            background-color: #f0f8ff;
+        }
+
+        @media print {
+            .container {
+                width: 100%;
+                height: 100%;
+                padding: 5mm;
+                border: none;
+            }
+
+            .actions {
+                display: none;
+            }
+        }
+
+        @media (max-width: 210mm) {
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .detail-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .actions {
+                position: static;
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="order-title"> BP TECH  </h1>
+            <p>GAT NO. 148/1A, OM GURUDEV INDL ESTATE, CHAKAN TALEGAON ROAD, MAHALUNGE INGALE, CHAKAN, PUNE - 
+                410501</p>
+        </div>
+
+        <div class="order-details mb-3">
+        
+            <div class="row g-2">
+                <div class="col-md-4 col-sm-6 col-12">
+                    <label class=" "><b> WorkOrder No :</b></label>
+                    <span>222300111</span>
+                </div>
+                <div class="col-md-4 col-sm-6 col-12">
+                    <label class=" "><b> WorkOrder Date :</b></label>
+                    <span>1/07/2024</span>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-12">
+                    <label class=" "><b>Target Date : </b></label>
+                    <span>1/07/2024</span>
+                </div>          
+                
+            </div>
+
+        </div>
+
+        <div class="items-table">
+    <table class="table table-bordered table-sm">
+        <thead class="table-light">
+            <tr>
+                <th>Prod No.</th>
+                <th>Prod Date</th>
+                <th>Item No</th>
+                <th>Production Qty</th>
+                <th>OK Qty</th>
+                <th>Rework Qty</th>
+                <th>Reject Qty</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background-color: #f5e673;">
+                <td colspan="4"><b>BP/SIL/004 F-238279-14 KZK KZK MP000555906 AD | Wo Qty: 100</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr style="background-color: #ffe599;">
+                <td colspan="4"><b>10 - CNC TURNING</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>222300380</td>
+                <td>11/07/2022</td>
+                <td>CNCBP/SIL/004</td>
+                <td>1000</td>
+                <td>990</td>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+            <tr style="background-color: #c8f7c5;">
+                <td class="text-end" colspan="3"><b>CNC TURNING Total Production Quantity</b></td>
+                <td><b>1000</b></td>
+                <td><b>990</b></td>
+                <td><b>5</b></td>
+                <td><b>5</b></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    </div>
+
+    <!-- Bootstrap JS Bundle (optional if using dropdowns or modals) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -63,7 +63,7 @@ const PendingIndent = () => {
 
                             
                               <th>
-                                <input type="checkbox" id="supplierNameCheck" />
+                                {/* <input type="checkbox" id="supplierNameCheck" /> */}
                                 <label
                                   htmlFor="supplierNameCheck"
                                   className="ml-2"
@@ -72,13 +72,13 @@ const PendingIndent = () => {
                                 </label>
                               </th>
                               <th>
-                                <input type="checkbox" id="poNoCheck" />
+                                {/* <input type="checkbox" id="poNoCheck" /> */}
                                 <label htmlFor="poNoCheck" className="ml-2">
                                   Item
                                 </label>
                               </th>
                               <th>
-                                <input type="checkbox" id="poNoCheck" />
+                                {/* <input type="checkbox" id="poNoCheck" /> */}
                                 <label htmlFor="poNoCheck" className="ml-2">
                                   Type
                                 </label>

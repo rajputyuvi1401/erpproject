@@ -223,6 +223,16 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                       Cross Reference
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
+                    {permissions.All_Masters.includes(
+                        "Customer / Supplier Item Link"
+                      ) && (
+                        <Dropdown.Item
+                          as={Link}
+                          to="/Customer-Item-Wise"
+                        >
+                           Customer Item Wise
+                        </Dropdown.Item>
+                       )} 
                       {permissions.All_Masters.includes(
                         "Customer / Supplier Item Link"
                       ) && (
@@ -243,6 +253,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                     </Dropdown.Menu>
                   </Dropdown>
                 )}
+                
                 {permissions.All_Masters.includes("GST Rate Master") && (
                   <Dropdown.Item as={Link} to="/gst-rate-master">
                     GST Rate Master

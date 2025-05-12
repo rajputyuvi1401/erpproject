@@ -83,7 +83,7 @@ const SupplierWiseList = () => {
                             <th>PO Series</th>
 
                             <th>
-                              <input type="checkbox" id="supplier" />
+                              {/* <input type="checkbox" id="supplier" /> */}
                               <label htmlFor="supplier" className="ml-2">
                                 Supplier Name
                               </label>
@@ -91,7 +91,7 @@ const SupplierWiseList = () => {
                             <th>Item Main Group</th>
                             <th>Item Group</th>
                             <th>
-                              <input type="checkbox" id="item" />
+                              {/* <input type="checkbox" id="item" /> */}
                               <label htmlFor="item" className="ml-2">
                                 Item Name
                               </label>

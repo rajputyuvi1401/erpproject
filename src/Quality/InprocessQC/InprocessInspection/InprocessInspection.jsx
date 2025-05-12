@@ -80,24 +80,24 @@ const InprocessInspection = () => {
                         </select>
                       </div>
                       <div className="col-sm-6 col-md-3 col-lg-2">
-                       <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" />
+                       <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" /> */}
                             <label htmlFor="machineUtilizeCheckbox" className="form-check-label"> Item Code: </label>
                         </div>
                         <input type="text"  placeholder="Item Code" className="form-control"/>
                       </div>
 
                       <div className="col-sm-6 col-md-3 col-lg-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" />
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" /> */}
                             <label htmlFor="machineUtilizeCheckbox" className="form-check-label">HeatCode: </label>
                         </div>
                         <input type="text" placeholder="Heat Code" className="form-control" />
                       </div>
 
                       <div className="col-sm-6 col-md-3 col-lg-2">
-                        <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" />
+                        <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" /> */}
                             <label htmlFor="machineUtilizeCheckbox" className="form-check-label"> Prod No: </label>
                         </div>
                         <input type="text" placeholder="" className="form-control" />
@@ -105,11 +105,11 @@ const InprocessInspection = () => {
 
 
                       <div className="col-6 col-md-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" />
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="machineUtilizeCheckbox" /> */}
                             <label htmlFor="machineUtilizeCheckbox" className="form-check-label"> BarCode: </label>
                         </div>
-                          <button type="button" className="vndrbtn">
+                          <button type="button" className="vndrbtn mt-1">
                             Search
                           </button>
                         </div>

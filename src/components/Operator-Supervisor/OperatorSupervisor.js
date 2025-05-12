@@ -128,11 +128,11 @@ const OperatorSupervisor = () => {
                         </div>
                         <div className="col-md-2 col-6">
                           <div className="form-check mb-2">
-                            <input
+                            {/* <input
                               className="form-check-input"
                               type="checkbox"
                               id="checkLabel"
-                            />
+                            /> */}
                             <label
                               className="form-check-label"
                               htmlFor="checkLabel"

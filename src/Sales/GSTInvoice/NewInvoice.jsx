@@ -775,6 +775,7 @@ const NewInvoice = () => {
                                   onChange={handleCheckboxChange}
                                   style={{ width: "12px", height: "12px", verticalAlign: "middle" }}
                                 />
+                                
                                 <label
                                   htmlFor="printRate"
                                   className="ms-2"

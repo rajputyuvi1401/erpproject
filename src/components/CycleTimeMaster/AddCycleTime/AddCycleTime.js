@@ -361,7 +361,7 @@ const AddCycleTime = () => {
                           </div>
                           <div className="col-md-2 col-sm-6 mb-3 mb-sm-0">
                             <div className="mb-3 form-check">
-                              <input
+                              {/* <input
                                 type="checkbox"
                                 className="form-check-input"
                                 id="Time_in_Minutes"
@@ -372,9 +372,9 @@ const AddCycleTime = () => {
                                 className="form-check-input"
                                 id="Time_in_Minutes"
                                 name="Time_in_Minutes"
-                                // checked={formData.Time_in_Minutes}
-                                // onChange={handleChange}
-                              />
+                                checked={formData.Time_in_Minutes}
+                                onChange={handleChange}
+                              /> */}
                               <label
                                 className="form-label"
                                 htmlFor="Time_in_Minutes"

@@ -571,10 +571,10 @@ const BillMaterial = () => {
                                 <div className="tab-pane fade show active">
                                   <div className="row">
                                     <div className="col-md-1">
-                                      <input
+                                      {/* <input
                                         type="checkbox"
                                         id="manualCheckbox"
-                                      />
+                                      /> */}
                                       <label
                                         htmlFor="manualCheckbox"
                                         className="ms-2"
@@ -584,10 +584,10 @@ const BillMaterial = () => {
                                     </div>
                                   
                                      <div className="col-md-4">
-                                      <input
+                                      {/* <input
                                         type="checkbox"
                                         id="routingCheckbox"
-                                      />
+                                      /> */}
                                       <label
                                         htmlFor="routingCheckbox"
                                         className="ms-2"

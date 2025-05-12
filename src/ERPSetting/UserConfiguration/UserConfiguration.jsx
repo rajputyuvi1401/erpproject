@@ -90,7 +90,17 @@ const UserConfiguration = () => {
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="user-container">
-                  <h2 className="form-title">Add New User</h2>
+                  <h2 className=" header-title form-title">Add New User</h2>
+                                  {/* <div className="WorkOrderEntry-header mb-2">
+                                      <div className="row">
+                                        <div className="col-md-3">
+                                          <h5 className="header-title text-start">
+                                          Add New User
+                                          </h5>
+                                        </div>
+                                      </div>
+                                    </div> */}
+
                   <form onSubmit={handleSubmit}>
                     {/* Plant Selection */}
                     <div className="row mb-3">
@@ -237,7 +247,7 @@ const UserConfiguration = () => {
                     {/* Save Button */}
                     <div className="row mb-3">
                       <div className="col-md-7 text-end">
-                        <button type="submit" className="btn btn-primary submit-button">
+                        <button type="submit" className="vndrbtn submit-button">
                           Save
                         </button>
                       </div>

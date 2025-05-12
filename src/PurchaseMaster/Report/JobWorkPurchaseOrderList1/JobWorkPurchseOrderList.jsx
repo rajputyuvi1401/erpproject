@@ -59,25 +59,25 @@ const JobWorkPurchseOrderList = () => {
                           <th>PO Status</th>
                         
                           <th>
-                            <input type="checkbox" id="supplier" />
+                            {/* <input type="checkbox" id="supplier" /> */}
                             <label htmlFor="supplier" className="ml-2">
                               Supplier Name
                             </label>
                           </th>
                           <th>
-                            <input type="checkbox" id="item" />
+                            {/* <input type="checkbox" id="item" /> */}
                             <label htmlFor="item" className="ml-2">
                               PO No
                             </label>
                           </th>
                           <th>
-                            <input type="checkbox" id="poNo" />
+                            {/* <input type="checkbox" id="poNo" /> */}
                             <label htmlFor="poNo" className="ml-2">
                               Part Code
                             </label>
                           </th>
                           <th>
-                            <input type="checkbox" id="itemGroup" />
+                            {/* <input type="checkbox" id="itemGroup" /> */}
                             <label htmlFor="itemGroup" className="ml-2">
                               Item No
                             </label>

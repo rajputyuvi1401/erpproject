@@ -69,24 +69,24 @@ const PaddingSalesQC = () => {
                         </div>
                        
                       <div className="col-sm-6 col-md-2 col-lg-2">
-                       <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                       <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label"> Cust Name: </label>
                         </div>
                         <input type="text"  placeholder="Cust Name" className="form-control"/>
                       </div>
 
                       <div className="col-sm-6 col-md-2 col-lg-2">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label">Item Code: </label>
                         </div>
                         <input type="text" placeholder="Item Code " className="form-control" />
                       </div>
 
                       <div className="col-sm-6 col-md-2 col-lg-2">
-                        <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
+                        <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
                             <label htmlFor="Checkbox" className="form-check-label"> Sales-Return-No: </label>
                         </div>
                         <input type="text" placeholder="" className="form-control" />

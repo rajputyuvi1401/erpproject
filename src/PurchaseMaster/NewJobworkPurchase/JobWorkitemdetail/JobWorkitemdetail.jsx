@@ -121,18 +121,26 @@ const JobWorkitemdetail = () => {
                       <th>
                       Select Item:{" "}
                       <label>
-                        <input type="checkbox" name="SelectItem" value="RM" checked={formData.SelectItem === "RM"} onChange={handleChange} /> RM
+                        <input type="checkbox" name="SelectItem" 
+                        style={{ width: "12px", height: "12px", verticalAlign: "middle" }}
+                        value="RM" checked={formData.SelectItem === "RM"} onChange={handleChange} /> RM
                       </label>
                       <label>
-                        <input type="checkbox" name="SelectItem" value="FG" checked={formData.SelectItem === "FG"} onChange={handleChange} /> FG
+                        <input type="checkbox" 
+                        style={{ width: "12px", height: "12px",marginLeft:"5px", verticalAlign: "middle" }}
+                         name="SelectItem" value="FG" checked={formData.SelectItem === "FG"} onChange={handleChange} /> FG
                       </label>
                       </th>
                       <th>Item Description:</th>
                       <th>Part Code:   <label>
-                        <input type="checkbox" name="RType" value="default" checked={formData.RType === "default"} onChange={handleChange} /> default
+                        <input type="checkbox"
+                        style={{ width: "12px", height: "12px", verticalAlign: "middle" }}
+                        name="RType" value="default" checked={formData.RType === "default"} onChange={handleChange} /> default
                       </label>
                       <label>
-                        <input type="checkbox" name="RType" value="change FG" checked={formData.RType === "change FG"} onChange={handleChange} /> change FG
+                        <input type="checkbox"
+                        style={{ width: "12px", height: "12px",marginLeft:"5px", verticalAlign: "middle" }}
+                        name="RType" value="change FG" checked={formData.RType === "change FG"} onChange={handleChange} /> change FG
                       </label></th>
                       <th>Rate:</th>
                       <th>RType</th>

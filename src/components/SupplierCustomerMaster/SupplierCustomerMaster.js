@@ -25,7 +25,6 @@ import {
   // fetchStates,
 } from "../../Service/Api.jsx";
 
-
 import ToggleCard1 from "./ToggleCard1.jsx";
 import ToggleCardCity from "./ToggleCardCity.jsx";
 import ToggleCardCountry from "./ToggleCardCountry.jsx";
@@ -39,8 +38,6 @@ import ToggleCardQMSCode from "./ToggleCardQMSCode.jsx";
 import { Link } from "react-router-dom";
 import { fetchCurrencyCodes } from "../../Service/Api.jsx";
 import { fetchStateData ,fetchStateDetails } from "../../Service/Api.jsx";
-
-
 
 const SupplierCustomerMaster = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -68,6 +65,7 @@ const SupplierCustomerMaster = () => {
   const [countries, setCountries] = useState([]);
   const [paymentTerms, setPaymentTerms] = useState([]);
   const [states, setStates] = useState([]);
+
   const toggleCard = () => {
     setIsCardOpen(!isCardOpen);
   };
@@ -296,8 +294,6 @@ const SupplierCustomerMaster = () => {
     fetchData();
   }, [formData.type]);
 
-
-
   const validatePAN = (pan) => {
     const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
     return panPattern.test(pan);
@@ -349,13 +345,10 @@ const SupplierCustomerMaster = () => {
     setFormData(initialFormData);
   };
 
-  
-
   // sector
   useEffect(() => {
     fetchSectorsAndSet();
   }, []);
-
   const fetchSectorsAndSet = async () => {
     try {
       const data = await fetchSectors();
@@ -485,11 +478,6 @@ useEffect(() => {
 }, [formData.Region]);
 
 // Gst No
-
-
-
-
-
   function handleRefresh() {
     fetchSectorsAndSet();
 
@@ -516,32 +504,40 @@ useEffect(() => {
                 sideNavOpen={sideNavOpen}
                 toggleSideNav={toggleSideNav}
               />
+
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="SupplierC1">
                   
                   <div className="SupplierCus-header mb-4 text-start">
                     <div className="row align-items-center">
+
                         <div className="col-md-4">
                         <h5 className="header-title">
                             Supplier / Customer Master
                           </h5>
                         </div>
+
                         <div className="col-md-8 text-end">
                           <Link to={"/Vender-List"} className="  vndrbtn ">
                             Supplier/Customer List
                           </Link>
                         </div>
+
                     </div>
                   </div>
+
                   <div className="Suppliermain">
                     <div className="container-fluid">
+
                       <div className="row">
                         <div className="col-md-12">
+
                           <ul
                             className="nav nav-pills mb-3"
                             id="pills-tab"
                             role="tablist"
                           >
+
                             <li className="nav-item" role="presentation">
                               <button
                                 className="nav-link active"
@@ -584,9 +580,11 @@ useEffect(() => {
                                 Bank Details
                               </button>
                             </li>
+
                           </ul>
                           
                           <div className="tab-content" id="pills-tabContent" style={{border:"none"}}>
+
                             <div
                               className="tab-pane fade show active"
                               id="pills-home"
@@ -595,14 +593,15 @@ useEffect(() => {
                               tabIndex="0"
                             >
                               <div className="Suppliergernal">
-                             
                                   
                                   <div className="container-fluid">
                                     <form
                                       onSubmit={handleSubmit}
                                       autoComplete="off"
                                     >
+
                                       <div className="row text-start">
+
                                         <div
                                           className="col-md-4"
                                           style={{ padding: "10px" }}
@@ -872,7 +871,7 @@ useEffect(() => {
                                           </div>
 
                                                 {/* Invoice Type */}
-                                                <div className="row mb-3">
+                                          <div className="row mb-3">
                                             <label
                                               htmlFor="Invoice_Type"
                                               className="col-sm-4 col-form-label"
@@ -1102,9 +1101,9 @@ useEffect(() => {
                                               )} */}
                                             </div>
                                           </div>
-
                                          
                                         </div>
+
                                         <div
                                           className="col-md-4"
                                           style={{ padding: "10px" }}
@@ -1168,8 +1167,7 @@ useEffect(() => {
                                                 )}
                                               </select>
                                             </div>
-                                          </div>
-                                         
+                                          </div>                                      
 
                                           {/* Region */}
                                           <div className="row mb-3">
@@ -1194,11 +1192,11 @@ useEffect(() => {
                                                   Select ..
                                                 </option>
                                                 {states.map((state) => (
-              <option key={state.code} value={state.name}>
-                {state.name}
-              </option>
-            ))}
-                                              </select>
+                                                <option key={state.code} value={state.name}>
+                                                  {state.name}
+                                                </option>
+                                              ))}
+                                           </select>
                                               {errors.Region && (
                                                 <small className="text-danger">
                                                   {errors.Region}
@@ -1336,8 +1334,8 @@ useEffect(() => {
                                             </div>
                                           </div>
 
-  {/* Pin Code */}
-  <div className="row mb-3">
+                                          {/* Pin Code */}
+                                         <div className="row mb-3">
                                             <label
                                               htmlFor="Pin_Code"
                                               className="col-sm-4 col-form-label"
@@ -1363,58 +1361,52 @@ useEffect(() => {
                                               )}
                                             </div>
                                           </div>
-                                         
+                                      
+                                          {/* GST Type */}
+                                          <div className="row mb-3">
+                                            <label htmlFor="GST_No" className="col-sm-4 col-form-label">
+                                              GST Type:{" "}
+                                              <span className="text-danger">*</span>
+                                            </label>
+                                            <div className="col-sm-5">
+                                              <select
+                                                id="GST_No"
+                                                name="GST_No"
+                                                className="form-select"
+                                                value={formData.GST_No}
+                                                onChange={handleChange}
+                                              >
+                                                <option value="">Select ..</option>
+                                                <option value="Registered">Registered</option>
+                                                <option value="Unregistered">Unregistered</option>
+                                              </select>
+                                            </div>
+                                          </div>
 
-                                        
-
-              {/* GST Type */}
-      <div className="row mb-3">
-        <label htmlFor="GST_No" className="col-sm-4 col-form-label">
-          GST Type:{" "}
-          <span className="text-danger">*</span>
-        </label>
-        <div className="col-sm-5">
-          <select
-            id="GST_No"
-            name="GST_No"
-            className="form-select"
-            value={formData.GST_No}
-            onChange={handleChange}
-          >
-            <option value="">Select ..</option>
-            <option value="Registered">Registered</option>
-            <option value="Unregistered">Unregistered</option>
-          </select>
-        </div>
-      </div>
-
-      {/* GST No */}
-      {showGSTNo2 && (
-        <div className="row mb-3">
-          <div className="form-check col-sm-4">
-            <label className="form-check-label" htmlFor="GST_No2">
-              GST No:{" "}
-              <span className="text-danger">*</span>
-            </label>
-          </div>
-          <div className="col-sm-8">
-            <input
-               type="text"
-               className="form-control"
-               id="GST_No2"
-               name="GST_No2"
-               value={formData.GST_No2} // Show only the last 3 characters for input
-            onChange={handleChange}
-           
-            />
-            {errors.GST_No2 && <small className="text-danger">{errors.GST_No2}</small>}
-          </div>
-        </div>
-      )}
+                                          {/* GST No */}
+                                          {showGSTNo2 && (
+                                            <div className="row mb-3">
+                                              <div className="form-check col-sm-4">
+                                                <label className="form-check-label" htmlFor="GST_No2">
+                                                  GST No:{" "}
+                                                  <span className="text-danger">*</span>
+                                                </label>
+                                              </div>
+                                              <div className="col-sm-8">
+                                                <input
+                                                  type="text"
+                                                  className="form-control"
+                                                  id="GST_No2"
+                                                  name="GST_No2"
+                                                  value={formData.GST_No2} // Show only the last 3 characters for input
+                                                onChange={handleChange}
+                                              
+                                                />
+                                                {errors.GST_No2 && <small className="text-danger">{errors.GST_No2}</small>}
+                                              </div>
+                                            </div>
+                                          )}
                                           
-
-                                    
-
                                           {/* Website */}
                                           <div className="row mb-3">
                                             <label
@@ -1438,9 +1430,7 @@ useEffect(() => {
                                                 </small>
                                               )} */}
                                             </div>
-                                          </div>
-
-                                   
+                                          </div>                                   
 
                                           {/* Incoterms */}
                                           <div className="row mb-3">
@@ -1569,7 +1559,9 @@ useEffect(() => {
                                               )} */}
                                             </div>
                                           </div>
+
                                         </div>
+
                                         <div
                                           className="col-md-4"
                                           style={{ padding: "10px" }}
@@ -1856,6 +1848,7 @@ useEffect(() => {
                                               </select>
                                             </div>
                                           </div>
+
                                           <div className="row mb-3">
                                             <label
                                               htmlFor="QMSC_Code"
@@ -1943,6 +1936,7 @@ useEffect(() => {
                                               )} */}
                                             </div>
                                           </div>
+
                                           <div className="row mb-3">
                                             <label
                                               htmlFor="QMSC_Date"
@@ -2110,7 +2104,9 @@ useEffect(() => {
                                               )} */}
                                             </div>
                                           </div>
+
                                         </div>
+
                                       </div>
 
                                       <div className="row text-end">
@@ -2128,10 +2124,12 @@ useEffect(() => {
                                           </button>
                                         </div>
                                       </div>
+
                                     </form>
                                   </div>
                               
                               </div>
+
                               {isCardOpen && (
                                 <div className="card card-custom">
                                   <div className="card-header d-flex justify-content-between">
@@ -2292,6 +2290,7 @@ useEffect(() => {
                                 </div>
                               )}
                             </div>
+
                             <div
                               className="tab-pane fade"
                               id="pills-profile"
@@ -2301,6 +2300,7 @@ useEffect(() => {
                             >
                               <BuyerContactDetail />
                             </div>
+
                             <div
                               className="tab-pane fade"
                               id="pills-contact"
@@ -2310,13 +2310,18 @@ useEffect(() => {
                             >
                               <BankDetail />
                             </div>
+
                           </div>
+
                         </div>
                       </div>
+
                     </div>
                   </div>
+
                 </div>
               </main>
+
             </div>
           </div>
         </div>
@@ -2324,4 +2329,5 @@ useEffect(() => {
     </div>
   );
 };
+
 export default SupplierCustomerMaster;

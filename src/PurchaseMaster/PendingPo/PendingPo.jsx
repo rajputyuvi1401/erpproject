@@ -76,7 +76,7 @@ const PendingPo = () => {
                               <th>Type</th>
                               <th>Category</th>
                               <th>
-                                <input type="checkbox" id="supplierNameCheck" />
+                                {/* <input type="checkbox" id="supplierNameCheck" /> */}
                                 <label
                                   htmlFor="supplierNameCheck"
                                   className="ml-2"
@@ -85,7 +85,7 @@ const PendingPo = () => {
                                 </label>
                               </th>
                               <th>
-                                <input type="checkbox" id="poNoCheck" />
+                                {/* <input type="checkbox" id="poNoCheck" /> */}
                                 <label htmlFor="poNoCheck" className="ml-2">
                                   PO No
                                 </label>

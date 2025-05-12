@@ -92,21 +92,21 @@ const PoList = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="POList mt-5">
-                  <div className="POList-header mb-4 text-start">
+                <div className="POList ">
+                  <div className="POList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Purchase Order List</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <Link type="button" className="btn">
+                        <Link type="button" className="vndrbtn">
                           Recently Po Approval List
                         </Link>
 
-                        <Link type="button" className="btn">
+                        <Link type="button" className="vndrbtn">
                           AMC Purchase Order List
                         </Link>
-                        <Link type="button" className="btn">
+                        <Link type="button" className="vndrbtn">
                           Purchase Order - Query
                         </Link>
                       </div>
@@ -117,7 +117,7 @@ const PoList = () => {
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
                         {/* Plant */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Plant:</label>
                           <select className="form-select" style={{ marginTop: "-2px" }}>
                             <option value="select">Select All</option>
@@ -126,25 +126,25 @@ const PoList = () => {
                         </div>
 
                         {/* From Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>From:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* To Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>To Date:</label>
                           <input type="date" className="form-control" />
                         </div>
 
                         {/* Supplier Name */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Supplier Name:</label>
                           <input type="text" className="form-control" />
                         </div>
 
                         {/* Status */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>PO Type:</label>
                           <select className="form-select" style={{ marginTop: "-2px" }}>
                             <option>Select All</option>
@@ -153,7 +153,7 @@ const PoList = () => {
                         </div>
 
                         {/* Series */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Series:</label>
                           <select className="form-select" style={{ marginTop: "-2px" }}>
                             <option>Select All</option>
@@ -161,7 +161,7 @@ const PoList = () => {
                         </div>
 
                         {/* Auth */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Item Group:</label>
                           <select className="form-select" style={{ marginTop: "-2px" }}>
                             <option>Select All</option>
@@ -169,7 +169,7 @@ const PoList = () => {
                         </div>
 
                         {/* Item Name */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Po Status:</label>
                           <select className="form-select" style={{ marginTop: "-2px" }}>
                             <option>Select All</option>
@@ -177,7 +177,7 @@ const PoList = () => {
                         </div>
 
                         {/* Wo No */}
-                        <div className="col-sm-6 col-md-1 col-lg-1">
+                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>All User:</label>
                           <select className="form-select" style={{ marginTop: "-2px" }}>
                             <option>Select All</option>
@@ -185,7 +185,7 @@ const PoList = () => {
                         </div>
 
                         <div className="col-sm-1 col-md-2" style={{ marginTop: "48px" }}>
-                          <button type="button" className="btn btn-primary">
+                          <button type="" className="vndrbtn">
                             Search
                           </button>
                         </div>
@@ -194,6 +194,7 @@ const PoList = () => {
                   </div>
 
                   <div className="table-responsive">
+                    
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -234,17 +235,17 @@ const PoList = () => {
                             <td>{order.Email || "N/A"}</td>
                             <td>{order.Doc || "N/A"}</td>
                             <td>
-                              <button type="button" className="btn" onClick={() => handleEdit(order)}>
+                              <button type="button" className="vndrbtn" onClick={() => handleEdit(order)}>
                                 <FaEdit />
                               </button>
                             </td>
                             <td>
-                              <button type="button" className="btn btn-primary mr-2" onClick={() => handleView(order)}>
+                              <button type="button" className="vndrbtn mr-2" onClick={() => handleView(order)}>
                                 View
                               </button>
                             </td>
                             <td>
-                              <button type="button" className="btn" onClick={() => handleDelete(order.id)}>
+                              <button type="button" className="vndrbtn" onClick={() => handleDelete(order.id)}>
                                 <FaTrash />
                               </button>
                             </td>
@@ -252,37 +253,40 @@ const PoList = () => {
                         ))}
                       </tbody>
                     </table>
+
                      {/* Pagination Controls */}
-              <div className="row text-end">
-                <div className="col-md">
-                  <div className="pagination">
-                    <button
-                      onClick={handlePrevPage}
-                      disabled={currentPage === 1}
-                    >
-                      Previous
-                    </button>
+                      <div className="row text-end">
+                        <div className="col-md">
+                          <div className="pagination">
+                            <button
+                              onClick={handlePrevPage}
+                              disabled={currentPage === 1}
+                            >
+                              Previous
+                            </button>
 
-                    {[...Array(totalPages).keys()].map((num) => (
-                      <button
-                        key={num + 1}
-                        onClick={() => handlePageClick(num + 1)}
-                        className={currentPage === num + 1 ? "active" : ""}
-                      >
-                        {num + 1}
-                      </button>
-                    ))}
+                            {[...Array(totalPages).keys()].map((num) => (
+                              <button
+                                key={num + 1}
+                                onClick={() => handlePageClick(num + 1)}
+                                className={currentPage === num + 1 ? "active" : ""}
+                              >
+                                {num + 1}
+                              </button>
+                            ))}
 
-                    <button
-                      onClick={handleNextPage}
-                      disabled={currentPage === totalPages}
-                    >
-                      Next
-                    </button>
+                            <button
+                              onClick={handleNextPage}
+                              disabled={currentPage === totalPages}
+                            >
+                              Next
+                            </button>
+                          </div>
+                          </div>
+                      </div>
+
                   </div>
-                </div>
-              </div>
-                  </div>
+
                 </div>
               </main>
             </div>

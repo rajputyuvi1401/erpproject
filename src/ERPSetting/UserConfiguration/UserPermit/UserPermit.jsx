@@ -251,7 +251,7 @@ const UserPermit = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="user-permit">
-                  <div className="permit-header mb-4 text-start mt-5">
+                  <div className="permit-header mb-2 text-start">
                     <h5 className="header-title">User Permission</h5>
                   </div>
                   <div className="user-permit-header">
@@ -259,7 +259,7 @@ const UserPermit = () => {
                       <select
                         value={selectedUser}
                         onChange={(e) => setSelectedUser(e.target.value)}
-                        className="user-select"
+                        className="user-select form-control"
                       >
                         <option value="">Select User</option>
                         {users.map((user) => (
@@ -269,24 +269,24 @@ const UserPermit = () => {
                         ))}
                       </select>
                     </div>
-                    <div className="col-md-9">
-                      <button type="button" className="btn">
+                    <div className="col-md-10">
+                      <button type="button" className=" vndrbtn">
                         Export User Permission
                       </button>
-                      <button type="button" className="btn">
+                      <button type="button" className=" vndrbtn">
                         Export All User Permission
                       </button>
-                      <button type="button" className="btn">
+                      <button type="button" className=" vndrbtn">
                         Export Modulewise Permission
                       </button>
-                      <button type="button" className="btn">
+                      <button type="button" className=" vndrbtn">
                         Export Userwise Active Permission
                       </button>
-                      <button type="button" className="btn">
+                      <button type="button" className=" vndrbtn">
                         Copy Permission
                       </button>
                     </div>
-                    <div className="col-md-1">
+                    <div className="col-md-1 mt-3">
                       <div className="select-all">
                         <input
                           type="checkbox"
@@ -304,7 +304,7 @@ const UserPermit = () => {
                       placeholder="Search permissions..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="search-input"
+                      className="search-input form-control"
                     />
                   </div>
                   <div className="permissions-container">
@@ -327,7 +327,7 @@ const UserPermit = () => {
                     </div>
                     {selectedModule && renderPermissions(selectedModule)}
                   </div>
-                  <button onClick={handleSubmit} className="submit-button">
+                  <button onClick={handleSubmit} className="vndrbtn submit-button">
                     Assign Permissions
                   </button>
                 </div>

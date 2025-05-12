@@ -59,7 +59,7 @@ const PurchseOderList = () => {
                           <th>From Date</th>
                           <th>To Date</th>
                           <th>
-                            <input type="checkbox" id="supplier" />
+                            {/* <input type="checkbox" id="supplier" /> */}
                             <label htmlFor="supplier" className="ml-2">
                               Supplier Name
                             </label>

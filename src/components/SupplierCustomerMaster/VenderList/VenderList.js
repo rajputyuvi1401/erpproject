@@ -102,7 +102,7 @@ const VenderList = () => {
                           >
                             Add New
                           </Link>
-                          <Link className="vndrbtn">Customer - Query</Link>
+                          <Link className="vndrbtn" to={"/CustomerQuery"}>Customer - Query</Link>
                         </div>
                         </div>
                     </div>
@@ -266,6 +266,7 @@ const VenderList = () => {
                       </div>
                     </div>
                   )}
+
 
                   {/* Pagination Controls */}
                   <nav className="d-flex justify-content-center mt-3">

@@ -154,6 +154,10 @@ const GstMaster = () => {
     }
   };
 
+  // const totalPages = Math.ceil(filteredGstMaster.length / recordsPerPage);
+  // const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+
+
   return (
     <div className="GstMaster">
       <ToastContainer />
@@ -542,6 +546,51 @@ const GstMaster = () => {
                       </div>
                     </div>
                   </div>
+
+                  {/* <div className="pagination-container">
+                    <div className="row justify-content-center">
+                      <div className="col-auto">
+                        <nav aria-label="Page navigation">
+                        <ul className="pagination">
+                          
+                        <li className="page-item">
+                          <button
+                            className="page-link"
+                            onClick={() => setCurrentPage(currentPage - 1)}
+                            disabled={currentPage === 1}
+                          >
+                            Previous
+                          </button>
+                        </li>
+                            {Array.from({ length: totalPages }, (_, index) => (
+                              <li
+                                key={index + 1}
+                                className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}
+                              >
+                                <button
+                                  className="page-link"
+                                  onClick={() => setCurrentPage(index + 1)}
+                                >
+                                  {index + 1}
+                                </button>
+                              </li>
+                            ))}
+                          <li className="page-item">
+                          <button
+                            className="page-link"
+                            onClick={() => setCurrentPage(currentPage + 1)}
+                            disabled={currentPage === pageNumbers.length}
+                          >
+                            Next
+                          </button>
+                        </li>
+                        </ul>
+
+                        </nav>
+                      </div>
+                    </div>
+                  </div> */}
+
                   <div
                     className="row"
                     style={{ color: "blue", padding: "10px" }}

@@ -164,11 +164,7 @@ const PurchaseReport = () => {
                         <div className="container-fluid mt-4">
                           <div className="row align-items-start">
                             <div className="col-md-3 d-flex align-items-start">
-                              <input
-                                type="checkbox"
-                                id="costCenterCodeCheck"
-                                className="me-2"
-                              />
+                              {/* <input type="checkbox" id="costCenterCodeCheck"  className="me-2"/> */}
                               <label
                                 htmlFor="costCenterCodeCheck"
                                 className="form-label mb-0"

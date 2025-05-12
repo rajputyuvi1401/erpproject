@@ -28,27 +28,29 @@ const DeleteRecord = () => {
   };
 
   return (
-    <div className="DeleteManagement mt-5">
+    <div className="DeleteManagement">
       <NavBar toggleSideNav={toggleSideNav} />
       <div className="main-container">
         <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
         <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
           <div className="DeleteRecord">
-            <div className="DeleteRecord-header mb-4 text-start">
+            <div className="DeleteRecord-header mb-2 text-start">
               <div className="row align-items-center">
                 <div className="col-md-4 mt-1">
                   <h5 className="header-title">Delete / Cancel Document</h5>
                 </div>
                 <div className="col-md-8 text-end">
-                  <Link className="Deletbtn" to="/Item-delete">
+                  <Link className="vndrbtn" to="/Item-delete">
                     Delete Item
                   </Link>
-                  <Link to="/delete-report" className="Deletbtn">
+                  <Link to="/delete-report" className="vndrbtn">
                     View Delete History
                   </Link>
                 </div>
               </div>
             </div>
+
+            <div className="deletrecord-main">
               <div className="row">
                 <div className="tabs">
                   <div className="row">
@@ -132,7 +134,7 @@ const DeleteRecord = () => {
                                     />
                                   </div>
                                   <div className="col-md-2">
-                                    <button className="btn">Search</button>
+                                    <button className="vndrbtn">Search</button>
                                   </div>
                                 </div>
                                 <div className="form-group">Master</div>
@@ -203,7 +205,7 @@ const DeleteRecord = () => {
                                     />
                                   </div>
                                   <div className="col-md-2">
-                                    <button className="btn">Search</button>
+                                    <button className="vndrbtn">Search</button>
                                   </div>
                                   <div className="col-md-1">
                                     <label>Cancel Remark:</label>
@@ -212,7 +214,7 @@ const DeleteRecord = () => {
                                     <textarea className="form-control"></textarea>
                                   </div>
                                   <div className="col-md-2">
-                                    <button className="btn">Cancel</button>
+                                    <button className="vndrbtn">Cancel</button>
                                   </div>
                                 </div>
                                 <div className="form-group">Master</div>
@@ -223,9 +225,12 @@ const DeleteRecord = () => {
                         </div>
                       )}
                     </div>
+
                   </div>
                 </div>
               </div>
+            </div>
+
             </div>
           
         </main>

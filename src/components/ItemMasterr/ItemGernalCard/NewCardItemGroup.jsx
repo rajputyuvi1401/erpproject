@@ -182,7 +182,61 @@ const NewCardItemGroup = () => {
         )}
 
         {/* Placeholder for "Item Group Linking Main Group" */}
-        {activeTab === "itemGroup" && <p>Item group linking main group feature goes here</p>}
+        {activeTab === "itemGroup" && (
+          <div>
+              <div className="row">
+              <div className="col-md-12">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>Sr</th>
+                      <th>Group Name</th>
+                      <th>FG</th>
+                      <th>RM</th>
+                      <th>Tool</th>
+                      <th>Inst</th>
+                      <th>Machine</th>
+                      <th>CON</th>
+                      <th>SAFTY</th>
+                      <th>SER</th>
+                      <th>ASSET</th>
+                      <th>F4</th>
+                      <th>Scrap</th>
+                      <th>SF</th>
+                      <th>BO</th>
+                      <th>DIES</th>
+                      <th>Msint</th>
+                      <th>HK</th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td> </td>
+                      <td> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                      <td> <input type="checkbox" /> </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
       <ToastContainer />
     </div>

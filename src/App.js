@@ -18,7 +18,7 @@ import CustomerState from "./components/Master2/CustomerState";
 import ItemMaster from "./components/ItemMasterr/ItemMaster/ItemMaster";
 import AddNewItem from "./components/ItemMasterr/AddNewItem/AddNewItem";
 import ItemMasterGernal from "./components/ItemMasterr/ItemMasterGernal/ItemMasterGernal";
-import ItemMasterQuery from "./components/ItemMasterr/ItemMasterQuery/ItemMasterQuery.jsx";
+// import ItemMasterQuery from "./components/ItemMasterr/ItemMasterQuery/ItemMasterQuery.jsx";
 import WorkCenterMaster from "./components/WorkCenterMaster/WorkCenterMaster";
 import BusinessPartner from "./components/BusinessPartner/BusinessPartner";
 import CustomerItemWise from "./components/CustomerItemWise/CustomerItemWise";
@@ -50,6 +50,17 @@ import ProjectManagement from "./components/ProjectManagement/ProjectManagement"
 import ProjectInventory from "./components/ProjectManagement/ProjectInventory/ProjectInventory";
 import DocumentManagement from "./components/DocumentManagement/DocumentManagement";
 import MasterReport from "./components/MasterReport/MasterReport";
+
+import ItemMasterQuery from "./components/ItemMasterr/ItemMasterQuery/ItemMasterQuery.jsx";
+import QueryPages from "./components/ItemMasterr/ItemMasterQuery/QueryPages.jsx";
+import CustomerQuery from "./components/SupplierCustomerMaster/VenderList/CustomerQuery.jsx";
+import BOMQuery from "./components/BOMRouting/BOMQuery.jsx";
+import PriceListQueryMaster from "./components/PriceListMaster/PriceListQueryMaster.jsx";
+import PriceListQuery from "./components/PriceListMaster/PriceListQuery.jsx";
+import CustomerQueryMaster from "./components/SupplierCustomerMaster/VenderList/CustomerQueryMaster.jsx"
+import BOMMasterQuery from "./components/BOMRouting/BOMMasterQuery.jsx";
+import UploadWIPvalue from "./components/BOMRouting/BOMReport/UploadWIPvalue.jsx";
+import UploadOperationSpeci from "./components/BOMRouting/BOMReport/UploadOperationSpeci.jsx";
 
 
 
@@ -316,7 +327,7 @@ function App() {
         <Route path="/item-master" element={<ItemMaster />} />
         <Route path="/add-new-item" element={<AddNewItem />} />
         <Route path="/item-master-gernal" element={<ItemMasterGernal />} />
-        <Route path="/item-master-query" element={<ItemMasterQuery />} />
+        {/* <Route path="/item-master-query" element={<ItemMasterQuery />} />  */}
         <Route path="/Work-center-master" element={<WorkCenterMaster />} />
         <Route path="/business-partner" element={<BusinessPartner />} />
         <Route path="/Customer-Item-Wise" element={<CustomerItemWise />} />
@@ -348,6 +359,17 @@ function App() {
         <Route path="/project-inventory-status" element={<ProjectInventory />} />
         <Route path="/document-management" element={<DocumentManagement />} />
         <Route path="/master-report" element={<MasterReport />} />
+
+        <Route path="/item-master-query" element={<ItemMasterQuery />} />
+        <Route path="/QueryPages" element={<QueryPages/>} />
+        <Route path="/CustomerQuery" element={<CustomerQuery/>} />
+        <Route path="/BOMQuery" element={<BOMQuery/>} />
+        <Route path="/PriceListQuery" element={<PriceListQuery/>} />
+        <Route path="/PriceListQueryMaster" element={<PriceListQueryMaster/>} />
+        <Route path="/CustomerQueryMaster" element={<CustomerQueryMaster/>} />
+        <Route path="/BOMMasterQuery" element={<BOMMasterQuery/>} />
+        <Route path="/UploadWIPvalue" element={<UploadWIPvalue/>}/>
+        <Route path="/UploadOperationSpeci" element={<UploadOperationSpeci/>}/>
 
 
         {/* ///////////////////////////////////Erp Setting////////////////////////////////////// */}

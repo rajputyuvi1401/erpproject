@@ -83,11 +83,11 @@ const HeatCodeRegister = () => {
                     <div className="modal-body">
                     <div className="HeatCodeRegister-header mb-4 text-start">
                     <div className="row align-items-center">
-                      <div className="col-md-4">
-                        <h5 className="header-title">Operation Vs Dispatch : : </h5>
+                      <div className="col-md-6">
+                        <h5 className="header-title">Operation Vs Dispatch  : </h5>
                       </div>
                        
-                      <div className="col-md-8  text-end">
+                      <div className="col-md-6  text-end">
                         <button type="button" className="vndrbtn" >
                           Export Excel
                         </button>
@@ -108,23 +108,23 @@ const HeatCodeRegister = () => {
                         </select>
                      </div>
              <div className="col-md-4 mb-3">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
-                            <label htmlFor="Checkbox" className="form-check-label"> Heat Code : </label>
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
+                            <label htmlFor="" className="form-check-label"> Heat Code : </label>
                         </div>
                         <input type="text"  placeholder=" " className="form-control"/>
              </div>
              <div className="col-md-4 mb-3">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
-                            <label htmlFor="Checkbox" className="form-check-label">  Raw Material: </label>
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
+                            <label htmlFor="" className="form-check-label">  Raw Material: </label>
                         </div>
                         <input type="text"  placeholder="Raw Material" className="form-control"/>
              </div>
              <div className="col-md-4 mb-3">
-                      <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="Checkbox" />
-                            <label htmlFor="Checkbox" className="form-check-label"> Finish Good: </label>
+                      <div className="">
+                            {/* <input type="checkbox" className="form-check-input" id="Checkbox" /> */}
+                            <label htmlFor="" className="form-check-label"> Finish Good: </label>
                         </div>
                         <input type="text"  placeholder="FG Item Name" className="form-control"/>
              </div>

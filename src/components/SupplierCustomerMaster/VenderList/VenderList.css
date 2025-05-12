@@ -105,6 +105,34 @@ th {
   padding: 0.3rem;
 }
 
+
+.pagination-container {
+  margin-top: 20px;
+}
+
+.pagination .page-item {
+  cursor: pointer;
+}
+
+.pagination .page-item.active .page-link {
+  background-color:   #16bfff;
+  border: none; 
+  border-radius: none;
+  font-size: 12px;
+  color: white;
+}
+
+.pagination .page-link {
+  color: #000;
+  font-size: 12px;
+}
+
+.pagination .page-link:hover {
+  background-color: #16bfff;
+  color: white;
+}
+
+
 /* Mobile devices (up to 576px) */
 @media (max-width: 576px) {
   .header-title {

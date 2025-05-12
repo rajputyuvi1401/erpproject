@@ -232,13 +232,13 @@ const PriceEntry = () => {
                             <div className="col-md-8">
                               <div className="row">
                                 <div className="col-md-6">
-                                  <div className="form-check">
-                                    <input
+                                  <div className="">
+                                    {/* <input
                                       className="form-check-input"
                                       type="checkbox"
                                       value=""
                                       id="activeItemCheckbox"
-                                    />
+                                    /> */}
                                     <label
                                       className="form-check-label"
                                       htmlFor="activeItemCheckbox"
@@ -248,13 +248,13 @@ const PriceEntry = () => {
                                   </div>
                                 </div>
                                 <div className="col-md-6">
-                                  <div className="form-check">
-                                    <input
+                                  <div className="">
+                                    {/* <input
                                       className="form-check-input"
                                       type="checkbox"
                                       value=""
                                       id="companyHeaderCheckbox"
-                                    />
+                                    /> */}
                                     <label
                                       className="form-check-label"
                                       htmlFor="companyHeaderCheckbox"
@@ -276,13 +276,13 @@ const PriceEntry = () => {
                         <div className="col-md-3">
                           <div className="row text-start">
                             <div className="col-md-4">
-                              <div className="form-check">
-                                <input
+                              <div className="">
+                                {/* <input
                                   className="form-check-input"
                                   type="checkbox"
                                   value=""
                                   id="flexCheckDefault"
-                                />
+                                /> */}
                                 <label
                                   className="form-check-label"
                                   htmlFor="flexCheckDefault"

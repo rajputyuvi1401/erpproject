@@ -46,19 +46,21 @@ const NewHotInspection = () => {
                         <h5 className="header-title"> Hot Inspection </h5>
                       </div>
 
-                      <div className="col-md-1">
-                            <div class="checkbox-style">
-                                <input type="radio" id="option3" name="options" value="option3" />
-                                <label htmlFor="">  &nbsp; &nbsp;Item</label>
-                            </div>
-                     </div>
+                      <div className="col-md-1 d-flex justify-content-center align-items-center">
+                        <div className="checkbox-style d-flex align-items-center">
+                          <input type="radio" id="option3" name="options" value="option3" />
+                          <label htmlFor="option3" className="ms-2">Item</label>
+                        </div>
+                      </div>
 
-                     <div className="col-md-1">
-                            <div class="checkbox-style">
-                               <input type="radio" className="mt-2" id="option3" name="options" value="option3" />
-                               <label htmlFor=""> &nbsp;WorkOrder</label>
-                            </div>
-                     </div>
+
+                      <div className="col-md-1 d-flex justify-content-center align-items-center">
+                        <div className="checkbox-style d-flex align-items-center">
+                          <input type="radio" id="option3" name="options" value="option3" />
+                          <label htmlFor="option3" className="ms-2">WorkOrder</label>
+                        </div>
+                      </div>
+
                         
                         <div className="col-md-1">
                                 <input type="text" placeholder="" className="form-control" />
@@ -167,7 +169,6 @@ const NewHotInspection = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {/* Example Row */}
                           <tr>
                             
                             <td><input type="text" className="form-control" placeholder="Enter." /></td>
@@ -225,7 +226,6 @@ const NewHotInspection = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {/* Example Row */}
                         <tr>
                           <td>1</td>
                             <td></td>
@@ -247,12 +247,9 @@ const NewHotInspection = () => {
                             <td></td>
                             <td></td>
                           <td>
-                            <button className="vndrbtn">
                               <i className="fas fa-eye"></i>
-                            </button>
                           </td>
                         </tr>
-                        {/* Additional rows can be added dynamically here */}
                       </tbody>
                     </table>
                     </div>

@@ -33,11 +33,11 @@ const DashboardPermission = () => {
                         toggleSideNav={toggleSideNav}
                     />
                     <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                        <div className="dashboardp mt-5">
-                            <div className="dash-header mb-4 text-start">
+                        <div className="dashboardp">
+                            <div className="dash-header mb-2 text-start">
                                 <h5 className="header-title">Dashboard Permission</h5>
                             </div>
-
+                        </div>
                             <div className="dash-main text-start">
                                 <div className="row mb-3">
                                     <div className="col-md-1 col-sm-3">
@@ -60,8 +60,8 @@ const DashboardPermission = () => {
                                         <label>Enable All Permissions</label>
                                     </div>
                                     <div className="col-md-5 col-sm-12 text-end">
-                                        <button className="btn btn-success me-2">Save</button>
-                                        <button className="btn btn-danger">Cancel</button>
+                                        <button className=" vndrbtn  btn-success me-2">Save</button>
+                                        <button className=" vndrbtn  btn-danger">Cancel</button>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@ const DashboardPermission = () => {
                                 </div>
                             </div>
 
-                        </div>
+                        
                     </main>
                 </div>
             </div>

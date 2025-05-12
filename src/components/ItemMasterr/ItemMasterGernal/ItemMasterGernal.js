@@ -551,6 +551,7 @@ const ItemMasterGernal = () => {
                 <div className="axcv">
                   <ToastContainer />
                   <div className="top-but3-header mb-4 text-start">
+
                     <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">Item List</h5>
@@ -562,7 +563,12 @@ const ItemMasterGernal = () => {
                           </label>
                           <input type="text" id="input" className="me-2" />
                           <button className="vndrbtn me-2">Copy Item</button>
-                          <button className="vndrbtn me-2">
+                          <button
+                            type="button"
+                            className="vndrbtn me-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#sectionGroupModal"
+                          >
                             Section Group Master
                           </button>
                           <Link to={"/item-master"} className="vndrbtn">
@@ -571,12 +577,90 @@ const ItemMasterGernal = () => {
                         </div>
                       </div>
                     </div>
+                    
                   </div>
                   
+                  {/* Popup Button Form */}
+
+                  <div
+                    className="modal fade"
+                    id="sectionGroupModal"
+                    tabIndex="-1"
+                    aria-labelledby="sectionGroupModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div className="modal-dialog">
+                      <div className="modal-content" style={{marginTop:"90px"}}>
+                        
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="sectionGroupModalLabel">
+                            Add New Section Group
+                          </h5>
+                          <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          >X</button>
+                        </div>
+
+                        <div className="modal-body">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="sectionGroupModalLabel">
+                            Item Section Group Master
+                          </h5>
+                        </div>
+                          <form className="mt-3">
+                            <div className="mb-3">
+                              <div className="row">
+                                <div className="col-md-3"> 
+                                   <label htmlFor="groupName" className="form-label">
+                                      Section Name :
+                                    </label>
+                                </div>
+                                <div className="col-md-5">
+                                    <input
+                                    type="text"
+                                    
+                                    className="form-control"
+                                    id="groupName"
+                                    />
+                                </div>
+                                <div className="col-md-2 mt-1">
+                                    <button type="submit" className="vndrbtn btn-primary">
+                                    Save
+                                  </button>
+                                </div>    
+                              </div>
+                            </div>
+
+                            <div className="text-end">
+                                <table>
+                                   <thead>
+                                      <tr>
+                                         <th>No Data Fount !</th>
+                                      </tr>
+                                   </thead>
+                                   <tbody>
+                                      <tr>
+                                         <td></td>
+                                      </tr>   
+                                   </tbody>
+                                </table>
+                            </div>
+                          </form>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="itemmastergernal mt-1">
                     <div className="container-fluid">
+
                       <div className="row">
                         <div className="col-md-12">
+
                           <ul
                             className="nav nav-pills mb-3"
                             id="pills-tab"
@@ -639,7 +723,9 @@ const ItemMasterGernal = () => {
                               </button>
                             </li>
                           </ul>
+
                           <div className="tab-content" id="pills-tabContent" style={{border:"none"}}>
+
                             <div
                               className="tab-pane fade show active"
                               id="pills-home"
@@ -650,8 +736,11 @@ const ItemMasterGernal = () => {
                               <div className="container-fluid">
                                 <div className="gerneral">
                                   <div className="container-fluid">
+
                                     <form>
+
                                       <div className="row">
+
                                         <div className="col-md-4">
                                           <div className="row text-start">
                                             <div className="row mb-3">
@@ -1207,6 +1296,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                           </div>
                                         </div>
+
                                         <div className="col-md-4">
                                           <div className="row text-start">
                                             <div className="row mb-3">
@@ -1836,6 +1926,7 @@ const ItemMasterGernal = () => {
                                             </div> */}
                                           </div>
                                         </div>
+
                                         <div className="col-md-4">
                                           <div className="row text-start">
                                             <div className="row mb-3">
@@ -2355,6 +2446,7 @@ const ItemMasterGernal = () => {
                                             </div>
                                           </div>
                                         </div>
+
                                       </div>
 
                                       <div className="row">
@@ -2430,6 +2522,7 @@ const ItemMasterGernal = () => {
                                       </div>
 
                                     </form>
+
                                   </div>
                                 </div>
                               </div>
@@ -2501,7 +2594,7 @@ const ItemMasterGernal = () => {
                                       </div>
                                     </div>
                                   </div>
-                                )}
+                              )}
 
                               {showNewCardUnit && (
                                 <div className="new-card-overlay">
@@ -2906,6 +2999,7 @@ const ItemMasterGernal = () => {
                             >
                               <Data2 />
                             </div>
+
                             <div
                               className="tab-pane fade"
                               id="pills-contact"
@@ -2915,6 +3009,7 @@ const ItemMasterGernal = () => {
                             >
                               <Technical />
                             </div>
+
                             <div
                               className="tab-pane fade"
                               id="pills-about"
@@ -2924,11 +3019,15 @@ const ItemMasterGernal = () => {
                             >
                               <Npd />
                             </div>
+
                           </div>
+
                         </div>
                       </div>
+
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

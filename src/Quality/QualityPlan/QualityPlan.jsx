@@ -91,7 +91,7 @@ const QualityPlan = () => {
                           Clear
                       </button> 
                       </div>
-                      <div className="col-sm-2 col-md-2 col-lg-1" >
+                      <div className="col-sm-2 col-md-2 col-lg-2" >
                       <button type="button" className="vndrbtn w-100" style={{marginTop:"22px"}}>
                           View All
                       </button> 

@@ -14,7 +14,9 @@ import {
   deleteMaterialGernal,
 } from "../../Service/StoreApi.jsx";
 import { toast, ToastContainer } from "react-toastify";
+
 const MaterialIssueGernal = () => {
+
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
   const toggleSideNav = () => {
@@ -35,12 +37,13 @@ const MaterialIssueGernal = () => {
   const [showModal2, setShowModal2] = useState(false);
 
   const handleModalClose1 = () => setShowModal1(false);
-  const handleModalOpen1 = () => setShowModal1(true);
+  // const handleModalOpen1 = () => setShowModal1(true);
 
   const handleModalClose2 = () => setShowModal2(false);
-  const handleModalOpen2 = () => setShowModal2(true);
+  // const handleModalOpen2 = () => setShowModal2(true);
 
   const [materials, setMaterials] = useState([]);
+  
   const [formData, setFormData] = useState({
     Item: "",
     ItemDescription: "",
@@ -54,6 +57,7 @@ const MaterialIssueGernal = () => {
     MrnNo: "",
     Employee: "",
   });
+
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
 
@@ -150,6 +154,7 @@ const MaterialIssueGernal = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
+
                 <div className="NewMaterialGernal-header">
                   <div className="row flex-wrap align-items-center">
                     <div className="col-md-3">
@@ -215,6 +220,7 @@ const MaterialIssueGernal = () => {
                 </div>
 
                 <div className="NewMaterialGernal-main mt-2">
+
                   <div className="container-fluid text-start">
                     <div className="row mt-4">
                       <div className="col-md-12">
@@ -230,7 +236,7 @@ const MaterialIssueGernal = () => {
                                   <th>Stock Status</th>
                                   <th>
                                     Machine
-                                    <div className="form-check d-inline-block">
+                                    {/* <div className="form-check d-inline-block">
                                       <input
                                         type="checkbox"
                                         className="form-check-input"
@@ -242,8 +248,8 @@ const MaterialIssueGernal = () => {
                                       >
                                         Master
                                       </label>
-                                    </div>
-                                    <div className="form-check d-inline-block ms-2">
+                                    </div> */}
+                                    {/* <div className="form-check d-inline-block ms-2">
                                       <input
                                         type="checkbox"
                                         className="form-check-input"
@@ -255,7 +261,7 @@ const MaterialIssueGernal = () => {
                                       >
                                         Other
                                       </label>
-                                    </div>
+                                    </div> */}
                                   </th>
                                   <th>Store Name</th>
                                   <th>Qty / Unit</th>
@@ -263,7 +269,7 @@ const MaterialIssueGernal = () => {
                                   <th>MRN No.</th>
                                   <th>
                                     Employee
-                                    <div className="form-check d-inline-block">
+                                    {/* <div className="form-check d-inline-block">
                                       <input
                                         type="checkbox"
                                         className="form-check-input"
@@ -275,8 +281,8 @@ const MaterialIssueGernal = () => {
                                       >
                                         Master
                                       </label>
-                                    </div>
-                                    <div className="form-check d-inline-block ms-2">
+                                    </div> */}
+                                    {/* <div className="form-check d-inline-block ms-2">
                                       <input
                                         type="checkbox"
                                         className="form-check-input"
@@ -288,7 +294,7 @@ const MaterialIssueGernal = () => {
                                       >
                                         Other
                                       </label>
-                                    </div>
+                                    </div> */}
                                   </th>
                                   <th>Action</th>
                                 </tr>
@@ -426,6 +432,7 @@ const MaterialIssueGernal = () => {
                   </div>
 
                   <div className="NewMaterialGernaltable">
+
                     <div className="container-fluid mt-2 text-start">
                       <div className="table-responsive">
                         <table className="table table-bordered">
@@ -439,23 +446,23 @@ const MaterialIssueGernal = () => {
 
                               <th>
                                 Machine{" "}
-                                <button
+                                {/* <button
                                   className="vndrbtn"
                                   onClick={handleModalOpen1}
                                 >
                                   Add
-                                </button>
+                                </button> */}
                               </th>
                               <th>Nature of Work</th>
                               <th>MRN No: </th>
                               <th>
                                 Employee:{" "}
-                                <button
+                                {/* <button
                                   className="vndrbtn"
                                   onClick={handleModalOpen2}
                                 >
                                   See All
-                                </button>
+                                </button> */}
                               </th>
 
                               <th>Edit</th>
@@ -546,6 +553,7 @@ const MaterialIssueGernal = () => {
                         </div>
                       </div>
                     </div>
+
                     <div
                       className={`modal fade ${
                         showModal2 ? "show d-block" : ""
@@ -584,6 +592,7 @@ const MaterialIssueGernal = () => {
                         </div>
                       </div>
                     </div>
+
                   </div>
 
                   <div className="NewMaterialGernalFooter">
@@ -621,7 +630,7 @@ const MaterialIssueGernal = () => {
                               <input type="date" className="form-control" />
                             </div>
                           </div>
-                        </div>
+                        </div> 
 
                         {/* M Issue Time */}
                         <div className="col-md-3">
@@ -660,11 +669,13 @@ const MaterialIssueGernal = () => {
                         <div className="col-md-1 d-flex justify-content-end align-items-center">
                           <button className="vndrbtn w-100">Clear</button>
                         </div>
+
                       </div>
                     </div>
                   </div>
 
                 </div>
+
               </main>
             </div>
           </div>

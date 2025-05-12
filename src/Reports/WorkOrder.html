@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Order Form</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            font-size: 12px;
+        }
+
+        .container {
+            width: 210mm;
+            height: auto;
+            margin: 20px auto;
+            padding: 10mm;
+            position: relative;
+            page-break-after: always;
+            border: 2px solid #000;
+        }
+
+        .header {
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+        }
+
+        .company-info {
+            margin-bottom: 10px;
+            border-bottom: 2px solid black;
+        }
+
+        .manufacturer-text {
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .product-list {
+            line-height: 1.2;
+        }
+
+        .address p {
+            line-height: 1.2;
+            margin-bottom: 2px;
+            text-align: center;
+        }
+
+        .order-title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+            margin: 12px 0;
+        }
+
+        .order-details {
+            margin-bottom: 10px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .detail-item {
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+        }
+
+        .detail-item label {
+            font-weight: bold;
+            margin-right: 3px;
+            white-space: nowrap;
+        }
+
+        .detail-item span {
+            min-height: 14px;
+            flex-grow: 1;
+            padding: 0 3px;
+        }
+
+        table th, table td {
+            font-size: 11px;
+        }
+
+        [contenteditable="true"]:focus {
+            outline: 1px solid #2196F3;
+            background-color: #f0f8ff;
+        }
+
+        @media print {
+            .container {
+                width: 100%;
+                height: 100%;
+                padding: 5mm;
+                border: none;
+            }
+
+            .actions {
+                display: none;
+            }
+        }
+
+        @media (max-width: 210mm) {
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .detail-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .actions {
+                position: static;
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="row company-info">
+                <div class="col-6"><h1>Produlink</h1></div>
+                <div class="col-6">
+                    <div class="pb-2">
+                        <p class="fw-bold mb-1">Manufacturers of</p>
+                        <p class="mb-0">
+                            • Gate • Globe • Check Valves in G.M.,• C.I.,• C.S. (IBR/Non IBR)<br>
+                            • Gauge Glass Valves • Blow Down Valves • Fusible Plug<br>
+                            • Ferrous & Non-Ferrous Castings • Boiler Casting
+                        </p>
+                    </div>
+                </div>
+            </div>
+        
+        
+        <div class="address">
+            <p><strong>Regd. Office & Factory :</strong> W –S –BLOCK, M.I.D.C., BHOSARI, PUNE 411026.</p>
+            <p> <b>Contact No :-</b>  9370647462</p>
+            <p><b>Tel. :-</b> (020) 27111138, <b>Email :-</b> caspro@gmail.com <b>Web :-</b> www.casprogroup.com</p>
+        </div>
+        <h1 class="order-title"> DISPATCH DETAILS </h1>
+        </div>
+
+        <div class="order-details mb-3">
+            <div class="row mb-2">
+                <div class="col-12">
+                    <strong>Unit :   <span>Unit-1</span> </strong> 
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="col-md-12 col-sm-6 col-12">
+                    <label class=" ">Dispatch Date :</label>
+                    <span> 17/01/2019</span>
+                </div>
+                <div class="col-md-12 col-sm-6 col-12">
+                    <label class=" "> Customer Name : </label>
+                    <span>KOtkar</span>
+                </div>
+                <div class="col-md-4 col-sm-6 col-12">
+                    <label class=" ">Contact No:</label>
+                    <span>2</span>
+                </div>
+                <div class="col-md-4 col-sm-6 col-12">
+                    <label class=" ">Vendor Code:</label>
+                    <span>4</span>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-12">
+                    <label class=" ">Email Id:</label>
+                    <span>0</span>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-12">
+                    <label class=" "> Transporter:</label>
+                    <span>ljjkljkljklj</span>
+                </div>
+                <div class="col-md-4 col-sm-6 col-12">
+                    <label class=" "> LR No :</label>
+                    <span>Klj</span>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-12">
+                    <label class=" ">  Vehicle No : :</label>
+                    <span>Klj</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12 col-6 col-4">
+                <p> We are pleased to inform you that we have dispatched the following material to you . You are finally request to confirm the 
+                    safe receipt of the</p>
+            </div>
+        </div>
+
+        <div class="items-table">
+            <table class="table table-bordered table-sm">
+                <thead class="table-light">
+                    <tr>
+                        <th>Sr.</th>
+                        <th>Invoice No</th>
+                        <th>Invoice Date</th>
+                        <th> Item Particular</th>
+                        <th> Invoice Qty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> 1</td>
+                        <td> 90111242</td>
+                        <td> 07/01/2019</td>
+                        <td>001127628R2
+                            LIFTARM</td>
+                        <td>3 NOS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle (optional if using dropdowns or modals) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const editableCells = document.querySelectorAll('tbody td:not(:first-child), .detail-item span');
+            editableCells.forEach(cell => {
+                cell.setAttribute('contenteditable', 'true');
+                cell.addEventListener('focus', function () {
+                    this.classList.add('editing');
+                });
+                cell.addEventListener('blur', function () {
+                    this.classList.remove('editing');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
