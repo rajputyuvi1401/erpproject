@@ -33,7 +33,8 @@ const BackDated = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="backdated">
-                  <div className="back-header mb-2 text-start">
+                  
+                  <div className="backdated-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">
@@ -47,7 +48,8 @@ const BackDated = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="back-main text-start">
+
+                  <div className="backdatedmain text-start">
                     <div className="row mb-3 align-items-center">
                       <div className="col-md-2">
                         <label>Select Module:</label>
@@ -85,7 +87,8 @@ const BackDated = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="back-table text-start">
+
+                  <div className="backdatedtable text-start">
                     <div className="table-responsive">
                       <table className="table table-bordered table-hover">
                         <thead className="table-light">
@@ -110,6 +113,7 @@ const BackDated = () => {
                       </table>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

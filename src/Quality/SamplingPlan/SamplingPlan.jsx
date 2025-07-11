@@ -94,7 +94,7 @@ const SamplingPlan = () => {
                       </div>
 
                     <div className="col-6 col-md-1">
-                    <button type="button" className="vndrbtn w-100" style={{marginTop:"26px"}}>
+                    <button type="button" className="vndrbtn w-100" style={{marginTop:"22px"}}>
                         Save
                     </button> 
                     </div>

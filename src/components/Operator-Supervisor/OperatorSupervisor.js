@@ -94,7 +94,7 @@ const OperatorSupervisor = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="OperatorSupervisor1">
                   <div className="Operator">
-                  <div className="Operator-header mb-4 text-start">
+                  <div className="Operator-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-5">
                         <h5 className="header-title">

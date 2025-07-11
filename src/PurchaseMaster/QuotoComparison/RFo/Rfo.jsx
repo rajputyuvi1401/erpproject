@@ -4,6 +4,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import "./Rfo.css";
+import { Link } from "react-router-dom";
 const Rfo = () => {
     
     const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -42,7 +43,7 @@ const Rfo = () => {
                   </div>
                   <div className="col-md-8 text-end">
                    
-                        <button className="vndrbtn">RFO New</button>
+                        <Link to={"/RFONew"} className="vndrbtn">RFO New</Link>
                      
                   </div>
                 </div>

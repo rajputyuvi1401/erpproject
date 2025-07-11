@@ -4,14 +4,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import './FinancialMonth.css';
-
-
 import { FaEdit,FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
-
-
-
 
 const FinancialMonth = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -37,26 +31,20 @@ const FinancialMonth = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="FinancialMon mt-5">
-                  <div className="month-header mb-4 text-start">
+                <div className="FinancialMon">
+                  <div className="Financialmonth-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Month Master</h5>
                       </div>
                       <div className="col-md-8 text-end">
-
-                        <Link type="button" className="btn" to='/AddQuater'>Add Quarter</Link>
-                        
-
-                        <Link type="button" className="btn" to='/Companysetup'>Company Info</Link>
-
-
-                       
+                        <Link type="button" className="vndrbtn" to='/AddQuater'>Add Quarter</Link>
+                        <Link type="button" className="vndrbtn" to='/Companysetup'>Company Info</Link>
                       </div>
                     </div>
                   </div>
 
-                  <div className="table-responsive">
+                  <div className="Financialmonthtable table-responsive">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -84,24 +72,17 @@ const FinancialMonth = () => {
                           <td>21</td>
                           <td>100</td>
                           <td>
-                            <button className="btn btn-link">
-
                               <FaEdit/>
-
-                            </button>
                           </td>
                           <td>
-                            <button className="btn btn-link text-danger">
-
                              <FaTrash/>
-
-                            </button>
                           </td>
                         </tr>
                         {/* More rows can be added here */}
                       </tbody>
                     </table>
                   </div>
+
                 </div>
               </main>
             </div>

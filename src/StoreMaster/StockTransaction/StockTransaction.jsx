@@ -36,15 +36,15 @@ const StockTransaction = () => {
                   </div>
   
                   <div className="col-md-10 text-end">
-                    <div className="row justify-content-end">
-                      <div className="col-md-9 d-flex align-items-end">
+                    {/* <div className="row justify-content-end">
+                      <div className="col-md-9 d-flex align-items-end"> */}
                         <Link className="vndrbtn">[Pending Auth]:</Link>
                         <Link className="vndrbtn" to="/ShopFloor">ShopFloor -to-Store</Link>
                         <Link className="vndrbtn" to="/ShopFloorStock">All Shop Floor Stock</Link>
                         <Link className="vndrbtn">Export To Excel</Link>
-                        <Link className="vndrbtn">Stock Transfer Query</Link>
-                      </div>
-                    </div>
+                        <Link className="vndrbtn" to="/StockTransferQuery">Stock Transfer Query</Link>
+                      {/* </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

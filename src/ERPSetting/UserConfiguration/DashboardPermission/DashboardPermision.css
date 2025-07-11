@@ -1,53 +1,179 @@
-/* Global settings */
-.dashboardp {
-    padding: 20px;
-    background-color: #f8f9fa;
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
-.dash-header .header-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-   
+.DashboardPermission {
+  width: 100%;
+  height: 100vh;
 }
 
-.dash-main {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+.DashboardPermission-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
 }
 
-.dashboardp .table {
+.DashboardPermissionmain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.DashboardPermissionbottom {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    padding: 10px 15px; 
+  }
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
+}
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.DashboardPermissiontable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
     width: 100%;
-    margin-bottom: 1rem;
-    color: #333;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
+  }
 }
 
-.dashboardp .table-hover tbody tr:hover {
-    background-color: #f1f1f1;
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
 }
 
-.dashboardp .form-check-input {
-    width: 20px;
-    height: 20px;
-}
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
 
-.dashboardp .btn {
-    margin-top: 10px;
-}
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
- .dashboardp   .table-responsive {
-        overflow-x: auto;
-    }
-
-    .dash-main .row {
-        flex-direction: column;
-    }
-
- .dashboardp   .btn {
-        width: 100%;
-        margin-top: 10px;
-    }
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
 }

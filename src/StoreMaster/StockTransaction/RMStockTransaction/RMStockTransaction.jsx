@@ -38,26 +38,26 @@ const RMStockTransaction = () => {
                       </h5>
                     </div>
 
-                    <div className="col-md-9 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-md-8 d-flex align-items-end">
+                    <div className="col-md-8 text-end">
+                      {/* <div className="row justify-content-end">
+                        <div className="col-md-12 d-flex align-items-end text-end"> */}
                         
-                         
                           <Link className="vndrbtn">Export To Excel</Link>
                         
                           <Link className="vndrbtn" to="/RMTOtherGroup">RM To Other Group</Link>
 
                           <Link className="vndrbtn" to="/RMToTransaction" >RM To RM Transaction</Link>
-
-
+                      {/* 
                         </div>
-                      </div>
+                      </div> */}
+
                     </div>
                   </div>
                 </div>
-                <div className="RMStock-main">
+
+                <div className="RMStock-main mt-3">
                   <div className="container-fluid">
-                    <div className="row mt-2">
+                    <div className="row mt-3">
                       <div className="col-md-12">
                         <form className="row g-3 text-start">
 

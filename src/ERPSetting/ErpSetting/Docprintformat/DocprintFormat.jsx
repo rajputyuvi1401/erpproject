@@ -33,8 +33,8 @@ const DocprintFormat = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="DocPrint mt-5">
-                  <div className="DataSeries-header mb-4 text-start">
+                <div className="DocPrint">
+                  <div className="DocprintFormat-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">
@@ -42,22 +42,18 @@ const DocprintFormat = () => {
                         </h5>
                       </div>
                       <div className="col-md-6 text-end">
-                        <Link  type="button" to="/DocCompanySetting"
-                          className="btn">Setting History</Link>
-                          <button  type="button"
-                          className="btn">Print Company Info</button>
-                        <Link
-                          type="button"
-                          className="btn"
-                          to="/Companysetup"
-                        >
-                          Company Info
-                        </Link>
+
+                        <Link  type="button" to="/DocCompanySetting" className="vndrbtn"> Setting History </Link>
+
+                          <button  type="button" className="vndrbtn"> Print Company Info </button>
+
+                        <Link type="button" className="vndrbtn" to="/Companysetup"> Company Info  </Link>
+
                       </div>
                     </div>
                   </div>
 
-                  <div className="filter-section mb-3 p-4">
+                  <div className="DocprintFormatmain filter-section mb-2 p-4">
                     <div className="row text-start">
                       <div className="col-md-2">
                         <label>Select Module</label>
@@ -77,14 +73,14 @@ const DocprintFormat = () => {
                       </div>
                      
                       <div className="col-md-2 mt-4">
-                      <button type="button" className="btn">Search</button>
-                        <button type="button" className="btn">View All</button>
+                      <button type="button" className="vndrbtn">Search</button>
+                        <button type="button" className="vndrbtn">View All</button>
                       </div>
 
                     </div>
                   </div>
 
-                  <div className="table-section">
+                  <div className="DocprintFormattable mt-2 table-section">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>
@@ -106,7 +102,7 @@ const DocprintFormat = () => {
                               </select>
                             </td>
                             <td>
-                              <button className="btn btn-primary btn-sm">Update</button>
+                              <button className="vndrbtn btn-primary btn-sm">Update</button>
                             </td>
                           </tr>
                           <tr>
@@ -119,7 +115,7 @@ const DocprintFormat = () => {
                               </select>
                             </td>
                             <td>
-                              <button className="btn btn-primary btn-sm">Update</button>
+                              <button className="vndrbtn btn-primary btn-sm">Update</button>
                             </td>
                           </tr>
                           <tr>
@@ -132,7 +128,7 @@ const DocprintFormat = () => {
                               </select>
                             </td>
                             <td>
-                              <button className="btn btn-primary btn-sm">Update</button>
+                              <button className="vndrbtn btn-primary btn-sm">Update</button>
                             </td>
                           </tr>
                           {/* Add more rows as needed */}
@@ -140,6 +136,7 @@ const DocprintFormat = () => {
                       </table>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

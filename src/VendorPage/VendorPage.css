@@ -9,18 +9,15 @@ body {
   background-color: rgb(241, 242, 244); 
 }
 
-
-
 /* Vendor Section */
 .Vendor {
- margin-top: 20px;
+ margin-top: 3px;
 }
 
 .Vender-header {
   background-color: #f8f9fa; /* Light background for header */
   border-bottom: 1px solid #dee2e6; /* Border for header */
   padding: 10px 15px; /* Padding around header */
-  border-radius: 5px;
 }
 
 .top-but {
@@ -35,8 +32,6 @@ body {
   border-radius: 10px;
 }
 
-
-
 .VendorGeneral,
 .Vendordata2,
 .VendorLogoImages,
@@ -46,29 +41,14 @@ body {
 .einvoice {
   background-color: white;
   padding: 20px;
-  margin: 10px 0;
-  border-radius: 10px;
+  margin: 5px 0;
+  /* border-radius: 10px; */
   text-align: start;
-}
-
-.gernal-update,
-.date-update {
-  border: none;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: blueviolet;
-  color: white;
-  cursor: pointer;
-}
-
-.gernal-update:hover,
-.date-update:hover {
-  background-color: rgba(0, 0, 255, 0.7);
 }
 
 /* Navbar Tabs */
 #pills-tab {
-  margin-top: 20px;
+  margin-top: 10px;
   text-align: start;
   border: none;
 }
@@ -86,7 +66,7 @@ body {
 }
 
 .nav-pills .nav-link.active {
-  background-color: blueviolet !important;
+  background-color: rgb(79, 90, 241) !important;
   color: white !important;
   border: none;
 }
@@ -111,21 +91,17 @@ body {
 }
 
 @media (max-width: 768px) {
- 
-
   .Vendorpage1 {
     margin-top: 10px;
     height: auto;
   }
  
-   
   .top-but {
     margin-left: 0;
     text-align: center;
     /* flex-direction: column; */
     align-items: center;
-  }
-  
+  } 
 }
 
 @media (max-width: 576px) {
@@ -178,11 +154,15 @@ body {
 /* Form Validation */
 .is-invalid {
   border-color: #dc3545;
+  font-size: 12px;
 }
 
 .invalid-feedback {
   display: block;
   color: #dc3545;
 }
-
+.text-danger
+{
+  font-size: 12px;
+}
 

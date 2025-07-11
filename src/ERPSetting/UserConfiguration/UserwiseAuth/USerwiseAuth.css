@@ -1,99 +1,179 @@
-/* General Styles */
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
 .USerwiseAuth {
-    margin-top: 20px;
+  width: 100%;
+  height: 100vh;
+}
+
+.USerwiseAuth-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
+}
+
+.USerwiseAuthmain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.USerwiseAuthbottom {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    padding: 10px 15px; 
   }
-  
-  .USerwiseAuth .header-title {
-    font-size: 1.5rem;
-    font-weight: 600;
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
+}
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.USerwiseAuthtable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
   }
-  
-  .Auth-main .form-control,
-  .Auth-main .form-select {
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
     width: 100%;
   }
-  
-  .Auth-table .table {
-    width: 100%;
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
   }
-  
-  /* Shifting main content when the side navigation is open */
-  .main-content {
-    transition: margin-left 0.3s ease;
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
   }
-  
-  .main-content.shifted {
-    margin-left: 250px; /* Adjust based on the side nav width */
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
   }
-  
-  /* Responsive Styling for Tablets and Mobile Devices */
-  @media (max-width: 991px) {
-    .main-content {
-      margin-left: 0;
-    }
-  
-    .Auth-main .row {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .Auth-main .col-md-2, 
-    .Auth-main .col-md-1, 
-    .Auth-main .col-md-4 {
-      margin-bottom: 10px;
-    }
-  
-    .Auth-main .text-end {
-      text-align: start;
-      margin-bottom: 10px;
-    }
-  
-    .Auth-main .btn {
-      width: 100%;
-    }
-  
-    /* Table responsiveness */
-    .USerwiseAuth   .table-responsive {
-      overflow-x: auto;
-    }
-  
-    .USerwiseAuth   .table {
-      width: 100%;
-    }
-  
-    .USerwiseAuth   .table thead {
-      font-size: 0.9rem;
-    }
+
+  .vndrbtn {
+    padding: 5px 10px;
   }
-  
-  /* Mobile specific adjustments */
-  @media (max-width: 576px) {
-    .USerwiseAuth   .prod-header {
-      text-align: center;
-    }
-  
-    .Auth-main .col-sm-3, 
-    .Auth-main .col-sm-9 {
-      width: 100%;
-    }
-  
-    .Auth-main .row {
-      text-align: left;
-    }
-  
-    .USerwiseAuth    .table thead {
-      font-size: 0.8rem;
-    }
-  
-    .Auth-main .btn {
-      width: 100%;
-      text-align: center;
-    }
-  
-    /* Adjust input and select widths on mobile */
-    .USerwiseAuth    .form-control, 
-    .USerwiseAuth  .form-select {
-      width: 100%;
-    }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
   }
-  
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+}

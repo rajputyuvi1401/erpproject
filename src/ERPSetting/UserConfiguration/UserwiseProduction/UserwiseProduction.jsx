@@ -52,23 +52,23 @@ const UserwiseProduction = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Userproduction mt-5">
-                  <div className="prod-header mb-4 text-start">
+                <div className="Userproduction">
+                  <div className="UserWiseProduction-header mb-2 text-start">
                     <div className="row align-items-center">
-                      <div className="col-md-4">
+                      <div className="col-md-6">
                         <h5 className="header-title">
                           User Permission - Production Operation Wise
                         </h5>
                       </div>
-                      <div className="col-md-8 text-end">
-                        <button type="button" className="btn export-btn">
+                      <div className="col-md-6 text-end">
+                        <button type="button" className="vndrbtn">
                           Export To Excel
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="prod-main text-start">
+                  <div className="UserWiseProductionmain text-start">
                     <div className="row mb-3 align-items-center">
                       <div className="col-md-2">
                         <label>Select User:</label>
@@ -91,7 +91,7 @@ const UserwiseProduction = () => {
 
                     <div className="row">
                       <div className="col-md-4">
-                        <h6>Available Operations</h6>
+                        <h6 style={{fontSize:"14px"}}>Available Operations</h6>
                         <ul className="list-group">
                           {operations.map((operation, index) => (
                             <li key={index} className="list-group-item">
@@ -105,8 +105,9 @@ const UserwiseProduction = () => {
                           ))}
                         </ul>
                       </div>
+
                       <div className="col-md-4">
-                        <h6>Selected Operations</h6>
+                        <h6 style={{fontSize:"14px"}}>Selected Operations</h6>
                         <ul className="list-group">
                           {selectedOperations.length > 0 ? (
                             selectedOperations.map((op, index) => (
@@ -119,8 +120,9 @@ const UserwiseProduction = () => {
                           )}
                         </ul>
                       </div>
+                      
                       <div className="col-md-4">
-                        <h6>User List</h6>
+                        <h6 style={{fontSize:"14px"}}>User List</h6>
                         <ul className="list-group">
                           {selectedUser ? (
                             <li className="list-group-item">
@@ -132,6 +134,7 @@ const UserwiseProduction = () => {
                         </ul>
                       </div>
                     </div>
+
                   </div>
                 </div>
               </main>

@@ -47,12 +47,12 @@ const ContractorReport = () => {
                          
                      
                       <div className="col-md-6 text-end">
-                          <button type="button" className="vndrbtn">
+                          <Link type="button" className="vndrbtn"  to="/EfficiencyReport">
                             Efficiency Report
-                          </button>
-                          <button type="button" className="vndrbtn">
+                          </Link >
+                          <Link type="button" className="vndrbtn"  to="/ContractorPayReport">
                             Contractor Pay Report
-                          </button>
+                          </Link>
                           <Link type="button" className="vndrbtn" to="/ContractirList">
                             New Contractor Payment
                           </Link>
@@ -89,12 +89,12 @@ const ContractorReport = () => {
                           </select>
                         </div>
 
-                        <div className="col-6 col-md-1 mt-5">
+                        <div className="col-6 col-md-1 " style={{marginTop:"36px"}}>
                           <button type="button" className="vndrbtn">
                             Search
                           </button>
                         </div>
-                        <div className="col-6 col-md-2 mt-5">
+                        <div className="col-6 col-md-2" style={{marginTop:"36px"}}>
                           <button
                             type="button"
                             className="vndrbtn"
@@ -105,6 +105,7 @@ const ContractorReport = () => {
                       </div>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

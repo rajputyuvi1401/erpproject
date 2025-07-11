@@ -12,11 +12,8 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
       "email",
       "company_name",
       "short_name",
-     
       "password",
-
       "password2",
-
       "city",
       "country",
       "address",
@@ -26,9 +23,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
       "director_name",
       "pin_code",
       "state",
-     
       "state_no_numeric",
-      
       "VAT_TIN",
       "CST_TIN",
       "C_Excise_Range",
@@ -48,7 +43,6 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
       "ECC_No",
       "PAN_No",
       "CIN_NO",
-     
     ];
 
     requiredFields.forEach((field) => {
@@ -70,7 +64,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
       console.log("Validation failed:", errors);
     }
   };
-  
+
 
   return (
     <div className="Vendordata2">
@@ -215,7 +209,6 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
                     )}
                   </div>
                 </div>
-             
                 <div className="row mb-3">
                   <label className="col-sm-4 col-form-label">
                     Export House No:
@@ -255,6 +248,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
                   </div>
                 </div>
               </div>
+
               <div className="col-md-6">
                 <div className="row mb-3">
                   <label className="col-sm-4 col-form-label">
@@ -414,6 +408,7 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
                     )}
                   </div>
                 </div>
+                
                 <div className="row mb-3">
                   <label className="col-sm-4 col-form-label">ARN No:</label>
                   <div className="col-sm-8">
@@ -433,13 +428,15 @@ const Data2 = ({ formData = {}, handleChange, handleNextButtonClick1 }) => {
             </div>
           </div>
         </div>
+
         <div className="row">
           <div className="col-md-12 text-end">
-            <button type="button" className="date-update" onClick={handleNext}>
+            <button type="button" className=" vndrbtn" onClick={handleNext}>
               Next
             </button>
           </div>
         </div>
+        
       </form>
     </div>
   );

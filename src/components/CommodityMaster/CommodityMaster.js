@@ -27,7 +27,7 @@ const CommodityMaster = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="CommodityMaster1">
                 
-                  <div className="Commodity-header mb-4 text-start">
+                  <div className="Commodity-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">

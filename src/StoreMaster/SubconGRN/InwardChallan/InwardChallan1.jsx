@@ -119,7 +119,6 @@ const InwardChallan1 = () => {
           TcDate: "",
           Remark: "",
           DeliveryInTime: "",
-
           TotalItem: "",
           TotalQtyNo: "",
           TotalQtyKg: "",
@@ -150,14 +149,14 @@ const InwardChallan1 = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="StoreSubcon-header mb-4 text-start">
+                <div className="StoreSubcon-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-3">
                       <h5 className="header-title text-start">
                         57F4(InWard Challan)
                       </h5>
                     </div>
-                    <div className="col-md-6 mt-4">
+                    <div className="col-md-6 mt-2">
                       <div className="row mb-3">
                         <div className="col-md-2">
                           <select id="routingSelect" className="form-select">
@@ -210,9 +209,11 @@ const InwardChallan1 = () => {
                     </div>
                   </div>
                 </div>
+
                 <div className="StoreSubcon-main">
                   <div className="storesubcon-background">
                     <div className="container-fluid text-start">
+
                       <div className="row mt-4">
                         <div className="col-md-6">
                           <div className="row">
@@ -242,12 +243,13 @@ const InwardChallan1 = () => {
                           </div>
                         </div>
                       </div>
+
                       <div className="row mt-4">
                         <div className="col-md-6">
                           <div className="row">
                             <div className="col-md-4">Supplier Name:</div>
                             <div className="col-md-6">
-                              <input />
+                              <input type="text" className="form-control" placeholder="Name" />
                             </div>
                             <div className="col-md-2">
                               <button type="button" className="vndrbtn">
@@ -256,6 +258,7 @@ const InwardChallan1 = () => {
                             </div>
                           </div>
                         </div>
+
                         <div className="col-md-6">
                           <div className="row text-start">
                             <div className="col-md-4">Outward Challan:</div>
@@ -288,13 +291,15 @@ const InwardChallan1 = () => {
                             </div>
                           </div>
                         </div>
+
                       </div>
+
                       <div className="row mt-4 ">
                         <div className="col-md-6">
                           <div className="row ">
                             <div className="col-md-4">Item Name:</div>
                             <div className="col-md-6">
-                              <input />
+                              <input type="text" className="form-control" placeholder="Name" />
                             </div>
                             <div className="col-md-2">
                               <button type="button" className="vndrbtn">
@@ -306,7 +311,7 @@ const InwardChallan1 = () => {
                       </div>
                     </div>
 
-                    <div className="StoreSubconstatus mt-2">
+                    <div className="StoreSubconstatus mt-4">
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>
@@ -371,7 +376,9 @@ const InwardChallan1 = () => {
                       </button>
                     </li>
                   </ul>
+
                   <div className="tab-content" id="pills-tabContent">
+
                     <div
                       className="tab-pane fade show active"
                       id="pills-Gernal-Detail"
@@ -866,17 +873,13 @@ const InwardChallan1 = () => {
                         </div>
                       </div>
                     </div>
-                    <div
-                      className="tab-pane fade"
-                      id="pills-GST-Details"
-                      role="tabpanel"
-                      aria-labelledby="pills-GST-Details-tab"
-                      tabindex="0"
-                    >
+
+                    <div className="tab-pane fade" id="pills-GST-Details" role="tabpanel" aria-labelledby="pills-GST-Details-tab" tabindex="0" >
+
                       <div className="StoreSubconstatus1">
                         <div className="row ">
                           <div className="col-md-6 mt-4">
-                            <div className="table-responsive">
+                            <div className=" Purchaseordertable table-responsive">
                               <table className="table table-bordered">
                                 <thead>
                                   <tr>
@@ -1056,8 +1059,11 @@ const InwardChallan1 = () => {
                         </div>
                       </div>
                     </div>
+
                   </div>
+
                 </div>
+
               </main>
             </div>
           </div>

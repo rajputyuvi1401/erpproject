@@ -99,23 +99,24 @@ const PoList = () => {
                         <h5 className="header-title">Purchase Order List</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <Link type="button" className="vndrbtn">
+                        <Link type="button" to={"/RecentlyPoApprovalList"} className="vndrbtn">
                           Recently Po Approval List
                         </Link>
 
-                        <Link type="button" className="vndrbtn">
+                        <Link type="button" to={"/AMCPurchaseOrderList"} className="vndrbtn">
                           AMC Purchase Order List
                         </Link>
-                        <Link type="button" className="vndrbtn">
+
+                        <Link type="button" to={"/PurchaseQuerySummary"} className="vndrbtn">
                           Purchase Order - Query
                         </Link>
                       </div>
                     </div>
                   </div>
 
-                  <div className="POList-Main">
+                  <div className="POList-Main mt-3">
                     <div className="container-fluid">
-                      <div className="row g-3 text-start">
+                      <div className="row text-start">
                         {/* Plant */}
                         <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>Plant:</label>
@@ -161,7 +162,7 @@ const PoList = () => {
                         </div>
 
                         {/* Auth */}
-                        <div className="col-sm-6 col-md-3 col-lg-2">
+                        <div className="col-sm-6 col-md-3 col-lg-2 mt-2">
                           <label>Item Group:</label>
                           <select className="form-select" style={{ marginTop: "-2px" }}>
                             <option>Select All</option>
@@ -169,7 +170,7 @@ const PoList = () => {
                         </div>
 
                         {/* Item Name */}
-                        <div className="col-sm-6 col-md-3 col-lg-2">
+                        <div className="col-sm-6 col-md-3 col-lg-2 mt-2">
                           <label>Po Status:</label>
                           <select className="form-select" style={{ marginTop: "-2px" }}>
                             <option>Select All</option>
@@ -177,23 +178,24 @@ const PoList = () => {
                         </div>
 
                         {/* Wo No */}
-                        <div className="col-sm-6 col-md-3 col-lg-2">
+                        <div className="col-sm-6 col-md-3 col-lg-2 mt-2">
                           <label>All User:</label>
                           <select className="form-select" style={{ marginTop: "-2px" }}>
                             <option>Select All</option>
                           </select>
                         </div>
 
-                        <div className="col-sm-1 col-md-2" style={{ marginTop: "48px" }}>
+                        <div className="col-sm-1 col-md-2" style={{ marginTop: "26px" }}>
                           <button type="" className="vndrbtn">
                             Search
                           </button>
                         </div>
+
                       </div>
                     </div>
                   </div>
 
-                  <div className="table-responsive">
+                  <div className="PoListTable mt-3 table-responsive">
                     
                     <table className="table table-bordered table-striped">
                       <thead>
@@ -255,10 +257,11 @@ const PoList = () => {
                     </table>
 
                      {/* Pagination Controls */}
-                      <div className="row text-end">
+                      <div className="row text-center">
                         <div className="col-md">
                           <div className="pagination">
                             <button
+                            className="vndrbtn btn-sm btn-secondary me-2"
                               onClick={handlePrevPage}
                               disabled={currentPage === 1}
                             >
@@ -267,15 +270,17 @@ const PoList = () => {
 
                             {[...Array(totalPages).keys()].map((num) => (
                               <button
+                                
                                 key={num + 1}
                                 onClick={() => handlePageClick(num + 1)}
-                                className={currentPage === num + 1 ? "active" : ""}
+                                className={currentPage === num + 1 ? "active" : "vndrbtn"}
                               >
                                 {num + 1}
                               </button>
                             ))}
 
                             <button
+                              className="vndrbtn"
                               onClick={handleNextPage}
                               disabled={currentPage === totalPages}
                             >

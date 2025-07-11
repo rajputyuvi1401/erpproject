@@ -22,6 +22,13 @@ const WorkOrderList = () => {
     }
   }, [sideNavOpen]);
 
+ 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+
   return (
     <div className="PRoWorkorderListMaster">
       <div className="container-fluid">
@@ -35,20 +42,75 @@ const WorkOrderList = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="  ">
-                  <div className="PRoWorkorderList-header mb-4 text-start">
+                  <div className="PRoWorkorderList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Work Order List</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <Link type="button" className="vndrbtn" to="/AddQuater">
-                          Work Order Report
-                        </Link>
+                          
+                          <div style={{ position: 'relative', display: 'inline-block', marginLeft: '3px' }}>
+                            <button
+                              style={{ padding: '5px' }}
+                              className="BOMRouting vndrbtn"
+                              onClick={toggleDropdown}
+                            >
+                               Work Order Report  ▼
+                            </button>
 
+                            {dropdownOpen && (
+                              <ul
+                                className="dropdown-menu show"
+                                style={{
+                                  position: 'absolute',
+                                  top: '100%',
+                                  left: 0,
+                                  zIndex: 1000,
+                                  display: 'block',
+                                  minWidth: '10rem',
+                                  padding: '0.5rem 0',
+                                  margin: '0.125rem 0 0',
+                                  fontSize: '12px',
+                                  color: '#212529',
+                                  textAlign: 'left',
+                                  listStyle: 'none',
+                                  backgroundColor: '#fff',
+                                  backgroundClip: 'padding-box',
+                                }}
+                              >
+                                <li>
+                                  <Link className="vndrbtn dropdown-item" to={"/"}>
+                                    Export - Excel
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link className="vndrbtn dropdown-item" to={"/MaterialIssueReport"}>
+                                    Material Issue Report
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link className="vndrbtn dropdown-item" to={"/WorkOrderStatus"}>
+                                    Work Order - Status
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link className="vndrbtn dropdown-item" to={"/WorkOrderSummaryReport"} >
+                                     Work Order Summary - Report
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link className="vndrbtn dropdown-item"  to={"/"}>
+                                    ▼
+                                  </Link>
+                                </li>
+                              </ul>
+                            )}
+                          </div>
+                       
                         <Link
                           type="button"
                           className="vndrbtn"
-                          to="/Companysetup"
+                          to="/QueryWorkOrder"
                         >
                           Work Order - Query
                         </Link>
@@ -58,7 +120,7 @@ const WorkOrderList = () => {
 
                   <div className="PRoWorkorderList-Main mt-2">
                     <div className="container-fluid">
-                      <div className="row g-3 text-start">
+                      <div className="row text-start">
                         {/* From Date */}
                         <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>From:</label>
@@ -102,6 +164,9 @@ const WorkOrderList = () => {
                             <option>Select All</option>
                           </select>
                         </div>
+                      </div>
+
+                      <div className="row text-start mt-2">
 
                         {/* Auth */}
                         <div className="col-sm-6 col-md-2 col-lg-2">
@@ -129,24 +194,22 @@ const WorkOrderList = () => {
                           <input type="text" className="form-control" />
                         </div>
 
-                        <div className="col-sm-2 col-md-2 col-lg-2 mt-4">
+                        <div className="col-sm-2 col-md-2 col-lg-2 mt-1">
                           <label></label>
-                         <button
+                          <button
                             type="button"
                             className="vndrbtn w-100"
                           >
                             Search
                           </button>
-                          
+
                         </div>
 
-                     
-                       
                       </div>
                     </div>
                   </div>
 
-                  <div className=" PRoWorkorderListtable table-responsive mt-3">
+                  <div className=" PRoWorkorderListtable table-responsive mt-2">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -202,6 +265,7 @@ const WorkOrderList = () => {
                       </tbody>
                     </table>
                   </div>
+
                 </div>
               </main>
             </div>

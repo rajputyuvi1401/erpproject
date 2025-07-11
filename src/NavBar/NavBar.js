@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
-// import CropFreeIcon from "@mui/icons-material/CropFree";
-// import BedtimeIcon from "@mui/icons-material/Bedtime";
-// import GridViewIcon from "@mui/icons-material/GridView";
 import SettingsIcon from "@mui/icons-material/Settings";
-// import NotificationAddIcon from "@mui/icons-material/NotificationAdd";
-// import us from "../assets/us.jpg";
 import user from "../assets/user-1.jpg";
 
 const NavBar = ({ toggleSideNav }) => {
@@ -26,14 +21,11 @@ const NavBar = ({ toggleSideNav }) => {
   };
 
   // State for controlling dropdown visibility
-  // const [createDropdownOpen, setCreateDropdownOpen] = useState(false);
-  // const [megaDropdownOpen, setMegaDropdownOpen] = useState(false);
   const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);
 
   const toggleDropdown = (dropdownSetter) => {
     dropdownSetter((prev) => !prev);
   };
-
 
   useEffect(() => {
     // Bootstrap's JavaScript initialization (optional, only if Bootstrap JS is used)
@@ -47,29 +39,19 @@ const NavBar = ({ toggleSideNav }) => {
           <button className="navbar-toggle" onClick={toggleSideNav}>
             ☰
           </button>
-          <h6 className="navbar-logo">Produlink</h6>
+          <h6 className="navbar-logo"> Produlink</h6>
         </div>
 
         <div className="navbar-menu">
-          {/* Create New Dropdown */}
-          
-
-          {/* Mega Menu Dropdown */}
-          
         </div>
 
         <div className="navbar-actions">
-          <input
-            className="navbar-search"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-  
+          <input className="navbar-search" type="search" placeholder="Search" aria-label="Search" />
+
           <img className="navbar-user" src={user} alt="user" />
-          
+
           {/* Display the username and year */}
-         
+
           <label>{year}</label>
 
           {/* Admin Dropdown */}
@@ -81,6 +63,7 @@ const NavBar = ({ toggleSideNav }) => {
             >
               <label>{username}</label>
             </button>
+
             {adminDropdownOpen && (
               <ul className="navbar-dropdown-menu">
                 <li>
@@ -106,6 +89,7 @@ const NavBar = ({ toggleSideNav }) => {
           </div>
 
           <SettingsIcon className="navbar-icon" />
+
         </div>
       </nav>
     </div>

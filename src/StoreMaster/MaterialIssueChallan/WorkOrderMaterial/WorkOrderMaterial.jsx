@@ -98,6 +98,15 @@ const WorkOrderMaterial = () => {
                             </select>
                           </div>
 
+                           <div className="col-md-2 col-sm-6">
+                            <label className="form-label">Customer</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Name"
+                            />
+                          </div>
+
                           {/* Item */}
                           <div className="col-md-2 col-sm-6">
                             <label className="form-label">Item</label>
@@ -130,6 +139,13 @@ const WorkOrderMaterial = () => {
                             </select>
                           </div>
 
+                          <div className="col-md-2 col-sm-6">
+                            <label className="form-label">Project</label>
+                             <select name="" className="form-select" id="">
+                                <option value="">All</option>
+                             </select>
+                          </div>
+
                           {/* Work Order Number */}
                           <div className="col-md-2 col-sm-6">
                             <label className="form-label">WorderNo:</label>
@@ -140,9 +156,18 @@ const WorkOrderMaterial = () => {
                             />
                           </div>
 
+                          <div className="col-md-2 col-sm-6">
+                            <label className="form-label">So No:</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Enter Item Name"
+                            />
+                          </div>
+
                           {/* Search Button */}
                           <div className="col-md-2 col-sm-6">
-                            <button type="submit" className="vndrbtn w-70" style={{marginTop:"30px"}} >
+                            <button type="submit" className="vndrbtn w-70" style={{marginTop:"20px"}} >
                               Search
                             </button>
                           </div>
@@ -152,7 +177,7 @@ const WorkOrderMaterial = () => {
                   </div>
 
                   <div className="StoreWorkOrderMaterial">
-                    <div className="container-fluid mt-2 text-start">
+                    <div className="container-fluid mt-4 text-start">
                       <div className="table-responsive">
                         <table className="table table-bordered">
                           <thead>

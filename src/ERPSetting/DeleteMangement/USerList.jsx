@@ -41,7 +41,7 @@ const UserList = () => {
           <div className="content-area">
             <div className="row text-start mt-3">
               <div className="col-lg-2 col-md-3 col-12 submenu">
-                <h4>Sub Menu</h4>
+                <h4 className="header-title">Sub Menu</h4>
                 <h6 className="portal-login">Portal Login!</h6>
                 <ul className="submenu-links">
                   <li><Link to="/order-list">Order List</Link></li>
@@ -50,11 +50,13 @@ const UserList = () => {
                 </ul>
               </div>
               <div className="col-lg-10 col-md-9 col-12 content">
-                <div className="order-header mb-4 d-flex justify-content-between align-items-center">
+                <div className="order-header mb-2 d-flex justify-content-between align-items-center">
                   <h5 className="header-title">User List</h5>
                 </div>
 
-                <div className="row mb-3">
+                <div className="deletemanagementmain">
+
+                  <div className="row mt-2">
                   <div className="col-md-2 mb-2">
                     <label>Name:</label>
                     <input
@@ -100,28 +102,35 @@ const UserList = () => {
                     </select>
                   </div>
                   <div className="col-md-2 d-flex align-items-end" style={{marginBottom:"17px"}}>
-                    <button className="btn btn-primary me-2">Save</button>
-                    <button className="btn btn-primary">Cancel</button>
+                    <button className="vndrbtn btn-primary me-2">Save</button>
+                    <button className="vndrbtn btn-primary">Cancel</button>
                   </div>
+                  </div>
+                  
                 </div>
 
-                <table className="table table-bordered table-responsive-sm mt-3">
-                  <thead>
-                    <tr>
-                      <th>Sr.</th>
-                      <th>Plant</th>
-                      <th>Name</th>
-                      <th>User Name</th>
-                      <th>Password</th>
-                      <th>Credit Limit</th>
-                      <th>Status</th>
-                      <th>Edit</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {/* Populate table rows here */}
-                  </tbody>
-                </table>
+                <div className="deletemanagementtable mt-2">
+
+                    <table className="table table-bordered table-responsive-sm mt-2">
+                      <thead>
+                        <tr>
+                          <th>Sr.</th>
+                          <th>Plant</th>
+                          <th>Name</th>
+                          <th>User Name</th>
+                          <th>Password</th>
+                          <th>Credit Limit</th>
+                          <th>Status</th>
+                          <th>Edit</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {/* Populate table rows here */}
+                      </tbody>
+                    </table>
+                    
+                 </div>
+
               </div>
             </div>
           </div>

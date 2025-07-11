@@ -6,7 +6,8 @@ import SideNav from "../../SideNav/SideNav.js";
 import "./PendingPo.css";
 const PendingPo = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
-
+  const [activeTable, setActiveTable] = useState('');
+  
   const toggleSideNav = () => {
     setSideNavOpen((prevState) => !prevState);
   };
@@ -44,19 +45,19 @@ const PendingPo = () => {
                     
                         <label className="mt-2">Ageing Days</label>
                     
-                      <button className="vndrbtn">
+                      <button className="vndrbtn"  onClick={() => setActiveTable('UnderO')}>
                         [Under 0-7]:
                       </button>
-                      <button className="vndrbtn">
+                      <button className="vndrbtn"  onClick={() => setActiveTable('UnderS')}>
                         [Under 8-15]:
                       </button>
-                      <button className="vndrbtn">
+                      <button className="vndrbtn" onClick={() => setActiveTable('UnderT')}>
                         [Under 16-30]:
                       </button>
-                      <button className="vndrbtn">
+                      <button className="vndrbtn" onClick={() => setActiveTable('UnderF')}>
                         [Under 31-60]:
                       </button>
-                      <button className="vndrbtn">
+                      <button className="vndrbtn" onClick={() => setActiveTable('UnderA')}>
                         [Above 60]:
                       </button>
                     </div>
@@ -148,9 +149,220 @@ const PendingPo = () => {
                           </tbody>
                         </table>
                       </div>
+
                     </div>
              
                 </div>
+
+                  <div className="BomRoutingTable mt-4">
+                    <div className="row">
+
+                       <div className="col-md-12">
+                            {/* Tables */}
+                            {activeTable === 'UnderO' && (
+                              <div className="table-responsive">
+                                <table className="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                                    <th>Sr</th>
+                                                    <th>Year</th>
+                                                      <th>##</th>
+                                                      <th>PO No</th>
+                                                      <th>PO Type</th>
+                                                      <th>PO Date</th>
+                                                      <th>Code No</th>
+                                                      <th>Supplier Name</th>
+                                                      <th>User</th>
+                                                      <th>Auth</th>
+                                                      <th>Doc</th>
+                                                      <th>Edit</th>
+                                                      <th>Print</th>
+                                                      <th>Close</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                    <td>1</td>
+                                                      <td>Item No 1</td>
+                                                      <td>Item Code 1</td>
+                                                      <td>Item Docs 1</td>
+                                                      <td>NPO 1</td>
+                                                      <td>Auth 1</td>
+                                                      <td>User 1</td>
+                                                      <td>View 1</td>
+                                                      <td>View 1</td>
+                                                      <td>Tree 1</td>
+                                                      <td>Tree 1</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            )}
+
+                            {activeTable === 'UnderS' && (
+                              <div className="table-responsive">
+                                <table className="table table-bordered">
+                                  <thead>
+                                 <tr>
+                                                    <th>Sr</th>
+                                                    <th>Year</th>
+                                                      <th>##</th>
+                                                      <th>PO No</th>
+                                                      <th>PO Type</th>
+                                                      <th>PO Date</th>
+                                                      <th>Code No</th>
+                                                      <th>Supplier Name</th>
+                                                      <th>User</th>
+                                                      <th>Auth</th>
+                                                      <th>Doc</th>
+                                                      <th>Edit</th>
+                                                      <th>Print</th>
+                                                      <th>Close</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                  <tr>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td>admin</td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            )}
+
+                            {activeTable === 'UnderT' && (
+                              <div className="table-responsive">
+                              <table className="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                                    <th>Sr</th>
+                                                    <th>Year</th>
+                                                      <th>##</th>
+                                                      <th>PO No</th>
+                                                      <th>PO Type</th>
+                                                      <th>PO Date</th>
+                                                      <th>Code No</th>
+                                                      <th>Supplier Name</th>
+                                                      <th>User</th>
+                                                      <th>Auth</th>
+                                                      <th>Doc</th>
+                                                      <th>Edit</th>
+                                                      <th>Print</th>
+                                                      <th>Close</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            )}
+
+                            {activeTable === 'UnderF' && (
+                              <div className="table-responsive">
+                                <table className="table table-bordered">
+                                  <thead>
+                                   <tr>
+                                                    <th>Sr</th>
+                                                    <th>Year</th>
+                                                      <th>##</th>
+                                                      <th>PO No</th>
+                                                      <th>PO Type</th>
+                                                      <th>PO Date</th>
+                                                      <th>Code No</th>
+                                                      <th>Supplier Name</th>
+                                                      <th>User</th>
+                                                      <th>Auth</th>
+                                                      <th>Doc</th>
+                                                      <th>Edit</th>
+                                                      <th>Print</th>
+                                                      <th>Close</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            )}
+
+                            {activeTable === 'UnderA' && (
+                              <div className="table-responsive">    
+                              <table className="table table-bordered">
+                                  <thead>
+                                     <tr>
+                                                    <th>Sr</th>
+                                                    <th>Year</th>
+                                                      <th>##</th>
+                                                      <th>PO No</th>
+                                                      <th>PO Type</th>
+                                                      <th>PO Date</th>
+                                                      <th>Code No</th>
+                                                      <th>Supplier Name</th>
+                                                      <th>User</th>
+                                                      <th>Auth</th>
+                                                      <th>Doc</th>
+                                                      <th>Edit</th>
+                                                      <th>Print</th>
+                                                      <th>Close</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            )}
+
+                      </div>
+
+                    </div>
+                  </div>
               </main>
             </div>
           </div>

@@ -11,8 +11,9 @@ const DChallan = () => {
   const navigate = useNavigate();  
 
   const handleButtonClick = () => {
-    navigate('/DCList'); 
+    navigate('/JobworkDCList'); 
   };
+
   const toggleSideNav = () => {
     setSideNavOpen((prevState) => !prevState);
   };
@@ -55,8 +56,8 @@ const DChallan = () => {
                   <div className="DChallan-main">
                     <div className="DChallan-tabs">
 
-                      <div className="tab-content" >
-                        <div className="tab-pane fade show active" role="tabpanel" >
+                      <div className="" >
+                        <div className="" >
                           <div className="row text-start">
                                 <div className="col-4">
                                     <div className="row">
@@ -195,6 +196,16 @@ const DChallan = () => {
                                 </table>
                         </div>
 
+                      </div>
+
+                      <div className="row mt-5">
+                        <div className="col-md-2">
+                            <label htmlFor="">Remark :</label>
+                            <textarea className="form-control" name="" id="">  </textarea>
+                        </div>
+                        <div className="col-md-2" style={{marginTop:"22px"}}>
+                           <button className="vndrbtn">Save Challan</button>
+                        </div>
                       </div>
 
                     </div>

@@ -41,17 +41,14 @@ const Dcgrnlist = () => {
                   </div>
 
                   <div className="col-md-9 text-end">
-                    <div className="row justify-content-end">
-                      <div className="col-md-4 d-flex align-items-end">
+                    {/* <div className="row justify-content-end">
+                      <div className="col-md-4 d-flex align-items-end"> */}
                       
                       <Link className="vndrbtn">Export To Excel</Link>
-                        <Link className="vndrbtn">DCGRN-Query</Link>
-                      
-                      
+                        <Link className="vndrbtn" to={"/DCGRNQuery"}>DCGRN-Query</Link>
 
-
-                      </div>
-                    </div>
+                      {/* </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

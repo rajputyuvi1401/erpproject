@@ -57,6 +57,7 @@ const DisableUserList = () => {
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="DisableUser">
+                  <div className="erpsetting-header mb-2">
                   
                     <div className="row">
                       <div className="col-md-4">
@@ -66,6 +67,7 @@ const DisableUserList = () => {
                         <Link to="/ErpSetting" className="vndrbtn">
                           User Management
                         </Link>
+                      </div>
                       </div>
                  
                   </div>

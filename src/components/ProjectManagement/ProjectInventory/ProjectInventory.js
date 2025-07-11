@@ -43,7 +43,7 @@ const ProjectInventory = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="ProjectInventorymaster">
                   <div className="ProjectInventory1">
-                  <div className="ProjectInventory1-header mb-4 text-start">
+                  <div className="ProjectInventory1-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-3">
                         <h5 className="header-title">Project Inventory Status</h5>

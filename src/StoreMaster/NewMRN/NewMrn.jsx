@@ -359,8 +359,8 @@ const [searchResults, setSearchResults] = useState([]);
                       <div className="col-md-2">
                         <h5 className="header-title text-start">New MRN</h5>
                       </div>
-                      <div className="col-md-9 mt-4">
-                        <div className="row mb-3">
+                      <div className="col-md-9">
+                        <div className="row">
                           <div className="col-md-1">
                             <label
                               htmlFor="seriesSelect"
@@ -408,6 +408,7 @@ const [searchResults, setSearchResults] = useState([]);
                               MRN No:
                             </label>
                           </div>
+
                           <div className="col-md-2">
                           {series ? (
                   <input type="text" id="MrnNo" className="form-control mt-1" value={MrnNo} readOnly />
@@ -424,24 +425,27 @@ const [searchResults, setSearchResults] = useState([]);
                           </div>
 
                           <div className="col-md-1 d-flex align-items-center">
-                <input type="checkbox" id="poGrnCheckbox" checked={formData.General} onChange={handleCheckboxChange} />
-                <label htmlFor="poGrnCheckbox" className="ms-1">
-                  General
-                </label>
-              </div>
-              <div className="col-md-2 d-flex align-items-center">
-                <input
-                  type="checkbox"
-                  id="directGrnCheckbox"
-                  checked={formData.Work_order}
-                  onChange={handleCheckboxChange}
-                />
-                <label htmlFor="directGrnCheckbox" className="ms-1">
-                  Work Order
-                </label>
-              </div>
+                            <input type="checkbox" id="poGrnCheckbox" checked={formData.General} onChange={handleCheckboxChange} />
+                            <label htmlFor="poGrnCheckbox" className="ms-1">
+                              General
+                            </label>
+                          </div>
+
+                          <div className="col-md-2 d-flex align-items-center">
+                            <input
+                              type="checkbox"
+                              id="directGrnCheckbox"
+                              checked={formData.Work_order}
+                              onChange={handleCheckboxChange}
+                            />
+                            <label htmlFor="directGrnCheckbox" className="ms-1">
+                              Work Order
+                            </label>
+                          </div>
+
                         </div>
                       </div>
+                      
                       <div className="col-md-1 text-end">
                         <Link className="vndrbtn" to="/Tool-MRN">
                           ToolMRN

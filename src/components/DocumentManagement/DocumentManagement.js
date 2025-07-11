@@ -51,7 +51,7 @@ const DocumentManagement = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Documentrmaster">
-                <div className="Document1-header mb-4 text-start">
+                <div className="Document1-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Document Management</h5>

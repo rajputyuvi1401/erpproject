@@ -111,18 +111,18 @@ const CustomerItemWise = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Itemwisseee">
 
-                 <div className="Itemwise-header text-start">
-                      <div className="row align-items-center">
-                        <div className="col-md-6">
+                  <div className="Itemwise-header text-start">
+                    <div className="row align-items-center">
+                      <div className="col-md-6">
                         <h5 className="header-title">
-                            Customer Item Wise Value Addition Rate
-                          </h5>
-                        </div>
-                        <div className="col-md-6 text-end">
-                          <button className="vndrbtn">Export To Excel</button>
-                        </div>
+                          Customer Item Wise Value Addition Rate
+                        </h5>
+                      </div>
+                      <div className="col-md-6 text-end">
+                        <button className="vndrbtn">Export To Excel</button>
                       </div>
                     </div>
+                  </div>
 
                   <div className="rateewise mt-2">
                     <div className="container-fluid">
@@ -326,13 +326,13 @@ const CustomerItemWise = () => {
                               aria-labelledby="pills-profile-tab"
                               tabIndex="0"
                             >
-                              
+
                               <form>
 
-                                  <div className="row mb-3 text-start">
-                                    <div className="col-md-2">
-                                      <div className="form-check">
-                                        {/* <input
+                                <div className="row mb-3 text-start">
+                                  <div className="col-md-2">
+                                    <div className="form-check">
+                                      {/* <input
                                           className="form-check-input"
                                           type="checkbox"
                                           id="customerSupplierCheck"
@@ -342,36 +342,36 @@ const CustomerItemWise = () => {
                                           }
                                           onChange={handleChange}
                                         /> */}
-                                        <label
-                                          className="form-check-label"
-                                          htmlFor="customerSupplierCheck"
-                                        >
-                                          Customer/Supplier Name
-                                        </label>
-                                      </div>
-                                    </div>
-                                    <div className="col-md-3" style={{marginTop:"-7px"}}>
-                                      <input
-                                        type="text"
-                                        className="form-control mt-2"
-                                        name="customerSupplierName"
-                                        placeholder="Enter Customer/Supplier Name"
-                                        value={formData.customerSupplierName}
-                                        onChange={handleChange}
-                                      />
-
-                                      {errors.customerSupplierName && (
-                                        <div className="text-danger">
-                                          {errors.customerSupplierName}
-                                        </div>
-                                      )}
+                                      <label
+                                        className="form-check-label"
+                                        htmlFor="customerSupplierCheck"
+                                      >
+                                        Customer/Supplier Name
+                                      </label>
                                     </div>
                                   </div>
+                                  <div className="col-md-3" style={{ marginTop: "-7px" }}>
+                                    <input
+                                      type="text"
+                                      className="form-control mt-2"
+                                      name="customerSupplierName"
+                                      placeholder="Enter Customer/Supplier Name"
+                                      value={formData.customerSupplierName}
+                                      onChange={handleChange}
+                                    />
 
-                                  <div className="row mb-3 text-start">
-                                    <div className="col-md-2">
-                                      <div className="form-check">
-                                        {/* <input
+                                    {errors.customerSupplierName && (
+                                      <div className="text-danger">
+                                        {errors.customerSupplierName}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+
+                                <div className="row mb-3 text-start">
+                                  <div className="col-md-2">
+                                    <div className="form-check">
+                                      {/* <input
                                           className="form-check-input"
                                           type="checkbox"
                                           id="itemNameCheck"
@@ -379,41 +379,41 @@ const CustomerItemWise = () => {
                                           checked={formData.isItemNameChecked}
                                           onChange={handleChange}
                                         /> */}
-                                        <label
-                                          className="form-check-label"
-                                          htmlFor="itemNameCheck"
-                                        >
-                                          Item Name
-                                        </label>
+                                      <label
+                                        className="form-check-label"
+                                        htmlFor="itemNameCheck"
+                                      >
+                                        Item Name
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <div className="col-md-3" style={{ marginTop: "-7px" }}>
+                                    <input
+                                      type="text"
+                                      className="form-control mt-2"
+                                      name="itemName"
+                                      placeholder="Enter Item Name"
+                                      value={formData.itemName}
+                                      onChange={handleChange}
+                                    />
+
+                                    {errors.itemName && (
+                                      <div className="text-danger">
+                                        {errors.itemName}
                                       </div>
-                                    </div>
-                                    <div className="col-md-3" style={{marginTop:"-7px"}}>
-                                      <input
-                                        type="text"
-                                        className="form-control mt-2"
-                                        name="itemName"
-                                        placeholder="Enter Item Name"
-                                        value={formData.itemName}
-                                        onChange={handleChange}
-                                      />
-
-                                      {errors.itemName && (
-                                        <div className="text-danger">
-                                          {errors.itemName}
-                                        </div>
-                                      )}
-                                    </div>
+                                    )}
                                   </div>
+                                </div>
 
-                                  <div className="row mb-3 text-end">
-                                    <div className="col-md-5">
-                                      <button type="submit" className="vndrbtn">
-                                        Search
-                                      </button>
-                                    </div>
+                                <div className="row text-end">
+                                  <div className="col-md-5">
+                                    <button type="submit" className="vndrbtn">
+                                      Search
+                                    </button>
                                   </div>
+                                </div>
 
-                                </form>
+                              </form>
 
                             </div>
 
@@ -426,41 +426,41 @@ const CustomerItemWise = () => {
                   </div>
 
                   <div className="rateewise mt-2">
-                      <div className="table-container">
-                          <table className="table">
-                              <thead>
-                                          <tr>
-                                            <th>SR</th>
-                                            <th>Cust Code</th>
-                                            <th>Cust Name</th>
-                                            <th>Item Code</th>
-                                            <th>Item Desc</th>
-                                            <th>VA1</th>
-                                            <th>VA2</th>
-                                            <th>Action</th>
-                                          </tr>
-                              </thead>
-                              <tbody>
-                                          <tr>
-                                            <td data-label="SR">1</td>
-                                            <td data-label="Cust Code">001</td>
-                                            <td data-label="Cust Name">John Doe</td>
-                                            <td data-label="Item Code">1234</td>
-                                            <td data-label="Item Desc">
-                                              Sample Item
-                                            </td>
-                                            <td data-label="VA1">Value 1</td>
-                                            <td data-label="VA2">Value 2</td>
-                                            <td data-label="Delete">
-                                              <button style={{ border: "none" }}>
-                                                <i className="fas fa-trash"></i>
-                                              </button>
-                                            </td>
-                                          </tr>
-                                          {/* Add more rows as needed */}
-                              </tbody>
-                          </table>
-                      </div>
+                    <div className="table-container">
+                      <table className="table">
+                        <thead>
+                          <tr>
+                            <th>SR</th>
+                            <th>Cust Code</th>
+                            <th>Cust Name</th>
+                            <th>Item Code</th>
+                            <th>Item Desc</th>
+                            <th>VA1</th>
+                            <th>VA2</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td data-label="SR">1</td>
+                            <td data-label="Cust Code">001</td>
+                            <td data-label="Cust Name">John Doe</td>
+                            <td data-label="Item Code">1234</td>
+                            <td data-label="Item Desc">
+                              Sample Item
+                            </td>
+                            <td data-label="VA1">Value 1</td>
+                            <td data-label="VA2">Value 2</td>
+                            <td data-label="Delete">
+                              <button style={{ border: "none" }}>
+                                <i className="fas fa-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          {/* Add more rows as needed */}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
 
                   <div className="ratebottom">

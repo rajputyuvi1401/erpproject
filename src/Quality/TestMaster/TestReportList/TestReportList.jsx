@@ -69,8 +69,8 @@ const TestReportList = () => {
                             <input type="date" className="form-control"/>
                       </div> 
                     
-                      <div className="col-md-1 mt-4">
-                           <button type="button" className="vndrbtn w-100" >
+                      <div className="col-md-1">
+                           <button type="button" className="vndrbtn w-100" style={{marginTop:"21px"}} >
                               Search
                            </button> 
                         </div>

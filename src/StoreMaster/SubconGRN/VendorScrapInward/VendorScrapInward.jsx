@@ -108,6 +108,10 @@ const VendorScrapInward = () => {
                     <div className="col-md-2 col-6">
                       <input className="form-control" />
                     </div>
+
+                    <div className="col-md-6 text-end">
+                       <button className="vndrbtn"> Pending Vendor Scrap </button>
+                    </div>
                   </div>
                 </div>
                 <div className="VendorScrap-main ">

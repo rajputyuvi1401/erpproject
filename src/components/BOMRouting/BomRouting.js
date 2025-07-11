@@ -6,7 +6,6 @@ import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import "./BomRouting.css";
 import { Link } from "react-router-dom";
-import UploadOperationSpeci from "./BOMReport/UploadOperationSpeci";
 const BomRouting = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -50,7 +49,7 @@ const BomRouting = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="BomRouting1">
                   
-                  <div className="BomRoutingheading mb-4 text-start">
+                  <div className="BomRoutingheading mb-2 text-start">
                       <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">

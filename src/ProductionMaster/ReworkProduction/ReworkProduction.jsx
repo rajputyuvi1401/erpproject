@@ -1032,6 +1032,9 @@ const ReworkProduction = () => {
                         <button className="vndrbtn" type="submit">
                           Save
                         </button>
+                         <button className="vndrbtn" type="submit">
+                          Clear
+                        </button>
                       </div>
                     </form>
                   </div>

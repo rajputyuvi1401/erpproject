@@ -60,7 +60,7 @@ const CycleTime = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Cycletimermaster">
                   <div className="Cycletime">
-                    <div className="Cycletime-header mb-4 text-start ">
+                    <div className="Cycletime-header mb-2 text-start ">
                       <div className="row align-items-center">
                         <div className="col-md-6">
                           <h5 className="header-title">Cycle Time Master</h5>

@@ -4,6 +4,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import "./JobWorkPurchaseOrderList.css"
+import { Link } from "react-router-dom";
+
 const JobWorkPurchseOrderList = () => {
 
     const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -19,6 +21,7 @@ const JobWorkPurchseOrderList = () => {
         document.body.classList.remove("side-nav-open");
       }
     }, [sideNavOpen]);
+    
   return (
     <div className="JobWorkPurchseOrderList">
     <div className="container-fluid">
@@ -35,12 +38,12 @@ const JobWorkPurchseOrderList = () => {
                     <div className="row align-items-center">
                   <div className="col-md-4">
                     <h5 className="header-title">
-                    JobWork Purchse Order List
+                        JobWork Purchse Order List
                     </h5>
                   </div>
                   <div className="col-md-8 text-end">
                     
-                        <button className="vndrbtn">JobWork PO - Query</button>
+                        <Link className="vndrbtn" to={"/JobworkPOSummary"}>JobWork PO - Query</Link>
                     
                   </div>
                 </div>
@@ -144,6 +147,7 @@ const JobWorkPurchseOrderList = () => {
                     </table>
                   </div>
                 </div>
+
                 <div className="JobWorkOrdertable">
                   <div className="container-fluid mt-4">
                     <div className="table-responsive">

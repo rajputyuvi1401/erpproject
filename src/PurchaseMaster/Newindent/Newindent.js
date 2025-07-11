@@ -6,6 +6,9 @@ import NavBar from "../../NavBar/NavBar";
 import SideNav from "../../SideNav/SideNav";
 import { FaPlus } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+
 const Newindent = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -59,7 +62,7 @@ const Newindent = () => {
                               <h5 className="header-title">New Indent</h5>
                             </div>
                             <div className="col-md-8 text-end">
-                              <button className="vndrbtn">Indent List</button>
+                              <Link className="vndrbtn" to="/ListIndent">Indent List</Link>
                             </div>
                           </div>
                         </div>
@@ -70,6 +73,7 @@ const Newindent = () => {
                           <div className="row text-start">
                             <div className="col-md-12">
                               <form className="d-flex flex-wrap">
+
                                 <div className="form-group col-md-1">
                                   <label htmlFor="sharp" className="form-label">
                                     Produlink:
@@ -168,6 +172,7 @@ const Newindent = () => {
                                     <option value="option2">Option 2</option>
                                   </select>
                                 </div>
+
                               </form>
                             </div>
                           </div>
@@ -183,6 +188,7 @@ const Newindent = () => {
                               </button>
                             </div>
                           </div>
+                          
                           <div className="newindenttable mt-3">
                             <div className="container-fluid">
                               <div className="row">
@@ -222,17 +228,6 @@ const Newindent = () => {
                                             Search
                                           </button>
                                           <br />
-                                          {/* <select className="form-control">
-                                            <option value="">
-                                              Select Item
-                                            </option>
-                                            <option value="item1">
-                                              Item 1
-                                            </option>
-                                            <option value="item2">
-                                              Item 2
-                                            </option>
-                                          </select> */}
                                         </td>
                                         <td>
                                           <textarea
@@ -248,8 +243,8 @@ const Newindent = () => {
                                         </td>
                                         <td>
                                           <select className="form-control">
-                                            <option value="unit1">Nos</option>
-                                            <option value="unit2">
+                                            <option value="">N O S</option>
+                                            <option value="">
                                               Unit 2
                                             </option>
                                           </select>
@@ -328,6 +323,7 @@ const Newindent = () => {
                               </div>
                             </div>
                           </div>
+
                           <div className="newindenttable">
                             <div className="container-fluid">
                               <div className="row">
@@ -363,7 +359,7 @@ const Newindent = () => {
                                         <td></td>
                                         <td></td>
                                         <td>
-                                          <button className="indenttablebtn">
+                                          <button className="vndrbtn">
                                             <FaTrash />
                                           </button>
                                         </td>

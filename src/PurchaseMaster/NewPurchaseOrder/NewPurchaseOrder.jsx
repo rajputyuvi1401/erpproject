@@ -15,7 +15,7 @@ import { Link } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { useCallback } from "react"
-
+ 
 const NewPurchaseOrder = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false)
   const [selectedSeries, setSelectedSeries] = useState("")
@@ -301,19 +301,20 @@ const NewPurchaseOrder = () => {
                           }}
                         >
                              {searchResults.map((supplier) => (
-              <li
-                key={supplier.number}
-                className="dropdown-item"
-                onClick={() => handleSelectSupplier(supplier)}
-                style={{ padding: "5px", cursor: "pointer" }}
-              >
-                {supplier.Name} ({supplier.number})
-              </li>
-              
+                              <li
+                                key={supplier.number}
+                                className="dropdown-item"
+                                onClick={() => handleSelectSupplier(supplier)}
+                                style={{ padding: "5px", cursor: "pointer" }}
+                              >
+                                {supplier.Name} ({supplier.number})
+                              </li>
+                              
                           ))}
                         </ul>
                       )}
                         </div>
+
                         <div className="col-md-1">
                           <button className="vndrbtn btn-primary mt-4" onClick={handleSelectSupplier} disabled={loading}>
                             {loading ? "Loading..." : "Select"}
@@ -333,6 +334,7 @@ const NewPurchaseOrder = () => {
                         <div className="col-md-1 mt-4">
                           <button className="vndrbtn">Clear</button>
                         </div>
+                        
                         <div className="col-md-1 mt-4">
                           <Link to="/PoList" className="vndrbtn">
                             PO List
@@ -433,4 +435,3 @@ const NewPurchaseOrder = () => {
 }
 
 export default NewPurchaseOrder
-

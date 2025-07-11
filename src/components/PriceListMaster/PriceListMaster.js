@@ -100,7 +100,7 @@ const PriceListMaster = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="PriceListMaster1">
                  
-                     <div className="PriceList-header mb-4 text-start mt-1">
+                     <div className="PriceList-header mb-2 text-start">
                        <div className="row align-items-center">
                         <div className="col-md-3">
                          <h5 className="header-title">Price List Master</h5>

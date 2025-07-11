@@ -4,6 +4,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import './OrderLiast.css';
+import { useNavigate } from "react-router-dom";
+
 
 const OrderLiast = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -19,6 +21,11 @@ const OrderLiast = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+    const navigate = useNavigate();
+      const handleClose = () => {
+          navigate("/NewSalesOrder");
+      };
 
   return (
     <div className="OrderLiastMaster">
@@ -42,6 +49,11 @@ const OrderLiast = () => {
                         <button type="button" className=" vndrbtn">
                           Export To Excel
                         </button>
+                         <button
+                                className="vndrbtn  me-2"
+                                aria-label="Close"
+                                onClick={handleClose} >
+                                X </button>
                       </div>
                     </div>
                   </div>

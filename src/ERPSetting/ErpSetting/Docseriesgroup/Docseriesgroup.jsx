@@ -31,15 +31,15 @@ const Docseriesgroup = () => {
             <NavBar toggleSideNav={toggleSideNav} />
             <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="DocumentSeries mt-5">
+              <div className="DocumentSeries">
                 {/* Header */}
-                <div className="DocumentSeries-header mb-4 text-start">
+                <div className="DocumentSeries-header mb-2 text-start">
                   <div className="row align-items-center">
                     <div className="col-md-6">
                       <h5 className="header-title">Document Series / Group</h5>
                     </div>
                     <div className="col-md-6 text-end">
-                      <Link type="button" className="btn btn-primary me-2" to="/WeekMaster">
+                      <Link type="button" className="vndrbtn" to="/WeekMaster">
                         Company Info
                       </Link>
                     </div>
@@ -47,29 +47,31 @@ const Docseriesgroup = () => {
                 </div>
 
                 {/* Button Group */}
-                <div className="DocumentSeries-Main">
-                <div className="row text-start">
-                       <div className="col-md-12">
-                   
-                      <Link to='/Docseriesgroup' className="btn btn-light">Series Master</Link>
-                      <Link to='/MasterData' className="btn btn-light">Master Data</Link>
-                      <Link to='/PurchaseErp' className="btn btn-light">Purchase Order</Link>
-                      <Link to='/PurchaseERPGRN' className="btn btn-light">Purchase GRN</Link>
-                      <Link to='/OutwardInward' className="btn btn-light">57F4 Outward / Inward</Link>
-                      <Link to='/GSTsales' className="btn btn-light">GST Sales</Link>
-                      <Link to='/GstsalesReturn' className="btn btn-light">GST Sales Return</Link>
-                      <Link to='/DebitcreditNote' className="btn btn-light">Debit Credit Note</Link>
-                      <Link to='/Docddelivery' className="btn btn-light">Delivery Challan</Link>
-                      <Link to='/DocAccount' className="btn btn-light">Account</Link>
-                      <Link to='/DocProduction' className="btn btn-light">Production</Link>
-                      <Link to='/Quotation' className="btn btn-light">Quotation</Link>
+                <div className="DocumentSeriesmain">
+                    <div className="row text-start">
+                        <div className="col-md-12">
+                          <Link to='/Docseriesgroup' className="vndrbtn btn-light">Series Master</Link>
+                          <Link to='/MasterData' className="vndrbtn btn-light">Master Data</Link>
+                          <Link to='/PurchaseErp' className="vndrbtn btn-light">Purchase Order</Link>
+                          <Link to='/PurchaseERPGRN' className="vndrbtn btn-light">Purchase GRN</Link>
+                          <Link to='/OutwardInward' className="vndrbtn btn-light">57F4 Outward / Inward</Link>
+                          <Link to='/GSTsales' className="vndrbtn btn-light">GST Sales</Link>  
+                        </div>    
                     </div>
-                    
-                  </div>
-                  </div>
+                    <div className="row text-start mt-2">
+                        <div className="col-md-12">
+                          <Link to='/GstsalesReturn' className="vndrbtn btn-light">GST Sales Return</Link>
+                          <Link to='/DebitcreditNote' className="vndrbtn btn-light">Debit Credit Note</Link>
+                          <Link to='/Docddelivery' className="vndrbtn btn-light">Delivery Challan</Link>
+                          <Link to='/DocAccount' className="vndrbtn btn-light">Account</Link>
+                          <Link to='/DocProduction' className="vndrbtn btn-light">Production</Link>
+                          <Link to='/Quotation' className="vndrbtn btn-light">Quotation</Link>
+                        </div>
+                    </div>
+                </div>
 
                 {/* Form */}
-                <div className="DocumentSeries-form mb-5">
+                <div className="DocumentSeriesmain mt-3">
                   <div className="row mb-3 text-start">
                     <div className="col-md-2">
                       <label htmlFor="moduleSelect" className="col-form-label">Module</label>
@@ -92,12 +94,13 @@ const Docseriesgroup = () => {
                       <input type="text" id="seriesNameDesc" className="form-control" />
                     </div>
                     <div className="col-md-2">
-                      <button type="submit" className="btn btn-primary mt-5">
+                      <button type="submit" className="vndrbtn" style={{marginTop:'35px'}}>
                         Save
                       </button>
                     </div>
                   </div>
                 </div>
+
               </div>
             </main>
           </div>

@@ -5,6 +5,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 const ScrapRejectionReport = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -42,14 +44,19 @@ const ScrapRejectionReport = () => {
                         </h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="vndrbtn" to="/AddQuater">
+
+                        <Link type="button" className="vndrbtn" to="/QueryScrap">
+                          Scrap - Rejection Query
+                        </Link>
+
+                        <Link type="button" className="vndrbtn" to="/RejectionReport">
                           Rejection Report
-                        </button>
+                        </Link>
 
                         <button
                           type="button"
                           className="vndrbtn"
-                          to="/Companysetup"
+                          to="/"
                         >
                           Export To Excel
                         </button>

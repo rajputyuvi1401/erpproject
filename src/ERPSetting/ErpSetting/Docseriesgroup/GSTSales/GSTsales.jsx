@@ -22,7 +22,7 @@ const GSTsales = () => {
     }, [sideNavOpen]);
   
   return (
-    <div className="DataSeriesGroup">
+    <div className="GSTsales">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -33,111 +33,111 @@ const GSTsales = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="DataSeries mt-5">
-                  <div className="DataSeries-header mb-4 text-start">
-                    <div className="row align-items-center">
-                      <div className="col-md-6">
-                        <h5 className="header-title">
-                          Document Series / Group
-                        </h5>
-                      </div>
-                      <div className="col-md-6 text-end">
-                        <Link
-                          type="button"
-                          className="btn btn-primary me-2"
-                          to="/Companysetup"
-                        >
-                          Company Info
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
+                <div className="DataSeries">
+                   {/* Header */}
+                                  <div className="GSTsales-header mb-2 text-start">
+                                    <div className="row align-items-center">
+                                      <div className="col-md-6">
+                                        <h5 className="header-title">Document Series / Group</h5>
+                                      </div>
+                                      <div className="col-md-6 text-end">
+                                        <Link type="button" className="vndrbtn" to="/WeekMaster">
+                                          Company Info
+                                        </Link>
+                                      </div>
+                                    </div>
+                                  </div>
+                  
+                                  {/* Button Group */}
+                                  <div className="GSTsalesmain">
+                                      <div className="row text-start">
+                                          <div className="col-md-12">
+                                            <Link to='/Docseriesgroup' className="vndrbtn btn-light">Series Master</Link>
+                                            <Link to='/MasterData' className="vndrbtn btn-light">Master Data</Link>
+                                            <Link to='/PurchaseErp' className="vndrbtn btn-light">Purchase Order</Link>
+                                            <Link to='/PurchaseERPGRN' className="vndrbtn btn-light">Purchase GRN</Link>
+                                            <Link to='/OutwardInward' className="vndrbtn btn-light">57F4 Outward / Inward</Link>
+                                            <Link to='/GSTsales' className="vndrbtn btn-light">GST Sales</Link>  
+                                          </div>    
+                                      </div>
+                                      <div className="row text-start mt-2">
+                                          <div className="col-md-12">
+                                            <Link to='/GstsalesReturn' className="vndrbtn btn-light">GST Sales Return</Link>
+                                            <Link to='/DebitcreditNote' className="vndrbtn btn-light">Debit Credit Note</Link>
+                                            <Link to='/Docddelivery' className="vndrbtn btn-light">Delivery Challan</Link>
+                                            <Link to='/DocAccount' className="vndrbtn btn-light">Account</Link>
+                                            <Link to='/DocProduction' className="vndrbtn btn-light">Production</Link>
+                                            <Link to='/Quotation' className="vndrbtn btn-light">Quotation</Link>
+                                          </div>
+                                      </div>
+                                  </div>
 
-                  <div className="DataSeries-Main mb-4 text-start">
-                    <div className="row text-start">
-                      <div className="col-md-12">
-                      <Link to='/Docseriesgroup' className="btn btn-light">Series Master</Link>
-                      <Link to='/MasterData' className="btn btn-light">Master Data</Link>
-                      <Link to='/PurchaseErp' className="btn btn-light">Purchase Order</Link>
-                      <Link to='/PurchaseERPGRN' className="btn btn-light">Purchase GRN</Link>
-                      <Link to='/OutwardInward' className="btn btn-light">57F4 Outward / Inward</Link>
-                      <Link to='/GSTsales' className="btn btn-light">GST Sales</Link>
-                      <Link to='/GstsalesReturn' className="btn btn-light">GST Sales Return</Link>
-                      <Link to='/DebitcreditNote' className="btn btn-light">Debit Credit Note</Link>
-                      <Link to='/Docddelivery' className="btn btn-light">Delivery Challan</Link>
-                      <Link to='/DocAccount' className="btn btn-light">Account</Link>
-                      <Link to='/DocProduction' className="btn btn-light">Production</Link>
-                      <Link to='/Quotation' className="btn btn-light">Quotation</Link>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="DataSeries-Table">
+                  <div className="GSTsalestable mt-2">
                     <div className="row">
                         <div className="col-md-6">
-                            <h4 className="text-primary text-start">#GST Invoice</h4>
-                        <div className="table-responsive">
-                    <table className="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th scope="col">Series_No</th>
-                          <th scope="col">Series Name</th>
-                          <th scope="col">Type</th>
-                          <th scope="col">Prefix</th>
-                          <th scope="col">Suffix</th>
-                          <th scope="col">Rpt</th>
-                          <th scope="col">Max Item Limit</th>
-                         
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {/* Example data row */}
-                        <tr>
-                          <td>1</td>
-                          <td>1</td>
-                          <td><input type="text" className="form-control"></input></td>
-                          <td><input type="text" className="form-control"></input></td>
-                          <td><input type="text" className="form-control"></input></td>
-                          <td><input type="text" className="form-control"></input></td>
-                         
-                          <td><input type="text" className="form-control"></input></td>
-                        
-                          
-                        </tr>
-                        {/* More rows can be added here */}
-                      </tbody>
-                    </table>
-                  </div>
+                            <h4 className="header-title text-primary text-start">#GST Invoice</h4>
+                        <div className="table-responsive mt-2">
+                            <table className="table table-bordered table-striped">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Series_No</th>
+                                  <th scope="col">Series Name</th>
+                                  <th scope="col">Type</th>
+                                  <th scope="col">Prefix</th>
+                                  <th scope="col">Suffix</th>
+                                  <th scope="col">Rpt</th>
+                                  <th scope="col">Max Item Limit</th>
+                                
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {/* Example data row */}
+                                <tr>
+                                  <td>1</td>
+                                  <td>1</td>
+                                  <td><input type="text" className="form-control"></input></td>
+                                  <td><input type="text" className="form-control"></input></td>
+                                  <td><input type="text" className="form-control"></input></td>
+                                  <td><input type="text" className="form-control"></input></td>
+                                
+                                  <td><input type="text" className="form-control"></input></td>
+                                
+                                  
+                                </tr>
+                                {/* More rows can be added here */}
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                         <div className="col-md-6">
-                        <h4 className="text-primary text-start">#Jobwork Invoice</h4>
-                        <div className="table-responsive">
-                    <table className="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th scope="col">Series No</th>
-                          <th scope="col">Series Name</th>
-                          <th scope="col">Prefix</th>
-                          <th scope="col">Suffix</th>
-                          <th scope="col">DC Suffix</th>
-                         
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {/* Example data row */}
-                        <tr>
-                          <td>1</td>
-                          <td><input type="text" className="form-control"></input></td>
-                          <td><input type="text" className="form-control"></input></td>
-                          <td><input type="text" className="form-control"></input></td>
-                          <td><input type="text" className="form-control"></input></td>
-                          
-                          
-                        </tr>
-                        {/* More rows can be added here */}
-                      </tbody>
-                    </table>
-                  </div>
+                        <h4 className="header-title text-primary text-start">#Jobwork Invoice</h4>
+                        <div className="table-responsive mt-2">
+                            <table className="table table-bordered table-striped">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Series No</th>
+                                  <th scope="col">Series Name</th>
+                                  <th scope="col">Prefix</th>
+                                  <th scope="col">Suffix</th>
+                                  <th scope="col">DC Suffix</th>
+                                
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {/* Example data row */}
+                                <tr>
+                                  <td>1</td>
+                                  <td><input type="text" className="form-control"></input></td>
+                                  <td><input type="text" className="form-control"></input></td>
+                                  <td><input type="text" className="form-control"></input></td>
+                                  <td><input type="text" className="form-control"></input></td>
+                                  
+                                  
+                                </tr>
+                                {/* More rows can be added here */}
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                     </div>
                   </div>

@@ -118,15 +118,6 @@ const WorkOrderEntry = () => {
     });
   };
   
-  
-  
- 
-
-
-
-  
-  
-
   // Handle delete
   const handleDelete = (index) => {
     const updatedWorkOrders = workOrders.filter((_, i) => i !== index);
@@ -189,10 +180,6 @@ const WorkOrderEntry = () => {
       setLoading(false);
     }
   };
-  
-  
-  
-
 
   // Unit Machine
     const [unitMachines, setUnitMachines] = useState([]);
@@ -292,7 +279,7 @@ const WorkOrderEntry = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 
                 {/* Header Section */}
-                <div className="WorkOrderEntry-header mb-4">
+                <div className="WorkOrderEntry-header mb-2">
                   <div className="workentryorder  row align-items-center">
 
                     <div className="col-md-2">
@@ -326,7 +313,7 @@ const WorkOrderEntry = () => {
                 
 
                 {/* Form Section */}
-                <div className="WorkOrderEntry-main mt-3">
+                <div className="WorkOrderEntry-main mt-2">
                   <div className="row text-start">
                     <div className="col-md-2">
                       <label className="form-label">WO Series:</label>
@@ -384,7 +371,7 @@ const WorkOrderEntry = () => {
                     </div>
                   </div>
 
-                  <div className="row text-start mt-3">
+                  <div className=" row text-start mt-2">
                     <div className="col-md-2">
                       <label className="form-label">Select Customer:</label>
                       <input
@@ -437,7 +424,7 @@ const WorkOrderEntry = () => {
                 
 
                 {/* Table Section */}
-                <div className="WorkOrderEntry-table mt-4">
+                <div className="WorkOrderEntry-table mt-2">
                   {loading ? (
                     <p>Loading...</p>
                   ) : (

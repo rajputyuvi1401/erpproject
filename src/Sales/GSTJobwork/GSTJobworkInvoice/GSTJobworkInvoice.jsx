@@ -10,10 +10,10 @@ import "./GSTJobworkInvoice.css";
 
 const GSTJobworkInvoice = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate('/DChallan'); 
+    navigate('/DChallan');
   };
   const toggleSideNav = () => {
     setSideNavOpen((prevState) => !prevState);
@@ -89,7 +89,7 @@ const GSTJobworkInvoice = () => {
 
                   <div className="GSTJobworkInvoice-main">
                     <div className="GSTJobworkInvoice-tabs">
-                   
+
                       <ul
                         className="nav nav-tabs"
                         id="AssembleEntryTabs"
@@ -143,59 +143,59 @@ const GSTJobworkInvoice = () => {
                           role="tabpanel"
                         >
                           <div className="row text-start">
-                                <div className="col-2">
-                                  <label htmlFor="prod-no">Select Cust:</label>
-                                </div>
-                                <div className="col-3">
-                                  <input type="text" placeholder="Enter Name.." className="form-control" />
-                                </div>
-                                <div className="col-2">
-                                 <button className=" vndrbtn w-100">Search</button>
-                                </div>
+                            <div className="col-2">
+                              <label htmlFor="prod-no">Select Cust:</label>
+                            </div>
+                            <div className="col-3">
+                              <input type="text" placeholder="Enter Name.." className="form-control" />
+                            </div>
+                            <div className="col-2">
+                              <button className=" vndrbtn w-100">Search</button>
+                            </div>
                           </div>
                           <div className="row text-start mt-2 ">
-                                <div className="col-2">
-                                  <label htmlFor="prod-no">Select PO:</label>
-                                </div>
-                                <div className="col-3">
-                                        <select name="" id="" className="form-control">
-                                            <option value="">Select an Option</option>
-                                        </select>
-                                </div>
-                                <div className="col-1">
-                                 <button className=" vndrbtn">Search</button>
-                                </div>
-                                <div className="col-2">
-                                 <button className=" vndrbtn "> View SO</button>
-                                </div>
+                            <div className="col-2">
+                              <label htmlFor="prod-no">Select PO:</label>
+                            </div>
+                            <div className="col-3">
+                              <select name="" id="" className="form-control">
+                                <option value="">Select an Option</option>
+                              </select>
+                            </div>
+                            <div className="col-1">
+                              <button className=" vndrbtn">Search</button>
+                            </div>
+                            <div className="col-2">
+                              <button className=" vndrbtn "> View SO</button>
+                            </div>
                           </div>
                           <div className="row text-start mt-2">
-                                <div className="col-2">
-                                  <label htmlFor="prod-no">Item Name :</label>
-                                </div>
-                                <div className="col-3">
-                                  <input type="text" placeholder="Enter Code No.." className="form-control" />
-                                </div>
-                                <div className="col-2">
-                                 <button className=" vndrbtn w-100">Add</button>
-                                </div>
+                            <div className="col-2">
+                              <label htmlFor="prod-no">Item Name :</label>
+                            </div>
+                            <div className="col-3">
+                              <input type="text" placeholder="Enter Code No.." className="form-control" />
+                            </div>
+                            <div className="col-2">
+                              <button className=" vndrbtn w-100">Add</button>
+                            </div>
                           </div>
                           <div className="row text-start mt-2">
-                                <div className="col-2">
-                                  <label htmlFor="prod-no">Ref.Item :</label>
-                                </div>
-                                <div className="col-2">
-                                  <input type="text" placeholder=".." className="form-control" />
-                                </div>
-                                <div className="col-1">
-                                 <button className=" vndrbtn w-100">Add</button>
-                                </div>
-                                <div className="col-3">
-                                 <button className=" vndrbtn">View Pendding Challan List</button>
-                                </div>
-                                <div className="col-3">
-                                 <button className=" vndrbtn w-100">View Bom Wise</button>
-                                </div>
+                            <div className="col-2">
+                              <label htmlFor="prod-no">Ref.Item :</label>
+                            </div>
+                            <div className="col-2">
+                              <input type="text" placeholder=".." className="form-control" />
+                            </div>
+                            <div className="col-1">
+                              <button className=" vndrbtn w-100">Add</button>
+                            </div>
+                            <div className="col-3">
+                              <button className=" vndrbtn">View Pendding Challan List</button>
+                            </div>
+                            <div className="col-3">
+                              <button className=" vndrbtn w-100">View Bom Wise</button>
+                            </div>
                           </div>
                         </div>
 
@@ -204,7 +204,7 @@ const GSTJobworkInvoice = () => {
                           id="invtaxes"
                           role="tabpanel"
                         >
-                         <div className="row text-start">
+                          <div className="row text-start">
                             {/* First Column */}
                             <div className="col-md-4">
                               {/* Prod. No */}
@@ -242,7 +242,7 @@ const GSTJobworkInvoice = () => {
                                 </div>
                                 <div className="col-6">
                                   <input type="Date" id="payment"
-                                    className="form-control"/>
+                                    className="form-control" />
                                 </div>
                               </div>
 
@@ -255,7 +255,7 @@ const GSTJobworkInvoice = () => {
                                 </div>
                                 <div className="col-8">
                                   <input type="text" placeholder="By Road" id="modeoftrans"
-                                    className="form-control"/>
+                                    className="form-control" />
                                 </div>
                               </div>
 
@@ -265,8 +265,8 @@ const GSTJobworkInvoice = () => {
                                   <label htmlFor="item">Bill TO  :</label>
                                 </div>
                                 <div className="col-8 d-flex align-items-center">
-                                   <input type="text" placeholder="" id="billto"
-                                    className="form-control"/>
+                                  <input type="text" placeholder="" id="billto"
+                                    className="form-control" />
                                   <button
                                     type="button"
                                     className=" vndrbtn ml-2"
@@ -282,8 +282,8 @@ const GSTJobworkInvoice = () => {
                                   <label htmlFor="shipto">Ship TO :</label>
                                 </div>
                                 <div className="col-8 d-flex align-items-center">
-                                   <input type="text" placeholder="Enter Buyer Name" id="billto"
-                                    className="form-control"/>
+                                  <input type="text" placeholder="Enter Buyer Name" id="billto"
+                                    className="form-control" />
                                   <button
                                     type="button"
                                     className=" vndrbtn ml-2"
@@ -311,11 +311,11 @@ const GSTJobworkInvoice = () => {
                               <div className="row mb-2">
                                 <div className="col-4">
                                   <label htmlFor="note-remark">
-                                   Remark:
+                                    Remark:
                                   </label>
                                 </div>
                                 <div className="col-8">
-                                    <textarea name="" className="form-control" id="note-remark"></textarea>
+                                  <textarea name="" className="form-control" id="note-remark"></textarea>
                                 </div>
                               </div>
 
@@ -359,7 +359,7 @@ const GSTJobworkInvoice = () => {
                                   <label htmlFor="vehicle">Vehicle No:</label>
                                 </div>
                                 <div className="col-6 d-flex align-items-center">
-                                 <input
+                                  <input
                                     id="vehicle"
                                     className="form-control"
                                   />
@@ -372,7 +372,7 @@ const GSTJobworkInvoice = () => {
                                   <label htmlFor="addrcode">Addr Code:</label>
                                 </div>
                                 <div className="col-6 d-flex">
-                                <select className="form-control flex-grow-1">
+                                  <select className="form-control flex-grow-1">
                                     <option>   </option>
                                   </select>
                                 </div>
@@ -383,7 +383,7 @@ const GSTJobworkInvoice = () => {
                                   <label htmlFor="addrcode">Addr Code:</label>
                                 </div>
                                 <div className="col-6 d-flex">
-                                <select className="form-control flex-grow-1">
+                                  <select className="form-control flex-grow-1">
                                     <option>   </option>
                                   </select>
                                 </div>
@@ -398,7 +398,7 @@ const GSTJobworkInvoice = () => {
                                     id="ewaybill"
                                     type="time"
                                     className="form-control"
-                                   />
+                                  />
                                 </div>
                               </div>
 
@@ -432,7 +432,7 @@ const GSTJobworkInvoice = () => {
                                   <label htmlFor="invoicetime">Invoice Time :</label>
                                 </div>
                                 <div className="col-6">
-                                 <input type="time" id="invoicetime" className="form-control"/>
+                                  <input type="time" id="invoicetime" className="form-control" />
                                 </div>
                               </div>
 
@@ -441,7 +441,7 @@ const GSTJobworkInvoice = () => {
                                   <label htmlFor="invoicetime"> Time :</label>
                                 </div>
                                 <div className="col-6">
-                                 <input type="time" id="invoicetime" className="form-control"/>
+                                  <input type="time" id="invoicetime" className="form-control" />
                                 </div>
                               </div>
 
@@ -463,7 +463,7 @@ const GSTJobworkInvoice = () => {
                                   <label htmlFor="shift">Place Of Supply:</label>
                                 </div>
                                 <div className="col-8">
-                                 <input type="text" className="form-control" />
+                                  <input type="text" className="form-control" />
                                 </div>
                               </div>
 
@@ -472,7 +472,7 @@ const GSTJobworkInvoice = () => {
                                   <label htmlFor="shift">LR No:</label>
                                 </div>
                                 <div className="col-8">
-                                 <input type="text" className="form-control" />
+                                  <input type="text" className="form-control" />
                                 </div>
                               </div>
 
@@ -480,168 +480,125 @@ const GSTJobworkInvoice = () => {
 
                           </div>
 
-                          <div className="table-container">
-                             
-                                <div className="row">
+                          <table className="table mt-2 table-bordered">
+                            <tbody>
+                              {/* Row 1 */}
+                              <tr>
+                                <td><label>Assessble Value</label></td>
+                                <td><input className="form-control" type="text" placeholder="0" /></td>
 
-                                    <div className="col-md-3">
-                                        <div className="row">
-                                            <div className="col-md-8">
-                                            <label>Assessble Value</label>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <input className="form-control" type="text" placeholder="0"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <div className="row">
-                                            <div className="col-md-8">
-                                            <label className="d-flex">Pack&Fwrd <input style={{width:"40px"}} type="text" className="form-control" placeholder="0"/>%</label>  
-                                            </div>
-                                            <div className="col-md-4">
-                                                <input className="form-control" type="text" placeholder="0"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <div className="row">
-                                            <div className="col-md-12">
-                                            <label>TSC: %</label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <td>
+                                  <label>
+                                    Pack & Fwrd :
+                                    <input
+                                      type="text"
+                                      className="form-control d-inline-block ms-2"
+                                      style={{ width: '40px' }}
+                                      placeholder="0"
+                                    />
+                                    %
+                                  </label>
+                                </td>
+                                <td><input className="form-control" type="text" placeholder="0" /></td>
 
-                                    <div className="col-md-3">
-                                        <div className="col-md-12">
-                                            0
-                                            </div>
-                                    </div>
+                                <td><label>TSC :</label></td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    className="form-control d-inline-block ms-2"
+                                    style={{ width: '70px' }}
+                                    placeholder="0"
+                                  />
+                                     %
+                                </td>
+                              </tr>
 
-                                </div>
+                              {/* Row 2 */}
+                              <tr>
+                                <td><label>CGST : 00.00%</label></td>
+                                <td><input className="form-control" type="text" placeholder="0" /></td>
 
-                                <div className="row">
+                                <td>
+                                  <label>
+                                    Transport Crg. : 
+                                    <input
+                                      type="text"
+                                      className="form-control d-inline-block ms-2"
+                                      style={{ width: '40px' }}
+                                      placeholder="0"
+                                    />
+                                    %
+                                  </label>
+                                </td>
+                                <td><input className="form-control" type="text" placeholder="0" /></td>
 
-                                    <div className="col-md-3">
-                                        <div className="row">
-                                            <div className="col-md-8">
-                                            <label>CGST : 00.00%</label>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <input className="form-control" type="text" placeholder="0"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <div className="row">
-                                            <div className="col-md-8">
-                                            <label className="d-flex">Transport Crg. <input style={{width:"40px"}} type="text" className="form-control" placeholder="0"/>%</label>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <input className="form-control" type="text" placeholder="0"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <div className="row">
-                                            <div className="col-md-12">
-                                            
-                                            </div>  
-                                        </div>
-                                    </div>
+                                <td colSpan="2"></td>
+                              </tr>
 
-                                    <div className="col-md-3">
-                                    <div className="col-md-12">
-                                            </div>
-                                        </div>
+                              {/* Row 3 */}
+                              <tr>
+                                <td><label>SGST : 00.00%</label></td>
+                                <td><input className="form-control" type="text" placeholder="0" /></td>
 
-                                </div>
+                                <td>
+                                  <label>
+                                    Freight Crg. :
+                                    <input
+                                      type="text"
+                                      className="form-control d-inline-block ms-2"
+                                      style={{ width: '40px' }}
+                                      placeholder="0"
+                                    />
+                                    %
+                                  </label>
+                                </td>
+                                <td><input className="form-control" type="text" placeholder="0" /></td>
 
-                                <div className="row">
+                                <td><label>E-Invoice Type:</label></td>
+                                <td colSpan="1">
+                                  <select className="form-control">
+                                    <option value="">Bussiness To Bussiness</option>
+                                  </select>
+                                </td>
+                              </tr>
 
-                                    <div className="col-md-3">
-                                        <div className="row">
-                                            <div className="col-md-8">
-                                            <label>SGST : 00.00%</label>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <input className="form-control" type="text" placeholder="0"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <div className="row">
-                                            <div className="col-md-8">
-                                            <label className="d-flex">Freight Crg. <input style={{width:"40px"}} type="text" className="form-control" placeholder="0"/>% </label>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <input className="form-control" type="text" placeholder="0"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <div className="row">
-                                            <div className="col-md-12">
-                                            <label>E-Invoice Type :</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                    <div className="row">
-                                            <div className="col-md-12">
-                                                <select className="form-control" name="" id="">
-                                                    <option value="">Bussiness To Bussiness</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        </div>
+                              {/* Row 4 */}
+                              <tr>
+                                <td><label>IGST : 00.00%</label></td>
+                                <td><input className="form-control" type="text" placeholder="0" /></td>
 
-                                </div>
+                                <td>
+                                  <label>
+                                    Other Crg. : 
+                                    <input
+                                      type="text"
+                                      className="form-control d-inline-block ms-2"
+                                      style={{ width: '40px' }}
+                                      placeholder="0"
+                                    />
+                                    %
+                                  </label>
+                                </td>
+                                <td><input className="form-control" type="text" placeholder="0" /></td>
 
-                                <div className="row">
+                                <td><label>GR Total :</label></td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    className="form-control d-inline-block ms-2"
+                                    style={{ width: '70px' }}
+                                    placeholder="0"
+                                  />
+                                    %
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
 
-                                    <div className="col-md-3">
-                                        <div className="row">
-                                            <div className="col-md-8">
-                                            <label>IGST : 00.00%</label>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <input className="form-control" type="text" placeholder="0"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <div className="row">
-                                            <div className="col-md-8">
-                                            <label className="d-flex">Other Crg. <input style={{width:"40px"}} type="text" className="form-control" placeholder="0"/>% </label>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <input className="form-control" type="text" placeholder="0"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <div className="row">
-                                            <div className="col-md-12">
-                                            <label>GR Total  : </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                    <div className="row">
-                                            <div className="col-md-12">
-                                            0
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                          </div>
 
                           <div className="row">
                             <div className="col-md-3">
-                                <button className=" vndrbtn"> Generete JobWork Invoice </button>
+                              <button className=" vndrbtn"> Generete JobWork Invoice </button>
                             </div>
                           </div>
 
@@ -653,57 +610,57 @@ const GSTJobworkInvoice = () => {
                           role="tabpanel"
                         >
 
-                       <div className="table-responsive">
-                                <table className="table table-bordered">
-                                <thead>
-                                    <tr>
-                                    <th>Sr.</th>
-                                    <th>PO No </th>
-                                    <th>Item No Code</th>
-                                    <th>Stock</th>
-                                    <th>Description</th>
-                                    <th>JobWork Rate</th>
-                                    <th>PO Qty</th>
-                                    <th>Bal.Qty</th>
-                                    <th>Inv.Qty</th>
-                                    <th>Pkg Qty</th>
-                                    <th>Pkg.Desc</th>
-                                    <th>Ref.</th>
-                                    <th>Material Rate</th>
-                                    <th>Del</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Line No: <br /> Line PODt :</td>
-                                        <td>So Line No :</td>
-                                        <td></td>
-                                        <td><textarea className="form-control" name="" id=""></textarea> <br /> <span>HSN Code :</span> </td>
-                                        <td className="text-start"><input type="text" className="form-control" /> <br />
-                                               
-                                            <span style={{color:"blue"}}>Rate Type: </span>
-                                                <br /> <select className="form-control" name="" id="">
-                                                    <option value="">NOS</option>
-                                                </select>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><input type="text" className="form-control"/> <br />
-                                            Per Pcs Wt: <br />
-                                            <input type="text" className="form-control" placeholder="Weight" /><br />
-                                            <span style={{color:"blue"}}>Per Unit: </span>
-                                        </td>
-                                        <td><input type="text" className="form-control"/></td>
-                                        <td><textarea className="form-control" name="" id=""></textarea></td>
-                                        <td></td>
-                                        <td><input className="form-control" type="text" /></td>
-                                        <td><span className="vndrbtn" style={{border:"1px solid black"}}>X</span></td>
-                                    </tr>
-                                </tbody>
-                                </table>
-                      </div>
-                       </div> 
+                          <div className="table-responsive">
+                            <table className="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>Sr.</th>
+                                  <th>PO No </th>
+                                  <th>Item No Code</th>
+                                  <th>Stock</th>
+                                  <th>Description</th>
+                                  <th>JobWork Rate</th>
+                                  <th>PO Qty</th>
+                                  <th>Bal.Qty</th>
+                                  <th>Inv.Qty</th>
+                                  <th>Pkg Qty</th>
+                                  <th>Pkg.Desc</th>
+                                  <th>Ref.</th>
+                                  <th>Material Rate</th>
+                                  <th>Del</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Line No: <br /> Line PODt :</td>
+                                  <td>So Line No :</td>
+                                  <td></td>
+                                  <td><textarea className="form-control" name="" id=""></textarea> <br /> <span>HSN Code :</span> </td>
+                                  <td className="text-start"><input type="text" className="form-control" /> <br />
+
+                                    <span style={{ color: "blue" }}>Rate Type: </span>
+                                    <br /> <select className="form-control" name="" id="">
+                                      <option value="">NOS</option>
+                                    </select>
+                                  </td>
+                                  <td></td>
+                                  <td></td>
+                                  <td><input type="text" className="form-control" /> <br />
+                                    Per Pcs Wt: <br />
+                                    <input type="text" className="form-control" placeholder="Weight" /><br />
+                                    <span style={{ color: "blue" }}>Per Unit: </span>
+                                  </td>
+                                  <td><input type="text" className="form-control" /></td>
+                                  <td><textarea className="form-control" name="" id=""></textarea></td>
+                                  <td></td>
+                                  <td><input className="form-control" type="text" /></td>
+                                  <td><span className="vndrbtn" style={{ border: "1px solid black" }}>X</span></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
 
                       </div>
 

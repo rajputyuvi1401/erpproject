@@ -124,22 +124,20 @@ const CustomerState = () => {
     setEditMode(true);
   };
   return (
-    <div className="customer">
+    <div className="CustomerState">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
             <div className="Main-NavBar">
               <NavBar toggleSideNav={toggleSideNav} />
-              <SideNav
-                sideNavOpen={sideNavOpen}
-                toggleSideNav={toggleSideNav}
-              />
+              <SideNav sideNavOpen={sideNavOpen}  toggleSideNav={toggleSideNav}/>
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Middle">
-                  <div className="container">
+                  <div className="CustomerState">
                     <div className="row">
                       <div className="col-md-12">
-                        <div className="container">
+
+                        <div className="CustomerStateMain">
                           <div className="row text-start">
                             <div className="col-md-12">
                               <div className="row">
@@ -232,10 +230,11 @@ const CustomerState = () => {
                                   <div className="form-group">
                                     <button
                                       type="button"
-                                      className="customerStateadd"
+                                      className="vndrbtn"
                                       onClick={
                                         editMode ? handleEdit : handleAdd
                                       }
+                                      style={{ marginTop: "21px" }}
                                     >
                                       {editMode ? "Update" : "Add"}
                                     </button>
@@ -246,9 +245,9 @@ const CustomerState = () => {
                           </div>
                         </div>
 
-                        <div className="container mt-5">
+                        <div className="CustomerStateMain mt-2">
                           <div className="row">
-                            <div className="col-md-12">
+                            <div className="col-md-10">
                               <div className="input-group mb-3">
                                 <input
                                   type="text"
@@ -259,19 +258,22 @@ const CustomerState = () => {
                                   value={searchId}
                                   onChange={(e) => setSearchId(e.target.value)}
                                 />
-                                <button
-                                  type="button"
-                                  className="customerState"
-                                  onClick={handleSearch}
-                                >
-                                  Search
-                                </button>
                               </div>
+                            </div>
+
+                            <div className="col-md-2">
+                              <button
+                                type="button"
+                                className="vndrbtn"
+                                onClick={handleSearch}
+                              >
+                                Search
+                              </button>
                             </div>
                           </div>
                         </div>
 
-                        <div className="container mt-5 table-container">
+                        <div className="CustomerStatetable mt-2 table-container">
                           <div className="table-responsive">
                             <table className="table table-bordered">
                               <thead>
@@ -318,6 +320,7 @@ const CustomerState = () => {
                             </table>
                           </div>
                         </div>
+
                       </div>
                     </div>
                   </div>

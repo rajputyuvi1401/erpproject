@@ -1,110 +1,179 @@
-/* General container padding and margin adjustments */
-.Itemmaindelete {
-    padding: 10px;
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.DeleteReport {
+  width: 100%;
+  height: 100vh;
+}
+
+.DeleteReport-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
+}
+
+.DeleteReportmain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.DeleteReportbottom {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    padding: 10px 15px; 
   }
-  
-  .Itemmaindelete  .header-title {
-    font-weight: bold;
-    font-size: 1.5rem;
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
+}
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.DeleteReporttable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
   }
-  
-  .DeleteRecord-header{background-color: #f8f9fa; /* Light background for header */
-    border-bottom: 1px solid #dee2e6; /* Border for header */
-    padding: 10px 15px; /* Padding around header */
-    border-radius: 5px;}
-  
-  .Itemmaindelete .dltbtn {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 10px;
-    border-radius: 5px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
   }
-  
-  .Itemmaindelete .dltbtn:hover {
-    background-color: #218838;
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
   }
-  
-  /* Form input and textarea adjustments */
-  .Itemmaindelete .form-control {
-    font-size: 0.95rem;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ced4da;
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
   }
-  
-  /* .Itemmaindelete textarea.form-control {
-    resize: none;
-  } */
-  
-  /* Responsive table adjustments */
-  .Itemmaindelete .table-responsive {
-    margin-top: 20px;
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
   }
-  
-  .Itemmaindelete .table th, .table td {
-    vertical-align: middle;
-    text-align: left;
-  }
-  
-  .Itemmaindelete  .table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-  
-  .Itemmaindelete  .table button {
+
+  .vndrbtn {
     padding: 5px 10px;
   }
-  
-  /* Media queries for smaller screens */
-  @media (max-width: 768px) {
-    .Itemmaindelete    .header-title {
-      font-size: 1.2rem;
-    }
-  
-    .Itemmaindelete   .btn {
-      font-size: 0.9rem;
-      padding: 8px 15px;
-    }
-  
-    .Itemmaindelete   .dltbtn {
-      padding: 8px 15px;
-      font-size: 0.9rem;
-    }
-  
-    .Itemmaindelete   .form-control {
-      font-size: 0.9rem;
-    }
-  
-    .Itemmaindelete  .table-responsive {
-      overflow-x: auto;
-    }
-  
-    .Itemmaindelete    .table th, .table td {
-      font-size: 0.85rem;
-    }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
   }
-  
-  @media (max-width: 576px) {
-    .Itemmaindelete  .btn {
-      font-size: 0.85rem;
-      padding: 6px 12px;
-    }
-  
-    .Itemmaindelete  .dltbtn {
-      padding: 6px 12px;
-      font-size: 0.85rem;
-    }
-  
-    .Itemmaindelete   .form-control {
-      font-size: 0.85rem;
-    }
-  
-    .Itemmaindelete   .table th, .table td {
-      font-size: 0.8rem;
-    }
+
+  .table th,
+  .table td {
+    font-size: 11px;
   }
-  
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+}

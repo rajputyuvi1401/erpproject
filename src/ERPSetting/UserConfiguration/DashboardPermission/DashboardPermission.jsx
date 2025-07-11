@@ -28,17 +28,19 @@ const DashboardPermission = () => {
             <div className="col-md-12">
                 <div className="Main-NavBar">
                     <NavBar toggleSideNav={toggleSideNav} />
-                    <SideNav
-                        sideNavOpen={sideNavOpen}
-                        toggleSideNav={toggleSideNav}
-                    />
+                    <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
                     <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                         <div className="dashboardp">
-                            <div className="dash-header mb-2 text-start">
-                                <h5 className="header-title">Dashboard Permission</h5>
-                            </div>
+                             <div className="DashboardPermission-header mb-2">              
+                                 <div className="row">
+                                    <div className="col-md-4">
+                                        <h5 className="header-title text-start"> Dashboard Permission </h5>
+                                    </div>
+                                </div>
+                             </div>
                         </div>
-                            <div className="dash-main text-start">
+
+                            <div className="DashboardPermissionmain text-start">
                                 <div className="row mb-3">
                                     <div className="col-md-1 col-sm-3">
                                         <label>Select Dept:</label>
@@ -66,7 +68,7 @@ const DashboardPermission = () => {
                                 </div>
                             </div>
 
-                            <div className="dash-main text-start">
+                            <div className="DashboardPermissionmain text-start">
                                 <div className="table-responsive">
                                     <table className="table table-bordered table-hover">
                                         <thead className="table-light">

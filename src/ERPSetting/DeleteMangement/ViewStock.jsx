@@ -30,7 +30,7 @@ const ViewStock = () => {
           <div className="content-area">
             <div className="row text-start mt-3">
               <div className="col-lg-2 col-md-3 col-12 submenu">
-                <h4>Sub Menu</h4>
+                <h4 className="header-title">Sub Menu</h4>
                 <h6 className="portal-login">Portal Login!</h6>
                 <ul className="submenu-links">
                   <li><Link to="/order-list">Order List</Link></li>
@@ -38,42 +38,52 @@ const ViewStock = () => {
                   <li><Link to="/user-list">User List</Link></li>
                 </ul>
               </div>
-              <div className="col-lg-10 col-md-9 col-12 content mt-5">
-                <div className="order-header mb-4 d-flex justify-content-between align-items-center">
+              
+              <div className="col-lg-10 col-md-9 col-12 content">
+                <div className="order-header mb-2 d-flex justify-content-between align-items-center">
                   <h5 className="header-title">Stock</h5>
-                  <button type="button" className="btn export-btn">
+                  <button type="button" className="vndrbtn export-btn">
                     Export To Excel
                   </button>
                 </div>
+
+                <div className="deletemanagementmain">
                 <div className="row mb-3">
-                  <div className="col-md-2">
-                    <input type="checkbox" />
+                  <div className="col-md-2 d-flex align-items-center">
+                    <input type="checkbox" className="me-2" />
                     <label>All Dealer</label>
                   </div>
-                  <div className="col-md-2">
-                    <input type="checkbox" />
+
+                  <div className="col-md-2 d-flex align-items-center">
+                    <input type="checkbox" className="me-2" />
                     <label>Select Dealer</label>
                   </div>
-                  <div className="col-md-2">
-                    <input type="checkbox" />
+
+                  <div className="col-md-2 d-flex align-items-center">
+                    <input type="checkbox" className="me-2" />
                     <label>Item Code</label>
                   </div>
+
                 </div>
+
                 <div className="row mb-3">
                   <div className="col-md-2">
                     <input className="form-control" />
                   </div>
                   <div className="col-md-2 mt-1">
-                    <button type="button" className="btn btn-primary">Search</button>
+                    <button type="button" className="vndrbtn btn-primary">Search</button>
                   </div>
                   <div className="col-md-2">
                     <input className="form-control" />
                   </div>
                   <div className="col-md-2 mt-1">
-                    <button type="button" className="btn btn-primary">Search</button>
+                    <button type="button" className="vndrbtn btn-primary">Search</button>
                   </div>
                 </div>
-                <table className="table table-bordered table-responsive-sm mt-3">
+                </div>
+
+                <div className="deletemanagementtable mt-2">
+                <table className="table table-bordered table-responsive-sm mt-2">
                   <thead>
                     <tr>
                       <th>Sr.</th>
@@ -85,6 +95,8 @@ const ViewStock = () => {
                   </thead>
                   <tbody>{/* Populate table rows here */}</tbody>
                 </table>
+                </div>
+
               </div>
             </div>
           </div>

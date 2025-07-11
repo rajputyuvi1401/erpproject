@@ -4,11 +4,13 @@ import axios from 'axios';
 
 // Services/PurchaseApi.jsx
 
-// const BASE_URL = "http://3.7.91.234:8000/Purchase/";
-const BASE_URL = "api/Purchase/";
+
+
+const BASE_URL = "http://3.7.91.234:8000/Purchase/";
+// const BASE_URL = "api/Purchase/";
 
 export const addItem = async (data) => {
-    try {
+    try { 
         const response = await fetch(`${BASE_URL}ItemDetail/`, {
             method: 'POST',
             headers: {
@@ -17,6 +19,7 @@ export const addItem = async (data) => {
             body: JSON.stringify(data),
         });
         return await response.json();
+        
     } catch (error) {
         console.error('Error adding item:', error);
         throw error;

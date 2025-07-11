@@ -1,87 +1,179 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
 .BackDatedEntry {
-    padding: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.backdated-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
+}
+
+.backdatedmain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 20px;
+}
+
+.backdatedbottom {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    padding: 10px 15px; 
   }
-  
-  .BackDatedEntry  .Main-NavBar {
-    display: flex;
-  }
-  
-  .BackDatedEntry .main-content {
-    padding: 20px;
-  }
-  
-  .BackDatedEntry .main-content.shifted {
-    margin-left: 250px;
-  }
-  
-  .BackDatedEntry  .back-header {
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .BackDatedEntry .header-title {
-    font-weight: 500;
-    font-size: 1.2rem;
-  }
-  
-  .BackDatedEntry  .back-main {
-    margin-bottom: 20px;
-  }
-  
-  .BackDatedEntry .export-btn {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .BackDatedEntry  .back-table {
-    margin-top: 20px;
-  }
-  
-  .BackDatedEntry .table-responsive {
-    margin-bottom: 20px;
-  }
-  
-  .BackDatedEntry .table th, .table td {
-    vertical-align: middle;
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
+}
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.backdatedtable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
     text-align: center;
   }
-  
-  .BackDatedEntry  .form-control {
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
     width: 100%;
-    border-radius: 4px;
   }
-  
-  @media (max-width: 767px) {
-    .BackDatedEntry   .main-content.shifted {
-      margin-left: 0;
-    }
-  
-    .BackDatedEntry   .back-header .row {
-      flex-direction: column;
-    }
-  
-    .BackDatedEntry   .back-header .col-md-6,
-    .BackDatedEntry    .back-main .col-md-4,
-    .BackDatedEntry    .back-main .col-md-2 {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  
-    .BackDatedEntry   .back-table table th, .back-table table td {
-      font-size: 0.9rem;
-    }
-  
-    .BackDatedEntry   .btn {
-      width: 100%;
-      margin-bottom: 10px;
-    }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
   }
-  
-  @media (min-width: 768px) and (max-width: 991px) {
-    .BackDatedEntry   .back-main .col-md-4, .back-main .col-md-2 {
-      width: 50%;
-    }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
   }
-  
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+}

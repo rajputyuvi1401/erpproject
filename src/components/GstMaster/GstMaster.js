@@ -172,7 +172,7 @@ const GstMaster = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="GstMaster1">
-                  <div className="GstMasterupper-header mb-4 text-start">
+                  <div className="GstMasterupper-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">GST Rate Master</h5>
@@ -195,6 +195,7 @@ const GstMaster = () => {
                   </div>
 
                   <div className="GstMasterMain">
+
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-md-12">
@@ -472,9 +473,9 @@ const GstMaster = () => {
                       </div>
                     </div>
 
-                    <div className="GstMastertable">
+                    <div className="GstMastertable ">
                       <div className="container-fluid">
-                        <div className="row">
+                        <div className="row mt-3">
                           <div className="col-md-12">
                             <div className="table-responsive">
                               <table className="table">
@@ -599,6 +600,7 @@ const GstMaster = () => {
                       <p>Total Records: {records.length}</p>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

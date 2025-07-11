@@ -20,7 +20,7 @@ const Plantwiseseries = () => {
     }, [sideNavOpen]);
 
   return (
-    <div className="plant-series-permission">
+    <div className="Plantwiseseries">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -29,8 +29,8 @@ const Plantwiseseries = () => {
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                
-                <div className="series-permission mt-5">
-                  <div className="prod-header mb-4 text-start">
+                <div className="Plantwiseseries-permission ">
+                  <div className="Plantwiseseries-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Plant Series Permission</h5>
@@ -38,7 +38,7 @@ const Plantwiseseries = () => {
                     </div>
                   </div>
 
-                  <div className="permission-table mt-3">
+                  <div className="Plantwiseseriestable mt-3">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead className="table-dark">
@@ -87,6 +87,7 @@ const Plantwiseseries = () => {
                       </table>
                     </div>
                   </div>
+                  
                 </div>
               </main>
             </div>

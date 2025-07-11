@@ -31,22 +31,23 @@ const UserWiseSeries = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="UserWise mt-5">
-                  <div className="back-header mb-4 text-start">
+                <div className="UserWise">
+                  <div className="UserWiseSeries-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">
-                       User Series Permission
+                             User Series Permission
                         </h5>
                       </div>
                       <div className="col-md-6 text-end">
-                        <button type="button" className="btn export-btn">
+                        <button type="button" className="vndrbtn">
                           Export To Excel
                         </button>
                       </div>
                     </div>
                   </div>
-                  <div className="back-main text-start">
+
+                  <div className="UserWiseSeriesmain text-start">
                     <div className="row mb-3 align-items-center">
                       <div className="col-md-2">
                         <label>Select User:</label>
@@ -77,12 +78,13 @@ const UserWiseSeries = () => {
                         <input type="text" className="form-control" />
                       </div>
                       <div className="col-md-2 text-end">
-                        <button className="btn  me-2">Set To All</button>
+                        <button className="vndrbtn  me-2">Set To All</button>
                       
                       </div>
                     </div>
                   </div>
-                  <div className="back-table text-start">
+
+                  <div className="UserWiseSeriestable text-start">
                     <div className="table-responsive">
                       <table className="table table-bordered table-hover">
                         <thead className="table-light">
@@ -107,6 +109,7 @@ const UserWiseSeries = () => {
                       </table>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

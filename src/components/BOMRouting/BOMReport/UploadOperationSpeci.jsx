@@ -5,8 +5,7 @@ import "../BomRouting.css";
 import { useNavigate } from "react-router-dom";
 
 
-const UploadOperationSpeci
- = () => {
+const UploadOperationSpeci = () => {
 
 //   const [activeTab, setActiveTab] = useState("query");
 

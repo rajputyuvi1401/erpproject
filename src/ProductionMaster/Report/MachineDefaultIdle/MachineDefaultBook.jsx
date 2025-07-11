@@ -32,33 +32,28 @@ const MachineDefaultBook = () =>  { const [sideNavOpen, setSideNavOpen] = useSta
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="PRoWorkorderList mt-5">
-                  <div className="PRoWorkorderList-header mb-4 text-start">
+                <div className="PRoWorkorderList">
+                  <div className="PRoWorkorderList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
-                        <h5 className="header-title">Machine Default Idle</h5>
+                        <h5 className="header-title">Machine Idle Time Booking</h5>
                       </div>
-                      <div className="col-md-8 text-end">
-                        <button type="button" className="btn" to="/MachineDefaultBook">
-                           Book To Idle
-                        </button>
-                        
-                      </div>
+                      
                     </div>
                   </div>
   
                   <div className="PRoWorkorderList-Main">
                     <div className="container-fluid">
-                      <div className="row g-3 text-start">
+                      <div className="row text-start">
                         
                         {/* From Date */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
-                          <label>From:</label>
+                        <div className="col-sm-6 col-md-2 col-lg-2">
+                          <label>Date:</label>
                           <input type="date" className="form-control" />
                         </div>
   
                         {/* Shift */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>Shift :</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -69,7 +64,7 @@ const MachineDefaultBook = () =>  { const [sideNavOpen, setSideNavOpen] = useSta
                         </div>
   
                         {/* Group */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>Group:</label> 
                           <select className="form-select">
                             <option>Select All</option>
@@ -80,7 +75,7 @@ const MachineDefaultBook = () =>  { const [sideNavOpen, setSideNavOpen] = useSta
                         </div>
   
                         {/* Unit Machine */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>Unit Machine :</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -90,7 +85,7 @@ const MachineDefaultBook = () =>  { const [sideNavOpen, setSideNavOpen] = useSta
                         </div>
   
                         {/* Type */}
-                        <div className="col-sm-6 col-md-2 col-lg-1">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
                           <label>Type :</label>
                           <select className="form-select">
                             <option>Select All</option>
@@ -98,15 +93,35 @@ const MachineDefaultBook = () =>  { const [sideNavOpen, setSideNavOpen] = useSta
                             <option>Select All</option>
                           </select>
                         </div>
-                        <div className="col-sm-2 col-md-2 col-lg-1 mt-4">
-                        <button type="button" className="btn btn-primary w-100" >
+                        <div className="col-sm-2 col-md-2 col-lg-1" style={{marginTop:"22px"}} >
+                        <button type="button" className="vndrbtn btn-primary w-100" >
                             Search
                         </button>   
                         </div>
                      </div>
                     </div>
                   </div>
-            <hr />
+
+                  
+                  <div className="PRoWorkorderList-Main mt-10">
+                      <div className="row text-start">
+                        {/* Type */}
+                        <div className="col-sm-6 col-md-4 col-lg-3">
+                          <label>Default BreackDown Reason :</label>
+                          <select className="form-select">
+                            <option>Select All</option>
+                            <option>Select All</option>
+                            <option>Select All</option>
+                          </select>
+                        </div>
+                        <div className="col-sm-2 col-md-2 col-lg-1" style={{marginTop:"22px"}} >
+                        <button type="button" className="vndrbtn btn-primary w-100" >
+                            Set Reason
+                        </button>   
+                        </div>
+                     </div>
+                  </div>
+
                 </div>
               </main>
             </div>

@@ -42,13 +42,15 @@ const Report = () => {
                     </div>
 
                     <div className="col-md-9 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-md-3 d-flex align-items-end">
+                      {/* <div className="row justify-content-end">
+                        <div className="col-md-3 d-flex align-items-end"> */}
                           <Link className="vndrbtn">GRN Report</Link>
 
-                          <Link className="vndrbtn">GRN Query</Link>
-                        </div>
-                      </div>
+                           <Link type="button" className="vndrbtn" to="/ReportQuery">
+                              GRN Query
+                           </Link>
+                        {/* </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

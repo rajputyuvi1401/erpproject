@@ -1,58 +1,61 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import NavBar from "../../NavBar/NavBar.js";
-import SideNav from "../../SideNav/SideNav.js";
+import NavBar from "../../../NavBar/NavBar.js";
+import SideNav from "../../../SideNav/SideNav.js";
 import { Link } from "react-router-dom";
-import "./MrnList.css";
+import "./DeliveryChlln.css";
 
-const MRNList = () => {
+const DeliveryChlln = () => {
+  const [sideNavOpen, setSideNavOpen] = useState(false);
 
-    const [sideNavOpen, setSideNavOpen] = useState(false);
+  const toggleSideNav = () => {
+    setSideNavOpen((prevState) => !prevState);
+  };
 
-    const toggleSideNav = () => {
-      setSideNavOpen((prevState) => !prevState);
-    };
-  
-    useEffect(() => {
-      if (sideNavOpen) {
-        document.body.classList.add("side-nav-open");
-      } else {
-        document.body.classList.remove("side-nav-open");
-      }
-    }, [sideNavOpen]);
+  useEffect(() => {
+    if (sideNavOpen) {
+      document.body.classList.add("side-nav-open");
+    } else {
+      document.body.classList.remove("side-nav-open");
+    }
+  }, [sideNavOpen]);
 
   return (
-    <div className="NewStoreGateInward">
+    <div className="NewStoreDeliveryChlln">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
             <div className="Main-NavBar">
               <NavBar toggleSideNav={toggleSideNav} />
-              <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
+              <SideNav
+                sideNavOpen={sideNavOpen}
+                toggleSideNav={toggleSideNav}
+              />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="GateInward-header">
+                <div className="DeliveryChlln-header">
                   <div className="row flex-nowrap align-items-center">
                     <div className="col-md-3">
                       <h5 className="header-title text-start">
-                        MRN List
+                        Delivery Challan List
                       </h5>
                     </div>
 
                     <div className="col-md-9 text-end">
-                      <div className="row justify-content-end">
-                        <div className="col-md-4 d-flex align-items-end">
-                        
-                         
-                          <Link className="vndrbtn">Export Excel</Link>
-                        
-                          <Link className="vndrbtn">MRN - Query</Link>
-                        </div>
-                      </div>
+                      {/* <div className="row justify-content-end">
+                        <div className="col-md-3 d-flex align-items-end"> */}
+                          <Link className="vndrbtn">DC - Report</Link>
+
+                           <Link type="button" className="vndrbtn" to="/DeliveryQuery">
+                              Delivery Challan Query
+                           </Link>
+                        {/* </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
-                <div className="GateInward-main mt-3">
+                
+                <div className="DeliveryChlln-main mt-3">
                   <div className="container-fluid">
                     <div className="row mt-4">
                       <div className="col-md-12">
@@ -69,8 +72,8 @@ const MRNList = () => {
                             <input type="date" className="form-control" />
                           </div>
 
-                          {/* Plant */}
-                          <div className="col-md-2 col-sm-6">
+                            {/* Plant */}
+                            <div className="col-md-2 col-sm-6">
                             <label className="form-label">Plant</label>
                             <select className="form-select">
                               <option value="Produlink">Produlink</option>
@@ -78,30 +81,33 @@ const MRNList = () => {
                             </select>
                           </div>
 
-                          {/* Series */}
-                          <div className="col-md-2 col-sm-6">
-                            <label className="form-label">Series</label>
+                            <div className="col-md-2 col-sm-6">
+                            <label className="form-label">Type</label>
                             <select className="form-select">
-                              <option value="">Select Series</option>
-                              <option value="PurchaseGRN">Purchase GRN</option>
-                              <option value="ScheduleGRN">Schedule GRN</option>
-                              <option value="ImportGRN">Import GRN</option>
-                              <option value="57F4GRN">57F4 GRN</option>
-                              <option value="jobworkGRN">jobwork GRN</option>
-                              <option value="DC GRN">DC GRN</option>
-                              <option value="InterStoreInvoice">Inter Store Invoice</option>
-                              <option value="InterStoreChallan">Inter Store Challan</option>
-                              <option value="Sales Return">Sales Return</option>
-                              <option value="DirectGRN">Direct GRN</option>
-                              <option value="General/Document/Courier">General/Document/Courier</option>
+                              <option value="">ALL</option>
+                              {/* Add more options here */}
                             </select>
                           </div>
 
-                        
+                            <div className="col-md-2 col-sm-6">
+                            <label className="form-label">DC Type</label>
+                            <select className="form-select">
+                              <option value="">ALL</option>
+                              {/* Add more options here */}
+                            </select>
+                          </div>
+
+                            <div className="col-md-2 col-sm-6">
+                            <label className="form-label"> Inventry</label>
+                            <select className="form-select">
+                              <option value="">ALL</option>
+                              {/* Add more options here */}
+                            </select>
+                          </div>
 
                           {/* Supplier Name */}
                           <div className="col-md-2 col-sm-6">
-                            <label className="form-label">Item Code</label>
+                            <label className="form-label">Customer Name</label>
                             <input
                               type="text"
                               className="form-control"
@@ -111,21 +117,22 @@ const MRNList = () => {
 
                           {/* Item Name */}
                           <div className="col-md-2 col-sm-6">
-                            <label className="form-label">MRN No</label>
+                            <label className="form-label">Item </label>
                             <input
                               type="text"
                               className="form-control"
-                              placeholder="Enter Item Name"
+                              placeholder="Enter Item "
                             />
                           </div>
 
-                         {/* Plant */}
-                         <div className="col-md-2 col-sm-6">
-                            <label className="form-label">Issue Status</label>
-                            <select className="form-select">
-                              <option value="Produlink">Produlink</option>
-                              {/* Add more options here */}
-                            </select>
+                          {/* Gate Entry No. */}
+                          <div className="col-md-2 col-sm-6">
+                            <label className="form-label">DC No.</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Enter Gate Entry No."
+                            />
                           </div>
 
                           {/* Search Button */}
@@ -139,7 +146,7 @@ const MRNList = () => {
                     </div>
                   </div>
 
-                  <div className="StoreGateInward">
+                  <div className="StoreDeliveryChlln">
                     <div className="container-fluid mt-4 text-start">
                       <div className="table-responsive">
                         <table className="table table-bordered">
@@ -148,25 +155,21 @@ const MRNList = () => {
                               <th>Sr no.</th>
                               <th>Year</th>
                               <th>Plant</th>
-                              <th>MRN No</th>
-                              <th>MRN Date</th>
-                              
-                              <th>Item Details</th>
-                              
-                              <th>Work Order No</th>
+                              <th>DC No</th>
+                              <th>DC Date</th>
+                              <th>Type </th>
+                              <th>Cust Code</th>
+                              <th>Cust Name</th>
+                              <th>Inventry</th>
                               <th>User</th>
                               <th>Info</th>
-                              <th>Auth 1</th>
+                              <th>Return</th>
                               <th>Edit</th>
-                           
-                              <th>Delete</th>
+                              <th>Del</th>
                               <th>View</th>
-                              <th>Close</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            {/* Table rows will go here */}
-                          </tbody>
+                          <tbody></tbody>
                         </table>
                       </div>
                     </div>
@@ -178,7 +181,7 @@ const MRNList = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MRNList
+export default DeliveryChlln;

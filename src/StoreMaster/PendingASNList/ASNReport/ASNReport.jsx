@@ -31,7 +31,7 @@ const ASNReport = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="ASN-Report-header mb-4 text-start mt-5">
+                <div className="ASN-Report-header mb-2 text-start">
                     <div className="row align-items-center">
                     <div className="col-md-3">
                       <h5 className="header-title text-start">
@@ -40,7 +40,7 @@ const ASNReport = () => {
                     </div>
                   </div>
                 </div>
-                <div className="ASN-Report-main mt-5">
+                <div className="ASN-Report-main ">
                   <div className="container-fluid">
                     <div className="row mt-4">
                       <div className="col-md-12">

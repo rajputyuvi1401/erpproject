@@ -37,7 +37,7 @@ const Userwisepermission = () => {
 
       
   return (
-    <div className="User-wise-permission">
+    <div className="Userwisepermission">
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-12">
@@ -48,17 +48,20 @@ const Userwisepermission = () => {
               toggleSideNav={toggleSideNav}
             />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="User-permission mt-5">
-                <div className="prod-header mb-4 text-start">
+              <div className="User-permission">
+                <div className="Userwisepermission-header mb-2 text-start">
                   <div className="row ">
-                    <div className="col-md-12">
+                    <div className="col-md-4">
                       <h5 className="header-title">User Wise Permission</h5>
+                    </div>
+                    <div className="col-md-8 text-end">
+                      <button className="vndrbtn">Excel To Export</button>
                     </div>
                   </div>
                 </div>
 
            
-                    <div className="User-permission-main">
+                    <div className="Userwisepermissionmain">
                       <div className="row text-start">
                         <div className="col-md-2">
                           <div className="select-department">
@@ -78,14 +81,14 @@ const Userwisepermission = () => {
                         </div>
                         <div className="col-md-1">
                         
-                        <button className="btn btn-outline-secondary" type="button">
-                            <FaSearch size={18} />
+                        <button className="vndrbtn" type="button">
+                            <FaSearch size={16} />
                           </button>
                         </div>
                       </div>
                     </div>
 
-                    <div className="table-responsive mt-3">
+                    <div className="Userwisepermissiontable table-responsive mt-3">
                       <table className="table table-bordered">
                         <thead className="table-dark">
                           <tr>
@@ -108,8 +111,7 @@ const Userwisepermission = () => {
                       </table>
                     </div>
                   </div>
-            
-               
+                  
             </main>
           </div>
         </div>

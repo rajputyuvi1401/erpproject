@@ -1,123 +1,183 @@
-.ErpFinancialyear{
-        margin-top: 20px;
-      }
-    .financial-header {
-        background-color: #f8f9fa; /* Light background for header */
-        border-bottom: 1px solid #dee2e6; /* Border for header */
-        padding: 10px 15px; /* Padding around header */
-        border-radius: 5px;
-    }
-    
-    .ErpFinancialyear  .header-title {
-        font-size: 20px;
-        font-weight: bold;
-        margin: 0;
-    }
-    
-      
-      .financial-table .table-responsive {
-        overflow-x: auto;
-      }
-      
-      .financial-table .plant-table .table {
-        width: 100%;
-      }
-      
-      .ErpFinancialyear .main-content {
-        transition: margin-left 0.3s ease;
-      }
-      
-      /* When the side nav is open, shift the content */
-      .ErpFinancialyear .main-content.shifted {
-        margin-left: 250px; /* Adjust based on side nav width */
-      }
-      
-      /* Styling for the table select dropdown */
-      .ErpFinancialyear .table select {
-        width: 100%;
-        padding: 5px;
-        border-radius: 4px;
-      }
-      .yearbtn {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 1rem;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-    .yearbtn:hover {
-        background-color: #0056b3;
-    }
-      /* Responsive Styling for Tablets and Mobile Devices */
-      @media (max-width: 991px) {
-        .ErpFinancialyear .main-content {
-          margin-left: 0;
-        }
-      
-        .ErpFinancialyear .prod-header {
-          text-align: center;
-        }
-      
-        .ErpFinancialyear .prod-header .col-md-4 {
-          margin-bottom: 10px;
-        }
-      
-        /* Make the table responsive */
-        .ErpFinancialyear .table-responsive {
-          overflow-x: auto;
-        }
-      
-        .ErpFinancialyear .table thead th {
-          font-size: 0.85rem;
-        }
-      
-        .ErpFinancialyear .table tbody td {
-          font-size: 0.9rem;
-        }
-      
-        .ErpFinancialyear .table select {
-          width: 100%;
-        }
-      }
-      
-      /* Mobile specific adjustments */
-      @media (max-width: 576px) {
-        .ErpFinancialyear .prod-header {
-          text-align: center;
-        }
-      
-        .ErpFinancialyear .prod-header .col-md-4 {
-          margin-bottom: 10px;
-        }
-      
-        .ErpFinancialyear .table thead th {
-          font-size: 0.75rem;
-        }
-      
-        .ErpFinancialyear .table tbody td {
-          font-size: 0.8rem;
-        }
-      
-        .ErpFinancialyear .table select {
-          width: 100%;
-        }
-      
-        .ErpFinancialyear .plant-table .table th,
-        .plant-table .table td {
-          white-space: nowrap;
-        }
-      
-        .ErpFinancialyear .table-responsive {
-          overflow-x: auto;
-        }
-      }
-      
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
 
-      /* Overlay for the modal */
+.ErpFinancialyear {
+  width: 100%;
+  height: 100vh;
+}
+
+.ErpFinancialyear-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
+}
+
+.ErpFinancialyearmain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.ErpFinancialyearbottom {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    padding: 10px 15px; 
+  }
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
+}
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.ErpFinancialyeartable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
+  }
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+}
+
 .ErpFinancialyear .modal-overlay {
   position: fixed;
   top: 0;
@@ -151,68 +211,9 @@
   color: #333; /* Dark text */
 }
 
-/* Form group styling */
-.ErpFinancialyear .modal-content .form-group {
-  margin-bottom: 15px; /* Space between form fields */
-}
-
-.ErpFinancialyear .modal-content .form-group label {
-  display: block; /* Ensure label is above the input */
-  font-weight: 500; /* Slightly bold labels */
-  margin-bottom: 5px; /* Space below the label */
-}
-
-.ErpFinancialyear .modal-content .form-group input {
-  width: 100%; /* Full width input */
-  padding: 8px 10px; /* Padding inside input */
-  border: 1px solid #ccc; /* Light gray border */
-  border-radius: 4px; /* Rounded corners */
-  font-size: 1rem; /* Standard font size */
-}
-
 /* Modal actions */
 .ErpFinancialyear .modal-actions {
   display: flex;
   justify-content: flex-end; /* Align buttons to the right */
   gap: 10px; /* Space between buttons */
-}
-
-/* Buttons */
-.ErpFinancialyear .modal-actions .btn {
-  padding: 8px 16px; /* Padding for buttons */
-  font-size: 0.9rem; /* Slightly smaller font */
-  border-radius: 4px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor */
-}
-
-.ErpFinancialyear .modal-actions .btn-primary {
-  background-color: #007bff; /* Bootstrap primary blue */
-  color: #fff; /* White text */
-  border: none; /* Remove border */
-}
-
-.ErpFinancialyear .modal-actions .btn-primary:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-}
-
-.ErpFinancialyear .modal-actions .btn-secondary {
-  background-color: #6c757d; /* Bootstrap secondary gray */
-  color: #fff; /* White text */
-  border: none; /* Remove border */
-}
-
-.ErpFinancialyear .modal-actions .btn-secondary:hover {
-  background-color: #5a6268; /* Darker gray on hover */
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9); /* Slightly smaller */
-  }
-  to {
-    opacity: 1;
-    transform: scale(1); /* Normal size */
-  }
 }

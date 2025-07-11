@@ -41,8 +41,8 @@ const ErpWebConfig = () => {
                             <NavBar toggleSideNav={toggleSideNav} />
                             <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
                             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                                <div className="config mt-5">
-                                    <div className="config-header mb-4 text-start">
+                                <div className="config">
+                                    <div className="Webconfigfile-header mb-2 text-start">
                                         <div className="row align-items-center">
                                             <div className="col-md-4">
                                                 <h5 className="header-title">Web.Config File</h5>
@@ -50,7 +50,7 @@ const ErpWebConfig = () => {
                                         </div>
                                     </div>
 
-                                    <div className="table-responsive">
+                                    <div className="Webconfigfiletable table-responsive">
                                         <table className="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
@@ -72,6 +72,7 @@ const ErpWebConfig = () => {
                                             </tbody>
                                         </table>
                                     </div>
+
                                 </div>
                             </main>
                         </div>

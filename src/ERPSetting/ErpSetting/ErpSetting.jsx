@@ -83,7 +83,7 @@ const ErpSetting = () => {
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="user-management">
-                  <div className="WorkOrderEntry-header mb-2">
+                  <div className="erpsetting-header mb-2">
                     <div className="row">
                       <div className="col-md-3">
                         <h5 className="header-title text-start">
@@ -98,7 +98,7 @@ const ErpSetting = () => {
                     </div>
                   </div>
 
-                  <div className="header-section">
+                  <div className="erpsettingmain">
                     <div className="row align-items-start mt-2">
                       <div className="col-md-2">
                         <label className="form-check-label ml-2 mt-2">
@@ -132,6 +132,7 @@ const ErpSetting = () => {
                     </div>
                   </div>
 
+                <div className="erpsettingtable">
                   <div className="table-responsive">
                     <table className="table table-bordered table-hover user-list-table">
                       <thead>
@@ -208,6 +209,8 @@ const ErpSetting = () => {
                       </tbody>
                     </table>
                   </div>
+                </div>
+
                 </div>
               </main>
             </div>

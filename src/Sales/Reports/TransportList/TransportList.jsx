@@ -84,8 +84,8 @@ const TransportList  = () => {
                           <input type="date" className="form-control" />
                         </div>
                        
-                        <div className="col-6 col-md-2 align-items-center mt-4">
-                          <button type="button" className=" vndrbtn  vndrbtn-primary">
+                        <div className="col-6 col-md-2 align-items-center">
+                          <button type="button" className="vndrbtn btn-primary" style={{marginTop:"21px"}}> 
                             Search
                           </button>
                         </div>

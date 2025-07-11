@@ -1,46 +1,6 @@
-/* Basic styles */
-.DeleteManagement {
-    margin: 0px;
-  }
-  
-
-  .DeleteRecord-header {
-    background-color: #f8f9fa; /* Light background for header */
-    border-bottom: 1px solid #dee2e6; /* Border for header */
-    padding: 10px 15px; /* Padding around header */
-    /* border-radius: 5px; */
-  }
-  /* Header section */
-  .DeleteManagement .header-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  .DeleteRecord-main {
-    background-color: #f8f9fa; /* Light background for header */
-    border-bottom: 1px solid #dee2e6; /* Border for header */
-    padding: 10px 15px; /* Padding around header */
-    /* border-radius: 5px; */
-  }
-  /* Buttons */
-  .DeleteManagement .Deletbtn {
-    padding: 8px 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    margin-right: 10px;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  
-  .DeleteManagement  .Deletbtn:hover {
-    background-color: #0056b3;
-  }
-  
   /* Tabs section */
   .DeleteManagement  .tabs {
-    margin-top: 20px;
+    margin-top: 10px;
     border: none;
   }
   
@@ -49,166 +9,191 @@
     flex-wrap: wrap;
   }
   
-  .DeleteManagement  .tab-button {
-    padding: 8px 10px;
-    background-color: #e9ecef;
-    border: 1px solid #ccc;
-    margin-right: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .DeleteManagement  .tab-button.active {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  .DeleteManagement .tab-content {
-    margin-top: 20px;
-    border: none;
-  }
-  
-  /* Form and Group Selection */
-  .DeleteManagement .deleteRecords {
-    padding: 20px 0;
-  }
-  
-  .DeleteManagement .deleteRecords ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .DeleteManagement .deleteRecords ul li {
-    padding: 10px 0;
-  }
-  
-  .DeleteManagement .deleteRecords h4 {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .DeleteManagement  .form-group {
-    margin-top: 20px;
-  }
-  
-  .DeleteManagement  .form-control {
-    margin-bottom: 10px;
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
   .DeleteManagement  .item-details {
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
   }
-  
-  /* Responsive adjustments */
-  @media (max-width: 992px) {
-   
-  
-    .header-title {
-      font-size: 20px;
-    }
-  
-    .Deletbtn {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  
-    .deleteRecords ul li {
-      padding: 5px 0;
-    }
-  
-    .tab-navigation {
-      flex-direction: column;
-    }
-  
-    .tab-button {
-      width: 100%;
-      margin-bottom: 5px;
-    }
-  
-    .row {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .col-md-3,
-    .col-md-9,
-    .col-md-2,
-    .col-md-1 {
-      width: 100%;
-    }
-  
-    .col-md-9 .row {
-      flex-direction: column;
-    }
-  
-    .form-control,
-    .btn {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  
-    .form-group {
-      margin-top: 10px;
-    }
-  
-    .item-details {
-      font-size: 16px;
-    }
+
+
+  * {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.DeleteManagement {
+  width: 100%;
+  height: 100vh;
+}
+
+.DeleteRecord-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
+}
+
+.deleteRecordsmain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.deleteRecordsbottom {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    padding: 10px 15px; 
   }
-  
-  @media (max-width: 768px) {
-    .deleteRecords {
-      padding: 10px 0;
-    }
-  
-    .header-title {
-      font-size: 18px;
-    }
-  
-    .Deletbtn {
-      padding: 8px 15px;
-      font-size: 14px;
-    }
-  
-    .tab-button {
-      padding: 8px 15px;
-      font-size: 14px;
-    }
-  
-    .form-control {
-      padding: 6px;
-      font-size: 14px;
-    }
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
+}
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.deleteRecordstable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
   }
-  
-  @media (max-width: 576px) {
-    .header-title {
-      font-size: 16px;
-    }
-  
-    .tab-navigation {
-      flex-direction: column;
-    }
-  
-    .Deletbtn,
-    .tab-button {
-      font-size: 12px;
-      padding: 5px 10px;
-    }
-  
-    .deleteRecords h4 {
-      font-size: 16px;
-    }
-  
-    .form-control {
-      padding: 5px;
-      font-size: 12px;
-    }
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
   }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
+  }
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+}
+
   

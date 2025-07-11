@@ -11,7 +11,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
 const container = document.getElementById("root");
-const root = createRoot(container); // Create a root.
+const root = createRoot(container); 
 
 root.render(
   <Router>
@@ -19,7 +19,4 @@ root.render(
   </Router>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

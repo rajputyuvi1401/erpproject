@@ -32,7 +32,7 @@ const DocumentStart = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Document ">
-                  <div className="Document-header mb-4 text-start">
+                  <div className="Document-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">
@@ -41,7 +41,8 @@ const DocumentStart = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="Document-Main mt-5">
+
+                  <div className="DocumentMain">
                     <div className="row text-start">
                       <div className="col-md-4">
                         <div className="row">
@@ -152,6 +153,7 @@ const DocumentStart = () => {
                           </div>
                         </div>
                       </div>
+
                       <div className="col-md-4">
                         <div className="row">
                           <div className="col-md-4">
@@ -244,6 +246,7 @@ const DocumentStart = () => {
                           </div>
                         </div>
                       </div>
+
                       <div className="col-md-4">
                         <div className="row">
                           <div className="col-md-4">
@@ -335,19 +338,21 @@ const DocumentStart = () => {
                         </div>
                       </div>
                     </div>
+
                     <div className="row text-start">
                       <div className="col-md-4">
                         <input className="form-control" type="text" />
                       </div>
                       <div className="col-md-8">
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           Set To All
                         </button>
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           Update All
                         </button>
                       </div>
                     </div>
+                    
                   </div>
                 </div>
               </main>

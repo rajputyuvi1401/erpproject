@@ -140,13 +140,13 @@ const VenderList = () => {
                               </label>
                               <div className="col-sm-3">
                               <input
-                    type="text"
-                    className="form-control"
-                    id="SearchQuery"
-                    placeholder="Search by name or number"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
+                                  type="text"
+                                  className="form-control"
+                                  id="SearchQuery"
+                                  placeholder="Search by name or number"
+                                  value={searchQuery}
+                                  onChange={(e) => setSearchQuery(e.target.value)}
+                                />
 
                               </div>
                               

@@ -21,7 +21,7 @@ const DeleteReport = () => {
   }, [sideNavOpen]);
 
   return (
-    <div className="DeleteReport mt-5">
+    <div className="DeleteReport">
       <NavBar toggleSideNav={toggleSideNav} />
       <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
       <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
@@ -29,13 +29,13 @@ const DeleteReport = () => {
           <div className="container-fluid">
             {/* Title and button */}
 
-            <div className="DeleteRecord-header mb-4 text-start">
+            <div className="DeleteReport-header mb-2 text-start">
               <div className="row align-items-center">
                 <div className="col-md-4">
                   <h5 className="header-title">Delete History Report</h5>
                 </div>
                 <div className="col-md-8  text-end">
-                  <button type="button" className="btn">
+                  <button type="button" className="vndrbtn">
                     Print Report
                   </button>
                 </div>
@@ -43,6 +43,7 @@ const DeleteReport = () => {
             </div>
 
             {/* Filters section */}
+            <div className="DeleteReportmain ">
             <div className="row mb-3 text-start">
               <div className="col-lg-2 col-md-6 col-sm-12 mb-2">
                 <label htmlFor="fromDate">From Date</label>
@@ -67,12 +68,14 @@ const DeleteReport = () => {
                 <textarea className="form-control" id="search"></textarea>
               </div>
               <div className="col-lg-2 col-md-6 col-sm-12 mt-4">
-                <button className="btn">Search </button>
-                <button className="btn">View All</button>
+                <button className="vndrbtn">Search </button>
+                <button className="vndrbtn">View All</button>
               </div>
+            </div>
             </div>
 
             {/* Table */}
+            <div className="DeleteReporttable mt-2">
             <div className="row">
               <div className="col-md-12">
                 <div className="table-responsive">
@@ -96,7 +99,7 @@ const DeleteReport = () => {
                         <td>FG1117</td>
                         <td>Item details here</td>
                         <td>
-                          <button className="btn">View</button>
+                          <button className="vndrbtn">View</button>
                         </td>
                       </tr>
                       {/* Add more rows dynamically if necessary */}
@@ -104,6 +107,7 @@ const DeleteReport = () => {
                   </table>
                 </div>
               </div>
+             </div>
             </div>
           </div>
         </div>

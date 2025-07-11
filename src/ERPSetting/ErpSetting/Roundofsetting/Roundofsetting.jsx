@@ -4,6 +4,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import './Roundofsetting.css';
+import { Link } from "react-router-dom";
+
 
 
 const Roundofsetting = () => {
@@ -29,30 +31,30 @@ const Roundofsetting = () => {
             <NavBar toggleSideNav={toggleSideNav} />
             <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
             <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-              <div className="RoundSetting mt-5">
-                <div className="RoundSetting-header mb-4">
+              <div className="RoundSetting">
+                <div className="RoundofSetting-header mb-2">
                   <div className="row text-start">
                     <div className="col-md-10">
                       <h5 className="header-title">Tax Invoice Round Of Setting</h5>
                     </div>
                     <div className="col-md-2 text-end">
-                      <button type="button" className="btn btn-primary">
+                      <Link type="button" className="vndrbtn btn-primary" to={"/"}>
                         Company Info
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
 
-                <div className="RoundSetting-main mb-3 p-4">
+                <div className="RoundofSettingmain">
                   <div className="row text-start">
-                    <div className="col-md-2">
-                      <p className="text-primary">::Tax Invoice Round Of Setting</p>
+                    <div className="col-md-4">
+                      <p className="header-title text-primary"> :: Tax Invoice Round Of Setting</p>
                     </div>
                     
                   </div>
                 </div>
 
-                <div className="round-setting-table">
+                <div className="RoundofSettingtable mt-2">
                   <div className="table-responsive">
                     <table className="table table-bordered">
                       <thead className="table-light">
@@ -65,6 +67,7 @@ const Roundofsetting = () => {
                           <th>GST Taxes</th>
                           <th>TCS Taxes</th>
                           <th>Grand Total</th>
+                          <th>Other Charges</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -99,6 +102,12 @@ const Roundofsetting = () => {
                               <option>NO</option>
                             </select>
                           </td> <td>
+                            <select className="form-select">
+                              <option>YES</option>
+                              <option>NO</option>
+                            </select>
+                          </td>
+                           <td>
                             <select className="form-select">
                               <option>YES</option>
                               <option>NO</option>

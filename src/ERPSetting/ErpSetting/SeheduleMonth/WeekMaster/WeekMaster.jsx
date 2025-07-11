@@ -29,8 +29,8 @@ const WeekMaster = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Week mt-5">
-                  <div className="Week-header mb-4 text-start">
+                <div className="Week">
+                  <div className="Week-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6 col-sm-12">
                         <h5 className="header-title">Schedule Week Master</h5>
@@ -38,7 +38,7 @@ const WeekMaster = () => {
                     </div>
                   </div>
                   
-                  <div className="Week-Main">
+                  <div className="Weekmain">
                     <div className="container-fluid">
                       <div className="row g-3 text-start">
                         <div className="col-md-2 col-sm-6">
@@ -61,13 +61,13 @@ const WeekMaster = () => {
                           <input type="date" className="form-control" />
                         </div>
                         <div className="col-md-1 col-sm-12 mt-5">
-                          <button type="button" className="btn btn-primary w-100">Save</button>
+                          <button type="button" className="vndrbtn">Save</button>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="Week-table mt-4">
+                  <div className="Weektable mt-3">
                     <div className="table-responsive">
                       <table className="table table-bordered table-hover">
                         <thead>
@@ -87,6 +87,7 @@ const WeekMaster = () => {
                       </table>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

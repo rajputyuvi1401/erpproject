@@ -10,36 +10,45 @@ const DefaultSettingsModal = ({ isOpen, onClose }) => {
     <div className="modal-overlay">
       <div className="modal-content">
         <div className="modal-header">
-          <h2>Setting</h2>
-          <button className="close-button" onClick={onClose}>&times;</button>
+          <h2 className="header-title">Setting</h2>
+          <button className="vndrbtn close-button" onClick={onClose}>&times;</button>
         </div>
         <div className="modal-body">
-          <div className="settings-section">
-            <h3>Outgoing Mail Server Setting</h3>
-            <table className="settings-table">
-              <thead>
+          <div className="">
+  
+           <div className="EmailsetUp-header mb-2 text-center">
+               <h3 className="header-title">Outgoing Mail Server Setting</h3>
+            </div>
+
+              <div className="settings-table table-responsive">
+                <table className="table">
+                 <thead>
                 <tr>
-                  <th className="email-type">GMAIL</th>
-                  <th className="email-type">REDIFFMAIL</th>
-                  <th className="email-type">YAHOO</th>
+                  <th className=" "> </th>
+                  <th className=" ">GMAIL</th>
+                  <th className=" ">REDIFFMAIL</th>
+                  <th className=" ">YAHOO</th>
                 </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>smtp.gmail.com</td>
-                  <td>smtp.rediffmail.com</td>
-                  <td>smtp.mail.yahoo.com</td>
-                </tr>
-                <tr>
-                  <td>587</td>
-                  <td>25</td>
-                  <td>465</td>
-                </tr>
-              </tbody>
-            </table>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td> server hostname:</td>
+                      <td>smtp.gmail.com</td>
+                      <td>smtp.rediffmail.com</td>
+                      <td>smtp.mail.yahoo.com</td>
+                    </tr>
+                    <tr>
+                      <td>Server Port :</td>
+                      <td>25</td>
+                      <td>465</td>
+                      <td>565</td>
+                    </tr>
+                  </tbody>
+                 </table>
+          </div>
           </div>
           <div className="modal-footer">
-            <button className="ok-button" onClick={onClose}>OK</button>
+            <button className="vndrbtn ok-button" onClick={onClose}>OK</button>
           </div>
         </div>
       </div>

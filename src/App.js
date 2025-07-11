@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes,Navigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
 
 import Dashboard from "./Dashboard/Dashboard";
@@ -10,7 +10,6 @@ import Login from "./Login/Login.jsx"
 
 
 /////////////////////////// Masters ///////////////////////////////
-
 
 import MasterState from "./components/Master/MasterState";
 import MasterCustomers from "./components/Master1/MasterCustomers";
@@ -65,7 +64,6 @@ import UploadOperationSpeci from "./components/BOMRouting/BOMReport/UploadOperat
 
 
 // /////////////////////////////// Erp Setting /////////////////////////////////////////
-
 
 import UserConfiguration from "./ERPSetting/UserConfiguration/UserConfiguration.jsx";
 import DisableUserList from "./ERPSetting/UserConfiguration/DisableUserList/DisableUserList.jsx";
@@ -125,10 +123,12 @@ import Quotation from "./ERPSetting/ErpSetting/Docseriesgroup/Quotation/Quotatio
 import DocCompanySetting from "./ERPSetting/ErpSetting/Docprintformat/CompanySetting/DocCompanySetting.jsx";
 import ViewItemMaster from "./ERPSetting/ErpSetting/ItemMasterSetup/ViewItemMaster/ViewItemMaster.jsx";
 
+import SettingHistory from "./ERPSetting/UserPermission/SettingHistory.jsx";
+import DefaultSettingsModal from "./ERPSetting/ErpSetting/Emailsetup/DefaultSettingModel/DefaultSettingsModal.jsx";
+
 
 
 ///////////////////////////////Purchase////////////////////////////////////
-
 
 import Newindent from "./PurchaseMaster/Newindent/Newindent";
 import PoList from "./PurchaseMaster/NewPurchaseOrder/PoList/PoList.jsx";
@@ -148,10 +148,27 @@ import SupplierWiseList from "./PurchaseMaster/Report/SupplierWiseList1/Supplier
 import POEdit from "./PurchaseMaster/NewPurchaseOrder/POEdit/POEdit.jsx";
 import PurchaseOrderPDF from "./PurchaseMaster/NewPurchaseOrder/PurcheseOrderPDF/PurchaseOrderPDF.jsx";
 
+import ListIndent from "./PurchaseMaster/Newindent/Indent/ListIndent.jsx";
+import IndentStutasReport from "./PurchaseMaster/Newindent/Indent/IndentStutasReport.jsx";
+import RecentlyPoApprovalList from "./PurchaseMaster/NewPurchaseOrder/PoList/RecentlyPoApprovalList.jsx"
+import AMCPurchaseOrderList from "./PurchaseMaster/NewPurchaseOrder/PoList/AMCPurchaseOrderList.jsx";
+import PurchaseQuerySummary from "./PurchaseMaster/NewPurchaseOrder/PoList/QueryList/PurchaseQuerySummary.jsx";
+import PurchaseQuery from "./PurchaseMaster/NewPurchaseOrder/PoList/QueryList/PurchaseQuery.jsx";
+import RFONew from "./PurchaseMaster/QuotoComparison/RFo/RFONew.jsx";
+import QuoteStatementList from "./PurchaseMaster/QuotoComparison/QuotoComparisonStatement/QuoteStatementList.jsx";
+import JobworkPOSummary from './PurchaseMaster/Report/JobWorkPurchaseOrderList1/QueryJobworkList/JobworkPOSummary.jsx';
+import JobworkQuery from "./PurchaseMaster/Report/JobWorkPurchaseOrderList1/QueryJobworkList/JobworkQuery.jsx";
+
+import Importfile from "./PurchaseMaster/Import/Importfile.jsx";
+import ImportPO from "./PurchaseMaster/Import/Transaction/ImportPO/ImportPO.jsx"
+import ImportPOList from "./PurchaseMaster/Import/Transaction/ImportPO/ImportPOList.jsx"
+import POConsignment from "./PurchaseMaster/Import/Transaction/POConsignment/POConsignment.jsx";
+import POConsignmentList from "./PurchaseMaster/Import/Transaction/POConsignment/POConsignmentList.jsx";
+import ImportGRN from "./PurchaseMaster/Import/Transaction/ImportGRN/ImportGRN.jsx";
+import ImportGRNList from "./PurchaseMaster/Import/Transaction/ImportGRN/ImportGRNList.jsx";
 
 
 ////////////////////////////////Store//////////////////////////////////////////////////////
-
 
 import GateInwardEntry from "./StoreMaster/GateInwardEntry/GateInwardEntry.jsx";
 import NewGateInward from "./StoreMaster/GateInwardEntry/NewGateInward/NewGateInward.jsx";
@@ -195,6 +212,45 @@ import ReportStore from "./StoreMaster/Report/Report.jsx";
 import StockReport from "./StoreMaster/StockReport/StorckReport.jsx";
 import InwardChallanList from "./StoreMaster/SubconGRN/InwardChallanList/InwardChallanList.jsx";
 
+import GEIQuery from "./StoreMaster/GateInwardEntry/Query/GEIQuery.jsx";
+import QueryGate from "./StoreMaster/GateInwardEntry/Query/QueryGate.jsx";
+import InwardChallanQuery from "./StoreMaster/SubconGRN/InwardChallanList/InwardChallanQuery.jsx";
+import QueryInward from "./StoreMaster/SubconGRN/InwardChallanList/QueryInward.jsx";
+import StockTransferQuery from "./StoreMaster/StockTransaction/StockTransferQuery.jsx";
+import QueryStock from "./StoreMaster/StockTransaction/QueryStock.jsx";
+import DCGRNQuery from "./StoreMaster/DCGRN/DcgrnLsit/DCGRNQuery.jsx";
+import QueryDCgrn from "./StoreMaster/DCGRN/DcgrnLsit/QueryDCgrn.jsx";
+import PurchaseGRNQuery from "./StoreMaster/PurchseGRN/GRNList/PurchaseGRNQuery.jsx";
+import QueryPurchase from "./StoreMaster/PurchseGRN/GRNList/QueryPurchase.jsx";
+import ReportQuery from "./StoreMaster/Report/ReportQuery.jsx";
+import QueryRep from "./StoreMaster/Report/QueryRep.jsx";
+import MRNList from "./StoreMaster/Report/MRNList/MRNList.jsx";
+import MRNQuery from "./StoreMaster/Report/MRNList/MRNQuery.jsx";
+import QueryMrn from "./StoreMaster/Report/MRNList/QueryMrn.jsx";
+import Challaninward from "./StoreMaster/Report/Challan/Challaninward.jsx";
+import ChallanQuery from "./StoreMaster/Report/Challan/ChallanQuery.jsx";
+import QueryChall from "./StoreMaster/Report/Challan/QueryChall.jsx";
+import IssueMaterial from "./StoreMaster/Report/Material/IssueMaterial.jsx";
+import MaterialQuery from "./StoreMaster/Report/Material/MaterialQuery.jsx";
+import QueryMtrlIssue from "./StoreMaster/Report/Material/QueryMtrlIssue.jsx";
+import GeneralMtrlIssue from "./StoreMaster/Report/GeneralMtrl/GeneralMtrlIssue.jsx";
+import GeneralQuery from "./StoreMaster/Report/GeneralMtrl/GeneralQuery.jsx";
+import QueryGnrl from "./StoreMaster/Report/GeneralMtrl/QueryGnrl.jsx";
+import DeliveryChlln from "./StoreMaster/Report/DeliveryChallan/DeliveryChlln.jsx";
+import DeliveryQuery from "./StoreMaster/Report/DeliveryChallan/DeliveryQuery.jsx";
+import QueryDlvrchln from "./StoreMaster/Report/DeliveryChallan/QueryDlvrchln.jsx";
+import GRNDCReport from "./StoreMaster/Report/GRNDCReport/GRNDCReport.jsx";
+import DCQuery from "./StoreMaster/Report/GRNDCReport/DCQuery.jsx";
+import QueryDC from "./StoreMaster/Report/GRNDCReport/QueryDC.jsx";
+import IndentReport from "./StoreMaster/Report/IndentReport/IndentReport.jsx";
+import IndentQuery from "./StoreMaster/Report/IndentReport/IndentQuery.jsx";
+import QueryIndt from "./StoreMaster/Report/IndentReport/QueryIndt.jsx";
+import IndentStatus from "./StoreMaster/Report/IndentStatus/IndentStatus.jsx";
+import WIPStock from "./StoreMaster/StockReport/WIPStockReport/WIPStock.jsx";
+import RMStock from "./StoreMaster/StockReport/RMStockReport/RMStock.jsx";
+import ConsumableStock from "./StoreMaster/StockReport/ConsumableStockReport/ConsumableStock.jsx";
+import FGStock from "./StoreMaster/StockReport/FGStockReport/FGStock.jsx";
+
 
 
 
@@ -227,6 +283,28 @@ import BreakdownAnalysis from "./ProductionMaster/Report/BreakdownAnalysis/Break
 import ReworkReport from "./ProductionMaster/Report/ReworkReport/ReworkReport.jsx";
 import ProductionEntryList from "./ProductionMaster/ProductionEntry/ProductionEntryList/ProductionEntryList.jsx";
 import MachineDefaultidle from "./ProductionMaster/Report/MachineDefaultIdle/MachineDefaultIdle.jsx"
+
+import MaterialIssueReport from "./ProductionMaster/WorkOrderList/WordOrderReport/MaterialIssueReport.jsx";
+import WorkOrderSummaryReport from "./ProductionMaster/WorkOrderList/WordOrderReport/WorkOrderSummaryReport.jsx";
+import QueryWorkOrder from "./ProductionMaster/WorkOrderList/WorkOrderListQuery/QueryWorkOrder.jsx";
+import QueryMasterWO from "./ProductionMaster/WorkOrderList/WorkOrderListQuery/QueryMasterWO.jsx";
+import PlanListWOStatus from "./ProductionMaster/ProductionPlanList/PlanListWOStatus.jsx";
+import QueryProdPlanList from "./ProductionMaster/ProductionPlanList/PlanListQuery/QueryProdPlanList.jsx";
+import QueryMasterPL from "./ProductionMaster/ProductionPlanList/PlanListQuery/QueryMasterPL.jsx";
+import DailyProductionReport from "./ProductionMaster/ProductionEntry/ProductionEntryList/ProductionReport/DailyProductionReport.jsx";
+import MonthlyProductionReport from "./ProductionMaster/ProductionEntry/ProductionEntryList/ProductionReport/MonthlyProductionReport.jsx";
+import ConsumptionReport from "./ProductionMaster/ProductionEntry/ProductionEntryList/ProductionReport/ConsumptionReport.jsx";
+import ProductionSummaryReport from "./ProductionMaster/ProductionEntry/ProductionEntryList/ProductionReport/ProductionSummaryReport.jsx";
+import ToolConsumptionReport from "./ProductionMaster/ProductionEntry/ProductionEntryList/ProductionReport/ToolConsumptionReport.jsx";
+import QueryProdEL from "./ProductionMaster/ProductionEntry/ProductionEntryList/ProductionQuery/QueryProdEL.jsx";
+import QueryMasterProdEL from "./ProductionMaster/ProductionEntry/ProductionEntryList/ProductionQuery/QueryMasterProdEL.jsx";
+import QueryScrap from "./ProductionMaster/ScrapRejection/ScrapRejectionReport/ScrapRejQuery/QueryScrap.jsx";
+import QueryMasterScrap from "./ProductionMaster/ScrapRejection/ScrapRejectionReport/ScrapRejQuery/QueryMasterScrap.jsx";
+import RejectionReport from "./ProductionMaster/ScrapRejection/ScrapRejectionReport/RejectionReport.jsx";
+import ItemWiseCR from "./ProductionMaster/ContractorReport/ContractorList/ItemWIseCR.jsx";
+import OperationRejectionSummary from "./ProductionMaster/Report/OperationRejectionSummary.jsx";
+import QueryReportPro from "./ProductionMaster/Report/QueryReportPro.jsx";
+import MachineDefaultBook from "./ProductionMaster/Report/MachineDefaultIdle/MachineDefaultBook.jsx";
 
 
 ///////////////////////////////////////// Quality ////////////////////////////////////////////////
@@ -305,6 +383,9 @@ import CreditListNote from "./Sales/Reports/CreditNoteList/CreditListNote.jsx";
 import RG1Register from "./Sales/Reports/RG1Register/RG1Register.jsx";
 import TransportList from "./Sales/Reports/TransportList/TransportList.jsx";
 
+import ViewStockList from "./Sales/CustomerSalesOrder/OrderLiast/ViewStockList.jsx";
+import UserSubList from "./Sales/CustomerSalesOrder/OrderLiast/UserSubList.jsx";
+import SalesOrderItemAddTwo from "./Sales/CustomerSalesOrderAmendment/SalesOrderAmendList/SalesOrderItemAdd/SalesOrderItemAddTwo.jsx";
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -331,17 +412,17 @@ function App() {
         <Route path="/Work-center-master" element={<WorkCenterMaster />} />
         <Route path="/business-partner" element={<BusinessPartner />} />
         <Route path="/Customer-Item-Wise" element={<CustomerItemWise />} />
-        <Route path="/Customer-Supplier-Item-Link" element={<CustomerSupplierLink />}/>
+        <Route path="/Customer-Supplier-Item-Link" element={<CustomerSupplierLink />} />
         <Route path="/Item-Cross-Reference" element={<ItemCrossReference />} />
         <Route path="/gst-rate-master" element={<GstMaster />} />
         <Route path="/Customer-Item-Wise-Gst" element={<CustomerItemGst />} />
         <Route path="/task-master" element={<TaskMaster />} />
         <Route path="/Cut-wise" element={<Cutwise />} />
-        <Route path="/Supplier-Customer-Master" element={<SupplierCustomerMaster />}/>
+        <Route path="/Supplier-Customer-Master" element={<SupplierCustomerMaster />} />
         <Route path="/vender-list" element={<VenderListSupplier />} />
         <Route path="/bom-routing" element={<BomRouting />} />
         <Route path="/bill-material" element={<BillMaterial />} />
-        <Route path="/operator-supervisor-master" element={<OperatorSupervisor />}/>
+        <Route path="/operator-supervisor-master" element={<OperatorSupervisor />} />
         <Route path="/Supervisor" element={<Supervisor />} />
         <Route path="/Department-Head" element={<DepartmentHead />} />
         <Route path="/contractor-master" element={<ContractorMaster />} />
@@ -361,15 +442,15 @@ function App() {
         <Route path="/master-report" element={<MasterReport />} />
 
         <Route path="/item-master-query" element={<ItemMasterQuery />} />
-        <Route path="/QueryPages" element={<QueryPages/>} />
-        <Route path="/CustomerQuery" element={<CustomerQuery/>} />
-        <Route path="/BOMQuery" element={<BOMQuery/>} />
-        <Route path="/PriceListQuery" element={<PriceListQuery/>} />
-        <Route path="/PriceListQueryMaster" element={<PriceListQueryMaster/>} />
-        <Route path="/CustomerQueryMaster" element={<CustomerQueryMaster/>} />
-        <Route path="/BOMMasterQuery" element={<BOMMasterQuery/>} />
-        <Route path="/UploadWIPvalue" element={<UploadWIPvalue/>}/>
-        <Route path="/UploadOperationSpeci" element={<UploadOperationSpeci/>}/>
+        <Route path="/QueryPages" element={<QueryPages />} />
+        <Route path="/CustomerQuery" element={<CustomerQuery />} />
+        <Route path="/BOMQuery" element={<BOMQuery />} />
+        <Route path="/PriceListQuery" element={<PriceListQuery />} />
+        <Route path="/PriceListQueryMaster" element={<PriceListQueryMaster />} />
+        <Route path="/CustomerQueryMaster" element={<CustomerQueryMaster />} />
+        <Route path="/BOMMasterQuery" element={<BOMMasterQuery />} />
+        <Route path="/UploadWIPvalue" element={<UploadWIPvalue />} />
+        <Route path="/UploadOperationSpeci" element={<UploadOperationSpeci />} />
 
 
         {/* ///////////////////////////////////Erp Setting////////////////////////////////////// */}
@@ -415,7 +496,6 @@ function App() {
         <Route path="/Itemmastersetup" element={<Itemmastersetup />} />{" "}
         <Route path="/Emailsms" element={<Emailsms />} />{" "}
         <Route path="/Emailsetup" element={<Emailsetup />} />
-        <Route path="/Emailtemplate" element={<Emailtemplate />} />
         <Route path="/AddQuater" element={<AddQuater />} />
         <Route path="/WeekMaster" element={<WeekMaster />} />
         <Route path="/MasterData" element={<MasterData />} />
@@ -450,11 +530,14 @@ function App() {
         <Route path="/DocCompanySetting" element={<DocCompanySetting />} />
         <Route path="/ViewItemMaster" element={<ViewItemMaster />} />
 
+        <Route path="/SettingHistory" element={<SettingHistory />} />
+        <Route path="/DefaultSettingsModal" element={<DefaultSettingsModal />} />
+
 
         {/* ////////////////////////////////Purchase///////////////////////////// */}
 
         <Route path="/new-indent" element={<Newindent />} />
-        <Route path="/new-purchase-order" element={<NewPurchaseOrder />} />       
+        <Route path="/new-purchase-order" element={<NewPurchaseOrder />} />
         <Route path="/new-jobwork-order" element={<NewJobworkPurchase />} />
         <Route path="/pendingpo" element={<PendingPo />} />
         <Route path="/pendingindent" element={<PendingIndent />} />
@@ -467,8 +550,28 @@ function App() {
         <Route path="jobwork-purchase-order-list" element={<JobWorkPurchseOrderList />} />
         <Route path="supplier-wise-list" element={<SupplierWiseList />} />
         <Route path="purchase-report" element={<PurchaseReport />} />
-        <Route path="/EditPo/:id" element={<POEdit/>} />
+        <Route path="/EditPo/:id" element={<POEdit />} />
         <Route path="/POpdf/:id" element={<PurchaseOrderPDF />} />
+
+        <Route path="/ListIndent" element={<ListIndent />} />
+        <Route path="/IndentStutasReport" element={<IndentStutasReport />} />
+        <Route path="/RecentlyPoApprovalList" element={<RecentlyPoApprovalList />} />
+        <Route path="/AMCPurchaseOrderList" element={<AMCPurchaseOrderList />} />
+        <Route path="/PurchaseQuerySummary" element={<PurchaseQuerySummary />} />
+        <Route path="/PurchaseQuery" element={<PurchaseQuery />} />
+        <Route path="/RFONew" element={<RFONew />} />
+        <Route path="/QuoteStatementList" element={<QuoteStatementList />} />
+        <Route path="/JobworkPOSummary" element={<JobworkPOSummary />} />
+        <Route path="/JobworkQuery" element={<JobworkQuery />} />
+
+        <Route path="/Importfile" element={<Importfile />} />
+        <Route path="/ImportPO" element={<ImportPO />} />
+        <Route path="/ImportPOList" element={<ImportPOList />} />
+        <Route path="/POConsignment" element={<POConsignment />} />
+        <Route path="/POConsignmentList" element={<POConsignmentList />} />
+        <Route path="/ImportGRN" element={<ImportGRN />} />
+        <Route path="/ImportGRNList" element={<ImportGRNList />} />
+
 
 
         {/* ///////////////////////////////////////Store//////////////////////////////////////// */}
@@ -485,7 +588,7 @@ function App() {
         <Route path="Purchase-Grn" element={<PurchaseGrn />} />
         <Route path="Grn-List" element={<GrnList />} />
         <Route path="Inward-challan" element={<InwardChallan1 />} />
-        <Route path="Jobwork-Inward-Challan" element={<JobworkInwardChallan />}/>
+        <Route path="Jobwork-Inward-Challan" element={<JobworkInwardChallan />} />
         <Route path="Vendor-Scrap-Inward" element={<VendorScrapInward />} />
         <Route path="Subcon-Grn" element={<SubconGrn />} />
         <Route path="Material-Issue-Challan" element={<MaterialIssueChallan />} />
@@ -516,11 +619,49 @@ function App() {
         {/* Inward Challan List */}
         <Route path="Inward-challan-list" element={<InwardChallanList />} />
 
+        <Route path="GEIQuery" element={<GEIQuery />} />
+        <Route path="QueryGate" element={<QueryGate />} />
+        <Route path="InwardChallanQuery" element={<InwardChallanQuery />} />
+        <Route path="QueryInward" element={<QueryInward />} />
+        <Route path="StockTransferQuery" element={<StockTransferQuery />} />
+        <Route path="QueryStock" element={<QueryStock />} />
+        <Route path="DCGRNQuery" element={<DCGRNQuery />} />
+        <Route path="QueryDCgrn" element={<QueryDCgrn />} />
+        <Route path="PurchaseGRNQuery" element={<PurchaseGRNQuery />} />
+        <Route path="QueryPurchase" element={<QueryPurchase />} />
+        <Route path="ReportQuery" element={<ReportQuery />} />
+        <Route path="QueryRep" element={<QueryRep />} />
+        <Route path="MRNList" element={<MRNList />} />
+        <Route path="MRNQuery" element={<MRNQuery />} />
+        <Route path="QueryMrn" element={<QueryMrn />} />
+        <Route path="Challaninward" element={<Challaninward />} />
+        <Route path="ChallanQuery" element={<ChallanQuery />} />
+        <Route path="QueryChall" element={<QueryChall />} />
+        <Route path="IssueMaterial" element={<IssueMaterial />} />
+        <Route path="MaterialQuery" element={<MaterialQuery />} />
+        <Route path="QueryMtrlIssue" element={<QueryMtrlIssue />} />
+        <Route path="GeneralMtrlIssue" element={<GeneralMtrlIssue />} />
+        <Route path="GeneralQuery" element={<GeneralQuery />} />
+        <Route path="QueryGnrl" element={<QueryGnrl />} />
+        <Route path="DeliveryChlln" element={<DeliveryChlln />} />
+        <Route path="DeliveryQuery" element={<DeliveryQuery />} />
+        <Route path="QueryDlvrchln" element={<QueryDlvrchln />} />
+        <Route path="GRNDCReport" element={<GRNDCReport />} />
+        <Route path="DCQuery" element={<DCQuery />} />
+        <Route path="QueryDC" element={<QueryDC />} />
+        <Route path="IndentReport" element={<IndentReport />} />
+        <Route path="IndentQuery" element={<IndentQuery />} />
+        <Route path="QueryIndt" element={<QueryIndt />} />
+        <Route path="IndentStatus" element={<IndentStatus />} />
+        <Route path="WIPStock" element={<WIPStock />} />
+        <Route path="RMStock" element={<RMStock />} />
+        <Route path="ConsumableStock" element={<ConsumableStock />} />
+        <Route path="FGStock" element={<FGStock />} />
 
 
 
-  {/* /////////////////////////////////////Production////////////////////////////////////// */}
 
+        {/* /////////////////////////////////////Production////////////////////////////////////// */}
 
         <Route path="/WorkOrderEntry" element={<WorkOrderEntry />} />
         <Route path="/WorkOrderList" element={<WorkOrderList />} />
@@ -531,42 +672,66 @@ function App() {
         <Route path="/MachineIdleTime" element={<MachineIdleTime />} />
         <Route path="/NewIdleMaster" element={<NewIdleMaster />} />
         <Route path="/ReworkProduction" element={<ReworkProduction />} />
-        <Route path="/ReworkProductionEntry" element={<ReworkProductionEntry />}   />
+        <Route path="/ReworkProductionEntry" element={<ReworkProductionEntry />} />
         <Route path="/ReworkProductionReport" element={<ReworkProductionReport />} />
         <Route path="/ScrapRejection" element={<ScrapRejection />} />
         <Route path="/ScrapRejectionReport" element={<ScrapRejectionReport />} />
         <Route path="/ScrapRejectionEntry" element={<ScrapRejectionEntry />} />
         <Route path="/FGScrapRejectionReport" element={<FGScrapRejectionReport />} />
-        <Route path="/PoList" element={<PoList/>} />
-        <Route path="/JobworkList" element={<JobworkList/>} />
+        <Route path="/PoList" element={<PoList />} />
+        <Route path="/JobworkList" element={<JobworkList />} />
         <Route path="/BreakdownTimeEntry" element={<BreakdownTimeEntry />} />
         <Route path="/BreakdownTimeReport" element={<BreakdownTimeReport />} />
         <Route path="/ContractorReport" element={<ContractorReport />} />
         <Route path="/ContractirList" element={<ContractirList />} />
         <Route path="/ProReport" element={<ProReport />} />
-        <Route path="/OperatorReport" element={<OperatorReport/>} />   
-        <Route path="/CycleTime1" element={<CycleTime1/>} />
+        <Route path="/OperatorReport" element={<OperatorReport />} />
+        <Route path="/CycleTime1" element={<CycleTime1 />} />
         <Route path="/ReworkReport" element={<ReworkReport />} />
-        <Route path="/BreakdownAnalysis" element={<BreakdownAnalysis/>} />
-        <Route path="/MachineDefaultidle" element={<MachineDefaultidle/>} />
-        <Route path="/ProductionEntryList" element={<ProductionEntryList/>} />
+        <Route path="/BreakdownAnalysis" element={<BreakdownAnalysis />} />
+        <Route path="/MachineDefaultidle" element={<MachineDefaultidle />} />
+        <Route path="/ProductionEntryList" element={<ProductionEntryList />} />
+
+        <Route path="/MaterialIssueReport" element={<MaterialIssueReport />} />
+        <Route path="/WorkOrderSummaryReport" element={<WorkOrderSummaryReport />} />
+        <Route path="/QueryWorkOrder" element={<QueryWorkOrder />} />
+        <Route path="/QueryMasterWO" element={<QueryMasterWO />} />
+        <Route path="/PlanListWOStatus" element={<PlanListWOStatus />} />
+        <Route path="/QueryProdPlanList" element={<QueryProdPlanList />} />
+        <Route path="/QueryMasterPL" element={<QueryMasterPL />} />
+        <Route path="/DailyProductionReport" element={<DailyProductionReport />} />
+        <Route path="/MonthlyProductionReport" element={<MonthlyProductionReport />} />
+        <Route path="/ConsumptionReport" element={<ConsumptionReport />} />
+        <Route path="/ProductionSummaryReport" element={<ProductionSummaryReport />} />
+        <Route path="/ToolConsumptionReport" element={<ToolConsumptionReport />} />
+        <Route path="/QueryProdEL" element={<QueryProdEL />} />
+        <Route path="/QueryMasterProdEL" element={<QueryMasterProdEL />} />
+        <Route path="/QueryScrap" element={<QueryScrap />} />
+        <Route path="/QueryMasterScrap" element={<QueryMasterScrap />} />
+        <Route path="/RejectionReport" element={<RejectionReport />} />
+        <Route path="/ItemWiseCR" element={<ItemWiseCR />} />
+        <Route path="/OperationRejectionSummary" element={<OperationRejectionSummary />} />
+        <Route path="/QueryReportPro" element={<QueryReportPro />} />
+        <Route path="/MachineDefaultBook" element={<MachineDefaultBook />} />
 
 
 
-      {/* //////////////////////////////////  Quality Plan ///////////////////////////////////// */} 
 
-       <Route path="QualityPlan" element={<QualityPlan/>} />
+
+        {/* //////////////////////////////////  Quality Plan ///////////////////////////////////// */}
+
+        <Route path="QualityPlan" element={<QualityPlan />} />
         <Route path="PandingQCList" element={<PandingQCList />} />
         <Route path="InwardTestCertificate" element={<InwardTestCertificate />} />
         <Route path="PaddingQCInward" element={<PaddingQCInward />} />
         <Route path="InwardQCList" element={<InwardQCList />} />
         <Route path="InprocessInspection" element={<InprocessInspection />} />
-        <Route path="InprocessInspectionList" element={<InprocessInspectionList/>} />
-        <Route path="PaddingSalesQC" element={<PaddingSalesQC/>} />
-        <Route path="SalesQCList" element={<SalesQCList/>} />
+        <Route path="InprocessInspectionList" element={<InprocessInspectionList />} />
+        <Route path="PaddingSalesQC" element={<PaddingSalesQC />} />
+        <Route path="SalesQCList" element={<SalesQCList />} />
         <Route path="HeatCodeRegister" element={<HeatCodeRegister />} />
-        <Route path="TestCertificateList" element={<TestCertificateList/>} />
-        <Route path="PDIList" element={<PDIList/>} />
+        <Route path="TestCertificateList" element={<TestCertificateList />} />
+        <Route path="PDIList" element={<PDIList />} />
         <Route path="PenddingInvoiceListPDI" element={<PenddingInvoiceListPDI />} />
         <Route path="NewListPDI" element={<NewListPDI />} />
         <Route path="FirstPieceApporval" element={<FirstPieceApporval />} />
@@ -579,21 +744,21 @@ function App() {
         <Route path="CustomerComplaintEntry" element={<CustomerComplaintEntry />} />
         <Route path="CustomerComplaintList" element={<CustomerComplaintList />} />
         <Route path="CustomerComplaintAuth" element={<CustomerComplaintAuth />} />
-        <Route path="TestReportList" element={<TestReportList/> } />
+        <Route path="TestReportList" element={<TestReportList />} />
         <Route path="TestReportNew" element={<TestReportNew />} />
         <Route path="TestMasterNew" element={<TestMasterNew />} />
         <Route path="TestMasterList" element={<TestMasterList />} />
 
 
 
-       {/* //////////////////////////////     Sales       /////////////////////////// */}
-       
-        <Route path="GSTsales1" element={<GSTsales1/>} />
+        {/* //////////////////////////////     Sales       /////////////////////////// */}
+
+        <Route path="GSTsales1" element={<GSTsales1 />} />
         <Route path="JobWorkSales" element={<JobWorkSales />} />
         <Route path="DebitNote" element={<DebitNote />} />
-        <Route path="CreditNote" element={<CreditNote />}/>
+        <Route path="CreditNote" element={<CreditNote />} />
         <Route path="NewSalesOrder" element={<NewSalesOrder />} />
-        <Route path="OrderLiast" element={<OrderLiast/>} />
+        <Route path="OrderLiast" element={<OrderLiast />} />
         <Route path="SalesOrderAmendList" element={<SalesOrderAmendList />} />
         <Route path="CustPOAmend" element={<CustPOAmend />} />
         <Route path="SalesOrderItemAdd" element={<SalesOrderItemAdd />} />
@@ -628,13 +793,13 @@ function App() {
         <Route path="CreditListNote" element={<CreditListNote />} />
         <Route path="RG1Register" element={<RG1Register />} />
         <Route path="TransportList" element={<TransportList />} />
+        
+        <Route path="ViewStockList" element={<ViewStockList />} />
+        <Route path="UserSubList" element={<UserSubList />} />
+        <Route path="SalesOrderItemAddTwo" element={<SalesOrderItemAddTwo />} />
 
 
       </Routes>
-
-
-
-    
     </div>
   );
 }

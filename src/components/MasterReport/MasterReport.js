@@ -26,7 +26,7 @@ const MasterReport = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Reportrmaster">
-                    <div className="Report1-header mb-4 text-start">
+                    <div className="Report1-header mb-2 text-start">
                         <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Master Report</h5>

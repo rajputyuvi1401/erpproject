@@ -21,7 +21,7 @@ const DocCompanySetting = () => {
       }
     }, [sideNavOpen]);
   return (
-    <div className="CompanySettingChange">
+    <div className="DocCompanySetting">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -32,8 +32,8 @@ const DocCompanySetting = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="CompanyHistory mt-5">
-                  <div className="CompanyHistory-header mb-4 text-start">
+                <div className="CompanyHistory">
+                  <div className="DocCompanySetting-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">
@@ -43,7 +43,7 @@ const DocCompanySetting = () => {
                       <div className="col-md-6 text-end">
                         <Link
                           type="button"
-                          className="btn btn-primary me-2"
+                          className="vndrbtn btn-primary me-2"
                          
                         >
                           Export To Excel
@@ -52,7 +52,7 @@ const DocCompanySetting = () => {
                     </div>
                   </div>
 
-                  <div className="CompanyHistory mb-3 p-4">
+                  <div className="DocCompanySettingmain mt-2">
                     <div className="row text-start">
                       <div className="col-md-2">
                         <label>From Date:</label>
@@ -68,14 +68,15 @@ const DocCompanySetting = () => {
                       </div>
                      
                       <div className="col-md-1" style={{marginTop:"27px"}}>
-                      <button type="button" className="btn btn-primary">Search</button>
+
+                          <button type="button" className="vndrbtn btn-primary">Search</button>
                       
                       </div>
 
                     </div>
                   </div>
 
-                  <div className="table-section">
+                  <div className="DocCompanySettingtable table-section">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>

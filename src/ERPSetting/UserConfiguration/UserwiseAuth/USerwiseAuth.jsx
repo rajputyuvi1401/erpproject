@@ -29,24 +29,31 @@ const USerwiseAuth = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="userAuth mt-5">
-                <div className="prod-header mb-4 text-start">
+                <div className="userAuth">
+                   <div className="USerwiseAuth-header mb-2 text-start">
                     <div className="row align-items-center">
-                      <div className="col-md-4">
-                    <h5 className="header-title">User Wise Auth Setting</h5>
-                  </div>
-                  </div>
+                      <div className="col-md-6">
+                        <h5 className="header-title">
+                         User Wise Auth Setting
+                        </h5>
+                      </div>
+                      {/* <div className="col-md-6 text-end">
+                        <button type="button" className="vndrbtn">
+                          Export To Excel
+                        </button>
+                      </div> */}
+                    </div>
                   </div>
 
-                  <div className="Auth-main text-start">
-                    <div className="row mb-3 align-items-center">
+
+                  <div className="USerwiseAuthmain text-start">
+                    <div className="row align-items-center">
                       
-                      <div className="col-md-2 col-sm-3">
-                      <input type="checkbox" />
-                      <span> User Name :</span>
-                        
+                     <div className="col-md-2 col-sm-3 d-flex align-items-center">
+                        <input type="checkbox" className="me-2" />
+                        <span>User Name :</span>       
                       </div>
-                    
+
                       <div className="col-md-2 col-sm-9">
                        
                         <input type="text" className="form-control" />
@@ -61,12 +68,12 @@ const USerwiseAuth = () => {
                         </select>
                       </div>
                       <div className="col-md-2 text-end">
-                        <button className="btn">Search</button>
+                        <button className="vndrbtn">Search</button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="Auth-table mt-3">
+                  <div className="USerwiseAuthtable mt-3">
                     <div className="table-responsive">
                       <table className="table table-bordered table-hover">
                         <thead className="table-dark">

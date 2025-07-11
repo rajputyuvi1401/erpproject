@@ -139,8 +139,8 @@ const Itemmastersetup = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Itemmaster mt-5">
-                  <div className="ItemSetup-header mb-4 text-start">
+                <div className="Itemmaster">
+                  <div className="Itemmastersetup-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">Item Master Setup</h5>
@@ -148,15 +148,15 @@ const Itemmastersetup = () => {
                       <div className="col-md-2">
                         <label>Select Main Group</label>
                       </div>
-                      <div className="col-md-1">
-                        <select  style={{marginTop:"5px",marginLeft:"-70px"}}>
+                      <div className="col-md-2">
+                        <select  className="form-select" style={{marginTop:"5px",marginLeft:"-70px"}}>
                           <option value="">Select</option>
                           <option value="group1">Group 1</option>
                           <option value="group2">Group 2</option>
                         </select>
                       </div>
-                      <div className="col-md-7 text-end">
-                        <Link type="button" className="btn" to='/ViewItemMaster'>
+                      <div className="col-md-6 text-end">
+                        <Link type="button" className="vndrbtn" to='/ViewItemMaster'>
                           View Item Master Setup
                         </Link>
                       </div>
@@ -164,6 +164,7 @@ const Itemmastersetup = () => {
                   </div>
 
                   {/* Tabs Section */}
+                  <div className="Itemmastersetupmain">
                   <Tabs defaultActiveKey="general" className="mb-3">
                     {/* First Tab: General */}
                     <Tab eventKey="general" title="General">
@@ -329,6 +330,8 @@ const Itemmastersetup = () => {
                       </div>
                     </Tab>
                   </Tabs>
+                  </div>
+
                 </div>
               </main>
             </div>

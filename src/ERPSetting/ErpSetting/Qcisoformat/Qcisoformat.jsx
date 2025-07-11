@@ -29,40 +29,40 @@ const Qcisoformat = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Qciso mt-5">
-                  <div className="QcisoFormat-header mb-4">
+                <div className="Qciso">
+                  <div className="QcisoFormat-header mb-2">
                     <div className="row text-start">
                       <div className="col-md-10">
                         <h5 className="header-title">QC ISO Format Setting Master</h5>
                       </div>
                       <div className="col-md-2 text-end">
-                        <button type="button" className="btn btn-primary">
+                        <button type="button" className="vndrbtn ">
                           Company Info
                         </button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="QcisoFormat-main mb-3 p-4">
+                  <div className="QcisoFormatmain">
                     <div className="row text-start">
                       <div className="col-md-2">
-                        <p className="text-primary">#QC ISO Format</p>
+                        <p className="header-title text-primary">#QC ISO Format</p>
                       </div>
-                      <div className="col-md-2">
+                      <div className="col-md-2 d-flex align-items-center">
                         <input type="checkbox" className="me-2" />
                         <label>Search Module</label>
                       </div>
-                     
+    
                       <div className="col-md-2">
                         <input type="text" className="form-control" placeholder="Search..." />
                       </div>
                       <div className="col-md-6">
-                        
+                        <button className="vndrbtn">Search</button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="QcisoFormat-table">
+                  <div className="QcisoFormattable mt-2">
                     <div className="table-responsive">
                       <table className="table table-bordered">
                         <thead>
@@ -72,6 +72,7 @@ const Qcisoformat = () => {
                             <th>Format No</th>
                             <th>Rev No</th>
                             <th>Rev Date</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -81,6 +82,7 @@ const Qcisoformat = () => {
                             <td><input type="text" className="form-control" /></td>
                             <td><input type="text" className="form-control" /></td>
                             <td><input type="date" className="form-control" /></td>
+                            <td>+</td>
                           </tr>
                           <tr>
                             <td>2</td>
@@ -88,6 +90,7 @@ const Qcisoformat = () => {
                             <td><input type="text" className="form-control" /></td>
                             <td><input type="text" className="form-control" /></td>
                             <td><input type="date" className="form-control" /></td>
+                            <td>+</td>
                           </tr>
                           <tr>
                             <td>3</td>
@@ -95,12 +98,14 @@ const Qcisoformat = () => {
                             <td><input type="text" className="form-control" /></td>
                             <td><input type="text" className="form-control" /></td>
                             <td><input type="date" className="form-control" /></td>
+                            <td>+</td>
                           </tr>
                           {/* Add more rows as needed */}
                         </tbody>
                       </table>
                     </div>
                   </div>
+                  
                 </div>
               </main>
             </div>

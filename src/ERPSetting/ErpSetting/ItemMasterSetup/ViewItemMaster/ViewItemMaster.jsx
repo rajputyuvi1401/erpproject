@@ -115,60 +115,73 @@ const ViewItemMaster = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="view-item-master">
-                  <div className="ItemSetup-header mb-4 text-start">
+                  <div className="Itemmastersetup-header mb-2 text-start">
                     <div className="row align-items-start">
                       <div className="view-header">
                         <h2 className="header-title">Item Master Setup View</h2>
                       </div>
                     </div>
                   </div>
-                  <div className="action-buttons">
-                    <button onClick={handleSetDefault}>
+
+                  <div className="text-start">
+                    <button  className="vndrbtn" onClick={handleSetDefault}>
                       Set/Insert Default Record
                     </button>
-                    <button onClick={handleDelete}>Delete Record</button>
+                    <button  className="vndrbtn" onClick={handleDelete}> 
+                      Delete Record 
+                    </button>
                   </div>
-                  <div className="table-container">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>CatType</th>
-                          <th>SubGroupId</th>
-                          <th>ItemNo</th>
-                          <th>ItemCode</th>
-                          <th>ItemDesc</th>
-                          <th>RevisionNo</th>
-                          <th>UnitCode</th>
-                          <th>MinLevel</th>
-                          <th>MaxLevel</th>
-                          <th>TariffHeadNo</th>
-                          <th>PCRate</th>
-                          <th>Qty</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {records.map((record) => (
-                          <tr key={record.id}>
-                            <td>{record.catType}</td>
-                            <td>{record.subGroupId}</td>
-                            <td>{record.itemNo ? "True" : "False"}</td>
-                            <td>{record.itemCode ? "True" : "False"}</td>
-                            <td>{record.itemDesc ? "True" : "False"}</td>
-                            <td>{record.revisionNo ? "True" : "False"}</td>
-                            <td>{record.unitCode ? "True" : "False"}</td>
-                            <td>{record.minLevel ? "True" : "False"}</td>
-                            <td>{record.maxLevel ? "True" : "False"}</td>
-                            <td>{record.tariffHeadNo ? "True" : "False"}</td>
-                            <td>{record.pcRate ? "True" : "False"}</td>
-                            <td>{record.qty ? "True" : "False"}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+
+                  <div className="Itemmastersetupmain mt-2">
+                      <div className="">
+                        <div className="table-responsive">
+                        <table className="table table-bordered">
+                          <thead className="table-light">
+                            <tr>
+                              <th>CatType</th>
+                              <th>SubGroupId</th>
+                              <th>ItemNo</th>
+                              <th>ItemCode</th>
+                              <th>ItemDesc</th>
+                              <th>RevisionNo</th>
+                              <th>UnitCode</th>
+                              <th>MinLevel</th>
+                              <th>MaxLevel</th>
+                              <th>TariffHeadNo</th>
+                              <th>PCRate</th>
+                              <th>Qty</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {records.map((record) => (
+                              <tr key={record.id}>
+                                <td>{record.catType}</td>
+                                <td>{record.subGroupId}</td>
+                                <td>{record.itemNo ? "True" : "False"}</td>
+                                <td>{record.itemCode ? "True" : "False"}</td>
+                                <td>{record.itemDesc ? "True" : "False"}</td>
+                                <td>{record.revisionNo ? "True" : "False"}</td>
+                                <td>{record.unitCode ? "True" : "False"}</td>
+                                <td>{record.minLevel ? "True" : "False"}</td>
+                                <td>{record.maxLevel ? "True" : "False"}</td>
+                                <td>{record.tariffHeadNo ? "True" : "False"}</td>
+                                <td>{record.pcRate ? "True" : "False"}</td>
+                                <td>{record.qty ? "True" : "False"}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        </div>
+
+                         <div className="text-end mt-2">
+                             <button className="vndrbtn" onClick={handleClose}>Close</button>
+                          </div>
+
+                      </div>
                   </div>
-                  <div className="close-button">
-                    <button onClick={handleClose}>Close</button>
-                  </div>
+
+                 
+
                 </div>
               </main>
             </div>

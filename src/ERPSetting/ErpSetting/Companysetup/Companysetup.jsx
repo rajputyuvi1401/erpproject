@@ -4,6 +4,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import "./Companysetup.css";
+import { Link } from "react-router-dom";
+
 
 const Companysetup = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -56,26 +58,28 @@ const Companysetup = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Company mt-5">
-                  <div className="company-header mb-4 text-start">
+                <div className="Company">
+                  <div className="company-header mb-2 text-start">
                     <div className="row align-items-start mt-2">
                       <div className="col-md-2">
                         <h1 className="header-title">Company Setup</h1>
                       </div>
                       <div className="col-md-4">
-                        <p className="text-sm text-gray-500 mb-4">
+                        <p className="text-sm text-gray-500">
                           Last Updated By Admin On 21-07-2022 2:47 PM
                         </p>
                       </div>
                       <div className="col-md-6 text-end">
-                        <button type="button" className="btn">
+                        <Link type="button" className="vndrbtn" to={"/UserPermission"}>
                           General Setting
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
                 </div>
                 
+                <div className="companymain">
+
                 <div className="tabs">
                   <button
                     className={`tab ${activeTab === "general" ? "active" : ""}`}
@@ -514,6 +518,8 @@ const Companysetup = () => {
                 )}
                 {activeTab === "logo" && <p>Logo/Images content here...</p>}
                 {activeTab === "einvoice" && <p>E-Invoice content here...</p>}
+
+              </div>
               </main>
             </div>
           </div>

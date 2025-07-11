@@ -27,8 +27,8 @@ const DashboardBackup = () => {
       <div className="main-container">
         <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
         <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-          <div className="PRoWorkorderList mt-5">
-            <div className="PRoWorkorderList-header mb-4 text-start">
+          <div className="PRoWorkorderList">
+            <div className="PRoWorkorderList-header mb-2 text-start">
               <div className="row align-items-center">
                 <div className="col-md-2">
                   <h5 className="header-title">Database Backup</h5>
@@ -38,7 +38,7 @@ const DashboardBackup = () => {
                   <strong>D:\MANUAL BACKUP FROM ERP</strong>
                 </div>
                 <div className="col-md-2 text-end mt-2">
-                  <button type="button" className="btn">
+                  <button type="button" className="vndrbtn">
                     Backup Database
                   </button>
                 </div>
@@ -46,71 +46,77 @@ const DashboardBackup = () => {
             </div>
           </div>
 
-          <div className="table-responsive">
-            <table className="table table-striped backup-table text-start">
-              <thead>
-                <tr>
-                  <th>Database</th>
-                  <th>Size</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>ERP\Produlink20240225_30Mar2024_14_27_16.bak</td>
-                  <td>66 MB</td>
-                  <td>
-                    <Link href="#" className="download-link">
-                      .bak Download
-                    </Link>
-                    <Link href="#" className="download-link">
-                      .Zip Download
-                    </Link>
-                    <Link href="#" className="delete-link">
-                      Delete
-                    </Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>ERP\Produlink_LIVE_01042024.bak</td>
-                  <td>53 MB</td>
-                  <td>
-                    <Link href="#" className="download-link">
-                      .bak Download
-                    </Link>
-                    <Link href="#" className="download-link">
-                      .Zip Download
-                    </Link>
-                    <Link href="#" className="delete-link">
-                      Delete
-                    </Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>ERP\Produlink_Live_2582024_15_42_48.bak</td>
-                  <td>63 MB</td>
-                  <td>
-                    <Link href="#" className="download-link">
-                      .bak Download
-                    </Link>
-                    <Link href="#" className="download-link">
-                      .Zip Download
-                    </Link>
-                    <Link href="#" className="delete-link">
-                      Delete
-                    </Link>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="DashboardBackuptable">
+              <div className="table-responsive">
+              <table className="table table-striped backup-table text-start">
+                <thead>
+                  <tr>
+                    <th>Database</th>
+                    <th>Size</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>ERP\Produlink20240225_30Mar2024_14_27_16.bak</td>
+                    <td>66 MB</td>
+                    <td>
+                      <Link href="#" className="download-link">
+                        .bak Download
+                      </Link>
+                      <Link href="#" className="download-link">
+                        .Zip Download
+                      </Link>
+                      <Link href="#" className="delete-link">
+                        Delete
+                      </Link>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ERP\Produlink_LIVE_01042024.bak</td>
+                    <td>53 MB</td>
+                    <td>
+                      <Link href="#" className="download-link">
+                        .bak Download
+                      </Link>
+                      <Link href="#" className="download-link">
+                        .Zip Download
+                      </Link>
+                      <Link href="#" className="delete-link">
+                        Delete
+                      </Link>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ERP\Produlink_Live_2582024_15_42_48.bak</td>
+                    <td>63 MB</td>
+                    <td>
+                      <Link href="#" className="download-link">
+                        .bak Download
+                      </Link>
+                      <Link href="#" className="download-link">
+                        .Zip Download
+                      </Link>
+                      <Link href="#" className="delete-link">
+                        Delete
+                      </Link>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
           </div>
-          <footer>
-            <p>
-              Step 1: Set Backup Path , Company Setting , Parameter Setting
-              ,General Setting , DB Backup Path
-            </p>
-            <p>Step 2: Set Folder Access Permission</p>
-          </footer>
+
+          <div className="DashboardBackupmain mt-2">
+              <footer className="text-start">
+                <p>
+                  Step 1: Set Backup Path , Company Setting , Parameter Setting
+                  ,General Setting , DB Backup Path
+                </p>
+                <p>Step 2: Set Folder Access Permission</p>
+              </footer>
+          </div>
+
         </main>
       </div>
     </div>

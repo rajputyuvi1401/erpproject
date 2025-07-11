@@ -1,115 +1,179 @@
-/* UserWiseSeries.css */
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
 
 .UserWiseSeries {
-    padding: 20px; /* Add padding to the main container */
+  width: 100%;
+  height: 100vh;
+}
+
+.UserWiseSeries-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
+}
+
+.UserWiseSeriesmain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.UserWiseSeriesbottom {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    padding: 10px 15px; 
   }
-  
-  .UserWiseSeries  .Main-NavBar {
-    display: flex;
-    margin-left: -20px; /* Ensure that the navbar and sidenav are flex items */
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
+}
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.UserWiseSeriestable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
   }
-  
-  .UserWiseSeries .main-content {
-    padding: 20px; /* General padding for main content area */
-    transition: margin-left 0.3s; /* Smooth transition for the shifting content */
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
   }
-  
-  .UserWiseSeries .main-content.shifted {
-    margin-left: 250px; /* Adjust the main content position when sideNav is open */
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
   }
-  
-  .UserWiseSeries  .back-header {
-    background-color: #f8f9fa; /* Light background for header */
-    border-bottom: 1px solid #dee2e6; /* Border for header */
-    padding: 10px 15px; /* Padding around header */
-    border-radius: 5px; /* Rounded corners for the header */
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
   }
-  
-  .UserWiseSeries .header-title {
-    font-weight: 600; /* Slightly bolder font for the header title */
-    font-size: 1.5rem; /* Larger font size */
-    margin: 0; /* Remove default margin */
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
   }
-  
-  .UserWiseSeries .export-btn {
-    background-color: #007bff; /* Bootstrap primary button color */
-    color: white; /* White text color */
-    border: none; /* Remove border */
-    padding: 10px 20px; /* Add padding */
-    border-radius: 5px; /* Rounded corners for button */
-    transition: background-color 0.3s; /* Transition effect for hover */
+
+  .vndrbtn {
+    padding: 5px 10px;
   }
-  
-  .UserWiseSeries .export-btn:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
   }
-  
-  .UserWiseSeries .back-main {
-    margin-top: 20px; /* Space above the main form area */
+
+  .table th,
+  .table td {
+    font-size: 11px;
   }
-  
-  .UserWiseSeries .back-main label {
-    font-weight: 500; /* Medium weight for labels */
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
   }
-  
-  .UserWiseSeries .form-select {
-    width: 100%; /* Full width for select elements */
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
   }
-  
-  .UserWiseSeries .table {
-    margin-top: 20px; /* Space above the table */
-    width: 100%; /* Full width for table */
-    text-align: center; /* Center text in table */
+
+  .table th,
+  .table td {
+    font-size: 12px;
   }
-  
-  .UserWiseSeries .table th, .table td {
-    vertical-align: middle; /* Center content vertically */
-  }
-  
-  .UserWiseSeries .table th {
-    background-color: #e9ecef; /* Light grey background for table header */
-    font-weight: bold; /* Bold font for table headers */
-  }
-  
-  .UserWiseSeries .table input {
-    text-align: center; /* Center text in input fields */
-    width: 60%; /* Limit width of input fields */
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 767px) {
-    .UserWiseSeries  .main-content.shifted {
-      margin-left: 0; /* Remove left margin on small screens */
-    }
-  
-    .UserWiseSeries   .back-header {
-      text-align: center; /* Center header text on small screens */
-    }
-  
-    .UserWiseSeries   .back-main {
-      display: flex;
-      flex-direction: column; /* Stack inputs vertically */
-      align-items: stretch; /* Stretch to fill container */
-    }
-  
-    .UserWiseSeries   .back-main .col-md-2, .back-main .col-md-1 {
-      width: 100%; /* Full width for small screens */
-      margin-bottom: 10px; /* Margin between stacked inputs */
-    }
-  
-    .UserWiseSeries   .export-btn {
-      width: 100%; /* Full width for button on small screens */
-      margin-bottom: 10px; /* Space below the button */
-    }
-  
-    .UserWiseSeries   .table-responsive {
-      overflow-x: auto; /* Allow horizontal scrolling on small screens */
-    }
-  }
-  
-  @media (min-width: 768px) and (max-width: 991px) {
-    .UserWiseSeries  .main-content {
-      padding: 15px; /* Adjust padding for medium screens */
-    }
-  }
-  
+}

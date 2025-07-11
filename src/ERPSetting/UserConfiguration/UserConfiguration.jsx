@@ -90,18 +90,21 @@ const UserConfiguration = () => {
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="user-container">
-                  <h2 className=" header-title form-title">Add New User</h2>
-                                  {/* <div className="WorkOrderEntry-header mb-2">
-                                      <div className="row">
-                                        <div className="col-md-3">
-                                          <h5 className="header-title text-start">
-                                          Add New User
-                                          </h5>
-                                        </div>
-                                      </div>
-                                    </div> */}
+                    <div className="userConfig-header mb-2">
+                                     
+                        <div className="row">
+                           <div className="col-md-4">
+                             <h5 className="header-title text-start"> Add New User </h5>
+                          </div>
+                          {/* <div className="col-md-8 text-end">
+                            <Link to="/" className="vndrbtn">  </Link>
+                           </div> */}
+                        </div>
+    
+                   </div>
 
-                  <form onSubmit={handleSubmit}>
+                  <div className="userConfigMain mt-2">
+                     <form onSubmit={handleSubmit}>
                     {/* Plant Selection */}
                     <div className="row mb-3">
                       <div className="col-md-1 text-start">
@@ -246,13 +249,15 @@ const UserConfiguration = () => {
 
                     {/* Save Button */}
                     <div className="row mb-3">
-                      <div className="col-md-7 text-end">
+                      <div className="col-md-4 text-end">
                         <button type="submit" className="vndrbtn submit-button">
                           Save
                         </button>
                       </div>
                     </div>
-                  </form>
+                     </form>
+                  </div>
+
                 </div>
               </main>
             </div>

@@ -245,91 +245,110 @@ const UserPermit = () => {
           <div className="col-md-12">
             <div className="Main-NavBar">
               <NavBar toggleSideNav={() => setSideNavOpen(!sideNavOpen)} />
-              <SideNav
-                sideNavOpen={sideNavOpen}
-                toggleSideNav={() => setSideNavOpen(!sideNavOpen)}
-              />
+              <SideNav sideNavOpen={sideNavOpen} toggleSideNav={() => setSideNavOpen(!sideNavOpen)}/>
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="user-permit">
-                  <div className="permit-header mb-2 text-start">
-                    <h5 className="header-title">User Permission</h5>
-                  </div>
-                  <div className="user-permit-header">
-                    <div className="col-md-2">
-                      <select
-                        value={selectedUser}
-                        onChange={(e) => setSelectedUser(e.target.value)}
-                        className="user-select form-control"
-                      >
-                        <option value="">Select User</option>
-                        {users.map((user) => (
-                          <option key={user.id} value={user.id}>
-                            {user.FullName}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="col-md-10">
-                      <button type="button" className=" vndrbtn">
-                        Export User Permission
-                      </button>
-                      <button type="button" className=" vndrbtn">
-                        Export All User Permission
-                      </button>
-                      <button type="button" className=" vndrbtn">
-                        Export Modulewise Permission
-                      </button>
-                      <button type="button" className=" vndrbtn">
-                        Export Userwise Active Permission
-                      </button>
-                      <button type="button" className=" vndrbtn">
-                        Copy Permission
-                      </button>
-                    </div>
-                    <div className="col-md-1 mt-3">
-                      <div className="select-all">
-                        <input
-                          type="checkbox"
-                          checked={selectAll}
-                          onChange={handleSelectAll}
-                          id="select-all"
-                        />
-                        <label htmlFor="select-all">All</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <input
-                      type="text"
-                      placeholder="Search permissions..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="search-input form-control"
-                    />
-                  </div>
-                  <div className="permissions-container">
-                    <div className="modules-list">
-                      {Object.keys(availablePermissions).map((module) => (
-                        <div key={module} className="module-item">
-                          <div className="module-header">
-                            <input
-                              type="checkbox"
-                              checked={Object.values(
-                                permissions[module] || {}
-                              ).every(Boolean)}
-                              onChange={() => handleModuleSelect(module)}
-                              id={`module-${module}`}
-                            />
-                            <label htmlFor={`module-${module}`}>{module}</label>
+
+                    <div className="userConfig-header mb-2">              
+                        <div className="row">
+                           <div className="col-md-4">
+                             <h5 className="header-title text-start"> User Permission </h5>
                           </div>
                         </div>
-                      ))}
+                   </div>
+
+                   <div className="userConfig-header mb-2">
+                        <div className="row">
+                           <div className="col-md-3">
+                              <select
+                                value={selectedUser}
+                                onChange={(e) => setSelectedUser(e.target.value)}
+                                className="user-select form-control"
+                              >
+                                <option value="">Select User</option>
+                                {users.map((user) => (
+                                  <option key={user.id} value={user.id}>
+                                    {user.FullName}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+
+                            <div className="col-md-9">
+                              <button type="button" className=" vndrbtn">
+                                Export User Permission
+                              </button>
+                              <button type="button" className=" vndrbtn">
+                                Export All User Permission
+                              </button>
+                              <button type="button" className=" vndrbtn">
+                                Export Modulewise Permission
+                              </button>
+                              <button type="button" className=" vndrbtn">
+                                Export Userwise Active Permission
+                              </button>
+                              <button type="button" className=" vndrbtn">
+                                Copy Permission
+                              </button>
+                            </div>
+
+                        </div>
+                    </div>    
+                 
+                   <div className="userConfigMain mt-2">
+      
+                      <div className="user-permit-header">
+                          <div className="col-md-1">
+                                  <div className="select-all">
+                                    <input
+                                      type="checkbox"
+                                      checked={selectAll}
+                                      onChange={handleSelectAll}
+                                      id="select-all"
+                                    />
+                                    <label htmlFor="select-all">All</label>
+                                  </div>
+                           </div>  
+
+                      </div>
+
+                      <div className="col-md-6">
+                        <input
+                          type="text"
+                          placeholder="Search permissions..."
+                          value={searchQuery}
+                          onChange={(e) => setSearchQuery(e.target.value)}
+                          className="search-input form-control"
+                        />
+                      </div>
+
+                      <div className="permissions-container">
+                        <div className="modules-list">
+                          {Object.keys(availablePermissions).map((module) => (
+                            <div key={module} className="module-item">
+                              <div className="module-header">
+                                <input
+                                  type="checkbox"
+                                  checked={Object.values(
+                                    permissions[module] || {}
+                                  ).every(Boolean)}
+                                  onChange={() => handleModuleSelect(module)}
+                                  id={`module-${module}`}
+                                />
+                                <label htmlFor={`module-${module}`}>{module}</label>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        {selectedModule && renderPermissions(selectedModule)}
+                      </div>
+
+                      <button onClick={handleSubmit} className="vndrbtn mt-3">
+                        Assign Permissions
+                      </button>
+                      
                     </div>
-                    {selectedModule && renderPermissions(selectedModule)}
-                  </div>
-                  <button onClick={handleSubmit} className="vndrbtn submit-button">
-                    Assign Permissions
-                  </button>
+
                 </div>
               </main>
             </div>

@@ -144,7 +144,7 @@ const WorkCenterMaster = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="workcentermaster">
                   <div className="workmain">
-                    <div className="workmain-header mb-4 text-start">
+                    <div className="workmain-header mb-2 text-start">
                       <div className="row align-items-center">
                         <div className="col-md-6">
                         <h5 className="header-title">Work Center Master</h5>

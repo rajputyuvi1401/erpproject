@@ -18,6 +18,7 @@ const SubconGrn = () => {
         document.body.classList.remove("side-nav-open");
       }
     }, [sideNavOpen]);
+
   return (
     <div className="NewPurchaseReport">
     <div className="container-fluid">
@@ -53,42 +54,19 @@ const SubconGrn = () => {
                   role="tablist"
                 >
                   <li className="nav-item" role="presentation">
-                    <button
-                      className="nav-link active"
-                      id="pills-Item-Details-tab"
-                      data-bs-toggle="pill"
-                      data-bs-target="#pills-Item-Details"
-                      type="button"
-                      role="tab"
-                      aria-controls="pills-Item-Details"
-                      aria-selected="true"
-                    >
+                    <button  className="nav-link active"  id="pills-Item-Details-tab"  data-bs-toggle="pill"  data-bs-target="#pills-Item-Details"  type="button"  role="tab"  aria-controls="pills-Item-Details"  aria-selected="true">
                       Group Wise Summary
                     </button>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <button
-                      className="nav-link"
-                      id="pills-GST-Details-tab"
-                      data-bs-toggle="pill"
-                      data-bs-target="#pills-GST-Details"
-                      type="button"
-                      role="tab"
-                      aria-controls="pills-GST-Details"
-                      aria-selected="false"
-                    >
+                    <button  className="nav-link"  id="pills-GST-Details-tab"  data-bs-toggle="pill"  data-bs-target="#pills-GST-Details"  type="button"  role="tab"  aria-controls="pills-GST-Details"  aria-selected="false">
                       Cose Center Wise Report
                     </button>
                   </li>
+                  
                 </ul>
                 <div className="tab-content" id="pills-tabContent">
-                  <div
-                    className="tab-pane fade show active"
-                    id="pills-Item-Details"
-                    role="tabpanel"
-                    aria-labelledby="pills-Item-Details-tab"
-                    tabindex="0"
-                  >
+                  <div  className="tab-pane fade show active"  id="pills-Item-Details"  role="tabpanel"  aria-labelledby="pills-Item-Details-tab"  tabindex="0">
                     <div className="PurchaseReportstatus">
                       <div className="container mt-4">
                         <div className="table-responsive">

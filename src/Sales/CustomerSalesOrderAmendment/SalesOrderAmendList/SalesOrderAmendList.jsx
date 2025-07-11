@@ -4,6 +4,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import "./SalesOrderAmendList.css";
+import { Link } from "react-router-dom";
 import {  FaEye} from "react-icons/fa";
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -23,6 +24,12 @@ const SalesOrderAmendList    = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
+  
+      const [dropdownOpen, setDropdownOpen] = useState(false);
+    const toggleDropdown = () => {
+      setDropdownOpen(!dropdownOpen);
+    };
 
   return (
     <div className="SalesOrderAmendListMaster">
@@ -49,36 +56,56 @@ const SalesOrderAmendList    = () => {
     SO Amendment Register
   </button>
 
-  {/* Dropdown Menu */}
-  <div className="dropdown">
-    <button
-      className="vndrbtn dropdown-toggle"
-      type="button"
-      id="salesOrderDropdown"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      Sales Order Amendment Menu
-    </button>
+ <div style={{ position: 'relative', display: 'inline-block', marginLeft: '3px' }}>
+                          <button
+                            style={{ padding: '5px' }}
+                            className="BOMRouting vndrbtn"
+                            onClick={toggleDropdown}
+                          >
+                            Sales Order Amendment Menu  ▼
+                          </button>
 
-    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="salesOrderDropdown">
-      <li>
-        <a className="dropdown-item" href="/so-amendment">
-          SO Amendment
-        </a>
-      </li>
-      <li>
-        <a className="dropdown-item" href="/item-addition-regular">
-          Item Addition (Regular)
-        </a>
-      </li>
-      <li>
-        <a className="dropdown-item" href="/item-addition-export">
-          Item Addition (Export)
-        </a>
-      </li>
-    </ul>
-  </div>
+                          {dropdownOpen && (
+                            <ul
+                              className="dropdown-menu show"
+                              style={{
+                                position: 'absolute',
+                                top: '100%',
+                                left: 0,
+                                zIndex: 1000,
+                                display: 'block',
+                                minWidth: '10rem',
+                                padding: '0.5rem 0',
+                                margin: '0.125rem 0 0',
+                                fontSize: '12px',
+                                color: '#212529',
+                                textAlign: 'left',
+                                listStyle: 'none',
+                                backgroundColor: '#fff',
+                                backgroundClip: 'padding-box',
+                              }}
+                            >
+                              <li>
+                                <Link className="vndrbtn dropdown-item"  to={"/CustPOAmend"}>
+                                   SO Amendment
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/SalesOrderItemAdd"}>
+                                 Item Addition (Regular)
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/SalesOrderItemAddTwo"}>
+                                 Item Addition (Export)
+                                </Link>
+                              </li>
+                            </ul>
+                          )}
+                        </div>
+
+                        {/* Dropdown Menu */} 
+
                     </div>
 
 

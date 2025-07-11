@@ -182,7 +182,7 @@ const LogoImage = ({ formData, onFormDataChange, onSubmit }) => {
         </div>
         <div className="row">
           <div className="col-md-12 text-end">
-            <button type="submit" className="date-update">
+            <button type="submit" className="vndrbtn">
               Save
             </button>
           </div>

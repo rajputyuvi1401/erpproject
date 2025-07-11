@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-// const Base_Url = "http://3.7.91.234:8000/Store/";
-const Base_Url = "api/Store/"; 
+const Base_Url = "http://3.7.91.234:8000/Store/";
+// const Base_Url = "api/Store/"; 
   
 // Purchase gernal grn
 export const postGrnDetails = async (data) => {

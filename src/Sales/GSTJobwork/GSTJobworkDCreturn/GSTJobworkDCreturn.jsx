@@ -38,13 +38,13 @@ const GSTJobworkDCreturn = () => {
                       <div className="col-md-2">
                         <h5 className="header-title">New Jobwork DC</h5>
                       </div>
-                      <div className="col-md-1">Plant</div>
+                      <div className="col-md-1"> <label htmlFor=""> Plant </label> </div>
                       <div className="col-md-1">
                         <select className="form-control">
                           <option>ProduLink</option>
                         </select>
                       </div>
-                      <div className="col-md-1">Series</div>
+                      <div className="col-md-1"> <label htmlFor=""> Series </label> </div>
                       <div className="col-md-1">
                         <select className="form-control">
                           <option> Select </option>
@@ -54,18 +54,8 @@ const GSTJobworkDCreturn = () => {
                       <div className="col-md-1">
                         <input type="text" placeholder="DCNo  : 24250001" className="form-control" />
                       </div>
-                        <div className="col-md-1">
-                        <input type="radio" id="css" name="fav_language" value="CSS"/>
-                        <label for="css"> DC Return</label>
-                        </div>
-                        <div className="col-md-2">
-                        <input type="radio" id="css" name="fav_language" value="CSS"/>
-                        <label for="css"> Delivery Challan</label>
-                        </div>
-                        <div className="col-md-2">
-                        <input type="radio" id="css" name="fav_language" value="CSS"/>
-                        <label for="css"> Rejection Stock</label>
-                        </div>
+                       
+                       
                     </div>
                   </div>
 

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { createFinancialYear, getFinancialYears } from "../../../Service/Erpsetting.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const ErpFinancialYear = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -83,8 +84,8 @@ const ErpFinancialYear = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="financial mt-5">
-                  <div className="financial-header mb-4 text-start">
+                <div className="financial">
+                  <div className="ErpFinancialyear-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Financial Year</h5>
@@ -92,7 +93,7 @@ const ErpFinancialYear = () => {
                     </div>
                   </div>
 
-                  <div className="financial-table mt-3">
+                  <div className="ErpFinancialyeartable mt-3">
                     <div className="table-responsive">
                       <table className="table table-bordered table-hover">
                         <thead className="table-dark">
@@ -128,13 +129,15 @@ const ErpFinancialYear = () => {
                       </table>
                     </div>
                   </div>
-                  <div className="row text-start mt-5">
+
+                  <div className="row text-start mt-3">
                     <div className="col-md-2">
-                      <button type="button" className="yearbtn"  onClick={() => setShowModal(true)}>
+                      <button type="button" className="vndrbtn"  onClick={() => setShowModal(true)}>
                         Create New Year
                       </button>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>
@@ -145,7 +148,7 @@ const ErpFinancialYear = () => {
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <h5>Create New Financial Year</h5>
+            <h5 className="header-title">Create New Financial Year</h5>
             <div className="form-group">
               <label>Fy Name</label>
               <input
@@ -189,14 +192,14 @@ const ErpFinancialYear = () => {
             <div className="modal-actions mt-3">
               <button
                 type="button"
-                className="btn btn-primary"
+                className="vndrbtn"
                 onClick={handleFormSubmit}
               >
                 Save
               </button>
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="vndrbtn"
                 onClick={() => setShowModal(false)}
               >
                 Cancel

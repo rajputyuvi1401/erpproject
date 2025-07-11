@@ -54,7 +54,7 @@ const ProjectManagement = () => {
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="Projectrmaster">
-                  <div className="Project1-header mb-4 text-start">
+                  <div className="Project1-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-2">
                         <h5 className="header-title">Project List</h5>

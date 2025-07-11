@@ -8,7 +8,7 @@ import "./BusinessPartner.css";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchCountries ,fetchStateData, fetchStateDetails} from '../../Service/Api.jsx';
 import {ToastContainer, toast } from "react-toastify";
 const BusinessPartner = () => {
@@ -241,9 +241,9 @@ const BusinessPartner = () => {
                         <h5 className="header-title">Business Partner</h5>
                         </div>
                         <div className="col-md-6 text-end">
-                          <button className="vndrbtn">
+                          <Link className="vndrbtn" to={"/vender-list"}>
                             Customer Supplier List
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </div>

@@ -21,7 +21,7 @@ const AlertSetting = () => {
   }, [sideNavOpen]);
 
   return (
-    <div className="plant-Alertt">
+    <div className="plantAlertt">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -32,8 +32,8 @@ const AlertSetting = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Alertt mt-5">
-                  <div className="prod-header mb-4 text-start">
+                <div className="Alertt">
+                  <div className="plantAlertt-header mb-2 text-start">
                     <div className="row ">
                       <div className="col-md-12">
                         <h5 className="header-title">Dept. Wise Alert Setup</h5>
@@ -41,6 +41,7 @@ const AlertSetting = () => {
                     </div>
                   </div>
 
+                  <div className="plantAlerttmain">
                   <div className="row">
                     <div className="col-md-6">
                       <div className="Alertt-main">
@@ -88,7 +89,7 @@ const AlertSetting = () => {
                         </div>
                       </div>
 
-                      <div className="table-responsive mt-3">
+                      <div className="plantAlertttable table-responsive mt-3">
                         <table className="table table-bordered">
                           <thead className="table-dark">
                             <tr>
@@ -125,7 +126,9 @@ const AlertSetting = () => {
                           </tbody>
                         </table>
                       </div>
+
                     </div>
+                    
                     <div className="col-md-6 mt-3">
                       <div className="row mt-6 text-start">
                         <div className="col-md-12">
@@ -175,6 +178,8 @@ const AlertSetting = () => {
                       </div>
                     </div>
                   </div>
+                  </div>
+
                 </div>
               </main>
             </div>

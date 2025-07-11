@@ -5,6 +5,8 @@ import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import "./ProductionEntryList.css";
 import { fetchProductionEntries } from "../../../Service/Production.jsx";
+import { Link } from "react-router-dom";
+
 
 const ProductionEntryList = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -22,8 +24,6 @@ const ProductionEntryList = () => {
   }, [sideNavOpen]);
 
   const [productionEntries, setProductionEntries] = useState([]);
-  
-
   useEffect(() => {
     const loadProductionEntries = async () => {
       const data = await fetchProductionEntries();
@@ -32,18 +32,23 @@ const ProductionEntryList = () => {
     };
     loadProductionEntries();
   }, []);
-  
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 10;
-  
+
   // Calculate indexes
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = productionEntries.slice(indexOfFirstRecord, indexOfLastRecord);
-  
+
   // Ensure total pages are correct
   const totalPages = Math.ceil(productionEntries.length / recordsPerPage);
-  
+
   console.log("Current Page:", currentPage, "Total Pages:", totalPages);
 
   const handleNextPage = () => {
@@ -51,14 +56,14 @@ const ProductionEntryList = () => {
       setCurrentPage(currentPage + 1);
     }
   };
-  
+
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
-  
-  
+
+
   return (
     <div className="ProductionEntryMasterList">
       <div className="container-fluid">
@@ -80,17 +85,97 @@ const ProductionEntryList = () => {
                         </h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="vndrbtn" to="/AddQuater">
-                          Production Report
-                        </button>
+                        <div style={{ position: 'relative', display: 'inline-block', marginLeft: '3px' }}>
+                          <button
+                            style={{ padding: '5px' }}
+                            className="BOMRouting vndrbtn"
+                            onClick={toggleDropdown}
+                          >
+                            Production Report  ▼
+                          </button>
 
-                        <button
+                          {dropdownOpen && (
+                            <ul
+                              className="dropdown-menu show"
+                              style={{
+                                position: 'absolute',
+                                top: '100%',
+                                left: 0,
+                                zIndex: 1000,
+                                display: 'block',
+                                minWidth: '10rem',
+                                padding: '0.5rem 0',
+                                margin: '0.125rem 0 0',
+                                fontSize: '12px',
+                                color: '#212529',
+                                textAlign: 'left',
+                                listStyle: 'none',
+                                backgroundColor: '#fff',
+                                backgroundClip: 'padding-box',
+                              }}
+                            >
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/"}>
+                                  Export - Excel ( Production )
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/DailyProductionReport"}>
+                                  Daily Production Report
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/MonthlyProductionReport"}>
+                                  Monthly Production Report
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/OperationMachineReport"}>
+                                  Operation / Machine Report
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/ConsumptionReport"}>
+                                  Consumption Report
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/ProductionSummaryReport"}>
+                                  Production Summary Report
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/ItemWiseReport"}>
+                                  Item Wise Report
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/OEEReportOne"}>
+                                  OEE Report 1
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/OEEReportTwo"}>
+                                  OEE Report 2
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/ToolConsumptionReport"}>
+                                  Tool Consumption Report
+                                </Link>
+                              </li>
+
+                            </ul>
+                          )}
+                        </div>
+
+                        <Link
                           type="button"
                           className="vndrbtn"
-                          to="/Companysetup"
+                          to="/QueryProdEL"
                         >
                           Production Query
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -181,17 +266,16 @@ const ProductionEntryList = () => {
                           </tr>
                         </thead>
                         <tbody>
-                        {currentRecords.length > 0 ? (
-    currentRecords.map((entry, index) => (
+                          {currentRecords.length > 0 ? (
+                            currentRecords.map((entry, index) => (
                               <tr key={entry.id}>
                                 <td>{index + 1}</td>
                                 <td>{entry.Year || "N/A"}</td>
 
                                 <td>{entry.Prod_no || "N/A"}</td>
                                 <td>{entry.Date || "N/A"}</td>
-                                <td>{`${entry.Supervisor || "N/A"} & ${
-                                  entry.contractor || "N/A"
-                                }`}</td>
+                                <td>{`${entry.Supervisor || "N/A"} & ${entry.contractor || "N/A"
+                                  }`}</td>
                                 <td>{entry.unit_machine || "N/A"}</td>
                                 <td>{entry.shift || "N/A"}</td>
                                 <td>{entry.ItemDescription || "N/A"}</td>
@@ -229,28 +313,28 @@ const ProductionEntryList = () => {
                       </table>
                     </div>
 
-                     {/* Pagination Controls */}
-                     <div className="d-flex justify-content-end mt-3">
-                        <nav>
-                          <ul className="pagination">
-                            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-                              <button className="page-link" onClick={handlePrevPage}>Previous</button>
-                            </li>
+                    {/* Pagination Controls */}
+                    <div className="d-flex justify-content-end mt-3">
+                      <nav>
+                        <ul className="pagination">
+                          <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+                            <button className="page-link" onClick={handlePrevPage}>Previous</button>
+                          </li>
 
-                            {Array.from({ length: totalPages }, (_, i) => (
-                              <li key={i} className={`page-item ${currentPage === i + 1 ? "active" : ""}`}>
-                                <button className="page-link" onClick={() => setCurrentPage(i + 1)}>
-                                  {i + 1}
-                                </button>
-                              </li>
-                            ))}
-
-                            <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
-                              <button className="page-link" onClick={handleNextPage}>Next</button>
+                          {Array.from({ length: totalPages }, (_, i) => (
+                            <li key={i} className={`page-item ${currentPage === i + 1 ? "active" : ""}`}>
+                              <button className="page-link" onClick={() => setCurrentPage(i + 1)}>
+                                {i + 1}
+                              </button>
                             </li>
-                          </ul>
-                        </nav>
-                      </div>
+                          ))}
+
+                          <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+                            <button className="page-link" onClick={handleNextPage}>Next</button>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
 
                   </div>
                 </div>

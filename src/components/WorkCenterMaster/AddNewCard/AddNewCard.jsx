@@ -114,7 +114,7 @@ const AddNewCard = () => {
           <form onSubmit={handleSave}> {/* Changed onClick to onSubmit */}
             <div className="card-body">
               {/* Form fields */}
-              <div className="row mb-3">
+              <div className="row mb-2">
                 <div className="col-sm-3 text-start">
                   <label htmlFor="Plant" className="col-sm-3 col-form-label">
                     Plant

@@ -7,6 +7,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import "./QuotoComparisonStatement.css";
 import { addQuote, getQuotes, deleteQuote, updateQuote }  from "../../../Service/PurchaseApi.jsx";
 import { toast, ToastContainer } from "react-toastify"; // For notifications
+import { Link } from "react-router-dom";
 
 const QuotoComparisonStatement = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -143,13 +144,14 @@ const QuotoComparisonStatement = () => {
                     </div>
                     
                     <div className="col-md-8 text-end">                 
-                          <button className="vndrbtn">
+                          <Link className="vndrbtn" to={"/QuoteStatementList"}>
                             Quote Comp Statement List
-                          </button>
+                          </Link>
                     </div>
 
                   </div>
                 </div>
+
                 <div className="QuoteStatement-main mt-1">
                   <ul
                     className="nav nav-pills mb-3"
@@ -185,6 +187,7 @@ const QuotoComparisonStatement = () => {
                       </button>
                     </li>
                   </ul>
+
                   <div className="tab-content" id="pills-tabContent">
                     <div
                       className="tab-pane fade show active"
@@ -524,78 +527,83 @@ const QuotoComparisonStatement = () => {
                             </div>
                           </form>
                         </div>
+
                         <div className="Purchaseordertable">
                           <div className="container-fluid mt-2">
+
                             <div className="table-responsive">
                             <table className="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>Select RFQ</th>
-                  <th>Item</th>
-                  <th>Make</th>
-                  <th>Min Purch Qty</th>
-                  <th>Other Charges</th>
-                  <th>Payment Terms</th>
-                  <th>Date</th>
-                  <th>Supplier</th>
-                  <th>UOM</th>
-                  <th>Tax Applicable</th>
-                  <th>Remark Details</th>
-                  <th>Supp Quot No.</th>
-                  <th>Basic Rate</th>
-                  <th>Delivery Mode</th>
-                  <th>Quote Date</th>
-                  <th>Discount</th>
-                  <th>Delivery Time</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {quotes.map((quote) => (
-                  <tr key={quote.id}>
-                    <td>{quote.SelectRFQ}</td>
-                    <td>{quote.Item}</td>
-                    <td>{quote.Make}</td>
-                    <td>{quote.MinPurchQty}</td>
-                    <td>{quote.OtherCharges}</td>
-                    <td>{quote.PaymentTerms}</td>
-                    <td>{quote.Date}</td>
-                    <td>{quote.Supplier}</td>
-                    <td>{quote.UOM}</td>
-                    <td>{quote.TaxApplicable}</td>
-                    <td>{quote.RemarkDetails}</td>
-                    <td>{quote.SuppQuotNo}</td>
-                    <td>{quote.BasicRate}</td>
-                    <td>{quote.DeliveryMode}</td>
-                    <td>{quote.QuoteDate}</td>
-                    <td>{quote.Discount}</td>
-                    <td>{quote.DeliveryTime}</td>
-                    <td>
-                      <button
-                        className="vndrbtn"
-                        onClick={() => handleEdit(quote)}
-                      >
-                        <FaEdit/>
-                      </button>
-                      </td>
-                      <td>
-                      <button
-                        className="vndrbtn"
-                        onClick={() => handleDelete(quote.id)}
-                      >
-                        <FaTrash/>
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                              <thead>
+                                <tr>
+                                  <th>Select RFQ</th>
+                                  <th>Item</th>
+                                  <th>Make</th>
+                                  <th>Min Purch Qty</th>
+                                  <th>Other Charges</th>
+                                  <th>Payment Terms</th>
+                                  <th>Date</th>
+                                  <th>Supplier</th>
+                                  <th>UOM</th>
+                                  <th>Tax Applicable</th>
+                                  <th>Remark Details</th>
+                                  <th>Supp Quot No.</th>
+                                  <th>Basic Rate</th>
+                                  <th>Delivery Mode</th>
+                                  <th>Quote Date</th>
+                                  <th>Discount</th>
+                                  <th>Delivery Time</th>
+                                  <th>Edit</th>
+                                  <th>Delete</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {quotes.map((quote) => (
+                                  <tr key={quote.id}>
+                                    <td>{quote.SelectRFQ}</td>
+                                    <td>{quote.Item}</td>
+                                    <td>{quote.Make}</td>
+                                    <td>{quote.MinPurchQty}</td>
+                                    <td>{quote.OtherCharges}</td>
+                                    <td>{quote.PaymentTerms}</td>
+                                    <td>{quote.Date}</td>
+                                    <td>{quote.Supplier}</td>
+                                    <td>{quote.UOM}</td>
+                                    <td>{quote.TaxApplicable}</td>
+                                    <td>{quote.RemarkDetails}</td>
+                                    <td>{quote.SuppQuotNo}</td>
+                                    <td>{quote.BasicRate}</td>
+                                    <td>{quote.DeliveryMode}</td>
+                                    <td>{quote.QuoteDate}</td>
+                                    <td>{quote.Discount}</td>
+                                    <td>{quote.DeliveryTime}</td>
+                                    <td>
+                                      <button
+                                        className="vndrbtn"
+                                        onClick={() => handleEdit(quote)}
+                                      >
+                                        <FaEdit/>
+                                      </button>
+                                      </td>
+                                      <td>
+                                      <button
+                                        className="vndrbtn"
+                                        onClick={() => handleDelete(quote.id)}
+                                      >
+                                        <FaTrash/>
+                                      </button>
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
                             </div>
+
                           </div>
                         </div>
+
                       </div>
                     </div>
+
                     <div
                       className="tab-pane fade"
                       id="pills-GST-Details"
@@ -604,6 +612,7 @@ const QuotoComparisonStatement = () => {
                       tabindex="0"
                     >
                       <div className="QuoteStatementstatus1">
+
                         <div className="container-fluid mt-4">
                           <div className="row align-items-start">
                             <div className="col-md-2 d-flex align-items-start">
@@ -630,6 +639,7 @@ const QuotoComparisonStatement = () => {
 
                         <div className="Purchaseordertable">
                           <div className="container-fluid mt-4">
+
                             <div className="table-responsive">
                               <table className="table table-bordered">
                                 <thead>
@@ -647,10 +657,13 @@ const QuotoComparisonStatement = () => {
                                 </tbody>
                               </table>
                             </div>
+
                           </div>
                         </div>
+                                
                       </div>
                     </div>
+
                   </div>
                 </div>
               </main>

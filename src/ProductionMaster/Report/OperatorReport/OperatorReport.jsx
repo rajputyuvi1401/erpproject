@@ -123,7 +123,7 @@ const OperatorReport = () => {
                     </div>
                   </div>
 
-                  <div className="table-responsive mt-3">
+                  <div className="OperatorReportTable table-responsive mt-2">
                     <table className="table table-striped table-hover">
                       <thead>
                         <tr className="clr">

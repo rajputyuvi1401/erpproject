@@ -37,10 +37,7 @@ const PurchaseGrn = () => {
   const handleClose = () => {
     setIsCardVisible(false);
   };
-
-
-
-
+  
 
   // Gernal Details
   const [formData, setFormData] = useState({
@@ -196,7 +193,7 @@ const PurchaseGrn = () => {
                     </div>
                     <div className="col-md-2 text-end">
                       
-                          <Link className="vndrbtn" to="/Grn-List">GM List</Link>
+                          <Link className="vndrbtn" to="/Grn-List">GRN List</Link>
                        
                     </div>
                   </div>

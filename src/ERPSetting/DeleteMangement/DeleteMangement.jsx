@@ -29,8 +29,9 @@ const DeleteMangement = () => {
         <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
           <div className="content-area">
             <div className="row text-start">
+
               <div className="col-lg-2 col-md-3 col-12 submenu">
-                <h4>Sub Menu</h4>
+                <h4 className="header-title">Sub Menu</h4>
                 <h6 className="portal-login">Portal Login!</h6>
                 <ul className="submenu-links">
                   <li><Link to="/order-list">Order List</Link></li>
@@ -38,6 +39,7 @@ const DeleteMangement = () => {
                   <li><Link to="/user-List">User List</Link></li>
                 </ul>
               </div>
+              
               <div className="col-lg-10 col-md-8 col-12 content">
                 {/* Your main content goes here */}
               </div>

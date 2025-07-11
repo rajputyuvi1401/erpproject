@@ -114,7 +114,7 @@ const ShiftMaster = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="ShiftMaster1">
                 
-                  <div className="Shift-header mb-4 text-start mt-1">
+                  <div className="Shift-header mb-2 text-start mt-1">
                       <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Shift Master</h5>

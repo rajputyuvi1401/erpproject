@@ -206,7 +206,7 @@ const CostCenterMaster = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="CostcenterMaster1">
                   <div className="Costcenter ">
-                    <div className="Costcenter-header mb-4 text-start">
+                    <div className="Costcenter-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Cost Center Master</h5>

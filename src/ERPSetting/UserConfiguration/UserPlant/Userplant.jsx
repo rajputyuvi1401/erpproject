@@ -29,16 +29,19 @@ const Userplant = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="userAuth mt-5">
-                  <div className="prod-header mb-4 text-start">
+                <div className="userAuth">
+                  <div className="Userplant-header mb-2 text-start">
                     <div className="row align-items-center">
-                      <div className="col-md-4">
-                        <h5 className="header-title">User Plant</h5>
+                      <div className="col-md-6">
+                        <h5 className="header-title">
+                         User Plant
+                        </h5>
                       </div>
+                      
                     </div>
                   </div>
 
-                  <div className="plant-table mt-3">
+                  <div className="Userplanttable mt-2">
                     <div className="table-responsive">
                       <table className="table table-bordered table-hover">
                         <thead className="table-dark">

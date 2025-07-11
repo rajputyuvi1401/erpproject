@@ -30,8 +30,8 @@ const AddQuater = () => {
               <NavBar toggleSideNav={toggleSideNav} />
               <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Quarter mt-5">
-                  <div className="Quarter-header mb-4 text-start">
+                <div className="Quarter">
+                  <div className="Quarter-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
                         <h5 className="header-title">Quarter Master</h5>
@@ -40,20 +40,20 @@ const AddQuater = () => {
                     </div>
                   </div>
 
-                  <div className="Quarter-Main mt-5">
+                  <div className="Quartermain">
                     <div className="container-fluid">
                         <div className="row text-start">
                             <div className="col-md-1">
                                 <label>Year:</label>
                             </div>
                             <div className="col-md-1">
-                                <select><option>select All</option></select>
+                                <select className="form-select"><option>select All</option></select>
                             </div>
                             <div className="col-md-1">
                                 <label>Quarter:</label>
                             </div>
                             <div className="col-md-1">
-                                <select><option>select All</option></select>
+                                <select className="form-select"><option>select All</option></select>
                             </div>
                             <div className="col-md-1">
                                 <label>Quarter Name:</label>
@@ -76,14 +76,14 @@ const AddQuater = () => {
                             </div>
                             
                             <div className="col-md-2 mt-1">
-                              <button type="button" className="btn">SAVE</button>
+                              <button type="button" className="vndrbtn">SAVE</button>
                             </div>
                             
                         </div>
                     </div>
                   </div>
 
-                  <div className="table-responsive">
+                  <div className="Quartertable mt-3 table-responsive">
                     <table className="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -108,20 +108,17 @@ const AddQuater = () => {
                           <td>2024</td>
                           
                           <td>
-                            <button className="btn btn-link">
                               <FaEdit/>
-                            </button>
                           </td>
                           <td>
-                            <button className="btn btn-link text-danger">
                              <FaTrash/>
-                            </button>
                           </td>
                         </tr>
                         {/* More rows can be added here */}
                       </tbody>
                     </table>
                   </div>
+
                 </div>
               </main>
             </div>

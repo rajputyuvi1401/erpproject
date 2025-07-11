@@ -1,109 +1,179 @@
-.Customersupplier .main-content {
-    transition: margin-left 0.3s ease;
-  }
-  
-  .Customersupplier-header {
-    background-color: #f8f9fa; /* Light background for header */
-    border-bottom: 1px solid #dee2e6; /* Border for header */
-    padding: 10px 15px; /* Padding around header */
-    border-radius: 5px;
-  }
-  /* Customersupplier.css */
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
 
+.Customersupplier {
+  width: 100%;
+  height: 100vh;
+}
 
- 
-  
-  .Customersupplier .form-group {
-    margin-bottom: 1.5rem;
+.Customersupplier-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
+}
+
+.Customersuppliermain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.Customersupplierbottom {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    padding: 10px 15px; 
   }
-  
-  .Customersupplier .form-info {
-    font-size: 0.85rem;
-    color: #6c757d;
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
+}
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.Customersuppliertable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
+    text-align: center;
   }
-  
-  /* Button Styling */
-  .Customersupplier .btn-primary {
-    background-color: #0056b3;
-    border: none;
-    font-weight: bold;
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
+    width: 100%;
   }
-  
-  .Customersupplier .btn-primary:hover {
-    background-color: #004085;
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
   }
-  
-  /* Tabs Styling */
-  .Customersupplier .nav-tabs .nav-link {
-    color: #0056b3;
-    font-weight: bold;
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
   }
-  
-  .Customersupplier .nav-tabs .nav-link.active {
-    color: #004085;
-    border-color: #0056b3 #0056b3 transparent;
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
   }
-  
-  .Customersupplier .setting-list-content {
-    font-size: 1rem;
-    color: #555;
-    margin-top: 50px;
+
+  .vndrbtn {
+    padding: 5px 10px;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 1200px) {
-    .Customersupplier   .header-title {
-      font-size: 1.4rem;
-    }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
   }
-  
-  @media (max-width: 992px) {
-    .main-content.shifted {
-      margin-left: 200px;
-    }
-  
-    .Customersupplier   .header-title {
-      font-size: 1.3rem;
-    }
+
+  .table th,
+  .table td {
+    font-size: 11px;
   }
-  
-  @media (max-width: 768px) {
-    .main-content.shifted {
-      margin-left: 0;
-    }
-  
-    .Customersupplier   .header-title {
-      font-size: 1.2rem;
-      text-align: center;
-    }
-  
-    .Customersupplier   .form-group {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .Customersupplier   .form-group label {
-      margin-bottom: 0.5rem;
-    }
-  
-    .Customersupplier   .btn-primary {
-      width: 100%;
-      margin-top: 1rem;
-    }
-  
-    .Customersupplier   .setting-list-content {
-      font-size: 0.95rem;
-    }
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
   }
-  
-  @media (max-width: 576px) {
-    .Customersupplier  .header-title {
-      font-size: 1.1rem;
-    }
-  
-    .Customersupplier   .btn-primary {
-      font-size: 0.9rem;
-    }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
   }
-  
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+}

@@ -36,7 +36,7 @@ const ContractorMaster = () => {
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
                 <div className="ContractorMaster1">
                   
-                  <div className="Contractor-header mb-4 text-start">
+                  <div className="Contractor-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Contractor Master</h5>

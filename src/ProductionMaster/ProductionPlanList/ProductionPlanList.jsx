@@ -5,9 +5,11 @@ import NavBar from "../../NavBar/NavBar.js";
 import SideNav from "../../SideNav/SideNav.js";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import './ProductionPlanList.css';
+import { Link } from "react-router-dom";
+
 
 const ProductionPlanList = () => {
-    const [sideNavOpen, setSideNavOpen] = useState(false);
+  const [sideNavOpen, setSideNavOpen] = useState(false);
 
   const toggleSideNav = () => {
     setSideNavOpen((prevState) => !prevState);
@@ -21,9 +23,14 @@ const ProductionPlanList = () => {
     }
   }, [sideNavOpen]);
 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
 
   return (
-      <div className="ProductionPlanListMaster">
+    <div className="ProductionPlanListMaster">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -41,17 +48,57 @@ const ProductionPlanList = () => {
                         <h5 className="header-title">Work Order List</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="vndrbtn" to="/AddQuater">
-                          Work Order Report
-                        </button>
+                        <div style={{ position: 'relative', display: 'inline-block', marginLeft: '3px' }}>
+                          <button
+                            style={{ padding: '5px' }}
+                            className="BOMRouting vndrbtn"
+                            onClick={toggleDropdown}
+                          >
+                            Work Order Report  ▼
+                          </button>
 
-                        <button
+                          {dropdownOpen && (
+                            <ul
+                              className="dropdown-menu show"
+                              style={{
+                                position: 'absolute',
+                                top: '100%',
+                                left: 0,
+                                zIndex: 1000,
+                                display: 'block',
+                                minWidth: '10rem',
+                                padding: '0.5rem 0',
+                                margin: '0.125rem 0 0',
+                                fontSize: '12px',
+                                color: '#212529',
+                                textAlign: 'left',
+                                listStyle: 'none',
+                                backgroundColor: '#fff',
+                                backgroundClip: 'padding-box',
+                              }}
+                            >
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/"}>
+                                  Export - Excel
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="vndrbtn dropdown-item" to={"/PlanListWOStatus"}>
+                                  Work Order - Status
+                                </Link>
+                              </li>
+
+                            </ul>
+                          )}
+                        </div>
+
+                        <Link
                           type="button"
                           className="vndrbtn"
-                          to="/Companysetup"
+                          to="/QueryPlanList"
                         >
                           Work Order - Query
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -71,9 +118,9 @@ const ProductionPlanList = () => {
                           <input type="date" className="form-control" />
                         </div>
 
-                       
-                    {/* Customer Name */}
-                      <div className="col-sm-6 col-md-1 col-lg-3">
+
+                        {/* Customer Name */}
+                        <div className="col-sm-6 col-md-1 col-lg-3">
                           <label>Customer Name:</label>
                           <input type="text" className="form-control" />
                         </div>
@@ -91,7 +138,7 @@ const ProductionPlanList = () => {
                           </select>
                         </div>
 
-                       
+
 
                         {/* Series */}
                         <div className="col-sm-6 col-md-2 col-lg-3">
@@ -101,9 +148,9 @@ const ProductionPlanList = () => {
                           </select>
                         </div>
 
-                       
 
-                       
+
+
 
                         {/* Wo No */}
                         <div className="col-sm-6 col-md-1 col-lg-3">
@@ -115,17 +162,17 @@ const ProductionPlanList = () => {
 
                         <div className="col-sm-2 col-md-2 col-lg-3 mt-4">
                           <label></label>
-                        <button
+                          <button
                             type="button"
                             className="vndrbtn w-100"
                           >
                             Search
                           </button>
-                          
+
                         </div>
 
-                     
-                       
+
+
                       </div>
                     </div>
                   </div>
@@ -145,7 +192,7 @@ const ProductionPlanList = () => {
                           <th scope="col">Inward No</th>
                           <th scope="col">Challan No</th>
                           <th scope="col">Wo Status</th>
-                         
+
                           <th scope="col">User</th>
                           <th scope="col">Doc / Del / Edit</th>
                           <th scope="col">View</th>
@@ -155,7 +202,7 @@ const ProductionPlanList = () => {
                       <tbody>
                         {/* Example data row */}
                         <tr>
-                      
+
                           <td>31/01/2024</td>
                           <td>1</td>
                           <td>2024</td>

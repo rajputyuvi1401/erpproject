@@ -7,6 +7,7 @@ const Invoice = () => {
         <div className="container" autoComplete="off">
           <div className="row text-start">
             <div className="col-md-8">
+
               <div className="row mb-3">
                 <label
                   htmlFor="inputEmail31"
@@ -134,13 +135,15 @@ const Invoice = () => {
                   />
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </div>
+      
       <div className="row">
         <div className="col-md-2 text-start">
-          <button className="date-update">Update Setup</button>
+          <button className="vndrbtn">Update Setup</button>
         </div>
       </div>
     </div>

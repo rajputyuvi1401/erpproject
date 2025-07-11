@@ -4,6 +4,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import "./InwardChallanList.css";
+import { Link } from "react-router-dom";
+
 const InwardChallanList = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -18,6 +20,7 @@ const InwardChallanList = () => {
       document.body.classList.remove("side-nav-open");
     }
   }, [sideNavOpen]);
+
   return (
     <div className="NewStoreInwardList">
       <div className="container-fluid">
@@ -46,11 +49,12 @@ const InwardChallanList = () => {
                       
                           <button className="vndrbtn">GRN : Report</button>
                         
-                          <button className="vndrbtn">57F4-Inward - Query</button>
+                          <Link className="vndrbtn" to={"/InwardChallanQuery"}>57F4-Inward - Query</Link>
                        
                     </div>
                   </div>
                 </div>
+
                 <div className="InwardList-main">
                   <div className="container-fluid text-start">
                     <div className="row mt-4">
@@ -105,6 +109,10 @@ const InwardChallanList = () => {
                           {/* Add options here */}
                         </select>
                       </div>
+                    </div>
+
+                    <div className="row mt-4">
+
                       <div className="col-12 col-md-2">
                         <label htmlFor="vendorCustomerName">
                           V Name
@@ -189,6 +197,7 @@ const InwardChallanList = () => {
                         </div>
                     </div>
                   </div>
+
                 </div>
               </main>
             </div>

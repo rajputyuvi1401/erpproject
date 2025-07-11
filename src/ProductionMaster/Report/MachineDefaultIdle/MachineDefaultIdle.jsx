@@ -4,6 +4,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import "./MachineDefaultIdle.css";
+import { Link } from "react-router-dom";
+
 
 const MachineDefaultIdle = () => { const [sideNavOpen, setSideNavOpen] = useState(false);
 
@@ -38,9 +40,9 @@ const MachineDefaultIdle = () => { const [sideNavOpen, setSideNavOpen] = useStat
                         <h5 className="header-title">Machine Default Idle</h5>
                       </div>
                       <div className="col-md-8 text-end">
-                        <button type="button" className="vndrbtn" to="/MachineDefaultBook">
+                        <Link type="button" className="vndrbtn" to="/MachineDefaultBook">
                            Book To Idle
-                        </button>
+                        </Link>
                         
                       </div>
                     </div>

@@ -33,8 +33,8 @@ const Docnoeditable = () => {
                 toggleSideNav={toggleSideNav}
               />
               <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
-                <div className="Docnoeditable mt-5">
-                  <div className="Docnoeditable-header mb-4 text-start">
+                <div className="Docnoeditable">
+                  <div className="Docnoeditable-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-6">
                         <h5 className="header-title">Parameter Setting</h5>
@@ -43,22 +43,22 @@ const Docnoeditable = () => {
                         <Link
                           type="button"
                           to="/DocCompanySetting"
-                          className="btn"
+                          className="vndrbtn"
                         >
                           Setting History
                         </Link>
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                          
                          Print Company Info
                         </button>
-                        <Link type="button" className="btn" to="/Companysetup">
+                        <Link type="button" className="vndrbtn" to="/Companysetup">
                           Company Info
                         </Link>
                       </div>
                     </div>
                   </div>
 
-                  <div className="Docnoeditable-section mb-3 p-4">
+                  <div className="Docnoeditablemain section mt-2">
                     <div className="row text-start">
                       <div className="col-md-2">
                         <label>Select Module</label>
@@ -86,16 +86,17 @@ const Docnoeditable = () => {
                       </div>
 
                       <div className="col-md-2 mt-4">
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           Search
                         </button>
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           View All
                         </button>
                       </div>
                     </div>
                   </div>
 
+                 <div className="Docnoeditable-table mt-2">
                   <div className="row">
                     <div className="col-md-6">
                       <div className="table-section">
@@ -122,7 +123,7 @@ const Docnoeditable = () => {
                                   </select>
                                 </td>
                                 <td>
-                                  <button className="btn btn-primary btn-sm">
+                                  <button className="vndrbtn btn-primary btn-sm">
                                     Update
                                   </button>
                                 </td>
@@ -137,7 +138,7 @@ const Docnoeditable = () => {
                                   </select>
                                 </td>
                                 <td>
-                                  <button className="btn btn-primary btn-sm">
+                                  <button className="vndrbtn btn-primary btn-sm">
                                     Update
                                   </button>
                                 </td>
@@ -152,7 +153,7 @@ const Docnoeditable = () => {
                                   </select>
                                 </td>
                                 <td>
-                                  <button className="btn btn-primary btn-sm">
+                                  <button className="vndrbtn btn-primary btn-sm">
                                     Update
                                   </button>
                                 </td>
@@ -178,6 +179,8 @@ const Docnoeditable = () => {
                       </div>
                     </div>
                   </div>
+                  </div>
+
                 </div>
               </main>
             </div>

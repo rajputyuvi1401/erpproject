@@ -719,7 +719,7 @@ useEffect(() => {
                                             </div>
                                             <div className="col-sm-1 mt-2">
                                               <button
-                                                className="vndrbtn "
+                                                className=" "
                                                 type="button"
                                                 onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
@@ -1368,7 +1368,7 @@ useEffect(() => {
                                               GST Type:{" "}
                                               <span className="text-danger">*</span>
                                             </label>
-                                            <div className="col-sm-5">
+                                            <div className="col-sm-8">
                                               <select
                                                 id="GST_No"
                                                 name="GST_No"
@@ -1574,7 +1574,7 @@ useEffect(() => {
                                             >
                                               Sector:
                                             </label>
-                                            <div className="col-sm-5">
+                                            <div className="col-sm-4">
                                               <select
                                                 id="Sector"
                                                 name="Sector"
@@ -1595,7 +1595,8 @@ useEffect(() => {
                                                 ))}
                                               </select>
                                             </div>
-                                            <div className="col-sm-1 mt-2">
+
+                                            <div className="col-sm-2 mt-2">
                                               <button
                                                 className="  vndrbtn  ms-1"
                                                 type="button"
@@ -1606,7 +1607,7 @@ useEffect(() => {
                                             </div>
                                             <div className="col-sm-1 mt-2">
                                               <button
-                                                className="  vndrbtn "
+                                                className="   "
                                                 type="button"
                                                 onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
@@ -1624,7 +1625,7 @@ useEffect(() => {
                                             >
                                               Group:
                                             </label>
-                                            <div className="col-sm-5">
+                                            <div className="col-sm-4">
                                               <select
                                                 id="Group"
                                                 name="Group"
@@ -1645,7 +1646,7 @@ useEffect(() => {
                                                 ))}
                                               </select>
                                             </div>
-                                            <div className="col-sm-1 mt">
+                                            <div className="col-sm-2 mt">
                                               <button
                                                 className="  vndrbtn  ms-1"
                                                 type="button"
@@ -1656,7 +1657,7 @@ useEffect(() => {
                                             </div>
                                             <div className="col-sm-1">
                                               <button
-                                                className="  vndrbtn "
+                                                className="  "
                                                 type="button"
                                                 onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}
@@ -1856,7 +1857,7 @@ useEffect(() => {
                                             >
                                               QMSC Code:
                                             </label>
-                                            <div className="col-sm-5">
+                                            <div className="col-sm-4">
                                               <select
                                                 id="QMSC_Code"
                                                 name="QMSC_Code"
@@ -1883,7 +1884,7 @@ useEffect(() => {
                                                 </small>
                                               )} */}
                                             </div>
-                                            <div className="col-sm-1">
+                                            <div className="col-sm-2">
                                               <button
                                                 className="  vndrbtn  ms-1"
                                                 type="button"
@@ -1896,7 +1897,7 @@ useEffect(() => {
                                             </div>
                                             <div className="col-sm-1">
                                               <button
-                                                className="  vndrbtn "
+                                                className=" "
                                                 type="button"
                                                 onClick={handleRefresh}
                                                 style={{ fontSize: "10px" }}

@@ -36,7 +36,7 @@ const DeleteRecord = () => {
           <div className="DeleteRecord">
             <div className="DeleteRecord-header mb-2 text-start">
               <div className="row align-items-center">
-                <div className="col-md-4 mt-1">
+                <div className="col-md-4">
                   <h5 className="header-title">Delete / Cancel Document</h5>
                 </div>
                 <div className="col-md-8 text-end">
@@ -50,13 +50,13 @@ const DeleteRecord = () => {
               </div>
             </div>
 
-            <div className="deletrecord-main">
+            <div className="deleteRecordsmain">
               <div className="row">
                 <div className="tabs">
                   <div className="row">
                     <div className="tab-navigation">
                       <button
-                        className={`tab-button ${
+                        className={`tab-button vndrbtn  ${
                           activeTab === "delete" ? "active" : ""
                         }`}
                         onClick={() => setActiveTab("delete")}
@@ -64,7 +64,7 @@ const DeleteRecord = () => {
                         Delete Record
                       </button>
                       <button
-                        className={`tab-button ${
+                        className={`tab-button vndrbtn ${
                           activeTab === "cancel" ? "active" : ""
                         }`}
                         onClick={() => setActiveTab("cancel")}
@@ -76,10 +76,10 @@ const DeleteRecord = () => {
                     <div className="tab-content">
                       {activeTab === "delete" && (
                         <div className="delete-tab">
-                          <div className="deleteRecords">
+                          <div className="deleteRecordsmain">
                             <div className="row text-start">
                               <div className="col-md-3">
-                                <h4>Select Group</h4>
+                                <h4 className="header-title">Select Group</h4>
                                 <ul>
                                   <li>
                                     <option value="F4_Outward">
@@ -111,6 +111,7 @@ const DeleteRecord = () => {
                                   </li>
                                 </ul>
                               </div>
+                              
                               <div className="col-md-9">
                                 <div className="row">
                                   <div className="col-md-2">
@@ -147,10 +148,10 @@ const DeleteRecord = () => {
 
                       {activeTab === "cancel" && (
                         <div className="cancel-tab">
-                          <div className="deleteRecords">
+                          <div className="deleteRecordsmain">
                             <div className="row text-start">
-                              <div className="col-md-2">
-                                <h4>Select Group</h4>
+                              <div className="col-md-3">
+                                <h4 className="header-title">Select Group</h4>
                                 <ul>
                                   <li>
                                     <option value="F4_Outward">
@@ -182,7 +183,7 @@ const DeleteRecord = () => {
                                   </li>
                                 </ul>
                               </div>
-                              <div className="col-md-10">
+                              <div className="col-md-9">
                                 <div className="row">
                                   <div className="col-md-2">
                                     <select className="form-select">

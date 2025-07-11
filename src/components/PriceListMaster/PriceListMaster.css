@@ -537,8 +537,8 @@ label{
   border-radius: 5px 5px 0 0;
   color: #495057;
   background-color: #fff;
-  padding: 10px 20px;
-  font-size: 1rem;
+  padding: 5px 15px;
+  font-size: 14px;
   transition: background-color 0.3s, color 0.3s;
 }
 

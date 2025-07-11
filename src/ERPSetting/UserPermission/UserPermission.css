@@ -1,227 +1,179 @@
-/* General Layout */
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
 .UserPermission {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
-  }
-  
+  width: 100%;
+  height: 100vh;
+}
 
-  
-  /* .UserPermission .Main-NavBar {
-    display: flex;
-  }
-  
+.UserPermission-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
+}
 
-  .UserPermission .main-content {
-    padding: 20px;
-    transition: all 0.3s ease;
-    background-color: white;
-    min-height: 100vh;
-    margin-left: 0;
+.UserPermissionmain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.UserPermissionbottom {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    padding: 10px 15px; 
   }
-  
-  .UserPermission .shifted {
-    margin-left: 250px;
-  } */
-  
-  .Permission .header {
-    margin-top: 20px;
-    padding: 15px 10px;
-    background-color: #ffffff;
-    border-bottom: 2px solid #e0e0e0;
-    margin-bottom: 20px;
-  }
-  
-  .Permission .header-title {
-    font-size: 20px;
-    font-weight: 600;
-  }
-  
-  .Permission .header .btn {
-    margin-left: 10px;
-    padding: 6px 15px;
-  }
-  
-  /* Module Selection Styling */
-  .Permission .col-md-4 h6 {
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-  
-  .Permission .form-check {
-    margin-bottom: 10px;
-  }
-  
-  .Permission .form-check-label {
-    font-size: 14px;
-    font-weight: 500;
-  }
-  
-  /* Search Section */
-  .Permission .header-section {
-    margin-bottom: 20px;
-  }
-  
-  .Permission .header-section .form-check-label {
-    font-size: 14px;
-    font-weight: 500;
-  }
-  
-  .Permission  .header-section input[type="text"] {
-    height: 35px;
-  }
-  
-  .Permission .header-section .btn-primary {
-    padding: 6px 12px;
-  }
-  
-  /* Parameter Table */
-  .parameter-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-  }
-  
-  .parameter-table th,
-  .parameter-table td {
-    border: 1px solid #e0e0e0;
-    padding: 10px 15px;
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
+}
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.UserPermissiontable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 16px;
     text-align: center;
   }
-  
-  .parameter-table th {
-    background-color: #f9f9f9;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 13px;
-  }
-  
-  .parameter-table td {
-    font-size: 14px;
-    vertical-align: middle;
-  }
-  
-  .parameter-table .form-select {
+
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
     width: 100%;
-    padding: 5px;
   }
-  
-  .parameter-table .btn-success {
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
+  }
+}
+
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
     padding: 5px 10px;
-    width: 100%;
   }
-  
-  /* Responsive Design for Tablets and Small Screens */
-  @media (max-width: 1200px) {
-    .Permission  .main-content {
-      padding: 15px;
-    }
-  
-    .Permission  .header .btn {
-      margin-left: 5px;
-      padding: 5px 10px;
-    }
-  
-    .Permission  .parameter-table th, .parameter-table td {
-      padding: 8px 10px;
-      font-size: 13px;
-    }
-  
-    .Permission .parameter-table .btn-success {
-      padding: 5px 8px;
-    }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
   }
-  
-  /* Responsive Design for Mobile Screens */
-  @media (max-width: 768px) {
-    .Permission  .header .col-md-2,
-    .Permission  .header .col-md-10 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-  
-    .Permission  .header .col-md-10 {
-      text-align: center;
-    }
-  
-    .Permission  .header-section .form-check-label,
-    .Permission  .header-section .btn-primary {
-      display: block;
-      margin-bottom: 5px;
-      text-align: center;
-    }
-  
-    .Permission .parameter-table th,
-    .Permission   .parameter-table td {
-      font-size: 12px;
-      padding: 8px;
-    }
-  
-    .Permission .header-title {
-      text-align: center;
-      font-size: 18px;
-    }
-  
-    .Permission  .form-select {
-      width: 100%;
-    }
-  
-    .Permission  .header-section input[type="text"] {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  
-    .Permission   .header-section .btn-primary {
-      width: 100%;
-    }
-  
-    .Permission   .Permission .header-title {
-      text-align: center;
-    }
-  
-    .Permission   .main-content {
-      margin-left: 0; /* No shift on mobile */
-    }
+
+  .table th,
+  .table td {
+    font-size: 11px;
   }
-  
-  /* Extra Small Screens (Phones) */
-  @media (max-width: 576px) {
-    .header-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .header-section .form-check-label,
-    .header-section input[type="text"],
-    .header-section .btn-primary {
-      width: 100%;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-  
-    .parameter-table th,
-    .parameter-table td {
-      font-size: 11px;
-      padding: 6px;
-    }
-  
-    .parameter-table .btn-success {
-      width: 100%;
-    }
-  
-    .main-content {
-      padding: 10px;
-    }
+}
+
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
   }
-  
-  /* Side Nav Styles (for visibility across screen sizes) */
-  .Permission .side-nav-open .main-content {
-    margin-left: 250px;
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
   }
-  
-  @media (max-width: 768px) {
-    .side-nav-open .main-content {
-      margin-left: 0;
-    }
+
+  .table th,
+  .table td {
+    font-size: 12px;
   }
-  
+}

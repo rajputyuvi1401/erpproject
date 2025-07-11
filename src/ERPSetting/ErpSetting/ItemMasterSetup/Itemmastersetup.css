@@ -1,39 +1,12 @@
-/* General Styling */
-.Itemmastersetup {
-    font-family: Arial, sans-serif;
-  }
-  
-  .Itemmaster .Main-NavBar {
-    margin-bottom: 20px;
-  }
-  
-  .ItemSetup-header {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
- .Itemmaster  .header-title {
-    margin-bottom: 0;
-  }
-  .ItemSetup-header{
-    background-color: #f8f9fa; /* Light background for header */
-    border-bottom: 1px solid #dee2e6; /* Border for header */
-    padding: 10px 15px; /* Padding around header */
-    border-radius: 5px;
-  }
-  
-
-
-
-
 /* Form container styles */
-.Itemmastersetup .form-container {
+
+/* .Itemmastersetup .form-container {
   background-color: #fff;
   border:none;
   border-radius: 4px;
   padding: 20px;
   margin-top: 20px;
-}
+} */
 
 /* Form columns layout */
 .Itemmastersetup .form-columns {
@@ -66,40 +39,16 @@
 }
 
 .Itemmastersetup .checkbox-group label {
-  font-size: 0.85rem;
+  font-size: 13px;
   color: #666;
 }
 
-.Itemmastersetup .field-label {
-  font-size: 0.9rem;
-}
 
-/* Tab styles */
-.Itemmastersetup .nav-tabs {
-  border-bottom: 1px solid #dee2e6;
-  
-   border: none;
 
-}
 
-.Itemmastersetup .nav-tabs .Itemmastersetup .nav-link {
-  border: 1px solid transparent; 
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-  color: #495057; 
- 
-}
 
-.Itemmastersetup .nav-tabs .Itemmastersetup .nav-link:hover,
-.Itemmastersetup .nav-tabs .Itemmastersetup .nav-link:focus {
-  border-color: #e9ecef #e9ecef #dee2e6;
-}
 
-.Itemmastersetup .nav-tabs .Itemmastersetup .nav-link.active {
-  color: #495057;
-  background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
-}
+
 
 /* Button styles */
 .Itemmastersetup .btn {
@@ -118,89 +67,186 @@
   border-color: #004085;
 }
 
-/* Select styles */
-.Itemmastersetup select {
-  display: block;
+
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.Itemmastersetup {
   width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  height: 100vh;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-  .ItemSetup-header .row {
-    flex-direction: column;
-  }
-
-  .ItemSetup-header .col-md-2,
-  .ItemSetup-header .col-md-1,
-  .ItemSetup-header .col-md-6 {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .ItemSetup-header .text-end {
-    text-align: left !important;
-  }
-
-  .form-columns {
-    flex-direction: column;
-  }
-
-  .form-column {
-    width: 100%;
-  }
+.Itemmastersetup-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid #dee2e6; 
+  padding: 10px 15px; 
 }
 
+.Itemmastersetupmain {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.Itemmastersetupbottom {
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    padding: 10px 15px; 
+  }
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 0;
+}
+
+.vndrbtn {
+  display: inline-block;
+  background-color: rgba(235, 233, 233, 0.685);
+  padding: 5px 10px; 
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn {
+  border: none;
+  background-color: rgba(235, 233, 233, 0.685);
+  text-decoration: none;
+  color: black;
+}
+
+.vndrbtn:hover{
+  background-color: #16bfff;
+  color: white;
+}
+
+.form-select{
+  font-size: 12px;
+}
+.form-control{
+  font-size: 12px;
+}
+
+label{
+  font-size: 12px;
+}
+
+.Itemmastersetuptable {
+  background-color: #f8f9fa;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table th {
+  background-color: #16bfff;
+  color: white;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  font-size: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+/* Mobile devices (up to 576px) */
 @media (max-width: 576px) {
   .header-title {
-    font-size: 1.1rem;
+    font-size: 16px;
+    text-align: center;
   }
 
-  .Itemmastersetup .btn {
+  .vndrbtn {
+    padding: 4px 8px;
+    margin: 5px 0;
+    text-align: center;
+    display: block;
     width: 100%;
   }
 
-  .form-field {
-    flex-direction: column;
-    align-items: flex-start;
+  .form-select,
+  .form-control,
+  label {
+    font-size: 10px;
   }
 
-  .checkbox-group {
-    margin-bottom: 5px;
-  }
-}
-
-
-
-@media (max-width: 992px) {
-  .side-nav-open .main-content {
-    margin-left: 0;
+  .table th,
+  .table td {
+    font-size: 10px;
+    padding: 0.4rem;
   }
 }
 
-/* Custom scrollbar for better UX */
-.Itemmastersetup .form-container::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+/* Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .vndrbtn {
+    padding: 5px 10px;
+  }
+
+  .form-select,
+  .form-control,
+  label {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px;
+  }
 }
 
-.Itemmastersetup .form-container::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
+/* Laptops and desktops (769px and above) */
+@media (min-width: 769px) {
+  .header-title {
+    font-size: 20px;
+  }
 
-.Itemmastersetup .form-container::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
+  .form-select,
+  .form-control,
+  label {
+    font-size: 12px;
+  }
 
-.Itemmastersetup .form-container::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
 }

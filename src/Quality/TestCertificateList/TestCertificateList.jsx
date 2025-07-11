@@ -91,8 +91,8 @@ const TestCertificateList = () => {
                         <input type="text" placeholder=" " className="form-control mt-2" />
                       </div>   
 
-                      <div className="col-md-1 mt-4">               
-                         <button className="vndrbtn">Search</button>          
+                      <div className="col-md-1">               
+                         <button className="vndrbtn" style={{marginTop:"28px"}}>Search</button>          
                       </div>
 
                     </div>

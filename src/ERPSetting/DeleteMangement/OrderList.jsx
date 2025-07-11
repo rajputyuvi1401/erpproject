@@ -41,38 +41,36 @@ const OrderList = () => {
         <SideNav sideNavOpen={sideNavOpen} toggleSideNav={toggleSideNav} />
         <main className={`main-content ${sideNavOpen ? "shifted" : ""}`}>
           <div className="content-area">
-            <div className="row text-start mt-3">
-              <div className="col-lg-2 col-md-3 col-12 submenu">
-                <h4>Sub Menu</h4>
-                <h6 className="portal-login">Portal Login!</h6>
-                <ul className="submenu-links">
-                  <li>
-                    <Link to="/order-list">Order List</Link>
-                  </li>
-                  <li>
-                    <Link to="/view-stack">View Stock</Link>
-                  </li>
-                  <li>
-                    <Link to="/user-List">User List</Link>
-                  </li>
-                </ul>
-              </div>
+            <div className="row text-start mt-2">
+
+            <div className="col-lg-2 col-md-3 col-12 submenu">
+                            <h4 className="header-title">Sub Menu</h4>
+                            <h6 className="portal-login">Portal Login!</h6>
+                            <ul className="submenu-links">
+                              <li><Link to="/order-list">Order List</Link></li>
+                              <li><Link to="/view-stack">View Stock</Link></li>
+                              <li><Link to="/user-List">User List</Link></li>
+                            </ul>
+             </div>
+
               <div className="col-lg-10 col-md-9 col-12 content">
-                <div className="order mt-5">
-                  <div className="order-header mb-4 text-start">
+                <div className="order">
+                  <div className="order-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-10">
                         <h5 className="header-title">Order List</h5>
                       </div>
                       <div className="col-md-2 text-end">
-                        <button type="button" className="btn">
+                        <button type="button" className="vndrbtn">
                           Export To Excel
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="row mb-3">
+
+                <div className="deletemanagementmain">
+                <div className="row mt-2">
                   <div className="col-md-1 mb-2">
                     <label>From Date:</label>
                     <input
@@ -147,13 +145,15 @@ const OrderList = () => {
                   </div>
                   <div
                     className="col-md-1 d-flex align-items-end "
-                    style={{ marginBottom: "17px" }}
+                    style={{ marginBottom: "10px" }}
                   >
-                    <button className="btn btn-primary">Search</button>
+                    <button className="vndrbtn">Search</button>
                   </div>
                 </div>
+                </div>
 
-                <table className="table table-bordered table-responsive-sm mt-3">
+                <div className="deletemanagementtable mt-2">
+                <table className="table table-bordered table-responsive-sm mt-2">
                   <thead>
                     <tr>
                       <th>Sr.</th>
@@ -176,6 +176,9 @@ const OrderList = () => {
                   </thead>
                   <tbody>{/* Populate table rows here */}</tbody>
                 </table>
+                </div>
+
+                
               </div>
             </div>
           </div>
