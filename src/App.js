@@ -361,7 +361,7 @@ import GSTJobworkDCreturn from "./Sales/GSTJobwork/GSTJobworkDCreturn/GSTJobwork
 import OutwardChallan from "./Sales/OutwardChallan/OutwardChallan.jsx";
 import PurchaseDabitNote from "./Sales/CraditDabitNote/PurchaseDabitNote/PurchaseDabitNote.jsx";
 import DabitNoteList from "./Sales/CraditDabitNote/PurchaseDabitNote/DabitNoteList/DabitNoteList.jsx";
-// import DN574Fout from "./Sales/CraditDabitNote/PurchaseDabitNote/DN574Fout/DN574Fout.jsx";
+import DN574Fout from "./Sales/CraditDabitNote/PurchaseDabitNote/DN574Fout/DN574Fout.jsx";
 import NewDabitNote from "./Sales/CraditDabitNote/SalesDabitNote/NewDabitNote.jsx";
 import JobWorkRateDiff from "./Sales/CraditDabitNote/JobWorkRateDiffDebitNote/JobWorkRateDiff.jsx";
 import CreditNotie from "./Sales/CraditDabitNote/CreditNotie/CreditNotie.jsx";
@@ -385,7 +385,31 @@ import TransportList from "./Sales/Reports/TransportList/TransportList.jsx";
 
 import ViewStockList from "./Sales/CustomerSalesOrder/OrderLiast/ViewStockList.jsx";
 import UserSubList from "./Sales/CustomerSalesOrder/OrderLiast/UserSubList.jsx";
+
 import SalesOrderItemAddTwo from "./Sales/CustomerSalesOrderAmendment/SalesOrderAmendList/SalesOrderItemAdd/SalesOrderItemAddTwo.jsx";
+import QueryDebit from "./Sales/CraditDabitNote/PurchaseDabitNote/DabitNoteList/QueryDebit.jsx";
+import QueryMasterDebit from "./Sales/CraditDabitNote/PurchaseDabitNote/DabitNoteList/QueryMasterDebit.jsx";
+import QueryCreditList from "./Sales/CraditDabitNote/CreditNotie/CreditNoteList/QueryCreditList.jsx";
+import QueryMasterCrebitList from "./Sales/CraditDabitNote/CreditNotie/CreditNoteList/QueryMasterCrebitList.jsx";
+import QueryMasterGSTSales from "./Sales/GSTSalesReturn/QueryGST/QueryMasterGSTSales.jsx";
+import QueryGSTSales from "./Sales/GSTSalesReturn/QueryGST/QueryGSTSales.jsx";
+import QuerySales from "./Sales/Reports/CustSalesOrderList/QuerySalesOrder/QuerySales.jsx";
+import QueryMasterSales from "./Sales/Reports/CustSalesOrderList/QuerySalesOrder/QueryMasterSales.jsx";
+import InvoiceEmailSend from "./Sales/Reports/TaxInvoiceList/QueryTexx/InvoiceEmailSend.jsx"
+import VendarFile from "./Sales/Reports/TaxInvoiceList/QueryTexx/VendarFile.jsx"
+import InvoiceTransporterReport from "./Sales/Reports/TaxInvoiceList/QueryTexx/InvoiceTransporterReport.jsx"
+import SalesPurchaseFile from "./Sales/Reports/TaxInvoiceList/QueryTexx/SalesPurchaseFile.jsx"
+import QuerySalesTax from "./Sales/Reports/TaxInvoiceList/QueryTexx/QuerySalesTax.jsx"
+import QueryMasterSalesTax from "./Sales/Reports/TaxInvoiceList/QueryTexx/QueryMasterSalesTax.jsx"
+import ColumnSetup from "./Sales/Reports/TaxInvoiceList/QueryTexx/ColumnSetup.jsx"
+import VendorFileBajaj from "./Sales/Reports/BajajTaxInvoiceList/VendorFileBajaj.jsx";
+import JobWorkSalesRegister from "./Sales/Reports/JobworkInvList/JobworkInvReport/JobWorkSalesRegister.jsx";
+import QueryJobwork from "./Sales/Reports/JobworkInvList/QueryJobwork/QueryJobwork.jsx";
+import QueryMasterJobwork from "./Sales/Reports/JobworkInvList/QueryJobwork/QueryMasterJobwork.jsx";
+import QueryOutwardClln from "./Sales/Reports/OutwardChallanList/QueryOutward/QueryOutwardClln.jsx";
+import QueryMasterOutwardClln from "./Sales/Reports/OutwardChallanList/QueryOutward/QueryMasterOutwardClln.jsx";
+import NewTransportEntry from "./Sales/Reports/TransportList/Transport/NewTransportEntry.jsx";
+import TransportReport from "./Sales/Reports/TransportList/Transport/TransportReport.jsx";
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -773,7 +797,7 @@ function App() {
         <Route path="PurchaseDabitNote" element={<PurchaseDabitNote />} />
         <Route path="DabitNoteList" element={<DabitNoteList />} />
         <Route path="NewDabitNote" element={<NewDabitNote />} />
-        {/* <Route path="DN574Fout" element={<DN574Fout />} /> */}
+        <Route path="DN574Fout" element={<DN574Fout />} />
         <Route path="JobWorkRateDiff" element={<JobWorkRateDiff />} />
         <Route path="CreditNotie" element={<CreditNotie />} />
         <Route path="Creditnoteto" element={<Creditnoteto />} />
@@ -796,7 +820,32 @@ function App() {
         
         <Route path="ViewStockList" element={<ViewStockList />} />
         <Route path="UserSubList" element={<UserSubList />} />
+
         <Route path="SalesOrderItemAddTwo" element={<SalesOrderItemAddTwo />} />
+        <Route path="QueryDebit" element={<QueryDebit />} />
+        <Route path="QueryMasterDebit" element={<QueryMasterDebit />} />
+        <Route path="QueryCreditList" element={<QueryCreditList />} />
+        <Route path="QueryMasterCrebitList" element={<QueryMasterCrebitList />} />
+        <Route path="QueryGSTSales" element={<QueryGSTSales />} />
+        <Route path="QueryMasterGSTSales" element={<QueryMasterGSTSales />} />
+        <Route path="QuerySales" element={<QuerySales />} />
+        <Route path="QueryMasterSales" element={<QueryMasterSales />} />
+
+        <Route path="InvoiceEmailSend" element={<InvoiceEmailSend />} />
+        <Route path="VendarFile" element={<VendarFile />} />
+        <Route path="InvoiceTransporterReport" element={<InvoiceTransporterReport />} />
+        <Route path="SalesPurchaseFile" element={<SalesPurchaseFile />} />
+        <Route path="QuerySalesTax" element={<QuerySalesTax />} />
+        <Route path="QueryMasterSalesTax" element={<QueryMasterSalesTax />} />
+        <Route path="ColumnSetup" element={<ColumnSetup />} />
+        <Route path="VendorFileBajaj" element={<VendorFileBajaj />} />
+        <Route path="JobWorkSalesRegister" element={<JobWorkSalesRegister />} />
+        <Route path="QueryJobwork" element={<QueryJobwork/>} />
+        <Route path="QueryMasterJobwork" element={<QueryMasterJobwork />} />
+        <Route path="QueryOutwardClln" element={<QueryOutwardClln />} />
+        <Route path="QueryMasterOutwardClln" element={<QueryMasterOutwardClln />} />
+        <Route path="NewTransportEntry" element={<NewTransportEntry />} />
+        <Route path="TransportReport" element={<TransportReport />} />
 
 
       </Routes>

@@ -146,7 +146,7 @@ const CreditNotie = () => {
                                </div>
                           </div>
                         </div>
-                        <div className="col-1 mt-2">
+                        <div className="col-1 mt-1">
                             <button type="button" className="vndrbtn">Search</button>
                         </div>
                        </div>
@@ -156,7 +156,7 @@ const CreditNotie = () => {
                   <div className="CreditNotie-main mt-2">
                     <div className="CreditNotie-tabs">
                    
-                      <div className="tab-content" id="" >
+                      <div className=" " id="" >
                             <div className="table-responsive">
                                         <table className="table table-bordered">
                                         <thead class="table-header">

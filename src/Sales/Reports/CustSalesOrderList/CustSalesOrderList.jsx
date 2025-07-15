@@ -16,7 +16,7 @@ const CustSalesOrderList    = () => {
       const navigate = useNavigate();  
       
         const handleButtonClick = () => {
-          navigate('/'); 
+          navigate('/QuerySales'); 
         };
 
   const toggleSideNav = () => {
@@ -51,10 +51,10 @@ const CustSalesOrderList    = () => {
                     </div>
 
                     <div className="col-md-6 text-end">
-                        <button type="button" className=" vndrbtn" to="#/" onClick={handleButtonClick}>
+                        <button type="button" className=" vndrbtn" to="#/" >
                          CustPO - Report
                         </button>
-                        <button type="button" className=" vndrbtn" to="#/">
+                        <button type="button" className=" vndrbtn" to="#/" onClick={handleButtonClick} >
                              Sales Return - Query
                         </button>             
                     </div>

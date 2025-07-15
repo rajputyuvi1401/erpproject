@@ -5,7 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "../../../NavBar/NavBar.js";
 import SideNav from "../../../SideNav/SideNav.js";
 import "./TransportList.css";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -52,18 +52,18 @@ const TransportList  = () => {
 
                     <div className="col-md-8 text-end">
                         
-                        <button type="button" className=" vndrbtn" to="#/" >
+                        <Link type="button" className=" vndrbtn" to="/NewTransportEntry" >
                            New Transport Entry
-                        </button> 
-                        <button type="button" className=" vndrbtn" to="#/" >
+                        </Link> 
+                        <Link type="button" className=" vndrbtn" to="/TransportReport" >
                             Transport Report
-                        </button> 
-                        <button type="button" className=" vndrbtn" to="#/" >
+                        </Link> 
+                        <Link type="button" className=" vndrbtn" to="#/" >
                             Export To Excel 2
-                        </button> 
-                        <button type="button" className=" vndrbtn" to="#/" onClick={handleButtonClick}>
+                        </Link> 
+                        <Link type="button" className=" vndrbtn" to="#/" onClick={handleButtonClick}>
                             Pendding List
-                        </button> 
+                        </Link> 
                     </div>
 
                   </div>

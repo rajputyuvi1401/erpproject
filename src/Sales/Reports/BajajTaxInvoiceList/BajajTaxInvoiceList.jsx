@@ -16,7 +16,7 @@ const BajajTaxInvoiceList    = () => {
       const navigate = useNavigate();  
       
         const handleButtonClick = () => {
-          navigate('/'); 
+          navigate('/VendorFileBajaj'); 
         };
 
   const toggleSideNav = () => {
@@ -66,16 +66,16 @@ const BajajTaxInvoiceList    = () => {
 
                        <div className="col-sm-6 col-md-3 col-lg-3">
                           <label>From:</label>
-                          <input type="date" className="form-control" />
+                          <input type="date" className="form-control mt-2" />
                         </div>
 
                         <div className="col-sm-6 col-md-3 col-lg-3">
                           <label>To:</label>
-                          <input type="date" className="form-control" />
+                          <input type="date" className="form-control mt-2" />
                         </div>
                         <div className="col-sm-6 col-md-3 col-lg-3">
                         <label htmlFor="">Plant:</label>
-                        <select name="" className="form-control" style={{marginTop:"-0px"}} id="">
+                        <select name="" className="form-control mt-2"  id="">
                             <option value="">Produlink</option>
                         </select>
                       </div>
@@ -101,7 +101,7 @@ const BajajTaxInvoiceList    = () => {
                         <input type="text"  placeholder="No" className="form-control"/>
                       </div>
                         
-                       <div className="col-sm-6 col-md-3 col-lg-4 align-items-center" style={{marginTop:"39px"}}>
+                       <div className="col-sm-6 col-md-3 col-lg-4 align-items-center" style={{marginTop:"45px"}}>
                           <button type="button" className=" vndrbtn">
                             Search
                           </button>

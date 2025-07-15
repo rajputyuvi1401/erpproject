@@ -148,7 +148,7 @@ const Creditnoteto = () => {
                       </ul>
 
 
-                      <div className="tab-content mt-4" id="CreditnotetoTabsContent" >
+                      <div className=" mt-4" id="CreditnotetoTabsContent" >
                          <div
                           className="tab-pane fade show active"
                           id="invoicedetails"

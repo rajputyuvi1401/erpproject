@@ -1447,7 +1447,7 @@ const SideNav = ({ sideNavOpen, toggleSideNav }) => {
                         </Link>
                       )}
                       {permissions.Sales.includes("Debit Note List") && (
-                        <Link className="dropdown-item" to="/DebitNoteList">
+                        <Link className="dropdown-item" to="/DabitNoteList">
                           Debit Note List
                         </Link>
                       )}

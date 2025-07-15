@@ -12,7 +12,7 @@ const CreditNoteList = () => {
    const navigate = useNavigate();  
   
     const handleButtonClick = () => {
-      navigate('/'); 
+      navigate('/QueryCreditList'); 
     };
 
   const toggleSideNav = () => {

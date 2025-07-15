@@ -669,9 +669,9 @@ const OutwardChallan = () => {
                                   </td>
                                   <td rowSpan="2">Select Work Order:</td>
                                   <td rowSpan="2">
-                                   <select className="form-control" name="" id="">
-                                       <option> Select Work Order </option>
-                                   </select>
+                                    <select className="form-control" name="" id="">
+                                      <option> Select Work Order </option>
+                                    </select>
                                   </td>
                                 </tr>
                                 <tr>
@@ -739,11 +739,11 @@ const OutwardChallan = () => {
                                       onChange={handleInputChange}
                                     />
                                   </td>
-                                   <td>Ship To Add Code :</td>
+                                  <td>Ship To Add Code :</td>
                                   <td>
-                                     <select className="form-select" name="" id="">
-                                       <option>  </option>
-                                   </select>
+                                    <select className="form-select" name="" id="">
+                                      <option>  </option>
+                                    </select>
                                   </td>
                                   <td colSpan={2}>
                                     <button className="vndrbtn" onClick={saveChallan} disabled={loading}>
@@ -757,20 +757,39 @@ const OutwardChallan = () => {
                         </div>
                       </div>
 
-                      <div className="row">
-                        <div className="col-md-2">
-                            <label htmlFor=" "> </label>
+                      <div className="row mt-5 text-start">
+                        <div className="col-md-3">
+                          <label htmlFor=" "> Assessable Value : </label>
+                          <input type="text" placeholder=" " className="form-control" name="Vendor" value={formData.assessable_value} onChange={handleInputChange} />
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-3">
+                          <label htmlFor=" "> CGST  :</label>
+                          <input type="text" placeholder=" " className="form-control" name="Vendor" value={formData.cgst} onChange={handleInputChange} />
+                        </div>
+                         <div className="col-md-3">
+                          <label htmlFor=" "> SGST  :</label>
+                          <input type="text" placeholder=" " className="form-control" name="Vendor" value={formData.sgst} onChange={handleInputChange} />
+                        </div>
+                         <div className="col-md-3">
+                          <label htmlFor=" "> IGST : </label>
+                          <input type="text" placeholder=" " className="form-control" name="Vendor" value={formData.igst} onChange={handleInputChange} />
+                        </div>
+                        </div>
 
+                        <div className="row mt-2 text-start">
+                         <div className="col-md-3">
+                          <label htmlFor=" "> Grand Total : </label>
+                          <input type="text" placeholder=" " className="form-control" name="Vendor" value={formData.grand_total} onChange={handleInputChange} />
                         </div>
-                        <div className="col-md-2">
-
+                         <div className="col-md-3">
+                          <label htmlFor=" "> LR No. :  </label>
+                          <input type="text" placeholder=" " className="form-control" name="Vendor" value={formData.lr_no} onChange={handleInputChange} />
                         </div>
-                        <div className="col-md-2">
-
-                        </div>
-                        </div>
+                        <div className="col-md-3">
+                          <label htmlFor=" "> LR Date :  </label>
+                          <input type="date" placeholder=" " className="form-control" name="Vendor" value={formData.lr_date} onChange={handleInputChange} />
+                        </div>                       
+                      </div>
 
                     </div>
                   </div>

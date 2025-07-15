@@ -20,7 +20,7 @@ const OutwardChallanList = () => {
   };
 
   const handleButtonClick = () => {
-    navigate('/');
+    navigate('/QueryOutwardClln');
   };
 
   useEffect(() => {
@@ -135,22 +135,22 @@ const OutwardChallanList = () => {
 
                        <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>From:</label>
-                          <input type="date" className="form-control" />
+                          <input type="date" className="form-control mt-2" />
                         </div>
 
                         <div className="col-sm-6 col-md-3 col-lg-2">
                           <label>To:</label>
-                          <input type="date" className="form-control" />
+                          <input type="date" className="form-control mt-2" />
                         </div>
                         <div className="col-sm-6 col-md-3 col-lg-2">
                         <label htmlFor="">Plant:</label>
-                        <select name="" className="form-control" style={{marginTop:"-0px"}} id="">
+                        <select name="" className="form-control mt-2" id="">
                             <option value="">Produlink</option>
                         </select>
                       </div>
                       <div className="col-sm-6 col-md-3 col-lg-2">
                         <label htmlFor="">Series :</label>
-                        <select name="" className="form-control" style={{marginTop:"-0px"}} id="">
+                        <select name="" className="form-control mt-2"  id="">
                             <option value="">Select</option>
                             <option value="">57F4</option>
                             <option value="">Rework</option>
@@ -162,7 +162,7 @@ const OutwardChallanList = () => {
                       </div>
                       <div className="col-sm-6 col-md-3 col-lg-2">
                         <label htmlFor="">Status :</label>
-                        <select name="" className="form-control" style={{marginTop:"5px"}} id="">
+                        <select name="" className="form-control mt-2"  id="">
                             <option value="">All</option>
                             <option value="">New</option>
                             <option value="">Partial</option>
@@ -261,58 +261,6 @@ const OutwardChallanList = () => {
                           <td> < IoEye /></td>
                         </tr>
                           ))}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  {/* ✅ Local Data Table */}
-
-                  <div className="OutwardChallanList-Main mt-4 table-responsive">
-                  
-                    <table className="table table-bordered table-hover table-striped">
-                      <thead className="table-dark">
-                        <tr>
-                          <th>#</th>
-                          <th>Challan No</th>
-                          <th>Challan Date</th>
-                          <th>Time</th>
-                          <th>Transport</th>
-                          <th>Vehicle No</th>
-                          <th>Value</th>
-                          <th>EWB No</th>
-                          <th>Qty</th>
-                          <th>Vender</th>
-                          <th>Items</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {localData.map((entry, index) => (
-                          <tr key={index}>
-                            <td>{index + 1}</td>
-                            <td>{entry.challan_no}</td>
-                            <td>{entry.challan_date}</td>
-                            <td>{entry.challan_time}</td>
-                            <td>{entry.Transport_name}</td>
-                            <td>{entry.vehical_no}</td>
-                            <td>{entry.Estimated_value}</td>
-                            <td>{entry.EWay_bill_no}</td>
-                            <td>{entry.Eway_bill_Qty}</td>
-                            <td>{entry.vender}</td>
-                            <td>
-                              {entry.items.length > 0 ? (
-                                <ul className="mb-0">
-                                  {entry.items.map((item, idx) => (
-                                    <li key={idx}>
-                                      {item.item_code} | {item.description} | Qty: {item.qtyKg}
-                                    </li>
-                                  ))}
-                                </ul>
-                              ) : (
-                                "—"
-                              )}
-                            </td>
-                          </tr>
-                        ))}
                       </tbody>
                     </table>
                   </div>

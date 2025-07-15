@@ -100,7 +100,7 @@ const NewDabitNote = () => {
                         </li>
                       </ul>
 
-                      <div className="tab-content"  id="NewDabitNoteTabsContent">
+                      <div className=""  id="NewDabitNoteTabsContent">
 
                         <div  className="tab-pane fade show active" id="invoicedetails" role="tabpanel" >
                             <div className="NewDabitNote-main">

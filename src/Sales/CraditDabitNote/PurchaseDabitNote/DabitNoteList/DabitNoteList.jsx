@@ -12,7 +12,7 @@ const DabitNoteList = () => {
    const navigate = useNavigate();  
   
     const handleButtonClick = () => {
-      navigate('/'); 
+      navigate('/QueryDebit'); 
     };
 
   const toggleSideNav = () => {
@@ -43,7 +43,7 @@ const DabitNoteList = () => {
                   <div className="DabitNoteList-header mb-2 text-start">
                     <div className="row align-items-center">
                       <div className="col-md-4">
-                        <h5 className="header-title"> Dabit Note List</h5>
+                        <h5 className="header-title"> Debit Note List</h5>
                       </div>
                                   
                         <div className="col-md-8 text-end">
@@ -156,6 +156,7 @@ const DabitNoteList = () => {
                                         </tbody>
                                  </table>
                      </div>
+
                 </div>
               </main>
             </div>
